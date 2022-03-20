@@ -1,0 +1,21 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Tim Qiu
+	email = qyxtim@qq.com
+	signingkey = 28E45447C451A18A
+[core]
+	excludesfile = ~/.gitignore_global
+[commit]
+	template = ~/.gitmessage
+	gpgsign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
+[init]
+    defaultBranch = main
+[alias]
+	graph = log --all --graph --decorate --oneline
+	create = branch

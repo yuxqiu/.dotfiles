@@ -1,0 +1,45 @@
+[submodule "vim/.vim/pack/vendor/start/nerdtree"]
+	path = vim/.vim/pack/vendor/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "vim/.vim/pack/vendor/start/vim-easymotion"]
+	path = vim/.vim/pack/vendor/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule "vim/.vim/pack/vendor/start/coc"]
+	path = vim/.vim/pack/vendor/start/coc
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule "vim/.vim/pack/vendor/start/vim-startify"]
+	path = vim/.vim/pack/vendor/start/vim-startify
+	url = https://github.com/mhinz/vim-startify.git
+[submodule "vim/.vim/pack/vendor/start/lightline"]
+	path = vim/.vim/pack/vendor/start/lightline
+	url = https://github.com/itchyny/lightline.vim.git
+[submodule "vim/.vim/pack/vendor/start/vim-polyglot"]
+	path = vim/.vim/pack/vendor/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "vim/.vim/pack/vendor/start/surround"]
+	path = vim/.vim/pack/vendor/start/surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/.vim/pack/vendor/start/fugitive"]
+	path = vim/.vim/pack/vendor/start/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/pack/vendor/start/rainbow"]
+	path = vim/.vim/pack/vendor/start/rainbow
+	url = https://github.com/junegunn/rainbow_parentheses.vim.git
+[submodule "vim/.vim/pack/vendor/start/wakatime"]
+	path = vim/.vim/pack/vendor/start/wakatime
+	url = https://github.com/wakatime/vim-wakatime.git
+[submodule "vim/.vim/pack/vendor/start/vimspector"]
+	path = vim/.vim/pack/vendor/start/vimspector
+	url = https://github.com/puremourning/vimspector.git
+[submodule "vim/.vim/pack/vendor/start/vim-devicons"]
+	path = vim/.vim/pack/vendor/start/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim/.vim/pack/vendor/start/lightline-bufferline"]
+	path = vim/.vim/pack/vendor/start/lightline-bufferline
+	url = https://github.com/mengelbrecht/lightline-bufferline.git
+[submodule "vim/.vim/pack/vendor/start/vim-which-key"]
+	path = vim/.vim/pack/vendor/start/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key.git
+[submodule "vim/.vim/pack/vendor/opt/onedark.vim"]
+	path = vim/.vim/pack/vendor/opt/onedark.vim
+	url = https://github.com/joshdick/onedark.vim.git

@@ -1,0 +1,85 @@
+env:
+    # TERM variable
+    #
+    # This value is used to set the `$TERM` environment variable for
+    # each instance of Alacritty. If it is not present, alacritty will
+    # check the local terminfo database and use `alacritty` if it is
+    # available, otherwise `xterm-256color` is used.
+    TERM: xterm-256color
+
+window:
+  dimensions:
+    columns: 120
+    lines: 36
+
+  padding:
+    x: 10
+    y: 10
+
+  opacity: 1.0
+
+scrolling:
+  # Maximum number of lines in the scroll back buffer.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scroll
+  multiplier: 3
+
+font:
+  normal:
+    family: MesloLGS NF
+    style: Regular
+
+  bold:
+    family: MesloLGS NF
+    style: Regular
+
+  italic:
+    family: MesloLGS NF
+    style: Regular
+
+  size: 12.0
+
+  scale_with_dpi: true
+
+  use_thin_strokes: true
+
+
+colors:
+  primary:
+    background: '#282c34'
+    foreground: '#abb2bf'
+  cursor:
+    text:       CellBackground
+    cursor:     '#528bff' # syntax-cursor-color
+  selection:
+    text:       CellForeground
+    background: '#3e4451' # syntax-selection-color
+  normal:
+    black:      '#5c6370' # mono-3
+    red:        '#e06c75' # red 1
+    green:      '#98c379'
+    yellow:     '#e5c07b' # orange 2
+    blue:       '#61afef'
+    magenta:    '#c678dd'
+    cyan:       '#56b6c2'
+    white:      '#828997' # mono-2
+
+hide_cursor_when_typing: false
+
+window.dynamic_title: true
+
+# Cursor style
+#
+# Values for 'cursor_style':
+#   - Block
+#   - Underline
+#   - Beam
+cursor_style: Block
+
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+unfocused_hollow_cursor: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
