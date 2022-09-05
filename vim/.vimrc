@@ -326,10 +326,10 @@ endfunction
 
 let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"
 
-" -- open tabs
-nnoremap <Leader>t :tabnew<cr>
+" -- open a new buffer
+nnoremap <Leader>t :enew<cr>
 
-" -- switch tabs
+" -- switch to a buffer
 nnoremap <Leader>1 <Plug>lightline#bufferline#go(1)
 nnoremap <Leader>2 <Plug>lightline#bufferline#go(2)
 nnoremap <Leader>3 <Plug>lightline#bufferline#go(3)
@@ -341,7 +341,8 @@ nnoremap <Leader>8 <Plug>lightline#bufferline#go(8)
 nnoremap <Leader>9 <Plug>lightline#bufferline#go(9)
 nnoremap <Leader>0 <Plug>lightline#bufferline#go(10)
 
-" -- close tabs
+" -- close a buffer
+nnoremap <Leader>cc :bdelete<cr>
 nnoremap <Leader>c1 <Plug>lightline#bufferline#delete(1)
 nnoremap <Leader>c2 <Plug>lightline#bufferline#delete(2)
 nnoremap <Leader>c3 <Plug>lightline#bufferline#delete(3)
