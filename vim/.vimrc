@@ -82,7 +82,7 @@ iabbrev ret return
 autocmd FileType c iabbrev <buffer> main int main(int argc, char* argv[]) 
 autocmd FileType cpp iabbrev <buffer> main int main(int argc, char* argv[])
 autocmd FileType python iabbrev <buffer> main if __name__ == "__main__":
-autocmd FileType json syntax match Comment +\/\/.\+$+
+" autocmd FileType json syntax match Comment +\/\/.\+$+
 " } 
 
 " MAPPINGS --------------------------------------------------------------- {
@@ -239,7 +239,6 @@ nnoremap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xnoremap <leader>f  <Plug>(coc-format-selected)
 nnoremap <leader>f  <Plug>(coc-format-selected)
-
 " end of coc vim
 
 " Onedark theme start

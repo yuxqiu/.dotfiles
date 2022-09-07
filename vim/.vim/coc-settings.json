@@ -6,7 +6,7 @@
     "--completion-style=detailed",
     "--header-insertion-decorators",
     "--header-insertion=iwyu",
-    "--pretty",
+    "--pretty"
   ],
   "clangd.fallbackFlags": [
     "-Wall",
@@ -19,5 +19,5 @@
     "-Wsuggest-override",
     "-Wconversion"
   ],
-  "clangd.checkUpdates": true,
+  "clangd.checkUpdates": true
 }
