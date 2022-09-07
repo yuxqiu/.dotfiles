@@ -27,22 +27,15 @@ scrolling:
 
 font:
   normal:
-    family: MesloLGS NF
-    style: Regular
-
-  bold:
-    family: MesloLGS NF
-    style: Regular
-
-  italic:
-    family: MesloLGS NF
-    style: Regular
+    family: MesloLGS Nerd Font
 
   size: 12.0
 
   scale_with_dpi: true
 
   use_thin_strokes: true
+
+  draw_bold_text_with_bright_colors: true
 
 
 colors:
