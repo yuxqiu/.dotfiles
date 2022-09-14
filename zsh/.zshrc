@@ -86,9 +86,6 @@ source $ZSH/oh-my-zsh.sh
 
 # alias starts
 
-# -- git alias
-alias gs="git status"
-
 # -- pip alias
 alias pipcn="python -m pip -i https://pypi.tuna.tsinghua.edu.cn/simple"
 
