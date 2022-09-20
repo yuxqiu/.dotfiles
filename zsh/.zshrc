@@ -87,7 +87,9 @@ source $ZSH/oh-my-zsh.sh
 # alias starts
 
 # -- pip alias
-alias pipcn="python -m pip -i https://pypi.tuna.tsinghua.edu.cn/simple"
+pipcn() {
+    python -m pip $@ -i https://pypi.tuna.tsinghua.edu.cn/simple;
+}
 
 # -- docker alias
 alias dockps="docker ps --format \"{{.ID}} {{.Names}}\""
