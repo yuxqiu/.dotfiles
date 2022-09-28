@@ -100,6 +100,11 @@ docksh(){
 alias dcbuild="docker-compose build"
 alias dcup="docker-compose up"
 alias dcdown="docker-compose down"
+
+# -- alias for x86_64
+run64() {
+    arch -x86_64 $1
+}
 # alias ends
 
 # Source haskell ghc
