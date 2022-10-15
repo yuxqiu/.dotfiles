@@ -80,7 +80,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages z zsh-autosuggestions dirhistory)
+plugins=(git colored-man-pages z dirhistory)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,6 +119,12 @@ export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 # export PKG-CONFIG Path
 export PKG_CONFIG_PATH=/opt/homebrew/opt/opencv/lib/pkgconfig 
 
+# default C++ flags
+export CXXFLAGS="-std=c++17"
+
+# vcpkg env var
+export VCPKG_ROOT="$HOME/vcpkg"
+
 # export Python auto-complete
 export PYTHONSTARTUP=~/.pythonrc
 
@@ -128,7 +134,5 @@ bindkey -v
 # bind jj to ESC in insert 
 bindkey -M viins 'jj' vi-cmd-mode
 
-# vcpkg env var
-export VCPKG_ROOT="$HOME/vcpkg"
-
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
