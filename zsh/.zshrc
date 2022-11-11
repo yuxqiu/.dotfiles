@@ -80,16 +80,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages z dirhistory)
+plugins=(git colored-man-pages z dirhistory macos)
 
 source $ZSH/oh-my-zsh.sh
 
 # alias starts
-
-# -- pip alias
-pipcn() {
-    python -m pip $@ -i https://pypi.tuna.tsinghua.edu.cn/simple;
-}
 
 # -- docker alias
 alias dockps="docker ps --format \"{{.ID}} {{.Names}}\""
@@ -101,11 +96,41 @@ alias dcbuild="docker-compose build"
 alias dcup="docker-compose up"
 alias dcdown="docker-compose down"
 
+# -- quickly search history
+alias hg='history | grep'
+
+# alias ends
+
+# function starts
+
+function pipcn() {
+    python -m pip $@ -i https://pypi.tuna.tsinghua.edu.cn/simple;
+}
+
 # -- alias for x86_64
-run64() {
+function run64() {
     arch -x86_64 $1
 }
-# alias ends
+
+# download file and verify their checksum
+function checksum() {
+  s=$(curl -fsSL "$1")
+  if ! command -v shasum >/dev/null
+  then
+    shasum() { sha1sum "$@"; }
+  fi
+  c=$(printf %s\\n "$s" | shasum | awk '{print $1}')
+  if [ "$c" = "$2" ]
+  then
+    printf %s\\n "$s"
+  else
+    echo "invalid checksum $c != $2" 1>&2;
+  fi
+  unset s
+  unset c
+}
+
+# function ends
 
 # Source haskell ghc
 source "$HOME/.ghcup/env"
