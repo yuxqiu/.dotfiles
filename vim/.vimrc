@@ -130,6 +130,11 @@ noremap <c-k> :term zsh<cr>
 inoremap <c-k> :term zsh<cr>
 tnoremap <c-k> <c-w>k
 tnoremap <esc><esc> <c-\><c-n>:q!<cr>
+
+" Press Y to copy to clipboard
+nnoremap Y "+y
+vnoremap Y "+y
+nnoremap yY ^"+y$
 " }}}
 
 " Plugins ---------------------------------------------------------------- {
