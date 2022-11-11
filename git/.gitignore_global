@@ -1,6 +1,6 @@
-.DS_Store
-.vscode
-.idea
-target/
-__pycache__/
-.pytest_cache
+**/.DS_Store
+**/.vscode
+**/.idea
+**/target/
+**/__pycache__/
+**/.pytest_cache
