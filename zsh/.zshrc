@@ -25,12 +25,6 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
-# Start vim mode
-bindkey -v
-
-# bind jj to ESC in insert
-bindkey -M viins 'jj' vi-cmd-mode
-
 # Which plugins would you like to load?
 plugins=(git colored-man-pages z dirhistory macos)
 
