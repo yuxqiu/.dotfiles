@@ -45,6 +45,9 @@ alias dcdown="docker-compose down"
 # -- quickly search history
 alias hg='history | grep'
 
+alias mcc="cc -I$BREW_PREFIX/include -L$BREW_PREFIX/lib"
+alias mc++="c++ -I$BREW_PREFIX/include -L$BREW_PREFIX/lib"
+
 # <<< alias ends >>>
 
 # >>> function starts <<<
@@ -84,7 +87,6 @@ function checksum() {
 export CXXFLAGS="-std=c++17"
 
 # add include/library search path for C/C++
-export CPATH=$BREW_PREFIX/include
 export LIBRARY_PATH=$BREW_PREFIX/lib
 
 # Source haskell ghc
