@@ -45,8 +45,12 @@ alias dcdown="docker-compose down"
 # -- quickly search history
 alias hg='history | grep'
 
+# -- compile c/cpp with libraries installed via HomeBrew
 alias mcc="cc -I$BREW_PREFIX/include -L$BREW_PREFIX/lib"
 alias mc++="c++ -I$BREW_PREFIX/include -L$BREW_PREFIX/lib"
+
+# -- prevent rlwrap from storing history
+alias rlwrap="rlwrap --histsize -0"
 
 # <<< alias ends >>>
 
