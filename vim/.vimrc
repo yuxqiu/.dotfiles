@@ -144,16 +144,12 @@ let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
 let g:EasyMotion_do_mapping = 0 " disable default mappings
 let g:EasyMotion_use_smartsign_us = 1 " 1 will match 1 and !
 let g:EasyMotion_use_upper = 1
-let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz;'
 let g:EasyMotion_space_jump_first = 1
 let g:EasyMotion_enter_jump_first = 1
 
-nnoremap <leader>g <Plug>(easymotion-bd-w)
-nnoremap s <Plug>(easymotion-s2)
-noremap t <Plug>(easymotion-bd-t)
-noremap f <Plug>(easymotion-bd-f)
-onoremap t <Plug>(easymotion-tl)
-onoremap f <Plug>(easymotion-fl)
+nnoremap f <Plug>(easymotion-bd-f)
+nnoremap / <Plug>(easymotion-sn)
 
 " jk motions: line motions
 noremap <Leader>j <Plug>(easymotion-j)
@@ -363,3 +359,8 @@ nnoremap <Leader>c7 <Plug>lightline#bufferline#delete(7)
 nnoremap <Leader>c8 <Plug>lightline#bufferline#delete(8)
 nnoremap <Leader>c9 <Plug>lightline#bufferline#delete(9)
 nnoremap <Leader>c0 <Plug>lightline#bufferline#delete(10)
+
+" Camel Case Motion
+nnoremap <silent> w <Plug>CamelCaseMotion_w
+nnoremap <silent> b <Plug>CamelCaseMotion_b
+nnoremap <silent> e <Plug>CamelCaseMotion_e

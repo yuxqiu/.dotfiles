@@ -43,3 +43,6 @@
 [submodule "vim/.vim/pack/vendor/opt/onedark.vim"]
 	path = vim/.vim/pack/vendor/opt/onedark.vim
 	url = https://github.com/joshdick/onedark.vim.git
+[submodule "vim/.vim/pack/vendor/start/CamelCaseMotion"]
+	path = vim/.vim/pack/vendor/start/CamelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion.git
