@@ -87,9 +87,6 @@ function checksum() {
 
 # >>> language starts <<<
 
-# default C++ flags for GNU make
-export CXXFLAGS="-std=c++17"
-
 # add include/library search path for C/C++
 export LIBRARY_PATH=$BREW_PREFIX/lib
 
