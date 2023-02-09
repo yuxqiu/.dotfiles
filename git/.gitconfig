@@ -18,6 +18,5 @@
     defaultBranch = main
 [alias]
 	graph = log --all --graph --decorate --oneline
-	create = branch
 	rank = shortlog -s -n --no-merges
 	fame = !python -m gitfame
