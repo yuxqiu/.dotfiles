@@ -149,7 +149,7 @@ let g:EasyMotion_space_jump_first = 1
 let g:EasyMotion_enter_jump_first = 1
 
 nnoremap f <Plug>(easymotion-bd-f)
-nnoremap / <Plug>(easymotion-sn)
+nnoremap <Leader>/ <Plug>(easymotion-sn)
 
 " jk motions: line motions
 noremap <Leader>j <Plug>(easymotion-j)
