@@ -105,11 +105,14 @@ export VCPKG_ROOT="$HOME/vcpkg"
 # export Python auto-complete
 export PYTHONSTARTUP=~/.pythonrc
 
-# <<< tool ends >>>
-
 # zsh extensions
 source $BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# <<< tool ends >>>
+
+# disable homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
