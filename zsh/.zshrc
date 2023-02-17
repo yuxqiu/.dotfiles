@@ -92,6 +92,9 @@ source "$HOME/.ghcup/env"
 # <<< language ends >>>
 
 # >>> tool starts <<<
+# export editor Path
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # export LLVM Path
 export PATH=$PATH:$BREW_PREFIX/opt/llvm/bin
