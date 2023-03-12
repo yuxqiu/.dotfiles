@@ -11,8 +11,8 @@ spaces_around_operators	= true
 quote_type = double
 curly_bracket_next_line	= false
 
-[*.{c,cc,cpp,h,hh,hpp}]
-indent_size = 2
-
 [*.md]
 insert_final_newline = false
+
+[makefile]
+indent_style = tab
