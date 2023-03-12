@@ -1,0 +1,25 @@
+#!/bin/sh
+# from https://git.j3s.sh/dotfiles/blob/main/bin/witness
+# witness - watch a file for changes & run a command
+
+file="$1"
+shift
+command="$@"
+
+get_access_time() {
+    # -f %c for macos
+    # -c %Z for GNU extension
+    stat -f %c "$1"
+}
+
+ltime="$(get_access_time "$file")"
+
+while true; do
+    atime="$(get_access_time "$file")"
+    if [ "$atime" != "$ltime" ]; then
+        printf "$ %s\n" "$command"
+        $command
+	ltime="$atime"
+    fi
+    sleep 0.5
+done
