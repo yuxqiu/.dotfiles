@@ -6,7 +6,6 @@ if [ -f "$BREW_PREFIX/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
 else
 export PATH="$BREW_PREFIX/Caskroom/miniforge/base/bin:$PATH"
 fi
-#fi
 # <<< conda initialize <<<
 
 # Ruby
