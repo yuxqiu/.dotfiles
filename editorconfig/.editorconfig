@@ -16,3 +16,6 @@ insert_final_newline = false
 
 [makefile]
 indent_style = tab
+
+[*.{yml,yaml}]
+indent_size = 2
