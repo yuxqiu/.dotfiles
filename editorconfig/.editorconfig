@@ -14,8 +14,11 @@ curly_bracket_next_line	= false
 [*.md]
 insert_final_newline = false
 
-[makefile]
+[{makefile,Makefile,**.mk}]
 indent_style = tab
 
 [*.{yml,yaml}]
 indent_size = 2
+
+[*.txt]
+insert_final_newline = false
