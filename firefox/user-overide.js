@@ -253,4 +253,4 @@ user_pref("accessibility.typeaheadfind", false);
 user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 
 // reject all cookies by default and prompt users if cannot do so
-user_pref("cookiebanners.service.mode.privateBrowsing", 1);
+user_pref("cookiebanners.service.mode", 1);
