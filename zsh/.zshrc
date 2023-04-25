@@ -1,13 +1,5 @@
 BREW_PREFIX=$(brew --prefix)
 
-# >>> conda initialize >>>
-if [ -f "$BREW_PREFIX/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-. "$BREW_PREFIX/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-else
-export PATH="$BREW_PREFIX/Caskroom/miniforge/base/bin:$PATH"
-fi
-# <<< conda initialize <<<
-
 # Ruby
 # source $BREW_PREFIX/opt/chruby/share/chruby/chruby.sh
 # source $BREW_PREFIX/opt/chruby/share/chruby/auto.sh
