@@ -1,4 +1,13 @@
-BREW_PREFIX=$(brew --prefix)
+# a x86 brew
+alias brow='arch --x86_64 /usr/local/Homebrew/bin/brew'
+
+# setup different environment variables for different shells
+if [[ $(arch) != arm64* ]]
+then
+    eval "$(/usr/local/bin/brew shellenv)"
+else
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Ruby
 # source $BREW_PREFIX/opt/chruby/share/chruby/chruby.sh
@@ -74,9 +83,6 @@ function checksum() {
 
 # >>> language starts <<<
 
-# add include/library search path for C/C++
-export LIBRARY_PATH=$BREW_PREFIX/lib
-
 # Source haskell ghc
 source "$HOME/.ghcup/env"
 
@@ -87,12 +93,6 @@ source "$HOME/.ghcup/env"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# export LLVM Path
-export PATH=$PATH:$BREW_PREFIX/opt/llvm/bin
-
-# export PKG-CONFIG Path
-export PKG_CONFIG_PATH=$BREW_PREFIX/opt/opencv/lib/pkgconfig
-
 # vcpkg env var
 export VCPKG_ROOT="$HOME/vcpkg"
 
@@ -100,11 +100,31 @@ export VCPKG_ROOT="$HOME/vcpkg"
 export PYTHONSTARTUP=~/.pythonrc
 
 # zsh extensions
-source $BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# pyenv
+# see https://github.com/pyenv/pyenv#set-up-your-shell-environment-for-pyenv
+# must use - here because pyenv-virtualenv requires that
+eval "$(pyenv init -)"
+
+# pyenv-virtualenv
+eval "$(pyenv virtualenv-init -)"
+
+# hide pyenv-virtualenv warning
+# from https://github.com/pyenv/pyenv-virtualenv/issues/135#issuecomment-712534748
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# To install x86 python, run arch --x86_64 /bin/zsh
+# Then run pyenv install [version]
+# I choose not to use separate paths here
+# as I only install Python <= 3.7 in x86_64
+#
+# After installation, you could use it as normal
+# Don't need to run x86 shell
 
 # <<< tool ends >>>
 
