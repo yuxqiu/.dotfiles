@@ -118,6 +118,15 @@ eval "$(pyenv virtualenv-init -)"
 # from https://github.com/pyenv/pyenv-virtualenv/issues/135#issuecomment-712534748
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+# a shortcut to setup prompt
+export BASE_PROMPT=$PS1
+function pyact() {
+  pyenv activate "$@"; export PS1='($(pyenv version-name)) '$BASE_PROMPT
+}
+function pydeact(){
+  pyenv deactivate "$@"; export PS1=$BASE_PROMPT;
+}
+
 # To install x86 python, run arch --x86_64 /bin/zsh
 # Then run pyenv install [version]
 # I choose not to use separate paths here
