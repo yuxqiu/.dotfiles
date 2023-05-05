@@ -3,7 +3,7 @@
 set -e
 
 # This file is taken from
-# https://github.com/sobolevn/dotfiles/blob/master/macos/disable.sh
+# https://github.com/sobolevn/dotfiles/blob/master/macos/settings.sh
 
 echo 'Configuring your mac. Hang tight.'
 osascript -e 'tell application "System Preferences" to quit'
