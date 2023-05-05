@@ -59,6 +59,7 @@ chflags nohidden ~/Library
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
+
 # === Text editing ===
 # Disable smart quotes:
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -72,8 +73,11 @@ defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 # Disable smart dashes:
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-# Diable automatic period substitution:
+# Disable automatic period substitution:
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable press and hold:
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 
 # === Time Machine ===
