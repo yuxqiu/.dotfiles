@@ -89,7 +89,8 @@ TODISABLE+=('com.apple.accessibility.MotionTrackingAgent' \
 'com.apple.screensharing.agent' \
 'com.apple.screensharing.menuextra' \
 'com.apple.screensharing.MessagesAgent' \
-'com.apple.ScreenTimeAgent' \
+# Screen Time
+# 'com.apple.ScreenTimeAgent' \
 'com.apple.security.cloudkeychainproxy3' \
 # AirDrop
 # 'com.apple.sharingd' \
