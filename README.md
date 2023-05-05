@@ -5,6 +5,9 @@
 0. Run `xcode-select install`
 1. Clone this repository
 2. Install brew and restore all softwares via bundle
+    - First, install native brew
+    - (Optional): if using M1 Mac, can use `arch --x86_64 /bin/zsh` to run a x86 shell and install a x86 brew.
+        This is required if you want to install x86 Python via `pyenv`.
 3. Install oh-my-zsh
 4. Symlinks all the stuff by using stow: `stow [file]`
 5. Install other dependencies as listed below
@@ -14,11 +17,12 @@
 0. To export, run `brew bundle dump`
 1. Run `brew bundle --file ./config/Brewfile` to restore the installed formula
 
-## conda
+## pyenv
 
-0. To export, run `conda freeze > condalist.txt`
-1. Download Miniforge from Github or Use `brew` to install Miniforge
-2. Use `conda install --file` to install packages (`./config/condalist.txt`)
+1. Install `pyenv` and `pyenv-virtualenv` via `brew`
+2. To install x86 python, run `arch --x86_64 /bin/zsh` and  run `pyenv install [version]`
+    - I personally will install a Python 3.7
+    - After installation, we could use it as normal
 
 ## ssh
 

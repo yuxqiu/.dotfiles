@@ -56,11 +56,6 @@ function pipcn() {
     python -m pip $@ -i https://pypi.tuna.tsinghua.edu.cn/simple;
 }
 
-# -- alias for x86_64
-function run64() {
-    arch -x86_64 $1
-}
-
 # download file and verify their checksum
 function checksum() {
   s=$(curl -fsSL "$1")
@@ -126,15 +121,6 @@ function pyact() {
 function pydeact(){
   pyenv deactivate "$@"; export PS1=$BASE_PROMPT;
 }
-
-# To install x86 python, run arch --x86_64 /bin/zsh
-# Then run pyenv install [version]
-# I choose not to use separate paths here
-# as I only install Python <= 3.7 in x86_64
-#
-# After installation, you could use it as normal
-# Don't need to run x86 shell
-
 # <<< tool ends >>>
 
 # disable homebrew analytics
