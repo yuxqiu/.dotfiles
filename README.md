@@ -9,8 +9,8 @@
     - (Optional): if using M1 Mac, can use `arch --x86_64 /bin/zsh` to run a x86 shell and install a x86 brew.
         This is required if you want to install x86 Python via `pyenv`.
 3. Install oh-my-zsh
-4. Symlinks all the stuff by using stow: `stow [file]`
-5. Install other dependencies as listed below
+4. Install other dependencies as listed below
+5. Symlinks all the stuff by using stow: `stow [file]`
 
 ## brew 
 
@@ -20,9 +20,8 @@
 ## pyenv
 
 1. Install `pyenv` and `pyenv-virtualenv` via `brew`
-2. To install x86 python, run `arch --x86_64 /bin/zsh` and  run `pyenv install [version]`
-    - I personally will install a Python 3.7
-    - After installation, we could use it as normal
+2. To install x86 Python, run `arch --x86_64 /bin/zsh` and `pyenv install [version]`
+    - (Optional): install a Python 3.7
 
 ## ssh
 
