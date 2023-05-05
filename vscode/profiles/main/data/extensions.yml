@@ -1,13 +1,15 @@
 disabled: []
 enabled:
-  - id: albert.TabOut
-    uuid: 4ef6c2d5-de36-45a1-9015-18c1d4a3a25e
+  - id: codezombiech.gitignore
+    uuid: 3e891cf9-53cb-49a3-8d01-8f0b1f0afb29
   - id: cschlosser.doxdocgen
     uuid: da7e26d5-d57c-4742-ab47-d77fb189e195
   - id: EditorConfig.EditorConfig
     uuid: f60a60a6-95ba-42d4-b41c-3d24c1b89588
   - id: James-Yu.latex-workshop
     uuid: 61d03280-3919-4dd1-bce1-178ca21fdeaf
+  - id: jeanp413.open-remote-ssh
+    uuid: 9fc16cea-08e2-4ae5-bf75-224004d722ff
   - id: llvm-vs-code-extensions.vscode-clangd
     uuid: 103154cb-b81d-4e1b-8281-c5f4fa563d37
   - id: marp-team.marp-vscode
@@ -23,25 +25,9 @@ enabled:
   - id: ms-python.vscode-pylance
     uuid: 364d2426-116a-433a-a5d8-a5098dc3afbd
   - id: ms-toolsai.jupyter
-    uuid: 6c2f1801-1e7f-45b2-9b5c-7782f1e076e8
-  - id: ms-toolsai.jupyter-keymap
-    uuid: 9f6dc8db-620c-4844-b8c5-e74914f1be27
-  - id: ms-toolsai.jupyter-renderers
-    uuid: b15c72f8-d5fe-421a-a4f7-27ed9f6addbf
-  - id: ms-toolsai.vscode-jupyter-cell-tags
-    uuid: ab4fb32a-befb-4102-adf9-1652d0cd6a5e
-  - id: ms-toolsai.vscode-jupyter-slideshow
-    uuid: e153ca70-b543-4865-b4c5-b31d34185948
-  - id: ms-vscode-remote.remote-containers
-    uuid: 93ce222b-5f6f-49b7-9ab1-a0463c6238df
-  - id: ms-vscode-remote.remote-ssh
-    uuid: 607fd052-be03-4363-b657-2bd62b83d28a
-  - id: ms-vscode-remote.remote-ssh-edit
-    uuid: bfeaf631-bcff-4908-93ed-fda4ef9a0c5c
+    uuid: null
   - id: ms-vscode.cmake-tools
     uuid: 7c889349-8749-43d4-8b5e-08939936d7f4
-  - id: ms-vscode.remote-explorer
-    uuid: 11858313-52cc-4e57-b3e4-d7b65281e34b
   - id: nvarner.typst-lsp
     uuid: 97ba5708-f198-4ded-801d-a4832b75254b
   - id: Perkovec.emoji
@@ -56,6 +42,8 @@ enabled:
     uuid: 2783c7a6-dc32-471d-ab7f-863ca5e8deb3
   - id: rust-lang.rust-analyzer
     uuid: 06574cb4-e5dc-4631-8174-a543a4533621
+  - id: streetsidesoftware.code-spell-checker
+    uuid: f6dbd813-b0a0-42c1-90ea-10dde9d925a7
   - id: TabNine.tabnine-vscode
     uuid: 75da638c-c45a-44ea-aa3b-8570a3559810
   - id: twxs.cmake
@@ -76,6 +64,8 @@ enabled:
     uuid: d96e79c6-8b25-4be3-8545-0e0ecefcae03
   - id: Vue.volar
     uuid: a5223b43-8621-4351-a14e-3d560f85f277
+  - id: waderyan.gitblame
+    uuid: 2335b326-c334-4e81-bc51-c408fcec6e7c
   - id: WakaTime.vscode-wakatime
     uuid: f2fd462f-f1bd-4c62-b54f-59a4e5ffc6a3
   - id: xaver.clang-format

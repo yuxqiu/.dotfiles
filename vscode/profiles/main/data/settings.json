@@ -1,69 +1,78 @@
 {
     // Editor Settings
     "explorer.confirmDelete": false,
-    "files.autoGuessEncoding": true,
-    "files.trimFinalNewlines": true,
     "explorer.confirmDragAndDrop": false,
-    "notebook.lineNumbers": "on",
-    "workbench.enableExperiments": false,
-    "workbench.settings.enableNaturalLanguageSearch": false,
-    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
     "editor.smoothScrolling": true,
-    "extensions.ignoreRecommendations": true,
-    "telemetry.telemetryLevel": "off",
-    "typescript.surveys.enabled": false,
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "window.openFoldersInNewWindow": "on",
-    "workbench.fontAliasing": "auto",
-    "workbench.list.smoothScrolling": true,
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorBlinking": "smooth",
     "editor.minimap.autohide": true,
     "editor.guides.bracketPairs": true,
     "editor.autoClosingOvertype": "always",
-    "editor.formatOnType": true,
     "editor.linkedEditing": true,
-    // "editor.suggest.preview": true, // potentially visually conflicts with inline hint
+    "editor.suggest.preview": true, // visually conflict with inline hint
     "editor.suggest.snippetsPreventQuickSuggestions": false, // enable intellisense after selecting autocomplete
-    "editor.acceptSuggestionOnEnter": "smart", // accept suggestions on enter only if it makes a textual change
     "editor.suggest.localityBonus": true,
     "editor.stickyScroll.enabled": true,
     "editor.experimental.pasteActions.enabled": true, // enable paste as picture functionality in markdown
-    "terminal.integrated.inheritEnv": false,
-    "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
-    "git.openRepositoryInParentFolders": "never",
     "window.commandCenter": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.suggestSelection": "recentlyUsed",
+
+    // Terminal
+    // "terminal.integrated.inheritEnv": false, // may fix Python PATH
+    "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
+    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
+
+    // Files
+    "files.autoGuessEncoding": true,
+    "files.trimFinalNewlines": true,
+
+    // Workbench
+    "workbench.fontAliasing": "auto",
+    "workbench.list.smoothScrolling": true,
     "workbench.iconTheme": "vscode-icons",
-    "update.mode": "none",
     "workbench.editorAssociations": {
         "*.pdf": "latex-workshop-pdf-hook"
     },
-    "markdown.extension.list.indentationSize": "inherit",
-    "workbench.cloudChanges.autoResume": "off",
-    "workbench.cloudChanges.continueOn": "off",
     "workbench.startupEditor": "none",
     "workbench.colorTheme": "One Dark Pro",
-    "[latex]": {
-        "editor.wordWrap": "on",
-        "editor.guides.bracketPairs": false,
-        "editor.defaultFormatter": "James-Yu.latex-workshop"
-    },
-    "[typst]": {
-        "editor.wordWrap": "on",
-    },
-    "diffEditor.renderSideBySide": false,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "workbench.editor.labelFormat": "medium",
+    "workbench.tips.enabled": false,
+
+    // Online Services
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "extensions.ignoreRecommendations": true,
+    "telemetry.telemetryLevel": "off",
+    "typescript.surveys.enabled": false,
+    "update.mode": "none",
+    "workbench.cloudChanges.autoResume": "off",
+    "workbench.cloudChanges.continueOn": "off",
+
+    // git
+    "git.openRepositoryInParentFolders": "never",
+    "git.ignoreLegacyWarning": true,
+    "git.confirmSync": false,
+    "git.suggestSmartCommit": false,
+
+    // notebook
+    "notebook.lineNumbers": "on",
+
+    // Extensions and Languages
+    "markdown.extension.list.indentationSize": "inherit",
+
     "javascript.inlayHints.parameterNames.enabled": "all",
     "javascript.updateImportsOnFileMove.enabled": "always",
-    // Editor ends
-    // cpp starts
+
     "clangd.arguments": [
         "--background-index",
         "--compile-commands-dir=${workspaceFolder}",
         "--clang-tidy",
         "--completion-style=detailed",
-        "--header-insertion=none",
+        // "--header-insertion=none",
         "--pretty"
     ],
     "clangd.fallbackFlags": [
@@ -78,26 +87,19 @@
         "-Wconversion"
     ],
     "clangd.checkUpdates": true,
-    // cpp ends
-    // js starts
+
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+
     "markdown.extension.print.theme": "dark",
     "markdown.updateLinksOnFileMove.enabled": "prompt",
     "markdown.marp.pdf.noteAnnotations": true,
     "markdown.marp.pdf.outlines": "headings",
-    // js ends
-    // ssh starts
-    "remote.SSH.remotePlatform": {
-        "csrw2.cs.ucl.ac.uk": "linux",
-        "localhost": "linux"
-    },
-    "remote.SSH.useLocalServer": false,
-    // Remote SSH ends
-    // git
-    "git.ignoreLegacyWarning": true,
-    "git.confirmSync": false,
-    "git.suggestSmartCommit": false,
-    // git ends
-    // latex
+
     "latex-workshop.latex.recipes": [
         {
             "name": "xelatex",
@@ -155,8 +157,12 @@
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
     "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.autoClean.run": "onBuilt",
-    // latex ends
-    // Vim Start
+    "[latex]": {
+        "editor.wordWrap": "on",
+        "editor.guides.bracketPairs": false,
+        "editor.defaultFormatter": "James-Yu.latex-workshop"
+    },
+
     "vim.hlsearch": true,
     "vim.startInInsertMode": true,
     "vim.vimrc.enable": true,
@@ -206,41 +212,37 @@
             "silent": true
         }
     ],
-    // Vim end
-    // python
+
     "python.experiments.enabled": false,
     "python.testing.pytestEnabled": true,
     "python.analysis.typeCheckingMode": "basic",
     "jupyter.experiments.enabled": false,
-    "python.formatting.provider": "black",
     "python.analysis.diagnosticMode": "workspace",
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.inlayHints.functionReturnTypes": true,
-    "python.linting.prospectorEnabled": true,
     "python.terminal.activateEnvironment": false,
-    // python end
-    // cmake configuration
+    "python.defaultInterpreterPath": "/Users/timqiu/.pyenv/versions/3.11.3/envs/base/bin/python",
+
     "cmake.configureOnOpen": true,
-    // cmake ends
-    // clang format
-    "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
-    },
-    "[c]": {
-        "editor.defaultFormatter": "xaver.clang-format"
-    },
-    // clang format ends
-    // tabnine starts
+
     "tabnine.experimentalAutoImports": false,
-    // tabnine ends
-    // lldb starts
+
     "lldb.launch.terminal": "integrated",
-    // lldb ends
-    // sync settings starts
+
     "syncSettings.resources": [
         "extensions",
         "keybindings",
         "settings",
+        "snippets",
     ],
-    // sync settings ends
+
+    "cSpell.language": "en-GB",
+    "cSpell.hideAddToDictionaryCodeActions": true,
+    "cSpell.showCommandsInEditorContextMenu": false,
+    "cSpell.showStatus": false,
+    "cSpell.diagnosticLevel": "Hint",
+
+    "[typst]": {
+        "editor.wordWrap": "on",
+    },
 }
