@@ -12,7 +12,7 @@
     "editor.guides.bracketPairs": true,
     "editor.autoClosingOvertype": "always",
     "editor.linkedEditing": true,
-    "editor.suggest.preview": true, // visually conflict with inline hint
+    // "editor.suggest.preview": true, // visually conflict with inline hint
     "editor.suggest.snippetsPreventQuickSuggestions": false, // enable intellisense after selecting autocomplete
     "editor.suggest.localityBonus": true,
     "editor.stickyScroll.enabled": true,
@@ -20,6 +20,7 @@
     "window.commandCenter": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.suggestSelection": "recentlyUsed",
+    "editor.lineNumbers": "relative",
 
     // Terminal
     // "terminal.integrated.inheritEnv": false, // may fix Python PATH
@@ -163,55 +164,9 @@
         "editor.defaultFormatter": "James-Yu.latex-workshop"
     },
 
-    "vim.hlsearch": true,
-    "vim.startInInsertMode": true,
-    "vim.vimrc.enable": true,
-    "vim.smartRelativeLine": true,
-    "vim.easymotion": true,
-    "vim.leader": ",",
-    "vim.foldfix": true,
-    "vim.easymotionKeys": "abcdefghijklmnopqrstuvwxyz",
-    "vim.camelCaseMotion.enable": true,
-
-    // make the vscode vim more like mine
-    // Affected: easy-motion, CamelCaseMotion
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["f"],
-            "after": ["leader", "leader", "s"]
-        },
-        {
-            "before": ["leader", "/"],
-            "after": ["leader", "leader", "/"]
-        },
-        {
-            "before": ["leader", "k"],
-            "after": ["leader", "leader", "k"]
-        },
-        {
-            "before": ["leader", "j"],
-            "after": ["leader", "leader", "j"]
-        },
-        {
-            "before": ["w"],
-            "after": ["leader", "w"]
-        },
-        {
-            "before": ["e"],
-            "after": ["leader", "e"]
-        },
-        {
-            "before": ["b"],
-            "after": ["leader", "b"]
-        },
-        {
-            "before": ["g", "r"],
-            "commands": [
-                "editor.action.goToReferences",
-            ],
-            "silent": true
-        }
-    ],
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
 
     "python.experiments.enabled": false,
     "python.testing.pytestEnabled": true,
@@ -221,20 +176,11 @@
     "python.analysis.inlayHints.variableTypes": true,
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.terminal.activateEnvironment": false,
-    "python.defaultInterpreterPath": "/Users/timqiu/.pyenv/versions/3.11.3/envs/base/bin/python",
+    "python.defaultInterpreterPath": "~/.pyenv/versions/3.11.3/envs/base/bin/python",
 
     "cmake.configureOnOpen": true,
 
-    "tabnine.experimentalAutoImports": false,
-
     "lldb.launch.terminal": "integrated",
-
-    "syncSettings.resources": [
-        "extensions",
-        "keybindings",
-        "settings",
-        "snippets",
-    ],
 
     "cSpell.language": "en-GB",
     "cSpell.hideAddToDictionaryCodeActions": true,
@@ -244,5 +190,8 @@
 
     "[typst]": {
         "editor.wordWrap": "on",
+    },
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
     },
 }

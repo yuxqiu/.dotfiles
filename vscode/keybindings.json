@@ -1,5 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
+    // Use Tab to select quick fix/suggestion
     {
         "key": "tab",
         "command": "selectNextQuickFix",
@@ -20,14 +21,12 @@
         "command": "selectPrevSuggestion",
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
+
+    // Neovim jj => exit insert mode
     {
-        "key": "cmd+shift+d",
-        "command": "duplicate.execute"
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j"
     },
-    {
-        // suppress tabnine issues when using with vim
-        "key": "tab",
-        "command": "-tabnine.tab-override",
-        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && tabnine.tab-override && textInputFocus"
-    }
 ]
