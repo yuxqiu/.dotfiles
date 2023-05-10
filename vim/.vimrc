@@ -169,23 +169,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 
 " Onedark theme start
 packadd! onedark.vim
-
-" Correct RGB escape codes for vim inside tmux
-if &t_Co < 256
-  colorscheme default
-elseif exists('+termguicolors') && &t_Co >= 256
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
+set termguicolors
 colorscheme onedark
 " Onedark theme end
-
-"Fugitive Config
-nnoremap <leader>gs :G<CR>
-nnoremap <leader>gj :diffget //3<CR>
-nnoremap <leader>gf :diffget //2<CR>
 
 " Rainbow
 let g:rainbow#max_level = 16
