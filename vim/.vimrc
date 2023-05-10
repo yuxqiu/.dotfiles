@@ -158,7 +158,6 @@ noremap <Leader>k <Plug>(easymotion-k)
 " end of easymotion
 
 " start of NERDTree
-
 noremap <F2> :NERDTreeToggle<CR>
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
@@ -167,86 +166,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 " end of NERDTree
-
-" coc
-
-" Extensions
-let g:coc_global_extensions = [
-      \'coc-pyright',
-      \'coc-marketplace',
-      \'coc-json',
-      \'coc-java',
-      \'coc-clangd',
-      \'coc-pairs',
-      \'coc-rust-analyzer',
-      \]
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show single column
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" GoTo code navigation.
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nnoremap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xnoremap <leader>f  <Plug>(coc-format-selected)
-nnoremap <leader>f  <Plug>(coc-format-selected)
-" end of coc vim
 
 " Onedark theme start
 packadd! onedark.vim
@@ -274,25 +193,6 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:rainbow#blacklist = [233,234,235,236,237,238,239,240,241,242,243,244,245,
                           \246,247,248,249,250,251,252,253,254,255]
 autocmd FileType * RainbowParentheses
-
-" Vimspector
-let g:vimspector_enable_mappings = 'HUMAN'
-packadd! vimspector
-
-nnoremap <Leader>dd :call vimspector#Launch()<CR>
-nnoremap <Leader>de :call vimspector#Reset()<CR>
-nnoremap <Leader>dc :call vimspector#Continue()<CR>
-
-nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
-
-nnoremap <Leader>dk <Plug>VimspectorRestart
-nnoremap <Leader>dh <Plug>VimspectorStepOut
-nnoremap <Leader>dl <Plug>VimspectorStepInto
-nnoremap <Leader>dj <Plug>VimspectorStepOver
-
-nnoremap <Leader>db <Plug>VimspectorBreakpoints
-" }}}
 
 " Lightline - Status Line
 set laststatus=2
