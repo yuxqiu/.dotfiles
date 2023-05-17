@@ -52,6 +52,10 @@
     "update.mode": "none",
     "workbench.cloudChanges.autoResume": "off",
     "workbench.cloudChanges.continueOn": "off",
+    "redhat.telemetry.enabled": false,
+	"update.showReleaseNotes": false,
+    "vsicons.dontShowNewVersionMessage": true,
+	"workbench.welcomePage.walkthroughs.openOnInstall": false,
 
     // git
     "git.openRepositoryInParentFolders": "never",
@@ -87,7 +91,7 @@
         "-Wsuggest-override",
         "-Wconversion"
     ],
-    "clangd.checkUpdates": true,
+    "clangd.checkUpdates": false,
 
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
@@ -191,6 +195,7 @@
     "[typst]": {
         "editor.wordWrap": "on",
     },
+
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
