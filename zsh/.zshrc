@@ -125,3 +125,5 @@ function pydeact(){
 
 # disable homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
+
+export PATH="/usr/local/texlive/2023/bin/universal-darwin":$PATH

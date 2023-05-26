@@ -38,3 +38,7 @@
 
 0. If you use gpg to sign commits, you can export it via `gpg --export-secret-key -a [email] > private.asc`
 1. To import, run `gpg --import private.asc`
+
+## Texlive
+
+1. Install texlive by following the instructions here: https://tex.stackexchange.com/questions/397174/minimal-texlive-installation
