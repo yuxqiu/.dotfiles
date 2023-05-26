@@ -254,3 +254,17 @@ user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 
 // reject all cookies by default and prompt users if cannot do so
 user_pref("cookiebanners.service.mode", 1);
+
+// fix screenshot problem when resist fingerprinting is enabled
+user_pref("screenshots.browser.component.enabled", true);
+
+// disable all promos
+user_pref("browser.contentblocking.report.vpn-promo.url", "");
+user_pref("browser.privatebrowsing.vpnpromourl", "");
+user_pref("browser.promo.cookiebanners.enabled", false);
+user_pref("browser.promo.focus.enabled", false);
+user_pref("browser.promo.pin.enabled", false);
+user_pref("browser.vpn_promo.enabled", false);
+user_pref("identity.mobilepromo.android", "");
+user_pref("identity.mobilepromo.ios", "");
+user_pref("identity.sendtabpromo.url", "");
