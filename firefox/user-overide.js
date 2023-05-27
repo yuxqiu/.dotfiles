@@ -268,3 +268,15 @@ user_pref("browser.vpn_promo.enabled", false);
 user_pref("identity.mobilepromo.android", "");
 user_pref("identity.mobilepromo.ios", "");
 user_pref("identity.sendtabpromo.url", "");
+
+// disable feature recommendation
+user_pref("browser.newtabpage.activity-stream.feeds.asrouterfeed", false);
+
+// disable experiments or studies
+user_pref("messaging-system.rsexperimentloader.enabled", false);
+
+// disable geolocation for default search engine
+user_pref("browser.search.geoip.url", "");
+
+// disable add-on metadata updating
+user_pref("extensions.getAddons.cache.enabled", false);
