@@ -1,8 +1,8 @@
+codium --install-extension albert.TabOut
 codium --install-extension asvetliakov.vscode-neovim
 codium --install-extension codezombiech.gitignore
 codium --install-extension cschlosser.doxdocgen
 codium --install-extension EditorConfig.EditorConfig
-codium --install-extension GitHub.vscode-pull-request-github
 codium --install-extension James-Yu.latex-workshop
 codium --install-extension jeanp413.open-remote-ssh
 codium --install-extension llvm-vs-code-extensions.vscode-clangd
@@ -13,6 +13,7 @@ codium --install-extension ms-python.python
 codium --install-extension ms-python.vscode-pylance
 codium --install-extension ms-toolsai.jupyter
 codium --install-extension ms-vscode.cmake-tools
+codium --install-extension ms-vscode.hexeditor
 codium --install-extension nvarner.typst-lsp
 codium --install-extension Perkovec.emoji
 codium --install-extension rangav.vscode-thunder-client
