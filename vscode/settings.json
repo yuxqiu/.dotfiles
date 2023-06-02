@@ -164,12 +164,6 @@
 
     "lldb.launch.terminal": "integrated",
 
-    "cSpell.language": "en-GB",
-    "cSpell.hideAddToDictionaryCodeActions": true,
-    "cSpell.showCommandsInEditorContextMenu": false,
-    "cSpell.showStatus": false,
-    "cSpell.diagnosticLevel": "Hint",
-
     "[typst]": {
         "editor.wordWrap": "on",
     },
@@ -177,4 +171,28 @@
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
+
+    "ltex.checkFrequency": "save",
+    "ltex.statusBarItem": true,
+    "ltex.enabled": [
+        "bibtex",
+        "context",
+        "context.tex",
+        "html",
+        "latex",
+        "markdown",
+        "org",
+        "restructuredtext",
+        "rsweave",
+        "c",
+        "cpp",
+        "java",
+        "javascript",
+        "python",
+        "rust",
+    ],
+    "ltex.disabledRules": {
+        "en-US": ["ARROWS", "PASSIVE_VOICE"]
+    },
+    "ltex.additionalRules.enablePickyRules": true,
 }
