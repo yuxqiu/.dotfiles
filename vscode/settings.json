@@ -190,6 +190,7 @@
         "javascript",
         "python",
         "rust",
+        "typst",
     ],
     "ltex.disabledRules": {
         "en-US": ["ARROWS", "PASSIVE_VOICE"]
