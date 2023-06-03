@@ -23,6 +23,11 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
+# === Dock ===
+
+# Strip the dock to just what's running 
+defaults write com.apple.dock static-only -bool true
+
 # === Finder ===
 
 # Keep folders on top when sorting by name:
