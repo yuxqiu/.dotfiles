@@ -28,6 +28,9 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Strip the dock to just what's running 
 defaults write com.apple.dock static-only -bool true
 
+# Faster dock response
+defaults write com.apple.dock autohide-delay -float 0
+
 # === Finder ===
 
 # Keep folders on top when sorting by name:
