@@ -60,14 +60,6 @@ user_pref("browser.safebrowsing.allowOverride", false);
 /*** [SECTION 0700]: DNS / DoH / PROXY / SOCKS / IPv6 ***/
 user_pref("_user.js.parrot", "0700 syntax error: the parrot's given up the ghost!");
 
-/* 0704: disable GIO as a potential proxy bypass vector
- * Gvfs/GIO has a set of supported protocols like obex, network, archive, computer,
- * dav, cdda, gphoto2, trash, etc. By default only sftp is accepted (FF87+)
- * [1] https://bugzilla.mozilla.org/1433507
- * [2] https://en.wikipedia.org/wiki/GVfs
- * [3] https://en.wikipedia.org/wiki/GIO_(software) ***/
-user_pref("network.gio.supported-protocols", ""); // [HIDDEN PREF]
-
 /* 0710: disable DNS-over-HTTPS (DoH) rollout [FF60+]
  * 0=off by default, 2=TRR (Trusted Recursive Resolver) first, 3=TRR only, 5=explicitly off
  * see "doh-rollout.home-region": USA 2019, Canada 2021, Russia/Ukraine 2022 [3]
@@ -75,7 +67,7 @@ user_pref("network.gio.supported-protocols", ""); // [HIDDEN PREF]
  * [2] https://wiki.mozilla.org/Security/DOH-resolver-policy
  * [3] https://support.mozilla.org/en-US/kb/firefox-dns-over-https
  * [4] https://www.eff.org/deeplinks/2020/12/dns-doh-and-odoh-oh-my-year-review-2020 ***/
-user_pref("network.trr.mode", 2);
+user_pref("network.trr.mode", 3);
 
 /*** [SECTION 0800]: LOCATION BAR / SEARCH BAR / SUGGESTIONS / HISTORY / FORMS ***/
 user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
