@@ -121,6 +121,9 @@ function pyact() {
 function pydeact(){
   pyenv deactivate "$@"; export PS1=$BASE_PROMPT;
 }
+
+# git diff-highlight
+export PATH="/opt/homebrew/share/git-core/contrib/diff-highlight":$PATH
 # <<< tool ends >>>
 
 # disable homebrew analytics
