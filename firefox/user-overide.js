@@ -56,6 +56,9 @@ user_pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
  * [TEST] see https://github.com/arkenfox/user.js/wiki/Appendix-A-Test-Sites#-mozilla
  * [1] https://bugzilla.mozilla.org/1226490 ***/
 user_pref("browser.safebrowsing.allowOverride", false);
+user_pref("browser.safebrowsing.appRepURL", "");
+user_pref("browser.safebrowsing.blockedURIs.enabled", false);
+user_pref("browser.safebrowsing.enabled", false);
 
 /*** [SECTION 0700]: DNS / DoH / PROXY / SOCKS / IPv6 ***/
 user_pref("_user.js.parrot", "0700 syntax error: the parrot's given up the ghost!");
@@ -265,10 +268,48 @@ user_pref("identity.sendtabpromo.url", "");
 user_pref("browser.newtabpage.activity-stream.feeds.asrouterfeed", false);
 
 // disable experiments or studies
+user_pref("experiments.activeExperiment", false);
+user_pref("experiments.enabled", false);
+user_pref("experiments.manifest.uri", "");
+user_pref("experiments.supported", false);
 user_pref("messaging-system.rsexperimentloader.enabled", false);
+user_pref("network.allow-experiments", false);
 
 // disable geolocation for default search engine
 user_pref("browser.search.geoip.url", "");
 
 // disable add-on metadata updating
 user_pref("extensions.getAddons.cache.enabled", false);
+
+// disable auto submit crash report
+user_pref("browser.crashReports.unsubmittedCheck.autoSubmit", false);
+user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
+
+// disable "you haven't started Firefox in a while." message
+// https://support.mozilla.org/en-US/questions/1231948
+user_pref("browser.disableResetPrompt", false);
+
+// disable pocket
+user_pref("extensions.pocket.enabled", false);
+user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+
+// disable self suport
+user_pref("browser.selfsupport.url", "");
+
+// disable default browser check
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+// disable heath report
+user_pref("datareporting.healthreport.service.enabled", false);
+
+// disbale battery access
+user_pref("dom.battery.enabled", false);
+
+// block newtabpage sponsored site
+user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSite", false);
+
+// more telemetry conf
+user_pref("toolkit.telemetry.cachedClientID", "");
+user_pref("toolkit.telemetry.prompted", 2);
+user_pref("toolkit.telemetry.rejected", true);
+user_pref("toolkit.telemetry.unifiedIsOptIn", false);
