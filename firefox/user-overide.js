@@ -308,7 +308,7 @@ user_pref("dom.battery.enabled", false);
 // block newtabpage sponsored site
 user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSite", false);
 
-// more telemetry conf
+// disable more telemetry
 user_pref("toolkit.telemetry.cachedClientID", "");
 user_pref("toolkit.telemetry.prompted", 2);
 user_pref("toolkit.telemetry.rejected", true);
