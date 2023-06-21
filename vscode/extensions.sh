@@ -1,4 +1,5 @@
 codium --install-extension albert.TabOut
+codium --install-extension antfu.icons-carbon
 codium --install-extension asvetliakov.vscode-neovim
 codium --install-extension codezombiech.gitignore
 codium --install-extension cschlosser.doxdocgen
@@ -21,10 +22,10 @@ codium --install-extension redhat.java
 codium --install-extension redhat.vscode-yaml
 codium --install-extension Remisa.shellman
 codium --install-extension rust-lang.rust-analyzer
-codium --install-extension streetsidesoftware.code-spell-checker
 codium --install-extension twxs.cmake
 codium --install-extension usernamehw.errorlens
 codium --install-extension vadimcn.vscode-lldb
+codium --install-extension valentjn.vscode-ltex
 codium --install-extension vscjava.vscode-java-debug
 codium --install-extension vscjava.vscode-java-test
 codium --install-extension vscjava.vscode-maven

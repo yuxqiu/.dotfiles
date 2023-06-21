@@ -16,11 +16,11 @@
     "editor.suggest.snippetsPreventQuickSuggestions": false, // enable intellisense after selecting autocomplete
     "editor.suggest.localityBonus": true,
     "editor.stickyScroll.enabled": true,
-    "editor.experimental.pasteActions.enabled": true, // enable paste as picture functionality in markdown
     "window.commandCenter": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.suggestSelection": "recentlyUsed",
     "editor.lineNumbers": "relative",
+    "workbench.productIconTheme": "icons-carbon",
 
     // Terminal
     // "terminal.integrated.inheritEnv": false, // may fix Python PATH
