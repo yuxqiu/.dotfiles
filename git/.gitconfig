@@ -6,14 +6,14 @@
 [user]
 	name = Yuxiang Qiu
 	email = yuxqiu@proton.me
-	signingkey = 28E45447C451A18A
+	signingkey = ~/.ssh/id_ed25519_proton.pub
 [core]
 	excludesfile = ~/.gitignore_global
 [commit]
 	template = ~/.gitmessage
 	gpgsign = true
 [gpg]
-	program = /opt/homebrew/bin/gpg
+	format = ssh
 [init]
 	defaultBranch = main
 [alias]
