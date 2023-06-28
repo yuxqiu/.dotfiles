@@ -5,7 +5,7 @@
 	required = true
 [user]
 	name = Yuxiang Qiu
-	email = qyxtim@qq.com
+	email = yuxqiu@proton.me
 	signingkey = 28E45447C451A18A
 [core]
 	excludesfile = ~/.gitignore_global
