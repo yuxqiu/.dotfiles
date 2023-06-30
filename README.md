@@ -2,20 +2,22 @@
 
 ## General
 
-0. Run `xcode-select install`
-1. Clone this repository
-2. Install brew and restore all softwares via bundle
+0. Set caps lock to escape
+1. Run `xcode-select install`
+2. Clone this repository
+3. Install brew and restore all softwares via bundle
     - First, install native brew
     - (Optional): if using M1 Mac, can use `arch --x86_64 /bin/zsh` to run a x86 shell and install a x86 brew.
         This is required if you want to install x86 Python via `pyenv`.
-3. Install oh-my-zsh
-4. Install other dependencies as listed below
-5. Symlinks all the stuff by using stow: `stow [file]`
+4. Install oh-my-zsh
+5. Install other dependencies as listed below
+6. Symlinks all the stuff by using stow: `stow [file]`
 
-## brew 
+## brew
 
 0. To export, run `brew bundle dump`
-1. Run `brew bundle --file ./config/Brewfile` to restore the installed formula
+1. Turn analytics off `brew analytics off`
+2. Run `brew bundle --file ./config/Brewfile` to restore the installed formula
 
 ## pyenv
 
@@ -33,11 +35,6 @@
 0. To export, run `npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > path/to/npmfile`
 1. To import, run `xargs npm install --global < path/to/npmfile`
 2. See [Export import npm global packages](https://stackoverflow.com/a/41199625)
-
-## gpg
-
-0. If you use gpg to sign commits, you can export it via `gpg --export-secret-key -a [email] > private.asc`
-1. To import, run `gpg --import private.asc`
 
 ## Texlive
 
