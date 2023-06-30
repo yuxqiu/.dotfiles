@@ -60,10 +60,6 @@ set nofoldenable
 set foldlevel=2
 " }
 
-" MAPPINGS --------------------------------------------------------------- {
-" map jj to esc in insert mode
-inoremap jj <esc>
-
 " set map leader to be \
 let mapleader = ","
 

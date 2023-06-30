@@ -1,6 +1,6 @@
 set nocompatible
 
-" Disable startup message 
+" Disable startup message
 set shortmess+=I
 
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
@@ -79,7 +79,7 @@ set splitright
 
 " FileType autocmd  -------------------------------------------- {
 iabbrev ret return
-autocmd FileType c iabbrev <buffer> main int main(int argc, char* argv[]) 
+autocmd FileType c iabbrev <buffer> main int main(int argc, char* argv[])
 autocmd FileType cpp iabbrev <buffer> main int main(int argc, char* argv[])
 autocmd FileType python iabbrev <buffer> main if __name__ == "__main__":
 " autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -89,11 +89,7 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
-" } 
-
-" MAPPINGS --------------------------------------------------------------- {
-" map jj to esc in insert mode
-inoremap jj <esc>
+" }
 
 " set map leader to be \
 let mapleader = ","

@@ -21,12 +21,4 @@
         "command": "selectPrevSuggestion",
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
-
-    // Neovim jj => exit insert mode
-    {
-        "command": "vscode-neovim.compositeEscape1",
-        "key": "j",
-        "when": "neovim.mode == insert && editorTextFocus",
-        "args": "j"
-    },
 ]
