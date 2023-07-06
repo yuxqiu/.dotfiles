@@ -21,6 +21,10 @@
     "editor.suggestSelection": "recentlyUsed",
     "editor.lineNumbers": "relative",
     "workbench.productIconTheme": "icons-carbon",
+    "workbench.tree.renderIndentGuides": "none",
+    "editor.renderLineHighlight": "none",
+    "editor.matchBrackets": "never",
+    "editor.quickSuggestionsDelay": 0,
 
     // Terminal
     // "terminal.integrated.inheritEnv": false, // may fix Python PATH
