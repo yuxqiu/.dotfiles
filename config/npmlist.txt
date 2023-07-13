@@ -1,9 +1,3 @@
-cli
 commitizen
 cz-conventional-changelog
-node-gyp
 npm
-ts-node
-typescript-language-server
-typescript
-yarn
