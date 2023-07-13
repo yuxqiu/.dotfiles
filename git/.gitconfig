@@ -10,7 +10,6 @@
 [core]
 	excludesfile = ~/.gitignore_global
 [commit]
-	template = ~/.gitmessage
 	gpgsign = true
 [gpg]
 	format = ssh
