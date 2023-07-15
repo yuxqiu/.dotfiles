@@ -39,3 +39,7 @@
 ## Texlive
 
 1. Install texlive by following the instructions here: https://tex.stackexchange.com/questions/397174/minimal-texlive-installation
+
+## cheat.sh
+
+1. Install `cheat.sh` by following the instructions here https://github.com/chubin/cheat.sh.
