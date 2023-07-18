@@ -313,3 +313,37 @@ user_pref("toolkit.telemetry.cachedClientID", "");
 user_pref("toolkit.telemetry.prompted", 2);
 user_pref("toolkit.telemetry.rejected", true);
 user_pref("toolkit.telemetry.unifiedIsOptIn", false);
+
+// hide "More from Mozilla" in Settings
+user_pref("browser.preferences.moreFromMozilla", false);
+
+// disable fullscreen delay and notice
+user_pref("full-screen-api.transition-duration.enter", "0 0");
+user_pref("full-screen-api.transition-duration.leave", "0 0");
+user_pref("full-screen-api.warning.delay", -1);
+user_pref("full-screen-api.warning.timeout", 0);
+
+// disable welcome notices
+user_pref("browser.aboutwelcome.enabled", false);
+
+// open PDFs inline (FF103+)
+// [1] https://support.mozilla.org/en-US/questions/1387228
+user_pref("browser.download.open_pdf_attachments_inline", true);
+
+// prevent password truncation when submitting form data
+// [1] https://www.ghacks.net/2020/05/18/firefox-77-wont-truncate-text-exceeding-max-length-to-address-password-pasting-issues/
+user_pref("editor.truncate_user_pastes", false);
+
+// disable Form Autofill
+// NOTE: stored data is not secure (uses a JSON file)
+// [1] https://wiki.mozilla.org/Firefox/Features/Form_Autofill
+// [2] https://www.ghacks.net/2017/05/24/firefoxs-new-form-autofill-is-awesome
+user_pref("extensions.formautofill.addresses.enabled", false);
+user_pref("extensions.formautofill.creditCards.enabled", false);
+user_pref("extensions.formautofill.heuristics.enabled", false);
+user_pref("browser.formfill.enable", false);
+
+// software that continually reports what default browser you are using
+// [WARNING] Breaks "Make Default..." button in Preferences to set Firefox as the default browser [1].
+// [1] https://github.com/yokoffing/Betterfox/issues/166
+user_pref("default-browser-agent.enabled", false);
