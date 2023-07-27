@@ -98,10 +98,7 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
-" use normal easymotion when in VIM mode
-Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
-" use VSCode easymotion when in VSCode mode
-Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
+Plug 'easymotion/vim-easymotion'
 
 Plug 'tpope/vim-surround'
 
