@@ -38,8 +38,15 @@
 
 ## Texlive
 
-1. Install texlive by following the instructions here: https://tex.stackexchange.com/questions/397174/minimal-texlive-installation
+1. Install texlive by following the instructions here:
+[https://tex.stackexchange.com/questions/397174/minimal-texlive-installation](https://tex.stackexchange.com/questions/397174/minimal-texlive-installation)
 
 ## cheat.sh
 
-1. Install `cheat.sh` by following the instructions here https://github.com/chubin/cheat.sh.
+1. Install `cheat.sh` by following the instructions here
+[https://github.com/chubin/cheat.sh](https://github.com/chubin/cheat.sh)
+
+## Devbox
+
+1. Follow the instructions here
+[https://www.jetpack.io/devbox/docs/installing_devbox/](https://www.jetpack.io/devbox/docs/installing_devbox/)
