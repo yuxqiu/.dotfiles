@@ -1,6 +1,8 @@
 codium --install-extension albert.TabOut
 codium --install-extension antfu.icons-carbon
 codium --install-extension asvetliakov.vscode-neovim
+codium --install-extension bierner.emojisense
+codium --install-extension bierner.markdown-mermaid
 codium --install-extension codezombiech.gitignore
 codium --install-extension cschlosser.doxdocgen
 codium --install-extension EditorConfig.EditorConfig
@@ -16,7 +18,6 @@ codium --install-extension ms-toolsai.jupyter
 codium --install-extension ms-vscode.cmake-tools
 codium --install-extension ms-vscode.hexeditor
 codium --install-extension nvarner.typst-lsp
-codium --install-extension Perkovec.emoji
 codium --install-extension rangav.vscode-thunder-client
 codium --install-extension redhat.java
 codium --install-extension redhat.vscode-yaml
