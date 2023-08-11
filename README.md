@@ -18,6 +18,8 @@
 0. To export, run `brew bundle dump`
 1. Turn analytics off `brew analytics off`
 2. Run `brew bundle --file ./config/Brewfile` to restore the installed formula
+3. For the following tasks, we need to run some scripts manually
+    - `Java`: follow the instruction [here](https://formulae.brew.sh/formula/openjdk@17)
 
 ## pyenv
 
