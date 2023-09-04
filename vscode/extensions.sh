@@ -1,5 +1,6 @@
 codium --install-extension albert.TabOut
 codium --install-extension antfu.icons-carbon
+codium --install-extension antfu.smart-clicks
 codium --install-extension asvetliakov.vscode-neovim
 codium --install-extension bierner.emojisense
 codium --install-extension bierner.markdown-mermaid

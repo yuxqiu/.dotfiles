@@ -194,10 +194,20 @@
         "javascript",
         "python",
         "rust",
-        "typst",
     ],
     "ltex.disabledRules": {
         "en-US": ["ARROWS", "PASSIVE_VOICE"]
     },
     "ltex.additionalRules.enablePickyRules": true,
+
+    "smartClicks.rules": {
+        "html-attr": false,
+        "html-tag-pair": false,
+        "html-element": false,
+        "js-block": false,
+        "js-arrow-fn": false,
+        "js-assign": false,
+        "js-colon": false,
+        "jsx-tag-pair": false
+    }
 }
