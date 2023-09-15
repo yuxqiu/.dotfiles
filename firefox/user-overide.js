@@ -347,3 +347,6 @@ user_pref("browser.formfill.enable", false);
 // [WARNING] Breaks "Make Default..." button in Preferences to set Firefox as the default browser [1].
 // [1] https://github.com/yokoffing/Betterfox/issues/166
 user_pref("default-browser-agent.enabled", false);
+
+// enable calculator
+user_pref("browser.urlbar.suggest.calculator", true);
