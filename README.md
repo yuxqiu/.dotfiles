@@ -38,11 +38,6 @@
 1. To import, run `xargs npm install --global < path/to/npmfile`
 2. See [Export import npm global packages](https://stackoverflow.com/a/41199625)
 
-## Texlive
-
-1. Install texlive by following the instructions here:
-[https://tex.stackexchange.com/questions/397174/minimal-texlive-installation](https://tex.stackexchange.com/questions/397174/minimal-texlive-installation)
-
 ## cheat.sh
 
 1. Install `cheat.sh` by following the instructions here
