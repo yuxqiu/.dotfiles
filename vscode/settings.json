@@ -163,6 +163,9 @@
     "python.analysis.inlayHints.functionReturnTypes": true,
     "python.terminal.activateEnvironment": false,
     "python.defaultInterpreterPath": "~/.pyenv/versions/3.11.3/envs/base/bin/python",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
 
     "cmake.configureOnOpen": true,
 
@@ -209,5 +212,5 @@
         "js-assign": false,
         "js-colon": false,
         "jsx-tag-pair": false
-    }
+    },
 }
