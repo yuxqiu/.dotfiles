@@ -1,4 +1,4 @@
-/* CUSTOM SESSION */
+/* CUSTOM SECTION */
 /* ************** */
 /* ************** */
 /* ************** */
@@ -19,18 +19,6 @@ user_pref("browser.startup.homepage", "about:home");
  * [SETTING] Home>New Windows and Tabs>New tabs ***/
 user_pref("browser.newtabpage.enabled", true);
 
-/*** [SECTION 0400]: SAFE BROWSING (SB)
-   SB has taken many steps to preserve privacy. If required, a full url is never sent
-   to Google, only a part-hash of the prefix, hidden with noise of other real part-hashes.
-   Firefox takes measures such as stripping out identifying parameters and since SBv4 (FF57+)
-   doesn't even use cookies. (#Turn on browser.safebrowsing.debug to monitor this activity)
-
-   [1] https://feeding.cloud.geek.nz/posts/how-safe-browsing-works-in-firefox/
-   [2] https://wiki.mozilla.org/Security/Safe_Browsing
-   [3] https://support.mozilla.org/kb/how-does-phishing-and-malware-protection-work
-   [4] https://educatedguesswork.org/posts/safe-browsing-privacy/
-***/
-user_pref("_user.js.parrot", "0400 syntax error: the parrot's passed on!");
 /* 0401: disable SB (Safe Browsing)
  * [WARNING] Do this at your own risk! These are the master switches
  * [SETTING] Privacy & Security>Security>... Block dangerous and deceptive content ***/
@@ -165,60 +153,6 @@ user_pref("privacy.cpd.cookies", false);
  * which will display a blank value, and are not guaranteed to work ***/
 user_pref("privacy.sanitize.timeSpan", 0);
 
-/*** [SECTION 4500]: RFP (RESIST FINGERPRINTING)
-   RFP covers a wide range of ongoing fingerprinting solutions.
-   It is an all-or-nothing buy in: you cannot pick and choose what parts you want
-
-   [WARNING] DO NOT USE extensions to alter RFP protected metrics
-
-    418986 - limit window.screen & CSS media queries (FF41)
-      [TEST] https://arkenfox.github.io/TZP/tzp.html#screen
-   1281949 - spoof screen orientation (FF50)
-   1330890 - spoof timezone as UTC0 (FF55)
-   1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)
- FF56
-   1369303 - spoof/disable performance API
-   1333651 - spoof User Agent & Navigator API
-      version: android version spoofed as ESR
-      OS: JS spoofed as Windows 10, OS 10.15, Android 10, or Linux | HTTP Headers spoofed as Windows or Android
-   1369319 - disable device sensor API
-   1369357 - disable site specific zoom
-   1337161 - hide gamepads from content
-   1372072 - spoof network information API as "unknown" when dom.netinfo.enabled = true
-   1333641 - reduce fingerprinting in WebSpeech API
- FF57
-   1369309 - spoof media statistics
-   1382499 - reduce screen co-ordinate fingerprinting in Touch API
-   1217290 & 1409677 - enable some fingerprinting resistance for WebGL
-   1382545 - reduce fingerprinting in Animation API
-   1354633 - limit MediaError.message to a whitelist
- FF58+
-   1372073 - spoof/block fingerprinting in MediaDevices API (FF59)
-      Spoof: enumerate devices as one "Internal Camera" and one "Internal Microphone"
-      Block: suppresses the ondevicechange event
-   1039069 - warn when language prefs are not set to "en*" (also see 0210, 0211) (FF59)
-   1222285 & 1433592 - spoof keyboard events and suppress keyboard modifier events (FF59)
-      Spoofing mimics the content language of the document. Currently it only supports en-US.
-      Modifier events suppressed are SHIFT and both ALT keys. Chrome is not affected.
-   1337157 - disable WebGL debug renderer info (FF60)
-   1459089 - disable OS locale in HTTP Accept-Language headers (ANDROID) (FF62)
-   1479239 - return "no-preference" with prefers-reduced-motion (FF63)
-   1363508 - spoof/suppress Pointer Events (FF64)
-   1492766 - spoof pointerEvent.pointerid (FF65)
-   1485266 - disable exposure of system colors to CSS or canvas (FF67)
-   1494034 - return "light" with prefers-color-scheme (FF67)
-   1564422 - spoof audioContext outputLatency (FF70)
-   1595823 - return audioContext sampleRate as 44100 (FF72)
-   1607316 - spoof pointer as coarse and hover as none (ANDROID) (FF74)
-   1621433 - randomize canvas (previously FF58+ returned an all-white canvas) (FF78)
-   1653987 - limit font visibility to bundled and "Base Fonts" (Windows, Mac, some Linux) (FF80)
-   1461454 - spoof smooth=true and powerEfficient=false for supported media in MediaCapabilities (FF82)
-    531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)
-   1756280 - enforce navigator.pdfViewerEnabled as true and plugins/mimeTypes as hard-coded values (FF100)
-   1692609 - reduce JS timing precision to 16.67ms (previously FF55+ was 100ms) (FF102)
-   1422237 - return "srgb" with color-gamut (FF110)
-***/
-user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 /* 4504: enable RFP letterboxing [FF67+]
  * Dynamically resizes the inner window by applying margins in stepped ranges [2]
  * If you use the dimension pref, then it will only apply those resolutions.
@@ -305,9 +239,6 @@ user_pref("datareporting.healthreport.service.enabled", false);
 // disbale battery access
 user_pref("dom.battery.enabled", false);
 
-// block newtabpage sponsored site
-user_pref("services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSite", false);
-
 // disable more telemetry
 user_pref("toolkit.telemetry.cachedClientID", "");
 user_pref("toolkit.telemetry.prompted", 2);
@@ -348,5 +279,97 @@ user_pref("browser.formfill.enable", false);
 // [1] https://github.com/yokoffing/Betterfox/issues/166
 user_pref("default-browser-agent.enabled", false);
 
-// enable calculator
+// PREF: enable helpful features:
 user_pref("browser.urlbar.suggest.calculator", true);
+user_pref("browser.urlbar.unitConversion.enabled", true);
+
+// PREF: PDF sidebar on load [HIDDEN] 
+// 2=table of contents (if not available, will default to 1)
+// 1=view pages
+// -1=disabled (default)
+user_pref("pdfjs.sidebarViewOnLoad", 2);
+
+// PREF: restore "View image info" on right-click
+user_pref("browser.menu.showViewImageInfo", true);
+
+
+// ===================From BetterFox======================
+
+/****************************************************************************
+ * SECTION: MEDIA CACHE                                                     *
+****************************************************************************/
+
+// PREF: adjust video buffering periods when not using MSE (in seconds)
+// [NOTE] Does not affect videos over 720p since they use DASH playback [1]
+// [1] https://lifehacker.com/preload-entire-youtube-videos-by-disabling-dash-playbac-1186454034
+user_pref("media.cache_readahead_limit", 7200); // 120 min; default=60; stop reading ahead when our buffered data is this many seconds ahead of the current playback
+user_pref("media.cache_resume_threshold", 3600); // 60 min; default=30; when a network connection is suspended, don't resume it until the amount of buffered data falls below this threshold
+
+/****************************************************************************
+ * SECTION: IMAGE CACHE                                                     *
+****************************************************************************/
+
+// PREF: image cache
+//user_pref("image.cache.size", 5242880); // DEFAULT; in MiB; alt=10485760 (cache images up to 10MiB in size)
+user_pref("image.mem.decode_bytes_at_a_time", 32768); // default=16384; alt=65536; chunk size for calls to the image decoders
+
+/****************************************************************************
+ * SECTION: NETWORK                                                         *
+****************************************************************************/
+
+// PREF: use bigger packets
+// Reduce Firefox's CPU usage by requiring fewer application-to-driver data transfers.
+// However, it does not affect the actual packet sizes transmitted over the network.
+// [1] https://www.mail-archive.com/support-seamonkey@lists.mozilla.org/msg74561.html
+user_pref("network.buffer.cache.size", 262144); // 256 kb; default=32768 (32 kb)
+user_pref("network.buffer.cache.count", 128); // default=24
+
+// PREF: increase the absolute number of HTTP connections
+// [1] https://kb.mozillazine.org/Network.http.max-connections
+// [2] https://kb.mozillazine.org/Network.http.max-persistent-connections-per-server
+// [3] https://www.reddit.com/r/firefox/comments/11m2yuh/how_do_i_make_firefox_use_more_of_my_900_megabit/jbfmru6/
+user_pref("network.http.max-connections", 1800); // default=900
+user_pref("network.http.max-persistent-connections-per-server", 10); // default=6; download connections; anything above 10 is excessive
+    user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5); // default=3
+    //user_pref("network.http.max-persistent-connections-per-proxy", 48); // default=32
+//user_pref("network.websocket.max-connections", 200); // DEFAULT
+
+// PREF: pacing requests [FF23+]
+// Controls how many HTTP requests are sent at a time.
+// Pacing HTTP requests can have some benefits, such as reducing network congestion,
+// improving web page loading speed, and avoiding server overload.
+// Pacing requests adds a slight delay between requests to throttle them.
+// If you have a fast machine and internet connection, disabling pacing
+// may provide a small speed boost when loading pages with lots of requests.
+// false=Firefox will send as many requests as possible without pacing
+// true=Firefox will pace requests (default)
+user_pref("network.http.pacing.requests.enabled", false);
+//user_pref("network.http.pacing.requests.min-parallelism", 10); // default=6
+//user_pref("network.http.pacing.requests.burst", 14); // default=10
+
+// PREF: how long to wait before trying a different connection when the initial one fails
+// The number (in ms) after sending a SYN for an HTTP connection,
+// to wait before trying again with a different connection.
+// 0=disable the second connection
+// [1] https://searchfox.org/mozilla-esr115/source/modules/libpref/init/all.js#1178
+// [2] https://www.catchpoint.com/blog/http-transaction-steps
+//user_pref("network.http.connection-retry-timeout", 0); // default=250
+
+// PREF: increase DNS cache
+// [1] https://developer.mozilla.org/en-US/docs/Web/Performance/Understanding_latency
+user_pref("network.dnsCacheEntries", 1000); // default=400
+
+// PREF: adjust DNS expiration time
+// [ABOUT] about:networking#dns
+// [NOTE] These prefs will be ignored by DNS resolver if using DoH/TRR.
+user_pref("network.dnsCacheExpiration", 86400); // keep entries for 1 day; alt=3600 (1 hour)
+//user_pref("network.dnsCacheExpirationGracePeriod", 240); // default=60; cache DNS entries for 4 minutes after they expire
+
+// PREF: the number of threads for DNS
+user_pref("network.dns.max_high_priority_threads", 8); // default=5
+//user_pref("network.dns.max_any_priority_threads", 5); // default=3
+
+// PREF: increase TLS token caching 
+user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS token caching (fast reconnects)
+
+// ===================From BetterFox======================
