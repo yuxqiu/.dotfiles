@@ -109,37 +109,29 @@
     "markdown.marp.pdf.noteAnnotations": true,
     "markdown.marp.pdf.outlines": "headings",
 
+    "latex-workshop.latex.outDir":"%DIR%/latex-build",
     "latex-workshop.latex.recipes": [
         {
-            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "name": "latexmk",
             "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
+             "latexmk"
             ]
-        }
+        },
     ],
     "latex-workshop.latex.tools": [
         {
-            "name": "pdflatex",
-            "command": "pdflatex",
+            "name": "latexmk",
+            "command": "latexmk",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
                 "%DOC%"
             ],
             "env": {}
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ],
-            "env": {}
-        }
+           },
     ],
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
     "latex-workshop.latex.autoBuild.run": "never",
