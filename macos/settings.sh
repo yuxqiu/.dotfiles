@@ -3,7 +3,14 @@
 set -e
 
 # This file is taken from
+#
 # https://github.com/sobolevn/dotfiles/blob/master/macos/settings.sh
+#
+# and
+#
+# https://github.com/drduh/macOS-Security-and-Privacy-Guide/blob/master/README.md
+#
+# Please run as super user.
 
 echo 'Configuring your mac. Hang tight.'
 osascript -e 'tell application "System Preferences" to quit'
@@ -11,7 +18,7 @@ osascript -e 'tell application "System Preferences" to quit'
 
 # === General ===
 # Disable startup noise:
-sudo nvram SystemAudioVolume=%01
+nvram SystemAudioVolume=%01
 
 # Mojave renders fonts that are too thin for me, use regular pre-mojave style:
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
@@ -23,8 +30,25 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# Captive portal
+# Disable Captive portal
 defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control.plist Active -bool false
+
+# Prevent macOS from collecting sensitive information about what you type
+rm -rfv ~/Library/LanguageModeling/* ~/Library/Spelling/*
+chmod -R 000 ~/Library/LanguageModeling ~/Library/Spelling
+chflags -R uchg ~/Library/LanguageModeling ~/Library/Spelling
+
+# Disable Saved Application State
+rm -rfv ~/Library/"Saved Application State"/*
+chmod -R 000 ~/Library/"Saved Application State"
+chflags -R uchg ~/Library/"Saved Application State/"
+
+# Clear Siri Analytics
+rm -rfv ~/Library/Assistant/SiriAnalytics.db
+touch ~/Library/Assistant/SiriAnalytics.db
+chmod -R 000 ~/Library/Assistant/SiriAnalytics.db
+chflags -R uchg ~/Library/Assistant/SiriAnalytics.db
+
 
 # === Dock ===
 
