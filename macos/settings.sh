@@ -23,9 +23,12 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
+# Captive portal
+defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control.plist Active -bool false
+
 # === Dock ===
 
-# Strip the dock to just what's running 
+# Strip the dock to just what's running
 defaults write com.apple.dock static-only -bool true
 
 # Faster dock response
