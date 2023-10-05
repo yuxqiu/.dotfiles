@@ -283,7 +283,7 @@ user_pref("default-browser-agent.enabled", false);
 user_pref("browser.urlbar.suggest.calculator", true);
 user_pref("browser.urlbar.unitConversion.enabled", true);
 
-// PREF: PDF sidebar on load [HIDDEN] 
+// PREF: PDF sidebar on load [HIDDEN]
 // 2=table of contents (if not available, will default to 1)
 // 1=view pages
 // -1=disabled (default)
@@ -369,7 +369,11 @@ user_pref("network.dnsCacheExpiration", 86400); // keep entries for 1 day; alt=3
 user_pref("network.dns.max_high_priority_threads", 8); // default=5
 //user_pref("network.dns.max_any_priority_threads", 5); // default=3
 
-// PREF: increase TLS token caching 
+// PREF: increase TLS token caching
 user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS token caching (fast reconnects)
+
+// PREF: ECH
+user_pref("network.dns.echconfig.enabled", true);
+user_pref("network.dns.http3.echconfig.enabled", true);
 
 // ===================From BetterFox======================
