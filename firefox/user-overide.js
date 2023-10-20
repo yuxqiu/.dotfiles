@@ -70,18 +70,6 @@ user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
  * [SETUP-CHROME] Override this if you trust and use a privacy respecting search engine ***/
 user_pref("keyword.enabled", true);
 
-/*** [SECTION 1400]: FONTS ***/
-user_pref("_user.js.parrot", "1400 syntax error: the parrot's bereft of life!");
-/* 1402: limit font visibility (Windows, Mac, some Linux) [FF94+]
- * Uses hardcoded lists with two parts: kBaseFonts + kLangPackFonts [1], bundled fonts are auto-allowed
- * In normal windows: uses the first applicable: RFP (4506) over TP over Standard
- * In Private Browsing windows: uses the most restrictive between normal and private
- * 1=only base system fonts, 2=also fonts from optional language packs, 3=also user-installed fonts
- * [1] https://searchfox.org/mozilla-central/search?path=StandardFonts*.inc ***/
-user_pref("layout.css.font-visibility.private", 1);
-user_pref("layout.css.font-visibility.standard", 1);
-user_pref("layout.css.font-visibility.trackingprotection", 1);
-
 /*** [SECTION 1600]: HEADERS / REFERERS
                   full URI: https://example.com:8888/foo/bar.html?id=1234
      scheme+host+port+path: https://example.com:8888/foo/bar.html
@@ -162,7 +150,8 @@ user_pref("privacy.sanitize.timeSpan", 0);
  * [WARNING] DO NOT USE: the dimension pref is only meant for testing
  * [1] https://bugzilla.mozilla.org/1407366
  * [2] https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32 ***/
-user_pref("privacy.resistFingerprinting.letterboxing", false); // [HIDDEN PREF]
+user_pref("privacy.resistFingerprinting", false);
+ user_pref("privacy.resistFingerprinting.letterboxing", false);
 /* 4520: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
 user_pref("webgl.disabled", false);
