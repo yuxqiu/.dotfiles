@@ -18,8 +18,6 @@ window:
 
   opacity: 1.0
 
-  decorations: transparent
-
   dynamic_padding: false
 
 scrolling:
@@ -30,9 +28,6 @@ scrolling:
   multiplier: 3
 
 font:
-  normal:
-    family: MesloLGS Nerd Font
-
   size: 12.0
 
   scale_with_dpi: true
