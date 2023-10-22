@@ -7,3 +7,5 @@ export VCPKG_ROOT="$HOME/vcpkg"
 
 # enable Python auto-complete
 export PYTHONSTARTUP=~/.pythonrc
+
+export PATH="$HOME/.local/bin:$PATH"
