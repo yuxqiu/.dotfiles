@@ -1,5 +1,4 @@
 # prevent stow from symlinking these files
-alias.zsh
-env.zsh
-functions.zsh
-pyenv.zsh
+commons
+linux
+macos
