@@ -1,1 +1,1 @@
-codium --list-extensions | xargs -L 1 echo codium --install-extension
+codium --list-extensions | xargs -L 1 echo code --install-extension
