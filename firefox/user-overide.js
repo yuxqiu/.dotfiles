@@ -70,6 +70,12 @@ user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
  * [SETUP-CHROME] Override this if you trust and use a privacy respecting search engine ***/
 user_pref("keyword.enabled", true);
 
+/* 1006: disable favicons in shortcuts
+ * URL shortcuts use a cached randomly named .ico file which is stored in your
+ * profile/shortcutCache directory. The .ico remains after the shortcut is deleted
+ * If set to false then the shortcuts use a generic Firefox icon ***/
+user_pref("browser.shell.shortcutFavicons", true);
+
 /*** [SECTION 1600]: HEADERS / REFERERS
                   full URI: https://example.com:8888/foo/bar.html?id=1234
      scheme+host+port+path: https://example.com:8888/foo/bar.html
