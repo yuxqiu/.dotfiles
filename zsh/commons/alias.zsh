@@ -1,3 +1,6 @@
+# see https://stackoverflow.com/questions/37209913/how-does-alias-sudo-sudo-work
+alias sudo='sudo '
+
 # docker alias
 alias dockps="docker ps --format \"{{.ID}} {{.Names}}\""
 alias docklsc="docker ps -a"
