@@ -25,6 +25,12 @@
     "editor.renderLineHighlight": "none",
     "editor.matchBrackets": "never",
     "editor.quickSuggestionsDelay": 0,
+    "editor.unicodeHighlight.allowedLocales": {
+        "zh_cn": true
+    },
+    "git.terminalAuthentication": false,
+    "github.gitAuthentication": false,
+    "window.titleBarStyle": "custom",  // set this on Linux
 
     // Terminal
     // "terminal.integrated.inheritEnv": false, // may fix Python PATH
@@ -171,38 +177,6 @@
         "editor.defaultFormatter": "redhat.java"
     },
 
-    "ltex.checkFrequency": "save",
-    "ltex.statusBarItem": true,
-    "ltex.enabled": [
-        "bibtex",
-        "context",
-        "context.tex",
-        "html",
-        "latex",
-        "markdown",
-        "org",
-        "restructuredtext",
-        "rsweave",
-        "c",
-        "cpp",
-        "java",
-        "javascript",
-        "python",
-        "rust",
-    ],
-    "ltex.disabledRules": {
-        "en-US": ["ARROWS", "PASSIVE_VOICE"]
-    },
-    "ltex.additionalRules.enablePickyRules": true,
-
-    "smartClicks.rules": {
-        "html-attr": false,
-        "html-tag-pair": false,
-        "html-element": false,
-        "js-block": false,
-        "js-arrow-fn": false,
-        "js-assign": false,
-        "js-colon": false,
-        "jsx-tag-pair": false
-    },
+    "vscode-neovim.useCtrlKeysForInsertMode": false,
+    "vscode-neovim.useCtrlKeysForNormalMode": false,
 }
