@@ -118,6 +118,12 @@
     "latex-workshop.latex.outDir":"%DIR%/latex-build",
     "latex-workshop.latex.recipes": [
         {
+            "name": "tectonic",
+            "tools": [
+             "tectonic"
+            ]
+        },
+        {
             "name": "latexmk",
             "tools": [
              "latexmk"
@@ -125,6 +131,16 @@
         },
     ],
     "latex-workshop.latex.tools": [
+        {
+            "name": "tectonic",
+            "command": "tectonic",
+            "args": [
+                "--synctex",
+                "--outdir=%OUTDIR%",
+                "%DOC_EXT%"
+            ],
+            "env": {}
+        },
         {
             "name": "latexmk",
             "command": "latexmk",
@@ -137,20 +153,22 @@
                 "%DOC%"
             ],
             "env": {}
-           },
+        },
     ],
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
     "latex-workshop.latex.autoBuild.run": "never",
-    // "latex-workshop.latex.autoClean.run": "onBuilt",
     "[latex]": {
         "editor.wordWrap": "on",
         "editor.guides.bracketPairs": false,
         "editor.defaultFormatter": "James-Yu.latex-workshop"
     },
 
+    // vscode-neovim
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
+    "vscode-neovim.useCtrlKeysForInsertMode": false,
+    "vscode-neovim.useCtrlKeysForNormalMode": false,
 
     "python.experiments.enabled": false,
     "python.testing.pytestEnabled": true,
@@ -176,7 +194,4 @@
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
-
-    "vscode-neovim.useCtrlKeysForInsertMode": false,
-    "vscode-neovim.useCtrlKeysForNormalMode": false,
 }
