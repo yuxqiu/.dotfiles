@@ -31,6 +31,8 @@
     "git.terminalAuthentication": false,
     "github.gitAuthentication": false,
     "window.titleBarStyle": "custom",  // set this on Linux
+    "keyboard.dispatch": "keyCode",  // respect key mappings on Linux
+    "window.restoreWindows": "none",
 
     // Terminal
     // "terminal.integrated.inheritEnv": false, // may fix Python PATH
