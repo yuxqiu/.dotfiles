@@ -371,4 +371,7 @@ user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS
 user_pref("network.dns.echconfig.enabled", true);
 user_pref("network.dns.http3.echconfig.enabled", true);
 
+// PREF: don't close browser when last tab is closed
+user_pref("browser.tabs.closeWindowWithLastTab", false);
+
 // ===================From BetterFox======================
