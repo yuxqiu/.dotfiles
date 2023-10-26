@@ -33,6 +33,7 @@
     "window.titleBarStyle": "custom",  // set this on Linux
     "window.restoreWindows": "none",
     "keyboard.dispatch": "keyCode",
+    "vscode-neovim.useCtrlKeysForInsertMode": false,
 
     // Terminal
     // "terminal.integrated.inheritEnv": false, // may fix Python PATH
