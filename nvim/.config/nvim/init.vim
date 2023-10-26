@@ -98,7 +98,7 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
-Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 
 Plug 'tpope/vim-surround'
 
@@ -113,22 +113,18 @@ if exists('g:vscode')
  nmap gcc <Plug>VSCodeCommentaryLine
 endif
 
-" easymotion
-let g:EasyMotion_smartcase = 1 " turn on case insensitive feature
-let g:EasyMotion_do_mapping = 0 " disable default mappings
-let g:EasyMotion_use_smartsign_us = 1 " 1 will match 1 and !
-let g:EasyMotion_use_upper = 1
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz;'
-let g:EasyMotion_space_jump_first = 1
-let g:EasyMotion_enter_jump_first = 1
-
-nnoremap f <Plug>(easymotion-bd-f)
-nnoremap <Leader>/ <Plug>(easymotion-sn)
-
-" jk motions: line motions
-noremap <Leader>j <Plug>(easymotion-j)
-noremap <Leader>k <Plug>(easymotion-k)
-" end of easymotion
+" hop
+lua <<EOF
+require('hop').setup()
+local hop = require('hop')
+local directions = require('hop.hint').HintDirection
+vim.keymap.set('', 'f', function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false })
+end, {remap=true})
+vim.keymap.set('', 'F', function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = false })
+end, {remap=true})
+EOF
 
 " camel case motion
 nnoremap <silent> w <Plug>CamelCaseMotion_w
