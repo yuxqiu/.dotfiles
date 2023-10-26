@@ -31,8 +31,8 @@
     "git.terminalAuthentication": false,
     "github.gitAuthentication": false,
     "window.titleBarStyle": "custom",  // set this on Linux
-    "keyboard.dispatch": "keyCode",  // respect key mappings on Linux
     "window.restoreWindows": "none",
+    "keyboard.dispatch": "keyCode",
 
     // Terminal
     // "terminal.integrated.inheritEnv": false, // may fix Python PATH
@@ -169,8 +169,6 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "vscode-neovim.useCtrlKeysForInsertMode": false,
-    "vscode-neovim.useCtrlKeysForNormalMode": false,
 
     "python.experiments.enabled": false,
     "python.testing.pytestEnabled": true,
