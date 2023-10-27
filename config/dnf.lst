@@ -1,6 +1,5 @@
 alacritty
 bismuth
-cargo
 clang
 cmake
 code
@@ -25,7 +24,6 @@ neovim
 nodejs
 openssl-devel
 plasma-discover-snap
-rust
 stow
 tealdeer
 texlive-synctex

@@ -13,14 +13,18 @@
 1. To import, run `xargs npm install --global < path/to/npmfile`
 2. See [Export import npm global packages](https://stackoverflow.com/a/41199625)
 
-### Tectonic
+### tectonic
 
 1. [https://github.com/tectonic-typesetting/tectonic](https://github.com/tectonic-typesetting/tectonic). If possible, install it via package manager.
 2. Otherwise, follow the instructions [here](https://tectonic-typesetting.github.io/book/latest/howto/build-tectonic/index.html) for custom build.
 
-### VimPlug
+### vim-plug
 
 1. Follow the instruction [here](https://github.com/junegunn/vim-plug).
+
+### rustup
+
+1. Install [rustup](https://www.rust-lang.org/tools/install).
 
 
 ## Linux (Fedora + KDE)
