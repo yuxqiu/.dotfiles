@@ -38,6 +38,7 @@
 ### DOH
 
 1. Follow [this guide](https://dev.to/mfat/how-to-enable-system-wide-dns-over-https-on-fedora-linux-og7) to setup DOH.
+    - Use `sudo systemctl enable dnscrypt-proxy.service` to configure it as a startup service
 
 
 ## MAC
