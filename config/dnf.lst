@@ -4,7 +4,6 @@ clang
 cmake
 code
 containerd.io
-dejavu-sans-fonts
 dnscrypt-proxy
 docker-buildx-plugin
 docker-ce
@@ -19,12 +18,15 @@ fzf
 gcc
 gdb
 git
+hplip-gui
 java-17-openjdk-devel
+ltrace
 neovim
 nodejs
 openssl-devel
 plasma-discover-snap
 stow
+strace
 tealdeer
 texlive-synctex
 zsh
