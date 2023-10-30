@@ -32,11 +32,9 @@
     "github.gitAuthentication": false,
     "window.titleBarStyle": "custom",  // set this on Linux
     "window.restoreWindows": "none",
-    "keyboard.dispatch": "keyCode",
     "vscode-neovim.useCtrlKeysForInsertMode": false,
 
     // Terminal
-    // "terminal.integrated.inheritEnv": false, // may fix Python PATH
     "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
     "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
 
