@@ -22,12 +22,6 @@
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
 
-    {
-        "key": "capslock",
-        "command": "vscode-neovim.escape",
-        "when": "editorTextFocus"
-    },
-
     // For Linux
     {
         "key": "shift+alt+f",
