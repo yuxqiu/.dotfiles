@@ -32,6 +32,7 @@
     "github.gitAuthentication": false,
     "window.titleBarStyle": "custom",  // set this on Linux
     "window.restoreWindows": "none",
+    "keyboard.dispatch": "keyCode",
     "vscode-neovim.useCtrlKeysForInsertMode": false,
 
     // Terminal
