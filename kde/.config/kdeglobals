@@ -146,6 +146,9 @@ TerminalApplication=alacritty
 TerminalService=Alacritty.desktop
 toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0
 
+[Icons]
+Theme=Tela-circle-dark
+
 [KDE]
 LookAndFeelPackage=org.kde.breezedark.desktop
 ShowDeleteCommand=false
