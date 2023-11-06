@@ -21,6 +21,7 @@ NightTemperature=3700
 
 [Plugins]
 bismuthEnabled=true
+blurEnabled=true
 
 [Script-bismuth]
 enableSpiralLayout=false
