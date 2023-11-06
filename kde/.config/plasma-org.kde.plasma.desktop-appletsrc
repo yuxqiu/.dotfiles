@@ -17,6 +17,10 @@ location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
+[Containments][80][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
 [Containments][80][General]
 ToolBoxButtonState=topcenter
 ToolBoxButtonX=216
@@ -50,24 +54,6 @@ highPrioritySensorIds=["cpu/all/usage"]
 lowPrioritySensorIds=["cpu/all/cpuCount","cpu/all/coreCount"]
 totalSensors=["cpu/all/usage"]
 
-[Containments][81][Applets][106]
-immutability=1
-plugin=org.kde.plasma.systemmonitor.net
-
-[Containments][81][Applets][106][Configuration]
-CurrentPreset=org.kde.plasma.systemmonitor
-
-[Containments][81][Applets][106][Configuration][Appearance]
-chartFace=org.kde.ksysguard.linechart
-title=Network speed
-
-[Containments][81][Applets][106][Configuration][SensorColors]
-network/all/download=61,174,233
-network/all/upload=233,120,61
-
-[Containments][81][Applets][106][Configuration][Sensors]
-highPrioritySensorIds=["network/all/download","network/all/upload"]
-
 [Containments][81][Applets][107]
 immutability=1
 plugin=org.kde.plasma.systemmonitor.memory
@@ -86,6 +72,18 @@ memory/physical/used=61,174,233
 highPrioritySensorIds=["memory/physical/used"]
 lowPrioritySensorIds=["memory/physical/total"]
 totalSensors=["memory/physical/usedPercent"]
+
+[Containments][81][Applets][108]
+immutability=1
+plugin=org.kde.netspeedWidget
+
+[Containments][81][Applets][108][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][81][Applets][108][Configuration][General]
+showLowSpeeds=true
+updateInterval=2
 
 [Containments][81][Applets][82]
 immutability=1
@@ -148,7 +146,7 @@ DialogHeight=84
 DialogWidth=1463
 
 [Containments][81][General]
-AppletOrder=82;83;85;84;86;105;106;107;99
+AppletOrder=82;83;85;84;86;105;108;107;99
 
 [Containments][87]
 activityId=
@@ -166,7 +164,7 @@ immutability=1
 plugin=org.kde.plasma.nightcolorcontrol
 
 [Containments][87][Applets][101][Configuration]
-PreloadWeight=34
+PreloadWeight=18
 
 [Containments][87][Applets][102]
 immutability=1
