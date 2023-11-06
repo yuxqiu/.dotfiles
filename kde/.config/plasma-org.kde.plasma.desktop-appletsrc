@@ -45,6 +45,11 @@ CurrentPreset=org.kde.plasma.systemmonitor
 [Containments][81][Applets][105][Configuration][Appearance]
 chartFace=org.kde.ksysguard.piechart
 title=Total CPU Use
+updateRateLimit=2000
+
+[Containments][81][Applets][105][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][81][Applets][105][Configuration][SensorColors]
 cpu/all/usage=61,174,233
@@ -64,6 +69,11 @@ CurrentPreset=org.kde.plasma.systemmonitor
 [Containments][81][Applets][107][Configuration][Appearance]
 chartFace=org.kde.ksysguard.piechart
 title=Memory Usage
+updateRateLimit=2000
+
+[Containments][81][Applets][107][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][81][Applets][107][Configuration][SensorColors]
 memory/physical/used=61,174,233
@@ -91,8 +101,8 @@ plugin=org.kde.plasma.kickoff
 
 [Containments][81][Applets][82][Configuration]
 PreloadWeight=100
-popupHeight=514
-popupWidth=651
+popupHeight=518
+popupWidth=653
 
 [Containments][81][Applets][82][Configuration][General]
 favoritesPortedToKAstats=true
@@ -120,7 +130,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][81][Applets][86][Configuration]
-PreloadWeight=95
+PreloadWeight=100
 SystrayContainmentId=87
 
 [Containments][81][Applets][99]
@@ -171,25 +181,34 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][87][Applets][102][Configuration]
-PreloadWeight=65
+PreloadWeight=70
 
 [Containments][87][Applets][102][Configuration][General]
 showPercentage=true
 
-[Containments][87][Applets][103]
-immutability=1
-plugin=org.kde.plasma.bluetooth
+[Containments][87][Applets][103][Configuration]
+PreloadWeight=42
 
 [Containments][87][Applets][104]
 immutability=1
 plugin=org.kde.plasma.networkmanagement
+
+[Containments][87][Applets][104][Configuration]
+PreloadWeight=75
 
 [Containments][87][Applets][108]
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][87][Applets][108][Configuration]
-PreloadWeight=42
+PreloadWeight=52
+
+[Containments][87][Applets][110]
+immutability=1
+plugin=org.kde.plasma.bluetooth
+
+[Containments][87][Applets][110][Configuration]
+PreloadWeight=55
 
 [Containments][87][Applets][88]
 immutability=1
@@ -238,6 +257,9 @@ plugin=org.kde.plasma.vault
 immutability=1
 plugin=org.kde.plasma.volume
 
+[Containments][87][Applets][98][Configuration]
+PreloadWeight=55
+
 [Containments][87][Applets][98][Configuration][General]
 migrated=true
 
@@ -246,7 +268,7 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][87][General]
-extraItems=org.kde.kdeconnect,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.nightcolorcontrol,org.kde.plasma.notifications,org.kde.plasma.printmanager,org.kde.plasma.vault,org.kde.plasma.volume
+extraItems=org.kde.kdeconnect,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.nightcolorcontrol,org.kde.plasma.notifications,org.kde.plasma.printmanager,org.kde.plasma.vault,org.kde.plasma.volume,org.kde.plasma.bluetooth
 hiddenItems=org.kde.plasma.nightcolorcontrol
 knownItems=org.kde.kdeconnect,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.networkmanagement,org.kde.plasma.nightcolorcontrol,org.kde.plasma.notifications,org.kde.plasma.printmanager,org.kde.plasma.vault,org.kde.plasma.volume
 shownItems=org.kde.plasma.volume,org.kde.plasma.battery,org.kde.plasma.networkmanagement

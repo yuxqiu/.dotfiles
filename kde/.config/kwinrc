@@ -50,5 +50,3 @@ Scale=1.75
 [org.kde.kdecoration2]
 ButtonsOnLeft=XAI
 ButtonsOnRight=HSM
-library=org.kde.breeze
-theme=Breeze
