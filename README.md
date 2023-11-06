@@ -31,7 +31,7 @@
 
 ### General
 
-0. Install [this widget](https://store.kde.org/p/1298955/) to restore settings.
+0. Install [this icon theme](https://github.com/vinceliuice/Tela-circle-icon-theme) and follow [this guide](https://www.maketecheasier.com/use-custom-tray-icons-in-kde/) to add [Orchis-dark's icons](https://github.com/vinceliuice/Orchis-kde) to breeze dark.
 1. Use `dnf.lst` to restore all the packages installed via `dnf`.
 2. Setup [bismuth](https://github.com/Bismuth-Forge/bismuth).
 3. Install [OpenSnitch](https://github.com/evilsocket/opensnitch).
