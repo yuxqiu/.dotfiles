@@ -1,6 +1,7 @@
 alacritty
 bismuth
 clang
+clang-tools-extra
 cmake
 code
 containerd.io
@@ -18,11 +19,14 @@ fzf
 gcc
 gdb
 git
-hplip-gui
 java-17-openjdk-devel
+llvm
 ltrace
+neofetch
 neovim
 nodejs
+opensnitch
+opensnitch-ui
 openssl-devel
 plasma-discover-snap
 stow
