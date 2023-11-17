@@ -6,6 +6,10 @@ Id_1=7048e7e2-332d-48be-8dad-eb31bdff20c3
 Number=1
 Rows=1
 
+[Effect-blur]
+BlurStrength=8
+NoiseStrength=0
+
 [Effect-windowview]
 BorderActivate=7
 BorderActivateAll=9
