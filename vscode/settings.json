@@ -33,7 +33,7 @@
     "window.titleBarStyle": "custom",  // set this on Linux
     "window.restoreWindows": "none",
     "keyboard.dispatch": "keyCode",
-    "vscode-neovim.useCtrlKeysForInsertMode": false,
+
 
     // Terminal
     "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
@@ -44,7 +44,6 @@
     "files.trimFinalNewlines": true,
 
     // Workbench
-    "workbench.fontAliasing": "auto",
     "workbench.list.smoothScrolling": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.editorAssociations": {
@@ -54,6 +53,7 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.editor.labelFormat": "medium",
     "workbench.tips.enabled": false,
+    "workbench.tree.enableStickyScroll": true,
 
     // Online Services
     "workbench.enableExperiments": false,
