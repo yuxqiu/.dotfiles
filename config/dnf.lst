@@ -5,7 +5,6 @@ clang-tools-extra
 cmake
 code
 containerd.io
-dnscrypt-proxy
 docker-buildx-plugin
 docker-ce
 docker-ce-cli
@@ -28,7 +27,6 @@ nodejs
 opensnitch
 opensnitch-ui
 openssl-devel
-plasma-discover-snap
 stow
 strace
 tealdeer
