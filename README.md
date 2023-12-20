@@ -38,11 +38,6 @@
     - [Disable NetworkManager Connectivity Check](https://www.reddit.com/r/Fedora/comments/6jk62f/how_can_i_stop_fedora_from_contacting/).
     - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/)
 
-### DOH
-
-1. Follow [this guide](https://dev.to/mfat/how-to-enable-system-wide-dns-over-https-on-fedora-linux-og7) to setup DOH.
-    - Use `sudo systemctl enable dnscrypt-proxy.service` to configure it as a startup service
-
 
 ## MAC
 
