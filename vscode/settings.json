@@ -169,6 +169,44 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
+    "vscode-neovim.ctrlKeysForInsertMode": [
+        "a",
+        "d",
+        "h",
+        "j",
+        "o",
+        "r",
+        "t",
+        "u",
+        "w"
+    ],
+    "vscode-neovim.ctrlKeysForNormalMode": [
+        "a",
+        "b",
+        "d",
+        "e",
+        "f",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "o",
+        "r",
+        "t",
+        "u",
+        "v",
+        "w",
+        "y",
+        "/",
+        "]",
+        "right",
+        "left",
+        "up",
+        "down",
+        "backspace",
+        "delete"
+    ],
 
     "python.experiments.enabled": false,
     "python.testing.pytestEnabled": true,
@@ -194,4 +232,6 @@
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
+
+    "rust-analyzer.rustc.source": "discover",
 }
