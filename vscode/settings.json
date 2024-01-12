@@ -170,7 +170,6 @@
         "asvetliakov.vscode-neovim": 1
     },
     "vscode-neovim.ctrlKeysForInsertMode": [
-        "a",
         "d",
         "h",
         "j",
@@ -178,7 +177,6 @@
         "r",
         "t",
         "u",
-        "w"
     ],
     "vscode-neovim.ctrlKeysForNormalMode": [
         "a",
@@ -234,4 +232,5 @@
     },
 
     "rust-analyzer.rustc.source": "discover",
+    "cmake.showOptionsMovedNotification": false,
 }
