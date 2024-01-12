@@ -27,17 +27,15 @@
 1. Install [rustup](https://www.rust-lang.org/tools/install).
 
 
-## Linux (Fedora + KDE)
+## Linux (Fedora)
 
 ### General
 
-0. Install [this icon theme](https://github.com/vinceliuice/Tela-circle-icon-theme) and follow [this guide](https://www.maketecheasier.com/use-custom-tray-icons-in-kde/) to add [Orchis-dark's icons](https://github.com/vinceliuice/Orchis-kde) to breeze dark.
 1. Use `dnf.lst` to restore all the packages installed via `dnf`.
-2. Setup [bismuth](https://github.com/Bismuth-Forge/bismuth).
-3. Install [OpenSnitch](https://github.com/evilsocket/opensnitch).
+2. Install [OpenSnitch](https://github.com/evilsocket/opensnitch).
     - [Disable NetworkManager Connectivity Check](https://www.reddit.com/r/Fedora/comments/6jk62f/how_can_i_stop_fedora_from_contacting/).
     - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/).
-4. Install [fcitx](https://wiki.archlinux.org/title/Fcitx).
+3. Install [fcitx](https://wiki.archlinux.org/title/Fcitx).
     - Remember to setup environment variables.
 
 
