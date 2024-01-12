@@ -5,7 +5,11 @@
 ZSH_THEME="robbyrussell"
 
 # Which plugins would you like to load?
-plugins=(git colored-man-pages z dirhistory)
+# - ssh-agent: auto start ssh-agent
+plugins=(git colored-man-pages z dirhistory ssh-agent)
+
+# do not load any identity on the start
+zstyle :omz:plugins:ssh-agent lazy yes
 
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
