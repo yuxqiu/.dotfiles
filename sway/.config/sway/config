@@ -15,6 +15,7 @@ set $down j
 set $up k
 set $right l
 set $terminal alacritty
+set $image ~/.config/sway/5120x2880.png
 
 # i3-gaps
 gaps inner 10
@@ -44,7 +45,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/.config/sway/5120x2880.png fill
+output * bg $image fill
 #
 # Example configuration:
 #
@@ -66,7 +67,10 @@ output eDP-1 scale 1.7
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000 -i $image' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000 -i $image'
 
 ### Input configuration
 #
