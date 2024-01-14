@@ -212,7 +212,7 @@ input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
     # bindsym $mod+a focus parent
 
     # Take screenshot
-    bindsym $mod+p exec grim ~/Pictures/screenshot.png
+    bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 #
 # Scratchpad:
 #
