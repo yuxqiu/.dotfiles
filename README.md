@@ -37,6 +37,8 @@
     - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/).
 3. Install [fcitx](https://wiki.archlinux.org/title/Fcitx).
     - Remember to setup environment variables.
+4. Install sway-related stuffs
+    - `sudo dnf groupinstall "Sway Desktop"` on Fedora
 
 
 ## MAC

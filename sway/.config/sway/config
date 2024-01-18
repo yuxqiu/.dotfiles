@@ -113,6 +113,9 @@ input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
     # Start your launcher
     bindsym $control+Space exec --no-startup-id wofi --show drun
 
+    # Start window selection
+    bindsym $mod+Tab exec --no-startup-id ~/.config/wofi/launch
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -274,5 +277,6 @@ bar {
 # auto start program
 exec --no-startup-id fcitx5
 exec --no-startup-id opensnitch-ui
+exec_always ~/.config/sway/autotiling
 
 include /etc/sway/config.d/*
