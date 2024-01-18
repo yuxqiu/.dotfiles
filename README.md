@@ -39,6 +39,8 @@
     - Remember to setup environment variables.
 4. Install sway-related stuffs
     - `sudo dnf groupinstall "Sway Desktop"` on Fedora
+    - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+    - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling)
 
 
 ## MAC
