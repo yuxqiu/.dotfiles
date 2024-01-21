@@ -42,6 +42,8 @@
     - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
     - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling)
 5. Use `flatpaks.txt` to [restore](https://www.reddit.com/r/linux/comments/u3wcm7/easy_flatpak_apps_backupinstallation/) all the flatpak apps.
+    - For some apps (Foliate), you might need to [give them filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/).
+    - Also, we need to adjust some global settings to ensure themes are correctly applied: [how](https://itsfoss.com/flatpak-app-apply-theme/) and [theme name](https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis)
 
 
 ## MAC

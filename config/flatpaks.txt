@@ -1,4 +1,10 @@
+com.github.johnfactotum.Foliate
+com.github.tchx84.Flatseal
 com.logseq.Logseq
 md.obsidian.Obsidian
+org.gnome.Calculator
+org.kde.ark
+org.kde.okular
+org.libreoffice.LibreOffice
 org.localsend.localsend_app
 org.videolan.VLC
