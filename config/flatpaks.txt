@@ -1,0 +1,4 @@
+com.logseq.Logseq
+md.obsidian.Obsidian
+org.localsend.localsend_app
+org.videolan.VLC
