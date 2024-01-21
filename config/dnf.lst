@@ -10,11 +10,14 @@ docker-buildx-plugin
 docker-ce
 docker-ce-cli
 docker-compose-plugin
+dolphin
 fcitx5
 fcitx5-chinese-addons
 fcitx5-table-extra
 fcitx5-zhuyin
+ffmpeg-free
 fira-code-fonts
+flatpak
 fontconfig-devel
 freeglut-devel
 fuse
@@ -23,6 +26,8 @@ gcc
 gdb
 git
 glew-devel
+gnome-themes-extra
+golang
 graphite2-devel
 gstreamer1-plugin-openh264
 harfbuzz-devel
@@ -39,11 +44,13 @@ ltrace
 neofetch
 neovim
 nodejs
+openconnect
 openh264
 opensnitch
 opensnitch-ui
 openssl-devel
 pavucontrol
+qt5ct
 sassc
 shim-aa64
 snap-confine
