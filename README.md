@@ -48,6 +48,7 @@
     - Make sure `gnome-themes-extra` is installed.
     - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
     - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
+    - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366)
 
 
 ## MAC
