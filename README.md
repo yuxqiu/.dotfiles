@@ -44,6 +44,10 @@
 5. Use `flatpaks.txt` to [restore](https://www.reddit.com/r/linux/comments/u3wcm7/easy_flatpak_apps_backupinstallation/) all the flatpak apps.
     - For some apps (Foliate), you might need to [give them filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/).
     - Also, we need to adjust some global settings to ensure themes are correctly applied: [how](https://itsfoss.com/flatpak-app-apply-theme/) and [theme name](https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis)
+6. Themes
+    - Make sure `gnome-themes-extra` is installed.
+    - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
+    - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
 
 
 ## MAC
