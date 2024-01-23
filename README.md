@@ -42,15 +42,25 @@
     - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
     - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling)
 5. Use `flatpaks.txt` to [restore](https://www.reddit.com/r/linux/comments/u3wcm7/easy_flatpak_apps_backupinstallation/) all the flatpak apps.
-    - For some apps (Foliate), you might need to [give them filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/).
-    - Also, we need to adjust some global settings to ensure themes are correctly applied: [how](https://itsfoss.com/flatpak-app-apply-theme/) and [theme name](https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis)
 6. Themes
     - Make sure `gnome-themes-extra` is installed.
     - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
     - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
     - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366)
-7. Dolphin
+
+
+### Know Issues
+
+1. Dolphin
     - It might not open when "show in folder" or similar functionality is used in browser and vscode. The fix is [here](https://www.reddit.com/r/hyprland/comments/18ds4gd/dolphinfile_manager_does_not_open_when_show_in/).
+2. Flatpak
+    - [Give filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/): Foliate
+    - Apply Theme: [how](https://itsfoss.com/flatpak-app-apply-theme/) and [theme name](https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis)
+3. Obsidian
+    - Set `OBSIDIAN_USE_WAYLAND=1` and give it access to `wayland` backend in Flatseal.
+4. [Implement org.freedesktop.portal.OpenURI](https://github.com/emersion/xdg-desktop-portal-wlr/issues/42)
+    - `xdg-desktop-portal-wlr` does not support `OpenURI`.
+    - If you are using `sway`, install `xdg-desktop-portal-gtk` directly as in `/usr/share/xdg-desktop-portal/sway-portals.conf`, default is set to use `gtk` backend.
 
 
 ## MAC
