@@ -49,6 +49,8 @@
     - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
     - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
     - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366)
+7. Dolphin
+    - It might not open when "show in folder" or similar functionality is used in browser and vscode. The fix is [here](https://www.reddit.com/r/hyprland/comments/18ds4gd/dolphinfile_manager_does_not_open_when_show_in/).
 
 
 ## MAC
