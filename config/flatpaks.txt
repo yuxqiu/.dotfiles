@@ -4,7 +4,8 @@ com.logseq.Logseq
 io.github.seadve.Kooha
 md.obsidian.Obsidian
 org.gnome.Calculator
-org.kde.ark
+org.gnome.FileRoller
+org.gnome.Loupe
 org.kde.okular
 org.libreoffice.LibreOffice
 org.localsend.localsend_app
