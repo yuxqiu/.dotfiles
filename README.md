@@ -56,11 +56,16 @@
 2. Flatpak
     - [Give filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/): Foliate
     - Apply Theme: [how](https://itsfoss.com/flatpak-app-apply-theme/) and [theme name](https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis)
-3. Obsidian
-    - Set `OBSIDIAN_USE_WAYLAND=1` and give it access to `wayland` backend in Flatseal.
-4. [Implement org.freedesktop.portal.OpenURI](https://github.com/emersion/xdg-desktop-portal-wlr/issues/42)
+3. [Implement org.freedesktop.portal.OpenURI](https://github.com/emersion/xdg-desktop-portal-wlr/issues/42)
     - `xdg-desktop-portal-wlr` does not support `OpenURI`.
     - If you are using `sway`, install `xdg-desktop-portal-gtk` directly as in `/usr/share/xdg-desktop-portal/sway-portals.conf`, default is set to use `gtk` backend.
+4. Tracking Issues
+    - `wlroot`
+        - no displaylink support: [issue](https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/1823)
+    - `vscode`
+        - [Crash when rebuilding application menu on wayland](https://github.com/microsoft/vscode/issues/184124) -> Run on XWayland
+    - Obsidian
+        - When running on wayland, IME does not work. Passing `enable-wayland-ime` does not work -> Run on XWayland
 
 
 ## MAC
