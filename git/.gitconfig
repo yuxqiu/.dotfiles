@@ -20,7 +20,4 @@
 	rank = shortlog -s -n --no-merges
 	fame = !python -m gitfame
 	info = !onefetch
-[pager]
-	log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
+    dft = "!f() { GIT_EXTERNAL_DIFF=difft git diff $@; }; f"
