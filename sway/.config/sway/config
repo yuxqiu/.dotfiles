@@ -85,20 +85,7 @@ exec swayidle -w \
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input "1452:641:Apple_Internal_Keyboard_/_Trackpad" {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    middle_emulation enabled
-
-    # swap
-    # - command and ctrl
-    # - escape and caps
-    xkb_options "ctrl:swap_lwin_lctl, caps:swapescape"
-
-    # set keyboard repeat delay to 300
-    repeat_delay 300
-}
+include ./inputs
 
 ### Key bindings
 #
