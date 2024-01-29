@@ -67,6 +67,11 @@
     - Obsidian
         - When running on wayland, IME does not work. Passing `enable-wayland-ime` does not work -> Run on XWayland
 
+### Notes
+
+1. `sway/.config/sway/inputs` is marked to ignore future updates as I want to keep the data in it private.
+    - [How to mark/unmark it](https://stackoverflow.com/questions/4348590/how-can-i-make-git-ignore-future-revisions-to-a-file)
+
 
 ## MAC
 
