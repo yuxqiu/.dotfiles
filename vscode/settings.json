@@ -139,6 +139,8 @@
             "args": [
                 "--synctex",
                 "--outdir=%OUTDIR%",
+                "-Z",
+                "continue-on-errors",
                 "%DOC_EXT%"
             ],
             "env": {}
@@ -220,6 +222,7 @@
     },
 
     "cmake.configureOnOpen": true,
+    "cmake.showOptionsMovedNotification": false,
 
     "lldb.launch.terminal": "integrated",
 
@@ -232,5 +235,4 @@
     },
 
     "rust-analyzer.rustc.source": "discover",
-    "cmake.showOptionsMovedNotification": false,
 }
