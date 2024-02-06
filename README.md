@@ -41,8 +41,9 @@
     - `sudo dnf groupinstall "Sway Desktop"` on Fedora
     - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
     - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling)
-5. Use `flatpaks.txt` to [restore](https://www.reddit.com/r/linux/comments/u3wcm7/easy_flatpak_apps_backupinstallation/) all the flatpak apps.
-6. Themes
+5. Install [warpd](https://github.com/rvaiya/warpd/)
+6. Use `flatpaks.txt` to [restore](https://www.reddit.com/r/linux/comments/u3wcm7/easy_flatpak_apps_backupinstallation/) all the flatpak apps.
+7. Themes
     - Make sure `gnome-themes-extra` is installed.
     - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
     - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
