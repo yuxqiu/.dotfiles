@@ -63,9 +63,8 @@
 4. Tracking Issues
     - `wlroot`
         - no displaylink support: [issue](https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/1823)
-    - `vscode`
-        - [Crash when rebuilding application menu on wayland](https://github.com/microsoft/vscode/issues/184124) -> Run on XWayland
-    - Obsidian
+        - no individual window sharing support: [issue](https://github.com/emersion/xdg-desktop-portal-wlr/issues/107)
+    - `Obsidian`
         - When running on wayland, IME does not work. Passing `enable-wayland-ime` does not work -> Run on XWayland
 
 ### Notes
