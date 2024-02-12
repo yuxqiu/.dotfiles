@@ -1,5 +1,7 @@
+com.github.PintaProject.Pinta
 com.github.johnfactotum.Foliate
 com.github.tchx84.Flatseal
+com.github.tenderowl.frog
 com.logseq.Logseq
 io.github.seadve.Kooha
 md.obsidian.Obsidian
