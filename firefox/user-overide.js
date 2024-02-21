@@ -374,4 +374,7 @@ user_pref("network.dns.http3.echconfig.enabled", true);
 // PREF: don't close browser when last tab is closed
 user_pref("browser.tabs.closeWindowWithLastTab", false);
 
+// PREF: prevent alt key from opening menu
+user_pref("ui.key.menuAccessKeyFocuse", false);
+
 // ===================From BetterFox======================
