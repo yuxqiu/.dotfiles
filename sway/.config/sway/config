@@ -104,7 +104,7 @@ include ./inputs
     bindsym $mod+Tab exec --no-startup-id ~/.config/wofi/launch
 
     # Color Picker
-    bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+    bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
     # warpd hotkeys
     bindsym $mod+x exec warpd --hint
@@ -203,6 +203,7 @@ include ./inputs
 
     # Take screenshot
     bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
+    bindsym $mod+shift+p exec grim - | wl-copy
 #
 # Scratchpad:
 #
