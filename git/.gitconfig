@@ -4,7 +4,7 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	name = Yuxiang Qiu
+	name = yuxqiu
 	email = yuxqiu@proton.me
 	signingkey = ~/.ssh/id_ed25519_proton.pub
 [core]
