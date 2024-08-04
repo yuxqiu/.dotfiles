@@ -52,15 +52,13 @@
 
 ### Know Issues
 
-1. Dolphin
-    - It might not open when "show in folder" or similar functionality is used in browser and vscode. The fix is [here](https://www.reddit.com/r/hyprland/comments/18ds4gd/dolphinfile_manager_does_not_open_when_show_in/).
-2. Flatpak
-    - [Give filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/): Foliate
+1. Flatpak
+    - [Give filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/): use Foliate
     - Apply Theme: [how](https://itsfoss.com/flatpak-app-apply-theme/) and [theme name](https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis)
-3. [Implement org.freedesktop.portal.OpenURI](https://github.com/emersion/xdg-desktop-portal-wlr/issues/42)
+2. [Implement org.freedesktop.portal.OpenURI](https://github.com/emersion/xdg-desktop-portal-wlr/issues/42)
     - `xdg-desktop-portal-wlr` does not support `OpenURI`.
-    - If you are using `sway`, install `xdg-desktop-portal-gtk` directly as in `/usr/share/xdg-desktop-portal/sway-portals.conf`, default is set to use `gtk` backend.
-4. Tracking Issues
+    - If you are using `sway`, install `xdg-desktop-portal-gtk` directly as in `/usr/share/xdg-desktop-portal/sway-portals.conf`, default is set to use `gtk` backend (for most of the interfaces).
+3. Tracking Issues
     - `wlroot`
         - no displaylink support: [issue](https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/1823)
         - no individual window sharing support: [issue](https://github.com/emersion/xdg-desktop-portal-wlr/issues/107)
@@ -69,7 +67,10 @@
     - `Obsidian`
         - When running on wayland, IME does not work. Passing `enable-wayland-ime` does not work -> Run on XWayland
     - `sway`
-        - IME popup support: [background](https://wiki.archlinux.org/title/Fcitx5#Sway) and [pr](https://github.com/swaywm/sway/pull/7226)
+        - IME popup support: [background](https://wiki.archlinux.org/title/Fcitx5#Sway) and [pr](https://github.com/swaywm/sway/pull/7226) (merged, but not released)
+4. NetworkManager
+    - no way to randomize hostname: [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/584)
+
 
 ### Notes
 
