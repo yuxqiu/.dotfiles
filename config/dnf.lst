@@ -1,5 +1,6 @@
 NetworkManager-tui
 alacritty
+appimagelauncher
 blueman
 brightnessctl
 clang
@@ -8,11 +9,13 @@ cmake
 code
 containerd.io
 difftastic
+dnscrypt-proxy
 docker-buildx-plugin
 docker-ce
 docker-ce-cli
 docker-compose-plugin
 dolphin
+earlyoom
 fcitx5
 fcitx5-chinese-addons
 fcitx5-mozc
@@ -26,12 +29,12 @@ fzf
 gcc
 gdb
 git
+git-lfs
 gnome-themes-extra
 golang
 graphite2-devel
 gstreamer1-plugin-openh264
 harfbuzz-devel
-hplip-gui
 hyperfine
 inkscape
 java-17-openjdk-devel
@@ -45,6 +48,8 @@ libxkbcommon-devel
 llvm
 ltrace
 meson
+mozilla-openh264
+mullvad-vpn
 neofetch
 neovim
 nodejs
@@ -55,9 +60,11 @@ opensnitch-ui
 openssl-devel
 pandoc
 pavucontrol
+pdftk-java
 pipewire
 pulseaudio-utils
 qt5ct
+qt6ct
 sassc
 shim-aa64
 snap-confine
@@ -68,10 +75,12 @@ snapd-selinux
 stow
 strace
 sway
+swaylock-effects
 tealdeer
 texlive-latexindent
 texlive-synctex
 tiny-dfr
+tokei
 uxplay
 vim-enhanced
 waybar
@@ -80,7 +89,6 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
 xev
 xlsclients
-zlib-devel
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
