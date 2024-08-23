@@ -92,6 +92,12 @@ user_pref("network.http.referer.XOriginPolicy", 0);
  * 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port ***/
 user_pref("network.http.referer.XOriginTrimmingPolicy", 0);
 
+/*** [SECTION 2000]: PLUGINS / MEDIA / WEBRTC ***/
+user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
+/* 2002: force WebRTC inside the proxy [FF70+] ***/
+// Disable to ensure the stability of WebRTC behind proxy
+user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", false);
+
 /** EXTENSIONS ***/
 /* 2660: lock down allowed extension directories
  * [SETUP-CHROME] This will break extensions, language packs, themes and any other
@@ -157,7 +163,7 @@ user_pref("privacy.sanitize.timeSpan", 0);
  * [1] https://bugzilla.mozilla.org/1407366
  * [2] https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32 ***/
 user_pref("privacy.resistFingerprinting", false);
- user_pref("privacy.resistFingerprinting.letterboxing", false);
+user_pref("privacy.resistFingerprinting.letterboxing", false);
 /* 4520: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
 user_pref("webgl.disabled", false);
