@@ -97,6 +97,12 @@ user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
 /* 2002: force WebRTC inside the proxy [FF70+] ***/
 // Disable to ensure the stability of WebRTC behind proxy
 user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", false);
+/* 2003: force a single network interface for ICE candidates generation [FF42+]
+ * When using a system-wide proxy, it uses the proxy interface
+ * [1] https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate
+ * [2] https://wiki.mozilla.org/Media/WebRTC/Privacy ***/
+// Disable to ensure the stability of WebRTC behind proxy
+user_pref("media.peerconnection.ice.default_address_only", false);
 
 /** EXTENSIONS ***/
 /* 2660: lock down allowed extension directories
@@ -293,6 +299,9 @@ user_pref("pdfjs.sidebarViewOnLoad", 2);
 // PREF: restore "View image info" on right-click
 user_pref("browser.menu.showViewImageInfo", true);
 
+// PERF: disable DNT
+// https://wiki.archlinux.org/title/Firefox/Privacy#Enable_%22Do_Not_Track%22_header
+user_pref("privacy.donottrackheader.enabled", false);
 
 // ===================From BetterFox======================
 
