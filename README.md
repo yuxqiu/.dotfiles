@@ -41,9 +41,12 @@
     - `sudo dnf groupinstall "Sway Desktop"` on Fedora
     - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
     - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling)
-5. Install [warpd](https://github.com/rvaiya/warpd/)
+5. Install [warpd](https://github.com/rvaiya/warpd/) \[Optional\]
 6. Use `flatpaks.txt` to [restore](https://www.reddit.com/r/linux/comments/u3wcm7/easy_flatpak_apps_backupinstallation/) all the flatpak apps.
-7. Themes
+7. Stop abrt \[Optional\]
+    1. Disbale auto-reporting: https://wiki.centos.org/TipsAndTricks(2f)ABRT.html
+    2. Disbale abrt related service: https://unix.stackexchange.com/questions/556351/what-are-the-risks-for-disable-the-abrtd-service and https://robbinespu.gitlab.io/posts/disable-abrt-fedora/
+8. Themes
     - Make sure `gnome-themes-extra` is installed.
     - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
     - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
@@ -68,6 +71,7 @@
         - When running on wayland, IME does not work. Passing `enable-wayland-ime` does not work -> Run on XWayland
     - `sway`
         - IME popup support: [background](https://wiki.archlinux.org/title/Fcitx5#Sway) and [pr](https://github.com/swaywm/sway/pull/7226) (merged, but not released)
+        - ICC profile support: [pr](https://github.com/swaywm/sway/issues/1486)(merged, but not released)
 4. NetworkManager
     - no way to randomize hostname: [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/584)
 
