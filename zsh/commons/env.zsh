@@ -11,4 +11,5 @@ export PYTHONSTARTUP=~/.pythonrc
 # Do Not Track
 export DO_NOT_TRACK=1
 
-export PATH="$HOME/.local/bin:$PATH"
+# more bin dir
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
