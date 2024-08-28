@@ -1,5 +1,13 @@
 ## Note
 
-Do not use `stow` to setup `logind` and `journald`.
+### Deny
 
-When setup these two conf files, directly copy them to `/etc/systemd`.
+Do not use `stow` to setup
+- `logind`
+- `journald`
+- `earlyoom`
+
+When setup these conf files, directly copy them to corresponding locations
+- `logind`: `/etc/systemd`
+- `journald`: `/etc/systemd`
+- `earlyoom`: `/etc/default`
