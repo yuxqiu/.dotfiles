@@ -80,6 +80,7 @@
 
 1. `sway/.config/sway/inputs` is marked to ignore future updates as I want to keep the data in it private.
     - [How to mark/unmark it](https://stackoverflow.com/questions/4348590/how-can-i-make-git-ignore-future-revisions-to-a-file)
+2. I have problems connecting to my mouse via BlueTooth sometimes. I follow this [guide](https://discussion.fedoraproject.org/t/bluetooth-device-not-connecting-fedora-40/125138/18) to solve the issue.
 
 
 ## MAC
