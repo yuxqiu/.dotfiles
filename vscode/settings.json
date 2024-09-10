@@ -19,9 +19,6 @@
     "window.commandCenter": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.suggestSelection": "recentlyUsed",
-    "editor.lineNumbers": "relative",
-    "workbench.productIconTheme": "icons-carbon",
-    "workbench.tree.renderIndentGuides": "none",
     "editor.renderLineHighlight": "none",
     "editor.matchBrackets": "never",
     "editor.quickSuggestionsDelay": 0,
@@ -33,6 +30,7 @@
     "window.titleBarStyle": "custom",  // set this on Linux
     "window.restoreWindows": "none",
     "keyboard.dispatch": "keyCode",
+    "extensions.autoUpdate": false,
 
     // Terminal
     "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
@@ -53,6 +51,8 @@
     "workbench.editor.labelFormat": "medium",
     "workbench.tips.enabled": false,
     "workbench.tree.enableStickyScroll": true,
+    "workbench.productIconTheme": "icons-carbon",
+    "workbench.tree.renderIndentGuides": "none",
 
     // Online Services
     "workbench.enableExperiments": false,
@@ -67,6 +67,8 @@
 	"update.showReleaseNotes": false,
     "vsicons.dontShowNewVersionMessage": true,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
+    "settingsSync.keybindingsPerPlatform": false,
+    "npm.fetchOnlinePackageInfo": false,
 
     // git
     "git.openRepositoryInParentFolders": "never",
