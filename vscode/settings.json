@@ -34,7 +34,6 @@
     "window.restoreWindows": "none",
     "keyboard.dispatch": "keyCode",
 
-
     // Terminal
     "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
     "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
@@ -115,8 +114,6 @@
 
     "markdown.extension.print.theme": "dark",
     "markdown.updateLinksOnFileMove.enabled": "prompt",
-    "markdown.marp.pdf.noteAnnotations": true,
-    "markdown.marp.pdf.outlines": "headings",
 
     "latex-workshop.latex.outDir":"%DIR%/latex-build",
     "latex-workshop.latex.recipes": [
@@ -168,47 +165,6 @@
         "editor.defaultFormatter": "James-Yu.latex-workshop"
     },
 
-    // vscode-neovim
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
-    "vscode-neovim.ctrlKeysForInsertMode": [
-        "d",
-        "h",
-        "j",
-        "o",
-        "r",
-        "t",
-        "u",
-    ],
-    "vscode-neovim.ctrlKeysForNormalMode": [
-        "a",
-        "b",
-        "d",
-        "e",
-        "f",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "o",
-        "r",
-        "t",
-        "u",
-        "v",
-        "w",
-        "y",
-        "/",
-        "]",
-        "right",
-        "left",
-        "up",
-        "down",
-        "backspace",
-        "delete"
-    ],
-
     "python.experiments.enabled": false,
     "python.testing.pytestEnabled": true,
     "python.analysis.typeCheckingMode": "basic",
@@ -236,4 +192,11 @@
     },
 
     "rust-analyzer.rustc.source": "discover",
+
+    // vscode-animation
+    "animations.Enabled": true,
+    "animations.Install-Method": "Apc Customize UI++",
+    "apc.imports": [
+        "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
+    ],
 }

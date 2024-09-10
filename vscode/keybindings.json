@@ -22,6 +22,48 @@
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
 
+    // Vim Like motion
+    {
+        "key": "ctrl+h",
+        "command": "cursorLeft",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "cursorRight",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "cursorDown",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "cursorUp",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+shift+h",
+        "command": "cursorLineStart",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+shift+l",
+        "command": "cursorLineEnd",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+y",
+        "command": "cursorWordAccessibilityLeft",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "cursorWordAccessibilityRight",
+        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+
     // For Linux
     {
         "key": "shift+alt+f",
