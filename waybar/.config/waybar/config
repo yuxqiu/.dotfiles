@@ -14,19 +14,30 @@
         "sway/window"
     ],
     "modules-right": [
-        "idle_inhibitor",
         "pulseaudio",
         "network",
         "bluetooth",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
+        "group/stats",
         "battery",
         "privacy",
         "clock",
         "tray"
     ],
+    "group/stats": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "memory", // group leader, won't be hidden
+            "cpu",
+            "temperature",
+            "backlight",
+            "idle_inhibitor",
+        ]
+    },
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,

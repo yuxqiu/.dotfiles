@@ -113,7 +113,6 @@ label:focus {
   color: #c5c8c6;
   margin: 3px 3px 3px 3px;
   padding: 5px 7px 5px 5px;
-  background: #1d1f21;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -124,7 +123,6 @@ label:focus {
   color: #be3509;
   margin: 3px 3px 3px 3px;
   padding: 5px 7px 5px 5px;
-  background: #1d1f21;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -239,7 +237,7 @@ label:focus {
   border-bottom-left-radius: 10px;
 }
 
-#bluetooth {
+#battery {
   color: #c5c8c6;
   margin: 3px 3px 3px 3px;
   padding: 5px 7px 5px 5px;
@@ -250,8 +248,8 @@ label:focus {
   border-bottom-left-radius: 10px;
 }
 
-#cpu {
-  color: #d77d41;
+#bluetooth {
+  color: #c5c8c6;
   margin: 3px 3px 3px 3px;
   padding: 5px 7px 5px 5px;
   background: #1d1f21;
