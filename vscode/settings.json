@@ -12,11 +12,9 @@
     "editor.guides.bracketPairs": true,
     "editor.autoClosingOvertype": "always",
     "editor.linkedEditing": true,
-    // "editor.suggest.preview": true, // visually conflict with inline hint
     "editor.suggest.snippetsPreventQuickSuggestions": false, // enable intellisense after selecting autocomplete
     "editor.suggest.localityBonus": true,
     "editor.stickyScroll.enabled": true,
-    "window.commandCenter": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.suggestSelection": "recentlyUsed",
     "editor.renderLineHighlight": "none",
@@ -27,7 +25,6 @@
     },
     "git.terminalAuthentication": false,
     "github.gitAuthentication": false,
-    "window.titleBarStyle": "custom",  // set this on Linux
     "window.restoreWindows": "none",
     "keyboard.dispatch": "keyCode",
     "extensions.autoUpdate": false,
@@ -201,4 +198,23 @@
     "apc.imports": [
         "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
     ],
+
+    // Minimalistic
+    "window.commandCenter": false,
+    "window.titleBarStyle": "custom",  // use this on Linux because I don't want to use native menu
+    "breadcrumbs.enabled": false,
+    "window.menuBarVisibility": "hidden",
+    "workbench.editor.enablePreview": false,
+    "workbench.layoutControl.enabled": false,
+    "apc.stylesheet": {
+        ".titlebar": {
+            "visibility": "hidden"  // hide irrelevant text on title bar
+        }
+    },
+    "explorer.compactFolders": false,
+    "explorer.autoReveal": "focusNoScroll",
+    "vsicons.presets.hideExplorerArrows": true,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "editor.inlineSuggest.enabled": true,
+    "workbench.activityBar.location": "top",
 }
