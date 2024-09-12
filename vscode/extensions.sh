@@ -4,6 +4,7 @@ code --install-extension bierner.emojisense
 code --install-extension bierner.markdown-mermaid
 code --install-extension brandonkirbyson.vscode-animations
 code --install-extension cschlosser.doxdocgen
+code --install-extension dbankier.vscode-quick-select
 code --install-extension drcika.apc-extension
 code --install-extension editorconfig.editorconfig
 code --install-extension geforcelegend.vscode-glsl
