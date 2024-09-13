@@ -22,7 +22,7 @@
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
 
-    // Vim Like motion
+    // Vim-Like Motion
     {
         "key": "ctrl+h",
         "command": "cursorLeft",
@@ -62,6 +62,16 @@
         "key": "ctrl+u",
         "command": "cursorWordAccessibilityRight",
         "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
     },
 
     // For Quick and Simple Text Select
@@ -194,6 +204,63 @@
         "key": "ctrl+k shift+.",
         "command": "-extension.selectInTag",
         "when": "editorFocus"
+    },
+
+    // Vim-like Motion in File Explorer
+    {
+        "key": "n",
+        "command": "workbench.files.action.createFileFromExplorer",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "shift+n",
+        "command": "workbench.files.action.createFolderFromExplorer",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "d",
+        "command": "deleteFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "r",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "g g",
+        "command": "list.focusFirst",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "shift+g",
+        "command": "list.focusLast",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "enter",
+        "command": "list.select",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "!(explorerViewletVisible && filesExplorerFocus && !inputFocus)"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "workbench.action.focusLastEditorGroup",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
 
     // For Linux
