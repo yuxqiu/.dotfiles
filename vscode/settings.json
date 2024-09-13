@@ -217,4 +217,5 @@
     "workbench.editor.editorActionsLocation": "hidden",
     "editor.inlineSuggest.enabled": true,
     "workbench.activityBar.location": "top",
+    "apc.menubar.compact": true,
 }
