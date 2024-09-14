@@ -72,8 +72,10 @@
     - `sway`
         - IME popup support: [background](https://wiki.archlinux.org/title/Fcitx5#Sway) and [pr](https://github.com/swaywm/sway/pull/7226) (merged, but not released)
         - ICC profile support: [pr](https://github.com/swaywm/sway/issues/1486)(merged, but not released)
-4. NetworkManager
-    - no way to randomize hostname: [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/584)
+    - `NetworkManager`
+        - no way to randomize hostname: [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/584)
+    - `systemd-resolved`
+        - no DoH support: [issue](https://github.com/systemd/systemd/issues/8639)
 
 
 ### Notes
