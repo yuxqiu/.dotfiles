@@ -39,7 +39,7 @@ server_names = ['mullvad', 'controld']
 ## To listen to all IPv4 addresses, use `listen_addresses = ['0.0.0.0:53']`
 ## To listen to all IPv4+IPv6 addresses, use `listen_addresses = ['[::]:53']`
 
-listen_addresses = ['127.0.0.1:53']
+listen_addresses = ['127.0.0.1:53', '[::1]:53']
 
 
 ## Maximum number of simultaneous client connections to accept
@@ -261,7 +261,7 @@ cert_refresh_delay = 240
 ## not be sent there. If you're using DNSCrypt or Anonymized DNS and your
 ## lists are up to date, these resolvers will not even be used.
 
-bootstrap_resolvers = ['9.9.9.11:53', '8.8.8.8:53']
+bootstrap_resolvers = []
 
 
 ## When internal DNS resolution is required, for example to retrieve
@@ -276,7 +276,7 @@ bootstrap_resolvers = ['9.9.9.11:53', '8.8.8.8:53']
 ## (*) this is incompatible with systemd sockets.
 ## `listen_addrs` must not be empty.
 
-ignore_system_dns = false
+ignore_system_dns = true
 
 
 ## Maximum time (in seconds) to wait for network connectivity before
@@ -892,6 +892,6 @@ skip_incompatible = false
 
   [static.mullvad]
     stamp = 'sdns://AgcAAAAAAAAACzE5NC4yNDIuMi4yAA9kbnMubXVsbHZhZC5uZXQKL2Rucy1xdWVyeQ'
-  
+
   [static.controld]
     stamp = 'sdns://AgcAAAAAAAAACjc2Ljc2LjIuMTEAFGZyZWVkbnMuY29udHJvbGQuY29tAy9wMA'
