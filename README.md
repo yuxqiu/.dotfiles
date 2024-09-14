@@ -52,6 +52,12 @@
     - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
     - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366)
 
+### DoH
+
+1. Install dnscrypt-proxy and follow [README-stow](./README-stow.md) to setup config file.
+2. Disable and Stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu)
+3. Setup the `network-manager` config by following [README-stow](./README-stow.md)
+4. Restart `NetworkManager` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu) again
 
 ### Know Issues
 
@@ -61,7 +67,7 @@
 2. [Implement org.freedesktop.portal.OpenURI](https://github.com/emersion/xdg-desktop-portal-wlr/issues/42)
     - `xdg-desktop-portal-wlr` does not support `OpenURI`.
     - If you are using `sway`, install `xdg-desktop-portal-gtk` directly as in `/usr/share/xdg-desktop-portal/sway-portals.conf`, default is set to use `gtk` backend (for most of the interfaces).
-3. Tracking Issues
+3. Others
     - `wlroot`
         - no displaylink support: [issue](https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/1823)
         - no individual window sharing support: [issue](https://github.com/emersion/xdg-desktop-portal-wlr/issues/107)
