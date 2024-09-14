@@ -206,15 +206,9 @@
     "window.menuBarVisibility": "hidden",
     "workbench.editor.enablePreview": false,
     "workbench.layoutControl.enabled": false,
-    "apc.stylesheet": {
-        ".titlebar": {
-            "visibility": "hidden"  // hide irrelevant text on title bar
-        }
-    },
     "explorer.compactFolders": false,
     "explorer.autoReveal": "focusNoScroll",
     "vsicons.presets.hideExplorerArrows": true,
-    "workbench.editor.editorActionsLocation": "hidden",
     "editor.inlineSuggest.enabled": true,
     "workbench.activityBar.location": "top",
     "apc.menubar.compact": true,
