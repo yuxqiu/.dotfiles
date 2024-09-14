@@ -4,14 +4,8 @@
 
 ### ssh
 
-0. `ssh` configs are all stored in `~/.ssh`
-1. After configuring env, move your 1)`known_hosts`, 2)private/public keys, and 3)`config` to the new env
-
-### npm
-
-0. To export, run `npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > path/to/npmfile`
-1. To import, run `xargs npm install --global < path/to/npmfile`
-2. See [Export import npm global packages](https://stackoverflow.com/a/41199625)
+0. `ssh` configs are all stored in `~/.ssh`.
+1. After configuring env, move your 1)`known_hosts`, 2)private/public keys, and 3)`config` to the new env.
 
 ### tectonic
 
@@ -31,33 +25,31 @@
 
 ### General
 
-1. Use `dnf.lst` to restore all the packages installed via `dnf`.
-2. Install [OpenSnitch](https://github.com/evilsocket/opensnitch).
-    - [Disable NetworkManager Connectivity Check](https://www.reddit.com/r/Fedora/comments/6jk62f/how_can_i_stop_fedora_from_contacting/).
-    - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/).
-3. Install [fcitx](https://wiki.archlinux.org/title/Fcitx).
-    - Remember to setup environment variables.
+1. Use `config/dnf` to restore all the installed packages.
+2. Install [OpenSnitch](https://github.com/evilsocket/opensnitch)
+    - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/)
+3. Install [fcitx](https://wiki.archlinux.org/title/Fcitx)
+    - Remember to set environment variables for IM modules.
 4. Install sway-related stuffs
-    - `sudo dnf groupinstall "Sway Desktop"` on Fedora
-    - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
-    - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling)
-5. Install [warpd](https://github.com/rvaiya/warpd/) \[Optional\]
-6. Use `flatpaks.txt` to [restore](https://www.reddit.com/r/linux/comments/u3wcm7/easy_flatpak_apps_backupinstallation/) all the flatpak apps.
-7. Stop abrt \[Optional\]
-    1. Disbale auto-reporting: https://wiki.centos.org/TipsAndTricks(2f)ABRT.html
-    2. Disbale abrt related service: https://unix.stackexchange.com/questions/556351/what-are-the-risks-for-disable-the-abrtd-service and https://robbinespu.gitlab.io/posts/disable-abrt-fedora/
-8. Themes
+    - `sudo dnf groupinstall "Sway Desktop"` on Fedora.
+    - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button).
+    - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling).
+5. Use `config/flatpak` to restore all the flatpak apps.
+6. Stop abrt \[Optional\].
+    1. [Disbale auto-reporting](https://wiki.centos.org/TipsAndTricks(2f)ABRT.html).
+    2. Disbale abrt related service: [1](https://unix.stackexchange.com/questions/556351/what-are-the-risks-for-disable-the-abrtd-service) and [2](https://robbinespu.gitlab.io/posts/disable-abrt-fedora/).
+7. Themes
     - Make sure `gnome-themes-extra` is installed.
     - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
-    - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`
-    - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366)
+    - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`.
+    - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366).
 
 ### DoH
 
 1. Install dnscrypt-proxy and follow [README-stow](./README-stow.md) to setup config file.
-2. Disable and Stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu)
-3. Setup the `network-manager` config by following [README-stow](./README-stow.md)
-4. Restart `NetworkManager` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu) again
+2. Disable and Stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu).
+3. Setup the `network-manager` config by following [README-stow](./README-stow.md).
+4. Restart `NetworkManager` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu) again.
 
 ### Know Issues
 
@@ -113,8 +105,3 @@
 2. Run `brew bundle --file ./config/Brewfile` to restore the installed formula
 3. For the following tasks, we need to run some scripts manually
     - `Java`: follow the instruction [here](https://formulae.brew.sh/formula/openjdk@17)
-
-### pyenv
-
-1. To install x86 Python, run `arch --x86_64 /bin/zsh` and `pyenv install [version]`
-    - (Optional): install a Python 3.7
