@@ -108,11 +108,6 @@ include ./inputs
     # Color Picker
     bindsym $mod+c exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
 
-    # warpd hotkeys
-    bindsym $mod+x exec warpd --hint
-    bindsym $mod+n exec warpd --normal
-    bindsym $mod+g exec warpd --grid
-
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
