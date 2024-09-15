@@ -4,13 +4,8 @@
 
 ### ssh
 
-0. `ssh` configs are all stored in `~/.ssh`.
-1. After configuring env, move your 1)`known_hosts`, 2)private/public keys, and 3)`config` to the new env.
-
-### tectonic
-
-1. [https://github.com/tectonic-typesetting/tectonic](https://github.com/tectonic-typesetting/tectonic). If possible, install it via package manager.
-2. Otherwise, follow the instructions [here](https://tectonic-typesetting.github.io/book/latest/howto/build-tectonic/index.html) for custom build.
+1. `ssh` configs are all stored in `~/.ssh`.
+2. After configuring env, move your 1)`known_hosts`, 2)private/public keys, and 3)`config` to the new env.
 
 ### vim-plug
 
@@ -20,6 +15,10 @@
 
 1. Install [rustup](https://www.rust-lang.org/tools/install).
 
+### stew
+
+1. Install [stew](https://github.com/marwanhawari/stew?tab=readme-ov-file).
+2. Install binaries managed by `stew` using `Stewfile`.
 
 ## Linux (Fedora)
 
