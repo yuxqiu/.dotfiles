@@ -1,3 +1,4 @@
+com.github.IsmaelMartinez.teams_for_linux
 com.github.PintaProject.Pinta
 com.github.johnfactotum.Foliate
 com.github.tchx84.Flatseal
@@ -8,7 +9,7 @@ md.obsidian.Obsidian
 org.gnome.Calculator
 org.gnome.FileRoller
 org.gnome.Loupe
-org.kde.okular
 org.libreoffice.LibreOffice
 org.localsend.localsend_app
 org.videolan.VLC
+xyz.armcord.ArmCord
