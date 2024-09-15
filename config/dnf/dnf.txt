@@ -23,6 +23,7 @@ fcitx5-table-extra
 fcitx5-zhuyin
 ffmpeg-free
 fira-code-fonts
+firewalld
 flatpak
 fuse
 fzf
@@ -43,6 +44,8 @@ libXi-devel
 libXinerama-devel
 libXrandr-devel
 libdrm-devel
+libheif-freeworld
+libheif-tools
 libicu-devel
 libxkbcommon-devel
 llvm
@@ -52,6 +55,7 @@ mozilla-openh264
 mullvad-vpn
 neofetch
 neovim
+network-manager-applet
 nodejs
 openconnect
 openh264
@@ -65,6 +69,8 @@ pipewire
 pulseaudio-utils
 qt5ct
 qt6ct
+rpmfusion-free-release
+ruby
 sassc
 shim-aa64
 snap-confine
