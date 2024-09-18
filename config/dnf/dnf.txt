@@ -50,6 +50,7 @@ libicu-devel
 libxkbcommon-devel
 llvm
 ltrace
+mako
 meson
 mozilla-openh264
 mullvad-vpn
