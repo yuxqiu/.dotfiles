@@ -1,44 +1,25 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 20, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "height": 20,
     "modules-left": [
         "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad"
+        "sway/scratchpad",
+        "sway/mode"
     ],
     "modules-center": [
         "sway/window"
     ],
     "modules-right": [
-        "pulseaudio",
+        "pulseaudio#output",
+        "pulseaudio#input",
         "network",
         "bluetooth",
-        "group/stats",
+        "memory",
+        "cpu",
         "battery",
         "privacy",
         "clock",
         "tray"
     ],
-    "group/stats": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": false,
-        },
-        "modules": [
-            "memory", // group leader, won't be hidden
-            "cpu",
-            "temperature",
-            "backlight",
-            "idle_inhibitor",
-        ]
-    },
-    // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -57,55 +38,21 @@
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "idle_inhibitor": {
-        "start-activated": true,
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": false
-    },
     "tray": {
         "spacing": 10
     },
     "clock": {
-        "format": "{:%H:%M:%S}",
+        "format": " {:%H:%M:%S}",
         "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": " {:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% ",
-        "tooltip": false
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ],
-        "tooltip": false
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
+        "format": " {}%",
         "tooltip": false
     },
     "battery": {
@@ -113,31 +60,38 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format": "{icon} {capacity}%",
+        "format-alt": "{icon}",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
         ],
         "tooltip": false
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": "",
+        "tooltip-format-wifi": "{essid}\t{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr}",
+        "format-disconnected": "",
         "tooltip": true,
-        "on-click-right": "nm-applet",
-        "on-click-middle": "pkill nm-applet"
+        "on-click-middle": "pkill nm-applet",
+        "on-click-right": "nm-applet"
     },
-    "pulseaudio": {
-        "format": "{volume}% {icon}{format_source}",
+    "pulseaudio#output": {
+        "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
@@ -152,10 +106,13 @@
                 ""
             ]
         },
-        "format-source": " Mic ON",
-        "format-source-muted": "",
         "scroll-step": 1,
         "on-click-right": "pavucontrol"
+    },
+    "pulseaudio#input": {
+        "format-source": "",
+        "format-source-muted": "",
+        "format": "{format_source}"
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
@@ -173,16 +130,14 @@
         "transition-duration": 250
     },
     "bluetooth": {
-    	"format": " {status}",
-    	"format-connected": " {status}",
-    	"format-connected-battery": " {status}",
-        "format-disabled": "",
-    	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "$HOME/.config/waybar/bluetooth.sh",
+        "format": "",
+        "format-off": "",
+        "format-connected": " {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n{num_connections} connected\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
         "on-click-middle": "pkill blueman-applet",
-        "on-click-right": "blueman-applet",
+        "on-click-right": "blueman-applet"
     }
 }
