@@ -299,11 +299,14 @@ user_pref("pdfjs.sidebarViewOnLoad", 2);
 // PREF: restore "View image info" on right-click
 user_pref("browser.menu.showViewImageInfo", true);
 
-// PERF: disable DNT
+// PREF: disable DNT
 // https://wiki.archlinux.org/title/Firefox/Privacy#Enable_%22Do_Not_Track%22_header
 user_pref("privacy.donottrackheader.enabled", false);
 
-// ===================From BetterFox======================
+// PREF: hide toolbar shown after pressing Alt
+user_pref("ui.key.menuAccessKeyFocuses", false);
+
+// ===================From BetterFox Start======================
 
 /****************************************************************************
  * SECTION: MEDIA CACHE                                                     *
@@ -392,4 +395,14 @@ user_pref("browser.tabs.closeWindowWithLastTab", false);
 // PREF: prevent alt key from opening menu
 user_pref("ui.key.menuAccessKeyFocuse", false);
 
-// ===================From BetterFox======================
+// ===================From BetterFox End======================
+
+// Custom Themes
+// https://github.com/vinceliuice/WhiteSur-firefox-theme
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("browser.tabs.drawInTitlebar", true);
+user_pref("browser.uidensity", 0);
+user_pref("layers.acceleration.force-enabled", true);
+user_pref("mozilla.widget.use-argb-visuals", true);
+user_pref("widget.gtk.rounded-bottom-corners.enabled", true);
+user_pref("svg.context-properties.content.enabled", true);
