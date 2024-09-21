@@ -14,7 +14,6 @@ docker-buildx-plugin
 docker-ce
 docker-ce-cli
 docker-compose-plugin
-dolphin
 earlyoom
 fcitx5
 fcitx5-chinese-addons
@@ -73,6 +72,8 @@ qt6ct
 rpmfusion-free-release
 ruby
 sassc
+sddm
+sddm-wayland-sway
 shim-aa64
 snap-confine
 snapd
@@ -94,6 +95,7 @@ waybar
 wofi
 xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
+xdg-user-dirs
 xev
 xlsclients
 zsh
