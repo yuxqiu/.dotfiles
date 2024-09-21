@@ -3,12 +3,12 @@ com.github.PintaProject.Pinta
 com.github.johnfactotum.Foliate
 com.github.tchx84.Flatseal
 com.github.tenderowl.frog
-com.logseq.Logseq
 io.github.seadve.Kooha
 md.obsidian.Obsidian
 org.gnome.Calculator
 org.gnome.FileRoller
 org.gnome.Loupe
+org.kde.dolphin
 org.libreoffice.LibreOffice
 org.localsend.localsend_app
 org.videolan.VLC
