@@ -44,8 +44,7 @@
     - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366).
 8. SDDM
     - Use [catppuccin/sddm](https://github.com/catppuccin/sddm) theme.
-    - Follow the [Arch SDDM guide](https://wiki.archlinux.org/title/SDDM) to setup SDDM Autologin and Theme.
-    - Enable sddm using `systemctl enable sddm`.
+    - Follow the [Arch SDDM guide](https://wiki.archlinux.org/title/SDDM) to setup SDDM Theme.
 
 ### DoH
 
