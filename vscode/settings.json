@@ -104,6 +104,7 @@
     ],
     "clangd.checkUpdates": false,
 
+    "clang-format.style": "Webkit",
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
