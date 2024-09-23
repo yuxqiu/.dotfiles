@@ -45,6 +45,9 @@
 8. SDDM
     - Use [catppuccin/sddm](https://github.com/catppuccin/sddm) theme.
     - Follow the [Arch SDDM guide](https://wiki.archlinux.org/title/SDDM) to setup SDDM Theme.
+9. Custom Desktop File
+    - Use `desktop-file-install` to install `desktop` file
+    - Use `xdg-mime` to set default app
 
 ### DoH
 
