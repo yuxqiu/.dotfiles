@@ -48,6 +48,8 @@
 9. Custom Desktop File
     - Use `desktop-file-install` to install `desktop` file
     - Use `xdg-mime` to set default app
+10. bluetooth
+    - [Connect LogiTech K380 keyboard via `bluetoothctl`](https://unix.stackexchange.com/questions/590221/pairing-logitech-k380-in-ubuntu-20-04)
 
 ### DoH
 
