@@ -193,13 +193,6 @@
 
     "rust-analyzer.rustc.source": "discover",
 
-    // vscode-animation
-    "animations.Enabled": true,
-    "animations.Install-Method": "Apc Customize UI++",
-    "apc.imports": [
-        "file://${userHome}/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js"
-    ],
-
     // Minimalistic
     "window.commandCenter": false,
     "window.titleBarStyle": "custom",  // use this on Linux because I don't want to use native menu

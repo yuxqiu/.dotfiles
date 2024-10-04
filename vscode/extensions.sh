@@ -2,7 +2,6 @@ code --install-extension albert.tabout
 code --install-extension antfu.icons-carbon
 code --install-extension bierner.emojisense
 code --install-extension bierner.markdown-mermaid
-code --install-extension brandonkirbyson.vscode-animations
 code --install-extension cschlosser.doxdocgen
 code --install-extension dbankier.vscode-quick-select
 code --install-extension drcika.apc-extension
@@ -26,6 +25,7 @@ code --install-extension ms-vscode-remote.remote-ssh-edit
 code --install-extension ms-vscode.cmake-tools
 code --install-extension ms-vscode.hexeditor
 code --install-extension ms-vscode.remote-explorer
+code --install-extension ms-vsliveshare.vsliveshare
 code --install-extension mshr-h.veriloghdl
 code --install-extension nmsmith89.incrementor
 code --install-extension nvarner.typst-lsp
