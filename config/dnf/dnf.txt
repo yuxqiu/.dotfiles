@@ -5,6 +5,7 @@ blueman
 brightnessctl
 clang
 clang-tools-extra
+clipman
 cmake
 code
 containerd.io
@@ -37,7 +38,7 @@ gstreamer1-plugin-openh264
 harfbuzz-devel
 hyperfine
 inkscape
-java-17-openjdk-devel
+java-21-openjdk
 libXcursor-devel
 libXi-devel
 libXinerama-devel
@@ -52,7 +53,6 @@ ltrace
 mako
 meson
 mozilla-openh264
-mullvad-vpn
 neofetch
 neovim
 network-manager-applet
@@ -64,7 +64,6 @@ opensnitch-ui
 openssl-devel
 pandoc
 pavucontrol
-pdftk-java
 pipewire
 pulseaudio-utils
 qt5ct
