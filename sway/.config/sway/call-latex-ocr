@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+set -u
+set -o pipefail
+set -x
+
+grim -g "$(slurp)" - | ~/.config/sway/latex-ocr | wl-copy
+notify-send "Texify: completed"

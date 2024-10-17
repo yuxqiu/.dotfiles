@@ -199,6 +199,9 @@ include ./inputs
     # Take screenshot
     bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
     bindsym $mod+shift+p exec grim - | wl-copy
+
+    # Latexify the equations
+    bindsym $mod+m exec ~/.config/sway/call-latex-ocr
 #
 # Scratchpad:
 #
