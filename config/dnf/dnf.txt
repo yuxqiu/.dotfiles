@@ -2,6 +2,7 @@ NetworkManager-tui
 alacritty
 appimagelauncher
 blueman
+bottom
 brightnessctl
 clang
 clang-tools-extra
@@ -84,6 +85,7 @@ strace
 sway
 swaylock-effects
 tealdeer
+telnet
 texlive-latexindent
 texlive-synctex
 tiny-dfr
