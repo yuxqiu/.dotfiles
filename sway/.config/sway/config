@@ -70,7 +70,7 @@ output eDP-1 scale 1.6
 #
 # swaylock-effects is used.
 exec swayidle -w \
-         before-sleep 'swaylock -f -c 000000 --clock --indicator --color 232332'
+         before-sleep 'swaylock -f -c 000000 --color 232332'
 
 ### Input configuration
 #
