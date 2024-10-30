@@ -27,7 +27,6 @@
     "github.gitAuthentication": false,
     "window.restoreWindows": "none",
     "keyboard.dispatch": "keyCode",
-    "extensions.autoUpdate": false,
 
     // Terminal
     "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
@@ -66,6 +65,7 @@
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
     "settingsSync.keybindingsPerPlatform": false,
     "npm.fetchOnlinePackageInfo": false,
+    "extensions.autoUpdate": false,
 
     // git
     "git.openRepositoryInParentFolders": "never",

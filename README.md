@@ -74,9 +74,6 @@
         - no IME support under wayland: [issue](https://github.com/microsoft/vscode/issues/167757)
     - `Obsidian`
         - When running on wayland, IME does not work. Passing `enable-wayland-ime` does not work -> Run on XWayland
-    - `sway`
-        - IME popup support: [background](https://wiki.archlinux.org/title/Fcitx5#Sway) and [pr](https://github.com/swaywm/sway/pull/7226) (merged, but not released)
-        - ICC profile support: [pr](https://github.com/swaywm/sway/issues/1486)(merged, but not released)
     - `NetworkManager`
         - no way to randomize hostname: [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/584)
     - `systemd-resolved`
