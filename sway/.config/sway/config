@@ -271,4 +271,7 @@ exec --no-startup-id opensnitch-ui
 exec wl-paste -t text --watch clipman store --max-items=60 --histpath="~/.local/share/clipman.json"
 bindsym $mod+v exec clipman pick --tool="wofi" --max-items=30 --histpath="~/.local/share/clipman.json"
 
+# auth agent: polkit gui
+exec /usr/libexec/polkit-mate-authentication-agent-1
+
 include /etc/sway/config.d/*
