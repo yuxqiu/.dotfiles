@@ -1,8 +1,13 @@
-#!/bin/bash
+#!/bin/zsh
+
+source ~/.zshrc
+
 set -e
 set -u
 set -o pipefail
 set -x
 
-grim -g "$(slurp)" - | ~/.config/sway/latex-ocr | wl-copy
+pyact pwd
+notify-send "Texify: started"
+grim -g "$(slurp)" - | python ~/.config/sway/latex-ocr.py | wl-copy
 notify-send "Texify: completed"
