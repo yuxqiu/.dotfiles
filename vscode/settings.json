@@ -40,7 +40,7 @@
     "workbench.list.smoothScrolling": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.editorAssociations": {
-        "*.pdf": "latex-workshop-pdf-hook"
+        "*.pdf": "pdf.preview"
     },
     "workbench.startupEditor": "none",
     "workbench.colorTheme": "One Dark Pro",

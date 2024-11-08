@@ -306,6 +306,9 @@ user_pref("privacy.donottrackheader.enabled", false);
 // PREF: hide toolbar shown after pressing Alt
 user_pref("ui.key.menuAccessKeyFocuses", false);
 
+// PREF: disable accessibility
+user_pref("accessibility.force_disabled", 1);
+
 // ===================From BetterFox Start======================
 
 /****************************************************************************
