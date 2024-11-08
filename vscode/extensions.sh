@@ -6,7 +6,7 @@ code --install-extension cschlosser.doxdocgen
 code --install-extension dbankier.vscode-quick-select
 code --install-extension drcika.apc-extension
 code --install-extension editorconfig.editorconfig
-code --install-extension geforcelegend.vscode-glsl
+code --install-extension foam.foam-vscode
 code --install-extension james-yu.latex-workshop
 code --install-extension llvm-vs-code-extensions.vscode-clangd
 code --install-extension ms-azuretools.vscode-docker
@@ -26,13 +26,14 @@ code --install-extension ms-vscode.cmake-tools
 code --install-extension ms-vscode.hexeditor
 code --install-extension ms-vscode.remote-explorer
 code --install-extension ms-vsliveshare.vsliveshare
-code --install-extension mshr-h.veriloghdl
 code --install-extension nmsmith89.incrementor
 code --install-extension nvarner.typst-lsp
 code --install-extension redhat.java
 code --install-extension redhat.vscode-yaml
 code --install-extension remisa.shellman
 code --install-extension rust-lang.rust-analyzer
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension tomoki1207.pdf
 code --install-extension twxs.cmake
 code --install-extension usernamehw.errorlens
 code --install-extension usernamehw.find-jump
