@@ -33,7 +33,6 @@ code --install-extension redhat.vscode-yaml
 code --install-extension remisa.shellman
 code --install-extension rust-lang.rust-analyzer
 code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension tomoki1207.pdf
 code --install-extension twxs.cmake
 code --install-extension usernamehw.errorlens
 code --install-extension usernamehw.find-jump
