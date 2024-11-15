@@ -40,7 +40,7 @@
     "workbench.list.smoothScrolling": true,
     "workbench.iconTheme": "vscode-icons",
     "workbench.editorAssociations": {
-        "*.pdf": "pdf.preview"
+        "*.pdf": "latex-workshop-pdf-hook"
     },
     "workbench.startupEditor": "none",
     "workbench.colorTheme": "One Dark Pro",
@@ -192,6 +192,50 @@
     },
 
     "rust-analyzer.rustc.source": "discover",
+
+    // c-spell
+    "cSpell.enabledLanguageIds": [
+        "asciidoc",
+        "c",
+        "cpp",
+        "csharp",
+        "css",
+        "elixir",
+        "erlang",
+        "git-commit",
+        "go",
+        "graphql",
+        "handlebars",
+        "haskell",
+        "html",
+        "jade",
+        "java",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "jupyter",
+        "latex",
+        "less",
+        "markdown",
+        "php",
+        "plaintext",
+        "python",
+        "pug",
+        "restructuredtext",
+        "rust",
+        "scala",
+        "scss",
+        "scminput",
+        "swift",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "yaml",
+        "yml",
+        "typst"
+    ],
 
     // Minimalistic
     "window.commandCenter": false,

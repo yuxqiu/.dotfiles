@@ -26,8 +26,8 @@ code --install-extension ms-vscode.cmake-tools
 code --install-extension ms-vscode.hexeditor
 code --install-extension ms-vscode.remote-explorer
 code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension myriad-dreamin.tinymist
 code --install-extension nmsmith89.incrementor
-code --install-extension nvarner.typst-lsp
 code --install-extension redhat.java
 code --install-extension redhat.vscode-yaml
 code --install-extension remisa.shellman
