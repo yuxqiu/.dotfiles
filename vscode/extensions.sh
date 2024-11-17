@@ -1,10 +1,10 @@
 code --install-extension albert.tabout
 code --install-extension antfu.icons-carbon
+code --install-extension be5invis.vscode-custom-css
 code --install-extension bierner.emojisense
 code --install-extension bierner.markdown-mermaid
 code --install-extension cschlosser.doxdocgen
 code --install-extension dbankier.vscode-quick-select
-code --install-extension drcika.apc-extension
 code --install-extension editorconfig.editorconfig
 code --install-extension foam.foam-vscode
 code --install-extension james-yu.latex-workshop

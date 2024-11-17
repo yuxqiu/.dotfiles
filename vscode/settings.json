@@ -14,7 +14,6 @@
     "editor.linkedEditing": true,
     "editor.suggest.snippetsPreventQuickSuggestions": false, // enable intellisense after selecting autocomplete
     "editor.suggest.localityBonus": true,
-    "editor.stickyScroll.enabled": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.suggestSelection": "recentlyUsed",
     "editor.renderLineHighlight": "none",
@@ -46,7 +45,6 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.editor.labelFormat": "medium",
     "workbench.tips.enabled": false,
-    "workbench.tree.enableStickyScroll": true,
     "workbench.productIconTheme": "icons-carbon",
     "workbench.tree.renderIndentGuides": "none",
 
@@ -249,5 +247,10 @@
     "vsicons.presets.hideExplorerArrows": true,
     "editor.inlineSuggest.enabled": true,
     "workbench.activityBar.location": "top",
-    "apc.menubar.compact": true,
+    "workbench.tree.enableStickyScroll": false,
+    "editor.stickyScroll.enabled": false,
+    "vscode_custom_css.imports": [
+        "file:///home/yuxqiu/vscode.css"
+    ],
+    "vscode_custom_css.statusbar": false,
 }
