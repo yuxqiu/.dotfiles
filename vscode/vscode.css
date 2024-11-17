@@ -92,3 +92,37 @@
 .titlebar-right > * {
     display: none !important;
 }
+
+/* https://github.com/be5invis/vscode-custom-css/discussions/197 */
+/* make hovered non-active tabs' backgrounds get slightly lighter on hover. */
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab:hover,
+.monaco-workbench .part.editor > .content .editor-group-container.active > .title .tabs-container > .tab:hover {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab:first-child {
+    border-top-left-radius: 0;
+}
+
+/* actually make the selected tab's background different than others. */
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab.active {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* make hovered active tab's background get slightly lighter on hover. */
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab.active:hover,
+.monaco-workbench .part.editor > .content .editor-group-container.active > .title .tabs-container > .tab.active:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ensure that a selected tab's bottom-border stays the same color when we hover
+ * on it (it was going from yellow accent color to gray, super ugly).
+ */
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab.active.tab-border-bottom > .tab-border-bottom-container {
+    background-color: var(--tab-border-bottom-color) !important;
+}
