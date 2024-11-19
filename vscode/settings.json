@@ -189,8 +189,6 @@
         "editor.defaultFormatter": "redhat.java"
     },
 
-    "rust-analyzer.rustc.source": "discover",
-
     // c-spell
     "cSpell.enabledLanguageIds": [
         "asciidoc",
