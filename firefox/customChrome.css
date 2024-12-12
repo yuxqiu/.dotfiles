@@ -1,0 +1,4 @@
+/* Add your own custom styles here */
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+    display: none !important;
+}
