@@ -398,6 +398,11 @@ user_pref("browser.tabs.closeWindowWithLastTab", false);
 // PREF: prevent alt key from opening menu
 user_pref("ui.key.menuAccessKeyFocuse", false);
 
+// PREF: Let's Encrypt starts to drop OCSP Support
+// Also, there are privacy concerns regarding OCSP
+user_pref("security.OCSP.enabled", 0);
+user_pref("security.OCSP.require", false);
+
 // ===================From BetterFox End======================
 
 // Custom Themes
