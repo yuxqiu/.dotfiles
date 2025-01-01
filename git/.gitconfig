@@ -21,3 +21,4 @@
 	fame = !python -m gitfame
 	info = !onefetch
     dft = "!f() { GIT_EXTERNAL_DIFF=difft git diff $@; }; f"
+    uncommit = !git reset --soft HEAD^ && git restore --staged .
