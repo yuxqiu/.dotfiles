@@ -159,6 +159,15 @@ user_pref("privacy.cpd.cookies", false);
  * which will display a blank value, and are not guaranteed to work ***/
 user_pref("privacy.sanitize.timeSpan", 0);
 
+user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
+
+/* 4501: enable RFP
+ * [NOTE] pbmode applies if true and the original pref is false
+ * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a canvas site exception via the urlbar.
+ * RFP also has a few side effects: mainly that timezone is GMT, and websites will prefer light theme ***/
+user_pref("privacy.resistFingerprinting", true); // [FF41+]
+// user_pref("privacy.resistFingerprinting.pbmode", true); // [FF114+]
+
 /* 4504: enable RFP letterboxing [FF67+]
  * Dynamically resizes the inner window by applying margins in stepped ranges [2]
  * If you use the dimension pref, then it will only apply those resolutions.
@@ -168,8 +177,8 @@ user_pref("privacy.sanitize.timeSpan", 0);
  * [WARNING] DO NOT USE: the dimension pref is only meant for testing
  * [1] https://bugzilla.mozilla.org/1407366
  * [2] https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32 ***/
-user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.resistFingerprinting.letterboxing", false);
+
 /* 4520: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
 user_pref("webgl.disabled", false);
@@ -248,9 +257,11 @@ user_pref("dom.battery.enabled", false);
 
 // disable more telemetry
 user_pref("toolkit.telemetry.cachedClientID", "");
+user_pref("toolkit.telemetry.cachedProfileGroupID", "");
 user_pref("toolkit.telemetry.prompted", 2);
 user_pref("toolkit.telemetry.rejected", true);
 user_pref("toolkit.telemetry.unifiedIsOptIn", false);
+user_pref("toolkit.telemetry.pioneer-new-studies-available", false);
 
 // hide "More from Mozilla" in Settings
 user_pref("browser.preferences.moreFromMozilla", false);
