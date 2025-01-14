@@ -72,8 +72,6 @@
         - no individual window sharing support: [issue](https://github.com/emersion/xdg-desktop-portal-wlr/issues/107)
     - `vscode`
         - no IME support under wayland: [issue](https://github.com/microsoft/vscode/issues/167757)
-    - `Obsidian`
-        - When running on wayland, IME does not work. Passing `enable-wayland-ime` does not work -> Run on XWayland
     - `NetworkManager`
         - no way to randomize hostname: [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/584)
     - `systemd-resolved`
