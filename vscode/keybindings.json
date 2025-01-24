@@ -274,4 +274,9 @@
         "command": "-editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
     },
+    {
+        "key": "ctrl+shift+.",
+        "command": "arena.promptToDiff",
+        "when": "editorTextFocus"
+    }
 ]

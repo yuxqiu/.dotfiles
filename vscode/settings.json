@@ -28,6 +28,7 @@
     "keyboard.dispatch": "keyCode",
     "git.openRepositoryInParentFolders": "always",
     "git.blame.statusBarItem.enabled": true,
+    "workbench.colorTheme": "One Dark Pro Darker",
 
     // Terminal
     "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
@@ -39,12 +40,10 @@
 
     // Workbench
     "workbench.list.smoothScrolling": true,
-    "workbench.iconTheme": "vscode-icons",
     "workbench.editorAssociations": {
         "*.pdf": "latex-workshop-pdf-hook"
     },
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "One Dark Pro",
     "workbench.editor.labelFormat": "medium",
     "workbench.tips.enabled": false,
     "workbench.productIconTheme": "icons-carbon",
@@ -182,6 +181,7 @@
 
     "[typst]": {
         "editor.wordWrap": "on",
+        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
     },
 
     "[java]": {
@@ -232,22 +232,24 @@
         "typst"
     ],
 
+    // Copilot Arena
+    "arena.codePrivacySettings": "Private",
+    "arena.enableTabAutocomplete": false,
+
     // Minimalistic
     "window.commandCenter": false,
-    "window.titleBarStyle": "custom",  // use this on Linux because I don't want to use native menu
-    "breadcrumbs.enabled": false,
+    "window.titleBarStyle": "custom",
     "window.menuBarVisibility": "hidden",
     "workbench.editor.enablePreview": false,
     "workbench.layoutControl.enabled": false,
     "explorer.compactFolders": false,
     "explorer.autoReveal": "focusNoScroll",
-    "vsicons.presets.hideExplorerArrows": true,
     "editor.inlineSuggest.enabled": true,
-    "workbench.activityBar.location": "top",
     "workbench.tree.enableStickyScroll": false,
     "editor.stickyScroll.enabled": false,
     "vscode_custom_css.imports": [
         "file:///home/yuxqiu/vscode.css"
     ],
     "vscode_custom_css.statusbar": false,
+    "workbench.activityBar.location": "top",
 }
