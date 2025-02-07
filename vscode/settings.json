@@ -60,7 +60,6 @@
     "workbench.cloudChanges.continueOn": "off",
     "redhat.telemetry.enabled": false,
 	"update.showReleaseNotes": false,
-    "vsicons.dontShowNewVersionMessage": true,
 	"workbench.welcomePage.walkthroughs.openOnInstall": false,
     "settingsSync.keybindingsPerPlatform": false,
     "npm.fetchOnlinePackageInfo": false,
@@ -68,6 +67,7 @@
     "git.ignoreLegacyWarning": true,
     "git.confirmSync": false,
     "git.suggestSmartCommit": false,
+    "typescript.disableAutomaticTypeAcquisition": true,
 
     // notebook
     "notebook.lineNumbers": "on",
@@ -235,6 +235,9 @@
     // Copilot Arena
     "arena.codePrivacySettings": "Private",
     "arena.enableTabAutocomplete": false,
+
+    // Solidity
+    "solidity.telemetry": false,
 
     // Minimalistic
     "window.commandCenter": false,

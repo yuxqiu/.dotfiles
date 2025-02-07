@@ -263,6 +263,16 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
 
+    // Find => Jump
+    {
+        "key": "ctrl+d",
+        "command": "findJump.activate"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "-findJump.activate"
+    },
+
     // For Linux
     {
         "key": "shift+alt+f",
@@ -278,5 +288,5 @@
         "key": "ctrl+shift+.",
         "command": "arena.promptToDiff",
         "when": "editorTextFocus"
-    }
+    },
 ]
