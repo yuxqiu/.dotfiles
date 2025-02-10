@@ -188,6 +188,10 @@
         "editor.defaultFormatter": "redhat.java"
     },
 
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+
     // c-spell
     "cSpell.enabledLanguageIds": [
         "asciidoc",
@@ -235,9 +239,6 @@
     // Copilot Arena
     "arena.codePrivacySettings": "Private",
     "arena.enableTabAutocomplete": false,
-
-    // Solidity
-    "solidity.telemetry": false,
 
     // Minimalistic
     "window.commandCenter": false,
