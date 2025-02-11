@@ -2,14 +2,14 @@ com.github.IsmaelMartinez.teams_for_linux
 com.github.PintaProject.Pinta
 com.github.johnfactotum.Foliate
 com.github.tchx84.Flatseal
-com.github.tenderowl.frog
 io.github.seadve.Kooha
 md.obsidian.Obsidian
+net.hovancik.Stretchly
 org.gnome.Calculator
 org.gnome.FileRoller
-org.gnome.Loupe
 org.kde.dolphin
 org.libreoffice.LibreOffice
 org.localsend.localsend_app
 org.videolan.VLC
+org.xfce.ristretto
 xyz.armcord.ArmCord
