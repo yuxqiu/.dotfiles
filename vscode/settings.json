@@ -14,7 +14,7 @@
     "editor.linkedEditing": true,
     "editor.suggest.snippetsPreventQuickSuggestions": false, // enable intellisense after selecting autocomplete
     "editor.suggest.localityBonus": true,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.ignoreTrimWhitespace": true,
     "editor.suggestSelection": "recentlyUsed",
     "editor.renderLineHighlight": "none",
     "editor.matchBrackets": "never",
@@ -183,12 +183,19 @@
         "editor.wordWrap": "on",
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
     },
+    "[typst-code]": {
+        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+    },
 
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
 
     "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+
+    "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
 
