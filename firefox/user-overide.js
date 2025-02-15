@@ -70,6 +70,13 @@ user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
  * [SETUP-CHROME] Override this if you trust and use a privacy respecting search engine ***/
 user_pref("keyword.enabled", true);
 
+/*** [SECTION 1000]: DISK AVOIDANCE ***/
+user_pref("_user.js.parrot", "1000 syntax error: the parrot's gone to meet 'is maker!");
+/* 1001: disable disk cache
+ * [NOTE] We also clear cache on exit (2811)
+ * [SETUP-CHROME] If you think disk cache helps perf, then feel free to override this ***/
+user_pref("browser.cache.disk.enable", true);
+
 /* 1006: disable favicons in shortcuts
  * URL shortcuts use a cached randomly named .ico file which is stored in your
  * profile/shortcutCache directory. The .ico remains after the shortcut is deleted
@@ -83,14 +90,10 @@ user_pref("browser.shell.shortcutFavicons", true);
    [1] https://feeding.cloud.geek.nz/posts/tweaking-referrer-for-privacy-in-firefox/
 ***/
 user_pref("_user.js.parrot", "1600 syntax error: the parrot rests in peace!");
-/* 1601: control when to send a cross-origin referer
- * 0=always (default), 1=only if base domains match, 2=only if hosts match
- * [SETUP-WEB] Breakage: older modems/routers and some sites e.g banks, vimeo, icloud, instagram
- * If "2" is too strict, then override to "0" and use Smart Referer extension (Strict mode + add exceptions) ***/
-user_pref("network.http.referer.XOriginPolicy", 0);
+
 /* 1602: control the amount of cross-origin information to send [FF52+]
  * 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port ***/
-user_pref("network.http.referer.XOriginTrimmingPolicy", 0);
+user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
 
 /*** [SECTION 2000]: PLUGINS / MEDIA / WEBRTC ***/
 user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
@@ -117,7 +120,7 @@ user_pref("extensions.autoDisableScopes", 15); // [DEFAULT: 15]
 user_pref("extensions.postDownloadThirdPartyPrompt", false);
 /* 2662: disable webextension restrictions on certain mozilla domains (you also need 4503) [FF60+]
  * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988 ***/
-   // user_pref("extensions.webextensions.restrictedDomains", "");
+// user_pref("extensions.webextensions.restrictedDomains", "");
 
 /*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
 user_pref("_user.js.parrot", "2800 syntax error: the parrot's bleedin' demised!");
@@ -148,10 +151,10 @@ user_pref("privacy.cpd.history", true);  // [DEFAULT: true]
 user_pref("privacy.cpd.sessions", true); // [DEFAULT: true]
 user_pref("privacy.cpd.offlineApps", false); // [DEFAULT: false]
 user_pref("privacy.cpd.cookies", false);
-   // user_pref("privacy.cpd.downloads", true); // not used, see note above
-   // user_pref("privacy.cpd.openWindows", false); // Session Restore
-   // user_pref("privacy.cpd.passwords", false);
-   // user_pref("privacy.cpd.siteSettings", false);
+// user_pref("privacy.cpd.downloads", true); // not used, see note above
+// user_pref("privacy.cpd.openWindows", false); // Session Restore
+// user_pref("privacy.cpd.passwords", false);
+// user_pref("privacy.cpd.siteSettings", false);
 /* 2822: reset default "Time range to clear" for "Clear Recent History" (2820)
  * Firefox remembers your last choice. This will reset the value when you start Firefox
  * 0=everything, 1=last hour, 2=last two hours, 3=last four hours, 4=today
@@ -166,18 +169,17 @@ user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs")
  * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a canvas site exception via the urlbar.
  * RFP also has a few side effects: mainly that timezone is GMT, and websites will prefer light theme ***/
 user_pref("privacy.resistFingerprinting", true); // [FF41+]
-// user_pref("privacy.resistFingerprinting.pbmode", true); // [FF114+]
 
-/* 4504: enable RFP letterboxing [FF67+]
- * Dynamically resizes the inner window by applying margins in stepped ranges [2]
- * If you use the dimension pref, then it will only apply those resolutions.
- * The format is "width1xheight1, width2xheight2, ..." (e.g. "800x600, 1000x1000")
- * [SETUP-WEB] This is independent of RFP (4501). If you're not using RFP, or you are but
- * dislike the margins, then flip this pref, keeping in mind that it is effectively fingerprintable
- * [WARNING] DO NOT USE: the dimension pref is only meant for testing
- * [1] https://bugzilla.mozilla.org/1407366
- * [2] https://hg.mozilla.org/mozilla-central/rev/6d2d7856e468#l2.32 ***/
-user_pref("privacy.resistFingerprinting.letterboxing", false);
+ /* 4504: enable letterboxing [FF67+]
+  * Dynamically resizes the inner window by applying margins in stepped ranges [2]
+  * If you use the dimension pref, then it will only apply those resolutions.
+  * The format is "width1xheight1, width2xheight2, ..." (e.g. "800x600, 1000x1000")
+  * [SETUP-WEB] This is independent of RFP (4501). If you're not using RFP, or you are but
+  * dislike the margins, then flip this pref, keeping in mind that it is effectively fingerprintable
+  * [WARNING] DO NOT USE: the dimension pref is only meant for testing
+  * [1] https://bugzilla.mozilla.org/1407366
+  * [2] https://hg.mozilla.org/mozilla-central/rev/7211cb4f58ff#l5.13 ***/
+user_pref("privacy.resistFingerprinting.letterboxing", true); // [HIDDEN PREF]
 
 /* 4520: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
@@ -216,6 +218,7 @@ user_pref("identity.sendtabpromo.url", "");
 
 // disable feature recommendation
 user_pref("browser.newtabpage.activity-stream.feeds.asrouterfeed", false);
+user_pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", false);
 
 // disable experiments or studies
 user_pref("experiments.activeExperiment", false);
@@ -307,18 +310,33 @@ user_pref("browser.urlbar.unitConversion.enabled", true);
 // -1=disabled (default)
 user_pref("pdfjs.sidebarViewOnLoad", 2);
 
-// PREF: restore "View image info" on right-click
+// restore "View image info" on right-click
 user_pref("browser.menu.showViewImageInfo", true);
 
-// PREF: disable DNT
-// https://wiki.archlinux.org/title/Firefox/Privacy#Enable_%22Do_Not_Track%22_header
-user_pref("privacy.donottrackheader.enabled", false);
-
-// PREF: hide toolbar shown after pressing Alt
+// hide toolbar shown after pressing Alt
 user_pref("ui.key.menuAccessKeyFocuses", false);
 
-// PREF: disable accessibility
+// disable accessibility
 user_pref("accessibility.force_disabled", 1);
+
+// don't close browser when last tab is closed
+user_pref("browser.tabs.closeWindowWithLastTab", false);
+
+// Let's Encrypt starts to drop OCSP Support
+// Also, there are privacy concerns regarding OCSP
+user_pref("security.OCSP.enabled", 0);
+user_pref("security.OCSP.require", false);
+
+// disable region updates
+user_pref("browser.region.network.url", "");
+user_pref("browser.region.update.enabled", false);
+
+// disable fetch of updates
+user_pref("browser.safebrowsing.provider.google4.gethashURL", "");
+user_pref("browser.safebrowsing.provider.google4.updateURL", "");
+user_pref("browser.safebrowsing.provider.google.gethashURL", "");
+user_pref("browser.safebrowsing.provider.google.updateURL", "");
+user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
 
 // ===================From BetterFox Start======================
 
@@ -403,16 +421,12 @@ user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS
 user_pref("network.dns.echconfig.enabled", true);
 user_pref("network.dns.http3.echconfig.enabled", true);
 
-// PREF: don't close browser when last tab is closed
-user_pref("browser.tabs.closeWindowWithLastTab", false);
+// Prevent Firefox from adding back search engines after you removed them.
+// [NOTE] This does not affect Mozilla's built-in or Web Extension search engines.
+user_pref("browser.search.update", false);
 
-// PREF: prevent alt key from opening menu
-user_pref("ui.key.menuAccessKeyFocuse", false);
-
-// PREF: Let's Encrypt starts to drop OCSP Support
-// Also, there are privacy concerns regarding OCSP
-user_pref("security.OCSP.enabled", 0);
-user_pref("security.OCSP.require", false);
+// PREF: purge session icon in Private Browsing windows
+user_pref("browser.privatebrowsing.resetPBM.enabled", true);
 
 // ===================From BetterFox End======================
 
