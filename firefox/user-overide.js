@@ -332,11 +332,13 @@ user_pref("browser.region.network.url", "");
 user_pref("browser.region.update.enabled", false);
 
 // disable fetch of updates
+user_pref("browser.safebrowsing.provider.google4.advisoryURL", "");
+user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
 user_pref("browser.safebrowsing.provider.google4.gethashURL", "");
 user_pref("browser.safebrowsing.provider.google4.updateURL", "");
+user_pref("browser.safebrowsing.provider.google.advisoryURL", "");
 user_pref("browser.safebrowsing.provider.google.gethashURL", "");
 user_pref("browser.safebrowsing.provider.google.updateURL", "");
-user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
 
 // ===================From BetterFox Start======================
 
