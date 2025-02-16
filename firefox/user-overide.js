@@ -83,18 +83,6 @@ user_pref("browser.cache.disk.enable", true);
  * If set to false then the shortcuts use a generic Firefox icon ***/
 user_pref("browser.shell.shortcutFavicons", true);
 
-/*** [SECTION 1600]: HEADERS / REFERERS
-                  full URI: https://example.com:8888/foo/bar.html?id=1234
-     scheme+host+port+path: https://example.com:8888/foo/bar.html
-          scheme+host+port: https://example.com:8888
-   [1] https://feeding.cloud.geek.nz/posts/tweaking-referrer-for-privacy-in-firefox/
-***/
-user_pref("_user.js.parrot", "1600 syntax error: the parrot rests in peace!");
-
-/* 1602: control the amount of cross-origin information to send [FF52+]
- * 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port ***/
-user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
-
 /*** [SECTION 2000]: PLUGINS / MEDIA / WEBRTC ***/
 user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
 /* 2002: force WebRTC inside the proxy [FF70+] ***/
@@ -107,61 +95,7 @@ user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", false);
 // Disable to ensure the stability of WebRTC behind proxy
 user_pref("media.peerconnection.ice.default_address_only", false);
 
-/** EXTENSIONS ***/
-/* 2660: lock down allowed extension directories
- * [SETUP-CHROME] This will break extensions, language packs, themes and any other
- * XPI files which are installed outside of profile and application directories
- * [1] https://mike.kaply.com/2012/02/21/understanding-add-on-scopes/
- * [1] https://archive.is/DYjAM (archived) ***/
-user_pref("extensions.enabledScopes", 5); // [HIDDEN PREF]
-user_pref("extensions.autoDisableScopes", 15); // [DEFAULT: 15]
-/* 2661: disable bypassing 3rd party extension install prompts [FF82+]
- * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1659530,1681331 ***/
-user_pref("extensions.postDownloadThirdPartyPrompt", false);
-/* 2662: disable webextension restrictions on certain mozilla domains (you also need 4503) [FF60+]
- * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988 ***/
-// user_pref("extensions.webextensions.restrictedDomains", "");
-
-/*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
-user_pref("_user.js.parrot", "2800 syntax error: the parrot's bleedin' demised!");
-/* 2810: enable Firefox to clear items on shutdown
- * [SETTING] Privacy & Security>History>Custom Settings>Clear history when Firefox closes | Settings ***/
-user_pref("privacy.sanitize.sanitizeOnShutdown", true);
-
-/** SANITIZE ON SHUTDOWN: RESPECTS "ALLOW" SITE EXCEPTIONS FF103+ ***/
-/* 2815: set "Cookies" and "Site Data" to clear on shutdown (if 2810 is true) [SETUP-CHROME]
- * [NOTE] Exceptions: A "cookie" block permission also controls "offlineApps" (see note below).
- * serviceWorkers require an "Allow" permission. For cross-domain logins, add exceptions for
- * both sites e.g. https://www.youtube.com (site) + https://accounts.google.com (single sign on)
- * [NOTE] "offlineApps": Offline Website Data: localStorage, service worker cache, QuotaManager (IndexedDB, asm-cache)
- * [WARNING] Be selective with what sites you "Allow", as they also disable partitioning (1767271)
- * [SETTING] to add site exceptions: Ctrl+I>Permissions>Cookies>Allow (when on the website in question)
- * [SETTING] to manage site exceptions: Options>Privacy & Security>Permissions>Settings ***/
-user_pref("privacy.clearOnShutdown.cookies", false); // Cookies
-
-/** SANITIZE MANUAL: IGNORES "ALLOW" SITE EXCEPTIONS ***/
-/* 2820: reset default items to clear with Ctrl-Shift-Del [SETUP-CHROME]
- * This dialog can also be accessed from the menu History>Clear Recent History
- * Firefox remembers your last choices. This will reset them when you start Firefox
- * [NOTE] Regardless of what you set "downloads" to, as soon as the dialog
- * for "Clear Recent History" is opened, it is synced to the same as "history" ***/
-user_pref("privacy.cpd.cache", true);    // [DEFAULT: true]
-user_pref("privacy.cpd.formdata", true); // [DEFAULT: true]
-user_pref("privacy.cpd.history", true);  // [DEFAULT: true]
-user_pref("privacy.cpd.sessions", true); // [DEFAULT: true]
-user_pref("privacy.cpd.offlineApps", false); // [DEFAULT: false]
-user_pref("privacy.cpd.cookies", false);
-// user_pref("privacy.cpd.downloads", true); // not used, see note above
-// user_pref("privacy.cpd.openWindows", false); // Session Restore
-// user_pref("privacy.cpd.passwords", false);
-// user_pref("privacy.cpd.siteSettings", false);
-/* 2822: reset default "Time range to clear" for "Clear Recent History" (2820)
- * Firefox remembers your last choice. This will reset the value when you start Firefox
- * 0=everything, 1=last hour, 2=last two hours, 3=last four hours, 4=today
- * [NOTE] Values 5 (last 5 minutes) and 6 (last 24 hours) are not listed in the dropdown,
- * which will display a blank value, and are not guaranteed to work ***/
-user_pref("privacy.sanitize.timeSpan", 0);
-
+/*** [SECTION 4500]: OPTIONAL RFP (resistFingerprinting) ***/
 user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 
 /* 4501: enable RFP
@@ -252,7 +186,7 @@ user_pref("browser.selfsupport.url", "");
 // disable default browser check
 user_pref("browser.shell.checkDefaultBrowser", false);
 
-// disable heath report
+// disable health report
 user_pref("datareporting.healthreport.service.enabled", false);
 
 // disbale battery access
@@ -331,7 +265,7 @@ user_pref("security.OCSP.require", false);
 user_pref("browser.region.network.url", "");
 user_pref("browser.region.update.enabled", false);
 
-// disable fetch of updates
+// disable fetch of safebrowsing updates
 user_pref("browser.safebrowsing.provider.google4.advisoryURL", "");
 user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
 user_pref("browser.safebrowsing.provider.google4.gethashURL", "");
@@ -339,6 +273,9 @@ user_pref("browser.safebrowsing.provider.google4.updateURL", "");
 user_pref("browser.safebrowsing.provider.google.advisoryURL", "");
 user_pref("browser.safebrowsing.provider.google.gethashURL", "");
 user_pref("browser.safebrowsing.provider.google.updateURL", "");
+
+// disable reader mode
+user_pref("reader.parse-on-load.enabled", false);
 
 // ===================From BetterFox Start======================
 
@@ -363,13 +300,6 @@ user_pref("image.mem.decode_bytes_at_a_time", 32768); // default=16384; alt=6553
 /****************************************************************************
  * SECTION: NETWORK                                                         *
 ****************************************************************************/
-
-// PREF: use bigger packets
-// Reduce Firefox's CPU usage by requiring fewer application-to-driver data transfers.
-// However, it does not affect the actual packet sizes transmitted over the network.
-// [1] https://www.mail-archive.com/support-seamonkey@lists.mozilla.org/msg74561.html
-user_pref("network.buffer.cache.size", 262144); // 256 kb; default=32768 (32 kb)
-user_pref("network.buffer.cache.count", 128); // default=24
 
 // PREF: increase the absolute number of HTTP connections
 // [1] https://kb.mozillazine.org/Network.http.max-connections
@@ -402,26 +332,13 @@ user_pref("network.http.pacing.requests.enabled", false);
 // [2] https://www.catchpoint.com/blog/http-transaction-steps
 //user_pref("network.http.connection-retry-timeout", 0); // default=250
 
-// PREF: increase DNS cache
-// [1] https://developer.mozilla.org/en-US/docs/Web/Performance/Understanding_latency
-user_pref("network.dnsCacheEntries", 1000); // default=400
-
 // PREF: adjust DNS expiration time
 // [ABOUT] about:networking#dns
 // [NOTE] These prefs will be ignored by DNS resolver if using DoH/TRR.
-user_pref("network.dnsCacheExpiration", 86400); // keep entries for 1 day; alt=3600 (1 hour)
-//user_pref("network.dnsCacheExpirationGracePeriod", 240); // default=60; cache DNS entries for 4 minutes after they expire
-
-// PREF: the number of threads for DNS
-user_pref("network.dns.max_high_priority_threads", 8); // default=5
-//user_pref("network.dns.max_any_priority_threads", 5); // default=3
+user_pref("network.dnsCacheExpiration", 3600); // keep entries for 1 hour
 
 // PREF: increase TLS token caching
 user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS token caching (fast reconnects)
-
-// PREF: ECH
-user_pref("network.dns.echconfig.enabled", true);
-user_pref("network.dns.http3.echconfig.enabled", true);
 
 // Prevent Firefox from adding back search engines after you removed them.
 // [NOTE] This does not affect Mozilla's built-in or Web Extension search engines.
