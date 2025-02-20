@@ -111,6 +111,3 @@ if(exists("g:vscode"))
     nnoremap zo :call VSCodeNotify('editor.unfold')<CR>
     nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
 endif
-
-" default insert mode
-autocmd BufEnter * startinsert

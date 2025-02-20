@@ -34,6 +34,18 @@
         "when": "editorTextFocus && !editorReadonly"
     },
 
+    // File/Folder creation
+    {
+        "key": "n",
+        "command": "workbench.files.action.createFileFromExplorer",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+    {
+        "key": "shift+n",
+        "command": "workbench.files.action.createFolderFromExplorer",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
+    },
+
     // For Linux
     {
         "key": "shift+alt+f",
