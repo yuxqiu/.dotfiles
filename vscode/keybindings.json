@@ -22,21 +22,9 @@
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
 
-    // Focus on file explorer
-    {
-        "key": "ctrl+e",
-        "command": "workbench.files.action.focusFilesExplorer",
-        "when": "!(explorerViewletVisible && filesExplorerFocus && !inputFocus)"
-    },
-    {
-        "key": "ctrl+e",
-        "command": "workbench.action.focusLastEditorGroup",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
-    },
-
     // Move lines up/down
     {
-    "key": "ctrl+shift+j",
+        "key": "ctrl+shift+j",
         "command": "editor.action.moveLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
     },
@@ -44,23 +32,6 @@
         "key": "ctrl+shift+k",
         "command": "editor.action.moveLinesUpAction",
         "when": "editorTextFocus && !editorReadonly"
-    },
-
-    // Restore ctrl+w
-    {
-        "key": "ctrl+w",
-        "command": "-vscode-neovim.send-cmdline",
-        "when": "neovim.init && neovim.mode == 'cmdline'"
-    },
-    {
-        "key": "ctrl+w",
-        "command": "-vscode-neovim.send",
-        "when": "editorTextFocus && neovim.ctrlKeysNormal.w && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-    },
-    {
-        "key": "ctrl+w",
-        "command": "-vscode-neovim.send",
-        "when": "editorTextFocus && neovim.ctrlKeysInsert.w && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
     },
 
     // For Linux

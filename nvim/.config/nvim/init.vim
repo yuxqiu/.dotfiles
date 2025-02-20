@@ -113,4 +113,4 @@ if(exists("g:vscode"))
 endif
 
 " default insert mode
-autocmd VimEnter * startinsert
+autocmd BufEnter * startinsert
