@@ -77,33 +77,23 @@ nnoremap <c-l> <c-w>l
 noremap H ^
 noremap L $
 
-" Use arrow key to move line up and down
-nnoremap <A-down> :m .+1<CR>==
-nnoremap <A-up> :m .-2<CR>==
-inoremap <A-down> <Esc>:m .+1<CR>==gi
-inoremap <A-up> <Esc>:m .-2<CR>==gi
-vnoremap <A-down> :m '>+1<CR>gv=gv
-vnoremap <A-up> :m '<-2<CR>gv=gv
-
 " Press Y to copy to clipboard
 nnoremap Y "+y
 vnoremap Y "+y
 nnoremap yY ^"+y$
 " }}}
 
-" Plugins ---------------------------------------------------------------- {
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
 call plug#begin()
-Plug 'phaazon/hop.nvim'
-
-Plug 'tpope/vim-surround'
-
-Plug 'bkad/camelcasemotion'
+Plug 'ggandor/leap.nvim'
 call plug#end()
+
+" leap.nvim
+lua require('leap').create_default_mappings()
 
 " comment
 if exists('g:vscode')
@@ -113,24 +103,6 @@ if exists('g:vscode')
  nmap gcc <Plug>VSCodeCommentaryLine
 endif
 
-" hop
-lua <<EOF
-require('hop').setup()
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
-vim.keymap.set('', 'f', function()
-  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false })
-end, {remap=true})
-vim.keymap.set('', 'F', function()
-  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = false })
-end, {remap=true})
-EOF
-
-" camel case motion
-nnoremap <silent> w <Plug>CamelCaseMotion_w
-nnoremap <silent> b <Plug>CamelCaseMotion_b
-nnoremap <silent> e <Plug>CamelCaseMotion_e
-
 " add vscode folding support
 " https://github.com/vscode-neovim/vscode-neovim/issues/58#issuecomment-989481648
 if(exists("g:vscode"))
@@ -139,3 +111,6 @@ if(exists("g:vscode"))
     nnoremap zo :call VSCodeNotify('editor.unfold')<CR>
     nnoremap zO :call VSCodeNotify('editor.unfoldRecursively')<CR>
 endif
+
+" default insert mode
+autocmd VimEnter * startinsert

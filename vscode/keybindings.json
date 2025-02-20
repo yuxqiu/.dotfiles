@@ -22,236 +22,7 @@
         "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
 
-    // Vim-Like Motion
-    {
-        "key": "ctrl+h",
-        "command": "cursorLeft",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "cursorRight",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "cursorDown",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "cursorUp",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+shift+h",
-        "command": "cursorLineStart",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+shift+l",
-        "command": "cursorLineEnd",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+y",
-        "command": "cursorWordAccessibilityLeft",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+u",
-        "command": "cursorWordAccessibilityRight",
-        "when": "editorTextFocus && !suggestWidgetMultipleSuggestions"
-    },
-    {
-        "key": "ctrl+shift+j",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+shift+k",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-
-    // For Quick and Simple Text Select
-    {
-        "key": "ctrl+i '",
-        "command": "extension.selectSingleQuote",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k '",
-        "command": "-extension.selectSingleQuote",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i shift+'",
-        "command": "extension.selectDoubleQuote",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+'",
-        "command": "-extension.selectDoubleQuote",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i ;",
-        "command": "extension.selectEitherQuote",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k ;",
-        "command": "-extension.selectEitherQuote",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i shift+;",
-        "command": "extension.switchQuotes",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+;",
-        "command": "-extension.switchQuotes",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i 9",
-        "command": "extension.selectParenthesis",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+9",
-        "command": "-extension.selectParenthesis",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i 0",
-        "command": "extension.selectParenthesisOuter",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+0",
-        "command": "-extension.selectParenthesisOuter",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i [",
-        "command": "extension.selectSquareBrackets",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k [",
-        "command": "-extension.selectSquareBrackets",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i ]",
-        "command": "extension.selectSquareBracketsOuter",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k ]",
-        "command": "-extension.selectSquareBracketsOuter",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i `",
-        "command": "extension.selectBackTick",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k `",
-        "command": "-extension.selectBackTick",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i shift+]",
-        "command": "extension.selectCurlyBracketsOuter",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+]",
-        "command": "-extension.selectCurlyBracketsOuter",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i shift+[",
-        "command": "extension.selectCurlyBrackets",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+[",
-        "command": "-extension.selectCurlyBrackets",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i shift+,",
-        "command": "extension.selectAngleBrackets",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+,",
-        "command": "-extension.selectAngleBrackets",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+i shift+.",
-        "command": "extension.selectInTag",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+k shift+.",
-        "command": "-extension.selectInTag",
-        "when": "editorFocus"
-    },
-
-    // Vim-like Motion in File Explorer
-    {
-        "key": "n",
-        "command": "workbench.files.action.createFileFromExplorer",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
-    },
-    {
-        "key": "shift+n",
-        "command": "workbench.files.action.createFolderFromExplorer",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
-    },
-    {
-        "key": "d",
-        "command": "deleteFile",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
-    },
-    {
-        "key": "j",
-        "command": "list.focusDown",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
-    },
-    {
-        "key": "k",
-        "command": "list.focusUp",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
-    },
-    {
-        "key": "r",
-        "command": "renameFile",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus",
-    },
-    {
-        "key": "g g",
-        "command": "list.focusFirst",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
-    },
-    {
-        "key": "shift+g",
-        "command": "list.focusLast",
-        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
-    },
-    {
-        "key": "enter",
-        "command": "list.select",
-        "when": "explorerViewletVisible && filesExplorerFocus"
-    },
+    // Focus on file explorer
     {
         "key": "ctrl+e",
         "command": "workbench.files.action.focusFilesExplorer",
@@ -263,14 +34,33 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
 
-    // Find => Jump
+    // Move lines up/down
     {
-        "key": "ctrl+d",
-        "command": "findJump.activate"
+    "key": "ctrl+shift+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
     },
     {
-        "key": "ctrl+;",
-        "command": "-findJump.activate"
+        "key": "ctrl+shift+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+
+    // Restore ctrl+w
+    {
+        "key": "ctrl+w",
+        "command": "-vscode-neovim.send-cmdline",
+        "when": "neovim.init && neovim.mode == 'cmdline'"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.w && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert.w && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
     },
 
     // For Linux
