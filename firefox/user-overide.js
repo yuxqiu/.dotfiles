@@ -77,12 +77,6 @@ user_pref("_user.js.parrot", "1000 syntax error: the parrot's gone to meet 'is m
  * [SETUP-CHROME] If you think disk cache helps perf, then feel free to override this ***/
 user_pref("browser.cache.disk.enable", true);
 
-/* 1006: disable favicons in shortcuts
- * URL shortcuts use a cached randomly named .ico file which is stored in your
- * profile/shortcutCache directory. The .ico remains after the shortcut is deleted
- * If set to false then the shortcuts use a generic Firefox icon ***/
-user_pref("browser.shell.shortcutFavicons", true);
-
 /*** [SECTION 2000]: PLUGINS / MEDIA / WEBRTC ***/
 user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
 /* 2002: force WebRTC inside the proxy [FF70+] ***/
@@ -276,6 +270,17 @@ user_pref("browser.safebrowsing.provider.google.updateURL", "");
 
 // disable reader mode
 user_pref("reader.parse-on-load.enabled", false);
+
+// disable push notification connection
+user_pref("dom.push.connection.enabled", false);
+user_pref("dom.push.serverURL", "");
+
+// disable activity stream
+user_pref("browser.newtabpage.activity-stream.discoverystream.enabled", false)
+
+// disable topsites
+user_pref("browser.topsites.contile.enabled", false);
+user_pref("browser.topsites.contile.endpoint", "");
 
 // ===================From BetterFox Start======================
 
