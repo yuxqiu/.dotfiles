@@ -54,6 +54,7 @@
 ### DoH
 
 1. Install dnscrypt-proxy and follow [README-stow](./README-stow.md) to setup config file.
+    - https://wiki.archlinux.org/title/Dnscrypt-proxy details how to configure dnscrypt-proxy.
 2. Disable and Stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu).
 3. Setup the `network-manager` config by following [README-stow](./README-stow.md).
 4. Restart `NetworkManager` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu) again.
@@ -76,7 +77,6 @@
         - no way to randomize hostname: [issue](https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/584)
     - `systemd-resolved`
         - no DoH support: [issue](https://github.com/systemd/systemd/issues/8639)
-
 
 ### Notes
 
