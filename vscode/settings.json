@@ -184,6 +184,10 @@
         "asvetliakov.vscode-neovim": 1
     },
 
+    // typst
+    "tinymist.formatterMode": "typstyle",
+    "tinymist.formatterIndentSize": 4,
+
     "[typst]": {
         "editor.wordWrap": "on",
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
