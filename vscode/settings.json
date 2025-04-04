@@ -54,6 +54,7 @@
     "workbench.settings.enableNaturalLanguageSearch": false,
     "extensions.ignoreRecommendations": true,
     "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
     "typescript.surveys.enabled": false,
     "update.mode": "none",
     "workbench.cloudChanges.autoResume": "off",
@@ -258,7 +259,6 @@
 
     // Minimalistic
     "window.commandCenter": false,
-    "window.titleBarStyle": "custom",
     "window.menuBarVisibility": "hidden",
     "workbench.editor.enablePreview": false,
     "workbench.layoutControl.enabled": false,
@@ -272,4 +272,5 @@
     ],
     "vscode_custom_css.statusbar": false,
     "workbench.activityBar.location": "top",
+    "chat.commandCenter.enabled": false,
 }
