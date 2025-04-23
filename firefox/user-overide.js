@@ -220,6 +220,7 @@ user_pref("default-browser-agent.enabled", false);
 // PREF: enable helpful features:
 user_pref("browser.urlbar.suggest.calculator", true);
 user_pref("browser.urlbar.unitConversion.enabled", true);
+user_pref("sidebar.expandOnHover", true);
 
 // PREF: PDF sidebar on load [HIDDEN]
 // 2=table of contents (if not available, will default to 1)
