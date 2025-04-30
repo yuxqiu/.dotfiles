@@ -202,6 +202,9 @@ include ./inputs
 
     # Latexify the equations
     bindsym $mod+m exec ~/.config/sway/call-latex-ocr
+
+    # Ask AI
+    bindsym $mod+a exec ~/.local/bin/ai
 #
 # Scratchpad:
 #
