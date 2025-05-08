@@ -1,0 +1,40 @@
+{
+    "globalShortcut": "",
+    "mcpServers": {
+        "Context7": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp@latest"
+            ]
+        },
+        "sequential-thinking": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking"
+            ]
+        },
+        "desktop-commander": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@wonderwhy-er/desktop-commander"
+            ]
+        },
+        "mcp-deepwiki": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "mcp-deepwiki@latest"
+            ]
+        },
+        "fetch": {
+            "command": ".local/bin/uvx",
+            "args": [
+                "mcp-server-fetch"
+            ]
+        }
+    }
+}
