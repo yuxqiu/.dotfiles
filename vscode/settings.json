@@ -175,6 +175,7 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
     },
+    "python.analysis.completeFunctionParens": true,
 
     "cmake.configureOnOpen": true,
     "cmake.showOptionsMovedNotification": false,

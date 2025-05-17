@@ -89,7 +89,7 @@
 
     // Snippets
     {
-        "key": "ctrl+m",
+        "key": "ctrl+m ctrl+m",
         "command": "editor.action.insertSnippet",
         "args": {
             "name": "Insert Inline Math"
@@ -105,7 +105,7 @@
         "when": "editorTextFocus && !editorReadonly && editorLangId == 'latex'"
     },
     {
-        "key": "ctrl+m",
+        "key": "ctrl+m ctrl+m",
         "command": "editor.action.insertSnippet",
         "args": {
             "name": "Insert Inline Math"
@@ -121,7 +121,7 @@
         "when": "editorTextFocus && !editorReadonly && editorLangId == 'typst'"
     },
     {
-        "key": "ctrl+m",
+        "key": "ctrl+m ctrl+m",
         "command": "editor.action.insertSnippet",
         "args": {
             "name": "Insert Inline Math"

@@ -2,13 +2,13 @@ code --install-extension albert.tabout
 code --install-extension antfu.icons-carbon
 code --install-extension asvetliakov.vscode-neovim
 code --install-extension be5invis.vscode-custom-css
-code --install-extension bierner.emojisense
 code --install-extension bierner.markdown-mermaid
 code --install-extension copilot-arena.copilot-arena
 code --install-extension cschlosser.doxdocgen
 code --install-extension editorconfig.editorconfig
 code --install-extension foam.foam-vscode
 code --install-extension gruntfuggly.todo-tree
+code --install-extension hars.cppsnippets
 code --install-extension james-yu.latex-workshop
 code --install-extension juanblanco.solidity
 code --install-extension llvm-vs-code-extensions.vscode-clangd
@@ -34,6 +34,7 @@ code --install-extension nmsmith89.incrementor
 code --install-extension redhat.java
 code --install-extension redhat.vscode-yaml
 code --install-extension remisa.shellman
+code --install-extension robole.markdown-shortcuts
 code --install-extension rust-lang.rust-analyzer
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension tamasfe.even-better-toml
