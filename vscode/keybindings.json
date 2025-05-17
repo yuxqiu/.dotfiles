@@ -86,4 +86,54 @@
         "command": "-editor.action.formatDocument",
         "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
     },
+
+    // Snippets
+    {
+        "key": "ctrl+m",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "name": "Insert Inline Math"
+        },
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'latex'"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "name": "Insert Display Math"
+        },
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'latex'"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "name": "Insert Inline Math"
+        },
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'typst'"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "name": "Insert Display Math"
+        },
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'typst'"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "name": "Insert Inline Math"
+        },
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+    },
+    {
+        "key": "ctrl+shift+m",
+        "command": "editor.action.insertSnippet",
+        "args": {
+            "name": "Insert Display Math"
+        },
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'markdown'"
+    }
 ]
