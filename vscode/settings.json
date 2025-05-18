@@ -12,8 +12,7 @@
     "editor.guides.bracketPairs": true,
     "editor.autoClosingOvertype": "always",
     "editor.linkedEditing": true,
-    "editor.suggest.snippetsPreventQuickSuggestions": false, // enable intellisense after selecting autocomplete
-    "editor.suggest.localityBonus": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
     "diffEditor.ignoreTrimWhitespace": true,
     "editor.suggestSelection": "recentlyUsed",
     "editor.renderLineHighlight": "none",
@@ -73,8 +72,15 @@
     // notebook
     "notebook.lineNumbers": "on",
 
-    // Extensions and Languages
+    // Markdown
     "markdown.extension.list.indentationSize": "inherit",
+    "markdown.extension.print.theme": "dark",
+    "markdown.updateLinksOnFileMove.enabled": "prompt",
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "other": "on"
+        }
+    },
 
     "javascript.inlayHints.parameterNames.enabled": "all",
     "javascript.updateImportsOnFileMove.enabled": "always",
@@ -108,9 +114,6 @@
     "[c]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-
-    "markdown.extension.print.theme": "dark",
-    "markdown.updateLinksOnFileMove.enabled": "prompt",
 
     "latex-workshop.latex.outDir":"%DIR%/latex-build",
     "latex-workshop.latex.recipes": [

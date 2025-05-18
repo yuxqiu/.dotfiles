@@ -38,6 +38,7 @@ code --install-extension robole.markdown-shortcuts
 code --install-extension rust-lang.rust-analyzer
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension tamasfe.even-better-toml
+code --install-extension thomanq.math-snippets
 code --install-extension twxs.cmake
 code --install-extension usernamehw.errorlens
 code --install-extension vadimcn.vscode-lldb
