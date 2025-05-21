@@ -76,11 +76,6 @@
     "markdown.extension.list.indentationSize": "inherit",
     "markdown.extension.print.theme": "dark",
     "markdown.updateLinksOnFileMove.enabled": "prompt",
-    "[markdown]": {
-        "editor.quickSuggestions": {
-            "other": "on"
-        }
-    },
 
     "javascript.inlayHints.parameterNames.enabled": "all",
     "javascript.updateImportsOnFileMove.enabled": "always",
