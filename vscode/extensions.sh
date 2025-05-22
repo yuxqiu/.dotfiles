@@ -10,6 +10,7 @@ code --install-extension foam.foam-vscode
 code --install-extension gruntfuggly.todo-tree
 code --install-extension hars.cppsnippets
 code --install-extension james-yu.latex-workshop
+code --install-extension jasonlhy.hungry-delete
 code --install-extension juanblanco.solidity
 code --install-extension llvm-vs-code-extensions.vscode-clangd
 code --install-extension ms-azuretools.vscode-docker
