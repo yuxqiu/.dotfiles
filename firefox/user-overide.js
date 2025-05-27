@@ -274,6 +274,9 @@ user_pref("browser.topsites.contile.endpoint", "");
 // disable geo location
 user_pref("geo.provider.network.url", "");
 
+// enable link preview
+user_pref("browser.ml.linkPreview.enabled", true);
+
 // ===================From BetterFox Start======================
 
 /****************************************************************************
