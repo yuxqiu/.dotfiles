@@ -289,4 +289,7 @@
     "vscode_custom_css.statusbar": false,
     "workbench.activityBar.location": "top",
     "chat.commandCenter.enabled": false,
+    "window.titleBarStyle": "native",
+    "window.menuStyle": "custom",
+    "window.customTitleBarVisibility": "never",
 }
