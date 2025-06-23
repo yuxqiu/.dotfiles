@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Script to manage nerd-dictation process
+
+# Check if nerd-dictation is running
+if pgrep -f "nerd-dictation begin" > /dev/null; then
+    # End nerd-dictation
+    ~/.local/bin/nerd-dictation end
+    if [ $? -ne 0 ]; then
+        notify-send "Error: Failed to terminate nerd-dictation."
+        exit 1
+    fi
+else
+    # Start nerd-dictation
+    ~/.local/bin/nerd-dictation begin --simulate-input-tool=DOTOOL &
+    if [ $? -ne 0 ]; then
+        notify-send "Error: Failed to start nerd-dictation."
+        exit 1
+    fi
+fi
+
+exit 0
