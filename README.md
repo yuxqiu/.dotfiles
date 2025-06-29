@@ -59,6 +59,16 @@
 3. Setup the `network-manager` config by following [README-stow](./README-stow.md).
 4. Restart `NetworkManager` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu) again.
 
+### Nerd Dictation
+
+Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk` and `dotool`.
+
+### Howdy
+
+Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to install `howdy-beta` and configure PAM.
+- To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
+    - The same applies to adding face model.
+
 ### Know Issues
 
 1. Flatpak
