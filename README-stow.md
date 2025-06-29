@@ -16,3 +16,4 @@ When setup these conf files, directly copy them to corresponding locations
 
 - `dnscrypt-proxy`: use `sudo stow dnscrypt -t /`
 - `network-manager`: use `sudo stow network-manager -t /`
+- `dnf`: use `sudo stow dnf -t /`
