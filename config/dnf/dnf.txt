@@ -23,7 +23,7 @@ fcitx5-chinese-addons
 fcitx5-mozc
 fcitx5-table-extra
 fcitx5-zhuyin
-ffmpeg-free
+ffmpeg
 fira-code-fonts
 firefox
 firewalld
@@ -33,6 +33,7 @@ fzf
 gcc
 gdb
 git
+git-crypt
 git-lfs
 gnome-themes-extra
 golang
@@ -40,6 +41,7 @@ graphite2-devel
 gstreamer1-plugin-openh264
 harfbuzz-devel
 hostname
+howdy
 hyperfine
 inkscape
 java-21-openjdk
@@ -71,15 +73,19 @@ opensnitch
 opensnitch-ui
 openssh-clients
 openssh-server
+openssl
 openssl-devel
 pandoc
+patch
 pavucontrol
 pipewire
+pnpm
 polkit
 pulseaudio-utils
 qt5ct
 qt6ct
 rpmfusion-free-release
+rsync
 ruby
 sassc
 sddm
@@ -88,7 +94,6 @@ selinux-policy-targeted
 shim-aa64
 slurp
 snap-confine
-snapd
 snapd-glib
 snapd-qt
 snapd-selinux
