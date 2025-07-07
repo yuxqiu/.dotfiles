@@ -273,6 +273,10 @@
         }
     ],
 
+    // Ultra Math
+    "umath.preview.EnableCursor": false,
+    "umath.preview.renderer": "katex",
+
     // Minimalistic
     "window.commandCenter": false,
     "window.menuBarVisibility": "hidden",

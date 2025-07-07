@@ -13,6 +13,7 @@ code --install-extension james-yu.latex-workshop
 code --install-extension jasonlhy.hungry-delete
 code --install-extension juanblanco.solidity
 code --install-extension llvm-vs-code-extensions.vscode-clangd
+code --install-extension ms-azuretools.vscode-containers
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension ms-python.black-formatter
 code --install-extension ms-python.debugpy
@@ -47,5 +48,7 @@ code --install-extension vscjava.vscode-java-debug
 code --install-extension vscjava.vscode-java-test
 code --install-extension vscjava.vscode-maven
 code --install-extension xaver.clang-format
+code --install-extension yfzhao.hscopes-booster
+code --install-extension yfzhao.ultra-math-preview
 code --install-extension yzhang.markdown-all-in-one
 code --install-extension zhuangtongfa.material-theme
