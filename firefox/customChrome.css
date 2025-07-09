@@ -3,6 +3,17 @@
     display: none !important;
 }
 
+/* Hide right click back/forward/reload/stop/bookmark buttons */
+/* https://www.reddit.com/r/FirefoxCSS/comments/8j9t5n/comment/dyya652 */
+#context-back,
+#context-forward,
+#context-reload,
+#context-stop,
+#context-bookmarkpage,
+#context-sep-navigation {
+    display: none !important;
+}
+
 /* Configs below are derived from: */
 /* - https://github.com/datguypiko/Firefox-Mod-Blur */
 

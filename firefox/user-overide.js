@@ -265,7 +265,7 @@ user_pref("dom.push.connection.enabled", false);
 user_pref("dom.push.serverURL", "");
 
 // disable activity stream
-user_pref("browser.newtabpage.activity-stream.discoverystream.enabled", false)
+user_pref("browser.newtabpage.activity-stream.discoverystream.enabled", false);
 
 // disable topsites
 user_pref("browser.topsites.contile.enabled", false);
@@ -274,8 +274,8 @@ user_pref("browser.topsites.contile.endpoint", "");
 // disable geo location
 user_pref("geo.provider.network.url", "");
 
-// enable link preview
-user_pref("browser.ml.linkPreview.enabled", true);
+// enable copy link to highlight
+user_pref("dom.text_fragments.create_text_fragment.enabled", true);
 
 // ===================From BetterFox Start======================
 
