@@ -69,6 +69,10 @@ Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to install `ho
 - To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
     - The same applies to adding face model.
 
+### firejail
+
+Install and Enable `firejail` following the instructions in [ArchWiki](https://wiki.archlinux.org/title/Firejail).
+
 ### Know Issues
 
 1. Flatpak
