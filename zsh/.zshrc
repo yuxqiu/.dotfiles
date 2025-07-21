@@ -1,3 +1,7 @@
+# Disable auto update and magic functions
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -8,7 +12,7 @@ ZSH_THEME="robbyrussell"
 # - ssh-agent: auto start ssh-agent
 plugins=(git colored-man-pages z dirhistory ssh-agent)
 
-# do not load any identity on the start
+# Do not load any identity on the start
 zstyle :omz:plugins:ssh-agent lazy yes
 
 # Path to oh-my-zsh installation
