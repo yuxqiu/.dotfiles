@@ -1,0 +1,42 @@
+{
+  "timeStamp": 1753195695127,
+  "version": "1.64.0",
+  "userSettings": {
+    "contextMenuEnabled": false,
+    "importedLists": [],
+    "popupPanelSections": 15,
+    "showIconBadge": false
+  },
+  "selectedFilterLists": [
+    "user-filters",
+    "ublock-filters",
+    "ublock-badware",
+    "ublock-privacy",
+    "ublock-quick-fixes",
+    "ublock-unbreak",
+    "easylist",
+    "easyprivacy",
+    "adguard-spyware",
+    "adguard-spyware-url",
+    "block-lan",
+    "urlhaus-1",
+    "plowe-0",
+    "fanboy-cookiemonster",
+    "ublock-cookies-easylist",
+    "adguard-cookies",
+    "ublock-cookies-adguard",
+    "adguard-mobile-app-banners",
+    "adguard-other-annoyances",
+    "adguard-popup-overlays",
+    "adguard-widgets",
+    "ublock-annoyances"
+  ],
+  "hiddenSettings": {},
+  "whitelist": [
+    "chrome-extension-scheme",
+    "moz-extension-scheme"
+  ],
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop",
+  "urlFilteringString": "",
+  "userFilters": "! disable the funky gradient at the bottom of Youtube player due to RP\nwww.youtube.com##.ytp-gradient-bottom\n\n! https://www.reddit.com/r/firefox/comments/1digcp4/comment/l93oijg/\n$3p,to=facebook.*|instagram.com,from=~facebook.*|~instagram.com|~messenger.com|~threads.net\n\n! https://old.reddit.com/r/firefox/comments/1defcc2/new_to_mozilla_firefox_coming_from_brave_browser/l8f83y9/?context=2\n! block frames that load these domains\n$3p,frame\n! show \"click to play\" placeholders for all blocked frames\n$3p,frame,redirect-rule=click2load.html"
+}
