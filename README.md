@@ -20,6 +20,10 @@
 1. Install [stew](https://github.com/marwanhawari/stew?tab=readme-ov-file).
 2. Install binaries managed by `stew` using `Stewfile`.
 
+### Keyboard
+
+1. [How to connect Solfe via bluetooth (BT_CLR)](https://www.reddit.com/r/ErgoMechKeyboards/comments/1j4k8gy/my_nicenano_sofle_wont_connect_via_bluetooth/).
+
 ## Linux (Fedora)
 
 ### General
