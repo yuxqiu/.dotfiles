@@ -140,5 +140,17 @@
         "key": "ctrl+j",
         "command": "editor.action.triggerSuggest",
         "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
-    }
+    },
+
+    // Allow arrow keys in neovim normal mode
+    {
+        "key": "up",
+        "command": "cursorUp",
+        "when": "editorTextFocus && neovim.mode == 'normal' && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "down",
+        "command": "cursorDown",
+        "when": "editorTextFocus && neovim.mode == 'normal' && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
 ]
