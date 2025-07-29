@@ -296,4 +296,5 @@
     "window.titleBarStyle": "native",
     "window.menuStyle": "custom",
     "window.customTitleBarVisibility": "never",
+    "umath.preview.AutoAdjustPreviewPosition": false,
 }
