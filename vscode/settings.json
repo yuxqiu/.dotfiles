@@ -4,7 +4,6 @@
     "explorer.confirmDragAndDrop": false,
     "editor.smoothScrolling": true,
     "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
     "window.openFoldersInNewWindow": "on",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorBlinking": "smooth",
@@ -27,7 +26,6 @@
     "keyboard.dispatch": "keyCode",
     "git.openRepositoryInParentFolders": "always",
     "git.blame.statusBarItem.enabled": true,
-    "workbench.colorTheme": "One Dark Pro Darker",
 
     // Terminal
     "terminal.integrated.enableFileLinks": "off",  // suspicious: may slow down your remote shell
@@ -47,6 +45,7 @@
     "workbench.tips.enabled": false,
     "workbench.productIconTheme": "icons-carbon",
     "workbench.tree.renderIndentGuides": "none",
+    "workbench.colorTheme": "One Dark Pro Darker",
 
     // Online Services
     "workbench.enableExperiments": false,
