@@ -7,7 +7,7 @@
     "window.openFoldersInNewWindow": "on",
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorBlinking": "smooth",
-    "editor.minimap.autohide": true,
+    "editor.minimap.autohide": "mouseover",
     "editor.guides.bracketPairs": true,
     "editor.autoClosingOvertype": "always",
     "editor.linkedEditing": true,
