@@ -89,8 +89,6 @@ Install and Enable `firejail` following the instructions in [ArchWiki](https://w
     - `wlroot`
         - no displaylink support: [issue](https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/1823)
         - no individual window sharing support: [issue](https://github.com/emersion/xdg-desktop-portal-wlr/issues/107)
-    - `vscode`
-        - no IME support under wayland: [issue](https://github.com/microsoft/vscode/issues/167757)
     - `systemd-resolved`
         - no DoH support: [issue](https://github.com/systemd/systemd/issues/8639)
 
