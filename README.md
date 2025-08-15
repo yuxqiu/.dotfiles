@@ -1,29 +1,3 @@
-# How to configure env
-
-## General
-
-### ssh
-
-1. `ssh` configs are all stored in `~/.ssh`.
-2. After configuring env, move your 1)`known_hosts`, 2)private/public keys, and 3)`config` to the new env.
-
-### vim-plug
-
-1. Follow the instruction [here](https://github.com/junegunn/vim-plug).
-
-### rustup
-
-1. Install [rustup](https://www.rust-lang.org/tools/install).
-
-### stew
-
-1. Install [stew](https://github.com/marwanhawari/stew?tab=readme-ov-file).
-2. Install binaries managed by `stew` using `Stewfile`.
-
-### Keyboard
-
-1. [How to connect Solfe via bluetooth (BT_CLR)](https://www.reddit.com/r/ErgoMechKeyboards/comments/1j4k8gy/my_nicenano_sofle_wont_connect_via_bluetooth/).
-
 ## Linux (Fedora)
 
 ### General
@@ -49,33 +23,25 @@
 8. SDDM
     - Use [catppuccin/sddm](https://github.com/catppuccin/sddm) theme.
     - Follow the [Arch SDDM guide](https://wiki.archlinux.org/title/SDDM) to setup SDDM Theme.
-9. Custom Desktop File
-    - Use `desktop-file-install` to install `desktop` file
-    - Use `xdg-mime` to set default app
-10. bluetooth
-    - [Connect LogiTech K380 keyboard via `bluetoothctl`](https://unix.stackexchange.com/questions/590221/pairing-logitech-k380-in-ubuntu-20-04)
+9. Run `setup.sh` to setup the configuration files.
 
 ### DoH
 
-1. Install dnscrypt-proxy and follow [README-stow](./README-stow.md) to setup config file.
+1. Install dnscrypt-proxy.
     - https://wiki.archlinux.org/title/Dnscrypt-proxy details how to configure dnscrypt-proxy.
 2. Disable and Stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu).
-3. Setup the `network-manager` config by following [README-stow](./README-stow.md).
-4. Restart `NetworkManager` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu) again.
 
-### Nerd Dictation
+### Others
 
-Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk` and `dotool`.
-
-### Howdy
-
-Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to install `howdy-beta` and configure PAM.
-- To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
-    - The same applies to adding face model.
-
-### firejail
-
-Install and Enable `firejail` following the instructions in [ArchWiki](https://wiki.archlinux.org/title/Firejail).
+1. vim-plug: Follow the instruction [here](https://github.com/junegunn/vim-plug).
+2. rustup: Install [rustup](https://www.rust-lang.org/tools/install).
+3. stew: Install [stew](https://github.com/marwanhawari/stew?tab=readme-ov-file).
+    - Install binaries managed by `stew` using `Stewfile`.
+4. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk` and `dotool`.
+5. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to install `howdy-beta` and configure PAM.
+    - To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
+        - The same applies to adding face model.
+6. firejail: Install and Enable `firejail` following the instructions in [ArchWiki](https://wiki.archlinux.org/title/Firejail).
 
 ### Know Issues
 
@@ -92,12 +58,16 @@ Install and Enable `firejail` following the instructions in [ArchWiki](https://w
     - `systemd-resolved`
         - no DoH support: [issue](https://github.com/systemd/systemd/issues/8639)
 
+### Keyboard
+
+1. [How to connect Solfe via bluetooth (BT_CLR)](https://www.reddit.com/r/ErgoMechKeyboards/comments/1j4k8gy/my_nicenano_sofle_wont_connect_via_bluetooth/).
+2. [Connect LogiTech K380 keyboard via `bluetoothctl`](https://unix.stackexchange.com/questions/590221/pairing-logitech-k380-in-ubuntu-20-04)
+
 ### Notes
 
 1. `sway/.config/sway/inputs` is marked to ignore future updates as I want to keep the data in it private.
     - [How to mark/unmark it](https://stackoverflow.com/questions/4348590/how-can-i-make-git-ignore-future-revisions-to-a-file)
 2. I have problems connecting to my mouse via BlueTooth sometimes. I follow this [guide](https://discussion.fedoraproject.org/t/bluetooth-device-not-connecting-fedora-40/125138/18) to solve the issue.
-
 
 ## MAC
 
