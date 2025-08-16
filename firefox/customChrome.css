@@ -3,6 +3,15 @@
     display: none !important;
 }
 
+/* --- Always hide windows close/open buttons */
+#nav-bar {
+    .titlebar-buttonbox-container {
+        display: none !important;
+        padding: 0 !important;
+        right: 0 !important;
+    }
+}
+
 /* Hide right click back/forward/reload/stop/bookmark buttons */
 /* https://www.reddit.com/r/FirefoxCSS/comments/8j9t5n/comment/dyya652 */
 #context-back,

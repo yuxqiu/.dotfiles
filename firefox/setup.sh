@@ -88,6 +88,11 @@ if prompt_with_timeout "Do you want to install the WhiteSur Firefox theme (alt v
     rm -rf "$CHROME_DIR"
   fi
 
+  if [ -d "$THEMES_DIR" ]; then
+    echo "Removing existing chrome directory at $THEMES_DIR..."
+    rm -rf "$THEMES_DIR"
+  fi
+
   # Download and extract WhiteSur theme
   echo "Downloading WhiteSur Firefox theme..."
   curl -s -L -o whitesur.tar.gz "$WHITESUR_URL"
@@ -96,7 +101,7 @@ if prompt_with_timeout "Do you want to install the WhiteSur Firefox theme (alt v
 
   # Install the alt theme
   echo "Installing WhiteSur alt theme..."
-  ./install.sh -t alt -n whitesur -p firefox
+  ./install.sh -a
   cd ..
 
   # Clean up
@@ -105,30 +110,15 @@ if prompt_with_timeout "Do you want to install the WhiteSur Firefox theme (alt v
   # Ensure chrome directory exists
   mkdir -p "$CHROME_DIR"
 
-  # Append CSS imports to userChrome.css and userContent.css
-  if [ -f "$CHROME_DIR/userChrome.css" ]; then
-    echo "Appending @import for $CUSTOM_CHROME_CSS to userChrome.css..."
-    if ! grep -Fx "@import \"$CUSTOM_CHROME_CSS\";" "$CHROME_DIR/userChrome.css" > /dev/null; then
-      echo "@import \"$CUSTOM_CHROME_CSS\";" >> "$CHROME_DIR/userChrome.css"
-    else
-      echo "$CUSTOM_CHROME_CSS already imported in userChrome.css"
-    fi
+  # Append CSS imports to userContent.css
+  # - userChrome.css by default includes import to customChrome.css
+  echo "Appending @import for $CUSTOM_CONTENT_CSS to userContent.css..."
+  if ! grep -Fx "@import \"$CUSTOM_CONTENT_CSS\";" "$CHROME_DIR/userContent.css" > /dev/null; then
+      echo "@import \"$CUSTOM_CONTENT_CSS\";" >> "$CHROME_DIR/userContent.css"
   else
-    echo "Creating userChrome.css and adding @import for $CUSTOM_CHROME_CSS..."
-    echo "@import \"$CUSTOM_CHROME_CSS\";" > "$CHROME_DIR/userChrome.css"
+      echo "$CUSTOM_CONTENT_CSS already imported in userContent.css"
   fi
 
-  if [ -f "$CHROME_DIR/userContent.css" ]; then
-    echo "Appending @import for $CUSTOM_CONTENT_CSS to userContent.css..."
-    if ! grep -Fx "@import \"$CUSTOM_CONTENT_CSS\";" "$CHROME_DIR/userContent.css" > /dev/null; then
-      echo "@import \"$CUSTOM_CONTENT_CSS\";" >> "$CHROME_DIR/userContent.css"
-    else
-      echo "$CUSTOM_CONTENT_CSS already imported in userContent.css"
-    fi
-  else
-    echo "Creating userContent.css and adding @import for $CUSTOM_CONTENT_CSS..."
-    echo "@import \"$CUSTOM_CONTENT_CSS\";" > "$CHROME_DIR/userContent.css"
-  fi
 else
   echo "Skipping WhiteSur theme installation"
 fi
