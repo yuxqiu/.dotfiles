@@ -1,54 +1,85 @@
-code --install-extension albert.tabout
-code --install-extension antfu.icons-carbon
-code --install-extension asvetliakov.vscode-neovim
-code --install-extension be5invis.vscode-custom-css
-code --install-extension bierner.markdown-mermaid
-code --install-extension copilot-arena.copilot-arena
-code --install-extension cschlosser.doxdocgen
-code --install-extension editorconfig.editorconfig
-code --install-extension foam.foam-vscode
-code --install-extension gruntfuggly.todo-tree
-code --install-extension hars.cppsnippets
-code --install-extension james-yu.latex-workshop
-code --install-extension jasonlhy.hungry-delete
-code --install-extension juanblanco.solidity
-code --install-extension llvm-vs-code-extensions.vscode-clangd
-code --install-extension ms-azuretools.vscode-containers
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-python.black-formatter
-code --install-extension ms-python.debugpy
-code --install-extension ms-python.python
-code --install-extension ms-python.vscode-pylance
-code --install-extension ms-toolsai.jupyter
-code --install-extension ms-toolsai.jupyter-keymap
-code --install-extension ms-toolsai.jupyter-renderers
-code --install-extension ms-toolsai.vscode-jupyter-cell-tags
-code --install-extension ms-toolsai.vscode-jupyter-slideshow
-code --install-extension ms-vscode-remote.remote-containers
-code --install-extension ms-vscode-remote.remote-ssh
-code --install-extension ms-vscode-remote.remote-ssh-edit
-code --install-extension ms-vscode.cmake-tools
-code --install-extension ms-vscode.hexeditor
-code --install-extension ms-vscode.remote-explorer
-code --install-extension ms-vsliveshare.vsliveshare
-code --install-extension myriad-dreamin.tinymist
-code --install-extension nmsmith89.incrementor
-code --install-extension redhat.java
-code --install-extension redhat.vscode-yaml
-code --install-extension remisa.shellman
-code --install-extension robole.markdown-shortcuts
-code --install-extension rust-lang.rust-analyzer
-code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension tamasfe.even-better-toml
-code --install-extension thomanq.math-snippets
-code --install-extension twxs.cmake
-code --install-extension usernamehw.errorlens
-code --install-extension vadimcn.vscode-lldb
-code --install-extension vscjava.vscode-java-debug
-code --install-extension vscjava.vscode-java-test
-code --install-extension vscjava.vscode-maven
-code --install-extension xaver.clang-format
-code --install-extension yfzhao.hscopes-booster
-code --install-extension yfzhao.ultra-math-preview
-code --install-extension yzhang.markdown-all-in-one
-code --install-extension zhuangtongfa.material-theme
+#!/bin/bash
+
+set -e
+
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+EXPORT_SCRIPT="$SCRIPT_DIR/export.sh"
+
+# List of extensions to install
+EXTENSIONS=(
+  albert.tabout
+  antfu.icons-carbon
+  asvetliakov.vscode-neovim
+  be5invis.vscode-custom-css
+  bierner.markdown-mermaid
+  copilot-arena.copilot-arena
+  cschlosser.doxdocgen
+  editorconfig.editorconfig
+  foam.foam-vscode
+  gruntfuggly.todo-tree
+  hars.cppsnippets
+  james-yu.latex-workshop
+  jasonlhy.hungry-delete
+  juanblanco.solidity
+  llvm-vs-code-extensions.vscode-clangd
+  ms-azuretools.vscode-containers
+  ms-azuretools.vscode-docker
+  ms-python.black-formatter
+  ms-python.debugpy
+  ms-python.python
+  ms-python.vscode-pylance
+  ms-python.vscode-python-envs
+  ms-toolsai.jupyter
+  ms-toolsai.jupyter-keymap
+  ms-toolsai.jupyter-renderers
+  ms-toolsai.vscode-jupyter-cell-tags
+  ms-toolsai.vscode-jupyter-slideshow
+  ms-vscode.cmake-tools
+  ms-vscode.hexeditor
+  ms-vscode.remote-explorer
+  ms-vscode-remote.remote-containers
+  ms-vscode-remote.remote-ssh
+  ms-vscode-remote.remote-ssh-edit
+  ms-vsliveshare.vsliveshare
+  myriad-dreamin.tinymist
+  nmsmith89.incrementor
+  redhat.java
+  redhat.vscode-yaml
+  remisa.shellman
+  robole.markdown-shortcuts
+  rust-lang.rust-analyzer
+  streetsidesoftware.code-spell-checker
+  tamasfe.even-better-toml
+  thomanq.math-snippets
+  twxs.cmake
+  usernamehw.errorlens
+  vadimcn.vscode-lldb
+  vscjava.vscode-java-debug
+  vscjava.vscode-java-test
+  vscjava.vscode-maven
+  xaver.clang-format
+  yfzhao.hscopes-booster
+  yfzhao.ultra-math-preview
+  yzhang.markdown-all-in-one
+  zhuangtongfa.material-theme
+)
+
+# Get installed extensions
+if [ -f "$EXPORT_SCRIPT" ]; then
+  INSTALLED_EXTENSIONS=$(bash "$EXPORT_SCRIPT" --list-only)
+else
+  echo "Error: $EXPORT_SCRIPT not found."
+  exit 1
+fi
+
+# Install only not-yet-installed extensions
+for ext in "${EXTENSIONS[@]}"; do
+  if ! echo "$INSTALLED_EXTENSIONS" | grep -q "^$ext$"; then
+    echo "Installing extension: $ext"
+    code --install-extension "$ext"
+  else
+    echo "Extension $ext already installed."
+  fi
+done
+
+echo "Extension installation check completed."

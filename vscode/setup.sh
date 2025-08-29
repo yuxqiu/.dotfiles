@@ -44,4 +44,26 @@ echo "Symlink created at $TARGET_VSCODE_CONFIG_DIR/settings.json."
 # Install extensions
 bash $SCRIPT_DIR/extensions.sh
 
+# Check if system uses dnf and install post-transaction action if not present
+# - fix: vscode update breaks symlink
+DNF_POST_ACTION_DIR="/etc/dnf/plugins/post-transaction-actions.d"
+DNF_POST_ACTION="restore_code_symlink.action"
+
+if command -v dnf >/dev/null 2>&1; then
+  echo "Detected dnf package manager."
+  if [ ! -f "$DNF_POST_ACTION_DIR/$DNF_POST_ACTION" ]; then
+    echo "Installing dnf post-transaction action to preserve code symlink..."
+    sudo mkdir -p "$DNF_POST_ACTION_DIR"
+    # Create post-transaction action to run setup.sh
+    sudo tee "$DNF_POST_ACTION_DIR/$DNF_POST_ACTION" > /dev/null << EOF
+code:$SCRIPT_DIR/setup.sh
+EOF
+    echo "DNF post-transaction action installed."
+  else
+    echo "DNF post-transaction action already installed."
+  fi
+else
+  echo "DNF not detected, skipping post-transaction action setup."
+fi
+
 echo "Setup completed successfully!"
