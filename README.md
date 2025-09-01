@@ -8,7 +8,6 @@
 3. Install [fcitx](https://wiki.archlinux.org/title/Fcitx)
     - Remember to set environment variables for IM modules.
 4. Install niri
-    - `sudo dnf groupinstall "Sway Desktop"` on Fedora.
     - `sudo dnf copr enable yalter/niri` and `sudo dnf install niri` on Fedora.
     - Setup [xwayland-satellite](https://github.com/YaLTeR/niri/wiki/Xwayland) and [gtk file picker](https://github.com/YaLTeR/niri/wiki/Important-Software#portals).
 5. Use `config/flatpak` to restore all the flatpak apps.
@@ -48,10 +47,7 @@
 1. Flatpak
     - [Give filesystem access](https://davejansen.com/give-full-filesystem-access-to-flatpak-installed-applications/): use Foliate
     - Apply Theme: [how](https://itsfoss.com/flatpak-app-apply-theme/) and [theme name](https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis)
-2. [Implement org.freedesktop.portal.OpenURI](https://github.com/emersion/xdg-desktop-portal-wlr/issues/42)
-    - `xdg-desktop-portal-wlr` does not support `OpenURI`.
-    - If you are using `sway`, install `xdg-desktop-portal-gtk` directly as in `/usr/share/xdg-desktop-portal/sway-portals.conf`, default is set to use `gtk` backend (for most of the interfaces).
-3. Others
+2. Others
     - `wlroot`
         - no displaylink support: [issue](https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/1823)
         - no individual window sharing support: [issue](https://github.com/emersion/xdg-desktop-portal-wlr/issues/107)
@@ -65,9 +61,7 @@
 
 ### Notes
 
-1. `sway/.config/sway/inputs` is marked to ignore future updates as I want to keep the data in it private.
-    - [How to mark/unmark it](https://stackoverflow.com/questions/4348590/how-can-i-make-git-ignore-future-revisions-to-a-file)
-2. I have problems connecting to my mouse via BlueTooth sometimes. I follow this [guide](https://discussion.fedoraproject.org/t/bluetooth-device-not-connecting-fedora-40/125138/18) to solve the issue.
+1. I have problems connecting to my mouse via BlueTooth sometimes. I follow this [guide](https://discussion.fedoraproject.org/t/bluetooth-device-not-connecting-fedora-40/125138/18) to solve the issue.
 
 ## MAC
 
