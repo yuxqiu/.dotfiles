@@ -13,9 +13,9 @@ dirs=(
   inputrc
   mako
   nvim
+  niri
   python
   sioyek
-  sway
   swaylock
   waybar
   wofi

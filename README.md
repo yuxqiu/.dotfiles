@@ -7,10 +7,10 @@
     - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/)
 3. Install [fcitx](https://wiki.archlinux.org/title/Fcitx)
     - Remember to set environment variables for IM modules.
-4. Install sway-related stuffs
+4. Install niri
     - `sudo dnf groupinstall "Sway Desktop"` on Fedora.
-    - `wofi/.config/wofi/launch` is derived from [reddit](https://www.reddit.com/r/swaywm/comments/krd0sq/comment/gib6z73/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button).
-    - `sway/.config/sway/autotiling` is derived from [autotiling](https://github.com/nwg-piotr/autotiling).
+    - `sudo dnf copr enable yalter/niri` and `sudo dnf install niri` on Fedora.
+    - Setup [xwayland-satellite](https://github.com/YaLTeR/niri/wiki/Xwayland) and [gtk file picker](https://github.com/YaLTeR/niri/wiki/Important-Software#portals).
 5. Use `config/flatpak` to restore all the flatpak apps.
 6. Stop abrt \[Optional\].
     1. [Disbale auto-reporting](https://wiki.centos.org/TipsAndTricks(2f)ABRT.html).

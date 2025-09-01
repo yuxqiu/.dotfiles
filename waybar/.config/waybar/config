@@ -1,12 +1,7 @@
 {
     "height": 20,
     "modules-left": [
-        "sway/workspaces",
-        "sway/scratchpad",
-        "sway/mode"
-    ],
-    "modules-center": [
-        "sway/window"
+        "niri/workspaces"
     ],
     "modules-right": [
         "pulseaudio#output",
@@ -20,23 +15,15 @@
         "clock",
         "tray"
     ],
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}: {icon}",
+    "niri/workspaces": {
+        "format": "{icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "focused": "",
+            "browser": "",
+            "discord": "",
+            "chat": "<b></b>",
+            "active": "",
             "default": ""
         }
-    },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
     },
     "tray": {
         "spacing": 10
@@ -113,16 +100,6 @@
         "format-source": "",
         "format-source-muted": "",
         "format": "{format_source}"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": [
-            "",
-            ""
-        ],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
     },
     "privacy": {
         "icon-spacing": 4,
