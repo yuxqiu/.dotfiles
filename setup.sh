@@ -40,6 +40,7 @@ copy_dirs=(
 custom_dirs=(
   firefox
   vscode
+  sddm
 )
 
 # Define target locations for copy_dirs
