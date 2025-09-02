@@ -622,3 +622,7 @@ binds {
     // moving the mouse or pressing any other key.
     // Mod+Shift+P { power-off-monitors; }
 }
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
