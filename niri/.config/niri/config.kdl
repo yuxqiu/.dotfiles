@@ -416,17 +416,15 @@ binds {
     // or do a four-finger swipe up on a touchpad.
     Alt+O repeat=false { toggle-overview; }
 
-    Alt+Q repeat=false { close-window; }
-
     Alt+H     { focus-column-left; }
     Alt+J     { focus-window-down; }
     Alt+K     { focus-window-up; }
     Alt+L     { focus-column-right; }
 
     Alt+Shift+H     { move-column-left; }
-    Alt+Shift+J     { move-window-down; }
-    Alt+Shift+K     { move-window-up; }
     Alt+Shift+L     { move-column-right; }
+    Alt+Shift+J  { consume-window-into-column; }
+    Alt+Shift+K { expel-window-from-column; }
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
@@ -550,9 +548,9 @@ binds {
     Alt+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    Alt+Comma  { consume-window-into-column; }
+    // Alt+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
-    Alt+Period { expel-window-from-column; }
+    // Alt+Period { expel-window-from-column; }
 
     Alt+R { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
