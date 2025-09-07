@@ -276,6 +276,9 @@
     "umath.preview.EnableCursor": false,
     "umath.preview.renderer": "katex",
 
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+
     // Minimalistic
     "window.commandCenter": false,
     "window.menuBarVisibility": "hidden",

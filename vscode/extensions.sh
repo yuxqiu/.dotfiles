@@ -20,6 +20,7 @@ EXTENSIONS=(
   hars.cppsnippets
   james-yu.latex-workshop
   jasonlhy.hungry-delete
+  jnoortheen.nix-ide
   juanblanco.solidity
   llvm-vs-code-extensions.vscode-clangd
   ms-azuretools.vscode-containers
