@@ -62,26 +62,3 @@
 ### Notes
 
 1. I have problems connecting to my mouse via BlueTooth sometimes. I follow this [guide](https://discussion.fedoraproject.org/t/bluetooth-device-not-connecting-fedora-40/125138/18) to solve the issue.
-
-## MAC
-
-### General
-
-0. Set caps lock to escape
-1. Run `xcode-select install`
-2. Clone this repository
-3. Install brew and restore all softwares via bundle
-    - First, install native brew
-    - (Optional): if using M1 Mac, can use `arch --x86_64 /bin/zsh` to run a x86 shell and install a x86 brew.
-        This is required if you want to install x86 Python via `pyenv`.
-4. Install oh-my-zsh
-5. Install other dependencies as listed below
-6. Symlinks all the stuff by using stow: `stow [file]`
-
-### brew
-
-0. To export, run `brew bundle dump`
-1. Turn analytics off `brew analytics off`
-2. Run `brew bundle --file ./config/Brewfile` to restore the installed formula
-3. For the following tasks, we need to run some scripts manually
-    - `Java`: follow the instruction [here](https://formulae.brew.sh/formula/openjdk@17)
