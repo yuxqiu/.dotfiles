@@ -47,4 +47,13 @@
       commit.verbose = true;
     };
   };
+
+  home.file."~/.gitignore_global".text = ''
+    **/.DS_Store
+    **/.idea
+    **/target/
+    **/__pycache__/
+    **/.pytest_cache
+    **/.dev
+  '';
 }
