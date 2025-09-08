@@ -1,12 +1,13 @@
 { pkgs, ... }: {
+  imports = [ ./fzf.nix ./git.nix ];
+
   home.packages = with pkgs; [
     nixfmt
     nixd
 
     # alacritty
     # firefox
-    # fzf
-    # git
+    git-crypt
     hyperfine
     lazydocker
     # neovim
@@ -18,5 +19,6 @@
     typst
     typos
   ];
+
   home.stateVersion = "25.05";
 }
