@@ -12,4 +12,4 @@ export PYTHONSTARTUP=~/.pythonrc
 export DO_NOT_TRACK=1
 
 # more bin dir
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

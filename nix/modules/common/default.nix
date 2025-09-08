@@ -4,11 +4,9 @@
     nixd
 
     # alacritty
-    difftastic
     # firefox
     # fzf
     # git
-    go
     hyperfine
     lazydocker
     # neovim
