@@ -1,6 +1,6 @@
 { system, pkgs, ... }:
 {
-    imports = [ ./flatpak.nix ];
+    imports = [ ./flatpak.nix  ./captive-browser ];
 
     # enable xdg
     xdg.enable = true;
