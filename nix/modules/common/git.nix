@@ -48,7 +48,7 @@
     };
   };
 
-  home.file."~/.gitignore_global".text = ''
+  home.file.".gitignore_global".text = ''
     **/.DS_Store
     **/.idea
     **/target/

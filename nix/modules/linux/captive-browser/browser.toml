@@ -1,13 +1,3 @@
-# browser is the shell (/bin/sh) command executed once the proxy starts.
-# When browser exits, the proxy exits. An extra env var PROXY is available.
-#
-# Here, we use a separate Chrome instance in Incognito mode, so that
-# it can run (and be waited for) alongside the default one, and that
-# it maintains no state across runs. To configure this browser open a
-# normal window in it, settings will be preserved.
-#
-# Use `go install`: https://github.com/FiloSottile/captive-browser/pull/29
-# Use Firefox: https://github.com/FiloSottile/captive-browser/issues/20
 browser = """\
   firefox --CreateProfile "captive-browser" \
   && printf "user_pref%s;\\n" \
@@ -111,4 +101,3 @@ dhcp-dns = "nmcli dev show | grep IP4.DNS"
 
 # socks5-addr is the listen address for the SOCKS5 proxy server.
 socks5-addr = "localhost:1666"
-
