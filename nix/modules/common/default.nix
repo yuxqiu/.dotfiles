@@ -8,6 +8,8 @@
     # alacritty
     # firefox
     git-crypt
+    # TODO: fix this
+    # git-fame
     hyperfine
     lazydocker
     # neovim
@@ -18,6 +20,8 @@
     tree
     typst
     typos
+    onefetch
+    openssl
   ];
 
   home.stateVersion = "25.05";
