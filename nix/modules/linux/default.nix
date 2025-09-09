@@ -1,10 +1,12 @@
 { system, pkgs, ... }: {
-  imports = [ ./flatpak.nix ./captive-browser/default.nix ./wofi.nix ];
+  imports =
+    [ ./flatpak.nix ./captive-browser/default.nix ./wofi.nix ./mako.nix ];
 
   # enable xdg
   xdg.enable = true;
 
-  # home.packages = with pkgs; [ firefox ];
+  home.packages = with pkgs; [ blueman ];
+
   # xdg.desktopEntries = {
   #   firefox = {
   #     name = "Firefox";
