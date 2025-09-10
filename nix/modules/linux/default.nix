@@ -1,6 +1,11 @@
-{ system, pkgs, ... }: {
-  imports =
-    [ ./flatpak.nix ./captive-browser/default.nix ./wofi.nix ./mako.nix ];
+{ pkgs, ... }: {
+  imports = [
+    ./flatpak.nix
+    ./captive-browser/default.nix
+    ./wofi.nix
+    ./mako.nix
+    ./dnscrypt.nix
+  ];
 
   # enable xdg
   xdg.enable = true;
