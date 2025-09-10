@@ -2,7 +2,7 @@
   imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ];
 
   home.packages = with pkgs; [
-    nixfmt
+    nixfmt-classic
     nixd
 
     # alacritty
