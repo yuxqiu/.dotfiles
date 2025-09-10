@@ -10,7 +10,8 @@
   # enable xdg
   xdg.enable = true;
 
-  home.packages = with pkgs; [ blueman ];
+  # TODO: desktop-file-utils can be removed when vscode is ready
+  home.packages = with pkgs; [ blueman desktop-file-utils ];
 
   # xdg.desktopEntries = {
   #   firefox = {
