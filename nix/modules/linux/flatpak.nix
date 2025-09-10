@@ -1,4 +1,6 @@
 { pkgs, config, lib, ... }: {
+  home.packages = with pkgs; [ flatpak ];
+
   services.flatpak = {
     enable = true;
     remotes = {
@@ -6,20 +8,21 @@
       # "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
     };
     packages = [
-      "com.github.IsmaelMartinez.teams_for_linux"
-      "com.github.PintaProject.Pinta"
-      "com.github.johnfactotum.Foliate"
-      "com.github.tchx84.Flatseal"
-      "io.github.seadve.Kooha"
-      "io.github.ungoogled_software.ungoogled_chromium"
-      "md.obsidian.Obsidian"
-      "org.gnome.FileRoller"
-      "org.kde.dolphin"
-      "org.libreoffice.LibreOffice"
-      "org.localsend.localsend_app"
-      "org.videolan.VLC"
-      "org.xfce.ristretto"
-      "xyz.armcord.ArmCord"
+      "flathub:app/com.github.IsmaelMartinez.teams_for_linux//stable"
+      "flathub:app/com.github.PintaProject.Pinta//stable"
+      "flathub:app/com.github.johnfactotum.Foliate//stable"
+      "flathub:app/com.github.tchx84.Flatseal//stable"
+      "flathub:app/io.github.seadve.Kooha//stable"
+      "flathub:app/io.github.ungoogled_software.ungoogled_chromium//stable"
+      "flathub:app/md.obsidian.Obsidian//stable"
+      "flathub:app/org.gnome.Calculator//stable"
+      "flathub:app/org.gnome.FileRoller//stable"
+      "flathub:app/org.kde.dolphin//stable"
+      "flathub:app/org.libreoffice.LibreOffice//stable"
+      "flathub:app/org.localsend.localsend_app//stable"
+      "flathub:app/org.videolan.VLC//stable"
+      "flathub:app/org.xfce.ristretto//stable"
+      "flathub:app/xyz.armcord.ArmCord//stable"
     ];
     overrides = {
       global = {

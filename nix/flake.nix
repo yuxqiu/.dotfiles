@@ -41,7 +41,7 @@
             systemModule
             # Conditionally include nix-flatpak for Linux systems
             (nixpkgs.lib.optionalAttrs (pkgs.stdenv.isLinux) {
-              imports = [ flatpaks.nixosModule ];
+              imports = [ flatpaks.homeModule ];
             })
             # User-specific settings
             (import ./users/${username}.nix { inherit system pkgs; })
