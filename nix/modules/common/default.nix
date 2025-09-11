@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ];
+  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ./git-fame.nix ];
 
   home.packages = with pkgs; [
     nixfmt-classic
@@ -8,8 +8,6 @@
     # alacritty
     # firefox
     git-crypt
-    # TODO: fix this
-    # git-fame
     hyperfine
     lazydocker
     # neovim
