@@ -40,6 +40,12 @@
     };
   };
 
+  # https://github.com/gmodena/nix-flatpak/issues/31
+  xdg.systemDirs.data = [
+    "/var/lib/flatpak/exports/share"
+    "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
+  ];
+
   home.activation.updateDesktopCache =
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       run ${pkgs.desktop-file-utils}/bin/update-desktop-database ${config.home.homeDirectory}/.local/share/flatpak/exports/share/applications/

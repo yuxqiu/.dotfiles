@@ -5,9 +5,4 @@
   else
     "/home/yuxqiu";
   news.display = "silent";
-
-  # TODO: port all the settings
-  #   programs.zsh = {
-  #     enable = true;
-  #   };
 }

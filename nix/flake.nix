@@ -8,9 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
+    nixGL = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, flatpaks, ... }:
+  outputs = { nixpkgs, home-manager, flatpaks, nixGL, ... }:
     let
       # Define supported systems
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -24,7 +28,10 @@
       # Home Manager configurations for each system
       homeConfigurations = forAllSystems (system:
         let
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ nixGL.overlay ];
+          };
           # Conditionally select system-specific module
           systemModule = if (builtins.match ".*-linux" system != null) then
             ./modules/linux/default.nix
@@ -34,18 +41,23 @@
             throw "Unsupported system: ${system}";
         in home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+
           modules = [
             # Common settings
             ./modules/common/default.nix
+
             # System-specific settings
             systemModule
             # Conditionally include nix-flatpak for Linux systems
             (nixpkgs.lib.optionalAttrs (pkgs.stdenv.isLinux) {
               imports = [ flatpaks.homeModule ];
             })
+
             # User-specific settings
             (import ./users/${username}.nix { inherit system pkgs; })
           ];
+
+          extraSpecialArgs = { inherit nixGL; };
         });
     };
 }
