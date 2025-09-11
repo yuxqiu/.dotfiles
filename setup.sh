@@ -11,7 +11,6 @@ dirs=(
   niri
   sioyek
   swaylock
-  waybar
   zsh
 )
 

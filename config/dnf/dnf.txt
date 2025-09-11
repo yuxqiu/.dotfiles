@@ -99,7 +99,6 @@ unzip
 uxplay
 vim-enhanced
 vulkan-tools
-waybar
 wireplumber
 xdg-desktop-portal-gtk
 xdg-user-dirs
