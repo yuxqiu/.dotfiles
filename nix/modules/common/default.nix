@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ./git-fame.nix ./nixgl.nix ./zsh.nix ./sioyek.nix ./alacritty.nix ];
+  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ./git-fame.nix ./nixgl.nix ./zsh.nix ./sioyek.nix ./alacritty.nix ./nvim.nix ];
 
   home.packages = with pkgs; [
     nixfmt-classic
@@ -9,7 +9,6 @@
     git-crypt
     hyperfine
     lazydocker
-    # neovim
     pandoc
     # ruby
     rustup
