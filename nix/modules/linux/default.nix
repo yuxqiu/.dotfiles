@@ -6,7 +6,6 @@
     ./mako.nix
     ./dnscrypt-proxy/default.nix
     ./waybar/default.nix
-    ./clipman.nix
   ];
 
   # enable xdg
@@ -16,9 +15,11 @@
   # TODO: desktop-file-utils can be removed when vscode is ready
   home.packages = with pkgs; [
     blueman
+    clipman
     desktop-file-utils
     xwayland-satellite
     swaybg
+    wl-clipboard
   ];
 
   # xdg.desktopEntries = {
