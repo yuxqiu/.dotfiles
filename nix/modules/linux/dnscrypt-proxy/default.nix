@@ -67,7 +67,7 @@ in
     '';
   };
 
-  # Run the script after home-manager switch
+  # Run the script every time the system restart
   home.activation.setDnscryptResolv =
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       run echo 'Please run `bash ${config.home.homeDirectory}/bin/set-dnscrypt-resolv.sh` manually.'
