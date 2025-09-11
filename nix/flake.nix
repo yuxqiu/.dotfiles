@@ -7,14 +7,14 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     nixGL = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, flatpaks, nixGL, ... }:
+  outputs = { nixpkgs, home-manager, nix-flatpak, nixGL, ... }:
     let
       # Define supported systems
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -50,7 +50,7 @@
             systemModule
             # Conditionally include nix-flatpak for Linux systems
             (nixpkgs.lib.optionalAttrs (pkgs.stdenv.isLinux) {
-              imports = [ flatpaks.homeModule ];
+              imports = [ nix-flatpak.homeManagerModules.nix-flatpak ];
             })
 
             # User-specific settings
