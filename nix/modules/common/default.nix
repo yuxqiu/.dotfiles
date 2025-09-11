@@ -15,6 +15,7 @@
     # neovim
     pandoc
     # ruby
+    rustup
     tectonic
     tokei
     tree
@@ -22,6 +23,7 @@
     typos
     onefetch
     openssl
+    kondo
   ];
 
   home.stateVersion = "25.05";

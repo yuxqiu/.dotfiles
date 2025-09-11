@@ -29,12 +29,11 @@
 
 ### Others
 
-1. rustup: Install [rustup](https://www.rust-lang.org/tools/install).
-2. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk` and `dotool`.
-3. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to install `howdy-beta` and configure PAM.
+1. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk` and `dotool`.
+2. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to install `howdy-beta` and configure PAM.
     - To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
         - The same applies to adding face model.
-4. firejail: Install and Enable `firejail` following the instructions in [ArchWiki](https://wiki.archlinux.org/title/Firejail).
+3. firejail: Install and Enable `firejail` following the instructions in [ArchWiki](https://wiki.archlinux.org/title/Firejail).
 
 ### Know Issues
 
