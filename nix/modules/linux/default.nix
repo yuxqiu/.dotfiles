@@ -6,6 +6,8 @@
     ./mako.nix
     ./dnscrypt-proxy/default.nix
     ./waybar/default.nix
+    ./fcitx5.nix
+    ./gtk.nix
   ];
 
   # enable xdg
@@ -21,6 +23,7 @@
     swaybg
     wl-clipboard
   ];
+  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
 
   # xdg.desktopEntries = {
   #   firefox = {

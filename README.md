@@ -13,15 +13,10 @@
 5. Stop abrt \[Optional\].
     1. [Disbale auto-reporting](https://wiki.centos.org/TipsAndTricks(2f)ABRT.html).
     2. Disbale abrt related service: [1](https://unix.stackexchange.com/questions/556351/what-are-the-risks-for-disable-the-abrtd-service) and [2](https://robbinespu.gitlab.io/posts/disable-abrt-fedora/).
-6. Themes
-    - Make sure `gnome-themes-extra` is installed.
-    - Use [nwg-look](https://github.com/nwg-piotr/nwg-look) to adjust the theme for gtk apps.
-    - You might also need to copy `~/.config/gtk-3.0` to `~/.config/gtk-4.0`.
-    - For qt apps, follow the settings [here](https://unix.stackexchange.com/questions/502722/dolphin-background-and-font-color-are-both-white/683366#683366).
-7. SDDM
+6. SDDM
     - Use [catppuccin/sddm](https://github.com/catppuccin/sddm) theme.
     - Follow the [Arch SDDM guide](https://wiki.archlinux.org/title/SDDM) to setup SDDM Theme.
-8. Run `setup.sh` to setup the configuration files.
+7. Run `setup.sh` to setup the configuration files.
 
 ### DoH
 
