@@ -6,6 +6,7 @@
     ./mako.nix
     ./dnscrypt-proxy/default.nix
     ./waybar/default.nix
+    ./clipman.nix
   ];
 
   # enable xdg

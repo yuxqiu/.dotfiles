@@ -277,8 +277,6 @@ spawn-sh-at-startup "swaybg -i ~/.config/niri/5120x2880.png -m fill"
 // - https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
 spawn-at-startup "fcitx5"
 
-spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store" "--max-items=60" "--histpath=~/.local/share/clipman.json" "--no-persist"
-
 spawn-at-startup "swayidle" "-w" "before-sleep" "swaylock -f -c 000000 --color 232332"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
