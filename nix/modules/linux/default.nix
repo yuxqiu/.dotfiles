@@ -5,6 +5,7 @@
     ./wofi.nix
     ./mako.nix
     ./dnscrypt-proxy/default.nix
+    ./waybar/default.nix
   ];
 
   # enable xdg
