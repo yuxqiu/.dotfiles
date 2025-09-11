@@ -1,7 +1,5 @@
 { lib, pkgs, config, ... }: {
-  home.packages = with pkgs; [
-    flatpak
-  ];
+  home.packages = with pkgs; [ flatpak ];
 
   services.flatpak = {
     enable = true;
@@ -26,6 +24,13 @@
       global = {
         # Force Wayland by default
         Context.sockets = [ "wayland" "!x11" "!fallback-x11" ];
+        # Deny network access by default
+        Context.shared = [ "!network" ];
+
+        Context.filesystems = [
+          "~/.themes:ro" # Read-only access to ~/.themes
+          "~/.icons:ro" # Read-only access to ~/.icons
+        ];
 
         Environment = {
           # Fix un-themed cursor in some Wayland apps
@@ -34,6 +39,32 @@
           # Force correct theme for some GTK apps
           GTK_THEME = "Adwaita:dark";
         };
+      };
+
+      "com.github.johnfactotum.Foliate" = {
+        Context.filesystems = [
+          "home:ro" # Enable read access to home directory (e.g., for loading e-books)
+        ];
+      };
+
+      "xyz.armcord.ArmCord" = {
+        # Enable network for ArmCord
+        Context.shared = [ "network" ];
+      };
+
+      "com.github.IsmaelMartinez.teams_for_linux" = {
+        # Enable network for Microsoft Teams
+        Context.shared = [ "network" ];
+      };
+
+      "io.github.ungoogled_software.ungoogled_chromium" = {
+        # Enable network for Microsoft Teams
+        Context.shared = [ "network" ];
+      };
+
+      "org.localsend.localsend_app" = {
+        # Enable network for ArmCord
+        Context.shared = [ "network" ];
       };
     };
   };
