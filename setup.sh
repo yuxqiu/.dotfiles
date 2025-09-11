@@ -6,25 +6,17 @@ set -e
 # Define directories to stow with regular stow targeting $HOME
 dirs=(
   alacritty
-  captive-browser
-  editorconfig
-  git
   howdy
-  inputrc
-  mako
   nvim
   niri
-  python
   sioyek
   swaylock
   waybar
-  wofi
   zsh
 )
 
 # Define directories to stow with sudo targeting /
 sudo_dirs=(
-  dnscrypt
   network-manager
   dnf
 )
