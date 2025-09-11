@@ -4,7 +4,7 @@
     ./captive-browser/default.nix
     ./wofi.nix
     ./mako.nix
-    ./dnscrypt.nix
+    ./dnscrypt-proxy/default.nix
   ];
 
   # enable xdg

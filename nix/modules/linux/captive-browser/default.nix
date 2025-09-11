@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  settings = builtins.readFile ./browser.toml;
+  settings = builtins.readFile ./captive-browser.toml;
 in
 {
   home.packages = with pkgs; [ captive-browser ];
