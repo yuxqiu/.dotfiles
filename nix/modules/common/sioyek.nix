@@ -16,12 +16,12 @@
       name = "Sioyek";
       comment =
         "Sioyek is a PDF viewer designed for reading research papers and technical books";
-      exec = "${pkgs.sioyek}/bin/sioyek %f";
+      exec = "sioyek %f";
       terminal = false;
       startupNotify = false;
       type = "Application";
       categories = [ "Office" "Viewer" ];
-      mimeType = ["application/pdf"];
+      mimeType = [ "application/pdf" ];
     };
   };
 }
