@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ];
+  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ];
 
   home.packages = with pkgs; [
     nixfmt-classic
