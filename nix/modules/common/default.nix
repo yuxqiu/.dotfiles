@@ -5,8 +5,11 @@
     nixfmt-classic
     nixd
 
+    fira-code
+    ffmpeg
     # firefox
     git-crypt
+    git-lfs
     hyperfine
     lazydocker
     pandoc
