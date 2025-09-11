@@ -1,11 +1,10 @@
 { pkgs, ... }: {
-  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ./git-fame.nix ./nixgl.nix ./zsh.nix ./sioyek.nix ];
+  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ./git-fame.nix ./nixgl.nix ./zsh.nix ./sioyek.nix ./alacritty.nix ];
 
   home.packages = with pkgs; [
     nixfmt-classic
     nixd
 
-    # alacritty
     # firefox
     git-crypt
     hyperfine
