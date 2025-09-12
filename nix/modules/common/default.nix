@@ -21,6 +21,7 @@
     hyperfine
     lazydocker
     pandoc
+    uv
     # ruby
     rustup
     tectonic

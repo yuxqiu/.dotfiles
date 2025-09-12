@@ -231,8 +231,6 @@
         "python.analysis.inlayHints.variableTypes" = true;
         "python.analysis.inlayHints.functionReturnTypes" = true;
         "python.terminal.activateEnvironment" = false;
-        "python.defaultInterpreterPath" =
-          "/home/yuxqiu/.pyenv/versions/pwd/bin/python";
         "[python]" = {
           "editor.defaultFormatter" = "ms-python.black-formatter";
         };
