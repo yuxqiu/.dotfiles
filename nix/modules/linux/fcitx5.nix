@@ -24,6 +24,7 @@
       # Optional: Declarative settings (example for basic input group setup)
       settings = {
         globalOptions = {
+          # TODO: fix hotkey and themes
           Hotkey = {
             # Set trigger key to toggle input methods (e.g., Ctrl+Space)
             TriggerKeys = "Shift_L";

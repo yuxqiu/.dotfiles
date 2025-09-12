@@ -9,6 +9,7 @@
     ./fcitx5.nix
     ./gtk.nix
     ./niri.nix
+    ./vscode.nix
   ];
 
   # enable xdg

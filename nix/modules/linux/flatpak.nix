@@ -4,6 +4,7 @@
   services.flatpak = {
     enable = true;
     update.onActivation = true;
+    # TODO: fix portal and thus chromium
     packages = [
       "com.github.IsmaelMartinez.teams_for_linux"
       "com.github.PintaProject.Pinta"

@@ -1,11 +1,19 @@
 { pkgs, ... }: {
-  imports = [ ./fzf.nix ./git.nix ./editorconfig.nix ./python.nix ./git-fame.nix ./nixgl.nix ./zsh.nix ./sioyek.nix ./alacritty.nix ./nvim.nix ];
+  imports = [
+    ./fzf.nix
+    ./git.nix
+    ./editorconfig.nix
+    ./python.nix
+    ./git-fame.nix
+    ./nixgl.nix
+    ./zsh.nix
+    ./sioyek.nix
+    ./alacritty.nix
+    ./nvim.nix
+    ./vscode.nix
+  ];
 
   home.packages = with pkgs; [
-    nixfmt-classic
-    nixd
-
-    fira-code
     ffmpeg
     # firefox
     git-crypt
@@ -26,4 +34,7 @@
   ];
 
   home.stateVersion = "25.05";
+
+  # Ensure fonts are available
+  fonts.fontconfig.enable = true;
 }

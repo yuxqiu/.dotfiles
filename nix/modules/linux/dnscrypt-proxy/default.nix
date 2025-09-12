@@ -1,14 +1,10 @@
 { pkgs, config, lib, ... }:
-
-let
-  settings = builtins.readFile ./dnscrypt-proxy.toml;
-in
 {
   # Install the package
   home.packages = with pkgs; [ dnscrypt-proxy2 nftables ];
 
   # Generate the TOML config file
-  home.file.".dnscrypt-proxy.toml".text = settings;
+  home.file.".dnscrypt-proxy.toml".source = ./dnscrypt-proxy.toml;
 
   # Define the systemd user service to run DNSCrypt-proxy
   systemd.user.services.dnscrypt-proxy = {

@@ -5,11 +5,9 @@ set -e
 
 # Define directories to stow with regular stow targeting $HOME
 dirs=(
-  alacritty
   howdy
   nvim
   niri
-  sioyek
   swaylock
   zsh
 )
@@ -30,7 +28,6 @@ copy_dirs=(
 # Define directories with custom setup scripts
 custom_dirs=(
   firefox
-  vscode
   sddm
   nix
 )

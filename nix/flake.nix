@@ -12,9 +12,11 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { nixpkgs, home-manager, nix-flatpak, nixGL, ... }:
+  outputs =
+    { nixpkgs, home-manager, nix-flatpak, nixGL, nix-vscode-extensions, ... }:
     let
       # Define supported systems
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -30,7 +32,7 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ nixGL.overlay ];
+            overlays = [ nixGL.overlay nix-vscode-extensions.overlays.default ];
           };
           # Conditionally select system-specific module
           systemModule = if (builtins.match ".*-linux" system != null) then
