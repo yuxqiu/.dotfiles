@@ -54,4 +54,9 @@
 
   # skip gsettings/dconf integration
   dconf.enable = false;
+
+  home.sessionVariables = {
+    # Force dark theme for GTK apps
+    GTK_THEME = "Adwaita:dark";
+  };
 }

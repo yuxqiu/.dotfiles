@@ -28,10 +28,6 @@
             # Set trigger key to toggle input methods (e.g., Ctrl+Space)
             TriggerKeys = "Shift_L";
           };
-          Appearance = {
-            Theme = "material-ocean";
-            # Alternatives: "material-dark", "material-deep-ocean", or "nord-dark" (if using fcitx5-nord)
-          };
         };
         inputMethod = {
           GroupOrder = { "0" = "Default"; };
