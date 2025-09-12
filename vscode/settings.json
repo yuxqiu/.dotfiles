@@ -299,4 +299,5 @@
     "window.menuStyle": "custom",
     "window.customTitleBarVisibility": "never",
     "umath.preview.AutoAdjustPreviewPosition": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
 }
