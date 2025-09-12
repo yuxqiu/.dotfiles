@@ -16,7 +16,6 @@
   xdg.enable = true;
   xdg.mime.enable = true;
 
-  # TODO: desktop-file-utils can be removed when vscode is ready
   home.packages = with pkgs; [
     blueman
     clipman
