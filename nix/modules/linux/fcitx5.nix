@@ -1,45 +1,54 @@
 { pkgs, ... }:
 
 {
-  # Install fcitx5 and necessary packages
-  home.packages = with pkgs; [
-    fcitx5 # Core fcitx5 framework
-    fcitx5-configtool # GUI configuration tool
-    fcitx5-gtk # GTK integration for GTK apps
-    fcitx5-chinese-addons # Chinese Pinyin input method
-    fcitx5-mozc
-  ];
-
-  # fcitx5 configuration via Home Manager
   i18n.inputMethod = {
+    enable = true;
     type = "fcitx5";
-    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons fcitx5-mozc fcitx5-gtk ];
-    fcitx5.waylandFrontend = true; # Enable Wayland support
-  };
+    fcitx5 = {
+      addons = with pkgs; [
+        # For Chinese input (includes libpinyin, cloudpinyin, etc.)
+        fcitx5-chinese-addons
 
-  # Autostart fcitx5
-  systemd.user.services.fcitx5 = {
-    Unit = {
-      Description = "Fcitx5 Input Method Framework";
-      After = [ "graphical-session-pre.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.fcitx5}/bin/fcitx5 -d";
-      Restart = "on-failure";
-    };
-    Install = { WantedBy = [ "graphical-session.target" ]; };
-  };
+        # For Japanese input (Mozc is recommended for accuracy)
+        fcitx5-mozc
 
-  # How to setup fcitx5 environment variable
-  # - https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
-  gtk = {
-    gtk3.extraConfig = { gtk-im-module = "fcitx"; };
-    gtk4.extraConfig = { gtk-im-module = "fcitx"; };
-  };
-  home.sessionVariables = {
-    QT_IM_MODULE = "fcitx";
-    QT_IM_MODULES = "wayland;fcitx;ibus";
-    XMODIFIERS = "@im=fcitx";
+        # Optional: GTK support for better integration in GTK apps
+        fcitx5-gtk
+
+        fcitx5-configtool
+      ];
+
+      # Optional: If you're on Wayland, enable this to use the Wayland frontend
+      waylandFrontend = true;
+
+      # Optional: Declarative settings (example for basic input group setup)
+      settings = {
+        globalOptions = {
+          Hotkey = {
+            # Set trigger key to toggle input methods (e.g., Ctrl+Space)
+            TriggerKeys = "Shift_L";
+          };
+          Appearance = {
+            Theme = "material-ocean";
+            # Alternatives: "material-dark", "material-deep-ocean", or "nord-dark" (if using fcitx5-nord)
+          };
+        };
+        inputMethod = {
+          GroupOrder = { "0" = "Default"; };
+          "Groups/0" = {
+            Name = "Default";
+            "Default Layout" =
+              "us"; # US keyboard layout; change to "jp" if needed
+            DefaultIM = "keyboard-us"; # Default to English
+          };
+          # Add English, Chinese (Pinyin), and Japanese (Mozc) to the group
+          "Groups/0/Items/0" = { Name = "keyboard-us"; };
+          "Groups/0/Items/1" = {
+            Name = "pinyin";
+          }; # From fcitx5-chinese-addons
+          "Groups/0/Items/2" = { Name = "mozc"; }; # From fcitx5-mozc
+        };
+      };
+    };
   };
 }

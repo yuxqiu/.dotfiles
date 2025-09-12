@@ -8,6 +8,7 @@
     ./waybar/default.nix
     ./fcitx5.nix
     ./gtk.nix
+    ./niri.nix
   ];
 
   # enable xdg
