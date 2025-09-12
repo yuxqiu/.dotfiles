@@ -5,18 +5,16 @@
 1. Use `config/dnf` to restore all the installed packages.
 2. Install [OpenSnitch](https://github.com/evilsocket/opensnitch)
     - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/)
-3. Install [fcitx](https://wiki.archlinux.org/title/Fcitx)
-    - Remember to set environment variables for IM modules.
-4. Install niri
+3. Install niri
     - `sudo dnf copr enable yalter/niri` and `sudo dnf install niri` on Fedora.
     - Setup [xwayland-satellite](https://github.com/YaLTeR/niri/wiki/Xwayland) and [gtk file picker](https://github.com/YaLTeR/niri/wiki/Important-Software#portals).
-5. Stop abrt \[Optional\].
+4. Stop abrt \[Optional\].
     1. [Disbale auto-reporting](https://wiki.centos.org/TipsAndTricks(2f)ABRT.html).
     2. Disbale abrt related service: [1](https://unix.stackexchange.com/questions/556351/what-are-the-risks-for-disable-the-abrtd-service) and [2](https://robbinespu.gitlab.io/posts/disable-abrt-fedora/).
-6. SDDM
+5. SDDM
     - Use [catppuccin/sddm](https://github.com/catppuccin/sddm) theme.
     - Follow the [Arch SDDM guide](https://wiki.archlinux.org/title/SDDM) to setup SDDM Theme.
-7. Run `setup.sh` to setup the configuration files.
+6. Run `setup.sh` to setup the configuration files.
 
 ### DoH
 
