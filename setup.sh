@@ -5,14 +5,13 @@ set -e
 
 # Define directories to stow with regular stow targeting $HOME
 dirs=(
-  howdy
   niri
   swaylock
-  zsh
 )
 
 # Define directories to stow with sudo targeting /
 sudo_dirs=(
+  howdy
   network-manager
   dnf
 )

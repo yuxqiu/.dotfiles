@@ -1,4 +1,0 @@
-# prevent stow from symlinking these files
-commons
-linux
-macos

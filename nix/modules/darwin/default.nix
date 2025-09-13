@@ -1,1 +1,1 @@
-{ pkgs, ... }: { home.packages = with pkgs; [ ]; }
+{ ... }: { imports = [ ./zsh.nix ]; }
