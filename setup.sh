@@ -6,7 +6,6 @@ set -e
 # Define directories to stow with regular stow targeting $HOME
 dirs=(
   howdy
-  nvim
   niri
   swaylock
   zsh
@@ -23,6 +22,7 @@ copy_dirs=(
   logind
   journald
   earlyoom
+  dnscrypt
 )
 
 # Define directories with custom setup scripts

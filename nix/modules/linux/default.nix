@@ -4,7 +4,6 @@
     ./captive-browser/default.nix
     ./wofi.nix
     ./mako.nix
-    ./dnscrypt-proxy/default.nix
     ./waybar/default.nix
     ./fcitx5.nix
     ./gtk.nix
