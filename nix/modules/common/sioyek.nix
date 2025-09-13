@@ -10,18 +10,4 @@
     };
     package = (config.lib.nixGL.wrap pkgs.sioyek);
   };
-
-  xdg.desktopEntries = {
-    sioyek = {
-      name = "Sioyek";
-      comment =
-        "Sioyek is a PDF viewer designed for reading research papers and technical books";
-      exec = "sioyek %f";
-      terminal = false;
-      startupNotify = false;
-      type = "Application";
-      categories = [ "Office" "Viewer" ];
-      mimeType = [ "application/pdf" ];
-    };
-  };
 }
