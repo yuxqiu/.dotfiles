@@ -11,6 +11,7 @@
     ./alacritty.nix
     ./nvim.nix
     ./vscode.nix
+    ./firefox/default.nix
   ];
 
   home.packages = with pkgs; [
