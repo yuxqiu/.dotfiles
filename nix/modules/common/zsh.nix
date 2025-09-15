@@ -42,38 +42,12 @@
       PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
     };
 
-    # TODO: wait for next stable release that contains siteFunctions
-    # siteFunctions = {
-    #   docksh = ''
-    #     docker exec -it $1 /bin/bash
-    #   '';
+    siteFunctions = {
+      docksh = ''
+        docker exec -it $1 /bin/bash
+      '';
 
-    #   checksum = ''
-    #     s=$(curl -fsSL "$1")
-    #     if ! command -v shasum >/dev/null
-    #     then
-    #       shasum() { sha1sum "$@"; }
-    #     fi
-    #     c=$(printf %s\\n "$s" | shasum | awk '{print $1}')
-    #     if [ "$c" = "$2" ]
-    #     then
-    #       printf %s\\n "$s"
-    #     else
-    #       echo "invalid checksum $c != $2" 1>&2
-    #     fi
-    #     unset s
-    #     unset c
-    #   '';
-    # };
-
-    initContent = ''
-      # execute with docksh <id>
-      function docksh(){
-          docker exec -it $1 /bin/bash
-      }
-
-      # download file and verify their checksum
-      function checksum() {
+      checksum = ''
         s=$(curl -fsSL "$1")
         if ! command -v shasum >/dev/null
         then
@@ -84,11 +58,11 @@
         then
           printf %s\\n "$s"
         else
-          echo "invalid checksum $c != $2" 1>&2;
+          echo "invalid checksum $c != $2" 1>&2
         fi
         unset s
         unset c
-      }
-    '';
+      '';
+    };
   };
 }
