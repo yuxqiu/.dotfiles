@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   # Define variables
@@ -81,6 +81,7 @@ in {
         SkipOnboarding = true;
       };
     };
+    package = (config.lib.nixGL.wrap pkgs.firefox);
   };
 
   home.file = {
