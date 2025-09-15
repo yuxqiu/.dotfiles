@@ -50,7 +50,6 @@
           streetsidesoftware.code-spell-checker
           tamasfe.even-better-toml
           thomanq.math-snippets
-          twxs.cmake
           usernamehw.errorlens
           vadimcn.vscode-lldb
           vscjava.vscode-java-debug
