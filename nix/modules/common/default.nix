@@ -15,16 +15,17 @@
   ];
 
   home.packages = with pkgs; [
+    bottom
     ffmpeg
-    # firefox
     git-crypt
     git-lfs
     hyperfine
     lazydocker
+    less
     pandoc
     uv
-    # ruby
     rustup
+    tealdeer
     tectonic
     (texliveSmall.withPackages (ps: with ps; [
       latexindent

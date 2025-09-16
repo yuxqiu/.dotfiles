@@ -19,17 +19,17 @@
     desktop-file-utils
     dotool
     networkmanagerapplet
+    networkmanager
+    pavucontrol
+    libsForQt5.qt5ct
+    qt6ct
     swaybg
     wl-clipboard
     xdg-utils
   ];
 
-  # The following packages are managed by systems for now:
-  # - niri
-  # - portals (gtk and gnome)
-  # - swayidle and swaylock
-  # - pipewire and wireplumber
-  # - mesa-vulkan-drivers
+  # The following packages are also partially managed by systems for now:
+  # - niri and portals (gtk and gnome)
 
   # enable xdg
   xdg.enable = true;

@@ -20,6 +20,7 @@
       "org.videolan.VLC"
       "org.xfce.ristretto"
       "xyz.armcord.ArmCord"
+      "org.inkscape.Inkscape"
     ];
     overrides = {
       global = {
