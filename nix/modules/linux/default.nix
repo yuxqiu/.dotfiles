@@ -17,9 +17,11 @@
     brightnessctl
     clipman
     desktop-file-utils
+    dotool
     networkmanagerapplet
     swaybg
     wl-clipboard
+    xdg-utils
   ];
 
   # The following packages are managed by systems for now:
