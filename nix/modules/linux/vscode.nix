@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
   # Wrap VSCode with custom flags
@@ -22,4 +22,4 @@ let
     pname = "vscode";
     version = pkgs.vscode.version;
   });
-in { programs.vscode.package = vscodeWithFlagsFixed; }
+in { programs.vscode.package = (config.lib.nixGL.wrap vscodeWithFlagsFixed); }
