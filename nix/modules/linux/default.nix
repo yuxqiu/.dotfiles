@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ./flatpak.nix
     ./captive-browser/default.nix
@@ -7,10 +7,18 @@
     ./waybar/default.nix
     ./fcitx5.nix
     ./gtk.nix
-    ./niri.nix
     ./vscode.nix
     ./zsh.nix
     ./niri/default.nix
+  ];
+
+  home.packages = with pkgs; [
+    blueman
+    clipman
+    desktop-file-utils
+    networkmanagerapplet
+    swaybg
+    wl-clipboard
   ];
 
   # enable xdg
