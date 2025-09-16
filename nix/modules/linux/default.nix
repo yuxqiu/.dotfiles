@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   imports = [
     ./flatpak.nix
     ./captive-browser/default.nix
@@ -10,20 +10,12 @@
     ./niri.nix
     ./vscode.nix
     ./zsh.nix
+    ./niri/default.nix
   ];
 
   # enable xdg
   xdg.enable = true;
   xdg.mime.enable = true;
 
-  home.packages = with pkgs; [
-    blueman
-    clipman
-    desktop-file-utils
-    networkmanagerapplet
-    xwayland-satellite
-    swaybg
-    wl-clipboard
-  ];
   home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
 }
