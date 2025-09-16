@@ -14,12 +14,20 @@
 
   home.packages = with pkgs; [
     blueman
+    brightnessctl
     clipman
     desktop-file-utils
     networkmanagerapplet
     swaybg
     wl-clipboard
   ];
+
+  # The following packages are managed by systems for now:
+  # - niri
+  # - portals (gtk and gnome)
+  # - swayidle and swaylock
+  # - pipewire and wireplumber
+  # - mesa-vulkan-drivers
 
   # enable xdg
   xdg.enable = true;
