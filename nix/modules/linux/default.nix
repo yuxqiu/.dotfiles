@@ -17,5 +17,8 @@
   xdg.enable = true;
   xdg.mime.enable = true;
 
+  # add /usr/share to $XDG_DATA_DIRS, critical for xdg-desktop-portal to run
+  xdg.systemDirs.data = [ "/usr/share" ];
+
   home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
 }
