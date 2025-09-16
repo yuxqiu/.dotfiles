@@ -7,7 +7,7 @@
     - [Disable Automatic Metadata Synchronizing](https://www.reddit.com/r/Fedora/comments/p10a5o/comment/j5ysqw1/)
 3. Install niri
     - `sudo dnf copr enable yalter/niri` and `sudo dnf install niri` on Fedora.
-    - Setup [xwayland-satellite](https://github.com/YaLTeR/niri/wiki/Xwayland) and [gtk file picker](https://github.com/YaLTeR/niri/wiki/Important-Software#portals).
+    - Setup [gtk file picker](https://github.com/YaLTeR/niri/wiki/Important-Software#portals).
 4. Stop abrt \[Optional\].
     1. [Disbale auto-reporting](https://wiki.centos.org/TipsAndTricks(2f)ABRT.html).
     2. Disbale abrt related service: [1](https://unix.stackexchange.com/questions/556351/what-are-the-risks-for-disable-the-abrtd-service) and [2](https://robbinespu.gitlab.io/posts/disable-abrt-fedora/).
@@ -22,7 +22,7 @@
 
 ### Others
 
-1. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk` and `dotool`.
+1. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk`.
 2. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to install `howdy-beta` and configure PAM.
     - To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
         - The same applies to adding face model.
@@ -31,8 +31,6 @@
 ### Others
 
 1. Watchlist
-    - `wlroot`
-        - no displaylink support: [issue](https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/1823)
     - `systemd-resolved`
         - no DoH support: [issue](https://github.com/systemd/systemd/issues/8639)
 2. Keyboard
