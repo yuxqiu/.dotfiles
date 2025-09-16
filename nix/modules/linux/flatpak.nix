@@ -48,25 +48,17 @@
         ];
       };
 
-      "xyz.armcord.ArmCord" = {
-        # Enable network for ArmCord
-        Context.shared = [ "network" ];
-      };
+      "xyz.armcord.ArmCord" = { Context.shared = [ "network" ]; };
 
       "com.github.IsmaelMartinez.teams_for_linux" = {
-        # Enable network for Microsoft Teams
         Context.shared = [ "network" ];
       };
 
       "io.github.ungoogled_software.ungoogled_chromium" = {
-        # Enable network for Microsoft Teams
         Context.shared = [ "network" ];
       };
 
-      "org.localsend.localsend_app" = {
-        # Enable network for ArmCord
-        Context.shared = [ "network" ];
-      };
+      "org.localsend.localsend_app" = { Context.shared = [ "network" ]; };
     };
   };
 
