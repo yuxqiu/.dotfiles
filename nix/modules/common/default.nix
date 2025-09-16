@@ -26,6 +26,10 @@
     # ruby
     rustup
     tectonic
+    (texliveSmall.withPackages (ps: with ps; [
+      latexindent
+      synctex
+    ]))
     tokei
     tree
     typst

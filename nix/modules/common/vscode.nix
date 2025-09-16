@@ -570,8 +570,6 @@
   # Dependencies for extensions
   home.packages = with pkgs; [
     clang-tools # for clangd and clang-format
-    texlivePackages.latexmk
-    tectonic
     nixfmt-classic
     nixd # for nix-ide
     typst # for tinymist
