@@ -29,26 +29,25 @@ let
   };
 
   # Create a new directory with renamed files from WhiteSur theme's src folder
-  whitesurTheme = pkgs.runCommand "whitesur-theme" {
-    inherit customChrome customContent;
-   } ''
-    mkdir -p $out
-    mkdir -p $out/.hide
+  whitesurTheme =
+    pkgs.runCommand "whitesur-theme" { inherit customChrome customContent; } ''
+      mkdir -p $out
+      mkdir -p $out/.hide
 
-    # Copy all files except customChrome.css
-    cp -r ${whitesurThemeSrc}/src/* $out/
-    mv $out/customChrome.css $out/.hide/customChrome.css
+      # Copy all files except customChrome.css
+      cp -r ${whitesurThemeSrc}/src/* $out/
+      mv $out/customChrome.css $out/.hide/customChrome.css
 
-    # Rename userChrome
-    mv $out/userChrome-Monterey-alt.css $out/userChrome.css || true
+      # Rename userChrome
+      mv $out/userChrome-Monterey-alt.css $out/userChrome.css || true
 
-    # Generate userContent.css by reading original and appending import
-    cat $out/userContent-Monterey.css > $out/userContent.css
-    echo '@import "customContent.css";' >> $out/userContent.css
+      # Generate userContent.css by reading original and appending import
+      cat $out/userContent-Monterey.css > $out/userContent.css
+      echo '@import "customContent.css";' >> $out/userContent.css
 
-    cp ${customChrome} $out/customChrome.css
-    cp ${customContent} $out/customContent.css
-  '';
+      cp ${customChrome} $out/customChrome.css
+      cp ${customContent} $out/customContent.css
+    '';
 
   # Create combined user.js by concatenating arkenfox user.js and user-override.js
   combinedUserJs = builtins.readFile arkenfoxUserJs
@@ -65,6 +64,8 @@ in {
       DisablePocket = true;
       DisableTelemetry = true;
       DisableFirefoxAccounts = false;
+      DontCheckDefaultBrowser = true;
+      ExtensionUpdate = false;
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
       OfferToSaveLoginsDefault = false;
