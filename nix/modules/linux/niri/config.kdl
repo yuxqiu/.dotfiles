@@ -277,6 +277,9 @@ spawn-at-startup "wl-paste" "-t" "text" "--watch" "clipman" "store" "--max-items
 
 spawn-at-startup "swayidle" "-w" "before-sleep" "swaylock -f -c 000000 --color 232332"
 
+// Apps switcher
+spawn-at-startup "niriswitcher"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -384,6 +387,10 @@ binds {
 
     // Clipboard manager pick
     Alt+V hotkey-overlay-title=null { spawn "clipman" "pick" "--tool=wofi" "--max-items=30" "--histpath=~/.local/share/clipman.json"; }
+
+    // Apps switcher
+    Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
+    Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
 
     // Kill focused window
     Ctrl+Q hotkey-overlay-title=null { close-window; }
