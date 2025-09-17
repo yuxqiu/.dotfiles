@@ -15,7 +15,6 @@
   home.packages = with pkgs; [
     blueman
     brightnessctl
-    clipman
     desktop-file-utils
     dotool
     networkmanagerapplet
@@ -23,8 +22,6 @@
     pavucontrol
     libsForQt5.qt5ct
     qt6ct
-    swaybg
-    wl-clipboard
     xdg-utils
   ];
 
