@@ -26,7 +26,6 @@ copy_dirs=(
 
 # Define directories with custom setup scripts
 custom_dirs=(
-  firefox
   sddm
   nix
 )
