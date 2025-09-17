@@ -9,6 +9,7 @@ docker-compose-plugin
 earlyoom
 firejail
 firewalld
+flatpak
 gcc
 gdb
 gnupg2
