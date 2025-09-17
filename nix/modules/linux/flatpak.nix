@@ -1,6 +1,8 @@
 { config, ... }: {
-  # flatpak is still managed by the system's package manager
-  # here, only packages are managed
+  # flatpak is still managed by the system's package manager as it requires some system integration
+  # - e.g., `org.freedesktop.Flatpak.service` in `/usr/share/dbus-1/services`
+  #
+  # So, here, only packages and their respective permissions are managed
   services.flatpak = {
     enable = true;
     update.onActivation = true;
