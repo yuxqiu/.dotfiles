@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  # Inspired by:
+  # - https://github.com/dcunited001/ellipsis/blob/02b014b561cfe1a9e6a00e8903e694c23ebc32bf/nixos/hosts/kratos/fcitx5.nix
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -24,18 +26,29 @@
       # Optional: Declarative settings (example for basic input group setup)
       settings = {
         globalOptions = {
-          # TODO: fix hotkey and themes
+          Behavior = { ActiveByDefault = true; };
           Hotkey = {
-            # Set trigger key to toggle input methods (e.g., Ctrl+Space)
-            TriggerKeys = "Shift_L";
+            EnumerateWithTriggerKeys = true;
+            EnumerateSkipFirst = false;
+            ModifierOnlyKeyTimeout = 250;
           };
+          "Hotkey/TriggerKeys" = { "0" = "Shift_L"; };
+          "Behavior/DisabledAddons" = {
+            "0" = "clipboard";
+            # KDE/plasma only
+            "1" = "kimpanel";
+            "2" = "quickphrase";
+          };
+        };
+        addons = {
+          classicui.globalSection.Theme = "default-dark";
+          pinyin.globalSection.EmojiEnabled = "True";
         };
         inputMethod = {
           GroupOrder = { "0" = "Default"; };
           "Groups/0" = {
             Name = "Default";
-            "Default Layout" =
-              "us"; # US keyboard layout; change to "jp" if needed
+            "Default Layout" = "us";
             DefaultIM = "keyboard-us"; # Default to English
           };
           # Add English, Chinese (Pinyin), and Japanese (Mozc) to the group
