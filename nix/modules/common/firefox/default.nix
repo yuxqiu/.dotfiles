@@ -65,21 +65,44 @@ in {
       DisableTelemetry = true;
       DisableFirefoxAccounts = false;
       DontCheckDefaultBrowser = true;
+      DisableFeedbackCommands = true;
+      DisableFirefoxScreenshots = true;
       ExtensionUpdate = false;
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
       OfferToSaveLoginsDefault = false;
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
       PasswordManagerEnabled = false;
       FirefoxHome = {
         Search = true;
         Pocket = false;
         Snippets = false;
         TopSites = false;
+        SponsoredTopSites = false;
         Highlights = false;
+        SponsoredPocket = false;
       };
       UserMessaging = {
+        WhatsNew = false;
         ExtensionRecommendations = false;
+        FeatureRecommendations = false;
+        UrlbarInterventions = false;
         SkipOnboarding = true;
+        MoreFromMozilla = false;
+      };
+      FirefoxSuggest = {
+        WebSuggestions = false;
+        SponsoredSuggestions = false;
+        ImproveSuggest = false;
+      };
+      ExtensionSettings = {
+        # Disable built-in search engines
+        "amazondotcom@search.mozilla.org" = { installation_mode = "blocked"; };
+        "bing@search.mozilla.org" = { installation_mode = "blocked"; };
+        "ebay@search.mozilla.org" = { installation_mode = "blocked"; };
+        "google@search.mozilla.org" = { installation_mode = "blocked"; };
+        "duckduckgo@search.mozilla.org" = { installation_mode = "blocked"; };
       };
     };
     package = (config.lib.nixGL.wrap pkgs.firefox);
