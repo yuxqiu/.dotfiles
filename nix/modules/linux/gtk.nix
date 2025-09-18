@@ -10,7 +10,7 @@
       package = pkgs.gnome-themes-extra; # Provides Adwaita icons/theme
     };
     iconTheme = {
-      name = "Adwaita";
+      name = "Adwaita-dark";
       package = pkgs.adwaita-icon-theme;
     };
     cursorTheme = {
@@ -18,6 +18,7 @@
       size = 24;
       package = pkgs.adwaita-icon-theme;
     };
+    colorScheme = "dark";
 
     # GTK3 extra settings (adds to ~/.config/gtk-3.0/settings.ini)
     gtk3.extraConfig = {
