@@ -10,6 +10,7 @@
     ./vscode.nix
     ./zsh.nix
     ./niri/default.nix
+    ./qt.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,8 +22,6 @@
     networkmanagerapplet
     networkmanager
     pavucontrol
-    libsForQt5.qt5ct
-    qt6ct
     swaybg
     swayidle
     wl-clipboard
@@ -38,6 +37,4 @@
 
   # add /usr/share to $XDG_DATA_DIRS, critical for xdg-desktop-portal to run
   xdg.systemDirs.data = [ "/usr/share" ];
-
-  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
 }
