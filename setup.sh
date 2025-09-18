@@ -3,6 +3,15 @@
 # Exit on error
 set -e
 
+# Define directories with custom setup scripts. Order is important:
+# - dirs inside must be kept in the same order, and,
+# - custom setup scripts must be ran at the beginning of this setup script
+custom_dirs=(
+  dnf
+  nix
+  sddm
+)
+
 # Define directories to stow with regular stow targeting $HOME
 dirs=(
   niri
@@ -24,12 +33,6 @@ copy_dirs=(
   dnscrypt
 )
 
-# Define directories with custom setup scripts
-custom_dirs=(
-  sddm
-  nix
-)
-
 # Define target locations for copy_dirs
 declare -A copy_targets
 copy_targets=(
@@ -37,6 +40,18 @@ copy_targets=(
   ["journald"]="/etc/systemd"
   ["earlyoom"]="/etc/default"
 )
+
+# Process custom setup directories
+for dir in "${custom_dirs[@]}"; do
+  if [ -d "$dir" ] && [ -f "$dir/setup.sh" ]; then
+    echo "Running custom setup for $dir..."
+    cd "$dir"
+    bash setup.sh
+    cd ..
+  else
+    echo "Skipping $dir: directory or setup.sh not found"
+  fi
+done
 
 # Process regular stow directories
 for dir in "${dirs[@]}"; do
@@ -66,18 +81,6 @@ for dir in "${copy_dirs[@]}"; do
     sudo cp -r "$dir"/* "$target/"
   else
     echo "Skipping $dir: not a directory"
-  fi
-done
-
-# Process custom setup directories
-for dir in "${custom_dirs[@]}"; do
-  if [ -d "$dir" ] && [ -f "$dir/setup.sh" ]; then
-    echo "Running custom setup for $dir..."
-    cd "$dir"
-    bash setup.sh
-    cd ..
-  else
-    echo "Skipping $dir: directory or setup.sh not found"
   fi
 done
 
