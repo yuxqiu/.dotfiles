@@ -1,28 +1,23 @@
 { ... }: {
-  home.file.".editorconfig".text = ''
-    root = true
+  editorconfig.settings = {
+    "*" = {
+      indent_style = "space";
+      indent_size = 4;
+      end_of_line = "lf";
+      charset = "utf-8";
+      trim_trailing_whitespace = true;
+      insert_final_newline = true;
+      spaces_around_operators = true;
+      quote_type = "double";
+      curly_bracket_next_line = false;
+    };
 
-    [*]
-    indent_style = space
-    indent_size = 4
-    end_of_line = lf
-    charset = utf-8
-    trim_trailing_whitespace = true
-    insert_final_newline = true
-    spaces_around_operators	= true
-    quote_type = double
-    curly_bracket_next_line	= false
+    "*.md" = { insert_final_newline = false; };
 
-    [*.md]
-    insert_final_newline = false
+    "{makefile,Makefile,**.mk}" = { indent_style = "tab"; };
 
-    [{makefile,Makefile,**.mk}]
-    indent_style = tab
+    "*.{yml,yaml}" = { indent_size = 2; };
 
-    [*.{yml,yaml}]
-    indent_size = 2
-
-    [*.txt]
-    insert_final_newline = false
-  '';
+    "*.txt" = { insert_final_newline = false; };
+  };
 }
