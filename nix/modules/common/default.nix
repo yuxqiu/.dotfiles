@@ -5,13 +5,13 @@
     ./editorconfig.nix
     ./python.nix
     ./git-fame.nix
-    ./nixgl.nix
     ./zsh.nix
     ./sioyek.nix
     ./alacritty.nix
     ./nvim.nix
     ./vscode.nix
     ./firefox/default.nix
+    ./nixgl.nix
   ];
 
   home.packages = with pkgs; [
@@ -27,10 +27,7 @@
     rustup
     tealdeer
     tectonic
-    (texliveSmall.withPackages (ps: with ps; [
-      latexindent
-      synctex
-    ]))
+    (texliveSmall.withPackages (ps: with ps; [ latexindent synctex ]))
     tokei
     tree
     typst
@@ -44,4 +41,10 @@
 
   # Ensure fonts are available
   fonts.fontconfig.enable = true;
+
+  # Allow unfree packages
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (pkg: true);
+  };
 }

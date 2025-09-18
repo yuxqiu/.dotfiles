@@ -16,7 +16,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, nix-flatpak, nixGL, nix-vscode-extensions, ... }:
+    { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions, nixGL, ... }:
     let
       # Define supported systems
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -32,8 +32,9 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ nixGL.overlay nix-vscode-extensions.overlays.default ];
+            overlays = [ nix-vscode-extensions.overlays.default ];
           };
+
           # Conditionally select system-specific module
           systemModule = if (builtins.match ".*-linux" system != null) then
             ./modules/linux/default.nix
@@ -57,9 +58,12 @@
 
             # User-specific settings
             (import ./users/${username}.nix { inherit system pkgs; })
+            
+            # Additional inputs
+            {
+              _module.args.nixGL = nixGL; # Pass nixGL input to home.nix
+            }
           ];
-
-          extraSpecialArgs = { inherit nixGL; };
         });
     };
 }

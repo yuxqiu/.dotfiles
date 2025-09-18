@@ -1,12 +1,9 @@
-{ nixGL, ... }: {
-  nixGL.packages = nixGL.packages;
-  nixGL.defaultWrapper = "mesa";
-  nixGL.offloadWrapper = "nvidiaPrime";
+{ nixGL, ... }:
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (pkg: true);
-    };
+{
+  nixGL = {
+    # Set packages to nixGL.packages for non-NixOS, null for NixOS
+    packages = if builtins.pathExists /etc/NIXOS then null else nixGL.packages;
+    vulkan.enable = true; # Enable Vulkan
   };
 }
