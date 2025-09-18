@@ -31,9 +31,8 @@
   # The following packages are also partially managed by systems for now:
   # - niri and portals (gtk and gnome)
 
-  # enable xdg
+  # enable xdg (xdg-mime is default enabled)
   xdg.enable = true;
-  xdg.mime.enable = true;
 
   # add /usr/share to $XDG_DATA_DIRS, critical for xdg-desktop-portal to run
   xdg.systemDirs.data = [ "/usr/share" ];
