@@ -10,7 +10,7 @@
       package = pkgs.gnome-themes-extra; # Provides Adwaita icons/theme
     };
     iconTheme = {
-      name = "Adwaita-dark";
+      name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
     cursorTheme = {
