@@ -32,7 +32,15 @@
         # Force
         # - Wayland by default
         # - No smart cards (pcsc: YubiKey), printer, gpg and ssh
-        Context.sockets = [ "wayland" "!x11" "!fallback-x11" "!pcsc" "!cups" "!ssh-auth" "!gpg-agent" ];
+        Context.sockets = [
+          "wayland"
+          "!x11"
+          "!fallback-x11"
+          "!pcsc"
+          "!cups"
+          "!ssh-auth"
+          "!gpg-agent"
+        ];
         # # Deny network access by default
         Context.shared = [ "!network" "!ipc" ];
 
@@ -79,6 +87,8 @@
       };
 
       "org.localsend.localsend_app" = { Context.shared = [ "network" ]; };
+
+      "org.kde.dolphin" = { Context.socket = [ "session-bus" "system-bus" ]; };
     };
   };
 
