@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ system, config, ... }: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -14,20 +14,23 @@
 
     # Aliases
     shellAliases = {
-      # Sudo alias with trailing space
+      # Sudo with trailing space
       sudo = "sudo ";
 
-      # Docker aliases
+      # Docker
       dockps = ''docker ps --format "{{.ID}} {{.Names}}"'';
       docklsc = "docker ps -a";
       dockrmc = "docker rm";
       docklsi = "docker images -a";
       dockrmi = "docker rmi";
 
-      # Docker Compose aliases
+      # Docker Compose
       dcbuild = "docker-compose build";
       dcup = "docker-compose up";
       dcdown = "docker-compose down";
+
+      # Home Manager Update
+      home-manager-update = "nix flake update && home-manager switch --flake .#${system}";
     };
 
     # Environment variables

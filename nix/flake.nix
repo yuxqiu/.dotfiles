@@ -58,10 +58,13 @@
 
             # User-specific settings
             (import ./users/${username}.nix { inherit system pkgs; })
-            
+
             # Additional inputs
             {
-              _module.args.nixGL = nixGL; # Pass nixGL input to home.nix
+              _module.args = {
+                inherit system;
+                nixGL = nixGL; # Pass nixGL input to home.nix
+              };
             }
           ];
         });
