@@ -15,8 +15,8 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs =
-    { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions, nixGL, ... }:
+  outputs = { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions, nixGL
+    , ... }@inputs:
     let
       # Define supported systems
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -45,6 +45,8 @@
         in home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
+          extraSpecialArgs = { inherit inputs; };
+
           modules = [
             # Common settings
             ./modules/common/default.nix
@@ -66,6 +68,14 @@
                 nixGL = nixGL; # Pass nixGL input to home.nix
               };
             }
+
+            # Avoid gc cleaning the source
+            ({ lib, inputs, ... }: {
+              home.file = builtins.listToAttrs (builtins.map (input:
+                lib.attrsets.nameValuePair "sources/${input}" {
+                  source = inputs.${input};
+                }) (builtins.attrNames inputs));
+            })
           ];
         });
     };
