@@ -16,12 +16,12 @@
       "com.github.tchx84.Flatseal"
       "io.github.seadve.Kooha"
       "io.github.ungoogled_software.ungoogled_chromium"
+      "io.mpv.Mpv"
       "org.gnome.Calculator"
       "org.gnome.FileRoller"
       "org.kde.dolphin"
       "org.libreoffice.LibreOffice"
       "org.localsend.localsend_app"
-      "org.videolan.VLC"
       "org.xfce.ristretto"
       "xyz.armcord.ArmCord"
       "org.inkscape.Inkscape"
@@ -88,7 +88,7 @@
 
       "org.localsend.localsend_app" = { Context.shared = [ "network" ]; };
 
-      "org.kde.dolphin" = { Context.socket = [ "session-bus" "system-bus" ]; };
+      "org.kde.dolphin" = { Context.sockets = [ "session-bus" "system-bus" ]; };
     };
   };
 
