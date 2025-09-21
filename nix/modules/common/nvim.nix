@@ -3,7 +3,6 @@
 {
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
 
@@ -87,4 +86,7 @@
       end
     '';
   };
+
+  # Configure EDITOR using full path to ensure sudoedit can pick up nvim
+  home.sessionVariables.EDITOR = "${pkgs.neovim}/bin/nvim";
 }
