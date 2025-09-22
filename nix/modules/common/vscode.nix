@@ -339,6 +339,10 @@
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
 
+        # ssh
+        "remote.SSH.showLoginTerminal" = true;
+        "remote.SSH.useLocalServer" = false;
+
         # Minimalistic
         "window.commandCenter" = false;
         "window.menuBarVisibility" = "hidden";
