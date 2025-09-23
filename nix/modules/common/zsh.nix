@@ -31,6 +31,9 @@
 
       # Home Manager Update
       home-manager-update = "nix flake update && home-manager switch --flake .#${system}";
+
+      # Immortal ssh
+      sshx = ''mosh "$@" -- screen -s -/bin/bash -qRRUS "mosh-''${HOSTNAME}"'';
     };
 
     # Environment variables

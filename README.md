@@ -4,9 +4,6 @@
 
 1. Run `setup.sh` to setup the configuration files.
 2. Setup niri [gtk file picker](https://github.com/YaLTeR/niri/wiki/Important-Software#portals).
-3. Stop abrt \[Optional\].
-    1. [Disbale auto-reporting](https://wiki.centos.org/TipsAndTricks(2f)ABRT.html).
-    2. Disbale abrt related service: [1](https://unix.stackexchange.com/questions/556351/what-are-the-risks-for-disable-the-abrtd-service) and [2](https://robbinespu.gitlab.io/posts/disable-abrt-fedora/).
 
 ### DoH
 

@@ -20,21 +20,28 @@
     git-crypt
     git-lfs
     hyperfine
+    kondo
     lazydocker
     less
+    mosh
+    onefetch
+    openssl
     pandoc
-    uv
+    rsync
     rustup
+    screen
+    strace
     tealdeer
     tectonic
+    inetutils
     (texliveSmall.withPackages (ps: with ps; [ latexindent synctex ]))
     tokei
     tree
     typst
     typos
-    onefetch
-    openssl
-    kondo
+    uv
+    wget
+    which
   ];
 
   home.stateVersion = "25.11";
