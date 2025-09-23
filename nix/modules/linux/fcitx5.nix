@@ -38,6 +38,7 @@
             # KDE/plasma only
             "1" = "kimpanel";
             "2" = "quickphrase";
+            "3" = "cloudpinyin";
           };
         };
         addons = {
