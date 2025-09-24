@@ -578,7 +578,6 @@
     nixd # for nix-ide
     typst # for tinymist
     black # for ms-python.black-formatter
-    cmake # for ms-vscode.cmake-tools
 
     # fonts
     fira-code

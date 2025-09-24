@@ -11,6 +11,7 @@ fedora_packages=(
   NetworkManager
   NetworkManager-tui
   clang
+  cmake
   dnscrypt-proxy
   earlyoom
   firejail
