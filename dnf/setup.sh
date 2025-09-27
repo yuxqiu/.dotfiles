@@ -20,6 +20,8 @@ fedora_packages=(
   gcc
   gdb
   gnupg2
+  iputils
+  mtr
   llvm
   mesa-dri-drivers
   mesa-vulkan-drivers
@@ -32,6 +34,7 @@ fedora_packages=(
   selinux-policy-targeted
   stow
   swaylock
+  traceroute
   wireplumber
   xdg-desktop-portal-gtk
   xdg-user-dirs

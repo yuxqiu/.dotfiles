@@ -33,7 +33,6 @@
     strace
     tealdeer
     tectonic
-    inetutils
     (texliveSmall.withPackages (ps: with ps; [ latexindent synctex ]))
     tokei
     tree
