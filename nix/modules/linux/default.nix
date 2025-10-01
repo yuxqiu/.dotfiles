@@ -11,6 +11,7 @@
     ./zsh.nix
     ./niri/default.nix
     ./qt.nix
+    ./wl-kbptr.nix
   ];
 
   home.packages = with pkgs; [
