@@ -445,20 +445,6 @@
           when = "editorTextFocus";
         }
 
-        # For Linux
-        {
-          key = "shift+alt+f";
-          command = "editor.action.formatDocument";
-          when =
-            "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
-        }
-        {
-          key = "ctrl+shift+i";
-          command = "-editor.action.formatDocument";
-          when =
-            "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor";
-        }
-
         # Snippets
         {
           key = "ctrl+m ctrl+m";
