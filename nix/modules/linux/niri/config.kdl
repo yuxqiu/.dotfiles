@@ -392,6 +392,14 @@ binds {
     Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
     Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
 
+    // wl-kbptr
+    Alt+G {
+        spawn-sh "wl-kbptr -o modes=floating,click -o mode_floating.source=detect"
+    }
+    Alt+Shift+G {
+        spawn-sh "wl-kbptr"
+    }
+
     // Kill focused window
     Ctrl+Q hotkey-overlay-title=null { close-window; }
 

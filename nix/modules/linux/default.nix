@@ -25,6 +25,7 @@
     swaybg
     swayidle
     wl-clipboard
+    wl-kbptr
     xdg-utils
   ];
 
