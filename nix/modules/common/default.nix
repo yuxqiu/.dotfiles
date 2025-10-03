@@ -30,6 +30,7 @@
     rsync
     rustup
     screen
+    sqlite
     strace
     tealdeer
     tectonic
