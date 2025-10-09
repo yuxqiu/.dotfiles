@@ -1,6 +1,5 @@
 browser = """\
-  firefox --CreateProfile "captive-browser" \
-  && printf "user_pref%s;\\n" \
+  printf "user_pref%s;\\n" \
     "(\\"network.proxy.type\\", 1)" \
     "(\\"network.proxy.socks_remote_dns\\", true)" \
     "(\\"network.proxy.socks_version\\", 5)" \
@@ -83,7 +82,7 @@ browser = """\
     "(\\"network.http.speculative-parallel-limit\\", 0)" \
     "(\\"network.predictor.enabled\\", false)" \
     "(\\"dom.push.enabled\\", false)" \
-  >> "$(printf "%s\\n" "$HOME"/.mozilla/firefox/*.captive-browser/)"prefs.js \
+  >> "$(printf "%s\\n" "$HOME"/.mozilla/firefox/captive-browser/)"prefs.js \
   && export MOZ_REMOTE_SETTINGS_DEVTOOLS=1 \
   && mkdir -p "$(printf "%s\\n" "$HOME"/.mozilla/firefox/*.captive-browser/)"chrome \
   && printf "%s\\n" "#TabsToolbar { display: none; }" \
