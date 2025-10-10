@@ -7,7 +7,6 @@
     ./waybar/default.nix
     ./fcitx5.nix
     ./gtk.nix
-    ./vscode.nix
     ./zsh.nix
     ./niri/default.nix
     ./qt.nix
