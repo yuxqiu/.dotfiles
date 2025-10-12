@@ -51,7 +51,6 @@
           tamasfe.even-better-toml
           thomanq.math-snippets
           usernamehw.errorlens
-          vadimcn.vscode-lldb
           vscjava.vscode-java-debug
           vscjava.vscode-java-test
           vscjava.vscode-maven
@@ -61,13 +60,13 @@
           yzhang.markdown-all-in-one
           zhuangtongfa.material-theme
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          # Add extensions not in nixpkgs here, e.g.:
-          # {
-          #   name = "extension-name";
-          #   publisher = "publisher-name";
-          #   version = "x.y.z";
-          #   sha256 = "hash";
-          # }
+          # https://github.com/nix-community/nix-vscode-extensions/issues/143
+          {
+            name = "vscode-lldb";
+            publisher = "vadimcn";
+            version = "1.11.6";
+            sha256 = "sha256-E4gMoAbI+D0xAFNG6j3pHzOMbhB9CWVCeqFEb4qlSu8=";
+          }
         ];
 
       # User settings (settings.json)
