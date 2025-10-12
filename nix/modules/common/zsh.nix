@@ -30,7 +30,7 @@
       dcdown = "docker-compose down";
 
       # Home Manager Update
-      home-manager-update = "nix flake update && home-manager switch --flake .#${system}";
+      home-manager-update = "nix flake update && update-nix-fetchgit modules/**/*.nix && home-manager switch --flake .#${system}";
 
       # Immortal ssh
       sshx = ''mosh "$@" -- screen -s -/bin/bash -qRRUS "mosh-''${HOSTNAME}"'';

@@ -25,7 +25,7 @@ let
   # Fetch WhiteSur theme using builtins.fetchGit
   whitesurThemeSrc = builtins.fetchGit {
     url = "https://github.com/vinceliuice/WhiteSur-firefox-theme";
-    rev = "5bca0ba79af0e3707d080355f18a9c31086f7202";
+    rev = "848f9bf8f91dae355eece14fca75929f86d33421";
   };
 
   # Create a new directory with renamed files from WhiteSur theme's src folder

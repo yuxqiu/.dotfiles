@@ -40,6 +40,7 @@
     tree
     typst
     typos
+    update-nix-fetchgit
     uv
     wget
     which
