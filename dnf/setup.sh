@@ -10,6 +10,7 @@ fi
 fedora_packages=(
   NetworkManager
   NetworkManager-tui
+  borgmatic
   clang
   cmake
   dnscrypt-proxy
