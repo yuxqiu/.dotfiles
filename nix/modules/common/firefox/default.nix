@@ -27,22 +27,37 @@ let
     url = "https://github.com/vinceliuice/WhiteSur-firefox-theme";
     rev = "848f9bf8f91dae355eece14fca75929f86d33421";
   };
+  themeName = "WhiteSur";
+  userChromeName = "${themeName}";
+  userContentName = themeName;
 
   # Create a new directory with renamed files from WhiteSur theme's src folder
   whitesurTheme =
+    # https://github.com/vinceliuice/WhiteSur-firefox-theme/blob/main/install.sh
     pkgs.runCommand "whitesur-theme" { inherit customChrome customContent; } ''
       mkdir -p $out
       mkdir -p $out/.hide
+      mkdir -p $out/${themeName}/icons
+      mkdir -p $out/${themeName}/titlebuttons
+      mkdir -p $out/${themeName}/pages
+      mkdir -p $out/${themeName}/parts
 
       # Copy all files except customChrome.css
       cp -r ${whitesurThemeSrc}/src/* $out/
       mv $out/customChrome.css $out/.hide/customChrome.css
 
+      # Copy common assets
+      cp -rf $out/common/icons $out/${themeName}
+      cp -rf $out/common/titlebuttons $out/${themeName}
+      cp -rf $out/common/pages $out/${themeName}
+      cp -rf $out/common/*.css $out/${themeName}
+      cp -rf $out/common/parts/*.css $out/${themeName}/parts
+
       # Rename userChrome
-      mv $out/userChrome-Monterey-alt.css $out/userChrome.css || true
+      mv $out/userChrome-${userChromeName}.css $out/userChrome.css
 
       # Generate userContent.css by reading original and appending import
-      cat $out/userContent-Monterey.css > $out/userContent.css
+      cat $out/userContent-${userContentName}.css > $out/userContent.css
       echo '@import "customContent.css";' >> $out/userContent.css
 
       cp ${customChrome} $out/customChrome.css
