@@ -10,7 +10,10 @@ fi
 fedora_packages=(
   NetworkManager
   NetworkManager-tui
-  borgmatic
+  # Config file is managed manually. See:
+  # - https://autorestic.vercel.app/
+  # - https://gitlab.com/py_crash/autorestic-systemd-units
+  autorestic
   clang
   cmake
   dnscrypt-proxy
