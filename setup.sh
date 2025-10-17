@@ -14,7 +14,7 @@ custom_dirs=(
 
 # Define directories to stow with regular stow targeting $HOME
 dirs=(
-  niri
+  dms
 )
 
 # Define directories to stow with sudo targeting /
