@@ -2,8 +2,6 @@
   imports = [
     ./flatpak.nix
     ./captive-browser/default.nix
-    ./wofi.nix
-    ./mako.nix
     ./waybar/default.nix
     ./fcitx5.nix
     ./gtk.nix
@@ -15,16 +13,11 @@
 
   home.packages = with pkgs; [
     blueman
-    brightnessctl
-    clipman
     desktop-file-utils
     dotool
     networkmanagerapplet
     networkmanager
     pavucontrol
-    swaybg
-    swayidle
-    wl-clipboard
     wl-kbptr
     xdg-utils
   ];

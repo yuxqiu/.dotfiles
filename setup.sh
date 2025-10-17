@@ -9,13 +9,12 @@ set -e
 custom_dirs=(
   dnf
   nix
-  sddm
+  dms
 )
 
 # Define directories to stow with regular stow targeting $HOME
 dirs=(
   niri
-  swaylock
 )
 
 # Define directories to stow with sudo targeting /

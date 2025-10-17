@@ -562,7 +562,7 @@
     black # for ms-python.black-formatter
 
     # fonts
-    fira-code
+    # fira-code - covered by dms
     nerd-fonts.meslo-lg
   ];
 

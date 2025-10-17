@@ -18,7 +18,6 @@ fedora_packages=(
   cmake
   dnscrypt-proxy
   earlyoom
-  firejail
   firewalld
   flatpak
   gcc
@@ -34,10 +33,8 @@ fedora_packages=(
   pipewire-pulseaudio
   pipewire-utils
   polkit
-  sddm
   selinux-policy-targeted
   stow
-  swaylock
   traceroute
   wireplumber
   xdg-desktop-portal-gtk
@@ -48,6 +45,9 @@ fedora_packages=(
 declare -A copr_map=(
   ["howdy"]="principis/howdy-beta"
   ["niri"]="yalter/niri"
+  # for aarch64 fedora install, dms binary needs to be replaced manually now (download from Github)
+  ["dms"]="avengemedia/dms"
+  ["dms-greeter"]="avengemedia/dms"
 )
 
 # Associative array for packages requiring manual RPM downloads

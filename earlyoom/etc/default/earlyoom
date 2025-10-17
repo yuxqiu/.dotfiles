@@ -1,3 +1,3 @@
-EARLYOOM_ARGS="-n -r 0 -m 10 --prefer '^(Web Content|Isolated Web Co)$' --avoid '^(dnf|packagekitd|gnome-shell|gnome-session-c|gnome-session-b|lightdm|sddm|sddm-helper|gdm|gdm-wayland-ses|gdm-session-wor|gdm-x-session|Xorg|Xwayland|systemd|systemd-logind|dbus-daemon|dbus-broker|cinnamon|cinnamon-sessio|kwin_x11|kwin_wayland|plasmashell|ksmserver|plasma_session|startplasma-way|xfce4-session|mate-session|marco|lxqt-session|openbox|cryptsetup|niri)$'"
+EARLYOOM_ARGS="-n -r 0 -m 10 --prefer '^(Web Content|Isolated Web Co)$' --avoid '^(greetd|systemd|systemd-logind|dbus-daemon|dbus-broker|niri)$'"
 
 # More documentation at `man earlyoom` or `earlyoom -h`.
