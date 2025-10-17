@@ -7,6 +7,8 @@
       "super_fast_search" = "1";
       "show_document_name_in_statusbar" = "1";
       "show_closest_bookmark_in_statusbar" = "1";
+      "status_bar_font_size" = "15";
+      "font_size" = "15";
     };
     package = (config.lib.nixGL.wrap pkgs.sioyek);
   };
