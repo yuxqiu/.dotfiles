@@ -56,5 +56,7 @@
       help.autocorrect = "prompt";
       commit.verbose = true;
     };
+
+    delta.enable = true;
   };
 }

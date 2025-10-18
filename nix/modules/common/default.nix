@@ -17,6 +17,7 @@
   home.packages = with pkgs; [
     bottom
     cargo-flamegraph
+    duf
     ffmpeg
     git-crypt
     git-lfs
