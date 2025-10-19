@@ -100,7 +100,12 @@
   ],
   "dankBarCenterWidgets": [
     "music",
-    "clock"
+    "clock",
+    {
+      "id": "spacer",
+      "enabled": true,
+      "size": 20
+    }
   ],
   "dankBarRightWidgets": [
     {
@@ -133,6 +138,10 @@
     },
     {
       "id": "controlCenterButton",
+      "enabled": true
+    },
+    {
+      "id": "privacyIndicator",
       "enabled": true
     }
   ],
@@ -199,11 +208,12 @@
   "hideBrightnessSlider": false,
   "widgetBackgroundColor": "sch",
   "surfaceBase": "s",
+  "wallpaperFillMode": "Fill",
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 5000,
   "notificationTimeoutCritical": 0,
   "notificationPopupPosition": 0,
-  "osdAlwaysShowValue": false,
+  "osdAlwaysShowValue": true,
   "powerActionConfirm": true,
   "customPowerActionLock": "",
   "customPowerActionLogout": "",
