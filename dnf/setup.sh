@@ -23,6 +23,7 @@ fedora_packages=(
   gcc
   gdb
   gnupg2
+  ifuse
   iputils
   mtr
   llvm
@@ -36,6 +37,7 @@ fedora_packages=(
   selinux-policy-targeted
   stow
   traceroute
+  usbmuxd
   wireplumber
   xdg-desktop-portal-gtk
   xdg-user-dirs
