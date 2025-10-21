@@ -35,6 +35,7 @@ in {
     ./earlyoom.nix
     ./logind/logind.nix
     ./journald/journald.nix
+    ./NetworkManager/NetworkManager.nix
   ];
 
   nix = { enable = false; };
