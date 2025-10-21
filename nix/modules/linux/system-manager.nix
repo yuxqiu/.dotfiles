@@ -32,6 +32,7 @@ let
 in {
   imports = [
     ./dnscrypt-proxy/dnscrypt-proxy.nix
+    ./earlyoom.nix
   ];
 
   nix = { enable = false; };
