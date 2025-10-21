@@ -30,6 +30,10 @@ let
     semodule_package -o $out -m allow-system-manager.mod
   '';
 in {
+  imports = [
+    ./dnscrypt-proxy/dnscrypt-proxy.nix
+  ];
+
   nix = { enable = false; };
 
   system-manager.allowAnyDistro = true;
