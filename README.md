@@ -3,7 +3,6 @@
 ### General
 
 1. Run `setup.sh` to setup the configuration files.
-2. Setup niri [gtk file picker](https://github.com/YaLTeR/niri/wiki/Important-Software#portals).
 
 ### DoH
 
@@ -15,7 +14,6 @@
 2. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to configure PAM.
     - To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
         - The same applies to adding face model.
-3. firejail: Install and Enable `firejail` following the instructions in [ArchWiki](https://wiki.archlinux.org/title/Firejail).
 
 ### Others
 
