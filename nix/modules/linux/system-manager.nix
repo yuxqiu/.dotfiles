@@ -34,6 +34,7 @@ in {
     ./dnscrypt-proxy/dnscrypt-proxy.nix
     ./earlyoom.nix
     ./logind/logind.nix
+    ./journald/journald.nix
   ];
 
   nix = { enable = false; };
