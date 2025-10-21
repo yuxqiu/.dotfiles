@@ -92,12 +92,6 @@ user_pref("media.peerconnection.ice.default_address_only", false);
 /*** [SECTION 4500]: OPTIONAL RFP (resistFingerprinting) ***/
 user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 
-/* 4501: enable RFP
- * [NOTE] pbmode applies if true and the original pref is false
- * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a canvas site exception via the urlbar.
- * RFP also has a few side effects: mainly that timezone is GMT, and websites will prefer light theme ***/
-user_pref("privacy.resistFingerprinting", true); // [FF41+]
-
 /* 4520: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
 user_pref("webgl.disabled", false);
@@ -118,9 +112,6 @@ user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 
 // reject all cookies by default and prompt users if cannot do so
 user_pref("cookiebanners.service.mode", 1);
-
-// fix screenshot problem when resist fingerprinting is enabled
-user_pref("screenshots.browser.component.enabled", true);
 
 // disable all promos
 user_pref("browser.contentblocking.report.vpn-promo.url", "");
@@ -163,7 +154,7 @@ user_pref("browser.disableResetPrompt", false);
 user_pref("extensions.pocket.enabled", false);
 user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
 
-// disable self suport
+// disable self support
 user_pref("browser.selfsupport.url", "");
 
 // disable default browser check
@@ -172,7 +163,7 @@ user_pref("browser.shell.checkDefaultBrowser", false);
 // disable health report
 user_pref("datareporting.healthreport.service.enabled", false);
 
-// disbale battery access
+// disable battery access
 user_pref("dom.battery.enabled", false);
 
 // disable more telemetry
@@ -276,6 +267,12 @@ user_pref("geo.provider.network.url", "");
 
 // enable copy link to highlight
 user_pref("dom.text_fragments.create_text_fragment.enabled", true);
+
+// enable RFP via FPP
+// https://bugzilla.mozilla.org/show_bug.cgi?id=1732114
+user_pref("privacy.resistFingerprinting", false);
+user_pref("privacy.fingerprintingProtection", true);
+user_pref("privacy.fingerprintingProtection.overrides", "+AllTargets,-CSSPrefersColorScheme");
 
 // ===================From BetterFox Start======================
 
