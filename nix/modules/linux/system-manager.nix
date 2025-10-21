@@ -47,17 +47,23 @@ in {
   system-manager.preActivationAssertions.install-selinux-policy = {
     enable = true;
     script = ''
+      # Check for system-wide SELinux tools first, then fall back to Nix
+      GETENFORCE=$(command -v getenforce || echo ${pkgs.libselinux}/bin/getenforce)
+      SEMODULE=$(command -v semodule || echo ${pkgs.policycoreutils}/bin/semodule)
+      RESTORECON=$(command -v restorecon || echo ${pkgs.policycoreutils}/bin/restorecon)
+
       # Check if SELinux is installed and enabled
-      if command -v ${pkgs.policycoreutils}/bin/getenforce >/dev/null 2>&1; then
-        SELINUX_MODE=$(${pkgs.policycoreutils}/bin/getenforce 2>/dev/null)
+      if command -v "$GETENFORCE" >/dev/null 2>&1; then
+        SELINUX_MODE=$("$GETENFORCE" 2>/dev/null)
         if [ "$SELINUX_MODE" = "Enforcing" ] || [ "$SELINUX_MODE" = "Permissive" ]; then
           echo "SELinux is enabled ($SELINUX_MODE). Installing policy..."
+          set -e
           # Remove old module if exists
-          ${pkgs.policycoreutils}/bin/semodule -r allow-system-manager 2>/dev/null || true
+          "$SEMODULE" -r allow-system-manager 2>/dev/null || true
           # Install pre-built policy package
-          ${pkgs.policycoreutils}/bin/semodule -i ${policy-package}
+          "$SEMODULE" -i ${policy-package}
           # Fix contexts and reload
-          ${pkgs.policycoreutils}/bin/restorecon -R /etc/systemd/system/
+          "$RESTORECON" -R /etc/systemd/system/
           systemctl daemon-reload
           echo "SELinux policy installed"
         else
