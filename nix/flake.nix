@@ -13,10 +13,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions, nixGL
-    , ... }@inputs:
+    , system-manager, ... }@inputs:
     let
       # Define supported systems
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -76,6 +80,16 @@
                   source = inputs.${input};
                 }) (builtins.attrNames inputs));
             })
+          ];
+        });
+
+      systemConfigs = forAllSystems (system:
+        system-manager.lib.makeSystemConfig {
+          modules = [
+            ./modules/linux/system-manager.nix
+
+            # Additional inputs
+            { _module.args = { inherit system; }; }
           ];
         });
     };
