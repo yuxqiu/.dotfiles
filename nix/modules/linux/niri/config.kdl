@@ -396,6 +396,10 @@ binds {
       spawn "dms" "ipc" "call" "clipboard" "toggle";
     }
 
+    Ctrl+Alt+L hotkey-overlay-title="Lock Screen" {
+      spawn "dms" "ipc" "call" "lock" "lock";
+    }
+
     XF86AudioRaiseVolume allow-when-locked=true {
       spawn "dms" "ipc" "call" "audio" "increment" "5";
     }
