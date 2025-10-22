@@ -10,9 +10,6 @@ fi
 fedora_packages=(
   NetworkManager
   NetworkManager-tui
-  # Config file is managed manually. See:
-  # - https://autorestic.vercel.app/
-  # - https://gitlab.com/py_crash/autorestic-systemd-units
   autorestic
   clang
   cmake

@@ -36,6 +36,7 @@ in {
     ./logind/logind.nix
     ./journald/journald.nix
     ./NetworkManager/NetworkManager.nix
+    ./autorestic.nix
   ];
 
   nix = { enable = false; };
