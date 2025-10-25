@@ -47,8 +47,6 @@
     which
   ];
 
-  home.stateVersion = "25.11";
-
   # Ensure fonts are available
   fonts.fontconfig.enable = true;
 

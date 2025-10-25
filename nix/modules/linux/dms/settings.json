@@ -184,6 +184,7 @@
   "dockSpacing": 4,
   "dockBottomGap": 0,
   "dockIconSize": 40,
+  "dockIndicatorStyle": "circle",
   "cornerRadius": 12,
   "notificationOverlayEnabled": false,
   "dankBarAutoHide": true,
@@ -209,6 +210,8 @@
   "widgetBackgroundColor": "sch",
   "surfaceBase": "s",
   "wallpaperFillMode": "Fill",
+  "blurredWallpaperLayer": false,
+  "blurWallpaperOnOverview": false,
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 5000,
   "notificationTimeoutCritical": 0,
@@ -225,6 +228,7 @@
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
   "screenPreferences": {},
+  "showOnLastDisplay": {},
   "animationSpeed": 2,
   "customAnimationDuration": 500,
   "acMonitorTimeout": 0,
@@ -238,5 +242,6 @@
   "lockBeforeSuspend": true,
   "loginctlLockIntegration": true,
   "launchPrefix": "",
+  "brightnessDevicePins": {},
   "configVersion": 1
 }

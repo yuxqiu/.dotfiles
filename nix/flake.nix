@@ -64,6 +64,7 @@
 
             # User-specific settings
             (import ./users/${username}.nix { inherit system pkgs; })
+            ./users/options.nix
 
             # Additional inputs
             {

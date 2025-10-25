@@ -9,19 +9,11 @@ set -e
 custom_dirs=(
   dnf
   nix
-  dms
-)
-
-# Define directories to stow with regular stow targeting $HOME
-dirs=(
-  dms
 )
 
 # Define directories to stow with sudo targeting /
 sudo_dirs=(
-  howdy
   dnf
-  dnscrypt
 )
 
 # Process custom setup directories
@@ -33,16 +25,6 @@ for dir in "${custom_dirs[@]}"; do
     cd ..
   else
     echo "Skipping $dir: directory or setup.sh not found"
-  fi
-done
-
-# Process regular stow directories
-for dir in "${dirs[@]}"; do
-  if [ -d "$dir" ]; then
-    echo "Stowing $dir to $HOME..."
-    stow --target="$HOME" --restow "$dir"
-  else
-    echo "Skipping $dir: not a directory"
   fi
 done
 

@@ -9,6 +9,7 @@
     ./niri/default.nix
     ./qt.nix
     ./wl-kbptr.nix
+    ./dms/dms.nix
   ];
 
   home.packages = with pkgs; [
