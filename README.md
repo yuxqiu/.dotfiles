@@ -11,7 +11,7 @@
 ### Others
 
 1. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk`.
-2. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to configure PAM.
+2. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to add a face template.
     - To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
         - The same applies to adding face model.
 
