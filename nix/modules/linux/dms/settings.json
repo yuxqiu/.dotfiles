@@ -88,6 +88,7 @@
   "clockCompactMode": false,
   "focusedWindowCompactMode": false,
   "runningAppsCompactMode": true,
+  "keyboardLayoutNameCompactMode": true,
   "runningAppsCurrentWorkspace": false,
   "runningAppsGroupByApp": false,
   "clockDateFormat": "",
@@ -110,10 +111,6 @@
   "dankBarRightWidgets": [
     {
       "id": "systemTray",
-      "enabled": true
-    },
-    {
-      "id": "clipboard",
       "enabled": true
     },
     {
