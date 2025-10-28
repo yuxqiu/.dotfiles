@@ -6,7 +6,6 @@
   services.flatpak = {
     enable = true;
     update.onActivation = true;
-    uninstallUnmanaged = true;
     uninstallUnused = true; # delete stale/unused packages
 
     packages = [

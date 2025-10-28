@@ -3,6 +3,7 @@
   "customThemeFile": "",
   "matugenScheme": "scheme-tonal-spot",
   "runUserMatugenTemplates": true,
+  "matugenTargetMonitor": "",
   "dankBarTransparency": 1,
   "dankBarWidgetTransparency": 1,
   "popupTransparency": 1,
@@ -139,6 +140,10 @@
     },
     {
       "id": "privacyIndicator",
+      "enabled": true
+    },
+    {
+      "id": "vpn",
       "enabled": true
     }
   ],
