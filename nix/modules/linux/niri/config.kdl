@@ -260,6 +260,15 @@ layout {
         // top 64
         // bottom 64
     }
+
+    // show wallpaper on overview - 1
+    // https://www.reddit.com/r/niri/comments/1oesqns/how_to_get_the_same_wallpaper_for_the_workspaces/
+    background-color "#00000020"
+}
+
+// show wallpaper on overview - 2
+layer-rule {
+    place-within-backdrop true
 }
 
 // Add lines like this to spawn processes at startup.
