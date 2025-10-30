@@ -9,7 +9,7 @@
     fcitx5 = {
       addons = with pkgs; [
         # For Chinese input (includes libpinyin, cloudpinyin, etc.)
-        fcitx5-chinese-addons
+        qt6Packages.fcitx5-chinese-addons
 
         # For Japanese input (Mozc is recommended for accuracy)
         fcitx5-mozc
@@ -17,7 +17,7 @@
         # Optional: GTK support for better integration in GTK apps
         fcitx5-gtk
 
-        fcitx5-configtool
+        qt6Packages.fcitx5-configtool
       ];
 
       # Optional: If you're on Wayland, enable this to use the Wayland frontend
