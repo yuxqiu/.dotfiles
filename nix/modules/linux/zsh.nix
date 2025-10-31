@@ -30,7 +30,7 @@
             ALL_PROXY="$socks_proxy" \
             socks_proxy="$socks_proxy" \
             SOCKS_PROXY="$socks_proxy" \
-            zsh -c "$*"
+            zsh -ic "$*"
       '';
     };
   };
