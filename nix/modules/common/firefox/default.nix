@@ -18,7 +18,7 @@ let
   arkenfoxUserJs = "${
       builtins.fetchGit {
         url = "https://github.com/arkenfox/user.js/";
-        rev = "9103afafff2b5287b495c1a1268968fdb447d66f";
+        rev = "0f14e030b3a9391e761c03ce3c260730a78a4db6";
       }
     }/user.js";
 
