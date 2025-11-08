@@ -75,12 +75,6 @@
         ];
       };
 
-      "xyz.armcord.ArmCord" = { Context.shared = [ "network" ]; };
-
-      "com.github.IsmaelMartinez.teams_for_linux" = {
-        Context.shared = [ "network" ];
-      };
-
       "io.github.ungoogled_software.ungoogled_chromium" = {
         Context.shared = [ "network" ];
       };
