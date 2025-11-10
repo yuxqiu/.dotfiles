@@ -195,6 +195,7 @@
   "batterySuspendTimeout": 0,
   "batterySuspendBehavior": 0,
   "lockBeforeSuspend": true,
+  "preventIdleForMedia": false,
   "loginctlLockIntegration": true,
   "launchPrefix": "",
   "brightnessDevicePins": {},

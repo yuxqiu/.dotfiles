@@ -93,7 +93,6 @@
         "git.terminalAuthentication" = false;
         "github.gitAuthentication" = false;
         "window.restoreWindows" = "none";
-        "keyboard.dispatch" = "keyCode";
         "git.openRepositoryInParentFolders" = "always";
         "git.blame.statusBarItem.enabled" = true;
 

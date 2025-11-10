@@ -9,7 +9,6 @@
     uninstallUnused = true; # delete stale/unused packages
 
     packages = [
-      "com.github.IsmaelMartinez.teams_for_linux"
       "com.github.PintaProject.Pinta"
       "com.github.johnfactotum.Foliate"
       "com.github.tchx84.Flatseal"
@@ -22,7 +21,6 @@
       "org.libreoffice.LibreOffice"
       "org.localsend.localsend_app"
       "org.xfce.ristretto"
-      "xyz.armcord.ArmCord"
       "org.inkscape.Inkscape"
     ];
 
