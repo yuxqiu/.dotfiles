@@ -36,9 +36,14 @@
   "showNotificationButton": true,
   "showBattery": true,
   "showControlCenterButton": true,
+  "showCapsLockIndicator": true,
   "controlCenterShowNetworkIcon": true,
   "controlCenterShowBluetoothIcon": true,
   "controlCenterShowAudioIcon": true,
+  "showPrivacyButton": true,
+  "privacyShowMicIcon": false,
+  "privacyShowCameraIcon": false,
+  "privacyShowScreenShareIcon": false,
   "controlCenterWidgets": [
     {
       "id": "volumeSlider",
@@ -120,8 +125,7 @@
     },
     {
       "id": "cpuUsage",
-      "enabled": true,
-      "minimumWidth": true
+      "enabled": true
     },
     {
       "id": "memUsage",
@@ -156,6 +160,7 @@
   "appLauncherViewMode": "list",
   "spotlightModalViewMode": "list",
   "sortAppsAlphabetically": false,
+  "appLauncherGridColumns": 4,
   "weatherLocation": "New York, NY",
   "weatherCoordinates": "40.7128,-74.0060",
   "useAutoLocation": false,
@@ -199,9 +204,14 @@
   "loginctlLockIntegration": true,
   "launchPrefix": "",
   "brightnessDevicePins": {},
+  "wifiNetworkPins": {},
+  "bluetoothDevicePins": {},
+  "audioInputDevicePins": {},
+  "audioOutputDevicePins": {},
   "gtkThemingEnabled": false,
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
+  "terminalsAlwaysDark": false,
   "showDock": false,
   "dockAutoHide": false,
   "dockGroupByApp": false,
@@ -214,6 +224,7 @@
   "dockIndicatorStyle": "circle",
   "notificationOverlayEnabled": false,
   "dankBarAutoHide": true,
+  "dankBarAutoHideDelay": 250,
   "dankBarOpenOnOverview": true,
   "dankBarVisible": true,
   "dankBarSpacing": 4,
@@ -242,6 +253,16 @@
   "notificationPopupPosition": 0,
   "osdAlwaysShowValue": true,
   "powerActionConfirm": true,
+  "powerMenuActions": [
+    "reboot",
+    "logout",
+    "poweroff",
+    "lock",
+    "suspend",
+    "restart"
+  ],
+  "powerMenuDefaultAction": "logout",
+  "powerMenuGridLayout": false,
   "customPowerActionLock": "",
   "customPowerActionLogout": "",
   "customPowerActionSuspend": "",
