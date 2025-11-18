@@ -115,7 +115,6 @@ user_pref("cookiebanners.service.mode", 1);
 
 // disable all promos
 user_pref("browser.contentblocking.report.vpn-promo.url", "");
-user_pref("browser.privatebrowsing.vpnpromourl", "");
 user_pref("browser.promo.cookiebanners.enabled", false);
 user_pref("browser.promo.focus.enabled", false);
 user_pref("browser.promo.pin.enabled", false);
@@ -149,10 +148,6 @@ user_pref("browser.crashReports.unsubmittedCheck.enabled", false);
 // disable "you haven't started Firefox in a while." message
 // https://support.mozilla.org/en-US/questions/1231948
 user_pref("browser.disableResetPrompt", false);
-
-// disable pocket
-user_pref("extensions.pocket.enabled", false);
-user_pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
 
 // disable self support
 user_pref("browser.selfsupport.url", "");
