@@ -9,8 +9,10 @@ fi
 # List of packages available in Fedora repositories
 fedora_packages=(
   NetworkManager
+  NetworkManager-wifi
   NetworkManager-tui
   autorestic
+  bluez
   clang
   cmake
   dnscrypt-proxy
