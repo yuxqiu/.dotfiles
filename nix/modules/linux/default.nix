@@ -16,9 +16,6 @@
     blueman
     desktop-file-utils
     dotool
-    networkmanagerapplet
-    networkmanager
-    pavucontrol
     wl-kbptr
     xdg-utils
   ];
