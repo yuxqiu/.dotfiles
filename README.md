@@ -3,17 +3,16 @@
 ### General
 
 1. Run `setup.sh` to setup the configuration files.
+2. DoH: Disable and stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu).
+3. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk`.
 
-### DoH
+### Devices
 
-1. Disable and stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu).
-
-### Others
-
-1. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk`.
-2. Howdy: Follow the [guide](https://github.com/boltgolt/howdy/issues/1004) to add a face template.
-    - To test `howdy`, you might need to run `sudo -E howdy test` rather than `sudo howdy test`.
-        - The same applies to adding face model.
+1. Fingerprint Reader
+    - Install [libfprint-CS9711](https://github.com/ddlsmurf/libfprint-CS9711).
+2. Displaylink
+    - Download driver from [displaylink-rpm](https://github.com/displaylink-rpm/displaylink-rpm/) (need to match Fedora version).
+    - [Displaylink on Asahi Linux](https://www.reddit.com/r/AsahiLinux/comments/1j311ya/displaylink_for_mb_pro_2020_13_m1_on_asahi_fedora/). The rpm install works directly now.
 
 ### Others
 
