@@ -37,7 +37,6 @@ in {
     ./journald/journald.nix
     ./NetworkManager/NetworkManager.nix
     ./autorestic.nix
-    ./howdy/howdy.nix
   ];
 
   nix = { enable = false; };
