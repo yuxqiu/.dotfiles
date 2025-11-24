@@ -447,10 +447,6 @@ binds {
     // Dictation
     Alt+D hotkey-overlay-title=null { spawn-sh "~/.config/niri/dictation"; }
 
-    // Apps switcher
-    Alt+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
-    Alt+Shift+Tab repeat=false { spawn "niriswitcherctl" "show" "--window"; }
-
     // wl-kbptr
     Alt+G {
         spawn-sh "wl-kbptr -o modes=floating,click -o mode_floating.source=detect"
