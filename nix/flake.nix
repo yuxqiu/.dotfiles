@@ -103,7 +103,7 @@
             ./modules/linux/system-manager.nix
 
             # Additional inputs
-            { _module.args = { inherit system; }; }
+            { _module.args = { inherit system; inherit username; }; }
           ];
         });
     };

@@ -37,6 +37,7 @@ in {
     ./journald/journald.nix
     ./NetworkManager/NetworkManager.nix
     ./autorestic.nix
+    ./fprintd.nix
   ];
 
   nix = { enable = false; };
