@@ -1,0 +1,22 @@
+hotkey-overlay {
+    skip-at-startup
+}
+
+environment {
+    DMS_RUN_GREETER "1"
+}
+
+gestures {
+  hot-corners {
+    off
+  }
+}
+
+layout {
+  background-color "#000000"
+}
+
+debug {
+    render-drm-device "/dev/dri/renderD128"
+    wait-for-frame-completion-before-queueing
+}

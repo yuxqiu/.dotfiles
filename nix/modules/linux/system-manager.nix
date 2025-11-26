@@ -38,6 +38,7 @@ in {
     ./NetworkManager/NetworkManager.nix
     ./autorestic.nix
     ./fprintd.nix
+    ./dms/dms-niri.nix
   ];
 
   nix = { enable = false; };

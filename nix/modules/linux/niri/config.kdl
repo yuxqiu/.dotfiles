@@ -103,7 +103,7 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    // position x=1280 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -485,20 +485,20 @@ binds {
     // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
     // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
-    Alt+Home { focus-column-first; }
-    Alt+End  { focus-column-last; }
-    Alt+Shift+Home { move-column-to-first; }
-    Alt+Shift+End  { move-column-to-last; }
+    // Alt+Home { focus-column-first; }
+    // Alt+End  { focus-column-last; }
+    // Alt+Shift+Home { move-column-to-first; }
+    // Alt+Shift+End  { move-column-to-last; }
 
-    Alt+Shift+Left  { focus-monitor-left; }
-    Alt+Shift+Down  { focus-monitor-down; }
-    Alt+Shift+Up    { focus-monitor-up; }
-    Alt+Shift+Right { focus-monitor-right; }
+    Alt+Left  { focus-monitor-left; }
+    Alt+Down  { focus-monitor-down; }
+    Alt+Up    { focus-monitor-up; }
+    Alt+Right { focus-monitor-right; }
 
-    Alt+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Alt+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Alt+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Alt+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Alt+Shift+Left  { move-column-to-monitor-left; }
+    Alt+Shift+Down  { move-column-to-monitor-down; }
+    Alt+Shift+Up    { move-column-to-monitor-up; }
+    Alt+Shift+Right { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
@@ -677,4 +677,13 @@ binds {
 
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+// Must set, when DisplayLink dock is connected,
+// niri somehow does not pick up this render device
+// and uses a worse choice ("/dev/dri/card0") which
+// does not support rendering
+debug {
+    render-drm-device "/dev/dri/renderD128"
+    wait-for-frame-completion-before-queueing
 }
