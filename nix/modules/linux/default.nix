@@ -16,6 +16,8 @@
     blueman
     desktop-file-utils
     dotool
+    iputils
+    traceroute
     wl-kbptr
     xdg-utils
   ];

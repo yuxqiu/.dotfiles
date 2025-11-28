@@ -11,21 +11,15 @@ fedora_packages=(
   NetworkManager
   NetworkManager-wifi
   NetworkManager-tui
-  autorestic
   bluez
   clang
   cmake
-  dnscrypt-proxy
-  earlyoom
   firewalld
   flatpak
   gcc
   gdb
   gnupg2
   ifuse
-  iputils
-  mtr
-  llvm
   mesa-dri-drivers
   mesa-vulkan-drivers
   pipewire
@@ -33,9 +27,7 @@ fedora_packages=(
   pipewire-pulseaudio
   pipewire-utils
   polkit
-  selinux-policy-targeted
   stow
-  traceroute
   usbmuxd
   wireplumber
   xdg-desktop-portal-gtk
@@ -44,9 +36,7 @@ fedora_packages=(
 
 # Associative array for packages requiring COPR repositories
 declare -A copr_map=(
-  ["howdy"]="principis/howdy-beta"
-  ["niri"]="yalter/niri"
-  # for aarch64 fedora install, dms binary needs to be replaced manually now (download from Github)
+  ["niri"]="yalter/niri-git"
   ["dms"]="avengemedia/dms"
   ["dms-greeter"]="avengemedia/dms"
 )

@@ -26,6 +26,7 @@
     kondo
     lazydocker
     less
+    mtr
     mosh
     onefetch
     openssl

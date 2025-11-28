@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   config = {
     # See:
     # - https://autorestic.vercel.app/
@@ -9,11 +9,9 @@
           unitConfig = { Description = "Autorestic backup service"; };
           serviceConfig = {
             Type = "oneshot";
-            ExecStart = "autorestic backup --verbose -l home";
-            ExecStartPost = "autorestic forget --verbose --all";
+            ExecStart = "${pkgs.autorestic}/bin/autorestic --restic-bin ${pkgs.restic}/bin/restic backup --verbose -l home";
+            ExecStartPost = "${pkgs.autorestic}/bin/autorestic --restic-bin ${pkgs.restic}/bin/restic forget --verbose --all";
             WorkingDirectory = "%h";
-            Environment =
-              "PATH=/usr/local/bin:/usr/bin"; # let autorestic find restic
           };
         };
         autorestic-prune = {
@@ -22,10 +20,8 @@
           };
           serviceConfig = {
             Type = "oneshot";
-            ExecStart = "autorestic forget --verbose --prune --all";
+            ExecStart = "${pkgs.autorestic}/bin/autorestic --restic-bin ${pkgs.restic}/bin/restic forget --verbose --prune --all";
             WorkingDirectory = "%h";
-            Environment =
-              "PATH=/usr/local/bin:/usr/bin"; # let autorestic find restic
           };
         };
       };
@@ -52,5 +48,10 @@
         };
       };
     };
+
+    environment.systemPackages = with pkgs; [
+        autorestic
+        restic
+    ];
   };
 }
