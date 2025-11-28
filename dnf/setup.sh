@@ -43,6 +43,7 @@ declare -A copr_map=(
 
 # Associative array for packages requiring manual RPM downloads
 declare -A rpm_map=(
+  # opensnitch is managed here because dark theme of nixpkgs version is broken
   ["opensnitch"]="https://github.com/evilsocket/opensnitch/releases/download/v1.7.2/opensnitch-1.7.2-1.$(uname -m).rpm"
   ["opensnitch-ui"]="https://github.com/evilsocket/opensnitch/releases/download/v1.7.2/opensnitch-ui-1.7.2-1.noarch.rpm"
 )
@@ -130,7 +131,7 @@ process_package() {
   fi
 }
 
-# Process all packages from fedora_packages, copr_map, docker_map, and rpm_map
+# Process all packages from fedora_packages, copr_map, docker_map and rpm_map
 echo "Installing all defined packages..."
 for pkg in "${fedora_packages[@]}" "${!copr_map[@]}" "${!docker_map[@]}" "${!rpm_map[@]}"; do
   process_package "$pkg"

@@ -27,6 +27,7 @@
 
   # enable xdg (xdg-mime is default enabled)
   xdg.enable = true;
+  xdg.autostart.enable = true;
 
   # add /usr/share to $XDG_DATA_DIRS, critical for xdg-desktop-portal to run
   xdg.systemDirs.data = [ "/usr/share" ];

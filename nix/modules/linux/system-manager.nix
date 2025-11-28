@@ -7,7 +7,7 @@
     ./NetworkManager/NetworkManager.nix
     ./autorestic.nix
     ./fprintd.nix
-    ./dms/dms-niri.nix
+    ./dms/dms-sys.nix
   ];
 
   nix = { enable = false; };
