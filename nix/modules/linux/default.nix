@@ -10,6 +10,7 @@
     ./qt.nix
     ./wl-kbptr.nix
     ./dms/dms.nix
+    ./wayscriber.nix
   ];
 
   home.packages = with pkgs; [
@@ -18,7 +19,6 @@
     dotool
     iputils
     traceroute
-    wl-kbptr
     xdg-utils
   ];
 

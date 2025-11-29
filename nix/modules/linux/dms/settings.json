@@ -198,6 +198,7 @@
   "osdCapsLockEnabled": true,
   "osdPowerProfileEnabled": true,
   "powerActionConfirm": true,
+  "powerActionHoldDuration": 1,
   "powerMenuActions": [
     "reboot",
     "logout",
