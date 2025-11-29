@@ -121,7 +121,8 @@ in {
       };
     };
     # Wait for https://github.com/NixOS/nixpkgs/pull/462094 to update
-    package = (config.lib.nixGL.wrap pkgs.firefox-bin);
+    # package = (config.lib.nixGL.wrap pkgs.firefox);
+    package = null;
   };
 
   home.file = {
