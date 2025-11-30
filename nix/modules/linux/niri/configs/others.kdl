@@ -1,0 +1,20 @@
+hotkey-overlay {
+    skip-at-startup
+}
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+// Must set, when DisplayLink dock is connected,
+// niri somehow does not pick up this render device
+// and uses a worse choice ("/dev/dri/card0") which
+// does not support rendering
+debug {
+    render-drm-device "/dev/dri/renderD128"
+    wait-for-frame-completion-before-queueing
+}
+
+prefer-no-csd
+
+screenshot-path null

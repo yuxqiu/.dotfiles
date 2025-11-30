@@ -1,0 +1,30 @@
+layout {
+    gaps 10
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 1
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        off
+    }
+
+    // show wallpaper on overview - 1
+    // https://www.reddit.com/r/niri/comments/1oesqns/how_to_get_the_same_wallpaper_for_the_workspaces/
+    background-color "#00000020"
+}
+
+// show wallpaper on overview - 2
+layer-rule {
+    place-within-backdrop true
+}

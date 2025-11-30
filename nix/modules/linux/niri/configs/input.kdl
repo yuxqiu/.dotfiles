@@ -1,0 +1,12 @@
+input {
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        middle-emulation
+    }
+
+    mouse {
+        accel-speed 0.2
+    }
+}
