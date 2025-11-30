@@ -120,9 +120,7 @@ in {
         "duckduckgo@search.mozilla.org" = { installation_mode = "blocked"; };
       };
     };
-    # Wait for https://github.com/NixOS/nixpkgs/pull/462094 to update
-    # package = (config.lib.nixGL.wrap pkgs.firefox);
-    package = null;
+    package = (config.lib.nixGL.wrap pkgs.firefox);
   };
 
   home.file = {
