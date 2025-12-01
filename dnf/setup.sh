@@ -14,6 +14,7 @@ fedora_packages=(
   bluez
   clang
   cmake
+  ddcutil
   firewalld
   flatpak
   gcc

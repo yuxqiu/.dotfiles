@@ -2,8 +2,6 @@
   config = {
     environment = {
       etc = {
-        # `sudo udevadm control --reload` can reload the udev rules
-        #
         # Rule is from:
         # - https://discussion.fedoraproject.org/t/fingerprint-instability-on-fedora-42-kde-thinkpad-x1-yoga-gen6/154101/2
         "udev/rules.d/01-disable-fingerprint-autosuspend.rules" = {

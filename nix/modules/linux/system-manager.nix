@@ -8,6 +8,7 @@
     ./autorestic.nix
     ./fprintd.nix
     ./dms/dms-sys.nix
+    ./ddcutil.nix
   ];
 
   nix = { enable = false; };
