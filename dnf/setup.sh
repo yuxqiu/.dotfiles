@@ -28,6 +28,8 @@ fedora_packages=(
   pipewire-utils
   polkit
   stow
+  tuned
+  tuned-utils
   usbmuxd
   wireplumber
   xdg-desktop-portal-gtk
