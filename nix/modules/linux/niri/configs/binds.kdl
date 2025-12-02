@@ -105,7 +105,7 @@ binds {
     // rather than stacked on top of each other.
     Alt+W { toggle-column-tabbed-display; }
 
-    Alt+P { screenshot; }
+    Alt+P { screenshot show-pointer=false; }
     Alt+Shift+P { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may

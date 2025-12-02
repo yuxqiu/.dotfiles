@@ -57,7 +57,8 @@
     {
       "id": "brightnessSlider",
       "enabled": true,
-      "width": 50
+      "width": 50,
+      "deviceName": "ddc:i2c-3"
     },
     {
       "id": "wifi",
@@ -157,7 +158,9 @@
   "fadeToLockEnabled": false,
   "fadeToLockGracePeriod": 5,
   "launchPrefix": "",
-  "brightnessDevicePins": {},
+  "brightnessDevicePins": {
+    "DVI-I-1": "ddc:i2c-3"
+  },
   "wifiNetworkPins": {
     "preferredWifi": "509"
   },
@@ -178,6 +181,10 @@
   "dockMargin": 0,
   "dockIconSize": 40,
   "dockIndicatorStyle": "circle",
+  "dockBorderEnabled": false,
+  "dockBorderColor": "surfaceText",
+  "dockBorderOpacity": 1,
+  "dockBorderThickness": 1,
   "notificationOverlayEnabled": false,
   "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
