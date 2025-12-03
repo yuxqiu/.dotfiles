@@ -158,9 +158,7 @@
   "fadeToLockEnabled": false,
   "fadeToLockGracePeriod": 5,
   "launchPrefix": "",
-  "brightnessDevicePins": {
-    "DVI-I-1": "ddc:i2c-3"
-  },
+  "brightnessDevicePins": {},
   "wifiNetworkPins": {
     "preferredWifi": "509"
   },

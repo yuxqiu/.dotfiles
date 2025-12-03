@@ -15,6 +15,9 @@
     - [Displaylink on Asahi Linux](https://www.reddit.com/r/AsahiLinux/comments/1j311ya/displaylink_for_mb_pro_2020_13_m1_on_asahi_fedora/). The rpm install works directly now.
 3. External Monitor
     - [Setup `i2c` group](https://www.ddcutil.com/i2c_permissions_using_group_i2c/) and add current user to it.
+4. IOS
+    - Connect IOS in Fedora using [openssl-weak.conf](https://github.com/libimobiledevice/libimobiledevice/issues/1606).
+    - [Mount IOS device](https://wiki.archlinux.org/title/IOS).
 
 ### Others
 
