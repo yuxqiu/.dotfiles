@@ -2,7 +2,6 @@
   imports = [
     ./flatpak.nix
     ./captive-browser/default.nix
-    ./waybar/default.nix
     ./fcitx5.nix
     ./gtk.nix
     ./zsh.nix
