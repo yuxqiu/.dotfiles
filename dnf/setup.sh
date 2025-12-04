@@ -33,8 +33,6 @@ fedora_packages=(
   tuned-utils
   usbmuxd
   wireplumber
-  xdg-desktop-portal-gtk
-  xdg-user-dirs
 )
 
 # Associative array for packages requiring COPR repositories

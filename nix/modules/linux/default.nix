@@ -11,6 +11,7 @@
     ./wl-kbptr.nix
     ./dms/dms.nix
     ./wayscriber.nix
+    ./systemd.nix
   ];
 
   home.packages = with pkgs; [
