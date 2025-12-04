@@ -36,10 +36,10 @@ binds {
     }
 
     XF86MonBrightnessUp allow-when-locked=true {
-        spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+        spawn-sh "dms ipc call brightness increment 5 \"$(dms-focused-output)\"";
     }
 
     XF86MonBrightnessDown allow-when-locked=true {
-        spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+        spawn-sh "dms ipc call brightness decrement 5 \"$(dms-focused-output)\"";
     }
 }
