@@ -5,21 +5,34 @@ let
     #!${pkgs.bash}/bin/bash
     set -euo pipefail
 
-    # Get the raw output name niri sees
-    name=$(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r '.name')
+    PATH=${pkgs.lib.makeBinPath [ pkgs.ddcutil pkgs.jq pkgs.coreutils ]}:$PATH
 
-    # If it's any kind of built-in panel, let dms use its backlight default
-    if [[ "$name" == eDP-* || "$name" == LVDS-* || "$name" == backlight:* ]]; then
+    focused_connector=$(niri msg --json focused-output | jq -r '.name')
+
+    # Built-in laptop panel, let dms use the normal backlight interface
+    if [[ "$focused_connector" == eDP-* || "$focused_connector" == LVDS-* ]]; then
       exit 0
     fi
 
-    # Otherwise it's an external monitor, force DDC/I2C
-    for i in {2..10}; do
-      if ${pkgs.ddcutil}/bin/ddcutil --bus=$i getvcp 10 >/dev/null 2>&1; then
-        echo "ddc:i2c-$i"
+    # Find sysfs entry for the focused connector
+    shopt -s nullglob
+    candidates=(/sys/class/drm/card*-"$focused_connector")
+    shopt -u nullglob
+
+    (( ''${#candidates[@]} == 0 )) && exit 0
+    dir="''${candidates[0]}"
+
+    # Modern layout (kernel ≥ 5.17): ./ddc/i2c-dev/i2c-*
+    for i2c_path in "$dir"/ddc/i2c-dev/i2c-*; do
+      [[ -d "$i2c_path" ]] || continue
+      bus=$(cut -d: -f2 < "$i2c_path/dev")
+      if ddcutil --bus="$bus" getvcp 10 >/dev/null 2>&1; then
+        echo "ddc:i2c-$bus"
         exit 0
       fi
     done
-  '';
 
+    # If nothing responded, let dms fall back to its own heuristics
+    exit 0
+  '';
 in { home.packages = [ dms-focused-output ]; }
