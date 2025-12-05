@@ -12,6 +12,7 @@
     ./vscode.nix
     ./firefox/default.nix
     ./nixgl.nix
+    ./bash.nix
   ];
 
   home.packages = with pkgs; [
