@@ -290,6 +290,10 @@
         {
           "id": "dankActions:variant_1762019076882",
           "enabled": true
+        },
+        {
+          "id": "privacyIndicator",
+          "enabled": true
         }
       ],
       "spacing": 4,
