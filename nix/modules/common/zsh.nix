@@ -1,4 +1,4 @@
-{ system, config, ... }: {
+{ pkgs, config, ... }: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -29,7 +29,8 @@
       dcdown = "docker-compose down";
 
       # Home Manager Update
-      home-manager-update = "nix flake update && update-nix-fetchgit modules/**/*.nix && home-manager switch --flake .#${system}";
+      home-manager-update =
+        "nix flake update && update-nix-fetchgit modules/**/*.nix && home-manager switch --flake .#${pkgs.stdenv.system}";
 
       # Immortal ssh
       sshx = ''mosh "$@" -- screen -s -/bin/bash -qRRUS "mosh-''${HOSTNAME}"'';

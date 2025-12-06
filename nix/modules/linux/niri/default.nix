@@ -17,7 +17,7 @@
     };
   };
 
-  services.gnome-keyring.enable = true;
+  services.gnome-keyring.enable = if builtins.pathExists /etc/NIXOS then false else true;
 
   home.file.".config/niri/configs".source = ./configs;
   home.file.".config/niri/config.kdl".source = ./config.kdl;

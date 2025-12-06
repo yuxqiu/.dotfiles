@@ -1,4 +1,4 @@
-{ system, ... }: {
+{ ... }: {
   imports = [
     ./dnscrypt-proxy/dnscrypt-proxy.nix
     ./earlyoom.nix
@@ -15,5 +15,4 @@
   # selinux needs to be disabled for system-manager to work
   # https://github.com/numtide/system-manager/issues/115
   system-manager.allowAnyDistro = true;
-  nixpkgs.hostPlatform = system;
 }

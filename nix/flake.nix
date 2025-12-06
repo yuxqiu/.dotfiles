@@ -55,9 +55,9 @@
           };
 
           # Conditionally select system-specific module
-          systemModule = if (builtins.match ".*-linux" system != null) then
+          systemModule = if (pkgs.stdenv.isLinux) then
             ./modules/linux/default.nix
-          else if (builtins.match ".*-darwin" system != null) then
+          else if (pkgs.stdenv.isDarwin) then
             ./modules/darwin/default.nix
           else
             throw "Unsupported system: ${system}";
@@ -78,13 +78,12 @@
             })
 
             # User-specific settings
-            (import ./users/${username}.nix { inherit system pkgs; })
+            (import ./users/${username}.nix { inherit pkgs; })
             ./users/options.nix
 
             # Additional inputs
             {
               _module.args = {
-                inherit system;
                 nixGL = nixGL; # Pass nixGL input to home.nix
               };
             }
@@ -105,7 +104,7 @@
             ./modules/linux/system-manager.nix
 
             # Additional inputs
-            { _module.args = { inherit system; inherit username; }; }
+            { _module.args = { inherit username; }; }
           ];
         });
     };
