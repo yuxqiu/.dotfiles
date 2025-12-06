@@ -23,4 +23,7 @@
     traceroute
     xdg-utils
   ];
+
+  # improve generic linux compatibility
+  targets.genericLinux.enable = true;
 }
