@@ -36,8 +36,8 @@ fedora_packages=(
 # Associative array for packages requiring COPR repositories
 declare -A copr_map=(
   ["niri"]="yalter/niri-git"
-  ["dms"]="avengemedia/dms"
-  ["dms-greeter"]="avengemedia/dms"
+  ["dms"]="avengemedia/dms-git"
+  ["dms-greeter"]="avengemedia/dms-git"
 )
 
 # Associative array for packages requiring manual RPM downloads
