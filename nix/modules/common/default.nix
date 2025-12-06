@@ -13,6 +13,7 @@
     ./firefox/default.nix
     ./nixgl.nix
     ./bash.nix
+    ./ssh-agent.nix
   ];
 
   home.packages = with pkgs; [

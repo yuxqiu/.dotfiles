@@ -7,9 +7,8 @@
     # Enable Oh My Zsh
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "z" "dirhistory" "ssh-agent" ];
+      plugins = [ "git" "colored-man-pages" "z" "dirhistory" ];
       theme = "robbyrussell";
-      extraConfig = "zstyle :omz:plugins:ssh-agent lazy yes";
     };
 
     # Aliases
