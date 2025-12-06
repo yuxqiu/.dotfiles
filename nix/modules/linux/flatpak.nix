@@ -42,15 +42,10 @@
         Context.filesystems = [
           "~/.themes:ro" # Read-only access to ~/.themes
           "~/.icons:ro" # Read-only access to ~/.icons
+          # Read-only access to nix store, which stores resources like cursors
+          # https://wiki.nixos.org/wiki/Cursor_Themes
+          "/nix/store:ro"
         ];
-
-        Environment = {
-          # Fix un-themed cursor in some Wayland apps
-          XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
-
-          # Force correct theme for some GTK apps
-          GTK_THEME = "Adwaita:dark";
-        };
 
         # From
         # - https://github.com/gentmantan/dotfiles/blob/b693ee1893c619f53cfecd7bc154db914262c0b1/modules/nix-flatpak.nix

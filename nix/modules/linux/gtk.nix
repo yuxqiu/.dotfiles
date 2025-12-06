@@ -13,11 +13,6 @@
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
-    cursorTheme = {
-      name = "Adwaita";
-      size = 24;
-      package = pkgs.adwaita-icon-theme;
-    };
     colorScheme = "dark";
 
     # GTK3 extra settings (adds to ~/.config/gtk-3.0/settings.ini)

@@ -11,6 +11,7 @@
     ./dms/dms.nix
     ./wayscriber.nix
     ./systemd.nix
+    ./cursor.nix
   ];
 
   home.packages = with pkgs; [
