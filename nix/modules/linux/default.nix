@@ -12,6 +12,7 @@
     ./wayscriber.nix
     ./systemd.nix
     ./cursor.nix
+    ./xdg.nix
   ];
 
   home.packages = with pkgs; [
@@ -22,14 +23,4 @@
     traceroute
     xdg-utils
   ];
-
-  # The following packages are also partially managed by systems for now:
-  # - niri and portals (gtk and gnome)
-
-  # enable xdg (xdg-mime is default enabled)
-  xdg.enable = true;
-  xdg.autostart.enable = true;
-
-  # add /usr/share to $XDG_DATA_DIRS, critical for xdg-desktop-portal to run
-  xdg.systemDirs.data = [ "/usr/share" ];
 }
