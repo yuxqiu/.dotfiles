@@ -61,7 +61,8 @@
       vim.keymap.set('n', 'yY', '^"+y$', { noremap = true })
 
       -- leap.nvim setup
-      require('leap').create_default_mappings()
+      vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+      vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 
       -- VSCode-specific mappings
       if vim.g.vscode then

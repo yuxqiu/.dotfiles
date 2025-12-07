@@ -24,6 +24,6 @@
     xdg-utils
   ];
 
-  # improve generic linux compatibility
-  targets.genericLinux.enable = true;
+  # improve generic linux compatibility (on non NixOS)
+  targets.genericLinux.enable = !builtins.pathExists /etc/NIXOS;
 }
