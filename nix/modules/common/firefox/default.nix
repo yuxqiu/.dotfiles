@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   # Define variables
@@ -120,7 +120,6 @@ in {
         "duckduckgo@search.mozilla.org" = { installation_mode = "blocked"; };
       };
     };
-    package = (config.lib.nixGL.wrap pkgs.firefox);
   };
 
   home.file = {

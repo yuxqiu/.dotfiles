@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.vscode = {
@@ -549,7 +549,6 @@
         };
       };
     };
-    package = (config.lib.nixGL.wrap pkgs.vscode);
   };
 
   # Dependencies for extensions

@@ -2,22 +2,25 @@
   description = "yuxqiu's dotfiles";
 
   inputs = {
+    # User
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    # Blocker: https://github.com/NixOS/nixpkgs/pull/461866
-    nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
-    nixGL = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs-2511";
-    };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    # System
+    # Blocker: https://github.com/NixOS/nixpkgs/pull/461866
+    nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-system-graphics = {
+      url = "github:soupglasses/nix-system-graphics";
+      inputs.nixpkgs.follows = "nixpkgs-2511";
     };
   };
 
@@ -34,20 +37,22 @@
     ];
   };
 
-  outputs = { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions, nixGL
-    , system-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions
+    , system-manager, nix-system-graphics, ... }@inputs:
     let
       # Define supported systems
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      hm-systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      sm-systems = [ "x86_64-linux" "aarch64-linux" ];
 
       # Helper function to generate outputs for each system
-      forAllSystems = nixpkgs.lib.genAttrs systems;
+      hm-forAllSystems = nixpkgs.lib.genAttrs hm-systems;
+      sm-forAllSystems = nixpkgs.lib.genAttrs sm-systems;
 
       # Username for Home Manager
       username = "yuxqiu";
     in {
       # Home Manager configurations for each system
-      homeConfigurations = forAllSystems (system:
+      homeConfigurations = hm-forAllSystems (system:
         let
           pkgs = import nixpkgs {
             inherit system;
@@ -81,13 +86,6 @@
             (import ./users/${username}.nix { inherit pkgs; })
             ./users/options.nix
 
-            # Additional inputs
-            {
-              _module.args = {
-                nixGL = nixGL; # Pass nixGL input to home.nix
-              };
-            }
-
             # Avoid gc cleaning the source
             ({ lib, inputs, ... }: {
               home.file = builtins.listToAttrs (builtins.map (input:
@@ -98,9 +96,19 @@
           ];
         });
 
-      systemConfigs = forAllSystems (system:
+      systemConfigs = sm-forAllSystems (system:
         system-manager.lib.makeSystemConfig {
           modules = [
+            nix-system-graphics.systemModules.default
+
+            {
+              config = {
+                nixpkgs.hostPlatform = system;
+                system-manager.allowAnyDistro = true;
+                system-graphics.enable = true;
+              };
+            }
+
             ./modules/linux/system-manager.nix
 
             # Additional inputs

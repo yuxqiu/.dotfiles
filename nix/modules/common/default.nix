@@ -11,7 +11,6 @@
     ./nvim.nix
     ./vscode.nix
     ./firefox/default.nix
-    ./nixgl.nix
     ./bash.nix
     ./ssh-agent.nix
   ];

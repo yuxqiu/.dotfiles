@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.alacritty = {
@@ -57,7 +57,5 @@
 
       general = { live_config_reload = true; };
     };
-
-    package = (config.lib.nixGL.wrap pkgs.alacritty);
   };
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ ... }: {
   programs.sioyek = {
     enable = true;
     bindings = { "goto_tab" = "gt"; };
@@ -10,6 +10,5 @@
       "status_bar_font_size" = "15";
       "font_size" = "15";
     };
-    package = (config.lib.nixGL.wrap pkgs.sioyek);
   };
 }
