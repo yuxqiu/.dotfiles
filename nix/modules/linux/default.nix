@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     ./flatpak.nix
     ./captive-browser/default.nix
@@ -22,8 +22,10 @@
     iputils
     traceroute
     xdg-utils
+    inputs.system-manager.packages.${pkgs.stdenv.system}.default
   ];
 
   # improve generic linux compatibility (on non NixOS)
   targets.genericLinux.enable = !builtins.pathExists /etc/NIXOS;
+  targets.genericLinux.gpu.enable = false; # already managed by system-manager
 }

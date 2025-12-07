@@ -9,7 +9,7 @@
       open = "xdg-open";
 
       system-manager-update =
-        "nix flake update && sudo $(which nix) run 'github:numtide/system-manager' -- switch --flake .#${pkgs.stdenv.system} && rm result";
+        "nix flake update && sudo $(which system-manager) switch --flake .#${pkgs.stdenv.system} && rm result";
     };
   };
 }
