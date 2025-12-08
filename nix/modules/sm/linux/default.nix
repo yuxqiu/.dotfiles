@@ -9,6 +9,7 @@
     ./fprintd.nix
     ./dms/dms.nix
     ./ddcutil.nix
+    ./tuned/tuned.nix
   ];
 
   # don't bother managing nix
