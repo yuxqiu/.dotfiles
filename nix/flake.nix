@@ -24,19 +24,6 @@
     };
   };
 
-  nixConfig = {
-    # will be appended to the system-level substituters
-    extra-substituters = [
-      # cache mirror located in China
-
-      # status: https://mirror.sjtu.edu.cn/
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
-
-      # status: https://mirrors.ustc.edu.cn/status/
-      # "https://mirrors.ustc.edu.cn/nix-channels/store"
-    ];
-  };
-
   outputs = { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions
     , system-manager, nix-system-graphics, ... }@inputs:
     let
