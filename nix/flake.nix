@@ -61,9 +61,9 @@
 
           # Conditionally select system-specific module
           systemModule = if (pkgs.stdenv.isLinux) then
-            ./modules/linux/default.nix
+            ./modules/hm/linux/default.nix
           else if (pkgs.stdenv.isDarwin) then
-            ./modules/darwin/default.nix
+            ./modules/hm/darwin/default.nix
           else
             throw "Unsupported system: ${system}";
         in home-manager.lib.homeManagerConfiguration {
@@ -73,7 +73,7 @@
 
           modules = [
             # Common settings
-            ./modules/common/default.nix
+            ./modules/hm/common/default.nix
 
             # System-specific settings
             systemModule
@@ -109,7 +109,7 @@
               };
             }
 
-            ./modules/linux/system-manager.nix
+            ./modules/sm/linux/default.nix
 
             # Additional inputs
             { _module.args = { inherit username; }; }
