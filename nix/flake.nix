@@ -12,15 +12,15 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     # System
-    # Blocker: https://github.com/NixOS/nixpkgs/pull/461866
+    # Blocker: https://github.com/nix-community/nixos-apple-silicon/issues/380
     nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
     system-manager = {
       url = "github:numtide/system-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2511";
     };
     nix-system-graphics = {
       url = "github:soupglasses/nix-system-graphics";
-      inputs.nixpkgs.follows = "nixpkgs-2511";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
