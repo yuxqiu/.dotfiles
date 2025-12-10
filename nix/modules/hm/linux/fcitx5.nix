@@ -11,9 +11,6 @@
         # For Chinese input (includes libpinyin, cloudpinyin, etc.)
         qt6Packages.fcitx5-chinese-addons
 
-        # For Japanese input (Mozc is recommended for accuracy)
-        fcitx5-mozc
-
         # Optional: GTK support for better integration in GTK apps
         fcitx5-gtk
 
@@ -52,12 +49,11 @@
             "Default Layout" = "us";
             DefaultIM = "keyboard-us"; # Default to English
           };
-          # Add English, Chinese (Pinyin), and Japanese (Mozc) to the group
+          # Add English, Chinese (Pinyin) to the group
           "Groups/0/Items/0" = { Name = "keyboard-us"; };
           "Groups/0/Items/1" = {
             Name = "pinyin";
           }; # From fcitx5-chinese-addons
-          "Groups/0/Items/2" = { Name = "mozc"; }; # From fcitx5-mozc
         };
       };
     };
