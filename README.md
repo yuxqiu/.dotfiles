@@ -4,7 +4,6 @@
 
 1. Run `setup.sh` to setup the configuration files.
 2. DoH: Disable and stop `systemd-resolved` by following [this guide](https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu).
-3. Nerd Dictation: Follow the [installation guide](https://github.com/ideasman42/nerd-dictation) to install `vosk`.
 
 ### Devices
 
