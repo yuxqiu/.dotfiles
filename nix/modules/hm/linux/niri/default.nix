@@ -21,5 +21,6 @@
 
   home.file.".config/niri/configs".source = ./configs;
   home.file.".config/niri/config.kdl".source = ./config.kdl;
-  home.file.".config/niri/dictation".source = ./dictation;
+
+  imports = [ ./scripts/dictation.nix ];
 }

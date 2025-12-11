@@ -18,7 +18,6 @@
   home.packages = with pkgs; [
     blueman
     desktop-file-utils
-    dotool
     iputils
     traceroute
     xdg-utils

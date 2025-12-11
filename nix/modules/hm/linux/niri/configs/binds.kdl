@@ -5,7 +5,7 @@ binds {
     Alt+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
 
     // Dictation
-    Alt+D hotkey-overlay-title=null { spawn-sh "~/.config/niri/dictation"; }
+    Alt+D hotkey-overlay-title=null { spawn-sh "~/.config/niri/scripts/dictation"; }
 
     // wl-kbptr
     Alt+G {
