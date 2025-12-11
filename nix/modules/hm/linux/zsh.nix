@@ -12,4 +12,7 @@
         "nix flake update && sudo $(which system-manager) switch --flake .#${pkgs.stdenv.system} && rm result";
     };
   };
+
+  # oh-my-zsh clipboard plugin dependencies
+  home.packages = [ pkgs.wl-clipboard ];
 }

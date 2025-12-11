@@ -1,5 +1,3 @@
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-
 config-notification {
     disable-failed
 }
