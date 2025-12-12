@@ -69,6 +69,19 @@
         unset s
         unset c
       '';
+
+      gc-pip = ''
+        for pkg in $(python3 -m pip list --not-required --format=freeze 2>/dev/null | cut -d= -f1 | tail -n +3); do
+            echo -n "Removing $pkg ... " ;
+            python3 -m pip uninstall -y "$pkg" >/dev/null 2>&1 && echo "removed" || echo "skipped (protected or undeletable)";
+        done
+      '';
+      gc-kondo = "${pkgs.kondo}/bin/kondo";
+      gc-nix = "nix-collect-garbage";
+      gc-hm = ''
+        home-manager expire-generations now
+        gc-nix
+      '';
     };
   };
 }

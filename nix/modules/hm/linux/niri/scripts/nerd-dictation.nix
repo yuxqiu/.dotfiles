@@ -79,7 +79,7 @@ in stdenv.mkDerivation {
     owner = "ideasman42";
     repo = "nerd-dictation";
     rev = "41f372789c640e01bb6650339a78312661530843";
-    sha256 = "sha256-xjaHrlJvk8bNvWp1VE4EAHi2VJlAutBxUgWB++3Qo+s=";
+    sha256 = "1sx3s3nzp085a9qx1fj0k5abcy000i758xbapp6wd4vgaap8fdn6";
   };
 
   nativeBuildInputs = [ pythonWithVosk makeWrapper ];

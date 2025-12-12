@@ -11,6 +11,13 @@
       system-manager-update =
         "nix flake update && sudo $(which system-manager) switch --flake .#${pkgs.stdenv.system} && rm result";
     };
+
+    siteFunctions = {
+      gc-dnf = ''
+        sudo dnf autoremove
+        sudo dnf clean all
+      '';
+    };
   };
 
   # oh-my-zsh clipboard plugin dependencies

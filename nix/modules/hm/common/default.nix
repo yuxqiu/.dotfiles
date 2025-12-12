@@ -24,7 +24,6 @@
     git-crypt
     git-lfs
     hyperfine
-    kondo
     lazydocker
     less
     mtr
