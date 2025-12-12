@@ -19,6 +19,7 @@
     blueman
     desktop-file-utils
     iputils
+    libnotify
     traceroute
     xdg-utils
     inputs.system-manager.packages.${pkgs.stdenv.system}.default

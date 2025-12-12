@@ -29,8 +29,10 @@ fedora_packages=(
   stow
   tuned
   tuned-utils
+  unzip
   usbmuxd
   wireplumber
+  zip
 )
 
 # Associative array for packages requiring COPR repositories
