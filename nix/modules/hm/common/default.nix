@@ -12,7 +12,7 @@
     ./vscode.nix
     ./firefox/default.nix
     ./bash.nix
-    ./ssh-agent.nix
+    ./ssh.nix
   ];
 
   home.packages = with pkgs; [
