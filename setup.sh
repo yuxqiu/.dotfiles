@@ -7,6 +7,7 @@ set -e
 # - dirs inside must be kept in the same order, and,
 # - custom setup scripts must be ran at the beginning of this setup script
 custom_dirs=(
+  sys
   dnf
   nix
 )
