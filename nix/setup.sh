@@ -24,11 +24,13 @@ home-manager expire-generations now && nix-collect-garbage
 
 # Setup i2c group for controlling external monitor
 # - Required by `nix/modules/sm/linux/ddcutil.nix`
+# - Ref: https://www.ddcutil.com/i2c_permissions_using_group_i2c/
 sudo groupadd --system i2c
 sudo usermod $USER -aG i2c
 
 # Disable systemd-resolvd
 # - Required by `nix/modules/sm/linux/NetworkManager`
+# - Ref: https://askubuntu.com/questions/907246/how-to-disable-systemd-resolved-in-ubuntu
 sudo systemctl disable systemd-resolved
 sudo systemctl stop systemd-resolved
 sudo systemctl restart NetworkManager
