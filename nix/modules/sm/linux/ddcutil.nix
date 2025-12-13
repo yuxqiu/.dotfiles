@@ -17,5 +17,22 @@
         };
       };
     };
+
+    system-manager.preActivationAssertions.add-i2c-group = {
+      enable = true;
+      script = ''
+        if ! id "$USER" | grep -q '\bi2c\b'; then
+          # Create system group 'i2c' if it doesn't exist
+          if ! getent group i2c > /dev/null; then
+            groupadd --system i2c
+          fi
+
+          # Add the activating user to group 'i2c' if not already a member
+          usermod -aG i2c "$USER"
+        else
+          echo "Skipped, user is already in i2c group."
+        fi
+      '';
+    };
   };
 }

@@ -20,5 +20,19 @@
         };
       };
     };
+
+    # Ideally, this should be placed in an activation script
+    # so that we can automatically restart NetworkManager.
+    system-manager.preActivationAssertions.disable-systemd-resolved = {
+      enable = true;
+      script = ''
+        # Disable and stop systemd-resolved only if it is currently enabled/active
+        if systemctl is-active --quiet systemd-resolved; then
+          systemctl disable --now systemd-resolved
+        else
+          echo "Skipped, systemd-resolved is already disabled."
+        fi
+      '';
+    };
   };
 }
