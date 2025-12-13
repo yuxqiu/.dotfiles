@@ -46,11 +46,11 @@ declare -A copr_map=(
 # Key: package name, Value: "repo|grep_pattern"
 #   - repo: GitHub repo in owner/repo format
 #   - grep_pattern: pattern to match in the asset filename
-FEDORA_VERSION=$(grep -oP '(?<=release )[0-9]+' /etc/fedora-release)
-ARCH=$(uname -m)
+fedora_version=$(grep -oP '(?<=release )[0-9]+' /etc/fedora-release)
+arch=$(uname -m)
 declare -A dynamic_rpm_map=(
-    ["displaylink"]="displaylink-rpm/displaylink-rpm|fedora-$FEDORA_VERSION-displaylink.*$ARCH\\.rpm"
-    ["opensnitch"]="evilsocket/opensnitch|opensnitch-.*$ARCH\\.rpm"
+    ["displaylink"]="displaylink-rpm/displaylink-rpm|fedora-$fedora_version-displaylink.*$arch\\.rpm"
+    ["opensnitch"]="evilsocket/opensnitch|opensnitch-.*$arch\\.rpm"
     ["opensnitch-ui"]="evilsocket/opensnitch|opensnitch-ui-.*noarch\\.rpm"
 )
 
@@ -89,14 +89,7 @@ enable_copr() {
 install_dynamic_rpm() {
     local pkg="$1"
     local repo="${dynamic_rpm_map[$pkg]%%|*}"
-    local pattern="${dynamic_rpm_map[$pkg]#*|}"
-
-    local fedora_version=$(grep -oP '(?<=release )[0-9]+' /etc/fedora-release)
-    local arch=$(uname -m)
-
-    # Replace placeholders in pattern
-    local grep_pattern="${pattern//\$FEDORA_VERSION/$fedora_version}"
-    grep_pattern="${grep_pattern//\$ARCH/$arch}"
+    local grep_pattern="${dynamic_rpm_map[$pkg]#*|}"
 
     echo "Fetching latest release assets from $repo for $pkg (pattern: $grep_pattern)..."
 
