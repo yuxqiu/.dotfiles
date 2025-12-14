@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit on error
+set -e
+
 # Ensure dnf-plugins-core is installed
 if ! rpm -q dnf-plugins-core >/dev/null 2>&1; then
     echo "Installing dnf-plugins-core..."
@@ -60,6 +63,11 @@ declare -A docker_map=(
     ["docker-ce"]="docker"
     ["docker-ce-cli"]="docker"
     ["docker-compose-plugin"]="docker"
+)
+
+# Packages with custom setup scripts
+setup_folders=(
+    plymouth
 )
 
 # Function to enable Docker repository
@@ -160,10 +168,40 @@ process_package() {
     fi
 }
 
+run_local_setups() {
+    local script_dir
+    script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+    echo "Running local setup scripts..."
+
+    for folder in "${setup_folders[@]}"; do
+        local full_path="$script_dir/$folder"
+        local setup_script="$full_path/setup.sh"
+
+        if [[ ! -d "$full_path" ]]; then
+            echo "Warning: Folder '$folder' does not exist - skipping"
+            continue
+        fi
+
+        if [[ ! -f "$setup_script" ]]; then
+            echo "Warning: No setup.sh found in '$folder' - skipping"
+            continue
+        fi
+
+        echo "Running setup.sh in '$folder'..."
+        pushd "$full_path" >/dev/null
+        bash "./setup.sh" || { echo "Error: setup.sh failed in '$folder'"; exit 1; }
+        popd >/dev/null
+    done
+}
+
 # Process all packages from fedora_packages, copr_map, docker_map and dynamic_rpm_map
 echo "Installing all defined packages..."
 for pkg in "${fedora_packages[@]}" "${!copr_map[@]}" "${!docker_map[@]}" "${!dynamic_rpm_map[@]}"; do
     process_package "$pkg"
 done
-
 echo "Package processing completed."
+
+run_local_setups
+
+echo "All package installations and local setups completed."
