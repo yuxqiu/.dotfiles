@@ -7,7 +7,7 @@
     # Enable Oh My Zsh
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "z" "dirhistory" ];
+      plugins = [ "git" "colored-man-pages" "z" "dirhistory" "jj" ];
       theme = "robbyrussell";
     };
 
