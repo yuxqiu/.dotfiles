@@ -6,13 +6,6 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
-// Must set. When DisplayLink dock is connected, niri (smithay::backend::udev::primary_gpu)
-// will not pick up this render device and will use ("/dev/dri/card0") which
-// does not support rendering
-debug {
-    render-drm-device "/dev/dri/renderD128"
-}
-
 prefer-no-csd
 
 screenshot-path null

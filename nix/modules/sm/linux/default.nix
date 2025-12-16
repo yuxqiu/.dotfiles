@@ -7,7 +7,6 @@
     ./NetworkManager/NetworkManager.nix
     ./autorestic.nix
     ./fprintd.nix
-    ./dms/dms.nix
     ./ddcutil.nix
     ./tuned/tuned.nix
   ];
