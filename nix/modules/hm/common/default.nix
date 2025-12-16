@@ -14,6 +14,7 @@
     ./bash.nix
     ./ssh.nix
     ./jj.nix
+    ./proton-pass-cli.nix
   ];
 
   home.packages = with pkgs; [
@@ -25,6 +26,7 @@
     git-crypt
     git-lfs
     hyperfine
+    jq
     lazydocker
     less
     mtr

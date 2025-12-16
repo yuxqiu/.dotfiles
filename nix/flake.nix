@@ -15,6 +15,10 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    proton-pass-cli = {
+      url = "github:yuxqiu/proton-pass-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # System
     # Blocker: https://github.com/nix-community/nixos-apple-silicon/issues/380
@@ -29,7 +33,7 @@
   };
 
   outputs = { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions
-    , system-manager, nix-system-graphics, ... }@inputs:
+    , system-manager, nix-system-graphics, proton-pass-cli, ... }@inputs:
     let
       # Define supported systems
       hm-systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -68,6 +72,7 @@
 
             # System-specific settings
             systemModule
+
             # Conditionally include nix-flatpak for Linux systems
             (nixpkgs.lib.optionalAttrs (pkgs.stdenv.isLinux) {
               imports = [ nix-flatpak.homeManagerModules.nix-flatpak ];

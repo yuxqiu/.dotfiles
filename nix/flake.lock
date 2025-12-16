@@ -108,6 +108,26 @@
         "type": "github"
       }
     },
+    "proton-pass-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765855007,
+        "narHash": "sha256-GBxAI97Q0fhCD1alL87xhpIrUfiwZe9b/ilDKs33f/E=",
+        "owner": "yuxqiu",
+        "repo": "proton-pass-cli-nix",
+        "rev": "d289664f4aa324dbf724b54ca44971958072f23b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yuxqiu",
+        "repo": "proton-pass-cli-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
@@ -116,6 +136,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs",
         "nixpkgs-2511": "nixpkgs-2511",
+        "proton-pass-cli": "proton-pass-cli",
         "system-manager": "system-manager"
       }
     },
