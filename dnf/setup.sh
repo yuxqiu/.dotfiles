@@ -33,6 +33,7 @@ fedora_packages=(
     tuned
     tuned-utils
     unzip
+    upower
     usbmuxd
     wireplumber
     zip
