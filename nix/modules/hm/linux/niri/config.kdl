@@ -3,5 +3,7 @@ include "configs/output.kdl"
 include "configs/binds.kdl"
 include "configs/layout.kdl"
 include "configs/window.kdl"
-include "configs/dms.kdl"
 include "configs/others.kdl"
+
+include "configs/dms.kdl"
+include "dms/outputs.kdl"

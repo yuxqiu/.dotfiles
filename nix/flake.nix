@@ -2,8 +2,10 @@
   description = "yuxqiu's dotfiles";
 
   inputs = {
-    # User
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
+
+    # User
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +18,6 @@
 
     # System
     # Blocker: https://github.com/nix-community/nixos-apple-silicon/issues/380
-    nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs-2511";
