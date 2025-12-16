@@ -17,6 +17,9 @@
     };
   };
 
+  # for gnome-keyring prompt to show
+  # - https://github.com/nix-community/home-manager/issues/1454
+  home.packages = [ pkgs.gcr ];
   services.gnome-keyring.enable = true;
 
   home.file.".config/niri/configs".source = ./configs;
