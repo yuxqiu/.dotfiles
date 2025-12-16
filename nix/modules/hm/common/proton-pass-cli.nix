@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 let
   proton-pass-cli =
@@ -6,24 +6,12 @@ let
 in {
   home.packages = [ proton-pass-cli ];
 
-  # Session Verification
-  # - Use `login` rather than `info` as recommended in https://protonpass.github.io/pass-cli/commands/info/#session-verification
-  #   because `login` is way faster.
-  home.sessionVariablesExtra = ''
-    export PROTON_PASS_SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket}"
-  '';
-
-  programs.zsh.initContent = ''
-    if ! ${proton-pass-cli}/bin/pass-cli login 2>/dev/null; then
-      ${proton-pass-cli}/bin/pass-cli login
-      SSH_AUTH_SOCK="$PROTON_PASS_SSH_AUTH_SOCK" ${proton-pass-cli}/bin/pass-cli ssh-agent load
+  programs.zsh.siteFunctions.pass-ssh = ''
+    if ! pass-cli test &>/dev/null; then
+      pass-cli login || return 1
     fi
-  '';
 
-  programs.bash.initExtra = ''
-    if ! ${proton-pass-cli}/bin/pass-cli login 2>/dev/null; then
-      ${proton-pass-cli}/bin/pass-cli login
-      SSH_AUTH_SOCK="$PROTON_PASS_SSH_AUTH_SOCK" ${proton-pass-cli}/bin/pass-cli ssh-agent load
-    fi
+    pass-cli ssh-agent load
+    pass-cli logout
   '';
 }
