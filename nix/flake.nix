@@ -2,15 +2,13 @@
   description = "yuxqiu's dotfiles";
 
   inputs = {
+    # Common
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
-
-    # User
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +18,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # System
+    # Linux
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     # Blocker: https://github.com/nix-community/nixos-apple-silicon/issues/380
     system-manager = {
       url = "github:numtide/system-manager";

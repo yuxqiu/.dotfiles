@@ -15,6 +15,7 @@
     ./ssh.nix
     ./jj.nix
     ./proton-pass-cli.nix
+    ./zed/default.nix
   ];
 
   home.packages = with pkgs; [

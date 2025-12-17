@@ -554,7 +554,7 @@
   # Dependencies for extensions
   home.packages = with pkgs; [
     clang-tools # for clangd and clang-format
-    nixfmt-classic
+    nixfmt
     nixd # for nix-ide
     typst # for tinymist
     black # for ms-python.black-formatter
