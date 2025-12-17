@@ -42,16 +42,8 @@
     sqlite
     strace
     tealdeer
-    tectonic
-    (texliveSmall.withPackages (
-      ps: with ps; [
-        latexindent
-        synctex
-      ]
-    ))
     tokei
     tree
-    typst
     typos
     update-nix-fetchgit
     uv

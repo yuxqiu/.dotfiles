@@ -566,14 +566,18 @@
 
   # Dependencies for extensions
   home.packages = with pkgs; [
-    clang-tools # for clangd and clang-format
+    black
+    clang-tools
     nixfmt
-    nixd # for nix-ide
-    typst # for tinymist
-    black # for ms-python.black-formatter
-
-    # fonts
-    # fira-code - covered by dms
+    nixd
+    tectonic
+    (texliveSmall.withPackages (
+      ps: with ps; [
+        latexindent
+        synctex
+      ]
+    ))
+    typst
     nerd-fonts.meslo-lg
   ];
 

@@ -2,9 +2,23 @@
 {
   programs.zed-editor = {
     enable = true;
+    # needed by extensions to support offline lsp
     extraPackages = with pkgs; [
+      basedpyright
+      markdown-oxide
       nixd
       nixfmt
+      ruff
+      tectonic
+      texlab
+      (texliveSmall.withPackages (
+        ps: with ps; [
+          latexindent
+          synctex
+        ]
+      ))
+      typos-lsp
+      tinymist
     ];
     userSettings = {
       agent = {
@@ -18,6 +32,9 @@
       };
       colorize_brackets = true;
       disable_ai = true;
+      inlay_hints = {
+        enabled = true;
+      };
       languages = {
         Nix = {
           language_servers = [
@@ -38,11 +55,30 @@
             outputPath = "$root/$name";
           };
         };
+        texlab = {
+          settings = {
+            texlab = {
+              build = {
+                onSave = true;
+                forwardSearchAfter = true;
+                executable = "tectonic";
+                args = [
+                  "-X"
+                  "compile"
+                  "%f"
+                  "--untrusted"
+                  "--synctex"
+                  "--keep-logs"
+                  "--keep-intermediates"
+                ];
+              };
+            };
+          };
+        };
       };
       minimap = {
         show = "auto";
       };
-
       tabs = {
         "file_icons" = true;
       };
@@ -95,23 +131,29 @@
           "ctrl-k" = "editor::ContextMenuPrevious";
         };
       }
+      {
+        "bindings" = {
+          "ctrl-o" = [
+            "projects::OpenRecent"
+            {
+              "create_new_window" = true;
+            }
+          ];
+        };
+      }
     ];
     extensions = [
       "one-dark-pro"
       "markdown-oxide"
       "typst"
       "latex"
-      "texpresso"
       "nix"
       "typos"
       "editorconfig"
-      "java"
     ];
-    mutableUserSettings = false;
-    mutableUserKeymaps = false;
     installRemoteServer = false;
   };
 
   # snippets
-  xdg.configFile."snippets".source = ./snippets;
+  xdg.configFile."zed/snippets".source = ./snippets;
 }
