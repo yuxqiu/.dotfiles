@@ -1,9 +1,9 @@
 { inputs, pkgs, ... }:
 
 let
-  proton-pass-cli =
-    inputs.proton-pass-cli.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in {
+  proton-pass-cli = inputs.proton-pass-cli.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in
+{
   home.packages = [ proton-pass-cli ];
 
   programs.zsh.siteFunctions.pass-ssh = ''

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # enable xdg (xdg-mime is default enabled)
   xdg.enable = true;
   xdg.autostart.enable = true;

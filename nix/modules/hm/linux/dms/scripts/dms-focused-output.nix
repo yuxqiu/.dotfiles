@@ -5,7 +5,13 @@ let
     #!${pkgs.bash}/bin/bash
     set -euo pipefail
 
-    PATH=${pkgs.lib.makeBinPath [ pkgs.ddcutil pkgs.jq pkgs.coreutils ]}:$PATH
+    PATH=${
+      pkgs.lib.makeBinPath [
+        pkgs.ddcutil
+        pkgs.jq
+        pkgs.coreutils
+      ]
+    }:$PATH
 
     focused_connector=$(niri msg --json focused-output | jq -r '.name')
 
@@ -35,4 +41,7 @@ let
     # If nothing responded, let dms fall back to its own heuristics
     exit 0
   '';
-in { home.packages = [ dms-focused-output ]; }
+in
+{
+  home.packages = [ dms-focused-output ];
+}

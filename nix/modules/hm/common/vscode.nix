@@ -4,7 +4,8 @@
   programs.vscode = {
     enable = true;
     profiles.default = {
-      extensions = with pkgs.vscode-marketplace;
+      extensions =
+        with pkgs.vscode-marketplace;
         [
           albert.tabout
           antfu.icons-carbon
@@ -59,7 +60,8 @@
           yfzhao.ultra-math-preview
           yzhang.markdown-all-in-one
           zhuangtongfa.material-theme
-        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        ]
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           # https://github.com/nix-community/nix-vscode-extensions/issues/143
           {
             name = "vscode-lldb";
@@ -89,7 +91,9 @@
         "editor.renderLineHighlight" = "none";
         "editor.matchBrackets" = "never";
         "editor.quickSuggestionsDelay" = 0;
-        "editor.unicodeHighlight.allowedLocales" = { "zh_cn" = true; };
+        "editor.unicodeHighlight.allowedLocales" = {
+          "zh_cn" = true;
+        };
         "git.terminalAuthentication" = false;
         "github.gitAuthentication" = false;
         "window.restoreWindows" = "none";
@@ -170,8 +174,12 @@
         "clangd.checkUpdates" = false;
 
         "clang-format.style" = "Webkit";
-        "[cpp]" = { "editor.defaultFormatter" = "xaver.clang-format"; };
-        "[c]" = { "editor.defaultFormatter" = "xaver.clang-format"; };
+        "[cpp]" = {
+          "editor.defaultFormatter" = "xaver.clang-format";
+        };
+        "[c]" = {
+          "editor.defaultFormatter" = "xaver.clang-format";
+        };
 
         "latex-workshop.latex.outDir" = "%DIR%/latex-build";
         "latex-workshop.latex.recipes" = [
@@ -255,7 +263,9 @@
           "editor.wordSeparators" = ''`~!@#$%^&*()=+[{]}\|;:'",.<>/?'';
         };
 
-        "[java]" = { "editor.defaultFormatter" = "redhat.java"; };
+        "[java]" = {
+          "editor.defaultFormatter" = "redhat.java";
+        };
 
         "[javascript]" = {
           "editor.defaultFormatter" = "vscode.typescript-language-features";
@@ -372,14 +382,12 @@
         {
           key = "ctrl+j";
           command = "selectNextSuggestion";
-          when =
-            "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible";
+          when = "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible";
         }
         {
           key = "ctrl+k";
           command = "selectPrevSuggestion";
-          when =
-            "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible";
+          when = "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible";
         }
 
         # Move lines up/down
@@ -410,26 +418,22 @@
         {
           key = "ctrl+c";
           command = "-vscode-neovim.escape";
-          when =
-            "editorTextFocus && neovim.ctrlKeysNormal.c && neovim.init && !dirtyDiffVisible && !findWidgetVisible && !inReferenceSearchEditor && !markersNavigationVisible && !notebookCellFocused && !notificationCenterVisible && !parameterHintsVisible && !referenceSearchVisible && neovim.mode == 'normal' && editorLangId not in 'neovim.editorLangIdExclusions'";
+          when = "editorTextFocus && neovim.ctrlKeysNormal.c && neovim.init && !dirtyDiffVisible && !findWidgetVisible && !inReferenceSearchEditor && !markersNavigationVisible && !notebookCellFocused && !notificationCenterVisible && !parameterHintsVisible && !referenceSearchVisible && neovim.mode == 'normal' && editorLangId not in 'neovim.editorLangIdExclusions'";
         }
         {
           key = "ctrl+c";
           command = "-vscode-neovim.escape";
-          when =
-            "editorTextFocus && neovim.ctrlKeysInsert.c && neovim.init && neovim.mode != 'normal' && editorLangId not in 'neovim.editorLangIdExclusions'";
+          when = "editorTextFocus && neovim.ctrlKeysInsert.c && neovim.init && neovim.mode != 'normal' && editorLangId not in 'neovim.editorLangIdExclusions'";
         }
         {
           key = "ctrl+w";
           command = "-vscode-neovim.send";
-          when =
-            "editorTextFocus && neovim.ctrlKeysInsert.w && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'";
+          when = "editorTextFocus && neovim.ctrlKeysInsert.w && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'";
         }
         {
           key = "ctrl+a";
           command = "-vscode-neovim.send";
-          when =
-            "editorTextFocus && neovim.ctrlKeysInsert.a && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'";
+          when = "editorTextFocus && neovim.ctrlKeysInsert.a && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'";
         }
 
         # Copilot Arena
@@ -443,64 +447,67 @@
         {
           key = "ctrl+m ctrl+m";
           command = "editor.action.insertSnippet";
-          args = { name = "Insert Inline Math"; };
-          when =
-            "editorTextFocus && !editorReadonly && editorLangId == 'latex'";
+          args = {
+            name = "Insert Inline Math";
+          };
+          when = "editorTextFocus && !editorReadonly && editorLangId == 'latex'";
         }
         {
           key = "ctrl+shift+m";
           command = "editor.action.insertSnippet";
-          args = { name = "Insert Display Math"; };
-          when =
-            "editorTextFocus && !editorReadonly && editorLangId == 'latex'";
+          args = {
+            name = "Insert Display Math";
+          };
+          when = "editorTextFocus && !editorReadonly && editorLangId == 'latex'";
         }
         {
           key = "ctrl+m ctrl+m";
           command = "editor.action.insertSnippet";
-          args = { name = "Insert Inline Math"; };
-          when =
-            "editorTextFocus && !editorReadonly && editorLangId == 'typst'";
+          args = {
+            name = "Insert Inline Math";
+          };
+          when = "editorTextFocus && !editorReadonly && editorLangId == 'typst'";
         }
         {
           key = "ctrl+shift+m";
           command = "editor.action.insertSnippet";
-          args = { name = "Insert Display Math"; };
-          when =
-            "editorTextFocus && !editorReadonly && editorLangId == 'typst'";
+          args = {
+            name = "Insert Display Math";
+          };
+          when = "editorTextFocus && !editorReadonly && editorLangId == 'typst'";
         }
         {
           key = "ctrl+m ctrl+m";
           command = "editor.action.insertSnippet";
-          args = { name = "Insert Inline Math"; };
-          when =
-            "editorTextFocus && !editorReadonly && editorLangId == 'markdown'";
+          args = {
+            name = "Insert Inline Math";
+          };
+          when = "editorTextFocus && !editorReadonly && editorLangId == 'markdown'";
         }
         {
           key = "ctrl+shift+m";
           command = "editor.action.insertSnippet";
-          args = { name = "Insert Display Math"; };
-          when =
-            "editorTextFocus && !editorReadonly && editorLangId == 'markdown'";
+          args = {
+            name = "Insert Display Math";
+          };
+          when = "editorTextFocus && !editorReadonly && editorLangId == 'markdown'";
         }
         {
           key = "ctrl+j";
           command = "editor.action.triggerSuggest";
-          when =
-            "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible";
+          when = "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible";
         }
 
         # Allow arrow keys in neovim normal mode
         {
           key = "up";
           command = "cursorUp";
-          when =
-            "editorTextFocus && neovim.mode == 'normal' && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible";
+          when = "editorTextFocus && neovim.mode == 'normal' && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible";
         }
         {
           key = "down";
           command = "cursorDown";
-          when =
-            "editorTextFocus && neovim.mode == 'normal' && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible";
+          when = "editorTextFocus && neovim.mode == 'normal' && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible";
         }
       ];
 
@@ -509,42 +516,48 @@
           "Insert Inline Math" = {
             "prefix" = "inlineMath";
             "body" = [ "\${1:$\${2:}$$0}" ];
-            "description" =
-              "Insert inline math block $$ $$ with easy backspace delete";
+            "description" = "Insert inline math block $$ $$ with easy backspace delete";
           };
           "Insert Display Math" = {
             "prefix" = "displayMath";
-            "body" = [ "\${1:\\[" "    \${2:}" "\\]}$0" ];
-            "description" =
-              "Insert 3-line display math block with cursor inside";
+            "body" = [
+              "\${1:\\["
+              "    \${2:}"
+              "\\]}$0"
+            ];
+            "description" = "Insert 3-line display math block with cursor inside";
           };
         };
         markdown = {
           "Insert Inline Math" = {
             "prefix" = "inlineMath";
             "body" = [ "\${1:$\${2:}$$0}" ];
-            "description" =
-              "Insert inline math block $$ $$ with easy backspace delete";
+            "description" = "Insert inline math block $$ $$ with easy backspace delete";
           };
           "Insert Display Math" = {
             "prefix" = "displayMath";
-            "body" = [ "\${1:$$" "    \${2:}" "$$}$0" ];
-            "description" =
-              "Insert 3-line display math block with cursor inside";
+            "body" = [
+              "\${1:$$"
+              "    \${2:}"
+              "$$}$0"
+            ];
+            "description" = "Insert 3-line display math block with cursor inside";
           };
         };
         typst = {
           "Insert Inline Math" = {
             "prefix" = "inlineMath";
             "body" = [ "\${1:$\${2:}$$0}" ];
-            "description" =
-              "Insert inline math block $$ $$ with easy backspace delete";
+            "description" = "Insert inline math block $$ $$ with easy backspace delete";
           };
           "Insert Display Math" = {
             "prefix" = "displayMath";
-            "body" = [ "\${1:$$" "    \${2:}" "$$}$0" ];
-            "description" =
-              "Insert 3-line display math block with cursor inside";
+            "body" = [
+              "\${1:$$"
+              "    \${2:}"
+              "$$}$0"
+            ];
+            "description" = "Insert 3-line display math block with cursor inside";
           };
         };
       };

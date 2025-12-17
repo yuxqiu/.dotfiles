@@ -7,7 +7,10 @@
     vimAlias = true;
 
     # Install required plugins and dependencies
-    plugins = with pkgs.vimPlugins; [ vim-plug leap-nvim ];
+    plugins = with pkgs.vimPlugins; [
+      vim-plug
+      leap-nvim
+    ];
 
     extraConfig = ''
       set encoding=utf-8

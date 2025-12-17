@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; [ autorestic restic ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    autorestic
+    restic
+  ];
 
   # Config file is managed manually
   # - See: https://autorestic.vercel.app/

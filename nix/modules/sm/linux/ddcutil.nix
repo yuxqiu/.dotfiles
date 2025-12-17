@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # https://www.ddcutil.com/i2c_permissions_using_group_i2c/
   config = {
     environment = {

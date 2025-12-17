@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   editorconfig = {
     enable = true;
     settings = {
@@ -14,13 +15,21 @@
         curly_bracket_next_line = false;
       };
 
-      "*.md" = { insert_final_newline = false; };
+      "*.md" = {
+        insert_final_newline = false;
+      };
 
-      "{makefile,Makefile,**.mk}" = { indent_style = "tab"; };
+      "{makefile,Makefile,**.mk}" = {
+        indent_style = "tab";
+      };
 
-      "*.{yml,yaml}" = { indent_size = 2; };
+      "*.{yml,yaml}" = {
+        indent_size = 2;
+      };
 
-      "*.txt" = { insert_final_newline = false; };
+      "*.txt" = {
+        insert_final_newline = false;
+      };
     };
   };
 }

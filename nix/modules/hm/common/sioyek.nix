@@ -1,7 +1,10 @@
-{ ... }: {
+{ ... }:
+{
   programs.sioyek = {
     enable = true;
-    bindings = { "goto_tab" = "gt"; };
+    bindings = {
+      "goto_tab" = "gt";
+    };
     config = {
       "check_for_updates_on_startup" = "0";
       "super_fast_search" = "1";

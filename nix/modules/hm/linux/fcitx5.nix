@@ -23,13 +23,17 @@
       # Optional: Declarative settings (example for basic input group setup)
       settings = {
         globalOptions = {
-          Behavior = { ActiveByDefault = true; };
+          Behavior = {
+            ActiveByDefault = true;
+          };
           Hotkey = {
             EnumerateWithTriggerKeys = true;
             EnumerateSkipFirst = false;
             ModifierOnlyKeyTimeout = 250;
           };
-          "Hotkey/TriggerKeys" = { "0" = "Shift_L"; };
+          "Hotkey/TriggerKeys" = {
+            "0" = "Shift_L";
+          };
           "Behavior/DisabledAddons" = {
             "0" = "clipboard";
             # KDE/plasma only
@@ -43,14 +47,18 @@
           pinyin.globalSection.EmojiEnabled = "True";
         };
         inputMethod = {
-          GroupOrder = { "0" = "Default"; };
+          GroupOrder = {
+            "0" = "Default";
+          };
           "Groups/0" = {
             Name = "Default";
             "Default Layout" = "us";
             DefaultIM = "keyboard-us"; # Default to English
           };
           # Add English, Chinese (Pinyin) to the group
-          "Groups/0/Items/0" = { Name = "keyboard-us"; };
+          "Groups/0/Items/0" = {
+            Name = "keyboard-us";
+          };
           "Groups/0/Items/1" = {
             Name = "pinyin";
           }; # From fcitx5-chinese-addons
@@ -64,8 +72,12 @@
       gtk-im-module = "fcitx"
     '';
 
-    gtk3.extraConfig = { gtk-im-module = "fcitx"; };
+    gtk3.extraConfig = {
+      gtk-im-module = "fcitx";
+    };
 
-    gtk4.extraConfig = { gtk-im-module = "fcitx"; };
+    gtk4.extraConfig = {
+      gtk-im-module = "fcitx";
+    };
   };
 }

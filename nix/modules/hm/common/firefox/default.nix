@@ -2,12 +2,13 @@
 
 let
   # Define variables
-  profileBase = if pkgs.stdenv.isLinux then
-    ".mozilla/firefox"
-  else if pkgs.stdenv.isDarwin then
-    "Library/Application Support/Firefox/Profiles"
-  else
-    throw "Unsupported platform";
+  profileBase =
+    if pkgs.stdenv.isLinux then
+      ".mozilla/firefox"
+    else if pkgs.stdenv.isDarwin then
+      "Library/Application Support/Firefox/Profiles"
+    else
+      throw "Unsupported platform";
 
   profileName = "default"; # Replace with your actual profile name
   profilePath = "${profileBase}/${profileName}";
@@ -16,11 +17,11 @@ let
 
   # Fetch Arkenfox user.js
   arkenfoxUserJs = "${
-      builtins.fetchGit {
-        url = "https://github.com/arkenfox/user.js/";
-        rev = "0f14e030b3a9391e761c03ce3c260730a78a4db6";
-      }
-    }/user.js";
+    builtins.fetchGit {
+      url = "https://github.com/arkenfox/user.js/";
+      rev = "0f14e030b3a9391e761c03ce3c260730a78a4db6";
+    }
+  }/user.js";
 
   # Fetch WhiteSur theme using builtins.fetchGit
   whitesurThemeSrc = builtins.fetchGit {
@@ -65,14 +66,16 @@ let
     '';
 
   # Create combined user.js by concatenating arkenfox user.js and user-override.js
-  combinedUserJs = builtins.readFile arkenfoxUserJs
-    + builtins.readFile ./user-override.js;
+  combinedUserJs = builtins.readFile arkenfoxUserJs + builtins.readFile ./user-override.js;
 
-in {
+in
+{
   # Enable Firefox and define profiles
   programs.firefox = {
     enable = true;
-    profiles.${profileName} = { isDefault = true; };
+    profiles.${profileName} = {
+      isDefault = true;
+    };
     policies = {
       CaptivePortal = false;
       DisableFirefoxStudies = true;
@@ -113,11 +116,21 @@ in {
       };
       ExtensionSettings = {
         # Disable built-in search engines
-        "amazondotcom@search.mozilla.org" = { installation_mode = "blocked"; };
-        "bing@search.mozilla.org" = { installation_mode = "blocked"; };
-        "ebay@search.mozilla.org" = { installation_mode = "blocked"; };
-        "google@search.mozilla.org" = { installation_mode = "blocked"; };
-        "duckduckgo@search.mozilla.org" = { installation_mode = "blocked"; };
+        "amazondotcom@search.mozilla.org" = {
+          installation_mode = "blocked";
+        };
+        "bing@search.mozilla.org" = {
+          installation_mode = "blocked";
+        };
+        "ebay@search.mozilla.org" = {
+          installation_mode = "blocked";
+        };
+        "google@search.mozilla.org" = {
+          installation_mode = "blocked";
+        };
+        "duckduckgo@search.mozilla.org" = {
+          installation_mode = "blocked";
+        };
       };
     };
   };

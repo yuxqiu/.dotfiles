@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     # See:
     # - https://autorestic.vercel.app/
@@ -6,7 +7,9 @@
     systemd = {
       services = {
         autorestic-backup = {
-          unitConfig = { Description = "Autorestic backup service"; };
+          unitConfig = {
+            Description = "Autorestic backup service";
+          };
           serviceConfig = {
             Type = "oneshot";
             ExecStart = "${pkgs.autorestic}/bin/autorestic --restic-bin ${pkgs.restic}/bin/restic backup --verbose -l home";
@@ -28,7 +31,9 @@
       timers = {
         autorestic-backup = {
           enable = true;
-          unitConfig = { Description = "Backup with autorestic daily"; };
+          unitConfig = {
+            Description = "Backup with autorestic daily";
+          };
           wantedBy = [ "timers.target" ];
           timerConfig = {
             OnCalendar = "daily";
@@ -50,8 +55,8 @@
     };
 
     environment.systemPackages = with pkgs; [
-        autorestic
-        restic
+      autorestic
+      restic
     ];
   };
 }

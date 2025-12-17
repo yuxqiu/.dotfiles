@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     environment = {
       etc = {
@@ -13,8 +14,10 @@
     # from dnf
     systemd.services.earlyoom = {
       description = "Early OOM Daemon";
-      documentation =
-        [ "man:earlyoom(1)" "https://github.com/rfjakob/earlyoom" ];
+      documentation = [
+        "man:earlyoom(1)"
+        "https://github.com/rfjakob/earlyoom"
+      ];
 
       wantedBy = [ "multi-user.target" ];
       wants = [ "basic.target" ];
@@ -28,8 +31,14 @@
         EnvironmentFile = "-/etc/default/earlyoom";
 
         # Capabilities
-        AmbientCapabilities = [ "CAP_KILL" "CAP_IPC_LOCK" ];
-        CapabilityBoundingSet = [ "CAP_KILL" "CAP_IPC_LOCK" ];
+        AmbientCapabilities = [
+          "CAP_KILL"
+          "CAP_IPC_LOCK"
+        ];
+        CapabilityBoundingSet = [
+          "CAP_KILL"
+          "CAP_IPC_LOCK"
+        ];
 
         # Scheduling priority
         Nice = -20;
@@ -65,8 +74,11 @@
         RestrictAddressFamilies = [ "AF_UNIX" ];
 
         SystemCallArchitectures = "native";
-        SystemCallFilter =
-          [ "@system-service" "process_mrelease" "~@privileged" ];
+        SystemCallFilter = [
+          "@system-service"
+          "process_mrelease"
+          "~@privileged"
+        ];
       };
     };
 

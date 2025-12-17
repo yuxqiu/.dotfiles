@@ -96,7 +96,8 @@ let
     '';
   };
 
-in {
+in
+{
   home.file.".config/niri/scripts/dictation" = {
     source = "${dictation-toggle}/bin/dictation";
     executable = true;

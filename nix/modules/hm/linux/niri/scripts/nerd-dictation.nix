@@ -3,17 +3,29 @@
 
 let
   inherit (pkgs)
-    lib stdenv fetchFromGitHub fetchurl fetchPypi python3 python3Packages
-    makeWrapper autoPatchelfHook unzip pulseaudio sox pipewire dotool
-    gcc-unwrapped;
+    lib
+    stdenv
+    fetchFromGitHub
+    fetchurl
+    fetchPypi
+    python3
+    python3Packages
+    makeWrapper
+    autoPatchelfHook
+    unzip
+    pulseaudio
+    sox
+    pipewire
+    dotool
+    gcc-unwrapped
+    ;
 
   vosk-model-en-us-lgraph = stdenv.mkDerivation {
     pname = "vosk-model-en-us-lgraph";
     version = "0.22";
 
     src = fetchurl {
-      url =
-        "https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip";
+      url = "https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip";
       hash = "sha256-2YOLSqqCp1xKF/WsowDqyhKaqrKny/lRuvu1AOucQzQ=";
     };
 
@@ -44,21 +56,25 @@ let
       dist = "py3";
       python = "py3";
       abi = "none";
-      platform = if stdenv.isAarch64 then
-        "manylinux2014_aarch64"
-      else
-        "manylinux_2_12_x86_64.manylinux2010_x86_64";
-      hash = if stdenv.isAarch64 then
-        "sha256-VO+0fdiQ5UTp4g8DFkE6zsf4aA0E7AlcYUCrTnAmJwQ="
-      else
-        "sha256-JeAlCTxDmdcnj1Q1aO2MxUYKw6S/SMI2c6zh4l0mYZ8=";
+      platform =
+        if stdenv.isAarch64 then "manylinux2014_aarch64" else "manylinux_2_12_x86_64.manylinux2010_x86_64";
+      hash =
+        if stdenv.isAarch64 then
+          "sha256-VO+0fdiQ5UTp4g8DFkE6zsf4aA0E7AlcYUCrTnAmJwQ="
+        else
+          "sha256-JeAlCTxDmdcnj1Q1aO2MxUYKw6S/SMI2c6zh4l0mYZ8=";
     };
 
     nativeBuildInputs = [ autoPatchelfHook ];
 
     buildInputs = [ gcc-unwrapped.lib ];
 
-    propagatedBuildInputs = with python3Packages; [ cffi requests tqdm srt ];
+    propagatedBuildInputs = with python3Packages; [
+      cffi
+      requests
+      tqdm
+      srt
+    ];
 
     doCheck = false;
 
@@ -69,9 +85,15 @@ let
     };
   };
 
-  pythonWithVosk = python3.withPackages (ps: with ps; [ vosk setuptools ]);
+  pythonWithVosk = python3.withPackages (
+    ps: with ps; [
+      vosk
+      setuptools
+    ]
+  );
 
-in stdenv.mkDerivation {
+in
+stdenv.mkDerivation {
   pname = "nerd-dictation";
   version = "unstable-2025-10-10";
 
@@ -82,9 +104,15 @@ in stdenv.mkDerivation {
     sha256 = "1sx3s3nzp085a9qx1fj0k5abcy000i758xbapp6wd4vgaap8fdn6";
   };
 
-  nativeBuildInputs = [ pythonWithVosk makeWrapper ];
+  nativeBuildInputs = [
+    pythonWithVosk
+    makeWrapper
+  ];
 
-  propagatedBuildInputs = [ pythonWithVosk vosk-model-en-us-lgraph ];
+  propagatedBuildInputs = [
+    pythonWithVosk
+    vosk-model-en-us-lgraph
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -100,7 +128,14 @@ in stdenv.mkDerivation {
     #!${stdenv.shell}
 
     # Add audio and input tools to PATH
-    export PATH="${lib.makeBinPath [ pulseaudio sox pipewire dotool ]}:\$PATH"
+    export PATH="${
+      lib.makeBinPath [
+        pulseaudio
+        sox
+        pipewire
+        dotool
+      ]
+    }:\$PATH"
 
     # Check if command needs model and input tool defaults
     needs_model=false

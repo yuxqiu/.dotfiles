@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./fzf.nix
     ./git.nix
@@ -42,7 +43,12 @@
     strace
     tealdeer
     tectonic
-    (texliveSmall.withPackages (ps: with ps; [ latexindent synctex ]))
+    (texliveSmall.withPackages (
+      ps: with ps; [
+        latexindent
+        synctex
+      ]
+    ))
     tokei
     tree
     typst

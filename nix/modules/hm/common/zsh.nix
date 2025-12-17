@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -7,7 +8,13 @@
     # Enable Oh My Zsh
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "z" "dirhistory" "jj" ];
+      plugins = [
+        "git"
+        "colored-man-pages"
+        "z"
+        "dirhistory"
+        "jj"
+      ];
       theme = "robbyrussell";
     };
 
@@ -29,8 +36,7 @@
       dcdown = "docker-compose down";
 
       # Home Manager Update
-      home-manager-update =
-        "nix flake update && update-nix-fetchgit modules/**/*.nix && home-manager switch --flake .#${pkgs.stdenv.system}";
+      home-manager-update = "nix flake update && update-nix-fetchgit modules/**/*.nix && home-manager switch --flake .#${pkgs.stdenv.system}";
 
       # Immortal ssh
       sshx = ''mosh "$@" -- screen -s -/bin/bash -qRRUS "mosh-''${HOSTNAME}"'';

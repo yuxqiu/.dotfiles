@@ -33,9 +33,13 @@
         };
       };
 
-      env = { TERM = "xterm-256color"; };
+      env = {
+        TERM = "xterm-256color";
+      };
 
-      font = { size = 12.0; };
+      font = {
+        size = 12.0;
+      };
 
       scrolling = {
         history = 10000;
@@ -55,7 +59,9 @@
         };
       };
 
-      general = { live_config_reload = true; };
+      general = {
+        live_config_reload = true;
+      };
     };
   };
 }

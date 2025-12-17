@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   home.packages = [ pkgs.flatpak ];
 
   services.flatpak = {
@@ -37,7 +38,10 @@
           "!gpg-agent"
         ];
         # # Deny network access by default
-        Context.shared = [ "!network" "!ipc" ];
+        Context.shared = [
+          "!network"
+          "!ipc"
+        ];
 
         Context.filesystems = [
           "~/.themes:ro" # Read-only access to ~/.themes
@@ -53,7 +57,8 @@
           "org.freedesktop.UPower" = "none";
           "org.freedesktop.UDisks2" = "none";
         };
-        "Session Bus Policy" = { # Deny some known sandbox escape permissions
+        "Session Bus Policy" = {
+          # Deny some known sandbox escape permissions
           "org.freedesktop.Flatpak" = "none";
           "org.freedesktop.impl.portal.PermissionStore" = "none";
           "org.freedesktop.secrets" = "none";
@@ -70,9 +75,16 @@
         Context.shared = [ "network" ];
       };
 
-      "org.localsend.localsend_app" = { Context.shared = [ "network" ]; };
+      "org.localsend.localsend_app" = {
+        Context.shared = [ "network" ];
+      };
 
-      "org.kde.dolphin" = { Context.sockets = [ "session-bus" "system-bus" ]; };
+      "org.kde.dolphin" = {
+        Context.sockets = [
+          "session-bus"
+          "system-bus"
+        ];
+      };
     };
   };
 

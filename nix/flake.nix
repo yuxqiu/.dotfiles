@@ -31,12 +31,28 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nix-flatpak, nix-vscode-extensions
-    , system-manager, nix-system-graphics, proton-pass-cli, ... }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      nix-flatpak,
+      nix-vscode-extensions,
+      system-manager,
+      nix-system-graphics,
+      proton-pass-cli,
+      ...
+    }@inputs:
     let
       # Define supported systems
-      hm-systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
-      sm-systems = [ "x86_64-linux" "aarch64-linux" ];
+      hm-systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+      sm-systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
       # Helper function to generate outputs for each system
       hm-forAllSystems = nixpkgs.lib.genAttrs hm-systems;
@@ -44,9 +60,11 @@
 
       # Username for Home Manager
       username = "yuxqiu";
-    in {
+    in
+    {
       # Home Manager configurations for each system
-      homeConfigurations = hm-forAllSystems (system:
+      homeConfigurations = hm-forAllSystems (
+        system:
         let
           pkgs = import nixpkgs {
             inherit system;
@@ -54,13 +72,15 @@
           };
 
           # Conditionally select system-specific module
-          systemModule = if (pkgs.stdenv.isLinux) then
-            ./modules/hm/linux/default.nix
-          else if (pkgs.stdenv.isDarwin) then
-            ./modules/hm/darwin/default.nix
-          else
-            throw "Unsupported system: ${system}";
-        in home-manager.lib.homeManagerConfiguration {
+          systemModule =
+            if (pkgs.stdenv.isLinux) then
+              ./modules/hm/linux/default.nix
+            else if (pkgs.stdenv.isDarwin) then
+              ./modules/hm/darwin/default.nix
+            else
+              throw "Unsupported system: ${system}";
+        in
+        home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           extraSpecialArgs = { inherit inputs; };
@@ -82,16 +102,25 @@
             ./users/options.nix
 
             # Avoid gc cleaning the source
-            ({ lib, inputs, ... }: {
-              home.file = builtins.listToAttrs (builtins.map (input:
-                lib.attrsets.nameValuePair "sources/${input}" {
-                  source = inputs.${input};
-                }) (builtins.attrNames inputs));
-            })
+            (
+              { lib, inputs, ... }:
+              {
+                home.file = builtins.listToAttrs (
+                  builtins.map (
+                    input:
+                    lib.attrsets.nameValuePair "sources/${input}" {
+                      source = inputs.${input};
+                    }
+                  ) (builtins.attrNames inputs)
+                );
+              }
+            )
           ];
-        });
+        }
+      );
 
-      systemConfigs = sm-forAllSystems (system:
+      systemConfigs = sm-forAllSystems (
+        system:
         system-manager.lib.makeSystemConfig {
           modules = [
             nix-system-graphics.systemModules.default
@@ -109,6 +138,7 @@
             # Additional inputs
             { _module.args = { inherit username; }; }
           ];
-        });
+        }
+      );
     };
 }

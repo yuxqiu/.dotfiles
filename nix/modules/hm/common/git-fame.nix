@@ -2,8 +2,8 @@
 {
   home.packages = [
     (pkgs.symlinkJoin {
-      name = "git-fame";  # Customize this name
-      paths = [ pkgs.git-fame ];  # The original package
+      name = "git-fame"; # Customize this name
+      paths = [ pkgs.git-fame ]; # The original package
       buildInputs = [ pkgs.makeWrapper ];
       postBuild = ''
         wrapProgram $out/bin/git-fame \

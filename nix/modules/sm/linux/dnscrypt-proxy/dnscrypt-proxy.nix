@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   config = {
     environment = {
       etc = {
@@ -26,8 +27,7 @@
 
       serviceConfig = {
         # Exact store path instead of /usr/bin
-        ExecStart =
-          "${pkgs.dnscrypt-proxy}/bin/dnscrypt-proxy -config /etc/dnscrypt-proxy/dnscrypt-proxy.toml";
+        ExecStart = "${pkgs.dnscrypt-proxy}/bin/dnscrypt-proxy -config /etc/dnscrypt-proxy/dnscrypt-proxy.toml";
 
         WorkingDirectory = "/";
         Restart = "always";

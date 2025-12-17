@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   home.file.".pythonrc".text = ''
     # enable syntax completion
     try:

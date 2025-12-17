@@ -5,5 +5,7 @@
   home.file.".config/captive-browser.toml".source = ./captive-browser.toml;
 
   # Add a browser profile to firefox
-  programs.firefox.profiles."captive-browser" = { id = 1; };
+  programs.firefox.profiles."captive-browser" = {
+    id = 1;
+  };
 }

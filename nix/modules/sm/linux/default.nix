@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ./dnscrypt-proxy/dnscrypt-proxy.nix
     ./earlyoom.nix
@@ -12,5 +13,7 @@
   ];
 
   # don't bother managing nix
-  nix = { enable = false; };
+  nix = {
+    enable = false;
+  };
 }

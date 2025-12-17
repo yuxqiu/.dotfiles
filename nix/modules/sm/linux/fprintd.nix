@@ -16,7 +16,8 @@ let
         fi
     done
   '';
-in {
+in
+{
   config = {
     environment = {
       etc = {
@@ -36,15 +37,16 @@ in {
     # - This fork may segfault when unlocking screens, which will make unlock with fprint unusable
     # - The temporary solution below can minimize the impact of the segfault.
     systemd.services.fprintd-watchdog = {
-      description =
-        "Watch for fprintd segfaults or Goodix 2541:0236 re-plug and restart it";
-      after = [ "network.target" "fprintd.service" ];
+      description = "Watch for fprintd segfaults or Goodix 2541:0236 re-plug and restart it";
+      after = [
+        "network.target"
+        "fprintd.service"
+      ];
       wants = [ "fprintd.service" ];
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
-        Environment =
-          "PATH=/run/system-manager/sw/bin/:/home/${username}/.local/bin:/home/${username}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin";
+        Environment = "PATH=/run/system-manager/sw/bin/:/home/${username}/.local/bin:/home/${username}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin";
         ExecStart = "${watchFprintd}/bin/watch-fprintd.sh";
         Restart = "always";
         RestartSec = 10;
