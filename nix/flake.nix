@@ -9,9 +9,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # https://github.com/nix-community/nix-vscode-extensions/pull/161
     nix-vscode-extensions = {
-      url = "github:dseum/nix-vscode-extensions";
+      url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     proton-pass-cli = {
