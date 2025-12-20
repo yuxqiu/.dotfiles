@@ -26,7 +26,7 @@ let
   # Fetch WhiteSur theme using builtins.fetchGit
   whitesurThemeSrc = builtins.fetchGit {
     url = "https://github.com/vinceliuice/WhiteSur-firefox-theme";
-    rev = "848f9bf8f91dae355eece14fca75929f86d33421";
+    rev = "97a627a2d427a7fcc541d959647650c868f8cba5";
   };
   themeName = "WhiteSur";
   userChromeName = "${themeName}";

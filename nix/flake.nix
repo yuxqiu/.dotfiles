@@ -4,7 +4,6 @@
   inputs = {
     # Common
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-2511.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,10 +19,9 @@
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
-    # Blocker: https://github.com/nix-community/nixos-apple-silicon/issues/380
     system-manager = {
       url = "github:numtide/system-manager";
-      inputs.nixpkgs.follows = "nixpkgs-2511";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-system-graphics = {
       url = "github:soupglasses/nix-system-graphics";

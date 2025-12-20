@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765980955,
-        "narHash": "sha256-rB45jv4uwC90vM9UZ70plfvY/2Kdygs+zlQ07dGQFk4=",
+        "lastModified": 1766171975,
+        "narHash": "sha256-47Ee0bTidhF/3/sHuYnWRuxcCrrm0mBNDxBkOTd3wWQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "89c9508bbe9b40d36b3dc206c2483ef176f15173",
+        "rev": "bb35f07cc95a73aacbaf1f7f46bb8a3f40f265b5",
         "type": "github"
       },
       "original": {
@@ -63,11 +63,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766019419,
-        "narHash": "sha256-Tm+dJfHXxAPvn3o+XILZaHj7pM1PCUbNFNHX9AZJFrs=",
+        "lastModified": 1766195825,
+        "narHash": "sha256-+wUHO8A1H5wBpqCDp15ibaaQMu9R3er5H6et9tzCAtA=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "da1b2ed44aee7a0971de89758a56ddbd283a0c6e",
+        "rev": "10718ccdcc1d9197d93e5b50985c70fc44c59d26",
         "type": "github"
       },
       "original": {
@@ -78,32 +78,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1765934234,
-        "narHash": "sha256-pJjWUzNnjbIAMIc5gRFUuKCDQ9S1cuh3b2hKgA7Mc4A=",
+        "lastModified": 1766125104,
+        "narHash": "sha256-l/YGrEpLromL4viUo5GmFH3K5M1j0Mb9O+LiaeCPWEM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "af84f9d270d404c17699522fab95bbf928a2d92f",
+        "rev": "7d853e518814cca2a657b72eeba67ae20ebf7059",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-2511": {
-      "locked": {
-        "lastModified": 1765838191,
-        "narHash": "sha256-m5KWt1nOm76ILk/JSCxBM4MfK3rYY7Wq9/TZIIeGnT8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c6f52ebd45e5925c188d1a20119978aa4ffd5ef6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -115,11 +99,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765963663,
-        "narHash": "sha256-/+89dJIUEMsiT2bFvBfPX5lG6196nJTFUup7zNrY9Y0=",
+        "lastModified": 1766050030,
+        "narHash": "sha256-+jAjk7HyJ4aBo+JQODETpFFtpaXnUakcNx7ckBKhUkY=",
         "owner": "yuxqiu",
         "repo": "proton-pass-cli-nix",
-        "rev": "14e1e1fe037b7d51afdce62beb880e8a1a40378f",
+        "rev": "db5bd21dfe19b31d62fb62a7441a4d4c35bdf747",
         "type": "github"
       },
       "original": {
@@ -135,7 +119,6 @@
         "nix-system-graphics": "nix-system-graphics",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-2511": "nixpkgs-2511",
         "proton-pass-cli": "proton-pass-cli",
         "system-manager": "system-manager"
       }
@@ -143,7 +126,7 @@
     "system-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-2511"
+          "nixpkgs"
         ]
       },
       "locked": {
