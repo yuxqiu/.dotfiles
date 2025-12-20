@@ -28,6 +28,7 @@
 
   home.file.".config/niri/configs".source = ./configs;
   home.file.".config/niri/config.kdl".source = ./config.kdl;
+  home.file.".config/niri/wallpapers".source = ./wallpapers;
 
   imports = [ ./scripts/dictation.nix ];
 }
