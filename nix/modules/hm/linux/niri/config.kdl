@@ -6,4 +6,4 @@ include "configs/window.kdl"
 include "configs/others.kdl"
 
 include "configs/dms.kdl"
-include "dms/outputs.kdl"
+include optional=true "dms/outputs.kdl"
