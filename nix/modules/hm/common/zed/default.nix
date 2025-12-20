@@ -122,6 +122,8 @@
         "bindings" = {
           "n" = "project_panel::NewFile";
           "shift-n" = "project_panel::NewDirectory";
+          "d" = "project_panel::Delete";
+          "r" = "project_panel::Rename";
         };
       }
       {
