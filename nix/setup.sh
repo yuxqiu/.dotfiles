@@ -7,7 +7,7 @@ set -e
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 
 # Install home manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 nix-env -iA home-manager.home-manager
 
