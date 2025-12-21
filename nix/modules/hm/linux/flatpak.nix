@@ -16,7 +16,6 @@
       "io.mpv.Mpv"
       "org.gnome.Calculator"
       "org.gnome.FileRoller"
-      "org.kde.dolphin"
       "org.libreoffice.LibreOffice"
       "org.localsend.localsend_app"
       "org.xfce.ristretto"
@@ -77,13 +76,6 @@
 
       "org.localsend.localsend_app" = {
         Context.shared = [ "network" ];
-      };
-
-      "org.kde.dolphin" = {
-        Context.sockets = [
-          "session-bus"
-          "system-bus"
-        ];
       };
     };
   };

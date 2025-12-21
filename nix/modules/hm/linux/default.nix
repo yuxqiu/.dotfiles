@@ -20,6 +20,7 @@
     blueman
     desktop-file-utils
     iputils
+    kdePackages.dolphin
     libnotify
     traceroute
     xdg-utils

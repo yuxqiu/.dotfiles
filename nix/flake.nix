@@ -19,6 +19,7 @@
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    dolphin-overlay.url = "github:yuxqiu/dolphin-overlay";
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +39,7 @@
       system-manager,
       nix-system-graphics,
       proton-pass-cli,
+      dolphin-overlay,
       ...
     }@inputs:
     let
@@ -66,7 +68,10 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ nix-vscode-extensions.overlays.default ];
+            overlays = [
+              nix-vscode-extensions.overlays.default
+              dolphin-overlay.overlays.default
+            ];
           };
 
           # Conditionally select system-specific module
