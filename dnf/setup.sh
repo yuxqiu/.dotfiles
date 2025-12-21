@@ -15,10 +15,10 @@ fedora_packages=(
     NetworkManager-wifi
     NetworkManager-tui
     bluez
-    clang
     cmake
     firewalld
     gcc
+    gcc-c++
     gdb
     gnupg2
     ifuse
