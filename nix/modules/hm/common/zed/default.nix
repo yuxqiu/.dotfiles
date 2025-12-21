@@ -3,11 +3,16 @@
   programs.zed-editor = {
     enable = true;
     # needed by extensions to support offline lsp
+    # - Some from https://github.com/zed-industries/zed/tree/main/crates/languages/src
     extraPackages = with pkgs; [
       basedpyright
+      clang-tools
+      gopls
       markdown-oxide
       nixd
       nixfmt
+      package-version-server
+      vscode-json-languageserver
       ruff
       tectonic
       texlab
