@@ -37,7 +37,10 @@ user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 user_pref("browser.safebrowsing.downloads.remote.url", ""); // Defense-in-depth
 /* 0404: disable SB checks for unwanted software
  * [SETTING] Privacy & Security>Security>... "Warn you about unwanted and uncommon software" ***/
-user_pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
+user_pref(
+  "browser.safebrowsing.downloads.remote.block_potentially_unwanted",
+  false,
+);
 user_pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
 /* 0405: disable "ignore this warning" on SB warnings [FF45+]
  * If clicked, it bypasses the block for that session. This is a means for admins to enforce SB
@@ -49,7 +52,10 @@ user_pref("browser.safebrowsing.blockedURIs.enabled", false);
 user_pref("browser.safebrowsing.enabled", false);
 
 /*** [SECTION 0700]: DNS / DoH / PROXY / SOCKS / IPv6 ***/
-user_pref("_user.js.parrot", "0700 syntax error: the parrot's given up the ghost!");
+user_pref(
+  "_user.js.parrot",
+  "0700 syntax error: the parrot's given up the ghost!",
+);
 
 /* 0710: disable DNS-over-HTTPS (DoH) rollout [FF60+]
  * 0=off by default, 2=TRR (Trusted Recursive Resolver) first, 3=TRR only, 5=explicitly off
@@ -71,7 +77,10 @@ user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
 user_pref("keyword.enabled", true);
 
 /*** [SECTION 1000]: DISK AVOIDANCE ***/
-user_pref("_user.js.parrot", "1000 syntax error: the parrot's gone to meet 'is maker!");
+user_pref(
+  "_user.js.parrot",
+  "1000 syntax error: the parrot's gone to meet 'is maker!",
+);
 /* 1001: disable disk cache
  * [NOTE] We also clear cache on exit (2811)
  * [SETUP-CHROME] If you think disk cache helps perf, then feel free to override this ***/
@@ -90,14 +99,20 @@ user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", false);
 user_pref("media.peerconnection.ice.default_address_only", false);
 
 /*** [SECTION 4500]: OPTIONAL RFP (resistFingerprinting) ***/
-user_pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
+user_pref(
+  "_user.js.parrot",
+  "4500 syntax error: the parrot's popped 'is clogs",
+);
 
 /* 4520: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
 user_pref("webgl.disabled", false);
 
 // disable email tracking data collection
-user_pref("privacy.trackingprotection.emailtracking.data_collection.enabled", false);
+user_pref(
+  "privacy.trackingprotection.emailtracking.data_collection.enabled",
+  false,
+);
 // enable email tracking protection
 user_pref("privacy.trackingprotection.emailtracking.enabled", true);
 
@@ -125,7 +140,10 @@ user_pref("identity.sendtabpromo.url", "");
 
 // disable feature recommendation
 user_pref("browser.newtabpage.activity-stream.feeds.asrouterfeed", false);
-user_pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", false);
+user_pref(
+  "browser.newtabpage.activity-stream.feeds.discoverystreamfeed",
+  false,
+);
 
 // disable experiments or studies
 user_pref("experiments.activeExperiment", false);
@@ -267,13 +285,16 @@ user_pref("dom.text_fragments.create_text_fragment.enabled", true);
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1732114
 user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.fingerprintingProtection", true);
-user_pref("privacy.fingerprintingProtection.overrides", "+AllTargets,-CSSPrefersColorScheme");
+user_pref(
+  "privacy.fingerprintingProtection.overrides",
+  "+AllTargets,-CSSPrefersColorScheme",
+);
 
 // ===================From BetterFox Start======================
 
 /****************************************************************************
  * SECTION: MEDIA CACHE                                                     *
-****************************************************************************/
+ ****************************************************************************/
 
 // PREF: adjust video buffering periods when not using MSE (in seconds)
 // [NOTE] Does not affect videos over 720p since they use DASH playback [1]
@@ -283,7 +304,7 @@ user_pref("media.cache_resume_threshold", 3600); // 60 min; default=30; when a n
 
 /****************************************************************************
  * SECTION: IMAGE CACHE                                                     *
-****************************************************************************/
+ ****************************************************************************/
 
 // PREF: image cache
 //user_pref("image.cache.size", 5242880); // DEFAULT; in MiB; alt=10485760 (cache images up to 10MiB in size)
@@ -291,7 +312,7 @@ user_pref("image.mem.decode_bytes_at_a_time", 32768); // default=16384; alt=6553
 
 /****************************************************************************
  * SECTION: NETWORK                                                         *
-****************************************************************************/
+ ****************************************************************************/
 
 // PREF: increase the absolute number of HTTP connections
 // [1] https://kb.mozillazine.org/Network.http.max-connections
@@ -343,13 +364,3 @@ user_pref("browser.privatebrowsing.resetPBM.enabled", true);
 user_pref("browser.fullscreen.autohide", false);
 
 // ===================From BetterFox End======================
-
-// Custom Themes
-// https://github.com/vinceliuice/WhiteSur-firefox-theme
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("browser.tabs.drawInTitlebar", true);
-user_pref("browser.uidensity", 0);
-user_pref("layers.acceleration.force-enabled", true);
-user_pref("mozilla.widget.use-argb-visuals", true);
-user_pref("widget.gtk.rounded-bottom-corners.enabled", true);
-user_pref("svg.context-properties.content.enabled", true);
