@@ -1,5 +1,4 @@
 include "configs/input.kdl"
-include "configs/output.kdl"
 include "configs/binds.kdl"
 include "configs/layout.kdl"
 include "configs/window.kdl"
