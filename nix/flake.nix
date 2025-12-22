@@ -109,7 +109,8 @@
 
             # User-specific settings
             (import ./users/${username}.nix { inherit pkgs; })
-            ./users/options.nix
+            ./users/dotfiles.nix
+            ./users/keys.nix
 
             # Avoid gc cleaning the source
             (
