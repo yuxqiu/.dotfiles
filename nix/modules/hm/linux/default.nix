@@ -15,6 +15,7 @@
     ./cursor.nix
     ./xdg.nix
     ./stylix.nix
+    ./opensnitch.nix
   ];
 
   home.packages = with pkgs; [

@@ -1,0 +1,278 @@
+{
+  "Enabled": true,
+  "Version": 1,
+  "SystemRules": [
+    {
+      "Rule": {
+        "Table": "mangle",
+        "Chain": "OUTPUT",
+        "UUID": "",
+        "Enabled": false,
+        "Position": "0",
+        "Description": "Allow icmp",
+        "Parameters": "-p icmp",
+        "Expressions": [],
+        "Target": "ACCEPT",
+        "TargetParameters": ""
+      },
+      "Chains": []
+    },
+    {
+      "Rule": null,
+      "Chains": [
+        {
+          "Name": "forward",
+          "Table": "filter",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "filter",
+          "Hook": "forward",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "output",
+          "Table": "filter",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "filter",
+          "Hook": "output",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "input",
+          "Table": "filter",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "filter",
+          "Hook": "input",
+          "Policy": "drop",
+          "Rules": [
+            {
+              "Table": "",
+              "Chain": "",
+              "UUID": "8c761423-10e4-4d84-8029-2904f57658a2",
+              "Enabled": false,
+              "Position": "0",
+              "Description": "Allow SSH server connections when input policy is DROP",
+              "Parameters": "",
+              "Expressions": [
+                {
+                  "Statement": {
+                    "Op": "",
+                    "Name": "tcp",
+                    "Values": [
+                      {
+                        "Key": "dport",
+                        "Value": "22"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Target": "accept",
+              "TargetParameters": ""
+            },
+            {
+              "Table": "",
+              "Chain": "",
+              "UUID": "profile-drop-inbound-2d7e6fe4-c21d-11ec-99a6-3c970e298b0c",
+              "Enabled": true,
+              "Position": "0",
+              "Description": "[profile-drop-inbound] allow localhost connections",
+              "Parameters": "",
+              "Expressions": [
+                {
+                  "Statement": {
+                    "Op": "",
+                    "Name": "iifname",
+                    "Values": [
+                      {
+                        "Key": "lo",
+                        "Value": ""
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Target": "accept",
+              "TargetParameters": ""
+            },
+            {
+              "Table": "",
+              "Chain": "",
+              "UUID": "profile-drop-inbound-e1fc1a1c-c21c-11ec-9a2a-3c970e298b0c",
+              "Enabled": true,
+              "Position": "0",
+              "Description": "[profile-drop-inbound] allow established,related connections",
+              "Parameters": "",
+              "Expressions": [
+                {
+                  "Statement": {
+                    "Op": "",
+                    "Name": "ct",
+                    "Values": [
+                      {
+                        "Key": "state",
+                        "Value": "related"
+                      },
+                      {
+                        "Key": "state",
+                        "Value": "established"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Target": "accept",
+              "TargetParameters": ""
+            }
+          ]
+        },
+        {
+          "Name": "filter-prerouting",
+          "Table": "nat",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "filter",
+          "Hook": "prerouting",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "prerouting",
+          "Table": "mangle",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "mangle",
+          "Hook": "prerouting",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "postrouting",
+          "Table": "mangle",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "mangle",
+          "Hook": "postrouting",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "prerouting",
+          "Table": "nat",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "natdest",
+          "Hook": "prerouting",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "postrouting",
+          "Table": "nat",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "natsource",
+          "Hook": "postrouting",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "input",
+          "Table": "nat",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "natsource",
+          "Hook": "input",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "output",
+          "Table": "nat",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "natdest",
+          "Hook": "output",
+          "Policy": "accept",
+          "Rules": []
+        },
+        {
+          "Name": "output",
+          "Table": "mangle",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "mangle",
+          "Hook": "output",
+          "Policy": "accept",
+          "Rules": [
+            {
+              "Table": "",
+              "Chain": "",
+              "UUID": "a47372a0-5310-4bbc-b107-c1af8655659d",
+              "Enabled": false,
+              "Position": "0",
+              "Description": "Exclude WireGuard VPN from being intercepted",
+              "Parameters": "",
+              "Expressions": [
+                {
+                  "Statement": {
+                    "Op": "==",
+                    "Name": "udp",
+                    "Values": [
+                      {
+                        "Key": "dport",
+                        "Value": "51820"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Target": "accept",
+              "TargetParameters": ""
+            }
+          ]
+        },
+        {
+          "Name": "forward",
+          "Table": "mangle",
+          "Family": "inet",
+          "Priority": "",
+          "Type": "mangle",
+          "Hook": "forward",
+          "Policy": "accept",
+          "Rules": [
+            {
+              "Table": "",
+              "Chain": "",
+              "UUID": "7d7394e1-100d-4b87-a90a-cd68c46edb0b",
+              "Enabled": false,
+              "Position": "0",
+              "Description": "Intercept forwarded connections (docker, etc)",
+              "Parameters": "",
+              "Expressions": [
+                {
+                  "Statement": {
+                    "Op": "",
+                    "Name": "ct",
+                    "Values": [
+                      {
+                        "Key": "state",
+                        "Value": "new"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Target": "queue",
+              "TargetParameters": "num 0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

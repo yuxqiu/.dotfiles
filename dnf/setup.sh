@@ -54,8 +54,6 @@ fedora_version=$(grep -oP '(?<=release )[0-9]+' /etc/fedora-release)
 arch=$(uname -m)
 declare -A dynamic_rpm_map=(
     ["displaylink"]="displaylink-rpm/displaylink-rpm|fedora-$fedora_version-displaylink.*$arch\\.rpm"
-    ["opensnitch"]="evilsocket/opensnitch|opensnitch-.*$arch\\.rpm"
-    ["opensnitch-ui"]="evilsocket/opensnitch|opensnitch-ui-.*noarch\\.rpm"
 )
 
 # Associative array for packages requiring Docker repository

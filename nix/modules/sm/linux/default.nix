@@ -10,6 +10,7 @@
     ./fprintd.nix
     ./ddcutil.nix
     ./tuned/tuned.nix
+    ./opensnitch/default.nix
   ];
 
   # don't bother managing nix
