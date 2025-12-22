@@ -2,6 +2,7 @@
 {
   qt = {
     enable = true;
-    platformTheme.name = "gtk3";
   };
+
+  stylix.targets.qt.enable = true;
 }

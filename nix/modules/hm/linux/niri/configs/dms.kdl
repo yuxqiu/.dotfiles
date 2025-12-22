@@ -2,7 +2,9 @@ config-notification {
     disable-failed
 }
 
-spawn-at-startup "dms" "run"
+// an ugly workaround to fix tray icon
+// the env var will affect apps launched by dms
+spawn-sh-at-startup "QT_QPA_PLATFORMTHEME=gtk3 dms run"
 
 binds {
     Ctrl+Space hotkey-overlay-title="Application Launcher" {

@@ -1,4 +1,3 @@
-
 binds {
     Alt+Shift+Slash { show-hotkey-overlay; }
 
