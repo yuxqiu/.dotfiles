@@ -82,9 +82,9 @@
           # Conditionally select system-specific module
           systemModule =
             if (pkgs.stdenv.isLinux) then
-              ./modules/hm/linux/default.nix
+              ./hm/linux/default.nix
             else if (pkgs.stdenv.isDarwin) then
-              ./modules/hm/darwin/default.nix
+              ./hm/darwin/default.nix
             else
               throw "Unsupported system: ${system}";
         in
@@ -97,7 +97,7 @@
             stylix.homeModules.stylix
 
             # Common settings
-            ./modules/hm/common/default.nix
+            ./hm/common/default.nix
 
             # System-specific settings
             systemModule
@@ -144,7 +144,7 @@
               };
             }
 
-            ./modules/sm/linux/default.nix
+            ./sm/linux/default.nix
 
             # Additional inputs
             { _module.args = { inherit username; }; }
