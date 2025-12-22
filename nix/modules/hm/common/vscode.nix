@@ -574,7 +574,6 @@
       ]
     ))
     typst
-    nerd-fonts.meslo-lg
   ];
 
   # Ensure Neovim is installed for vscode-neovim
