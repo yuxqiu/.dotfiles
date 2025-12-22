@@ -139,4 +139,6 @@ in
     "${profilePath}/user.js".text = combinedUserJs;
     "${profilePath}/chrome".source = whitesurTheme;
   };
+
+  stylix.targets.firefox.profileNames = [ profileName ];
 }

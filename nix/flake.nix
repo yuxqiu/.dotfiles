@@ -16,6 +16,10 @@
       url = "github:yuxqiu/proton-pass-cli-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
@@ -40,6 +44,7 @@
       nix-system-graphics,
       proton-pass-cli,
       dolphin-overlay,
+      stylix,
       ...
     }@inputs:
     let
@@ -89,6 +94,8 @@
           extraSpecialArgs = { inherit inputs; };
 
           modules = [
+            stylix.homeModules.stylix
+
             # Common settings
             ./modules/hm/common/default.nix
 

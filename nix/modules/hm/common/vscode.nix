@@ -59,7 +59,6 @@
           yfzhao.hscopes-booster
           yfzhao.ultra-math-preview
           yzhang.markdown-all-in-one
-          zhuangtongfa.material-theme
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           # https://github.com/nix-community/nix-vscode-extensions/issues/143
@@ -77,7 +76,6 @@
         "explorer.confirmDelete" = false;
         "explorer.confirmDragAndDrop" = false;
         "editor.smoothScrolling" = true;
-        "editor.fontFamily" = "Fira Code";
         "window.openFoldersInNewWindow" = "on";
         "editor.cursorSmoothCaretAnimation" = "on";
         "editor.cursorBlinking" = "smooth";
@@ -102,7 +100,6 @@
 
         # Terminal
         "terminal.integrated.enableFileLinks" = "off";
-        "terminal.integrated.fontFamily" = "MesloLGS Nerd Font";
 
         # Files
         "files.autoGuessEncoding" = true;
@@ -118,7 +115,6 @@
         "workbench.tips.enabled" = false;
         "workbench.productIconTheme" = "icons-carbon";
         "workbench.tree.renderIndentGuides" = "none";
-        "workbench.colorTheme" = "One Dark Pro Darker";
 
         # Online Services
         "workbench.enableExperiments" = false;

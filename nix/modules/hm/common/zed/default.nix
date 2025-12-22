@@ -31,7 +31,6 @@
       };
       auto_update = false;
       base_keymap = "VSCode";
-      buffer_font_size = 16;
       collaboration_panel = {
         button = false;
       };
@@ -99,7 +98,6 @@
       toolbar = {
         agent_review = false;
       };
-      ui_font_size = 16;
       vim_mode = true;
     };
     userKeymaps = [
