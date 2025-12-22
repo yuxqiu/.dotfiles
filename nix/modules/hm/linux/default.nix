@@ -14,6 +14,7 @@
     ./systemd.nix
     ./cursor.nix
     ./xdg.nix
+    ./stylix.nix
   ];
 
   home.packages = with pkgs; [
