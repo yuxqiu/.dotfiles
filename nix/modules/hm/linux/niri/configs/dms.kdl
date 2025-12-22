@@ -4,6 +4,11 @@ config-notification {
 
 // an ugly workaround to fix tray icon
 // the env var will affect apps launched by dms
+//
+// likely a quickshell problem (when using with qt6ct):
+// - https://github.com/caelestia-dots/shell/issues/390
+// - https://github.com/quickshell-mirror/quickshell/issues/436
+// - https://github.com/quickshell-mirror/quickshell/issues/338
 spawn-sh-at-startup "QT_QPA_PLATFORMTHEME=gtk3 dms run"
 
 binds {
