@@ -182,6 +182,7 @@
   "matugenTemplateFirefox": true,
   "matugenTemplatePywalfox": true,
   "matugenTemplateVesktop": true,
+  "matugenTemplateEquibop": true,
   "matugenTemplateGhostty": true,
   "matugenTemplateKitty": true,
   "matugenTemplateFoot": true,
@@ -205,8 +206,8 @@
   "dockBorderColor": "surfaceText",
   "dockBorderOpacity": 1,
   "dockBorderThickness": 1,
+  "dockIsolateDisplays": false,
   "notificationOverlayEnabled": false,
-  "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
   "lockScreenShowSystemIcons": true,
   "lockScreenShowTime": true,
@@ -403,6 +404,7 @@
   "systemMonitorTopProcessCount": 3,
   "systemMonitorTopProcessSortBy": "cpu",
   "systemMonitorGraphInterval": 60,
+  "systemMonitorLayoutMode": "auto",
   "systemMonitorX": -1,
   "systemMonitorY": -1,
   "systemMonitorWidth": 320,
@@ -434,5 +436,81 @@
     }
   },
   "desktopWidgetGridSettings": {},
-  "configVersion": 3
+  "desktopWidgetInstances": [
+    {
+      "id": "dw_clock_primary",
+      "widgetType": "desktopClock",
+      "name": "Desktop Clock",
+      "enabled": true,
+      "config": {
+        "style": "analog",
+        "transparency": 0.8,
+        "colorMode": "primary",
+        "customColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1,
+          "hsvHue": -1,
+          "hsvSaturation": 0,
+          "hsvValue": 1,
+          "hslHue": -1,
+          "hslSaturation": 0,
+          "hslLightness": 1,
+          "valid": true
+        },
+        "showDate": true,
+        "showAnalogNumbers": true,
+        "showAnalogSeconds": true,
+        "displayPreferences": [
+          "all"
+        ]
+      },
+      "positions": {}
+    },
+    {
+      "id": "dw_sysmon_primary",
+      "widgetType": "systemMonitor",
+      "name": "System Monitor",
+      "enabled": true,
+      "config": {
+        "showHeader": true,
+        "transparency": 0.8,
+        "colorMode": "primary",
+        "customColor": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1,
+          "hsvHue": -1,
+          "hsvSaturation": 0,
+          "hsvValue": 1,
+          "hslHue": -1,
+          "hslSaturation": 0,
+          "hslLightness": 1,
+          "valid": true
+        },
+        "showCpu": true,
+        "showCpuGraph": true,
+        "showCpuTemp": true,
+        "showGpuTemp": false,
+        "gpuPciId": "",
+        "showMemory": true,
+        "showMemoryGraph": true,
+        "showNetwork": true,
+        "showNetworkGraph": true,
+        "showDisk": true,
+        "showTopProcesses": true,
+        "topProcessCount": 3,
+        "topProcessSortBy": "cpu",
+        "layoutMode": "auto",
+        "graphInterval": 60,
+        "displayPreferences": [
+          "all"
+        ]
+      },
+      "positions": {}
+    }
+  ],
+  "configVersion": 4
 }
