@@ -10,6 +10,8 @@
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
   "cornerRadius": 12,
+  "niriLayoutGapsOverride": -1,
+  "niriLayoutRadiusOverride": -1,
   "use24HourClock": true,
   "showSeconds": true,
   "useFahrenheit": false,
@@ -208,6 +210,7 @@
   "dockBorderThickness": 1,
   "dockIsolateDisplays": false,
   "notificationOverlayEnabled": false,
+  "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
   "lockScreenShowSystemIcons": true,
   "lockScreenShowTime": true,
@@ -435,7 +438,12 @@
       }
     }
   },
-  "desktopWidgetGridSettings": {},
+  "desktopWidgetGridSettings": {
+    "eDP-1": {
+      "enabled": false,
+      "size": 40
+    }
+  },
   "desktopWidgetInstances": [
     {
       "id": "dw_clock_primary",
@@ -466,7 +474,12 @@
           "all"
         ]
       },
-      "positions": {}
+      "positions": {
+        "eDP-1": {
+          "x": 1357.4609375,
+          "y": 75.34375
+        }
+      }
     },
     {
       "id": "dw_sysmon_primary",
@@ -509,7 +522,12 @@
           "all"
         ]
       },
-      "positions": {}
+      "positions": {
+        "eDP-1": {
+          "x": 62.40625,
+          "y": 51.9375
+        }
+      }
     }
   ],
   "configVersion": 4
