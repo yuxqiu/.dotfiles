@@ -13,8 +13,23 @@ window-rule {
     open-floating true
 }
 
-// Example: enable rounded corners for all windows.
+// Enable rounded corners for all windows.
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
 }

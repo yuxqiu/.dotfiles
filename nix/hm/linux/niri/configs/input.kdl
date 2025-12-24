@@ -9,4 +9,7 @@ input {
     mouse {
         accel-speed 0.2
     }
+
+    mod-key "Alt"
+    mod-key-nested "Super"
 }
