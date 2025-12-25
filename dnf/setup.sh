@@ -29,6 +29,8 @@ fedora_packages=(
     pipewire-pulseaudio
     pipewire-utils
     polkit
+    qt5ct
+    qt6ct
     stow
     tuned
     tuned-utils

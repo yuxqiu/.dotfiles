@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -40,18 +40,6 @@
 
       # Immortal ssh
       sshx = ''mosh "$@" -- screen -s -/bin/bash -qRRUS "mosh-''${HOSTNAME}"'';
-    };
-
-    # Environment variables
-    sessionVariables = {
-      # Python auto-complete
-      PYTHONSTARTUP = "${config.home.homeDirectory}/.pythonrc";
-
-      # Do Not Track
-      DO_NOT_TRACK = "1";
-
-      # Extend PATH
-      PATH = "${config.home.homeDirectory}/.local/bin:$PATH";
     };
 
     siteFunctions = {

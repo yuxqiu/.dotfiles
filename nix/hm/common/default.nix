@@ -18,6 +18,7 @@
     ./proton-pass-cli.nix
     ./zed/default.nix
     ./stylix/default.nix
+    ./session.nix
   ];
 
   home.packages = with pkgs; [
