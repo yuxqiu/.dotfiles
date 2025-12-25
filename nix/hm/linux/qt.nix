@@ -19,6 +19,7 @@
         kdePackages.qt6ct
       ];
     };
+    style.name = "kvantum";
   };
 
   # Prepend (must prepend) the following path to QT_PLUGIN_PATH
@@ -34,7 +35,7 @@
   #
   # One last caveat is that this is not foolproof: nix's Qt might not be
   # incompatible with system's qt. So, it's better to also install qt{5,6}ct
-  # using your system's package manager.
+  # and kvantum using your system's package manager.
   home.sessionSearchVariables = {
     QT_PLUGIN_PATH = [
       "/usr/lib64/qt5/plugins"

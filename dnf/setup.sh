@@ -22,6 +22,7 @@ fedora_packages=(
     gdb
     gnupg2
     ifuse
+    kvantum
     mesa-dri-drivers
     mesa-vulkan-drivers
     pipewire
