@@ -120,7 +120,7 @@
               { lib, inputs, ... }:
               {
                 home.file = builtins.listToAttrs (
-                  builtins.map (
+                  map (
                     input:
                     lib.attrsets.nameValuePair "sources/${input}" {
                       source = inputs.${input};
