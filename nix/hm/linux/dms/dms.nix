@@ -1,38 +1,12 @@
 {
-  pkgs,
   inputs,
   config,
-  lib,
   ...
 }:
-let
-  patchedDmsShell = inputs.dms.packages.${pkgs.stdenv.system}.default.overrideAttrs (old: {
-    postInstall =
-      builtins.replaceStrings
-        [
-          ''
-            substituteInPlace $out/share/quickshell/dms/assets/pam/fprint \
-              --replace-fail pam_fprintd.so ${pkgs.fprintd}/lib/security/pam_fprintd.so''
-        ]
-        [ "" ]
-        old.postInstall;
-  });
-
-  patchedDmsPkgs = {
-    dms-shell = patchedDmsShell;
-    dgop = inputs.dms.inputs.dgop.packages.${pkgs.stdenv.system}.dgop;
-    quickshell = inputs.dms.inputs.quickshell.packages.${pkgs.stdenv.system}.default;
-  };
-
-  patchedModule = import (inputs.dms + "/distro/nix/home.nix") {
-    inherit config pkgs lib;
-    dmsPkgs = patchedDmsPkgs;
-  };
-in
 {
   imports = [
     ./scripts/dms-focused-output.nix
-    patchedModule
+    inputs.dms.homeModules.dank-material-shell
   ];
 
   programs.dank-material-shell = {
