@@ -11,6 +11,7 @@ fi
 
 # List of packages available in Fedora repositories
 fedora_packages=(
+    accountsservice
     NetworkManager
     NetworkManager-wifi
     NetworkManager-tui
@@ -45,7 +46,6 @@ fedora_packages=(
 # Associative array for packages requiring COPR repositories
 declare -A copr_map=(
     ["niri"]="yalter/niri-git"
-    ["dms"]="avengemedia/dms-git"
     ["dms-greeter"]="avengemedia/dms-git"
 )
 

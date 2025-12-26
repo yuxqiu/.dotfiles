@@ -2,8 +2,6 @@ config-notification {
     disable-failed
 }
 
-spawn-at-startup "dms" "run"
-
 binds {
     Ctrl+Space hotkey-overlay-title="Application Launcher" {
       spawn "dms" "ipc" "call" "spotlight" "toggle";

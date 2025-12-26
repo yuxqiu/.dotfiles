@@ -32,6 +32,10 @@
       url = "github:soupglasses/nix-system-graphics";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -42,7 +46,6 @@
       nix-vscode-extensions,
       system-manager,
       nix-system-graphics,
-      proton-pass-cli,
       dolphin-overlay,
       stylix,
       ...
