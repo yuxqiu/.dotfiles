@@ -1,10 +1,8 @@
 { pkgs, ... }:
 
 {
-  # this places the setuid binary `polkit-agent-helper-1` into the place expected
-  # by nix apps that integrate with polkit.
-  #
-  # it is essential for dms polkit agent integration to work correctly.
+  # Essential setup for Polkit integration in Nix apps on non-NixOS distributions.
+  # Creates the expected setuid wrapper location for polkit-agent-helper-1 if missing or broken.
   systemd.services.create-polkit-helper-symlink = {
     description = "Create /run/wrappers/bin/polkit-agent-helper-1 symlink (one-time setup for Polkit on non-NixOS)";
     wantedBy = [ "system-manager.target" ]; # Runs during system-manager activation
