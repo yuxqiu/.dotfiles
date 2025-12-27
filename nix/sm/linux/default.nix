@@ -12,6 +12,7 @@
     ./tuned/tuned.nix
     ./opensnitch/default.nix
     ./polkit.nix
+    ./pam.nix
   ];
 
   # don't bother managing nix

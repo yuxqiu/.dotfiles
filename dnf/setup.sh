@@ -26,6 +26,7 @@ fedora_packages=(
     kvantum
     mesa-dri-drivers
     mesa-vulkan-drivers
+    pam
     pipewire
     pipewire-gstreamer
     pipewire-pulseaudio
