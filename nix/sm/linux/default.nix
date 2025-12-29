@@ -13,6 +13,9 @@
     ./opensnitch/default.nix
     ./polkit.nix
     ./pam.nix
+    ./dms-greeter.nix
+    ./wayland-session.nix
+    ./niri.nix
   ];
 
   # don't bother managing nix

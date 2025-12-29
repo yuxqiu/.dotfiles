@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   xdg.portal = {
     enable = true;
@@ -21,9 +21,12 @@
     };
   };
 
-  # for gnome-keyring prompt to show
-  # - https://github.com/nix-community/home-manager/issues/1454
-  home.packages = [ pkgs.gcr ];
+  home.packages = [
+    # for gnome-keyring prompt to show
+    # - https://github.com/nix-community/home-manager/issues/1454
+    pkgs.gcr
+    inputs.niri.packages.${pkgs.stdenv.system}.default
+  ];
   services.gnome-keyring.enable = true;
 
   home.file.".config/niri/configs".source = ./configs;

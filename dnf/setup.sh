@@ -22,6 +22,7 @@ fedora_packages=(
     gcc-c++
     gdb
     gnupg2
+    greetd
     ifuse
     kvantum
     mesa-dri-drivers
@@ -46,7 +47,6 @@ fedora_packages=(
 
 # Associative array for packages requiring COPR repositories
 declare -A copr_map=(
-    ["niri"]="yalter/niri-git"
     ["dms-greeter"]="avengemedia/dms-git"
 )
 
