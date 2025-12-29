@@ -11,4 +11,15 @@
     "L+ /run/system-manager/sw/bin/niri - - - - /home/${username}/.nix-profile/bin/niri"
     "L+ /run/system-manager/sw/bin/niri-session - - - - /home/${username}/.nix-profile/bin/niri-session"
   ];
+
+  services.displayManager.waylandSessions = {
+    enable = true;
+
+    entries = [
+      {
+        compositorName = "Niri";
+        sessionName = "niri";
+      }
+    ];
+  };
 }
