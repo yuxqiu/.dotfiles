@@ -15,6 +15,7 @@
     ./xdg.nix
     ./stylix.nix
     ./opensnitch.nix
+    ./ssh.nix
   ];
 
   home.packages = with pkgs; [
