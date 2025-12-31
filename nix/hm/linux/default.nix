@@ -16,13 +16,13 @@
     ./stylix.nix
     ./opensnitch.nix
     ./ssh.nix
+    ./dolphin.nix
   ];
 
   home.packages = with pkgs; [
     blueman
     desktop-file-utils
     iputils
-    kdePackages.dolphin
     libnotify
     traceroute
     xdg-utils

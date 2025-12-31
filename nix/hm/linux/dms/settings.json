@@ -104,6 +104,7 @@
   "maxWorkspaceIcons": 3,
   "workspacesPerMonitor": true,
   "showOccupiedWorkspacesOnly": false,
+  "reverseScrolling": false,
   "dwlShowAllTags": false,
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
@@ -189,6 +190,7 @@
   "matugenTemplateQt6ct": true,
   "matugenTemplateFirefox": true,
   "matugenTemplatePywalfox": true,
+  "matugenTemplateZenBrowser": true,
   "matugenTemplateVesktop": true,
   "matugenTemplateEquibop": true,
   "matugenTemplateGhostty": true,
@@ -484,6 +486,10 @@
         "eDP-1": {
           "x": 1357.4609375,
           "y": 75.34375
+        },
+        "DVI-I-1": {
+          "x": 1686.59375,
+          "y": 52.484375
         }
       }
     },
@@ -532,6 +538,10 @@
         "eDP-1": {
           "x": 62.40625,
           "y": 51.9375
+        },
+        "DVI-I-1": {
+          "x": 72.9296875,
+          "y": 61.03515625
         }
       }
     }

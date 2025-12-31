@@ -1,5 +1,12 @@
-{ pkgs, config, ... }:
 {
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+{
+  imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
+
   home.packages = [ pkgs.flatpak ];
 
   services.flatpak = {

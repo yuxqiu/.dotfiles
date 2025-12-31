@@ -23,7 +23,6 @@
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
-    dolphin-overlay.url = "github:yuxqiu/dolphin-overlay";
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,11 +45,9 @@
     {
       nixpkgs,
       home-manager,
-      nix-flatpak,
       nix-vscode-extensions,
       system-manager,
       nix-system-graphics,
-      dolphin-overlay,
       stylix,
       ...
     }@inputs:
@@ -82,7 +79,6 @@
             inherit system;
             overlays = [
               nix-vscode-extensions.overlays.default
-              dolphin-overlay.overlays.default
             ];
           };
 
@@ -108,11 +104,6 @@
 
             # System-specific settings
             systemModule
-
-            # Conditionally include nix-flatpak for Linux systems
-            (nixpkgs.lib.optionalAttrs (pkgs.stdenv.isLinux) {
-              imports = [ nix-flatpak.homeManagerModules.nix-flatpak ];
-            })
 
             # User-specific settings
             (import ./users/${username}.nix { inherit pkgs; })
