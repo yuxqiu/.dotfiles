@@ -13,7 +13,7 @@
     ./vscode.nix
     ./firefox/default.nix
     ./bash.nix
-    ./ssh.nix
+    ./ssh/default.nix
     ./jj.nix
     ./proton-pass-cli.nix
     ./zed/default.nix
