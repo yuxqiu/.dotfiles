@@ -4,7 +4,7 @@
 
   services.ssh-agent-ac = {
     enable = true;
-    package = inputs.self.packages.${pkgs.stdenv.system}.ssh-agent-ac;
+    package = inputs.ssh-agent-ac.packages.${pkgs.stdenv.system}.ssh-agent-ac;
 
     defaultMaximumIdentityLifetime = null;
 
