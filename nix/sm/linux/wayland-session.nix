@@ -23,12 +23,10 @@ in
             };
 
             sessionName = lib.mkOption {
-              type = lib.types.nullOr lib.types.str;
-              default = null;
-              example = "niri";
+              type = lib.types.str;
+              example = "niri-session";
               description = ''
-                The session identifier (filename of the .desktop file, e.g., "niri.desktop").
-                Defaults to lowercase of compositorName if not specified.
+                The session binary of the compositor (used for Exec).
               '';
             };
 
@@ -58,12 +56,12 @@ in
       entry:
       let
         compName = entry.compositorName;
-        sessName = if entry.sessionName != null then entry.sessionName else lib.toLower compName;
+        sessName = lib.toLower compName;
 
         desktopFile = pkgs.writeText "${sessName}.desktop" ''
           [Desktop Entry]
           Name=${compName}
-          Exec=${lib.toLower compName}-session
+          Exec=${entry.sessionName}
           Type=Application
           DesktopNames=${compName}
           ${entry.extraDesktopEntries}

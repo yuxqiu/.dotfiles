@@ -18,7 +18,7 @@
     entries = [
       {
         compositorName = "Niri";
-        sessionName = "niri";
+        sessionName = "niri-session";
       }
     ];
   };
