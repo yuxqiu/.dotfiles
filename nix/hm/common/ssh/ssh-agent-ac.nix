@@ -14,11 +14,10 @@ let
     if cfg.sshAskpass == null then
       null
     else if lib.isDerivation cfg.sshAskpass then
-      "${cfg.sshAskpass}/bin/ssh-askpass" # standard location for most askpass packages
+      "${cfg.sshAskpass}/bin/ssh-askpass"
     else
-      cfg.sshAskpass; # user-provided absolute path
+      cfg.sshAskpass; # absolute path
 
-  # Environment variables to export when askpass is configured
   askpassEnv = lib.optionalAttrs (askpassPath != null) {
     SSH_ASKPASS = askpassPath;
   };
@@ -52,15 +51,15 @@ in
     };
 
     sshAskpass = lib.mkOption {
-      type = lib.types.nullOr (lib.types.either lib.types.package lib.types.path);
-      default = null;
-      example = "pkgs.x11_ssh_askpass";
+      type = lib.types.either lib.types.package lib.types.path;
       description = ''
         The ssh-askpass program to use for passphrase prompts.
-        Can be either a package (derivation) containing the askpass binary
+        Must be either a package (derivation) containing the askpass binary
         or an absolute path to the program.
-        If set, SSH_ASKPASS will be exported in the agent service environment.
+
+        This option is required when services.ssh-agent-ac.enable = true.
       '';
+      example = "pkgs.x11_ssh_askpass";
     };
 
     enableBashIntegration = lib.mkEnableOption "bash integration" // {
@@ -131,11 +130,14 @@ in
       };
 
     systemd.user.services.ssh-agent-ac = lib.mkIf pkgs.stdenv.isLinux {
-      Install.WantedBy = [ "default.target" ];
+      Install.WantedBy = [ "graphical-session.target" ]; # Changed from default.target
 
       Unit = {
         Description = "SSH authentication agent with confirmation";
         Documentation = "man:ssh-agent(1)";
+        # Ensure it starts after the graphical session is up
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
       };
 
       Service =
@@ -145,7 +147,6 @@ in
           ) "-t ${toString cfg.defaultMaximumIdentityLifetime}";
         in
         {
-          # Export SSH_ASKPASS-related variables if configured
           Environment = lib.mapAttrsToList (n: v: "${n}=${v}") askpassEnv;
           ExecStart = "${sshAgentAc}/bin/ssh-agent-ac -s %t/${cfg.socket} -a ${realSshAgent} -- ${lifetimeArg}";
         };
@@ -161,7 +162,6 @@ in
               cfg.defaultMaximumIdentityLifetime != null
             ) "-t ${toString cfg.defaultMaximumIdentityLifetime}";
 
-            # Build "KEY=val" strings for environment variables
             envExports = lib.concatStringsSep " " (lib.mapAttrsToList (n: v: "${n}=${v}") askpassEnv);
 
             cmdPrefix = if envExports == "" then "" else "${envExports} ";
