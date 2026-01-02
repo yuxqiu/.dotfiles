@@ -22,6 +22,7 @@
   };
 
   home.packages = [
+    pkgs.xwayland-satellite
     # for gnome-keyring prompt to show
     # - https://github.com/nix-community/home-manager/issues/1454
     pkgs.gcr

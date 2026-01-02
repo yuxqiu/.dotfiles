@@ -3,7 +3,6 @@
   imports = [
     ./dnscrypt-proxy/dnscrypt-proxy.nix
     ./earlyoom.nix
-    ./logind/logind.nix
     ./journald/journald.nix
     ./NetworkManager/NetworkManager.nix
     ./autorestic.nix

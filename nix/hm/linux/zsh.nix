@@ -9,7 +9,7 @@
       # Open
       open = "xdg-open";
 
-      system-manager-update = "nix flake update && sudo $(which system-manager) switch --flake .#${pkgs.stdenv.system} && rm result";
+      system-manager-update = "nix flake update && system-manager switch --flake .#${pkgs.stdenv.system} --sudo && rm result";
     };
 
     siteFunctions = {
