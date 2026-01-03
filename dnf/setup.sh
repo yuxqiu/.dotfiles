@@ -50,16 +50,6 @@ declare -A copr_map=(
     ["dms-greeter"]="avengemedia/dms-git"
 )
 
-# Associative array for packages requiring dynamic GitHub RPM downloads
-# Key: package name, Value: "repo|grep_pattern"
-#   - repo: GitHub repo in owner/repo format
-#   - grep_pattern: pattern to match in the asset filename
-fedora_version=$(grep -oP '(?<=release )[0-9]+' /etc/fedora-release)
-arch=$(uname -m)
-declare -A dynamic_rpm_map=(
-    ["displaylink"]="displaylink-rpm/displaylink-rpm|fedora-$fedora_version-displaylink.*$arch\\.rpm"
-)
-
 # Associative array for packages requiring Docker repository
 declare -A docker_map=(
     ["docker-buildx-plugin"]="docker"
@@ -96,44 +86,6 @@ enable_copr() {
     fi
 }
 
-# Function to download and install a dynamic RPM from GitHub (no jq needed)
-install_dynamic_rpm() {
-    local pkg="$1"
-    local repo="${dynamic_rpm_map[$pkg]%%|*}"
-    local grep_pattern="${dynamic_rpm_map[$pkg]#*|}"
-
-    echo "Fetching latest release assets from $repo for $pkg (pattern: $grep_pattern)..."
-
-    local rpm_url=$(curl -s "https://api.github.com/repos/$repo/releases/latest" \
-        | grep "browser_download_url.*$grep_pattern" \
-        | grep -v "\.src\." \
-        | cut -d : -f 2,3 \
-        | tr -d ' " ' \
-        | head -n1)
-
-    if [[ -z "$rpm_url" ]]; then
-        echo "Error: No matching RPM found for $pkg with pattern '$grep_pattern' in the latest release of $repo."
-        exit 1
-    fi
-
-    echo "Found matching RPM: $rpm_url"
-
-    local temp_dir=$(mktemp -d)
-    local rpm_file="${temp_dir}/$(basename "$rpm_url")"
-    echo "Downloading RPM from $rpm_url..."
-    if command -v curl >/dev/null 2>&1; then
-        curl -L -o "$rpm_file" "$rpm_url" || { echo "Failed to download $rpm_url"; rm -rf "$temp_dir"; exit 1; }
-    elif command -v wget >/dev/null 2>&1; then
-        wget -O "$rpm_file" "$rpm_url" || { echo "Failed to download $rpm_url"; rm -rf "$temp_dir"; exit 1; }
-    else
-        echo "Error: curl or wget required for downloading RPM"; rm -rf "$temp_dir"; exit 1
-    fi
-
-    echo "Installing RPM $rpm_file..."
-    sudo dnf install -y "$rpm_file" || { echo "Failed to install RPM"; rm -rf "$temp_dir"; exit 1; }
-    rm -rf "$temp_dir"
-}
-
 # Main function to process a package
 process_package() {
     local pkg="$1"
@@ -160,10 +112,6 @@ process_package() {
         enable_docker_repo
         echo "Installing $pkg from Docker repository..."
         sudo dnf install -y "$pkg" || { echo "Failed to install $pkg"; exit 1; }
-
-    # Check if package is in dynamic RPM map
-    elif [[ -n "${dynamic_rpm_map[$pkg]}" ]]; then
-        install_dynamic_rpm "$pkg"
 
     else
         echo "Error: Package $pkg not found in any package list or map"
@@ -198,9 +146,9 @@ run_local_setups() {
     done
 }
 
-# Process all packages from fedora_packages, copr_map, docker_map and dynamic_rpm_map
+# Process all packages from fedora_packages, copr_map, and docker_map
 echo "Installing all defined packages..."
-for pkg in "${fedora_packages[@]}" "${!copr_map[@]}" "${!docker_map[@]}" "${!dynamic_rpm_map[@]}"; do
+for pkg in "${fedora_packages[@]}" "${!copr_map[@]}" "${!docker_map[@]}"; do
     process_package "$pkg"
 done
 echo "Package processing completed."
