@@ -59,6 +59,7 @@
         home-manager expire-generations now
         gc-nix
       '';
+      gc-cache = "${pkgs.bleachbit}/bin/bleachbit";
     };
   };
 }

@@ -98,10 +98,12 @@
     }
   ],
   "showWorkspaceIndex": false,
+  "showWorkspaceName": false,
   "showWorkspacePadding": false,
   "workspaceScrolling": false,
   "showWorkspaceApps": false,
   "maxWorkspaceIcons": 3,
+  "groupWorkspaceApps": true,
   "workspacesPerMonitor": true,
   "showOccupiedWorkspacesOnly": false,
   "reverseScrolling": false,
@@ -110,7 +112,7 @@
   "waveProgressEnabled": true,
   "scrollTitleEnabled": true,
   "audioVisualizerEnabled": true,
-  "audioScrollEnabled": true,
+  "audioScrollMode": "volume",
   "clockCompactMode": false,
   "focusedWindowCompactMode": false,
   "runningAppsCompactMode": true,
@@ -424,20 +426,12 @@
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {
     "systemMonitor": {
-      "DVI-I-1": {
-        "x": 60.953125,
-        "y": 46.61328125
-      },
       "eDP-1": {
         "x": 59.76953125,
         "y": 72.16796875
       }
     },
     "desktopClock": {
-      "DVI-I-1": {
-        "x": 1677.109375,
-        "y": 46.53515625
-      },
       "eDP-1": {
         "x": 1338.7265625,
         "y": 73.56640625
@@ -485,9 +479,9 @@
           "x": 1357.4609375,
           "y": 75.34375
         },
-        "DVI-I-1": {
-          "x": 1686.59375,
-          "y": 52.484375
+        "DP-1": {
+          "x": 1679.9921875,
+          "y": 51.8984375
         }
       }
     },
@@ -537,9 +531,9 @@
           "x": 62.40625,
           "y": 51.9375
         },
-        "DVI-I-1": {
-          "x": 72.9296875,
-          "y": 61.03515625
+        "DP-1": {
+          "x": 56.11328125,
+          "y": 52.87109375
         }
       }
     }
