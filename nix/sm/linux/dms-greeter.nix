@@ -1,20 +1,13 @@
-{ pkgs, ... }:
-
-let
-  # A workaround to
-  #
-  # 1. let dms-greeter to find niri to launch quickshell
-  # 2. let quickshell to launch niri-session
-  compositorPath = "/run/system-manager/sw/bin";
-
-  greeterScript = pkgs.writeShellScript "dms-greeter-with-profile" ''
-    export PATH=${compositorPath}:$PATH
-
-    # Now launch the actual greeter, passing the desired command to start after login
-    exec /usr/bin/dms-greeter --command niri
-  '';
-in
+{ ... }:
 {
+  # greetd uses PATH to lookup niri and niri-session
+  #
+  # The PATH does not include the hm one as the user is not
+  # login yet. But, it includes the sm one. Since we install
+  # niri in sm as well, dms-greeter will find niri and qs will
+  # find niri-session.
+  # - Sidenote: dms-greeter -> quickshell (via niri) ->
+  #   niri-session -> niri + niri.service (user)
   config.environment.etc = {
     "greetd/config.toml" = {
       text = ''
@@ -26,7 +19,7 @@ in
         # The default session, also known as the greeter.
         [default_session]
 
-        command = "${greeterScript}"
+        command = "/usr/bin/dms-greeter --command niri"
 
         # The user to run the command as. The privileges this user must have depends
         # on the greeter. A graphical greeter may for example require the user to be
