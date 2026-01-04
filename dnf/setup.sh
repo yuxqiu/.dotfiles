@@ -33,6 +33,7 @@ fedora_packages=(
     pipewire-pulseaudio
     pipewire-utils
     polkit
+    power-profiles-daemon
     qt5ct
     qt6ct
     stow
