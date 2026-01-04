@@ -40,6 +40,12 @@
         enabled = true;
       };
       languages = {
+        LaTeX = {
+          soft_wrap = "editor_width";
+        };
+        Typst = {
+          soft_wrap = "editor_width";
+        };
         Nix = {
           language_servers = [
             "nixd"
@@ -56,7 +62,6 @@
         tinymist = {
           settings = {
             exportPdf = "onSave";
-            outputPath = "$root/$name";
           };
         };
         texlab = {
