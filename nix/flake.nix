@@ -149,7 +149,12 @@
             ./sm/linux/default.nix
 
             # Additional inputs
-            { _module.args = { inherit username; }; }
+            {
+              _module.args = {
+                inherit username;
+                inherit inputs;
+              };
+            }
           ];
         }
       );
