@@ -81,7 +81,5 @@
         ];
       };
     };
-
-    environment.systemPackages = with pkgs; [ earlyoom ];
   };
 }

@@ -16,7 +16,7 @@
     entries = [
       {
         compositorName = "Niri";
-        sessionName = "niri-session";
+        sessionName = "${inputs.niri.packages.${pkgs.stdenv.system}.default}/bin/niri-session";
       }
     ];
   };

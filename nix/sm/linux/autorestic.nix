@@ -1,4 +1,8 @@
 { pkgs, ... }:
+let
+  autoresticBin = "${pkgs.autorestic}/bin/autorestic";
+  resticBin = "${pkgs.restic}/bin/restic";
+in
 {
   config = {
     # See:
@@ -12,8 +16,8 @@
           };
           serviceConfig = {
             Type = "oneshot";
-            ExecStart = "${pkgs.autorestic}/bin/autorestic --restic-bin ${pkgs.restic}/bin/restic backup --verbose -l home";
-            ExecStartPost = "${pkgs.autorestic}/bin/autorestic --restic-bin ${pkgs.restic}/bin/restic forget --verbose --all";
+            ExecStart = "${autoresticBin} --restic-bin ${resticBin} backup --verbose -l home";
+            ExecStartPost = "${autoresticBin} --restic-bin ${resticBin} forget --verbose --all";
             WorkingDirectory = "%h";
           };
         };
@@ -23,7 +27,7 @@
           };
           serviceConfig = {
             Type = "oneshot";
-            ExecStart = "${pkgs.autorestic}/bin/autorestic --restic-bin ${pkgs.restic}/bin/restic forget --verbose --prune --all";
+            ExecStart = "${autoresticBin} --restic-bin ${resticBin} forget --verbose --prune --all";
             WorkingDirectory = "%h";
           };
         };

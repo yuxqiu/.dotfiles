@@ -41,7 +41,5 @@
         StartLimitBurst = 10;
       };
     };
-
-    environment.systemPackages = with pkgs; [ dnscrypt-proxy ];
   };
 }
