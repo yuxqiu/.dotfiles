@@ -17,6 +17,10 @@
         sudo dnf autoremove
         sudo dnf clean all
       '';
+      gc-sm = ''
+        sudo $(which nix-env) --delete-generations old --profile /nix/var/nix/profiles/system-manager-profiles/system-manager
+        gc-nix
+      '';
     };
   };
 
