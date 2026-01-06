@@ -36,10 +36,14 @@
       };
       colorize_brackets = true;
       disable_ai = true;
+      format_on_save = "on";
       inlay_hints = {
         enabled = true;
       };
       languages = {
+        Markdown = {
+          format_on_save = "on";
+        };
         LaTeX = {
           soft_wrap = "editor_width";
         };
