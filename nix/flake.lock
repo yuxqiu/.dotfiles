@@ -76,11 +76,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1767668210,
-        "narHash": "sha256-2SLcWzrvZt2HwUPZUsR043FF/F2vUsWwhpursc/Oy8M=",
+        "lastModified": 1767798287,
+        "narHash": "sha256-dWPKsgCBFHdRRUiGeM4cS8DnKbTy9VaNwmZPsU2qghk=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "f762f9ae497749560dcb68f24110acc256661c06",
+        "rev": "e822fa73dafc3c88d76e46534b97a1270f13af75",
         "type": "github"
       },
       "original": {
@@ -186,11 +186,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767619743,
-        "narHash": "sha256-N0kK1JqxIjFl7hPAfhkW6C9AO7feYJUWLPyqJO2VuQQ=",
+        "lastModified": 1767802041,
+        "narHash": "sha256-ZhgbFGQGeJaZ/xkwyHlgUCeHuIdEDqugYkObPL0NCyo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a65c04965c841eb01ba401f5162f12bc8d52014f",
+        "rev": "bdaa3743831168787f528570f2b87963e72a2f23",
         "type": "github"
       },
       "original": {
@@ -207,11 +207,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1767598098,
-        "narHash": "sha256-IyH3zaCT2JZ6fdY4vKlUz2RbDdxaryvSZWUVixKYrKM=",
+        "lastModified": 1767792726,
+        "narHash": "sha256-qS4tdG2iUQwSld9dTH1gk8GcIOrRi9umMgPv8MGDIA0=",
         "owner": "YaLTeR",
         "repo": "niri",
-        "rev": "b7eb8a635b7f75705808eaed85c016f02ae4fd2d",
+        "rev": "10df9f4717cbd4efd20ae796eb6b0aa400127bdc",
         "type": "github"
       },
       "original": {
@@ -263,11 +263,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767665581,
-        "narHash": "sha256-eGWrFsXOkJMahFhxtPSFQf1VSjafE0ka2T/dTwk+byk=",
+        "lastModified": 1767801771,
+        "narHash": "sha256-2311OEKQGcekW8UHYli5/UIl0vzr8FuLqcuWS9wTiRY=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "905f111884f76ab6c1f6cdf1387d663696ccc369",
+        "rev": "32cf053f53c6fd7d6679eb69e3a1edc3a3600d48",
         "type": "github"
       },
       "original": {
@@ -457,11 +457,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767122467,
-        "narHash": "sha256-0ZraYDfulnl9ASHFK8a346QTomTblVdMbjx+X/jSDYI=",
+        "lastModified": 1767765652,
+        "narHash": "sha256-brTUOSGRmUCU0xJZI/aD5jUYZJm4RhqMRfkzS4veohg=",
         "owner": "numtide",
         "repo": "system-manager",
-        "rev": "4434112dedfc1fc6b40daecd5554cbfc428b95db",
+        "rev": "85610060c48a0b9f1883d5b2525866fc6ddbbe03",
         "type": "github"
       },
       "original": {

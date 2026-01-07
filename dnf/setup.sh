@@ -48,7 +48,7 @@ fedora_packages=(
 
 # Associative array for packages requiring COPR repositories
 declare -A copr_map=(
-    ["dms-greeter"]="avengemedia/dms-git"
+    # Example: ["dms-greeter"]="avengemedia/dms-git"
 )
 
 # Associative array for packages requiring Docker repository

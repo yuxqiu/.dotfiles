@@ -1,4 +1,28 @@
-{ ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  dms = inputs.dms.packages.${pkgs.stdenv.system};
+  # Copied and modified from `distro/nix/greeter.nix`
+  greeterScript = pkgs.writeShellScriptBin "dms-greeter" ''
+    export PATH=$PATH:${
+      lib.makeBinPath [
+        dms.quickshell
+      ]
+    }
+    ${lib.escapeShellArgs [
+      "sh"
+      "${dms.dms-shell}/share/quickshell/dms/Modules/Greetd/assets/dms-greeter"
+      "--command"
+      "niri"
+      "-p"
+      "${dms.dms-shell}/share/quickshell/dms"
+    ]}
+  '';
+in
 {
   # greetd uses PATH to lookup niri and niri-session
   #
@@ -19,7 +43,7 @@
         # The default session, also known as the greeter.
         [default_session]
 
-        command = "/usr/bin/dms-greeter --command niri"
+        command = "${greeterScript}/bin/dms-greeter"
 
         # The user to run the command as. The privileges this user must have depends
         # on the greeter. A graphical greeter may for example require the user to be
