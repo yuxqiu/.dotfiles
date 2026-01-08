@@ -41,6 +41,14 @@
         enabled = true;
       };
       languages = {
+        BibTeX = {
+          formatter = {
+            external = {
+              command = "latexindent";
+              arguments = [ "-l" ];
+            };
+          };
+        };
         Markdown = {
           format_on_save = "on";
         };
