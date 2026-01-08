@@ -45,7 +45,11 @@
           formatter = {
             external = {
               command = "latexindent";
-              arguments = [ "-l" ];
+              arguments = [
+                "-l"
+                "-g"
+                "/dev/null"
+              ];
             };
           };
         };
