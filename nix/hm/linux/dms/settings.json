@@ -141,6 +141,22 @@
   "networkPreference": "wifi",
   "vpnLastConnected": "df1d050f-ab55-4605-a829-4b94c380830c",
   "iconTheme": "System Default",
+  "cursorSettings": {
+    "theme": "System Default",
+    "size": 24,
+    "niri": {
+      "hideWhenTyping": false,
+      "hideAfterInactiveMs": 0
+    },
+    "hyprland": {
+      "hideOnKeyPress": false,
+      "hideOnTouch": false,
+      "inactiveTimeout": 0
+    },
+    "dwl": {
+      "cursorHideTimeout": 0
+    }
+  },
   "launcherLogoMode": "apps",
   "launcherLogoCustomPath": "",
   "launcherLogoColorOverride": "",

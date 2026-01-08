@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   lib,
@@ -6,32 +7,28 @@
 }:
 let
   dms = inputs.dms.packages.${pkgs.stdenv.system};
+
+  # greetd uses PATH to lookup niri and niri-session
+  #
+  # - Sidenote: dms-greeter -> quickshell (via niri) ->
+  #   niri-session -> niri + niri.service (user)
+  waylandSessionPackages = map (e: e.package) config.services.displayManager.waylandSessions.entries;
+  greeterPath = lib.makeBinPath (
+    [
+      dms.quickshell
+    ]
+    ++ waylandSessionPackages
+  );
+
   # Copied and modified from `distro/nix/greeter.nix`
   greeterScript = pkgs.writeShellScriptBin "dms-greeter" ''
-    export PATH=$PATH:${
-      lib.makeBinPath [
-        dms.quickshell
-      ]
-    }
-    ${lib.escapeShellArgs [
-      "sh"
-      "${dms.dms-shell}/share/quickshell/dms/Modules/Greetd/assets/dms-greeter"
-      "--command"
-      "niri"
-      "-p"
-      "${dms.dms-shell}/share/quickshell/dms"
-    ]}
+    export PATH=$PATH:${greeterPath}
+
+    ${dms.dms-shell}/share/quickshell/dms/Modules/Greetd/assets/dms-greeter \
+    --command niri -p ${dms.dms-shell}/share/quickshell/dms
   '';
 in
 {
-  # greetd uses PATH to lookup niri and niri-session
-  #
-  # The PATH does not include the hm one as the user is not
-  # login yet. But, it includes the sm one. Since we install
-  # niri in sm as well, dms-greeter will find niri and qs will
-  # find niri-session.
-  # - Sidenote: dms-greeter -> quickshell (via niri) ->
-  #   niri-session -> niri + niri.service (user)
   config.environment.etc = {
     "greetd/config.toml" = {
       text = ''
