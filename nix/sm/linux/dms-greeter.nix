@@ -29,7 +29,7 @@ let
   '';
 in
 {
-  config.environment.etc = {
+  environment.etc = {
     "greetd/config.toml" = {
       text = ''
         [terminal]
