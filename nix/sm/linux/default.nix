@@ -15,6 +15,7 @@
     ./dms-greeter.nix
     ./wayland-session.nix
     ./niri.nix
+    ./docker.nix
   ];
 
   # don't bother managing nix

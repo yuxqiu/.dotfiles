@@ -51,29 +51,10 @@ declare -A copr_map=(
     # Example: ["dms-greeter"]="avengemedia/dms-git"
 )
 
-# Associative array for packages requiring Docker repository
-declare -A docker_map=(
-    ["docker-buildx-plugin"]="docker"
-    ["docker-ce"]="docker"
-    ["docker-ce-cli"]="docker"
-    ["docker-compose-plugin"]="docker"
-)
-
 # Packages with custom setup scripts
 setup_folders=(
     plymouth
 )
-
-# Function to enable Docker repository
-enable_docker_repo() {
-    if ! dnf repolist | grep -q "docker-ce"; then
-        echo "Setting up Docker repository..."
-        sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo || { echo "Failed to add Docker repo"; exit 1; }
-        sudo dnf makecache || { echo "Failed to refresh DNF cache"; exit 1; }
-    else
-        echo "Docker repository already enabled"
-    fi
-}
 
 # Function to enable a COPR repository
 enable_copr() {
@@ -106,12 +87,6 @@ process_package() {
     elif [[ -n "${copr_map[$pkg]}" ]]; then
         enable_copr "${copr_map[$pkg]}"
         echo "Installing $pkg from COPR..."
-        sudo dnf install -y "$pkg" || { echo "Failed to install $pkg"; exit 1; }
-
-    # Check if package is in Docker map
-    elif [[ -n "${docker_map[$pkg]}" ]]; then
-        enable_docker_repo
-        echo "Installing $pkg from Docker repository..."
         sudo dnf install -y "$pkg" || { echo "Failed to install $pkg"; exit 1; }
 
     else
@@ -147,9 +122,9 @@ run_local_setups() {
     done
 }
 
-# Process all packages from fedora_packages, copr_map, and docker_map
+# Process all packages from fedora_packages and copr_map
 echo "Installing all defined packages..."
-for pkg in "${fedora_packages[@]}" "${!copr_map[@]}" "${!docker_map[@]}"; do
+for pkg in "${fedora_packages[@]}" "${!copr_map[@]}"; do
     process_package "$pkg"
 done
 echo "Package processing completed."
