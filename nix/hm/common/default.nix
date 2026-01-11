@@ -19,6 +19,7 @@
     ./zed/default.nix
     ./stylix/default.nix
     ./session.nix
+    ./fonts.nix
   ];
 
   home.packages = with pkgs; [
@@ -52,9 +53,6 @@
     wget
     which
   ];
-
-  # Ensure fonts are available
-  fonts.fontconfig.enable = true;
 
   # Allow unfree packages
   nixpkgs.config = {
