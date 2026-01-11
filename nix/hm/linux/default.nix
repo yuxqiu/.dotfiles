@@ -24,6 +24,8 @@
     desktop-file-utils
     iputils
     libnotify
+    networkmanager
+    patch
     traceroute
     xdg-utils
     inputs.system-manager.packages.${pkgs.stdenv.system}.default

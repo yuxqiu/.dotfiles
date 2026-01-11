@@ -14,7 +14,6 @@ fedora_packages=(
     accountsservice
     NetworkManager
     NetworkManager-wifi
-    NetworkManager-tui
     bluez
     cmake
     firewalld
