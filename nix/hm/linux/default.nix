@@ -17,6 +17,7 @@
     ./opensnitch.nix
     ./ssh.nix
     ./dolphin.nix
+    ./distrobox.nix
   ];
 
   home.packages = with pkgs; [
