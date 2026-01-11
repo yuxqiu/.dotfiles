@@ -16,7 +16,8 @@ fedora_packages=(
     NetworkManager-wifi
     bluez
     cmake
-    firewalld
+    fuse
+    fuse3
     gcc
     gcc-c++
     gdb
@@ -41,6 +42,7 @@ fedora_packages=(
     unzip
     upower
     usbmuxd
+    util-linux
     wireplumber
     zip
 )
