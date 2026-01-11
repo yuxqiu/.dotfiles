@@ -91,6 +91,10 @@
     '';
   };
 
-  # Configure EDITOR using full path to ensure sudoedit can pick up nvim
-  home.sessionVariables.EDITOR = "${pkgs.neovim}/bin/nvim";
+  # Configure EDITOR and VISUAL using full path to ensure `sudoedit` can pick up nvim
+  # - `defaultEditor = true;` does not use full path of nvim for now
+  home.sessionVariables = {
+    EDITOR = "${pkgs.neovim}/bin/nvim";
+    VISUAL = "${pkgs.neovim}/bin/nvim";
+  };
 }
