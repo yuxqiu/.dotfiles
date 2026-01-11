@@ -9,4 +9,5 @@
   xdg.autostart.enable = true;
   xdg.mime.enable = true;
   xdg.portal.enable = true;
+  xdg.terminal-exec.enable = true;
 }

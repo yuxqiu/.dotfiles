@@ -18,6 +18,7 @@
     ./ssh.nix
     ./dolphin.nix
     ./distrobox.nix
+    ./alacritty.nix
   ];
 
   home.packages = with pkgs; [
