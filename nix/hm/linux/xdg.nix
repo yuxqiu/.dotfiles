@@ -1,10 +1,12 @@
 { ... }:
 {
-  # enable xdg (xdg-mime is default enabled)
+  # enable xdg
   xdg.enable = true;
-  xdg.autostart.enable = true;
-  xdg.mime.enable = true;
 
   # let hm to manage xdg user dirs
   xdg.userDirs.enable = true;
+
+  xdg.autostart.enable = true;
+  xdg.mime.enable = true;
+  xdg.portal.enable = true;
 }
