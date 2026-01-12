@@ -39,6 +39,7 @@ fedora_packages=(
     tuned
     tuned-ppd
     tuned-utils
+    udisks2
     unzip
     upower
     usbmuxd
