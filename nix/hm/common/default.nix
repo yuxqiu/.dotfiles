@@ -27,6 +27,7 @@
     cargo-flamegraph
     dig
     duf
+    fastfetch
     ffmpeg
     git-crypt
     git-lfs
