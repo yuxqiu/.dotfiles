@@ -20,6 +20,7 @@
     ./stylix/default.nix
     ./session.nix
     ./fonts.nix
+    ./lowfi/default.nix
   ];
 
   home.packages = with pkgs; [
