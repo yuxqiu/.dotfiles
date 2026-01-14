@@ -21,6 +21,7 @@
     enableDynamicTheming = false;
     enableAudioWavelength = true;
     enableCalendarEvents = false;
+    enableClipboardPaste = true;
   };
 
   xdg.configFile."DankMaterialShell/settings.json".source =
