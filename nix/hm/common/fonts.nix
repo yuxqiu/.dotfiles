@@ -17,21 +17,27 @@
     noto-fonts-cjk-serif
   ];
 
-  fonts.fontconfig.defaultFonts = {
-    sansSerif = [
-      "Noto Sans"
-      "Noto Sans CJK SC"
-      "DejaVu Sans"
-    ];
-    serif = [
-      "Noto Serif"
-      "Noto Serif CJK SC"
-      "DejaVu Serif"
-    ];
-    monospace = [
-      "DejaVu Sans Mono"
-      "Noto Sans Mono CJK SC"
-    ];
-    emoji = [ "Noto Color Emoji" ];
+  fonts.fontconfig = {
+    antialiasing = true;
+    hinting = "slight";
+    subpixelRendering = "none";
+
+    defaultFonts = {
+      sansSerif = [
+        "Noto Sans"
+        "Noto Sans CJK SC"
+        "DejaVu Sans"
+      ];
+      serif = [
+        "Noto Serif"
+        "Noto Serif CJK SC"
+        "DejaVu Serif"
+      ];
+      monospace = [
+        "DejaVu Sans Mono"
+        "Noto Sans Mono CJK SC"
+      ];
+      emoji = [ "Noto Color Emoji" ];
+    };
   };
 }
