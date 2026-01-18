@@ -76,11 +76,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1768681437,
-        "narHash": "sha256-OixsI+WYV2LC0iZy/ZOQ75UvwvPdx1Z6IAZ5IVpdiFw=",
+        "lastModified": 1768710071,
+        "narHash": "sha256-r+rENYaBziCOlg5Cr3pD2iQkaONxf5nPP7ektwLUO0s=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "53f5240d415dffe367cafd6e1b1d70ae6dd29556",
+        "rev": "13dededcc9c69977e94d8be1ff13c954dc16bcad",
         "type": "github"
       },
       "original": {
@@ -144,6 +144,24 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -186,11 +204,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768598210,
-        "narHash": "sha256-kkgA32s/f4jaa4UG+2f8C225Qvclxnqs76mf8zvTVPg=",
+        "lastModified": 1768707181,
+        "narHash": "sha256-GdwFfnwdUgABFpc4sAmX7GYx8eQs6cEjOPo6nBJ0YaI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c47b2cc64a629f8e075de52e4742de688f930dc6",
+        "rev": "83bcb17377f0242376a327e742e9404e9a528647",
         "type": "github"
       },
       "original": {
@@ -263,11 +281,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768656526,
-        "narHash": "sha256-/bL8sjJ5bic525DRL20i7XqWmSzpQ5QI2OV+etzLiUY=",
+        "lastModified": 1768703331,
+        "narHash": "sha256-ob44p9PGlUIEiPZ3u7AAI0MyKtcHS2kPjiJjXtWies8=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "91986dac376d14f3c761a21722f6ff4fc6e3e86d",
+        "rev": "45f1a82aa6940da7134e6b48d5870f8dc7a554d9",
         "type": "github"
       },
       "original": {
@@ -371,7 +389,8 @@
         "proton-pass-cli": "proton-pass-cli",
         "ssh-agent-ac": "ssh-agent-ac",
         "stylix": "stylix",
-        "system-manager": "system-manager"
+        "system-manager": "system-manager",
+        "tun2proxy": "tun2proxy"
       }
     },
     "rust-overlay": {
@@ -500,6 +519,21 @@
         "type": "github"
       }
     },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "tinted-foot": {
       "flake": false,
       "locked": {
@@ -578,6 +612,27 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "tun2proxy": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768733770,
+        "narHash": "sha256-75C+haPQHnti2YrJLntsOd8WpuE4YU4/4mS12dEy3YU=",
+        "owner": "yuxqiu",
+        "repo": "tun2proxy",
+        "rev": "39211ae2831a16e10532d810a6642b0a6eef47a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yuxqiu",
+        "repo": "tun2proxy",
         "type": "github"
       }
     }

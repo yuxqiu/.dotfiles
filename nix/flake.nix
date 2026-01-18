@@ -24,6 +24,10 @@
       url = "github:yuxqiu/ssh-agent-ac";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tun2proxy = {
+      url = "github:yuxqiu/tun2proxy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";

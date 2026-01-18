@@ -1,7 +1,12 @@
-{ config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    tun2proxy
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
+  home.packages = [
+    inputs.tun2proxy.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   systemd.user.services.xray = {
