@@ -19,6 +19,7 @@
     ./dolphin.nix
     ./distrobox.nix
     ./alacritty.nix
+    ./vpn.nix
   ];
 
   home.packages = with pkgs; [
