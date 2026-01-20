@@ -117,6 +117,7 @@
   "reverseScrolling": false,
   "dwlShowAllTags": false,
   "workspaceColorMode": "default",
+  "workspaceOccupiedColorMode": "default",
   "workspaceUnfocusedColorMode": "default",
   "workspaceUrgentColorMode": "default",
   "workspaceFocusedBorderEnabled": false,
@@ -265,6 +266,7 @@
   "matugenTemplateVscode": true,
   "showDock": false,
   "dockAutoHide": false,
+  "dockSmartAutoHide": false,
   "dockGroupByApp": false,
   "dockOpenOnOverview": false,
   "dockPosition": 1,
@@ -286,6 +288,7 @@
   "lockScreenShowDate": true,
   "lockScreenShowProfileImage": true,
   "lockScreenShowPasswordField": true,
+  "lockScreenPowerOffMonitorsOnLock": false,
   "enableFprint": true,
   "maxFprintTries": 3,
   "lockScreenActiveMonitor": "all",
@@ -419,7 +422,8 @@
       "visible": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
-      "widgetOutlineEnabled": false
+      "widgetOutlineEnabled": false,
+      "showOnWindowsOpen": true
     }
   ],
   "desktopClockEnabled": true,
@@ -556,7 +560,7 @@
         },
         "_synced": {
           "x": 0.8333333333333334,
-          "y": 0.037037037037037035,
+          "y": 0.07407407407407407,
           "width": 248.58203125,
           "height": 248.58203125
         }
@@ -617,7 +621,7 @@
         },
         "_synced": {
           "x": 0.020833333333333332,
-          "y": 0.037037037037037035,
+          "y": 0.07407407407407407,
           "width": 351.28515625,
           "height": 502.9609375
         }
