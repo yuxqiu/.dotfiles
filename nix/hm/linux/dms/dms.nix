@@ -7,6 +7,7 @@
   imports = [
     ./scripts/dms-focused-output.nix
     inputs.dms.homeModules.dank-material-shell
+    inputs.dms-plugin-registry.modules.default
   ];
 
   programs.dank-material-shell = {
@@ -22,6 +23,15 @@
     enableAudioWavelength = true;
     enableCalendarEvents = false;
     enableClipboardPaste = true;
+
+    plugins = {
+      dankBatteryAlerts.enable = true;
+      dankActions.enable = true;
+      dankLauncherKeys.enable = true;
+      emojiLauncher.enable = true;
+      calculator.enable = true;
+      webSearch.enable = true;
+    };
   };
 
   xdg.configFile."DankMaterialShell/settings.json".source =

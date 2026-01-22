@@ -170,7 +170,14 @@
   "sortAppsAlphabetically": false,
   "appLauncherGridColumns": 4,
   "spotlightCloseNiriOverview": true,
+  "spotlightSectionViewModes": {},
+  "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
+  "dankLauncherV2Size": "compact",
+  "dankLauncherV2BorderEnabled": false,
+  "dankLauncherV2BorderThickness": 2,
+  "dankLauncherV2BorderColor": "primary",
+  "dankLauncherV2ShowFooter": false,
   "useAutoLocation": false,
   "weatherEnabled": false,
   "networkPreference": "wifi",
@@ -349,15 +356,9 @@
       "name": "Main Bar",
       "enabled": true,
       "position": 0,
-      "screenPreferences": [
-        "all"
-      ],
+      "screenPreferences": ["all"],
       "showOnLastDisplay": true,
-      "leftWidgets": [
-        "launcherButton",
-        "workspaceSwitcher",
-        "focusedWindow"
-      ],
+      "leftWidgets": ["launcherButton", "workspaceSwitcher", "focusedWindow"],
       "centerWidgets": [
         "music",
         "clock",
@@ -450,9 +451,7 @@
   "desktopClockY": -1,
   "desktopClockWidth": 280,
   "desktopClockHeight": 180,
-  "desktopClockDisplayPreferences": [
-    "all"
-  ],
+  "desktopClockDisplayPreferences": ["all"],
   "systemMonitorEnabled": true,
   "systemMonitorShowHeader": true,
   "systemMonitorTransparency": 0.8,
@@ -489,9 +488,7 @@
   "systemMonitorY": -1,
   "systemMonitorWidth": 320,
   "systemMonitorHeight": 480,
-  "systemMonitorDisplayPreferences": [
-    "all"
-  ],
+  "systemMonitorDisplayPreferences": ["all"],
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {
     "systemMonitor": {
@@ -542,9 +539,7 @@
         "showDate": true,
         "showAnalogNumbers": true,
         "showAnalogSeconds": true,
-        "displayPreferences": [
-          "all"
-        ],
+        "displayPreferences": ["all"],
         "syncPositionAcrossScreens": true
       },
       "positions": {
@@ -603,9 +598,7 @@
         "topProcessSortBy": "cpu",
         "layoutMode": "auto",
         "graphInterval": 60,
-        "displayPreferences": [
-          "all"
-        ],
+        "displayPreferences": ["all"],
         "syncPositionAcrossScreens": true
       },
       "positions": {
@@ -634,5 +627,7 @@
       "trigger": "?"
     }
   },
+  "launcherPluginVisibility": {},
+  "launcherPluginOrder": [],
   "configVersion": 5
 }
