@@ -23,6 +23,7 @@
   "use24HourClock": true,
   "showSeconds": true,
   "useFahrenheit": false,
+  "windSpeedUnit": "kmh",
   "nightModeEnabled": false,
   "animationSpeed": 2,
   "customAnimationDuration": 500,
@@ -173,7 +174,7 @@
   "spotlightSectionViewModes": {},
   "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
-  "dankLauncherV2Size": "compact",
+  "dankLauncherV2Size": "micro",
   "dankLauncherV2BorderEnabled": false,
   "dankLauncherV2BorderThickness": 2,
   "dankLauncherV2BorderColor": "primary",
@@ -271,6 +272,7 @@
   "matugenTemplateDgop": true,
   "matugenTemplateKcolorscheme": true,
   "matugenTemplateVscode": true,
+  "matugenTemplateEmacs": true,
   "showDock": false,
   "dockAutoHide": false,
   "dockSmartAutoHide": false,
@@ -287,6 +289,13 @@
   "dockBorderOpacity": 1,
   "dockBorderThickness": 1,
   "dockIsolateDisplays": false,
+  "dockLauncherEnabled": false,
+  "dockLauncherLogoMode": "apps",
+  "dockLauncherLogoCustomPath": "",
+  "dockLauncherLogoColorOverride": "",
+  "dockLauncherLogoSizeOffset": 0,
+  "dockLauncherLogoBrightness": 0.5,
+  "dockLauncherLogoContrast": 1,
   "notificationOverlayEnabled": false,
   "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
@@ -356,9 +365,15 @@
       "name": "Main Bar",
       "enabled": true,
       "position": 0,
-      "screenPreferences": ["all"],
+      "screenPreferences": [
+        "all"
+      ],
       "showOnLastDisplay": true,
-      "leftWidgets": ["launcherButton", "workspaceSwitcher", "focusedWindow"],
+      "leftWidgets": [
+        "launcherButton",
+        "workspaceSwitcher",
+        "focusedWindow"
+      ],
       "centerWidgets": [
         "music",
         "clock",
@@ -451,7 +466,9 @@
   "desktopClockY": -1,
   "desktopClockWidth": 280,
   "desktopClockHeight": 180,
-  "desktopClockDisplayPreferences": ["all"],
+  "desktopClockDisplayPreferences": [
+    "all"
+  ],
   "systemMonitorEnabled": true,
   "systemMonitorShowHeader": true,
   "systemMonitorTransparency": 0.8,
@@ -488,7 +505,9 @@
   "systemMonitorY": -1,
   "systemMonitorWidth": 320,
   "systemMonitorHeight": 480,
-  "systemMonitorDisplayPreferences": ["all"],
+  "systemMonitorDisplayPreferences": [
+    "all"
+  ],
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {
     "systemMonitor": {
@@ -539,7 +558,9 @@
         "showDate": true,
         "showAnalogNumbers": true,
         "showAnalogSeconds": true,
-        "displayPreferences": ["all"],
+        "displayPreferences": [
+          "all"
+        ],
         "syncPositionAcrossScreens": true
       },
       "positions": {
@@ -598,7 +619,9 @@
         "topProcessSortBy": "cpu",
         "layoutMode": "auto",
         "graphInterval": 60,
-        "displayPreferences": ["all"],
+        "displayPreferences": [
+          "all"
+        ],
         "syncPositionAcrossScreens": true
       },
       "positions": {
