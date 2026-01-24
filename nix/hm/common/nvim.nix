@@ -50,7 +50,7 @@
       call plug#end()
     '';
 
-    extraLuaConfig = ''
+    initLua = ''
       -- Key mappings
       vim.keymap.set('n', '<space>', ':', { noremap = true })
       vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true })
