@@ -187,7 +187,6 @@
   "useAutoLocation": false,
   "weatherEnabled": false,
   "networkPreference": "wifi",
-  "vpnLastConnected": "df1d050f-ab55-4605-a829-4b94c380830c",
   "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "System Default",
@@ -309,7 +308,7 @@
   "lockScreenShowDate": true,
   "lockScreenShowProfileImage": true,
   "lockScreenShowPasswordField": true,
-  "lockScreenShowMediaPlayer": true,
+  "lockScreenShowMediaPlayer": false,
   "lockScreenPowerOffMonitorsOnLock": false,
   "enableFprint": true,
   "maxFprintTries": 3,
@@ -420,6 +419,10 @@
         },
         {
           "id": "dankActions:variant_1762019076882",
+          "enabled": true
+        },
+        {
+          "id": "dankPomodoroTimer",
           "enabled": true
         }
       ],

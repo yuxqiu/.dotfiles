@@ -30,7 +30,8 @@
       dankLauncherKeys.enable = true;
       emojiLauncher.enable = true;
       calculator.enable = true;
-      webSearch.enable = true;
+      dankPomodoroTimer.enable = true;
+      powerOptions.enable = true;
     };
   };
 
