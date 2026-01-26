@@ -54,6 +54,7 @@
     uv
     wget
     which
+    zmk-studio
   ];
 
   # Allow unfree packages
