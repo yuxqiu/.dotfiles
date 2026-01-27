@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./flatpak.nix
@@ -29,9 +29,9 @@
     libnotify
     networkmanager
     patch
+    system-manager
     traceroute
     xdg-utils
-    inputs.system-manager.packages.${pkgs.stdenv.system}.default
   ];
 
   # improve generic linux compatibility (on non NixOS)
