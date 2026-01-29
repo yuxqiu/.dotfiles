@@ -135,6 +135,9 @@
   "clockCompactMode": false,
   "focusedWindowCompactMode": false,
   "runningAppsCompactMode": true,
+  "barMaxVisibleApps": 0,
+  "barMaxVisibleRunningApps": 0,
+  "barShowOverflowBadge": true,
   "keyboardLayoutNameCompactMode": true,
   "runningAppsCurrentWorkspace": false,
   "runningAppsGroupByApp": false,
@@ -302,6 +305,9 @@
   "dockLauncherLogoSizeOffset": 0,
   "dockLauncherLogoBrightness": 0.5,
   "dockLauncherLogoContrast": 1,
+  "dockMaxVisibleApps": 0,
+  "dockMaxVisibleRunningApps": 0,
+  "dockShowOverflowBadge": true,
   "notificationOverlayEnabled": false,
   "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
@@ -366,6 +372,26 @@
   "showOnLastDisplay": {},
   "niriOutputSettings": {},
   "hyprlandOutputSettings": {},
+  "displayProfiles": {
+    "niri": {
+      "profile_1769655383958_zb5r26": {
+        "id": "profile_1769655383958_zb5r26",
+        "name": "home",
+        "outputSet": [
+          "DP-1",
+          "eDP-1"
+        ],
+        "createdAt": 1769655383958,
+        "updatedAt": 1769655383958
+      }
+    }
+  },
+  "activeDisplayProfile": {
+    "niri": "profile_1769655383958_zb5r26"
+  },
+  "displayProfileAutoSelect": false,
+  "displayShowDisconnected": true,
+  "displaySnapToEdge": true,
   "barConfigs": [
     {
       "id": "default",
