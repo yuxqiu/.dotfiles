@@ -1,19 +1,26 @@
 { pkgs, ... }:
 {
-  systemd.services.opensnitchd = {
-    description = "Application firewall OpenSnitch";
-    documentation = [ "https://github.com/evilsocket/opensnitch/wiki" ];
+  config = {
+    environment.etc = {
+      "opensnitchd/default-config.json".source = ./res/default-config.json;
+      "opensnitchd/system-fw.json".source = ./res/system-fw.json;
+    };
 
-    wantedBy = [ "multi-user.target" ];
+    systemd.services.opensnitchd = {
+      description = "Application firewall OpenSnitch";
+      documentation = [ "https://github.com/evilsocket/opensnitch/wiki" ];
 
-    serviceConfig = {
-      Type = "simple";
-      PermissionsStartOnly = true;
-      ExecStartPre = "/bin/mkdir -p /etc/opensnitchd/rules";
-      ExecStart = "${pkgs.opensnitch}/bin/opensnitchd -config-file ${./res/default-config.json} -fw-config-file ${./res/system-fw.json} -rules-path /etc/opensnitchd/rules";
-      Restart = "always";
-      RestartSec = 30;
-      TimeoutStopSec = 10;
+      wantedBy = [ "multi-user.target" ];
+
+      serviceConfig = {
+        Type = "simple";
+        PermissionsStartOnly = true;
+        ExecStartPre = "/bin/mkdir -p /etc/opensnitchd/rules";
+        ExecStart = "${pkgs.opensnitch}/bin/opensnitchd -rules-path /etc/opensnitchd/rules";
+        Restart = "always";
+        RestartSec = 30;
+        TimeoutStopSec = 10;
+      };
     };
   };
 }
