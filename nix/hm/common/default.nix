@@ -21,6 +21,7 @@
     ./session.nix
     ./fonts.nix
     ./lowfi/default.nix
+    ./home-manager.nix
   ];
 
   home.packages = with pkgs; [
