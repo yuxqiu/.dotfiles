@@ -56,6 +56,9 @@ in
       server_names = [
         "odoh-cloudflare"
         "odoh-snowstorm"
+        # Workaround when odoh is not available
+        "controld-unfiltered"
+        "mullvad-doh"
       ];
 
       # This creates the [anonymized_dns] section in dnscrypt-proxy.toml
