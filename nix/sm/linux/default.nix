@@ -1,21 +1,22 @@
 { ... }:
 {
   imports = [
-    ./dnscrypt-proxy/dnscrypt-proxy.nix
+    ./autorestic.nix
+    ./ddcutil.nix
+    ./dms-greeter.nix
+    ./docker.nix
     ./earlyoom.nix
+    ./fprintd.nix
+    ./niri.nix
+    ./pam.nix
+    ./polkit.nix
+    ./wayland-session.nix
+
+    ./dnscrypt-proxy/dnscrypt-proxy.nix
     ./journald/journald.nix
     ./NetworkManager/NetworkManager.nix
-    ./autorestic.nix
-    ./fprintd.nix
-    ./ddcutil.nix
-    ./tuned/tuned.nix
     ./opensnitch/default.nix
-    ./polkit.nix
-    ./pam.nix
-    ./dms-greeter.nix
-    ./wayland-session.nix
-    ./niri.nix
-    ./docker.nix
+    ./tuned/tuned.nix
   ];
 
   # don't bother managing nix

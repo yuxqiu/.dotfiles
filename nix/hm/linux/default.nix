@@ -1,25 +1,26 @@
 { pkgs, ... }:
 {
   imports = [
-    ./flatpak.nix
-    ./captive-browser/default.nix
-    ./fcitx5.nix
-    ./gtk.nix
-    ./zsh.nix
-    ./niri/default.nix
-    ./qt.nix
-    ./wl-kbptr.nix
-    ./dms/dms.nix
-    ./wayscriber.nix
-    ./systemd.nix
-    ./xdg.nix
-    ./stylix.nix
-    ./opensnitch.nix
-    ./ssh.nix
-    ./dolphin.nix
-    ./distrobox.nix
     ./alacritty.nix
+    ./distrobox.nix
+    ./dolphin.nix
+    ./fcitx5.nix
+    ./flatpak.nix
+    ./gtk.nix
+    ./opensnitch.nix
+    ./qt.nix
+    ./ssh.nix
+    ./stylix.nix
+    ./systemd.nix
     ./vpn.nix
+    ./wayscriber.nix
+    ./wl-kbptr.nix
+    ./xdg.nix
+    ./zsh.nix
+
+    ./captive-browser/default.nix
+    ./dms/dms.nix
+    ./niri/default.nix
   ];
 
   home.packages = with pkgs; [

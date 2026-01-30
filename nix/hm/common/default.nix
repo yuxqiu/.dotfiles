@@ -1,27 +1,28 @@
 { pkgs, ... }:
 {
   imports = [
+    ./alacritty.nix
+    ./bash.nix
+    ./editorconfig.nix
+    ./fonts.nix
     ./fzf.nix
     ./git.nix
-    ./editorconfig.nix
-    ./python.nix
     ./git-fame.nix
-    ./zsh.nix
-    ./sioyek.nix
-    ./alacritty.nix
-    ./nvim.nix
-    ./vscode.nix
-    ./firefox/default.nix
-    ./bash.nix
-    ./ssh/default.nix
-    ./jj.nix
-    ./proton-pass-cli.nix
-    ./zed/default.nix
-    ./stylix/default.nix
-    ./session.nix
-    ./fonts.nix
-    ./lowfi/default.nix
     ./home-manager.nix
+    ./jj.nix
+    ./nvim.nix
+    ./proton-pass-cli.nix
+    ./python.nix
+    ./session.nix
+    ./sioyek.nix
+    ./vscode.nix
+    ./zsh.nix
+
+    ./firefox/default.nix
+    ./lowfi/default.nix
+    ./ssh/default.nix
+    ./stylix/default.nix
+    ./zed/default.nix
   ];
 
   home.packages = with pkgs; [
