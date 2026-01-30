@@ -10,6 +10,7 @@
     ./git-fame.nix
     ./home-manager.nix
     ./jj.nix
+    ./nix-index.nix
     ./nvim.nix
     ./proton-pass-cli.nix
     ./python.nix

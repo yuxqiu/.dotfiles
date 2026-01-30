@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +61,7 @@
       system-manager,
       nix-system-graphics,
       stylix,
+      nix-index-database,
       ...
     }@inputs:
     let
@@ -105,9 +110,9 @@
           extraSpecialArgs = { inherit inputs; };
 
           modules = [
-            stylix.homeModules.stylix
-
             # Common settings
+            nix-index-database.homeModules.nix-index
+            stylix.homeModules.stylix
             ./hm/common/default.nix
 
             # System-specific settings
