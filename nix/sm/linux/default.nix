@@ -12,7 +12,7 @@
     ./polkit.nix
     ./wayland-session.nix
 
-    ./dnscrypt-proxy/dnscrypt-proxy.nix
+    ./dnscrypt-proxy/default.nix
     ./journald/journald.nix
     ./NetworkManager/NetworkManager.nix
     ./opensnitch/default.nix
