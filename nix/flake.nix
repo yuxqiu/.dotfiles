@@ -4,6 +4,11 @@
   inputs = {
     # Common
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    import-tree.url = "github:vic/import-tree";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,119 +58,5 @@
     };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      home-manager,
-      nix-vscode-extensions,
-      system-manager,
-      nix-system-graphics,
-      stylix,
-      nix-index-database,
-      ...
-    }@inputs:
-    let
-      # Define supported systems
-      hm-systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin"
-      ];
-      sm-systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-
-      # Helper function to generate outputs for each system
-      hm-forAllSystems = nixpkgs.lib.genAttrs hm-systems;
-      sm-forAllSystems = nixpkgs.lib.genAttrs sm-systems;
-
-      # Username for Home Manager
-      username = "yuxqiu";
-    in
-    {
-      # Home Manager configurations for each system
-      homeConfigurations = hm-forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [
-              nix-vscode-extensions.overlays.default
-            ];
-          };
-
-          # Conditionally select system-specific module
-          systemModule =
-            if (pkgs.stdenv.isLinux) then
-              ./hm/linux/default.nix
-            else if (pkgs.stdenv.isDarwin) then
-              ./hm/darwin/default.nix
-            else
-              throw "Unsupported system: ${system}";
-        in
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          extraSpecialArgs = { inherit inputs; };
-
-          modules = [
-            # Common settings
-            nix-index-database.homeModules.nix-index
-            stylix.homeModules.stylix
-            ./hm/common/default.nix
-
-            # System-specific settings
-            systemModule
-
-            # User-specific settings
-            (import ./users/${username}.nix { inherit pkgs; })
-            ./users/dotfiles.nix
-            ./users/keys.nix
-
-            # Avoid gc cleaning the source
-            (
-              { lib, inputs, ... }:
-              {
-                home.file = builtins.listToAttrs (
-                  map (
-                    input:
-                    lib.attrsets.nameValuePair "sources/${input}" {
-                      source = inputs.${input};
-                    }
-                  ) (builtins.attrNames inputs)
-                );
-              }
-            )
-          ];
-        }
-      );
-
-      systemConfigs = sm-forAllSystems (
-        system:
-        system-manager.lib.makeSystemConfig {
-          modules = [
-            nix-system-graphics.systemModules.default
-
-            {
-              config = {
-                nixpkgs.hostPlatform = system;
-                system-manager.allowAnyDistro = true;
-                system-graphics.enable = true;
-              };
-            }
-
-            ./sm/linux/default.nix
-
-            # Additional inputs
-            {
-              _module.args = {
-                inherit username;
-                inherit inputs;
-              };
-            }
-          ];
-        }
-      );
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
