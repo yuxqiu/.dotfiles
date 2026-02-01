@@ -75,24 +75,22 @@
       };
     };
 
-  flake.modules.homeManager.darwin-base =
-    { pkgs, ... }:
-    {
-      programs.zsh = {
-        shellAliases = {
-          # JDK
-          jdks = "/usr/libexec/java_home -V";
-        };
+  flake.modules.homeManager.darwin-base = {
+    programs.zsh = {
+      shellAliases = {
+        # JDK
+        jdks = "/usr/libexec/java_home -V";
+      };
 
-        siteFunctions = {
-          jdk = ''
-            version=$1
-            export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-            java -version
-          '';
-        };
+      siteFunctions = {
+        jdk = ''
+          version=$1
+          export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+          java -version
+        '';
       };
     };
+  };
 
   flake.modules.homeManager.linux-base =
     { pkgs, ... }:
@@ -117,12 +115,11 @@
           sm = ''
             if [ $# -eq 0 ]; then
               echo "Usage: sm <flake-output-name>"
-              echo "Example: sm '"yuxqiu@laptop"'
+              echo "Example: sm '\"yuxqiu@laptop\"'"
               return 1
             fi
             nix flake update
             update-nix-fetchgit */**/*.nix
-            home-manager switch --flake ".#$1"
             system-manager switch --flake ".#$1" --sudo && rm result
           '';
         };
