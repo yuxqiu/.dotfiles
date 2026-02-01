@@ -26,6 +26,7 @@
         config.flake.modules.systemManager.base
         config.flake.modules.systemManager.gui
 
+        config.flake.modules.systemManager.nix
         config.flake.modules.systemManager.yuxqiu
       ];
     };
