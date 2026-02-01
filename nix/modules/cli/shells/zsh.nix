@@ -64,7 +64,7 @@
           hm = ''
             if [ $# -eq 0 ]; then
               echo "Usage: hm <flake-output-name>"
-              echo "Example: hm yuxqiu@laptop"
+              echo "Example: hm yuxqiu-laptop"
               return 1
             fi
             nix flake update
@@ -115,7 +115,7 @@
           sm = ''
             if [ $# -eq 0 ]; then
               echo "Usage: sm <flake-output-name>"
-              echo "Example: sm '\"yuxqiu@laptop\"'"
+              echo "Example: sm yuxqiu-laptop"
               return 1
             fi
             nix flake update

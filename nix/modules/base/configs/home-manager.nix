@@ -39,7 +39,7 @@
     name: cfg:
 
     let
-      username = builtins.head (lib.splitString "@" name);
+      username = builtins.head (lib.splitString "-" name);
 
       # Compute once, outside module evaluation
       homeDirPrefix =

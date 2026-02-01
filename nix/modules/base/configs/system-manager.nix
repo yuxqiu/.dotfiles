@@ -33,7 +33,7 @@
     name: cfg:
 
     let
-      username = builtins.head (lib.splitString "@" name);
+      username = builtins.head (lib.splitString "-" name);
     in
 
     inputs.system-manager.lib.makeSystemConfig {

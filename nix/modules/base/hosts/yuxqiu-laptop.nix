@@ -5,7 +5,7 @@
 
 {
   configurations.homeManager = {
-    "yuxqiu@laptop" = {
+    "yuxqiu-laptop" = {
       system = "aarch64-linux";
       stateVersion = "26.05";
       modules = [
@@ -20,7 +20,7 @@
   };
 
   configurations.systemManager = {
-    "yuxqiu@laptop" = {
+    "yuxqiu-laptop" = {
       system = "aarch64-linux";
       modules = [
         config.flake.modules.systemManager.base
