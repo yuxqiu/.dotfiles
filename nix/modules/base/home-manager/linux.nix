@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.linux-base =
     { pkgs, ... }:
@@ -5,8 +6,9 @@
       home.packages = with pkgs; [
         iputils
         patch
-        system-manager
         traceroute
+
+        inputs.system-manager.packages.${pkgs.stdenv.system}.default
       ];
 
       # improve generic linux compatibility (on non NixOS)
