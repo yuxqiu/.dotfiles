@@ -38,6 +38,6 @@
       };
 
       xdg.configFile."DankMaterialShell/settings.json".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.user.dotfiles}/nix/modules/desktop/dms/settings.json";
+        config.lib.file.mkOutOfStoreSymlink "${config.my.user.dotfiles}/nix/modules/desktop/dms/settings.json";
     };
 }

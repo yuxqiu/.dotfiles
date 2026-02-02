@@ -12,7 +12,9 @@
     }:
     # Modified from https://github.com/AvengeMedia/DankMaterialShell/blob/master/distro/nix/greeter.nix
     let
-      user = config.user.username;
+      cfg = config.programs.dank-material-shell.greeter;
+
+      user = cfg.user;
       cacheDir = "/tmp/dms-greeter";
       compositor = "niri";
 
@@ -108,25 +110,41 @@
       );
     in
     {
-      environment.etc = {
-        # Required to run greeter in current user to copy settings files
-        # from user dirs to cache dirs.
-        # - Security Implications: acceptable for a single-user machine.
-        "greetd/config.toml" = {
-          text = ''
-            [terminal]
-            # The VT to run the greeter on. Can be "next", "current" or a number
-            # designating the VT.
-            vt = 1
+      options.programs.dank-material-shell.greeter = {
+        enable = lib.mkEnableOption "DankMaterialShell greeter";
+        user = lib.mkOption {
+          type = lib.types.str;
+          example = "username";
+          description = ''
+            User account whose greeter configuration (lightdm-gtk-greeter settings, theme,
+            background, font, etc.) should be copied to the system-wide greeter at runtime.
 
-            # The default session, also known as the greeter.
-            [default_session]
-
-            command = "${script}/bin/dms-greeter"
-
-            user = "${user}"
+            greetd will then start dms-greeter in this user.
           '';
-          mode = "0644";
+        };
+      };
+
+      config = lib.mkIf cfg.enable {
+        environment.etc = {
+          # Required to run greeter in current user to copy settings files
+          # from user dirs to cache dirs.
+          # - Security Implications: acceptable for a single-user machine.
+          "greetd/config.toml" = {
+            text = ''
+              [terminal]
+              # The VT to run the greeter on. Can be "next", "current" or a number
+              # designating the VT.
+              vt = 1
+
+              # The default session, also known as the greeter.
+              [default_session]
+
+              command = "${script}/bin/dms-greeter"
+
+              user = "${user}"
+            '';
+            mode = "0644";
+          };
         };
       };
     };

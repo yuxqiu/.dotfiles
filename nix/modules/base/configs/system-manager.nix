@@ -31,15 +31,9 @@
 
   config.flake.systemConfigs = lib.mapAttrs (
     name: cfg:
-
-    let
-      username = builtins.head (lib.splitString "-" name);
-    in
-
     inputs.system-manager.lib.makeSystemConfig {
       modules = cfg.modules ++ [
         {
-          user.username = username;
           nixpkgs.hostPlatform = cfg.system;
         }
       ];

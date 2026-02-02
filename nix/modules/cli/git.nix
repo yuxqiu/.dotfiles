@@ -44,7 +44,7 @@
         };
 
         signing = {
-          key = config.user.keys.githubPub;
+          key = config.my.user.keys.githubPub;
           format = "ssh";
           signByDefault = true;
         };

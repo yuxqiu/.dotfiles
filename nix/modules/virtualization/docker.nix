@@ -1,7 +1,6 @@
 {
   flake.modules.systemManager.base =
     {
-      config,
       lib,
       pkgs,
       ...
@@ -10,9 +9,7 @@
     {
       # Create docker group and add the user to it
       users.groups.docker = { };
-      users.users.${config.user.username} = {
-        extraGroups = [ "docker" ];
-      };
+      my.users.defaultExtraGroups = [ "docker" ];
 
       # https://discourse.nixos.org/t/how-to-run-docker-daemon-from-nix-not-nixos/43413
       environment = {

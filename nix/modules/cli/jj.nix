@@ -12,7 +12,7 @@
           signing = {
             behavior = "own";
             backend = "ssh";
-            key = config.user.keys.githubPub;
+            key = config.my.user.keys.githubPub;
           };
         };
       };

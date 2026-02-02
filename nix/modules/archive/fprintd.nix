@@ -1,23 +1,40 @@
 {
-  flake.modules.systemManager.base =
-    { pkgs, config, ... }:
+  flake.modules.systemManager.cs9711-fingerprint =
+    { pkgs, ... }:
 
     let
-      watchFprintd = pkgs.writeShellScriptBin "watch-fprintd.sh" ''
-        restart_fprintd() {
-            echo "[fprintd-watchdog] Restarting fprintd due to segfault or device reinsertion..."
-            systemctl kill fprintd || true
-            sleep 1 # sleeping is always healthy
-            systemctl restart fprintd
-        }
+      watchFprintd = pkgs.writeShellApplication {
+        name = "watch-fprintd";
 
-        # Follow kernel messages
-        journalctl -kf -t kernel --cursor-file="/var/tmp/fprintd-journal.cursor" | while read -r line; do
-            if echo "$line" | grep -Eq "fprintd.*segfault|New USB.*found.*idVendor=2541.*idProduct=0236"; then
-                restart_fprintd
-            fi
-        done
-      '';
+        runtimeInputs = with pkgs; [
+          systemd # for systemctl, journalctl
+          coreutils # sleep, echo, etc.
+        ];
+
+        text = ''
+          set -euo pipefail
+
+          restart_fprintd() {
+              echo "[fprintd-watchdog] Restarting fprintd (segfault or Goodix device re-inserted)"
+              systemctl kill fprintd 2>/dev/null || true
+              sleep 1
+              systemctl restart fprintd
+          }
+
+          cursor_file="/var/tmp/fprintd-journal.cursor"
+
+          echo "[fprintd-watchdog] Starting — watching kernel messages for Goodix fingerprint issues..."
+
+          journalctl -kf \
+            -t kernel \
+            --cursor-file "$cursor_file" \
+            | while IFS= read -r line; do
+              if echo "$line" | grep -Eq "(fprintd.*segfault|New USB.*found.*idVendor=2541.*idProduct=0236)"; then
+                  restart_fprintd
+              fi
+          done
+        '';
+      };
     in
     {
       environment = {
@@ -47,7 +64,6 @@
         wantedBy = [ "multi-user.target" ];
 
         serviceConfig = {
-          Environment = "PATH=/run/system-manager/sw/bin/:/home/${config.user.username}/.local/bin:/home/${config.user.username}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin";
           ExecStart = "${watchFprintd}/bin/watch-fprintd.sh";
           Restart = "always";
           RestartSec = 10;
