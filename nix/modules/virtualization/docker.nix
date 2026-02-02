@@ -7,9 +7,8 @@
     }:
 
     {
-      # Create docker group and add the user to it
+      # Create docker group
       users.groups.docker = { };
-      my.users.defaultExtraGroups = [ "docker" ];
 
       # https://discourse.nixos.org/t/how-to-run-docker-daemon-from-nix-not-nixos/43413
       environment = {

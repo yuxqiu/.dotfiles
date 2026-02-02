@@ -17,14 +17,14 @@
   flake.modules.systemManager.yuxqiu =
     { pkgs, ... }:
     {
-      my.users.normalUsers = [ "yuxqiu" ];
-
       users.users.yuxqiu = {
         isNormalUser = true;
         description = "yuxqiu";
         extraGroups = [
           "wheel"
           "input"
+          "docker"
+          "i2c"
         ];
         initialPassword = "changeme";
 

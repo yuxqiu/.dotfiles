@@ -19,6 +19,5 @@
     };
 
     users.groups.i2c = { };
-    my.users.defaultExtraGroups = [ "i2c" ];
   };
 }
