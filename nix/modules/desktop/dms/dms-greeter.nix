@@ -10,7 +10,19 @@
       lib,
       ...
     }:
+    # Modified from https://github.com/AvengeMedia/DankMaterialShell/blob/master/distro/nix/greeter.nix
     let
+      user = config.user.username;
+      cacheDir = "/tmp/dms-greeter";
+      compositor = "niri";
+
+      configHome = config.users.users.${user}.home;
+      configFiles = [
+        "${configHome}/.config/DankMaterialShell/settings.json"
+        "${configHome}/.local/state/DankMaterialShell/session.json"
+        "${configHome}/.cache/DankMaterialShell/dms-colors.json"
+      ];
+
       dms = inputs.dms.packages.${pkgs.stdenv.system};
 
       # greetd uses PATH to lookup niri and niri-session
@@ -25,16 +37,81 @@
         ++ waylandSessionPackages
       );
 
-      # Copied and modified from `distro/nix/greeter.nix`
-      greeterScript = pkgs.writeShellScriptBin "dms-greeter" ''
-        export PATH=$PATH:${greeterPath}
+      prelude = "export PATH=$PATH:${greeterPath}";
 
-        ${dms.dms-shell}/share/quickshell/dms/Modules/Greetd/assets/dms-greeter \
-        --command niri -p ${dms.dms-shell}/share/quickshell/dms
+      jq = lib.getExe pkgs.jq;
+      prestart = ''
+        mkdir -p ${cacheDir}
+        cd ${cacheDir}
+
+        ${lib.concatStringsSep "\n" (
+          lib.map (f: ''
+            if [ -f "${f}" ]; then
+                cp "${f}" .
+            fi
+          '') configFiles
+        )}
+
+        if [ -f session.json ]; then
+            copy_wallpaper() {
+                local path=$(${jq} -r ".$1 // empty" session.json)
+                if [ -f "$path" ]; then
+                    cp "$path" "$2"
+                    ${jq} ".$1 = \"${cacheDir}/$2\"" session.json > session.tmp
+                    mv session.tmp session.json
+                fi
+            }
+
+            copy_monitor_wallpapers() {
+                ${jq} -r ".$1 // {} | to_entries[] | .key + \":\" + .value" session.json 2>/dev/null | while IFS=: read monitor path; do
+                    local dest="$2-$(echo "$monitor" | tr -c '[:alnum:]' '-')"
+                    if [ -f "$path" ]; then
+                        cp "$path" "$dest"
+                        ${jq} --arg m "$monitor" --arg p "${cacheDir}/$dest" ".$1[\$m] = \$p" session.json > session.tmp
+                        mv session.tmp session.json
+                    fi
+                done
+            }
+
+            copy_wallpaper "wallpaperPath" "wallpaper"
+            copy_wallpaper "wallpaperPathLight" "wallpaper-light"
+            copy_wallpaper "wallpaperPathDark" "wallpaper-dark"
+            copy_monitor_wallpapers "monitorWallpapers" "wallpaper-monitor"
+            copy_monitor_wallpapers "monitorWallpapersLight" "wallpaper-monitor-light"
+            copy_monitor_wallpapers "monitorWallpapersDark" "wallpaper-monitor-dark"
+        fi
+
+        if [ -f settings.json ]; then
+            if cp "$(${jq} -r '.customThemeFile' settings.json)" custom-theme.json; then
+                mv settings.json settings.orig.json
+                ${jq} '.customThemeFile = "${cacheDir}/custom-theme.json"' settings.orig.json > settings.json
+            fi
+        fi
+
+        mv dms-colors.json colors.json || :
+
+        chown -R greeter:greeter ${cacheDir} || true
       '';
+
+      greeterScript = ''
+        ${dms.dms-shell}/share/quickshell/dms/Modules/Greetd/assets/dms-greeter \
+        --cache-dir ${cacheDir} \
+        --command ${compositor} -p ${dms.dms-shell}/share/quickshell/dms
+      '';
+
+      script = pkgs.writeShellScriptBin "dms-greeter" (
+        lib.concatStringsSep "\n" [
+          prelude
+          prestart
+          greeterScript
+        ]
+      );
     in
     {
       environment.etc = {
+        # Required to run greeter in current user to copy settings files
+        # from user dirs to cache dirs.
+        # - Security Implications: acceptable for a single-user machine.
         "greetd/config.toml" = {
           text = ''
             [terminal]
@@ -45,12 +122,9 @@
             # The default session, also known as the greeter.
             [default_session]
 
-            command = "${greeterScript}/bin/dms-greeter"
+            command = "${script}/bin/dms-greeter"
 
-            # The user to run the command as. The privileges this user must have depends
-            # on the greeter. A graphical greeter may for example require the user to be
-            # in the `video` group.
-            user = "greeter"
+            user = "${user}"
           '';
           mode = "0644";
         };

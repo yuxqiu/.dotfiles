@@ -14,18 +14,12 @@
     };
   };
 
-  # Known quirks:
-  # 1. ACL on /home/username will be dropped after every activation
-  #    because the user's home directory is managed by system-manager.
-  #    This breaks the theme sync between dms-greeter and dms.
-  #
-  #    I might try to fix this by copying things from dms repo.
   flake.modules.systemManager.yuxqiu =
     { pkgs, ... }:
     {
       users.users.yuxqiu = {
         isNormalUser = true;
-        description = "yuxqiu User";
+        description = "yuxqiu";
         extraGroups = [
           "wheel"
           "input"
