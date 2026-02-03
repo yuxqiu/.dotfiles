@@ -91,8 +91,6 @@
         fi
 
         mv dms-colors.json colors.json || :
-
-        chown -R greeter:greeter ${cacheDir} || true
       '';
 
       greeterScript = ''
