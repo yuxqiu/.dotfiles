@@ -34,11 +34,11 @@
         ignoreShellProgramCheck = true;
       };
 
-      # dms-greeter is treated as a user config as its theme is copied
-      # from a specific user's dir and we need to specify that user.
+      # dms-greeter uses its theme from a user's dir so we need
+      # to specify that user.
       programs.dank-material-shell.greeter = {
         enable = true;
-        user = "yuxqiu";
+        configHome = "/home/yuxqiu";
       };
     };
 }

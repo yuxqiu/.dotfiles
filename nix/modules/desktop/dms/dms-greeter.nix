@@ -14,11 +14,11 @@
     let
       cfg = config.programs.dank-material-shell.greeter;
 
-      user = cfg.user;
-      cacheDir = "/tmp/dms-greeter";
+      cacheDir = "/var/lib/dms-greeter";
       compositor = "niri";
+      greetd-default-session-user = "greeter";
 
-      configHome = config.users.users.${user}.home;
+      configHome = cfg.configHome;
       configFiles = [
         "${configHome}/.config/DankMaterialShell/settings.json"
         "${configHome}/.local/state/DankMaterialShell/session.json"
@@ -39,10 +39,8 @@
         ++ waylandSessionPackages
       );
 
-      prelude = "export PATH=$PATH:${greeterPath}";
-
       jq = lib.getExe pkgs.jq;
-      prestart = ''
+      dmsGreeterPreStart = pkgs.writeShellScriptBin "dms-greeter-prepare" ''
         mkdir -p ${cacheDir}
         cd ${cacheDir}
 
@@ -84,49 +82,58 @@
         fi
 
         if [ -f settings.json ]; then
-            if cp "$(${jq} -r '.customThemeFile' settings.json)" custom-theme.json; then
+            customTheme=$(${jq} -r '.customThemeFile' settings.json)
+            if [ -n "$customTheme" ] && [ -f "$customTheme" ]; then
+                cp -f "$customTheme" custom-theme.json
                 mv settings.json settings.orig.json
                 ${jq} '.customThemeFile = "${cacheDir}/custom-theme.json"' settings.orig.json > settings.json
             fi
         fi
 
         mv dms-colors.json colors.json || :
+        chown ${greetd-default-session-user}: * || :
       '';
 
-      greeterScript = ''
+      dmsGreeterScript = pkgs.writeShellScriptBin "dms-greeter" ''
+        export PATH=$PATH:${greeterPath}
+
         ${dms.dms-shell}/share/quickshell/dms/Modules/Greetd/assets/dms-greeter \
         --cache-dir ${cacheDir} \
         --command ${compositor} -p ${dms.dms-shell}/share/quickshell/dms
       '';
-
-      script = pkgs.writeShellScriptBin "dms-greeter" (
-        lib.concatStringsSep "\n" [
-          prelude
-          prestart
-          greeterScript
-        ]
-      );
     in
     {
       options.programs.dank-material-shell.greeter = {
         enable = lib.mkEnableOption "DankMaterialShell greeter";
-        user = lib.mkOption {
+        configHome = lib.mkOption {
           type = lib.types.str;
-          example = "username";
+          example = "/home/username";
           description = ''
-            User account whose greeter configuration (lightdm-gtk-greeter settings, theme,
-            background, font, etc.) should be copied to the system-wide greeter at runtime.
-
-            greetd will then start dms-greeter in this user.
+            Directory where dms-greeter configuration should be copied
+            to the system-wide greeter at runtime.
           '';
         };
       };
 
       config = lib.mkIf cfg.enable {
+        systemd.services.dms-greeter-prepare = {
+          description = "Prepare DankMaterialShell greeter cache directory";
+          before = [ "display-manager.service" ];
+          wantedBy = [ "display-manager.service" ];
+
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            ExecStart = "${dmsGreeterPreStart}/bin/dms-greeter-prepare";
+          };
+
+          # Only start if greeter is actually enabled & configHome exists
+          unitConfig = {
+            ConditionPathExists = cfg.configHome;
+          };
+        };
+
         environment.etc = {
-          # Required to run greeter in current user to copy settings files
-          # from user dirs to cache dirs.
-          # - Security Implications: acceptable for a single-user machine.
           "greetd/config.toml" = {
             text = ''
               [terminal]
@@ -137,12 +144,21 @@
               # The default session, also known as the greeter.
               [default_session]
 
-              command = "${script}/bin/dms-greeter"
+              command = "${dmsGreeterScript}/bin/dms-greeter"
 
-              user = "${user}"
+              user = "${greetd-default-session-user}"
             '';
             mode = "0644";
           };
+        };
+
+        users.groups.${greetd-default-session-user} = { };
+        users.users.${greetd-default-session-user} = {
+          isSystemUser = true;
+          group = "${greetd-default-session-user}";
+          home = "/var/lib/${greetd-default-session-user}";
+          createHome = true;
+          description = "Greetd default session user";
         };
       };
     };
