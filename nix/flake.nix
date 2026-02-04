@@ -33,11 +33,15 @@
       url = "github:yuxqiu/tun2proxy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tirith = {
+      url = "github:sheeki03/tirith";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     system-manager = {
-      url = "github:numtide/system-manager?ref=pull/266/head";
+      url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-system-graphics = {
