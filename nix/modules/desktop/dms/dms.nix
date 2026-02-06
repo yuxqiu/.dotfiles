@@ -39,5 +39,6 @@
 
       xdg.configFile."DankMaterialShell/settings.json".source =
         config.lib.file.mkOutOfStoreSymlink "${config.my.user.dotfiles}/nix/modules/desktop/dms/settings.json";
+      stylix.targets.dank-material-shell.enable = false;
     };
 }
