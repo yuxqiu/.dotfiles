@@ -122,6 +122,9 @@
             agent_review = false;
           };
           vim_mode = true;
+          vim = {
+            toggle_relative_line_numbers = true;
+          };
         };
         userKeymaps = [
           {
@@ -167,6 +170,13 @@
                   "create_new_window" = true;
                 }
               ];
+            };
+          }
+          {
+            "context" = "vim_mode == normal || vim_mode == visual";
+            "bindings" = {
+              "s" = "vim::PushSneak";
+              "shift-s" = "vim::PushSneakBackward";
             };
           }
         ];

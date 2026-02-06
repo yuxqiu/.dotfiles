@@ -344,6 +344,11 @@
             "nix.enableLanguageServer" = true;
             "nix.serverPath" = "nixd";
 
+            # chat
+            "chat.agent.enabled" = false;
+            "chat.disableAIFeatures" = true;
+            "chat.commandCenter.enabled" = false;
+
             # Minimalistic
             "window.commandCenter" = false;
             "window.menuBarVisibility" = "hidden";
@@ -355,7 +360,6 @@
             "workbench.tree.enableStickyScroll" = false;
             "editor.stickyScroll.enabled" = false;
             "workbench.activityBar.location" = "top";
-            "chat.commandCenter.enabled" = false;
             "window.titleBarStyle" = "native";
             "window.menuStyle" = "custom";
             "window.customTitleBarVisibility" = "never";
