@@ -330,7 +330,7 @@
   "lockScreenShowProfileImage": true,
   "lockScreenShowPasswordField": true,
   "lockScreenShowMediaPlayer": false,
-  "lockScreenPowerOffMonitorsOnLock": false,
+  "lockScreenPowerOffMonitorsOnLock": true,
   "enableFprint": true,
   "maxFprintTries": 3,
   "lockScreenActiveMonitor": "all",

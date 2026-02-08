@@ -6,12 +6,9 @@ binds {
     // Dictation
     Mod+D hotkey-overlay-title=null { spawn-sh "~/.config/niri/scripts/dictation"; }
 
-    // wl-kbptr
-    Mod+G {
-        spawn-sh "wl-kbptr -o modes=floating,click -o mode_floating.source=detect"
-    }
-    Mod+Shift+G {
-        spawn-sh "wl-kbptr"
+    // Mouse Mode: wl-kbptr
+    Mod+M {
+        spawn-sh "wlr-which-key pointer"
     }
 
     // Kill focused window
@@ -119,8 +116,4 @@ binds {
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
-
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
-    Mod+M { power-off-monitors; }
 }
