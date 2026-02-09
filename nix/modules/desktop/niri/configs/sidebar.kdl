@@ -1,0 +1,10 @@
+binds {
+    Mod+A hotkey-overlay-title="Toggle Sidebar Floating" {
+        spawn-sh "~/.config/niri/scripts/niri-floating-sidebar.sh toggle";
+    }
+    Mod+S hotkey-overlay-title="Toggle Sidebar Visibility" {
+        spawn-sh "~/.config/niri/scripts/niri-floating-sidebar.sh hide";
+    }
+}
+
+spawn-at-startup "~/.config/niri/scripts/niri-sidebar-auto-reorder.sh"

@@ -6,3 +6,5 @@ include "configs/others.kdl"
 
 include "configs/dms.kdl"
 include optional=true "dms/outputs.kdl"
+
+include "configs/sidebar.kdl"
