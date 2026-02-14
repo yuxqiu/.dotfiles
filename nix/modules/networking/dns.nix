@@ -1,5 +1,5 @@
 # https://www.reddit.com/r/NixOS/comments/1pvq42f/nixos_dnscryptproxy_with_odoh_relays_servers_oisd/
-{ input, ... }:
+{ inputs, ... }:
 {
   flake.modules.systemManager.base =
     { pkgs, ... }:
@@ -14,7 +14,7 @@
     in
     {
       imports = [
-        (input.self + /packages/dnscrypt-proxy.nix)
+        (inputs.self + /packages/dnscrypt-proxy.nix)
       ];
 
       environment = {

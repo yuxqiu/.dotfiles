@@ -7,7 +7,6 @@
     {
       systemd.maskedUnits = [
         "systemd-oomd.service"
-        "dbus-org.freedesktop.oom1.service"
       ];
 
       # from dnf

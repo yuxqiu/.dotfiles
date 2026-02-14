@@ -49,11 +49,13 @@
           dark = "Adwaita";
         };
 
-        cursor = {
-          name = "catppuccin-mocha-dark-cursors";
-          package = pkgs.catppuccin-cursors.mochaDark;
-          size = 24;
-        };
+        # Temporarily disabled until it or its dependency (`inkscape`) can be compiled upstream
+        #
+        # cursor = {
+        #   name = "catppuccin-mocha-dark-cursors";
+        #   package = pkgs.catppuccin-cursors.mochaDark;
+        #   size = 24;
+        # };
       };
     };
 }

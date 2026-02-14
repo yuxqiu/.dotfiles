@@ -17,6 +17,12 @@
   flake.modules.systemManager.yuxqiu =
     { pkgs, ... }:
     {
+      sops = {
+        defaultSopsFile = ../secrets/yuxqiu.yaml;
+        age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        age.generateKey = true;
+      };
+
       users.users.yuxqiu = {
         isNormalUser = true;
         description = "yuxqiu";

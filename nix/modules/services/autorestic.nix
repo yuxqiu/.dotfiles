@@ -1,20 +1,31 @@
 {
   flake.modules.systemManager.base =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     let
-      autoresticBin = "${pkgs.autorestic}/bin/autorestic";
+      autoresticBin = "${pkgs.autorestic}/bin/autorestic -c ${
+        config.sops.secrets."autorestic.yaml".path
+      }";
       resticBin = "${pkgs.restic}/bin/restic";
     in
     {
+      sops.secrets."autorestic.yaml" = {
+        mode = "0400";
+        owner = config.users.users.root.name;
+        group = config.users.users.root.group;
+      };
+
       # See:
       # - https://autorestic.vercel.app/
       # - https://gitlab.com/py_crash/autorestic-systemd-units
       systemd = {
         services = {
           autorestic-backup = {
+            description = "Autorestic backup service";
+
             unitConfig = {
-              Description = "Autorestic backup service";
+              ConditionPathExists = config.sops.secrets."autorestic.yaml".path;
             };
+
             serviceConfig = {
               Type = "oneshot";
               ExecStartPre = "${autoresticBin} --restic-bin ${resticBin} exec -av -- unlock";
@@ -35,6 +46,7 @@
             };
           };
         };
+
         timers = {
           autorestic-backup = {
             enable = true;

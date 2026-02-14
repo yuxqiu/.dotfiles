@@ -7,5 +7,5 @@ include "configs/others.kdl"
 include "configs/sidebar.kdl"
 
 // dms
-include optional=true "configs/dms.kdl"
+include optional=true "dms/dms.kdl"
 include optional=true "dms/outputs.kdl"
