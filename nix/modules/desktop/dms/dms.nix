@@ -7,7 +7,6 @@
     { config, ... }:
     {
       imports = [
-        ./scripts/_dms-focused-output.nix
         inputs.dms.homeModules.dank-material-shell
         inputs.dms-plugin-registry.modules.default
       ];
@@ -36,9 +35,11 @@
           powerOptions.enable = true;
         };
       };
-
       xdg.configFile."DankMaterialShell/settings.json".source =
         config.lib.file.mkOutOfStoreSymlink "${config.my.user.dotfiles}/nix/modules/desktop/dms/settings.json";
+
+      home.file.".config/niri/configs/dms.kdl".source = ./configs/dms.kdl;
+
       stylix.targets.dank-material-shell.enable = false;
     };
 }

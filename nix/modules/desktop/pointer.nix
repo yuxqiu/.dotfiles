@@ -104,6 +104,7 @@
             key = "s";
             desc = "Click Left";
             cmd = "wlrctl pointer click left";
+            keep_open = true;
           }
           {
             key = "d";

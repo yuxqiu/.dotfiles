@@ -3,7 +3,7 @@
   config.flake.modules.homeManager.gui =
     { pkgs, ... }:
     {
-      imports = [ ./_ssh-agent-ac.nix ];
+      imports = [ (inputs.self + /packages/ssh-agent-ac.nix) ];
 
       services.ssh-agent-ac = {
         enable = true;

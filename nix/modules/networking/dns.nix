@@ -1,4 +1,5 @@
 # https://www.reddit.com/r/NixOS/comments/1pvq42f/nixos_dnscryptproxy_with_odoh_relays_servers_oisd/
+{ input, ... }:
 {
   flake.modules.systemManager.base =
     { pkgs, ... }:
@@ -13,7 +14,7 @@
     in
     {
       imports = [
-        ./_dnscrypt-proxy.nix
+        (input.self + /packages/dnscrypt-proxy.nix)
       ];
 
       environment = {
@@ -26,8 +27,20 @@
             '';
             mode = "0644";
           };
+          "NetworkManager/conf.d/dns-servers.conf" = {
+            text = ''
+              # https://wiki.archlinux.org/title/NetworkManager#Unmanaged_/etc/resolv.conf
+              [main]
+              dns=none
+            '';
+            mode = "0644";
+          };
         };
       };
+
+      systemd.maskedUnits = [
+        "systemd-resolved.service"
+      ];
 
       services.dnscrypt-proxy = {
         enable = true;

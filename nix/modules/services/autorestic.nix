@@ -17,6 +17,7 @@
             };
             serviceConfig = {
               Type = "oneshot";
+              ExecStartPre = "${autoresticBin} --restic-bin ${resticBin} exec -av -- unlock";
               ExecStart = "${autoresticBin} --restic-bin ${resticBin} backup --verbose -l home";
               ExecStartPost = "${autoresticBin} --restic-bin ${resticBin} forget --verbose --all";
               WorkingDirectory = "%h";
@@ -28,6 +29,7 @@
             };
             serviceConfig = {
               Type = "oneshot";
+              ExecStartPre = "${autoresticBin} --restic-bin ${resticBin} exec -av -- unlock";
               ExecStart = "${autoresticBin} --restic-bin ${resticBin} forget --verbose --prune --all";
               WorkingDirectory = "%h";
             };

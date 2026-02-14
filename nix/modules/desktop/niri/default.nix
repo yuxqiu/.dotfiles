@@ -33,8 +33,6 @@
 
       home.file.".config/niri/configs".source = ./configs;
       home.file.".config/niri/config.kdl".source = ./config.kdl;
-
-      imports = [ ./scripts/_dictation.nix ];
     };
 
   flake.modules.systemManager.gui =

@@ -5,6 +5,11 @@
       EARLYOOM_ARGS = "-n -r 0 -m 10 --prefer '^(Web Content|Isolated Web Co)$' --avoid '^(greetd|systemd|systemd-logind|dbus-daemon|dbus-broker|niri)$'";
     in
     {
+      systemd.maskedUnits = [
+        "systemd-oomd.service"
+        "dbus-org.freedesktop.oom1.service"
+      ];
+
       # from dnf
       systemd.services.earlyoom = {
         description = "Early OOM Daemon";

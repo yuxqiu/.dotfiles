@@ -1,15 +1,12 @@
-# Copied from https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/networking/dnscrypt-proxy.nix
+# Modified from https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/networking/dnscrypt-proxy.nix
 {
   config,
   lib,
   pkgs,
   ...
 }:
-
 let
-
   cfg = config.services.dnscrypt-proxy;
-
 in
 
 {

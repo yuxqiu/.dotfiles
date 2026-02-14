@@ -1,6 +1,7 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.linux-gui = {
-    imports = [ ./_wlr_which_key.nix ];
+    imports = [ (inputs.self + /packages/wlr_which_key.nix) ];
 
     programs.wlr-which-key = {
       enable = true;

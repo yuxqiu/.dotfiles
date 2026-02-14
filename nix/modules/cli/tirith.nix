@@ -1,9 +1,8 @@
-{ inputs, ... }:
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
     {
-      home.packages = [ inputs.tirith.packages.${pkgs.stdenv.system}.default ];
+      home.packages = with pkgs; [ tirith ];
 
       programs.zsh.initContent = ''eval "$(tirith init)"'';
       home.sessionVariables = {
