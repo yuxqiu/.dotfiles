@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-gui =
+  flake.modules.homeManager.linux-desktop =
     { pkgs, ... }:
     {
       home.packages = [ pkgs.opensnitch-ui ];
@@ -14,7 +14,7 @@
       };
     };
 
-  flake.modules.systemManager.gui =
+  flake.modules.systemManager.desktop =
     { pkgs, ... }:
     {
       environment.etc = {

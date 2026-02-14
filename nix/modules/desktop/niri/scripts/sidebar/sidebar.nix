@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-gui = {
+  flake.modules.homeManager.linux-desktop = {
     home.file.".config/niri/scripts/niri-floating-sidebar.sh" = {
       source = ./niri-floating-sidebar.sh;
       executable = true;

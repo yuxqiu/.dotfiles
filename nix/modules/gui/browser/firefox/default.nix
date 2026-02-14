@@ -12,7 +12,7 @@ let
 
 in
 {
-  flake.modules.homeManager.gui = {
+  flake.modules.homeManager.desktop = {
     # Enable Firefox and define profiles
     programs.firefox = {
       enable = true;

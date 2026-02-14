@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-gui =
+  flake.modules.homeManager.linux-desktop =
     { pkgs, ... }:
 
     let

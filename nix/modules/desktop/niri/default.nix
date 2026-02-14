@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-gui =
+  flake.modules.homeManager.linux-desktop =
     { pkgs, ... }:
     {
       xdg.portal = {
@@ -35,7 +35,7 @@
       home.file.".config/niri/config.kdl".source = ./config.kdl;
     };
 
-  flake.modules.systemManager.gui =
+  flake.modules.systemManager.desktop =
     { pkgs, ... }:
     {
       services.displayManager.waylandSessions = {

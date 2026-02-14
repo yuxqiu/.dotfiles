@@ -16,7 +16,7 @@
       targets.genericLinux.gpu.enable = false; # already managed by system-manager
     };
 
-  flake.modules.homeManager.linux-gui =
+  flake.modules.homeManager.linux-desktop =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

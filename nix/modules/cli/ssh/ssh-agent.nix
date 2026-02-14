@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  config.flake.modules.homeManager.gui =
+  config.flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       imports = [ (inputs.self + /packages/ssh-agent-ac.nix) ];
@@ -16,7 +16,7 @@
       };
     };
 
-  config.flake.modules.homeManager.linux-gui =
+  config.flake.modules.homeManager.linux-desktop =
     { pkgs, ... }:
     {
       services.ssh-agent-ac.sshAskpass = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";

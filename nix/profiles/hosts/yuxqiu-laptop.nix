@@ -10,9 +10,9 @@
       stateVersion = "26.05";
       modules = [
         config.flake.modules.homeManager.base
-        config.flake.modules.homeManager.gui
+        config.flake.modules.homeManager.desktop
         config.flake.modules.homeManager.linux-base
-        config.flake.modules.homeManager.linux-gui
+        config.flake.modules.homeManager.linux-desktop
 
         config.flake.modules.homeManager.yuxqiu
       ];
@@ -24,7 +24,7 @@
       system = "aarch64-linux";
       modules = [
         config.flake.modules.systemManager.base
-        config.flake.modules.systemManager.gui
+        config.flake.modules.systemManager.desktop
 
         config.flake.modules.systemManager.yuxqiu
       ];

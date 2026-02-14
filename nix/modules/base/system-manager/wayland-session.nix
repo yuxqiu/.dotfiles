@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.gui =
+  flake.modules.systemManager.desktop =
     {
       config,
       lib,

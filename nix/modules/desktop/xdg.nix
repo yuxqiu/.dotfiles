@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-gui = {
+  flake.modules.homeManager.linux-desktop = {
     # enable xdg
     xdg.enable = true;
 

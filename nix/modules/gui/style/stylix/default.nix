@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  flake.modules.homeManager.gui =
+  flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       imports = [ inputs.stylix.homeModules.stylix ];
@@ -38,7 +38,7 @@
       home.file.".wallpapers".source = ./wallpapers;
     };
 
-  flake.modules.homeManager.linux-gui =
+  flake.modules.homeManager.linux-desktop =
     { pkgs, ... }:
     {
       stylix = {

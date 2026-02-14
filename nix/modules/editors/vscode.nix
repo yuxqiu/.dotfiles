@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.gui =
+  flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       programs.vscode = {
@@ -81,7 +81,7 @@
             "editor.cursorSmoothCaretAnimation" = "on";
             "editor.cursorBlinking" = "smooth";
             "editor.minimap.autohide" = "mouseover";
-            "editor.guides.bracketPairs" = true;
+            "editor.desktopdes.bracketPairs" = true;
             "editor.autoClosingOvertype" = "always";
             "editor.linkedEditing" = true;
             "editor.suggest.snippetsPreventQuickSuggestions" = false;
@@ -221,7 +221,7 @@
             "latex-workshop.formatting.latex" = "latexindent";
             "[latex]" = {
               "editor.wordWrap" = "on";
-              "editor.guides.bracketPairs" = false;
+              "editor.desktopdes.bracketPairs" = false;
               "editor.defaultFormatter" = "James-Yu.latex-workshop";
             };
 

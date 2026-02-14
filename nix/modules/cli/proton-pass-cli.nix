@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.gui =
+  flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [ proton-pass-cli ];
