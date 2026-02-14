@@ -31,8 +31,19 @@
           dankLauncherKeys.enable = true;
           emojiLauncher.enable = true;
           calculator.enable = true;
-          dankPomodoroTimer.enable = true;
-          powerOptions.enable = true;
+          dankPomodoroTimer = {
+            enable = true;
+            settings = {
+              workDuration = 45;
+            };
+          };
+          powerOptions = {
+            enable = true;
+            settings = {
+              noTrigger = true;
+              trigger = "";
+            };
+          };
         };
       };
       xdg.configFile."DankMaterialShell/settings.json".source =

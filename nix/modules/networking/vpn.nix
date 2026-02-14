@@ -3,6 +3,29 @@
   ...
 }:
 {
+  flake.modules.homeManager.linux-base = {
+    # Add dms toggle for t2p
+    programs.dank-material-shell.plugins.dankActions.settings = {
+      variants = [
+        {
+          icon = "vpn_lock";
+          displayText = "";
+          displayCommand = "t2p status";
+          clickCommand = "pkexec t2p toggle";
+          middleClickCommand = "";
+          rightClickCommand = "true";
+          updateInterval = 0;
+          showIcon = true;
+          showText = true;
+          id = "variant_1762019076882";
+          name = "t2p";
+          visibilityCommand = "";
+          visibilityInterval = 0;
+        }
+      ];
+    };
+  };
+
   flake.modules.systemManager.base =
     { pkgs, config, ... }:
     let
