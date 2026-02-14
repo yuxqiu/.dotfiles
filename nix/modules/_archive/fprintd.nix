@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.cs9711-fingerprint =
+  flake.modules.systemManager.base =
     { pkgs, ... }:
 
     let
