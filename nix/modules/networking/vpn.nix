@@ -47,41 +47,6 @@
 
           PROG="tun2proxy-bin"
           TUN2PROXY_BIN="${tun2proxy}/bin/tun2proxy-bin"
-          CONFIG_PATH="${config.sops.secrets."xray.json".path}"
-
-          # ────────────────────────────────────────────────
-          # Extract BYPASS_IP from xray config at runtime
-          # ────────────────────────────────────────────────
-          if [[ ! -f "$CONFIG_PATH" ]]; then
-              echo "ERROR: Xray config not found at $CONFIG_PATH" >&2
-              exit 1
-          fi
-
-          # Find first vless outbound's address (domain)
-          DOMAIN=$(jq -r '
-              .outbounds[]
-              | select(.settings.address)
-              | .settings.address
-              | select(.)' "$CONFIG_PATH" | head -n 1)
-
-          if [[ -z "$DOMAIN" || "$DOMAIN" == "null" ]]; then
-              echo "ERROR: No VLESS outbound with 'address' field found in $CONFIG_PATH" >&2
-              exit 1
-          fi
-
-          # Lookup that domain in dns.hosts
-          BYPASS_IP=$(jq -r --arg domain "$DOMAIN" '
-              .dns.hosts[$domain] // empty
-          ' "$CONFIG_PATH")
-
-          if [[ -z "$BYPASS_IP" || "$BYPASS_IP" == "null" ]]; then
-              echo "ERROR: No IP found in dns.hosts for domain '$DOMAIN' in $CONFIG_PATH" >&2
-              echo "       Expected something like: \"dns\": {\"hosts\": {\"$DOMAIN\": \"1.2.3.4\"}}" >&2
-              exit 1
-          fi
-
-          echo "Using bypass IP: $BYPASS_IP (for domain $DOMAIN)" >&2
-
           REAL_RESOLV="/etc/resolv.conf"
 
           is_mounted() {
@@ -118,13 +83,50 @@
           start() {
               echo "starting..."
 
+              CONFIG_PATH="${config.sops.secrets."xray.json".path}"
+
+              # ────────────────────────────────────────────────
+              # Extract BYPASS_IP from xray config at runtime
+              # ────────────────────────────────────────────────
+              if [[ ! -f "$CONFIG_PATH" ]]; then
+                  echo "ERROR: Xray config not found at $CONFIG_PATH" >&2
+                  exit 1
+              fi
+
+              # Find first vless outbound's address (domain)
+              DOMAIN=$(jq -r '
+                  .outbounds[]
+                  | select(.settings.address)
+                  | .settings.address
+                  | select(.)' "$CONFIG_PATH" | head -n 1)
+
+              if [[ -z "$DOMAIN" || "$DOMAIN" == "null" ]]; then
+                  echo "ERROR: No VLESS outbound with 'address' field found in $CONFIG_PATH" >&2
+                  exit 1
+              fi
+
+              # Lookup that domain in dns.hosts
+              BYPASS_IP=$(jq -r --arg domain "$DOMAIN" '
+                  .dns.hosts[$domain] // empty
+              ' "$CONFIG_PATH")
+
+              if [[ -z "$BYPASS_IP" || "$BYPASS_IP" == "null" ]]; then
+                  echo "ERROR: No IP found in dns.hosts for domain '$DOMAIN' in $CONFIG_PATH" >&2
+                  echo "       Expected something like: \"dns\": {\"hosts\": {\"$DOMAIN\": \"1.2.3.4\"}}" >&2
+                  exit 1
+              fi
+
+              echo "Using bypass IP: $BYPASS_IP (for domain $DOMAIN)" >&2
+
               # Clean previous state
               cleanup
 
               # Launch
+              echo "Launching tun2proxy..."
               $TUN2PROXY_BIN --setup --proxy socks5://127.0.0.1:1080 \
                   --dns virtual --virtual-dns-pool 198.18.0.0/15 \
                   --bypass "$BYPASS_IP" --daemonize &
+
               echo "Finish launching"
 
               # Wait until bind mount appears (or timeout)
