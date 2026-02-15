@@ -16,6 +16,7 @@ fedora_packages=(
     NetworkManager-wifi
     bluez
     cmake
+    cups-pk-helper
     fuse
     fuse3
     gcc
