@@ -1,10 +1,14 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
-  flake.modules.systemManager.base = {
-    imports = [
-      inputs.sops-nix.nixosModules.sops
-    ];
+  flake.modules.systemManager.base =
+    { config, ... }:
+    {
+      imports = [
+        inputs.sops-nix.nixosModules.sops
+      ];
 
-    users.groups.keys = { };
-  };
+      config = lib.mkIf config.my.sops.enable {
+        users.groups.keys = { };
+      };
+    };
 }

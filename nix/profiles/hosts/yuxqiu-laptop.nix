@@ -30,4 +30,24 @@
       ];
     };
   };
+
+  flake.modules.homeManager.base = {
+    my.sops.enable = true;
+  };
+
+  flake.modules.systemManager.base = {
+    my.sops.enable = true;
+    sops = {
+      defaultSopsFile = ../secrets/yuxqiu.yaml;
+      age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      age.generateKey = true;
+    };
+
+    # dms-greeter uses its theme from a user's dir so we need
+    # to specify that user.
+    programs.dank-material-shell.greeter = {
+      enable = true;
+      configHome = "/home/yuxqiu";
+    };
+  };
 }

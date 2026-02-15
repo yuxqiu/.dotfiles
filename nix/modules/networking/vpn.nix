@@ -3,31 +3,40 @@
   ...
 }:
 {
-  flake.modules.homeManager.linux-base = {
-    # Add dms toggle for t2p
-    programs.dank-material-shell.plugins.dankActions.settings = {
-      variants = [
-        {
-          icon = "vpn_lock";
-          displayText = "";
-          displayCommand = "t2p status";
-          clickCommand = "pkexec t2p toggle";
-          middleClickCommand = "";
-          rightClickCommand = "true";
-          updateInterval = 0;
-          showIcon = true;
-          showText = true;
-          id = "variant_1762019076882";
-          name = "t2p";
-          visibilityCommand = "";
-          visibilityInterval = 0;
-        }
-      ];
+  flake.modules.homeManager.linux-base =
+    { lib, config, ... }:
+    {
+      # Add dms toggle for t2p
+      config = lib.mkIf config.my.sops.enable {
+        programs.dank-material-shell.plugins.dankActions.settings = {
+          variants = [
+            {
+              icon = "vpn_lock";
+              displayText = "";
+              displayCommand = "t2p status";
+              clickCommand = "pkexec t2p toggle";
+              middleClickCommand = "";
+              rightClickCommand = "true";
+              updateInterval = 0;
+              showIcon = true;
+              showText = true;
+              id = "variant_1762019076882";
+              name = "t2p";
+              visibilityCommand = "";
+              visibilityInterval = 0;
+            }
+          ];
+        };
+      };
     };
-  };
 
   flake.modules.systemManager.base =
-    { pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
     let
       tun2proxy = inputs.tun2proxy.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
@@ -223,42 +232,44 @@
       };
     in
     {
-      users.groups.xray = { };
-      users.users.xray = {
-        isSystemUser = true;
-        group = "xray";
-        home = "/var/lib/xray";
-        createHome = true;
-        description = "Xray daemon user";
-      };
-
-      sops.secrets."xray.json" = {
-        mode = "0400";
-        owner = config.users.users.xray.name;
-        group = config.users.users.xray.group;
-      };
-
-      systemd.services.xray = {
-        description = "Xray Proxy Server";
-
-        after = [
-          "network-online.target"
-        ];
-        wants = [ "network-online.target" ];
-
-        unitConfig = {
-          ConditionPathExists = config.sops.secrets."xray.json".path;
+      config = lib.mkIf config.my.sops.enable {
+        users.groups.xray = { };
+        users.users.xray = {
+          isSystemUser = true;
+          group = "xray";
+          home = "/var/lib/xray";
+          createHome = true;
+          description = "Xray daemon user";
         };
 
-        serviceConfig = {
-          Type = "exec";
-          ExecStart = "${pkgs.xray}/bin/xray run -c ${config.sops.secrets."xray.json".path}";
-          User = "xray";
-          Group = "xray";
-          DynamicUser = false;
+        sops.secrets."xray.json" = {
+          mode = "0400";
+          owner = config.users.users.xray.name;
+          group = config.users.users.xray.group;
         };
-      };
 
-      environment.systemPackages = [ t2p ];
+        systemd.services.xray = {
+          description = "Xray Proxy Server";
+
+          after = [
+            "network-online.target"
+          ];
+          wants = [ "network-online.target" ];
+
+          unitConfig = {
+            ConditionPathExists = config.sops.secrets."xray.json".path;
+          };
+
+          serviceConfig = {
+            Type = "exec";
+            ExecStart = "${pkgs.xray}/bin/xray run -c ${config.sops.secrets."xray.json".path}";
+            User = "xray";
+            Group = "xray";
+            DynamicUser = false;
+          };
+        };
+
+        environment.systemPackages = [ t2p ];
+      };
     };
 }
