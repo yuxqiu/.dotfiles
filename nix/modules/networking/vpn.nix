@@ -47,7 +47,9 @@
 
           PROG="tun2proxy-bin"
           TUN2PROXY_BIN="${tun2proxy}/bin/tun2proxy-bin"
+
           REAL_RESOLV="/etc/resolv.conf"
+          BACKUP_RESOLV="/etc/resolv.conf.t2p.backup"
 
           is_mounted() {
               mountpoint -q "$REAL_RESOLV" 2>/dev/null
@@ -56,11 +58,61 @@
           cleanup_mount() {
               if is_mounted; then
                   if umount "$REAL_RESOLV" 2>/dev/null; then
-                      echo "Unmounted stale /etc/resolv.conf bind mount"
+                      echo "Unmounted /etc/resolv.conf bind mount"
                   else
                       echo "Warning: Could not unmount $REAL_RESOLV" >&2
                   fi
               fi
+          }
+
+          # Backup /etc/resolv.conf (simple file copy)
+          backup_resolv() {
+              if [ -f "$REAL_RESOLV" ]; then
+                  cp -f "$REAL_RESOLV" "$BACKUP_RESOLV" && echo "Backed up /etc/resolv.conf"
+              else
+                  echo "Warning: /etc/resolv.conf not found — nothing to backup" >&2
+                  return 1
+              fi
+          }
+
+          # Restore /etc/resolv.conf from backup
+          restore_resolv() {
+              if [ -f "$BACKUP_RESOLV" ]; then
+                  cp -f "$BACKUP_RESOLV" "$REAL_RESOLV" && chmod 644 "$REAL_RESOLV" && echo "Restored /etc/resolv.conf"
+                  rm -f "$BACKUP_RESOLV"
+              else
+                  echo "No backup found — leaving /etc/resolv.conf unchanged" >&2
+                  return 1
+              fi
+          }
+
+          extract_bypass_ip() {
+              if [[ ! -f "$CONFIG_PATH" ]]; then
+                  echo "ERROR: Config not found: $CONFIG_PATH" >&2
+                  exit 1
+              fi
+
+              DOMAIN=$(jq -r '
+                  .outbounds[]
+                  | select(.protocol == "vless" and (.settings.address // empty) != "")
+                  | .settings.address
+              ' "$CONFIG_PATH" | head -n 1)
+
+              if [[ -z "$DOMAIN" || "$DOMAIN" == "null" ]]; then
+                  echo "ERROR: No vless outbound with address found" >&2
+                  exit 1
+              fi
+
+              BYPASS_IP=$(jq -r --arg domain "$DOMAIN" '
+                  .dns?.hosts?[$domain] // empty
+              ' "$CONFIG_PATH")
+
+              if [[ -z "$BYPASS_IP" || "$BYPASS_IP" == "null" ]]; then
+                  echo "ERROR: No IP found for domain '$DOMAIN' in dns.hosts" >&2
+                  exit 1
+              fi
+
+              echo "$BYPASS_IP"
           }
 
           status() {
@@ -85,38 +137,8 @@
 
               CONFIG_PATH="${config.sops.secrets."xray.json".path}"
 
-              # ────────────────────────────────────────────────
-              # Extract BYPASS_IP from xray config at runtime
-              # ────────────────────────────────────────────────
-              if [[ ! -f "$CONFIG_PATH" ]]; then
-                  echo "ERROR: Xray config not found at $CONFIG_PATH" >&2
-                  exit 1
-              fi
-
-              # Find first vless outbound's address (domain)
-              DOMAIN=$(jq -r '
-                  .outbounds[]
-                  | select(.settings.address)
-                  | .settings.address
-                  | select(.)' "$CONFIG_PATH" | head -n 1)
-
-              if [[ -z "$DOMAIN" || "$DOMAIN" == "null" ]]; then
-                  echo "ERROR: No VLESS outbound with 'address' field found in $CONFIG_PATH" >&2
-                  exit 1
-              fi
-
-              # Lookup that domain in dns.hosts
-              BYPASS_IP=$(jq -r --arg domain "$DOMAIN" '
-                  .dns.hosts[$domain] // empty
-              ' "$CONFIG_PATH")
-
-              if [[ -z "$BYPASS_IP" || "$BYPASS_IP" == "null" ]]; then
-                  echo "ERROR: No IP found in dns.hosts for domain '$DOMAIN' in $CONFIG_PATH" >&2
-                  echo "       Expected something like: \"dns\": {\"hosts\": {\"$DOMAIN\": \"1.2.3.4\"}}" >&2
-                  exit 1
-              fi
-
-              echo "Using bypass IP: $BYPASS_IP (for domain $DOMAIN)" >&2
+              BYPASS_IP=$(extract_bypass_ip)
+              echo "Using bypass IP: $BYPASS_IP" >&2
 
               # Clean previous state
               cleanup
@@ -132,9 +154,23 @@
               # Wait until bind mount appears (or timeout)
               local timeout=12 elapsed=0
               while (( elapsed < timeout )); do
-                  echo "Here"
                   if is_mounted; then
                       echo "Success: /etc/resolv.conf is now bind-mounted by tun2proxy"
+
+                      local captured_dns
+                      captured_dns=$(cat "$REAL_RESOLV") || {
+                          echo "ERROR: Could not read mounted /etc/resolv.conf" >&2
+                          cleanup_mount
+                          exit 1
+                      }
+
+                      cleanup_mount
+
+                      backup_resolv
+
+                      printf '%s' "$captured_dns" > "$REAL_RESOLV"
+                      echo "Applied tunnel DNS settings to /etc/resolv.conf"
+
                       return 0
                   fi
                   sleep 0.3
@@ -167,6 +203,7 @@
               # Final cleanup – should be gone by now, but force if needed
               sleep 0.5
               cleanup
+              restore_resolv
           }
 
           toggle() {
