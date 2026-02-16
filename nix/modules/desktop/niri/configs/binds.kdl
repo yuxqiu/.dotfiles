@@ -6,7 +6,7 @@ binds {
     // Dictation
     Mod+D hotkey-overlay-title=null { spawn-sh "~/.config/niri/scripts/dictation"; }
 
-    // Mouse Mode: wl-kbptr
+    // Mouse Mode
     Mod+M {
         spawn-sh "wlr-which-key pointer"
     }

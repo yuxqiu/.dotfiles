@@ -5,6 +5,7 @@ binds {
     Mod+S hotkey-overlay-title="Toggle Sidebar Visibility" {
         spawn-sh "~/.config/niri/scripts/niri-floating-sidebar.sh hide";
     }
+    Mod+Shift+A { switch-focus-between-floating-and-tiling; }
 }
 
 spawn-at-startup "~/.config/niri/scripts/niri-sidebar-auto-reorder.sh"
