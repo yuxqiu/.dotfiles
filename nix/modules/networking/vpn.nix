@@ -155,7 +155,7 @@
               # Launch
               echo "Launching tun2proxy..."
               $TUN2PROXY_BIN --setup --proxy socks5://127.0.0.1:1080 \
-                  --dns virtual --virtual-dns-pool 198.18.0.0/15 \
+                  --dns virtual --virtual-dns-pool 198.18.0.0/16 \
                   --bypass "$BYPASS_IP" --daemonize &
 
               echo "Finish launching"
