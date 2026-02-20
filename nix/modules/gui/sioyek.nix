@@ -3,15 +3,18 @@
     programs.sioyek = {
       enable = true;
       bindings = {
-        "goto_tab" = "gt";
+        goto_tab = "gt";
+        add_bookmark = "bb";
+        add_freetext_bookmark = "bf";
+        add_marked_bookmark = "bm";
       };
       config = {
-        "check_for_updates_on_startup" = "0";
-        "super_fast_search" = "1";
-        "show_document_name_in_statusbar" = "1";
-        "show_closest_bookmark_in_statusbar" = "1";
-        "status_bar_font_size" = "15";
-        "font_size" = "15";
+        check_for_updates_on_startup = "0";
+        super_fast_search = "1";
+        show_document_name_in_statusbar = "1";
+        show_closest_bookmark_in_statusbar = "1";
+        status_bar_font_size = "15";
+        font_size = "15";
       };
     };
   };

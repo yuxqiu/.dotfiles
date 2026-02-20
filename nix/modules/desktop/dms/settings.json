@@ -299,8 +299,8 @@
   "matugenTemplateKcolorscheme": true,
   "matugenTemplateVscode": true,
   "matugenTemplateEmacs": true,
-  "showDock": false,
-  "dockAutoHide": false,
+  "showDock": true,
+  "dockAutoHide": true,
   "dockSmartAutoHide": false,
   "dockGroupByApp": false,
   "dockOpenOnOverview": false,
@@ -432,8 +432,14 @@
         "focusedWindow"
       ],
       "centerWidgets": [
-        "music",
-        "clock",
+        {
+          "id": "music",
+          "enabled": true
+        },
+        {
+          "id": "clock",
+          "enabled": true
+        },
         {
           "id": "spacer",
           "enabled": true,
