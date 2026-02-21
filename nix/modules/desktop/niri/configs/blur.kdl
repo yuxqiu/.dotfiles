@@ -1,0 +1,34 @@
+blur {
+    passes 3
+    offset 3
+    noise 0.02
+    saturation 1.5
+}
+
+// Make floating windows use the regular blur (if enabled),
+// while tiled windows keep using the efficient xray blur.
+window-rule {
+    match is-floating=true
+    background-effect {
+        xray false
+    }
+}
+
+// Use regular blur for dms (if enabled).
+layer-rule {
+    match namespace="^dms:"
+
+    background-effect {
+        xray false
+    }
+}
+
+// Force enable blur for these apps
+window-rule {
+    match app-id="ssh-askpass"
+
+    background-effect {
+        blur true
+    }
+    opacity 0.6
+}

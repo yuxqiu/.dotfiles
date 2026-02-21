@@ -98,5 +98,9 @@
         EDITOR = "${pkgs.neovim}/bin/nvim";
         VISUAL = "${pkgs.neovim}/bin/nvim";
       };
+
+      stylix.targets.neovim.transparentBackground.main = true;
+      stylix.targets.neovim.transparentBackground.numberLine = true;
+      stylix.targets.neovim.transparentBackground.signColumn = true;
     };
 }

@@ -1,8 +1,9 @@
-include "configs/input.kdl"
 include "configs/binds.kdl"
+include "configs/blur.kdl"
+include "configs/input.kdl"
 include "configs/layout.kdl"
-include "configs/window.kdl"
 include "configs/others.kdl"
+include "configs/window.kdl"
 
 include "configs/sidebar.kdl"
 

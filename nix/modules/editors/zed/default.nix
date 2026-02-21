@@ -203,7 +203,7 @@
       # snippets
       xdg.configFile."zed/snippets".source = ./snippets;
 
-      # stylix: use zed dynamic theme
+      # stylix: use zed theme
       stylix.targets.zed.colors.enable = false;
     };
 }

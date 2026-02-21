@@ -33,23 +33,3 @@ window-rule {
 }
 
 prefer-no-csd
-
-// ====================================
-// Blur Configurations
-// ====================================
-
-blur {
-    passes 3
-    offset 3
-    noise 0.02
-    saturation 1.5
-}
-
-// Make floating windows use the regular blur (if enabled),
-// while tiled windows keep using the efficient xray blur.
-window-rule {
-    match is-floating=true
-    background-effect {
-        xray false
-    }
-}

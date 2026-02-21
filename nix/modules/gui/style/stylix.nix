@@ -8,9 +8,8 @@
 
       stylix = {
         enable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
         polarity = "dark";
-        image = ./wallpapers/1.png;
 
         fonts = {
           sansSerif = {
@@ -32,6 +31,13 @@
             package = pkgs.noto-fonts-color-emoji;
             name = "Noto Color Emoji";
           };
+        };
+
+        opacity = {
+          desktop = 0.6;
+          applications = 1.0;
+          terminal = 0.6;
+          popups = 0.6;
         };
       };
 
