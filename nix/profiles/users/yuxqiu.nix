@@ -1,15 +1,12 @@
 { ... }:
 {
-  flake.modules.homeManager.yuxqiu =
-    { config, ... }:
-    {
-      my.user = {
-        dotfiles = "${config.home.homeDirectory}/.dotfiles";
-        keys = {
-          githubPub = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1ppGOXp373SKeaGMKSfhQVVfvGIgpXXXcnnLDQ14hT yuxqiu@proton.me";
-        };
+  flake.modules.homeManager.yuxqiu = {
+    my.user = {
+      keys = {
+        githubPub = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1ppGOXp373SKeaGMKSfhQVVfvGIgpXXXcnnLDQ14hT yuxqiu@proton.me";
       };
     };
+  };
 
   flake.modules.systemManager.yuxqiu =
     { pkgs, ... }:
