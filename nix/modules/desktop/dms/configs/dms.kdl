@@ -2,10 +2,20 @@ config-notification {
     disable-failed
 }
 
-// Show wallpaper on overview
+// Show wallpaper on desktop and overview
+layout {
+    background-color "transparent"
+}
+
 layer-rule {
     match namespace="^quickshell$"
     place-within-backdrop true
+}
+
+overview {
+    workspace-shadow {
+        off
+    }
 }
 
 binds {
