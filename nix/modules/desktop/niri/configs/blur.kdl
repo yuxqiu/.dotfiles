@@ -26,6 +26,7 @@ layer-rule {
 // Force enable blur for these apps
 window-rule {
     match app-id="ssh-askpass"
+    match app-id="opensnitch_ui"
 
     background-effect {
         blur true
