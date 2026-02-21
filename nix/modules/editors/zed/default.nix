@@ -106,12 +106,20 @@
           minimap = {
             show = "auto";
           };
+          project_panel = {
+            sticky_scroll = false;
+          };
           tabs = {
             "file_icons" = true;
           };
           telemetry = {
             metrics = false;
             diagnostics = false;
+          };
+          theme = {
+            mode = "dark";
+            light = "Catppuccin Mocha (Blur)";
+            dark = "Catppuccin Mocha (Blur)";
           };
           title_bar = {
             show_onboarding_banner = false;
@@ -181,7 +189,7 @@
           }
         ];
         extensions = [
-          "one-dark-pro"
+          "catppuccin-blur"
           "markdown-oxide"
           "typst"
           "latex"

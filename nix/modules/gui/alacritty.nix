@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   flake.modules.homeManager.desktop = {
     programs.alacritty = {
@@ -15,7 +16,9 @@
 
         window = {
           dynamic_padding = false;
-          opacity = 1.0;
+          blur = true;
+          # overwrite stylix theme config
+          opacity = lib.mkForce 0.6;
           dimensions = {
             columns = 120;
             lines = 30;

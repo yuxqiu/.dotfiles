@@ -1,8 +1,5 @@
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
@@ -17,6 +14,7 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+    draw-border-with-background false
 }
 
 // Indicate screencasted windows with red colors.
@@ -31,5 +29,27 @@ window-rule {
     tab-indicator {
         active-color "#f38ba8"
         inactive-color "#7d0d2d"
+    }
+}
+
+prefer-no-csd
+
+// ====================================
+// Blur Configurations
+// ====================================
+
+blur {
+    passes 3
+    offset 3
+    noise 0.02
+    saturation 1.5
+}
+
+// Make floating windows use the regular blur (if enabled),
+// while tiled windows keep using the efficient xray blur.
+window-rule {
+    match is-floating=true
+    background-effect {
+        xray false
     }
 }

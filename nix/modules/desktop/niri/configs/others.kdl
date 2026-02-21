@@ -6,6 +6,4 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
-prefer-no-csd
-
 screenshot-path null
