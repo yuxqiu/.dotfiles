@@ -1,8 +1,16 @@
+// Global blur settings
 blur {
     passes 3
     offset 3
     noise 0.02
     saturation 1.5
+}
+
+// Make float to play well with focus-ring and border
+// - This is needed because focus-ring and border by default
+//   are rendered as a solid background rectangle behind windows.
+window-rule {
+    draw-border-with-background false
 }
 
 // Make floating windows use the regular blur (if enabled),
@@ -14,9 +22,9 @@ window-rule {
     }
 }
 
-// Use regular blur for dms (if enabled).
 layer-rule {
-    match namespace="^dms:"
+    match layer="top"
+    match layer="overlay"
 
     background-effect {
         xray false

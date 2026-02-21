@@ -2,6 +2,12 @@ config-notification {
     disable-failed
 }
 
+// Show wallpaper on overview
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
 binds {
     Ctrl+Space hotkey-overlay-title="Application Launcher" {
       spawn "dms" "ipc" "call" "spotlight" "toggle";

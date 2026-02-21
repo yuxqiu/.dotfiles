@@ -1,20 +1,7 @@
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// Open the opensnitch popup as floating by default.
-window-rule {
-    match app-id=r#"opensnitch_ui$"#
-    open-floating true
-}
-
 // Enable rounded corners for all windows.
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-    draw-border-with-background false
 }
 
 // Indicate screencasted windows with red colors.
@@ -32,4 +19,12 @@ window-rule {
     }
 }
 
-prefer-no-csd
+// Open the following apps floating by default.
+// - Firefox picture-in-picture player
+// - Opensnitch UI
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"opensnitch_ui$"#
+
+    open-floating true
+}

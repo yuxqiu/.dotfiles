@@ -76,11 +76,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1771615619,
-        "narHash": "sha256-CJx8tuLTW6IOxOkd2292mrCTeR/PIOaygPVgP80ilMI=",
+        "lastModified": 1771653128,
+        "narHash": "sha256-tZGAFgdue41AfGAHd3+w2wGK5IbasV34qHFD34F7nRk=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "171329246cb494d3c1e84303467ef495115c4612",
+        "rev": "46d4288969e13dc3c869324120742f451ad46544",
         "type": "github"
       },
       "original": {
@@ -305,11 +305,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771625283,
-        "narHash": "sha256-1T88/PSNKpRNtaiXATTae0hpRnBpjmIL0b1QfGO6HBA=",
+        "lastModified": 1771683283,
+        "narHash": "sha256-WxAEkAbo8dP7qiyPM6VN4ZGAxfuBVlNBNPkrqkrXVEc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a913ae61bf3b9f4312f6097b68cdf0a0fa699279",
+        "rev": "c6ed3eab64d23520bcbb858aa53fe2b533725d4a",
         "type": "github"
       },
       "original": {
@@ -341,11 +341,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1771619725,
-        "narHash": "sha256-AV6CEmWqM23wpOexysITVoWc92M5Dvegeh6xmBkwf80=",
+        "lastModified": 1771683761,
+        "narHash": "sha256-ZaASbpeFF3sQ8uJAheuuuDMnymqpLfrsyf3hr9B5CMM=",
         "owner": "niri-wm",
         "repo": "niri",
-        "rev": "48fb2b3970acfb05806047f6ae5d68b4b1041aac",
+        "rev": "3b9f6ca062056348ef1a280716718d96c591246d",
         "type": "github"
       },
       "original": {
