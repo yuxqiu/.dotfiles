@@ -1,0 +1,15 @@
+/* --- Hide small pin icon on shortcuts --- */
+@-moz-document url("about:home"), url("about:newtab") {
+    .outer-wrapper .top-site-inner .icon-pin-small {
+        display: none !important;
+    }
+}
+
+/* Adjust three dots */
+@-moz-document url("about:home"), url("about:newtab") {
+    .top-site-outer .context-menu-button {
+        inset-inline-end: 18px !important;
+        top: -2px !important;
+        background-color: transparent !important;
+    }
+}

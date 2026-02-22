@@ -1,107 +1,130 @@
-let
-  profileName = "default"; # Replace with your actual profile name
-
-  # Prepare user.js
-  arkenfoxUserJs = "${
-    fetchGit {
-      url = "https://github.com/arkenfox/user.js/";
-      rev = "0f14e030b3a9391e761c03ce3c260730a78a4db6";
-    }
-  }/user.js";
-  userOverrides = builtins.readFile ./user-override.js;
-
-  # Prepare userChrome.css
-
-  # Prepare userContent.css
-
-in
 {
-  flake.modules.homeManager.desktop = {
-    # Enable Firefox and define profiles
-    programs.firefox = {
-      enable = true;
-      profiles.${profileName} = {
-        isDefault = true;
+  flake.modules.homeManager.desktop =
+    { pkgs, ... }:
+    let
+      profileName = "default";
 
-        # stylix: prevent auto disabling extensions installed inside firefox
-        # https://github.com/nix-community/home-manager/issues/6398#issuecomment-2958982664
-        settings = {
-          extensions.autoDisableScopes = 0;
-          extensions.update.autoUpdateDefault = false;
-          extensions.update.enabled = false;
-        };
-        extensions = {
-          force = true;
-        };
+      # Prepare user.js
+      arkenfoxUserJs = "${
+        pkgs.fetchFromGitHub {
+          owner = "arkenfox";
+          repo = "user.js";
+          rev = "0f14e030b3a9391e761c03ce3c260730a78a4db6";
+          hash = "sha256-LPDiiEPOZu5Ah5vCLyCMT3w1uoBhUjyqoPWCOiLVLnw=";
+        }
+      }/user.js";
+      userOverrides = builtins.readFile ./user-override.js;
 
-        # user.js
-        preConfig = arkenfoxUserJs;
-        extraConfig = userOverrides;
-
-        # userChrome and userContent
-        userChrome = builtins.readFile ./customChrome.css;
-        userContent = builtins.readFile ./customContent.css;
+      firefox-mod-blur = pkgs.fetchFromGitHub {
+        owner = "datguypiko";
+        repo = "Firefox-Mod-Blur";
+        rev = "25425c6db933da9dcc37c36991fb3942874da6b7";
+        hash = "sha256-O0gVK6xwvHseuX5B+lp5oEhg/81O4p+tR32Pc9bszDw=";
       };
-      policies = {
-        CaptivePortal = false;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-        DisableFirefoxAccounts = false;
-        DontCheckDefaultBrowser = true;
-        DisableFeedbackCommands = true;
-        DisableFirefoxScreenshots = true;
-        ExtensionUpdate = false;
-        NoDefaultBookmarks = true;
-        OfferToSaveLogins = false;
-        OfferToSaveLoginsDefault = false;
-        OverrideFirstRunPage = "";
-        OverridePostUpdatePage = "";
-        PasswordManagerEnabled = false;
-        FirefoxHome = {
-          Search = true;
-          Pocket = false;
-          Snippets = false;
-          TopSites = false;
-          SponsoredTopSites = false;
-          Highlights = false;
-          SponsoredPocket = false;
+
+      # Prepare userChrome.css
+      userChrome = builtins.concatStringsSep "\n" [
+        (builtins.readFile ./css/chrome/blur.css)
+        (builtins.readFile ./css/chrome/container.css)
+        (builtins.readFile ./css/chrome/menupopup.css)
+        (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Privacy mods/Blur Username in main menu/privacy_blur_email_in_main_menu.css")
+        (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Compact extensions menu/Style 1/With no settings wheel icon/cleaner_extensions_menu.css")
+        (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Icon and Button Mods/uBlock icon change/ublock-icon-change.css")
+      ];
+
+      # Prepare userContent.css
+      userContent = builtins.concatStringsSep "\n" [
+        (builtins.readFile ./css/content/home.css)
+        (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Homepage mods/Remove text from homepage shortcuts/remove_homepage_shortcut_title_text.css")
+      ];
+
+    in
+    {
+      # Enable Firefox and define profiles
+      programs.firefox = {
+        enable = true;
+        profiles.${profileName} = {
+          isDefault = true;
+
+          # stylix: prevent auto disabling extensions installed inside firefox
+          # https://github.com/nix-community/home-manager/issues/6398#issuecomment-2958982664
+          settings = {
+            extensions.autoDisableScopes = 0;
+            extensions.update.autoUpdateDefault = false;
+            extensions.update.enabled = false;
+          };
+          extensions = {
+            force = true;
+          };
+
+          # user.js
+          preConfig = arkenfoxUserJs;
+          extraConfig = userOverrides;
+
+          # userChrome and userContent
+          userChrome = userChrome;
+          userContent = userContent;
         };
-        UserMessaging = {
-          WhatsNew = false;
-          ExtensionRecommendations = false;
-          FeatureRecommendations = false;
-          UrlbarInterventions = false;
-          SkipOnboarding = true;
-          MoreFromMozilla = false;
-        };
-        FirefoxSuggest = {
-          WebSuggestions = false;
-          SponsoredSuggestions = false;
-          ImproveSuggest = false;
-        };
-        ExtensionSettings = {
-          # Disable built-in search engines
-          "amazondotcom@search.mozilla.org" = {
-            installation_mode = "blocked";
+        policies = {
+          CaptivePortal = false;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DisableFirefoxAccounts = false;
+          DontCheckDefaultBrowser = true;
+          DisableFeedbackCommands = true;
+          DisableFirefoxScreenshots = true;
+          ExtensionUpdate = false;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+          OfferToSaveLoginsDefault = false;
+          OverrideFirstRunPage = "";
+          OverridePostUpdatePage = "";
+          PasswordManagerEnabled = false;
+          FirefoxHome = {
+            Search = true;
+            Pocket = false;
+            Snippets = false;
+            TopSites = false;
+            SponsoredTopSites = false;
+            Highlights = false;
+            SponsoredPocket = false;
           };
-          "bing@search.mozilla.org" = {
-            installation_mode = "blocked";
+          UserMessaging = {
+            WhatsNew = false;
+            ExtensionRecommendations = false;
+            FeatureRecommendations = false;
+            UrlbarInterventions = false;
+            SkipOnboarding = true;
+            MoreFromMozilla = false;
           };
-          "ebay@search.mozilla.org" = {
-            installation_mode = "blocked";
+          FirefoxSuggest = {
+            WebSuggestions = false;
+            SponsoredSuggestions = false;
+            ImproveSuggest = false;
           };
-          "google@search.mozilla.org" = {
-            installation_mode = "blocked";
-          };
-          "duckduckgo@search.mozilla.org" = {
-            installation_mode = "blocked";
+          ExtensionSettings = {
+            # Disable built-in search engines
+            "amazondotcom@search.mozilla.org" = {
+              installation_mode = "blocked";
+            };
+            "bing@search.mozilla.org" = {
+              installation_mode = "blocked";
+            };
+            "ebay@search.mozilla.org" = {
+              installation_mode = "blocked";
+            };
+            "google@search.mozilla.org" = {
+              installation_mode = "blocked";
+            };
+            "duckduckgo@search.mozilla.org" = {
+              installation_mode = "blocked";
+            };
           };
         };
       };
+
+      # stylix
+      stylix.targets.firefox.profileNames = [ profileName ];
     };
-
-    # stylix
-    stylix.targets.firefox.profileNames = [ profileName ];
-  };
 }

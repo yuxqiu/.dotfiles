@@ -1,0 +1,7 @@
+/* --- Hide container's tab color --- */
+.tabbrowser-tab[usercontextid]
+    > .tab-stack
+    > .tab-background
+    > .tab-context-line {
+    display: none !important;
+}
