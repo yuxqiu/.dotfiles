@@ -10,6 +10,10 @@ let
   }/user.js";
   userOverrides = builtins.readFile ./user-override.js;
 
+  # Prepare userChrome.css
+
+  # Prepare userContent.css
+
 in
 {
   flake.modules.homeManager.desktop = {
@@ -99,6 +103,5 @@ in
 
     # stylix
     stylix.targets.firefox.profileNames = [ profileName ];
-    stylix.targets.firefox.colorTheme.enable = true;
   };
 }

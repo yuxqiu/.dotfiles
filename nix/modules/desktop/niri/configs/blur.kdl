@@ -41,3 +41,14 @@ window-rule {
     }
     opacity 0.6
 }
+
+window-rule {
+    match app-id="firefox"
+
+    background-effect {
+        blur true
+    }
+    // Needed because firefox misreports expanded sidebar
+    // area as opaque to niri.
+    opacity 0.99999
+}

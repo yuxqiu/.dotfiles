@@ -125,3 +125,55 @@
 #ublock0_raymondhill_net-BAP .toolbarbutton-badge {
     background-color: #555757 !important;
 }
+
+/* Modified from datguypiko/Firefox-Mod-Blur */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --firefoxcss-navigator-toolbox-bg-color: color-mix(
+            in srgb,
+            field 60%,
+            transparent
+        );
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --firefoxcss-navigator-toolbox-bg-color: color-mix(
+            in srgb,
+            field 50%,
+            transparent
+        );
+    }
+}
+
+/* Enable blurred window */
+#main-window {
+    background-color: transparent !important;
+    appearance: -moz-win-borderless-glass !important;
+}
+
+/* Blur titlebar */
+#main-window #navigator-toolbox {
+    background-color: var(--firefoxcss-navigator-toolbox-bg-color) !important;
+}
+
+/* Blur sidebar, expanded settings and bookmarks */
+#browser {
+    background-color: var(--firefoxcss-navigator-toolbox-bg-color) !important;
+}
+#sidebar {
+    background-color: transparent !important;
+
+    /* Hide unnecessary decorations */
+    box-shadow: none !important;
+    border-radius: unset !important;
+    border: none !important;
+    outline: none !important;
+}
+
+/* Hide some splitters */
+#sidebar-splitter, /* bottom splitter */
+#sidebar-tools-and-extensions-splitter /* right splitter */ {
+    display: none !important;
+}
