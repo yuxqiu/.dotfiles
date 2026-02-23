@@ -19,10 +19,9 @@
     }
 }
 
-/* Enable blurred window */
+/* Enable transparent window */
 #main-window {
     background-color: transparent !important;
-    appearance: -moz-win-borderless-glass !important;
 }
 
 /* Blur titlebar */
