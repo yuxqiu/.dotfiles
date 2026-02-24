@@ -26,6 +26,7 @@
       userChrome = builtins.concatStringsSep "\n" [
         (builtins.readFile ./css/chrome/blur.css)
         (builtins.readFile ./css/chrome/container.css)
+        (builtins.readFile ./css/chrome/control.css)
         (builtins.readFile ./css/chrome/menupopup.css)
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Privacy mods/Blur Username in main menu/privacy_blur_email_in_main_menu.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Compact extensions menu/Style 1/With no settings wheel icon/cleaner_extensions_menu.css")
