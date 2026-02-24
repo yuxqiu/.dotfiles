@@ -28,6 +28,8 @@
           "org.localsend.localsend_app"
           "org.xfce.ristretto"
           "org.inkscape.Inkscape"
+          "net.sapples.LiveCaptions"
+          "io.frama.tractor.carburetor"
         ];
 
         overrides = {
@@ -84,6 +86,13 @@
 
           "org.localsend.localsend_app" = {
             Context.shared = [ "network" ];
+          };
+
+          "io.frama.tractor.carburetor" = {
+            Context.shared = [
+              "network"
+              "ipc"
+            ];
           };
         };
       };
