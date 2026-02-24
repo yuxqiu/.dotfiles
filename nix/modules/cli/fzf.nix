@@ -7,6 +7,11 @@
     };
 
     # use terminal's colors/transparency/blur instead
+    programs.fzf.colors = {
+      bg = "-1";
+      "bg+" = "-1";
+      "preview-bg" = "-1";
+    };
     stylix.targets.fzf.colors.enable = false;
   };
 }
