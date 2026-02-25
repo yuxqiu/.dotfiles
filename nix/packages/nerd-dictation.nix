@@ -74,6 +74,7 @@ let
       requests
       tqdm
       srt
+      websockets
     ];
 
     doCheck = false;
