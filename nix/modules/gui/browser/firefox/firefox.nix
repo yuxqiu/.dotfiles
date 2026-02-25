@@ -29,6 +29,7 @@
         (builtins.readFile ./css/chrome/control.css)
         (builtins.readFile ./css/chrome/findbar.css)
         (builtins.readFile ./css/chrome/menupopup.css)
+        (builtins.readFile ./css/chrome/search.css)
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Privacy mods/Blur Username in main menu/privacy_blur_email_in_main_menu.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Compact extensions menu/Style 1/With no settings wheel icon/cleaner_extensions_menu.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Icon and Button Mods/uBlock icon change/ublock-icon-change.css")

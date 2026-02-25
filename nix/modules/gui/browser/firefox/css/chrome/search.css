@@ -1,0 +1,169 @@
+/* ===== CENTERED POPUP SEARCH BOX ===== */
+/* Modified from gwfox, With the help of Grok */
+:root {
+    --bg4: light-dark(rgba(255, 255, 255, 0.75), rgba(15, 15, 12, 0.75));
+    --bs1: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+    --bs2:
+        0 5px 15px rgba(0, 0, 0, 0.25), inset 0 0 0 0.5px rgba(0, 0, 0, 0.78),
+        0 0 0 0.5px rgba(0, 0, 0, 0.2);
+    --br2: 8px;
+    --button-hover-bgcolor: light-dark(
+        rgba(70, 70, 70, 0.1),
+        rgba(170, 170, 170, 0.2)
+    ) !important;
+    --button-active-bgcolor: light-dark(
+        rgba(70, 70, 70, 0.15),
+        rgba(170, 170, 170, 0.3)
+    ) !important;
+}
+
+#urlbar[breakout][breakout-extend],
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    #urlbar {
+    top: 20vh !important;
+    left: 29vw !important;
+    width: 45vw !important;
+    max-width: unset !important;
+    margin-top: 15px !important;
+    animation-name: panel-grow;
+    animation-duration: 250ms;
+    transition: none !important;
+    z-index: 9999 !important;
+}
+
+#urlbar[breakout][breakout-extend] .urlbar-input,
+#urlbar[breakout][breakout-extend] .urlbar-input::placeholder,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    .urlbar-input,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    .urlbar-input::placeholder {
+    font-size: 21px !important;
+    text-align: left !important;
+}
+
+#urlbar[breakout][breakout-extend] .urlbar-input-container,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    .urlbar-input-container {
+    height: 50px !important;
+    padding-inline: 15px !important;
+}
+
+#urlbar[breakout][breakout-extend] .urlbar-background,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    .urlbar-background {
+    backdrop-filter: blur(30px) !important;
+    box-shadow: var(--bs1) !important;
+    border-radius: var(--br2) !important;
+    height: 50px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    #urlbar[breakout][breakout-extend] .urlbar-background,
+    :has(
+            #urlbar[usertyping]:not(
+                    [persistsearchterms]
+                )[focused][breakout-extend]
+        )
+        .urlbar-background {
+        box-shadow: var(--bs2) !important;
+    }
+}
+
+/* Make suggestions look good inside the big centered box */
+#urlbar[breakout][breakout-extend] .urlbarView-row-inner,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    .urlbarView-row-inner {
+    flex-wrap: nowrap !important;
+}
+#urlbar[breakout][breakout-extend] .urlbarView-no-wrap,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    .urlbarView-no-wrap {
+    max-width: 50% !important;
+}
+
+@keyframes panel-grow {
+    0% {
+        transform: scale(0.92);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Fix transparent background on centered breakout popup */
+#urlbar[breakout][breakout-extend] .urlbar-background,
+#urlbar[breakout][breakout-extend] > .urlbar-input-container,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    .urlbar-background,
+:has(#urlbar[usertyping]:not([persistsearchterms])[focused][breakout-extend])
+    > .urlbar-input-container {
+    background-color: var(
+        --bg2
+    ) !important; /* semi-transparent light/dark adaptive from gwfox */
+    backdrop-filter: blur(30px) !important; /* keep the nice blur */
+    box-shadow: var(--bs1) !important;
+}
+
+/* Make sure the view/results panel also has proper background (dropdown part) */
+#urlbar[breakout][breakout-extend] .urlbarView-body-outer,
+#urlbar[open][breakout][breakout-extend] .urlbarView {
+    background: var(
+        --bg2
+    ) !important; /* slightly more opaque base for results list */
+    border-radius: 0 0 var(--br2) var(--br2) !important;
+    margin-top: -1px !important; /* avoid tiny gap */
+}
+
+/* Force suggestions container to same width as the breakout bar */
+#urlbar[breakout][breakout-extend] .urlbarView,
+#urlbar[breakout][breakout-extend] .urlbarView-body-outer,
+#urlbar[breakout][breakout-extend] .urlbarView-body-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Align suggestions directly under the input (no offset) */
+#urlbar[breakout][breakout-extend] .urlbarView {
+    margin-top: 2px !important; /* tiny gap so it doesn't overlap — adjust 0–4px */
+    border-radius: 0 0 var(--br2) var(--br2) !important; /* round only bottom corners */
+    overflow: hidden !important; /* prevent visual glitches at edges */
+    background: var(
+        --bg4
+    ) !important; /* match blur bg or use var(--bg2) for more solid */
+    backdrop-filter: blur(30px) !important;
+    box-shadow: var(--bs1) !important;
+}
+
+/* If you want the ENTIRE popup (bar + suggestions) to look like one rounded rectangle */
+#urlbar[breakout][breakout-extend] {
+    --urlbar-popup-border-radius: var(--br2) !important;
+    overflow: hidden !important; /* helps clip children properly */
+}
+
+/* Round the top of the suggestions only if you want a visible seam / separator look */
+#urlbar[breakout][breakout-extend][open] .urlbarView-body-inner {
+    border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent) !important;
+    border-radius: 0 0 var(--br2) var(--br2) !important;
+}
+
+/* Fix any inner rows overflowing the new width */
+#urlbar[breakout][breakout-extend] .urlbarView-row,
+#urlbar[breakout][breakout-extend] .urlbarView-row-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-inline: 12px !important; /* match your input padding feel */
+    box-sizing: border-box !important;
+}
+
+#urlbar[breakout][breakout-extend] .urlbar-input-container {
+    border-radius: var(--br2) var(--br2) 0 0 !important; /* round only top when suggestions are open */
+    overflow: hidden !important;
+}
+
+/* Hide the misaligned right arrow */
+#urlbar[breakout][breakout-extend] .urlbar-go-button {
+    display: none !important;
+}
