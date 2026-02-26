@@ -74,21 +74,21 @@
           userContent = userContent;
         };
         policies = {
+          AutofillAddressEnabled = false;
+          AutofillCreditCardEnabled = false;
           CaptivePortal = false;
           DisableFirefoxStudies = true;
           DisablePocket = true;
           DisableTelemetry = true;
           DisableFirefoxAccounts = false;
-          DontCheckDefaultBrowser = true;
+          DisableFormHistory = true;
+          DisableMasterPasswordCreation = true;
+          DisableProfileImport = true;
           DisableFeedbackCommands = true;
           DisableFirefoxScreenshots = true;
+          DisableSetDesktopBackground = true;
+          DontCheckDefaultBrowser = true;
           ExtensionUpdate = false;
-          NoDefaultBookmarks = true;
-          OfferToSaveLogins = false;
-          OfferToSaveLoginsDefault = false;
-          OverrideFirstRunPage = "";
-          OverridePostUpdatePage = "";
-          PasswordManagerEnabled = false;
           FirefoxHome = {
             Search = true;
             Pocket = false;
@@ -98,6 +98,43 @@
             Highlights = false;
             SponsoredPocket = false;
           };
+          FirefoxSuggest = {
+            WebSuggestions = false;
+            SponsoredSuggestions = false;
+            ImproveSuggest = false;
+          };
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+          OfferToSaveLoginsDefault = false;
+          OverrideFirstRunPage = "";
+          OverridePostUpdatePage = "";
+          PasswordManagerEnabled = false;
+          SearchEngines = {
+            Remove = [
+              "Amazon.com"
+              "Bing"
+              "DuckDuckGo"
+              "eBay"
+              "Google"
+              "Perplexity"
+              "Wikipedia (en)"
+            ];
+            Add = [
+              {
+                Name = "ddg";
+                URLTemplate = "https://html.duckduckgo.com/html/?q={searchTerms}";
+                IconURL = "https://duckduckgo.com/favicon.ico";
+                Alias = "ddg";
+              }
+              {
+                Name = "google";
+                URLTemplate = "https://www.google.com/search?q={searchTerms}";
+                IconURL = "https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico";
+                Alias = "goo";
+              }
+            ];
+          };
+          SkipTermsOfUse = true;
           UserMessaging = {
             WhatsNew = false;
             ExtensionRecommendations = false;
@@ -106,27 +143,61 @@
             SkipOnboarding = true;
             MoreFromMozilla = false;
           };
-          FirefoxSuggest = {
-            WebSuggestions = false;
-            SponsoredSuggestions = false;
-            ImproveSuggest = false;
-          };
+
           ExtensionSettings = {
-            # Disable built-in search engines
-            "amazondotcom@search.mozilla.org" = {
-              installation_mode = "blocked";
+            "uBlock0@raymondhill.net" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+              installation_mode = "force_installed";
+              default_area = "navbar";
             };
-            "bing@search.mozilla.org" = {
-              installation_mode = "blocked";
-            };
-            "ebay@search.mozilla.org" = {
-              installation_mode = "blocked";
-            };
-            "google@search.mozilla.org" = {
-              installation_mode = "blocked";
-            };
-            "duckduckgo@search.mozilla.org" = {
-              installation_mode = "blocked";
+          };
+          "3rdparty".Extensions = {
+            # https://github.com/gorhill/uBlock/blob/master/platform/common/managed_storage.json
+            "uBlock0@raymondhill.net" = {
+              userSettings = [
+                [
+                  "cloudStorageEnabled"
+                  "false"
+                ]
+                [
+                  "contextMenuEnabled"
+                  "false"
+                ]
+                [
+                  "showIconBadge"
+                  "false"
+                ]
+              ];
+              toOverwrite = {
+                filterLists = [
+                  "user-filters"
+                  "ublock-filters"
+                  "ublock-badware"
+                  "ublock-privacy"
+                  "ublock-quick-fixes"
+                  "ublock-unbreak"
+                  "easyprivacy"
+                  "adguard-spyware-url"
+                  "block-lan"
+                  "plowe-0"
+                  "ublock-cookies-adguard"
+                  "ublock-annoyances"
+                ];
+                filters = [
+                  # ! disable the funky gradient at the bottom of Youtube player due to RFP
+                  "www.youtube.com##.ytp-gradient-bottom"
+
+                  # ! https://www.reddit.com/r/firefox/comments/1digcp4/comment/l93oijg/
+                  "$3p,to=facebook.*|instagram.com,from=~facebook.*|~instagram.com|~messenger.com|~threads.net"
+
+                  # ! https://old.reddit.com/r/firefox/comments/1defcc2/new_to_mozilla_firefox_coming_from_brave_browser/l8f83y9/?context=2
+                  # ! block all 3p frames
+                  "$3p,frame"
+
+                  # ! show "click to play" placeholders for all blocked frames
+                  "$3p,frame,redirect-rule=click2load.html"
+                ];
+              };
             };
           };
         };
