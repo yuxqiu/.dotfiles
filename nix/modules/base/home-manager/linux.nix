@@ -24,6 +24,7 @@
         desktop-file-utils
         libnotify
         networkmanager
+        obs-studio
         xdg-utils
       ];
     };
