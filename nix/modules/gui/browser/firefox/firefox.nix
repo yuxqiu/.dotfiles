@@ -28,6 +28,7 @@
         (builtins.readFile ./css/chrome/container.css)
         (builtins.readFile ./css/chrome/control.css)
         (builtins.readFile ./css/chrome/findbar.css)
+        (builtins.readFile ./css/chrome/liquid-fox.css)
         (builtins.readFile ./css/chrome/menupopup.css)
         (builtins.readFile ./css/chrome/search.css)
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Privacy mods/Blur Username in main menu/privacy_blur_email_in_main_menu.css")

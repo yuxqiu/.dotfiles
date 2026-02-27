@@ -1,0 +1,522 @@
+/*
+ * Liquid Fox - Transparent Firefox Theme for macOS/Linux
+ *
+ * Required about:config settings:
+ *   toolkit.legacyUserProfileCustomizations.stylesheets = true
+ *   widget.macos.titlebar-blend-mode.behind-window = true (macOS only)
+ *
+ * Modification from miloszfalinski/liquid-fox.
+ * Mod starts with "Mod: ".
+ */
+
+/* ============================================
+   Variables
+   ============================================ */
+:root {
+    --liquid-radius: 12px;
+    --liquid-radius-small: 8px;
+    --liquid-padding: 8px;
+    --liquid-shadow:
+        0 0.5px 0 0 rgba(255, 255, 255, 0.35), 0 1px 3px rgba(0, 0, 0, 0.04),
+        0 4px 16px rgba(0, 0, 0, 0.06);
+    --liquid-shadow-small:
+        0 0.5px 0 0 rgba(255, 255, 255, 0.35), 0 1px 3px rgba(0, 0, 0, 0.04),
+        0 3px 11px rgba(0, 0, 0, 0.06);
+
+    /* Mod: Remove all the gradients */
+    /*--liquid-window-tint: linear-gradient(
+        176deg,
+        rgba(170, 155, 110, 0) 0%,
+        rgba(65, 125, 110, 0.06) 30%,
+        rgba(50, 105, 145, 0.13) 60%,
+        rgba(185, 150, 85, 0.19) 100%
+    );
+    --liquid-border-gradient: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    --liquid-border-gradient-dark: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );*/
+}
+
+/* ============================================
+   Window Transparency
+   Activates macOS vibrancy / behind-window blur
+   ============================================ */
+:root {
+    appearance: -moz-sidebar !important;
+}
+
+/* ============================================
+   Browser Chrome - Make UI panels transparent
+   ============================================ */
+:root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]) {
+    /* --- Subtle gradient tint over vibrancy --- */
+    &::before {
+        content: "" !important;
+        display: block !important;
+        position: fixed !important;
+        inset: 0 !important;
+        background: var(--liquid-window-tint) !important;
+        pointer-events: none !important;
+        z-index: -1 !important;
+    }
+
+    /* Mod:
+    *  - As tints are not used, do not clear all backgrounds.
+    *  - Blur module already handles this part.
+    */
+    /* --- Clear all backgrounds so vibrancy is uniform --- */
+    /*body,
+    #navigator-toolbox,
+    #browser,
+    #sidebar-main,
+    #tabbrowser-tabbox,
+    #tabbrowser-tabpanels,
+    #browser-panel,
+    #browsing-context-stack {
+        background: transparent !important;
+    }*/
+}
+
+/* ============================================
+   Shared liquid panel mixin (outline pseudo-element)
+   ============================================ */
+.browserContainer::after,
+.sidebar-browser-stack::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    border: 1px solid transparent !important;
+    background: var(--liquid-border-gradient) border-box !important;
+    mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0) !important;
+    mask-composite: subtract !important;
+    pointer-events: none !important;
+    z-index: 2147483647 !important;
+}
+
+/* --- Dark mode: subtler outline + brighter backdrop --- */
+@media (prefers-color-scheme: dark) {
+    .browserContainer::after,
+    .sidebar-browser-stack::after {
+        background: var(--liquid-border-gradient-dark) border-box !important;
+    }
+
+    :root:not(
+            [windowtype="Toolkit:PictureInPicture"],
+            [inDOMFullscreen]
+        )::before {
+        background:
+            linear-gradient(
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.08)
+            ),
+            var(--liquid-window-tint) !important;
+    }
+}
+
+/* ============================================
+   Sidebar button styling (shared across all layouts)
+   ============================================ */
+:root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen])
+    sidebar-main {
+    --toolbarbutton-active-background: transparent !important;
+    --button-background-color: transparent !important;
+    --button-background-color-hover: rgba(0, 0, 0, 0.12) !important;
+    --button-background-color-active: rgba(0, 0, 0, 0.18) !important;
+    --button-background-color-ghost-hover: rgba(0, 0, 0, 0.12) !important;
+    --button-background-color-ghost-active: rgba(0, 0, 0, 0.18) !important;
+    --button-border-radius: var(--liquid-radius-small) !important;
+}
+
+/* ============================================
+   Content area: rounded + padded (vertical tabs only)
+   Uses :has() to detect sidebar with tabs in the DOM
+   ============================================ */
+:root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):has(
+        sidebar-main #tabbrowser-tabs
+    ) {
+    /* --- 2px bottom padding on whole window --- */
+    #browser {
+        padding-bottom: 2px !important;
+    }
+
+    /* --- Web content frame --- */
+    .browserContainer {
+        position: relative !important;
+        border-radius: var(--liquid-radius) !important;
+        overflow: hidden !important;
+        box-shadow: var(--liquid-shadow) !important;
+        margin: 0 var(--liquid-padding) calc(var(--liquid-padding) - 2px) 0 !important;
+    }
+
+    /* --- Sidebar panels (AI, bookmarks, history, etc.) --- */
+    .sidebar-browser-stack {
+        position: relative !important;
+        border-radius: var(--liquid-radius) !important;
+        overflow: hidden !important;
+        box-shadow: var(--liquid-shadow) !important;
+    }
+
+    /* --- Toolbar spacing: small gap below address bar --- */
+    #navigator-toolbox {
+        padding-bottom: 2px !important;
+    }
+
+    /* --- Tab rounding + selected tab styling --- */
+    #tabbrowser-tabs {
+        --tab-border-radius: var(--liquid-radius-small) !important;
+        font-size: calc(1em + 1px) !important;
+    }
+
+    .tab-background:is([selected], [multiselected]) {
+        box-shadow: var(--liquid-shadow-small) !important;
+    }
+
+    /* --- Address bar rounding --- */
+    .urlbar-background,
+    #searchbar {
+        border-radius: var(--liquid-radius-small) !important;
+    }
+
+    /* --- Tab groups: Dia-inspired style --- */
+
+    /* Group container: override display:contents so it renders as a box */
+    tab-group {
+        display: flex !important;
+        flex-direction: column !important;
+        background-color: color-mix(
+            in srgb,
+            var(--tab-group-color) 10%,
+            transparent
+        ) !important;
+        border-radius: var(--liquid-radius-small) !important;
+        outline: 1px solid
+            color-mix(in srgb, var(--tab-group-color) 15%, transparent) !important;
+        outline-offset: -1px !important;
+        padding: 0 !important;
+        margin: 2px 8px !important;
+        --tab-group-line-color: transparent !important;
+        --tab-group-line-thickness: 0px !important;
+    }
+
+    /* Hide the group line entirely */
+    .tab-group-line {
+        display: none !important;
+    }
+
+    /* Label container: stretch full width, no extra spacing */
+    .tab-group-label-container {
+        align-self: stretch !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Label: plain text, no own shape -- container handles visuals */
+    .tab-group-label {
+        background-color: transparent !important;
+        color: light-dark(
+            var(--tab-group-color),
+            var(--tab-group-color-invert)
+        ) !important;
+        border-radius: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
+        min-height: var(--tab-min-height) !important;
+        line-height: var(--tab-min-height) !important;
+        outline: none !important;
+        box-shadow: none !important;
+        font-weight: normal !important;
+        text-align: start !important;
+        padding-inline: 8px !important;
+    }
+
+    /* Overflow count (+1, +2): explicit color since --tab-group-line-color is transparent */
+    .tab-group-overflow-count {
+        color: light-dark(
+            var(--tab-group-color),
+            var(--tab-group-color-invert)
+        ) !important;
+    }
+
+    /* Subtle hover highlight on group label */
+    .tab-group-label-hover-highlight {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-radius: var(--liquid-radius-small) !important;
+        background: transparent !important;
+    }
+
+    tab-group[collapsed]:not([movingtabgroup])
+        .tab-group-label-hover-highlight:hover {
+        background: rgba(0, 0, 0, 0.06) !important;
+    }
+
+    /* Tabs within groups: tight spacing, bottom breathing room */
+    tab-group > .tabbrowser-tab {
+        margin: 1px 0 !important;
+    }
+
+    tab-group > .tabbrowser-tab:last-of-type {
+        margin-bottom: 3px !important;
+    }
+
+    /* --- Dark mode: stronger group tint --- */
+    @media (prefers-color-scheme: dark) {
+        tab-group {
+            background-color: color-mix(
+                in srgb,
+                var(--tab-group-color) 20%,
+                transparent
+            ) !important;
+            outline: 1px solid
+                color-mix(in srgb, var(--tab-group-color) 25%, transparent) !important;
+        }
+    }
+}
+
+/* ============================================
+   Expanded sidebar only: wider pinned tabs
+   ============================================ */
+:root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):has(
+        sidebar-main[expanded] #tabbrowser-tabs
+    ) {
+    #pinned-tabs-container[orient="vertical"] {
+        --tab-pinned-min-width-expanded: 85px !important;
+    }
+}
+
+/* ============================================
+   Collapsed sidebar: vertical tabs overrides
+   ============================================ */
+:root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):has(
+        sidebar-main:not([expanded]) #tabbrowser-tabs
+    ) {
+    /* Tab groups: edge-to-edge like horizontal tabs */
+    tab-group {
+        margin-inline: 0 !important;
+        border-radius: 0 !important;
+        outline: none !important;
+        border-inline: none !important;
+        border-block: 1px solid
+            color-mix(in srgb, var(--tab-group-color) 15%, transparent) !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* Group label: center the single-letter text, nudge down slightly */
+    .tab-group-label {
+        text-align: center !important;
+        padding-inline: 0 !important;
+        padding-top: 3px !important;
+    }
+}
+
+/* ============================================
+   Horizontal tabs layout: rounded box + padding
+   ============================================ */
+:root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):not(
+        :has(sidebar-main #tabbrowser-tabs)
+    ) {
+    /* --- Kill chrome-content separator line on toolbox --- */
+    #navigator-toolbox {
+        border: none !important;
+    }
+
+    /* --- Tighten gap between traffic lights and first tab --- */
+    .titlebar-spacer[type="pre-tabs"] {
+        width: 8px !important;
+    }
+
+    /* --- Inactive pinned tabs: subtle background + visible hover --- */
+    .tabbrowser-tab[pinned]:not([selected]):not([multiselected])
+        .tab-background {
+        background-color: rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .tabbrowser-tab[pinned]:not([selected]):not([multiselected]):hover
+        .tab-background {
+        background-color: rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* --- Gap after last pinned tab before regular tabs --- */
+    .tabbrowser-tab[pinned] + .tabbrowser-tab:not([pinned]),
+    .tabbrowser-tab[pinned] + tab-group {
+        margin-inline-start: 6px !important;
+    }
+
+    /* --- Bookmarks bar: match nav-bar side margins --- */
+    #PersonalToolbar {
+        margin-inline: var(--liquid-padding) !important;
+    }
+
+    /* --- Window bottom padding (same trick as vertical tabs) --- */
+    #browser {
+        padding-bottom: 2px !important;
+    }
+
+    /* --- Sidebar icon strip: layout + background --- */
+    sidebar-main {
+        margin-inline-start: 8px !important;
+        margin-bottom: calc(var(--liquid-padding) - 2px) !important;
+        border-radius: 0 0 0 var(--liquid-radius) !important;
+        background: light-dark(
+            rgba(255, 255, 255, 0.35),
+            rgba(0, 0, 0, 0.12)
+        ) !important;
+    }
+
+    /* --- Sidebar panels (bookmarks, history, etc.): flush, no frills --- */
+    #sidebar-box {
+        margin: 0 0 calc(var(--liquid-padding) - 2px) 0 !important;
+        padding: 0 !important;
+    }
+
+    #sidebar-box,
+    #sidebar-box > *,
+    .sidebar-browser-stack,
+    #sidebar {
+        border-radius: 0 !important;
+    }
+
+    .sidebar-browser-stack {
+        margin: 0 !important;
+    }
+
+    /* Style splitter handles to blend with sidebar */
+    #sidebar-splitter,
+    #sidebar-launcher-splitter {
+        border: none !important;
+        width: 4px !important;
+        min-width: 4px !important;
+        background: light-dark(
+            rgba(255, 255, 255, 0.35),
+            rgba(0, 0, 0, 0.12)
+        ) !important;
+        margin-bottom: calc(var(--liquid-padding) - 2px) !important;
+    }
+
+    /* Restore blue resize highlight on hover/drag */
+    #sidebar-splitter:hover,
+    #sidebar-launcher-splitter:hover {
+        background: var(--focus-outline-color) !important;
+    }
+
+    /* --- Address bar: rounded top corners + side margin --- */
+    #nav-bar {
+        margin: 0 var(--liquid-padding) !important;
+        border-radius: var(--liquid-radius) var(--liquid-radius) 0 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* --- Content area: rounded bottom corners + side/bottom margin + shadow --- */
+    .browserContainer {
+        position: relative !important;
+        margin: 0 var(--liquid-padding) calc(var(--liquid-padding) - 2px)
+            var(--liquid-padding) !important;
+        border-radius: 0 0 var(--liquid-radius) var(--liquid-radius) !important;
+        overflow: hidden !important;
+        box-shadow: var(--liquid-shadow) !important;
+        transition:
+            margin-left 0.25s ease,
+            border-radius 0.25s ease !important;
+    }
+
+    /* Hide the shared outline (top edge creates a visible line across the padding) */
+    .browserContainer::after {
+        display: none !important;
+    }
+
+    /* --- Tab groups: Dia-inspired style --- */
+
+    /* Group container: horizontal row, no rounding */
+    tab-group {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: stretch !important;
+        background-color: color-mix(
+            in srgb,
+            var(--tab-group-color) 10%,
+            transparent
+        ) !important;
+        border-radius: 0 !important;
+        border-block: none !important;
+        border-inline: 1px solid
+            color-mix(in srgb, var(--tab-group-color) 15%, transparent) !important;
+        padding: 0 !important;
+        margin: 0 2px !important;
+        --tab-group-line-color: transparent !important;
+        --tab-group-line-thickness: 0px !important;
+    }
+
+    /* Label */
+    .tab-group-label {
+        background-color: transparent !important;
+        color: light-dark(
+            var(--tab-group-color),
+            var(--tab-group-color-invert)
+        ) !important;
+        border: none !important;
+        font-weight: normal !important;
+        outline: none !important;
+        box-shadow: none !important;
+        padding-inline: 8px !important;
+    }
+
+    /* Overflow count (+1, +2) */
+    .tab-group-overflow-count {
+        color: light-dark(
+            var(--tab-group-color),
+            var(--tab-group-color-invert)
+        ) !important;
+        padding-inline: 6px !important;
+    }
+
+    /* Hover highlight */
+    .tab-group-label-hover-highlight {
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    tab-group[collapsed]:not([movingtabgroup])
+        .tab-group-label-hover-highlight:hover {
+        background: rgba(0, 0, 0, 0.06) !important;
+    }
+
+    /* --- Dark mode: stronger group tint --- */
+    @media (prefers-color-scheme: dark) {
+        tab-group {
+            background-color: color-mix(
+                in srgb,
+                var(--tab-group-color) 20%,
+                transparent
+            ) !important;
+            border-inline-color: color-mix(
+                in srgb,
+                var(--tab-group-color) 25%,
+                transparent
+            ) !important;
+        }
+    }
+}
+
+/* ============================================
+   Horizontal tabs + sidebar visible: flush web frame
+   ============================================ */
+:root:not([windowtype="Toolkit:PictureInPicture"], [inDOMFullscreen]):not(
+        :has(sidebar-main #tabbrowser-tabs)
+    ):has(#sidebar-main:not([hidden]))
+    .browserContainer {
+    margin-left: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
