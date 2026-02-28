@@ -123,7 +123,7 @@
             Add = [
               {
                 Name = "ddg";
-                URLTemplate = "https://html.duckduckgo.com/html/?q={searchTerms}";
+                URLTemplate = "https://duckduckgo.com/?q={searchTerms}";
                 IconURL = "https://duckduckgo.com/favicon.ico";
                 Alias = "ddg";
               }
