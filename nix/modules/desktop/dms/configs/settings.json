@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/r4yjixc6ppxw8cxwd48a68sisynxgqqx-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/0a95rljf2a353gk0a0d4i48ig7mh77fr-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -29,6 +29,7 @@
   "mangoLayoutGapsOverride": -1,
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
+  "firstDayOfWeek": -1,
   "use24HourClock": true,
   "showSeconds": true,
   "padHours12Hour": false,
@@ -347,9 +348,14 @@
   "lockAtStartup": false,
   "enableFprint": true,
   "maxFprintTries": 3,
+  "enableU2f": false,
+  "u2fMode": "or",
   "lockScreenActiveMonitor": "all",
   "lockScreenInactiveColor": "#000000",
   "lockScreenNotificationMode": 0,
+  "lockScreenVideoEnabled": false,
+  "lockScreenVideoPath": "",
+  "lockScreenVideoCycling": false,
   "hideBrightnessSlider": false,
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 5000,
@@ -364,7 +370,16 @@
   "notificationHistorySaveLow": true,
   "notificationHistorySaveNormal": true,
   "notificationHistorySaveCritical": true,
-  "notificationRules": [],
+  "notificationRules": [
+    {
+      "enabled": true,
+      "field": "appName",
+      "pattern": "niri",
+      "matchType": "contains",
+      "action": "mute",
+      "urgency": "default"
+    }
+  ],
   "osdAlwaysShowValue": true,
   "osdPosition": 5,
   "osdVolumeEnabled": true,
@@ -444,6 +459,7 @@
           "size": 20
         }
       ],
+      "clickThrough": false,
       "enabled": true,
       "fontScale": 1,
       "gothCornerRadiusOverride": false,
@@ -452,12 +468,15 @@
       "id": "default",
       "innerPadding": 4,
       "leftWidgets": ["launcherButton", "workspaceSwitcher", "focusedWindow"],
+      "maximizeWidgetIcons": false,
+      "maximizeWidgetText": false,
       "name": "Main Bar",
       "noBackground": false,
       "openOnOverview": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,
       "position": 0,
+      "removeWidgetPadding": false,
       "rightWidgets": [
         {
           "enabled": true,
@@ -504,11 +523,7 @@
       "transparency": 0,
       "visible": true,
       "widgetOutlineEnabled": false,
-      "widgetTransparency": 0.3,
-      "removeWidgetPadding": false,
-      "maximizeWidgetText": false,
-      "maximizeWidgetIcons": false,
-      "clickThrough": false
+      "widgetTransparency": 0.3
     }
   ],
   "desktopClockEnabled": true,
