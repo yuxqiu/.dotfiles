@@ -18,8 +18,14 @@
     { pkgs, ... }:
     {
       environment.etc = {
-        "opensnitchd/default-config.json".source = ./res/default-config.json;
-        "opensnitchd/system-fw.json".source = ./res/system-fw.json;
+        "opensnitchd/default-config.json" = {
+          source = ./res/default-config.json;
+          replaceExisting = true;
+        };
+        "opensnitchd/system-fw.json" = {
+          source = ./res/system-fw.json;
+          replaceExisting = true;
+        };
       };
 
       systemd.services.opensnitchd = {

@@ -2,7 +2,10 @@
   flake.modules.systemManager.base = {
     environment = {
       etc = {
-        "tuned/tuned-main.conf".source = ./tuned-main.conf;
+        "tuned/tuned-main.conf" = {
+          source = ./tuned-main.conf;
+          replaceExisting = true;
+        };
       };
     };
   };

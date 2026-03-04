@@ -16,6 +16,7 @@
           kernel.sysrq = 0
         '';
         mode = "0644";
+        replaceExisting = true;
       };
     };
   };

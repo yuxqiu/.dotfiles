@@ -65,6 +65,7 @@
         "shells" = {
           text = lib.concatStringsSep "\n" shells;
           mode = "0644";
+          replaceExisting = true;
         };
       };
     };

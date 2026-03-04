@@ -8,6 +8,7 @@
         "systemd/journald.conf.d/usage.conf" = {
           source = ./journald.conf.d/usage.conf;
           mode = "0644";
+          replaceExisting = true;
         };
       };
     };

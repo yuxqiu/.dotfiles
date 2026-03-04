@@ -46,6 +46,7 @@
               ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="2541", ATTRS{idProduct}=="0236", TEST=="power/control", ATTR{power/control}="on"
             '';
             mode = "0644";
+            replaceExisting = true;
           };
         };
       };

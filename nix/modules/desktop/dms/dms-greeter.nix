@@ -149,6 +149,7 @@
               user = "${greetd-default-session-user}"
             '';
             mode = "0644";
+            replaceExisting = true;
           };
         };
 
