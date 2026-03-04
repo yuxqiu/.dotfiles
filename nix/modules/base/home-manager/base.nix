@@ -11,19 +11,14 @@
         duf
         fastfetch
         ffmpeg
-        git-crypt
-        git-lfs
         hyperfine
         jq
-        lazydocker
         less
         mtr
         mosh
-        onefetch
         openssl
         pandoc
         rsync
-        rustup
         screen
         sqlite
         strace
@@ -32,7 +27,6 @@
         tree
         typos
         update-nix-fetchgit
-        uv
         wget
         which
         zmk-studio

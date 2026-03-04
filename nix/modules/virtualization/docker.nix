@@ -1,4 +1,10 @@
 {
+  flake.modules.homeManager.base =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [ lazydocker ];
+    };
+
   flake.modules.systemManager.base =
     {
       lib,

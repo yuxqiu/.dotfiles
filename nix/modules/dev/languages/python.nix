@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.base =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       home.file.".pythonrc".text = ''
         # enable syntax completion
@@ -17,5 +17,7 @@
         # Python auto-complete
         PYTHONSTARTUP = "${config.home.homeDirectory}/.pythonrc";
       };
+
+      home.packages = with pkgs; [ uv ];
     };
 }
