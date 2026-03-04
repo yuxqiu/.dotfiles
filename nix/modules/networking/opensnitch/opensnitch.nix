@@ -15,33 +15,14 @@
     };
 
   flake.modules.systemManager.desktop =
-    { pkgs, ... }:
+    { nixosModulesPath, ... }:
     {
-      environment.etc = {
-        "opensnitchd/default-config.json" = {
-          source = ./res/default-config.json;
-          replaceExisting = true;
-        };
-        "opensnitchd/system-fw.json" = {
-          source = ./res/system-fw.json;
-          replaceExisting = true;
-        };
-      };
+      imports = [ (nixosModulesPath + "/services/security/opensnitch.nix") ];
 
-      systemd.services.opensnitchd = {
-        description = "Application firewall OpenSnitch";
-        documentation = [ "https://github.com/evilsocket/opensnitch/wiki" ];
-
-        wantedBy = [ "multi-user.target" ];
-
-        serviceConfig = {
-          Type = "simple";
-          PermissionsStartOnly = true;
-          ExecStartPre = "/bin/mkdir -p /etc/opensnitchd/rules";
-          ExecStart = "${pkgs.opensnitch}/bin/opensnitchd -rules-path /etc/opensnitchd/rules";
-          Restart = "always";
-          RestartSec = 30;
-          TimeoutStopSec = 10;
+      services.opensnitch = {
+        enable = true;
+        settings = {
+          Ebpf.ModulesPath = null;
         };
       };
     };

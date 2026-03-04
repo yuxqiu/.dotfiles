@@ -1,8 +1,11 @@
 # https://www.reddit.com/r/NixOS/comments/1pvq42f/nixos_dnscryptproxy_with_odoh_relays_servers_oisd/
-{ inputs, ... }:
 {
   flake.modules.systemManager.base =
-    { pkgs, ... }:
+    {
+      pkgs,
+      nixosModulesPath,
+      ...
+    }:
     let
       hasIPv6Internet = true;
       dnscrypt-resolvers = pkgs.fetchFromGitHub {
@@ -14,7 +17,7 @@
     in
     {
       imports = [
-        (inputs.self + /packages/dnscrypt-proxy.nix)
+        (nixosModulesPath + "/services/networking/dnscrypt-proxy.nix")
       ];
 
       environment = {
