@@ -5,7 +5,7 @@
       profileName = "default";
 
       # Prepare user.js
-      arkenfoxUserJs = "${
+      arkenfoxUserJs = builtins.readFile "${
         pkgs.fetchFromGitHub {
           owner = "arkenfox";
           repo = "user.js";

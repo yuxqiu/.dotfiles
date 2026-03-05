@@ -4,7 +4,6 @@
 /* ************** */
 /* ************** */
 
-user_pref("_user.js.parrot", "0100 syntax error: the parrot's dead!");
 /* 0102: set startup page [SETUP-CHROME]
  * 0=blank, 1=home, 2=last visited page, 3=resume previous session
  * [NOTE] Session Restore is cleared with history (2811), and not used in Private Browsing mode
@@ -49,11 +48,6 @@ user_pref("browser.safebrowsing.blockedURIs.enabled", false);
 user_pref("browser.safebrowsing.enabled", false);
 
 /*** [SECTION 0700]: DNS / DoH / PROXY / SOCKS / IPv6 ***/
-user_pref(
-  "_user.js.parrot",
-  "0700 syntax error: the parrot's given up the ghost!",
-);
-
 /* 0710: disable DNS-over-HTTPS (DoH) rollout [FF60+]
  * 0=off by default, 2=TRR (Trusted Recursive Resolver) first, 3=TRR only, 5=explicitly off
  * see "doh-rollout.home-region": USA 2019, Canada 2021, Russia/Ukraine 2022 [3]
@@ -64,7 +58,6 @@ user_pref(
 user_pref("network.trr.mode", 5);
 
 /*** [SECTION 0800]: LOCATION BAR / SEARCH BAR / SUGGESTIONS / HISTORY / FORMS ***/
-user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
 /* 0801: disable location bar using search
  * Don't leak URL typos to a search engine, give an error message instead
  * Examples: "secretplace,com", "secretplace/com", "secretplace com", "secret place.com"
@@ -74,17 +67,12 @@ user_pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
 user_pref("keyword.enabled", true);
 
 /*** [SECTION 1000]: DISK AVOIDANCE ***/
-user_pref(
-  "_user.js.parrot",
-  "1000 syntax error: the parrot's gone to meet 'is maker!",
-);
 /* 1001: disable disk cache
  * [NOTE] We also clear cache on exit (2811)
  * [SETUP-CHROME] If you think disk cache helps perf, then feel free to override this ***/
 user_pref("browser.cache.disk.enable", true);
 
 /*** [SECTION 2000]: PLUGINS / MEDIA / WEBRTC ***/
-user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
 /* 2002: force WebRTC inside the proxy [FF70+] ***/
 // Disable to ensure the stability of WebRTC behind proxy
 user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", false);
@@ -96,11 +84,6 @@ user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", false);
 user_pref("media.peerconnection.ice.default_address_only", false);
 
 /*** [SECTION 4500]: OPTIONAL RFP (resistFingerprinting) ***/
-user_pref(
-  "_user.js.parrot",
-  "4500 syntax error: the parrot's popped 'is clogs",
-);
-
 /* 4520: disable WebGL (Web Graphics Library)
  * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
 user_pref("webgl.disabled", false);
@@ -299,3 +282,32 @@ user_pref("network.lna.block_trackers", true);
 // [2] https://www.reddit.com/r/firefox/comments/1p58qre/firefox_is_getting_ready_to_make_youtube_fast/
 // [3] https://www.ghacks.net/2025/11/24/these-two-tweaks-should-improve-firefoxs-performance-on-youtube-significantly/
 user_pref("gfx.webrender.layer-compositor", true);
+
+// PREF: styling
+// - legacy stylesheet support
+// - custom stylings
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("svg.context-properties.content.enabled", true);
+user_pref("widget.gtk.rounded-bottom-corners.enabled", true);
+user_pref("browser.toolbars.bookmarks.showOtherBookmarks", false);
+user_pref("browser.toolbars.bookmarks.visibility", "never");
+
+// PREF: vertical bar by default
+user_pref("sidebar.revamp", true);
+user_pref("sidebar.verticalTabs", true);
+
+// PREF: AI
+user_pref("browser.ai.control.default", "blocked");
+user_pref("browser.ai.control.linkPreviewKeyPoints", "blocked");
+user_pref("browser.ai.control.pdfjsAltText", "blocked");
+user_pref("browser.ai.control.sidebarChatbot", "blocked");
+user_pref("browser.ai.control.smartTabGroups", "blocked");
+user_pref("browser.ai.control.translations", "available");
+user_pref("browser.ml.chat.enabled", false);
+user_pref("browser.ml.chat.page", false);
+user_pref("browser.ml.linkPreview.collapsed", true);
+user_pref("browser.ml.linkPreview.enabled", false);
+user_pref("browser.ml.linkPreview.onboardingTimes", "");
+
+// PREF: disable about:config warning
+user_pref("browser.aboutConfig.showWarning", false);
