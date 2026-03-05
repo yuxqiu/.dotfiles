@@ -103,8 +103,10 @@
               };
             };
           };
+          # Performance on large monitors is better
+          # when the minimap is disabled (~30ms -> ~20ms)
           minimap = {
-            show = "auto";
+            show = "never";
           };
           project_panel = {
             sticky_scroll = false;

@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/0a95rljf2a353gk0a0d4i48ig7mh77fr-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/p1m7qdb141vmx1wiri4fka25awavxnqm-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -44,6 +44,15 @@
   "modalAnimationSpeed": 1,
   "modalCustomAnimationDuration": 150,
   "enableRippleEffects": true,
+  "m3ElevationEnabled": true,
+  "m3ElevationIntensity": 12,
+  "m3ElevationOpacity": 30,
+  "m3ElevationColorMode": "default",
+  "m3ElevationLightDirection": "top",
+  "m3ElevationCustomColor": "#000000",
+  "modalElevationEnabled": true,
+  "popoutElevationEnabled": true,
+  "barElevationEnabled": false,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
@@ -195,6 +204,8 @@
   "centeringMode": "index",
   "clockDateFormat": "",
   "lockDateFormat": "",
+  "greeterRememberLastSession": true,
+  "greeterRememberLastUser": true,
   "mediaSize": 1,
   "appLauncherViewMode": "list",
   "spotlightModalViewMode": "list",
@@ -260,12 +271,12 @@
   "acLockTimeout": 0,
   "acSuspendTimeout": 0,
   "acSuspendBehavior": 0,
-  "acProfileName": "",
+  "acProfileName": "0",
   "batteryMonitorTimeout": 0,
   "batteryLockTimeout": 0,
   "batterySuspendTimeout": 0,
   "batterySuspendBehavior": 0,
-  "batteryProfileName": "",
+  "batteryProfileName": "2",
   "batteryChargeLimit": 100,
   "lockBeforeSuspend": true,
   "loginctlLockIntegration": true,
@@ -372,11 +383,11 @@
   "notificationHistorySaveCritical": true,
   "notificationRules": [
     {
+      "action": "mute",
       "enabled": true,
       "field": "appName",
-      "pattern": "niri",
       "matchType": "contains",
-      "action": "mute",
+      "pattern": "niri",
       "urgency": "default"
     }
   ],
@@ -729,5 +740,5 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 5
+  "configVersion": 6
 }

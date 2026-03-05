@@ -26,9 +26,6 @@ user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
 /* 0402: disable SB checks for downloads (both local lookups + remote)
  * This is the master switch for the safebrowsing.downloads* prefs (0403, 0404)
- * [SETTING] Privacy & Security>Security>... "Block dangerous downloads" ***/
-user_pref("browser.safebrowsing.downloads.enabled", false);
-/* 0403: disable SB checks for downloads (remote)
  * To verify the safety of certain executable files, Firefox may submit some information about the
  * file, including the name, origin, size and a cryptographic hash of the contents, to the Google
  * Safe Browsing service which helps Firefox determine whether or not the file should be blocked
@@ -118,9 +115,6 @@ user_pref("privacy.trackingprotection.emailtracking.enabled", true);
 
 // allow macos native fullscreen
 user_pref("full-screen-api.macos-native-full-screen", true);
-
-// no typeaheadfind
-user_pref("accessibility.typeaheadfind", false);
 
 // add custom search
 user_pref("browser.urlbar.update2.engineAliasRefresh", true);
@@ -221,24 +215,19 @@ user_pref("browser.formfill.enable", false);
 // [1] https://github.com/yokoffing/Betterfox/issues/166
 user_pref("default-browser-agent.enabled", false);
 
-// PREF: enable helpful features:
-user_pref("browser.urlbar.suggest.calculator", true);
-user_pref("browser.urlbar.unitConversion.enabled", true);
-
 // PREF: PDF sidebar on load [HIDDEN]
 // 2=table of contents (if not available, will default to 1)
 // 1=view pages
 // -1=disabled (default)
 user_pref("pdfjs.sidebarViewOnLoad", 2);
 
-// restore "View image info" on right-click
-user_pref("browser.menu.showViewImageInfo", true);
-
 // hide toolbar shown after pressing Alt
 user_pref("ui.key.menuAccessKeyFocuses", false);
 
 // disable accessibility
 user_pref("accessibility.force_disabled", 1);
+user_pref("devtools.accessibility.enabled", false);
+user_pref("accessibility.typeaheadfind", false);
 
 // don't close browser when last tab is closed
 user_pref("browser.tabs.closeWindowWithLastTab", false);
@@ -290,69 +279,6 @@ user_pref(
   "+AllTargets,-CSSPrefersColorScheme",
 );
 
-// ===================From BetterFox Start======================
-
-/****************************************************************************
- * SECTION: MEDIA CACHE                                                     *
- ****************************************************************************/
-
-// PREF: adjust video buffering periods when not using MSE (in seconds)
-// [NOTE] Does not affect videos over 720p since they use DASH playback [1]
-// [1] https://lifehacker.com/preload-entire-youtube-videos-by-disabling-dash-playbac-1186454034
-user_pref("media.cache_readahead_limit", 7200); // 120 min; default=60; stop reading ahead when our buffered data is this many seconds ahead of the current playback
-user_pref("media.cache_resume_threshold", 3600); // 60 min; default=30; when a network connection is suspended, don't resume it until the amount of buffered data falls below this threshold
-
-/****************************************************************************
- * SECTION: IMAGE CACHE                                                     *
- ****************************************************************************/
-
-// PREF: image cache
-//user_pref("image.cache.size", 5242880); // DEFAULT; in MiB; alt=10485760 (cache images up to 10MiB in size)
-user_pref("image.mem.decode_bytes_at_a_time", 32768); // default=16384; alt=65536; chunk size for calls to the image decoders
-
-/****************************************************************************
- * SECTION: NETWORK                                                         *
- ****************************************************************************/
-
-// PREF: increase the absolute number of HTTP connections
-// [1] https://kb.mozillazine.org/Network.http.max-connections
-// [2] https://kb.mozillazine.org/Network.http.max-persistent-connections-per-server
-// [3] https://www.reddit.com/r/firefox/comments/11m2yuh/how_do_i_make_firefox_use_more_of_my_900_megabit/jbfmru6/
-user_pref("network.http.max-connections", 1800); // default=900
-user_pref("network.http.max-persistent-connections-per-server", 10); // default=6; download connections; anything above 10 is excessive
-user_pref("network.http.max-urgent-start-excessive-connections-per-host", 5); // default=3
-//user_pref("network.http.max-persistent-connections-per-proxy", 48); // default=32
-//user_pref("network.websocket.max-connections", 200); // DEFAULT
-
-// PREF: pacing requests [FF23+]
-// Controls how many HTTP requests are sent at a time.
-// Pacing HTTP requests can have some benefits, such as reducing network congestion,
-// improving web page loading speed, and avoiding server overload.
-// Pacing requests adds a slight delay between requests to throttle them.
-// If you have a fast machine and internet connection, disabling pacing
-// may provide a small speed boost when loading pages with lots of requests.
-// false=Firefox will send as many requests as possible without pacing
-// true=Firefox will pace requests (default)
-user_pref("network.http.pacing.requests.enabled", false);
-//user_pref("network.http.pacing.requests.min-parallelism", 10); // default=6
-//user_pref("network.http.pacing.requests.burst", 14); // default=10
-
-// PREF: how long to wait before trying a different connection when the initial one fails
-// The number (in ms) after sending a SYN for an HTTP connection,
-// to wait before trying again with a different connection.
-// 0=disable the second connection
-// [1] https://searchfox.org/mozilla-esr115/source/modules/libpref/init/all.js#1178
-// [2] https://www.catchpoint.com/blog/http-transaction-steps
-//user_pref("network.http.connection-retry-timeout", 0); // default=250
-
-// PREF: adjust DNS expiration time
-// [ABOUT] about:networking#dns
-// [NOTE] These prefs will be ignored by DNS resolver if using DoH/TRR.
-user_pref("network.dnsCacheExpiration", 3600); // keep entries for 1 hour
-
-// PREF: increase TLS token caching
-user_pref("network.ssl_tokens_cache_capacity", 10240); // default=2048; more TLS token caching (fast reconnects)
-
 // Prevent Firefox from adding back search engines after you removed them.
 // [NOTE] This does not affect Mozilla's built-in or Web Extension search engines.
 user_pref("browser.search.update", false);
@@ -363,4 +289,13 @@ user_pref("browser.privatebrowsing.resetPBM.enabled", true);
 // PREF: prevent title bar hiding on fullscreen
 user_pref("browser.fullscreen.autohide", false);
 
-// ===================From BetterFox End======================
+// PREF: enable local network access permission management
+user_pref("network.lna.enabled", true);
+user_pref("network.lna.blocking", true);
+user_pref("network.lna.block_trackers", true);
+
+// PREF: Webrender layer compositor (from FastFox)
+// [1] https://bugzilla.mozilla.org/show_bug.cgi?id=1945683
+// [2] https://www.reddit.com/r/firefox/comments/1p58qre/firefox_is_getting_ready_to_make_youtube_fast/
+// [3] https://www.ghacks.net/2025/11/24/these-two-tweaks-should-improve-firefoxs-performance-on-youtube-significantly/
+user_pref("gfx.webrender.layer-compositor", true);
