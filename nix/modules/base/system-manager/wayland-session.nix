@@ -10,6 +10,9 @@
       cfg = config.services.displayManager.waylandSessions;
     in
     {
+      # Once environment.sessionVariables is supported by system-manager, we can
+      # import /services/display-managers/default.nix from nixos to manage
+      # the following properly and simplify niri wayland-session config.
       options.services.displayManager.waylandSessions = {
         enable = lib.mkEnableOption "custom Wayland session .desktop file generation";
         entries = lib.mkOption {
