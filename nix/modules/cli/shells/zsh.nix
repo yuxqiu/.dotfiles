@@ -24,28 +24,9 @@
         shellAliases = {
           # Sudo with trailing space
           sudo = "sudo ";
-
-          # Docker
-          dockps = ''docker ps --format "{{.ID}} {{.Names}}"'';
-          docklsc = "docker ps -a";
-          dockrmc = "docker rm";
-          docklsi = "docker images -a";
-          dockrmi = "docker rmi";
-
-          # Docker Compose
-          dcbuild = "docker-compose build";
-          dcup = "docker-compose up";
-          dcdown = "docker-compose down";
-
-          # Immortal ssh
-          sshx = ''mosh "$@" -- screen -s -/bin/bash -qRRUS "mosh-''${HOSTNAME}"'';
         };
 
         siteFunctions = {
-          docksh = ''
-            docker exec -it $1 /bin/bash
-          '';
-
           gc-pip = ''
             for pkg in $(python3 -m pip list --not-required --format=freeze 2>/dev/null | cut -d= -f1 | tail -n +3); do
                 echo -n "Removing $pkg ... " ;
@@ -98,7 +79,7 @@
       programs.zsh = {
         shellAliases = {
           # Open
-          open = "xdg-open";
+          open = "${pkgs.xdg-utils}/bin/xdg-open";
         };
 
         siteFunctions = {

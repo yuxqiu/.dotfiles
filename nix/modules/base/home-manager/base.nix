@@ -15,7 +15,6 @@
         jq
         less
         mtr
-        mosh
         openssl
         pandoc
         rsync
