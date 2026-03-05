@@ -33,6 +33,10 @@
       url = "github:yuxqiu/tun2proxy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    handy = {
+      url = "github:cjpais/Handy/2361b8511ccd91794bbbdba98f81742fdc6f7887";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";

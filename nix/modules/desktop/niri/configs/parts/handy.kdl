@@ -1,0 +1,3 @@
+binds {
+    Mod+D { spawn-sh "~/.config/niri/scripts/handy-stt"; }
+}
