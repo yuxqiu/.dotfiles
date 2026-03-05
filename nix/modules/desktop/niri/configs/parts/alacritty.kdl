@@ -1,0 +1,3 @@
+binds {
+    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" {  spawn "alacritty"; }
+}

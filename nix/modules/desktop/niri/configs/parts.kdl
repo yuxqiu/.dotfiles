@@ -1,0 +1,3 @@
+include "parts/alacritty.kdl"
+include "parts/sidebar.kdl"
+include "parts/wlr_which_key.kdl"

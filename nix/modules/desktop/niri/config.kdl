@@ -4,8 +4,7 @@ include "configs/input.kdl"
 include "configs/layout.kdl"
 include "configs/others.kdl"
 include "configs/window.kdl"
-
-include "configs/sidebar.kdl"
+include "configs/parts.kdl"
 
 // dms
 include optional=true "dms/dms.kdl"

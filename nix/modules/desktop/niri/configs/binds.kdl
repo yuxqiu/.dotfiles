@@ -1,16 +1,6 @@
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" {  spawn "alacritty"; }
-
-    // Dictation
-    Mod+D hotkey-overlay-title=null { spawn-sh "~/.config/niri/scripts/dictation"; }
-
-    // Mouse Mode
-    Mod+M {
-        spawn-sh "wlr-which-key pointer"
-    }
-
     // Kill focused window
     Ctrl+Q hotkey-overlay-title=null { close-window; }
 
