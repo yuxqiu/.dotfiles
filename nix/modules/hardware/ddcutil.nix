@@ -10,15 +10,10 @@
           mode = "0644";
           replaceExisting = true;
         };
-
-        # load i2c module via systemd-modules-load service
-        "modules-load.d/01-i2c-dev.conf" = {
-          text = "i2c-dev";
-          mode = "0644";
-          replaceExisting = true;
-        };
       };
     };
+
+    boot.kernelModules = [ "i2c-dev" ];
 
     users.groups.i2c = { };
   };
