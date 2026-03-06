@@ -15,14 +15,21 @@
     };
 
   flake.modules.systemManager.desktop =
-    { nixosModulesPath, ... }:
+    { nixosModulesPath, lib, ... }:
     {
+      # Hack for importing opensnitch from nixos
+      options.security.auditd = lib.mkOption {
+        type = lib.types.raw;
+      };
+
       imports = [ (nixosModulesPath + "/services/security/opensnitch.nix") ];
 
-      services.opensnitch = {
-        enable = true;
-        settings = {
-          Ebpf.ModulesPath = null;
+      config = {
+        services.opensnitch = {
+          enable = true;
+          settings = {
+            Ebpf.ModulesPath = null;
+          };
         };
       };
     };

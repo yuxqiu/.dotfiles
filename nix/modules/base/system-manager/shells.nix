@@ -61,7 +61,16 @@
       );
     in
     {
-      environment.etc = {
+      options.environment.shells = lib.mkOption {
+        type = lib.types.listOf lib.types.package;
+        default = [ ];
+        description = ''
+          List of shell packages whose executable paths should be added to /etc/shells.
+          The paths are automatically derived using utils.toShellPath.
+        '';
+      };
+
+      config.environment.etc = {
         "shells" = {
           text = lib.concatStringsSep "\n" shells;
           mode = "0644";
