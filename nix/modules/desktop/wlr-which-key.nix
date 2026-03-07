@@ -21,5 +21,9 @@
         auto_kbd_layout = true;
       };
     };
+
+    wayland.windowManager.niri.settings.binds."Mod+M" = {
+      spawn-sh = "wlr-which-key pointer";
+    };
   };
 }

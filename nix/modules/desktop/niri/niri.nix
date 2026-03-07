@@ -1,8 +1,10 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.linux-desktop =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
+      imports = [ inputs.niri-nix.homeModules.default ];
+
       xdg.portal = {
         extraPortals = [
           pkgs.xdg-desktop-portal-gtk
@@ -27,12 +29,29 @@
         # for gnome-keyring prompt to show
         # - https://github.com/nix-community/home-manager/issues/1454
         pkgs.gcr
-        inputs.niri.packages.${pkgs.stdenv.system}.default
       ];
       services.gnome-keyring.enable = true;
 
-      home.file.".config/niri/configs".source = ./configs;
-      home.file.".config/niri/config.kdl".source = ./config.kdl;
+      wayland.windowManager.niri = {
+        enable = true;
+        package = inputs.niri.packages.${pkgs.stdenv.system}.default;
+
+        extraConfig = ''
+          include optional=true "dms/dms.kdl"
+          include optional=true "dms/outputs.kdl"
+        '';
+      };
+
+      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+        {
+          match = {
+            _props."app-id" = "gcr-prompter";
+          };
+
+          background-effect.blur = true;
+          opacity = 0.6;
+        }
+      ];
     };
 
   flake.modules.systemManager.desktop =

@@ -1,6 +1,0 @@
-binds {
-    // Mouse Mode
-    Mod+M {
-        spawn-sh "wlr-which-key pointer"
-    }
-}

@@ -30,8 +30,10 @@ readonly ORDER_STATE_FILE="/tmp/niri.toggle.${WORKSPACE_ID}.order"
 readonly HIDE_STATE_FILE="/tmp/niri.toggle.${WORKSPACE_ID}.hide_state"
 
 ### --- SCREEN INFO --- ###
-readonly SCREEN_W=$(niri msg --json focused-output | jq -r '.logical.width')
-readonly SCREEN_H=$(niri msg --json focused-output | jq -r '.logical.height')
+SCREEN_W=$(niri msg --json focused-output | jq -r '.logical.width')
+readonly SCREEN_W
+SCREEN_H=$(niri msg --json focused-output | jq -r '.logical.height')
+readonly SCREEN_H
 
 #=============================================================================
 # FUNCTION: get_focused_window
@@ -156,7 +158,7 @@ reorder_sidebar() {
   count=$((count + 0))
 
   if [ "$count" -eq 0 ]; then
-      > "$FLAG_FILE"
+      : > "$FLAG_FILE"
       echo "visible" > "$HIDE_STATE_FILE"
       return
   fi
@@ -166,7 +168,7 @@ reorder_sidebar() {
   local order
   order=$(cat "$ORDER_STATE_FILE" 2>/dev/null || echo "bottom-up")
 
-  > "$FLAG_FILE"
+  : > "$FLAG_FILE"
   local index=0
 
   while IFS= read -r id; do

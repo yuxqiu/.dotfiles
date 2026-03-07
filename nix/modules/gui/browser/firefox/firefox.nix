@@ -207,4 +207,30 @@
       # stylix
       stylix.targets.firefox.profileNames = [ profileName ];
     };
+
+  flake.modules.homeManager.linux-desktop =
+    { lib, ... }:
+    {
+      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+        {
+          match = {
+            _props."app-id" = "firefox";
+          };
+
+          background-effect.blur = true;
+          opacity = 0.99999;
+        }
+
+        {
+          match = {
+            _props = {
+              "app-id"._raw = ''r#"firefox$"#'';
+              title = "^Picture-in-Picture$";
+            };
+          };
+
+          open-floating = true;
+        }
+      ];
+    };
 }

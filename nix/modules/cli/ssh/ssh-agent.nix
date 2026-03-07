@@ -17,9 +17,20 @@
     };
 
   config.flake.modules.homeManager.linux-desktop =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       services.ssh-agent-ac.sshAskpass = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
+
+      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+        {
+          match = {
+            _props."app-id" = "ssh-askpass";
+          };
+
+          background-effect.blur = true;
+          opacity = 0.6;
+        }
+      ];
     };
 
   config.flake.modules.homeManager.darwin-gui =

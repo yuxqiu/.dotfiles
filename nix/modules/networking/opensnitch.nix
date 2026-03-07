@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.linux-desktop =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       home.packages = [ pkgs.opensnitch-ui ];
 
@@ -12,6 +12,25 @@
           RestartSec = "5";
         };
       };
+
+      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+        {
+          match = {
+            _props."app-id" = "opensnitch_ui";
+          };
+
+          background-effect.blur = true;
+          opacity = 0.6;
+        }
+
+        {
+          match = {
+            _props."app-id"._raw = ''r#"opensnitch_ui$"#'';
+          };
+
+          open-floating = true;
+        }
+      ];
     };
 
   flake.modules.systemManager.desktop =

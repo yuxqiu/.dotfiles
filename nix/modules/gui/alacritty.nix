@@ -33,6 +33,13 @@
     };
   };
 
+  flake.modules.homeManager.linux-desktop = {
+    wayland.windowManager.niri.settings.binds."Mod+Return" = {
+      _props.hotkey-overlay-title = "Open a Terminal: alacritty";
+      spawn = "alacritty";
+    };
+  };
+
   flake.modules.homeManager.linux-base = {
     xdg.terminal-exec = {
       settings = {
