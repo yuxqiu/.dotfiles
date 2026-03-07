@@ -41,7 +41,7 @@
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     system-manager = {
-      url = "github:numtide/system-manager?ref=pull/384/head";
+      url = "git+file:///home/yuxqiu/Documents/oss/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-system-graphics = {

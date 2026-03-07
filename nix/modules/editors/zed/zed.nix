@@ -9,6 +9,8 @@
         extraPackages = with pkgs; [
           basedpyright
           clang-tools
+          codex
+          codex-acp
           gopls
           markdown-oxide
           nixd
@@ -28,16 +30,12 @@
           tinymist
         ];
         userSettings = {
-          agent = {
-            button = false;
-          };
           auto_update = false;
           base_keymap = "VSCode";
           collaboration_panel = {
             button = false;
           };
           colorize_brackets = true;
-          disable_ai = true;
           format_on_save = "on";
           inlay_hints = {
             enabled = true;
@@ -103,8 +101,7 @@
               };
             };
           };
-          # Performance on large monitors is better
-          # when the minimap is disabled (~30ms -> ~20ms)
+          # Disabled for better performance on large monitors
           minimap = {
             show = "never";
           };
@@ -134,6 +131,13 @@
           vim_mode = true;
           vim = {
             toggle_relative_line_numbers = true;
+          };
+
+          # AI
+          show_edit_predictions = false;
+          agent = {
+            enable_feedback = false;
+            button = false;
           };
         };
         userKeymaps = [
