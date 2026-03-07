@@ -193,6 +193,11 @@
               "shift-s" = "vim::PushSneakBackward";
             };
           }
+          {
+            "bindings" = {
+              "ctrl-?" = "agent::Toggle";
+            };
+          }
         ];
         extensions = [
           "catppuccin-blur"
