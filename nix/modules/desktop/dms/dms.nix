@@ -48,7 +48,14 @@
         customThemeFile = "${inputs.dms-plugin-registry}/themes/catppuccin/theme.json";
       };
     };
+
     home.file.".config/niri/dms/dms.kdl".source = ./configs/dms.kdl;
+    wayland.windowManager.niri = {
+      extraConfig = ''
+        include "dms/dms.kdl"
+        include optional=true "dms/outputs.kdl"
+      '';
+    };
 
     stylix.targets.dank-material-shell.enable = false;
   };

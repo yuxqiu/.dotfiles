@@ -35,11 +35,6 @@
       wayland.windowManager.niri = {
         enable = true;
         package = inputs.niri.packages.${pkgs.stdenv.system}.default;
-
-        extraConfig = ''
-          include optional=true "dms/dms.kdl"
-          include optional=true "dms/outputs.kdl"
-        '';
       };
 
       wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
