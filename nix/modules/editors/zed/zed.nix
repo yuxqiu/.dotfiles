@@ -36,6 +36,12 @@
             button = false;
           };
           colorize_brackets = true;
+          diagnostics = {
+            include_warnings = true;
+            inline = {
+              enabled = true;
+            };
+          };
           format_on_save = "on";
           inlay_hints = {
             enabled = true;
@@ -137,7 +143,7 @@
           show_edit_predictions = false;
           agent = {
             enable_feedback = false;
-            button = false;
+            button = true;
           };
         };
         userKeymaps = [
@@ -154,7 +160,7 @@
             };
           }
           {
-            # disable agent panel
+            # disable collaboration panel
             "context" = "!Terminal";
             "bindings" = {
               "ctrl-shift-c" = null;
