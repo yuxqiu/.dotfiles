@@ -198,6 +198,18 @@
               "ctrl-?" = "agent::Toggle";
             };
           }
+          {
+            "context" = "vim_operator == a || vim_operator == i || vim_operator == cs";
+            "bindings" = {
+              # Traditional Vim behavior
+              "q" = "vim::AnyQuotes";
+              "b" = "vim::AnyBrackets";
+
+              # mini.ai plugin behavior
+              "Q" = "vim::MiniQuotes";
+              "B" = "vim::MiniBrackets";
+            };
+          }
         ];
         extensions = [
           "catppuccin-blur"
