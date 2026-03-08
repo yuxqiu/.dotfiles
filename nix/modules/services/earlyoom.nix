@@ -5,7 +5,6 @@
 
   flake.modules.systemManager.base =
     {
-      pkgs,
       lib,
       nixosModulesPath,
       ...
@@ -34,9 +33,6 @@
             "^(greetd|systemd|systemd-logind|dbus-daemon|dbus-broker|niri)$"
           ];
         };
-
-        # Fix missing ExecStart to run earlyoom, using the service-defined env var EARLYOOM_ARGS
-        systemd.services.earlyoom.serviceConfig.ExecStart = "${pkgs.earlyoom}/bin/earlyoom $EARLYOOM_ARGS";
 
         # Fix missing notification from earlyoom
         # - https://github.com/NixOS/nixpkgs/issues/374959
