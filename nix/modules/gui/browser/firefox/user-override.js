@@ -33,9 +33,10 @@ user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 user_pref("browser.safebrowsing.downloads.remote.url", ""); // Defense-in-depth
 /* 0404: disable SB checks for unwanted software
  * [SETTING] Privacy & Security>Security>... "Warn you about unwanted and uncommon software" ***/
+// prettier-ignore
 user_pref(
   "browser.safebrowsing.downloads.remote.block_potentially_unwanted",
-  false,
+  false
 );
 user_pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
 /* 0405: disable "ignore this warning" on SB warnings [FF45+]
@@ -89,9 +90,10 @@ user_pref("media.peerconnection.ice.default_address_only", false);
 user_pref("webgl.disabled", false);
 
 // disable email tracking data collection
+// prettier-ignore
 user_pref(
   "privacy.trackingprotection.emailtracking.data_collection.enabled",
-  false,
+  false
 );
 // enable email tracking protection
 user_pref("privacy.trackingprotection.emailtracking.enabled", true);
@@ -117,9 +119,10 @@ user_pref("identity.sendtabpromo.url", "");
 
 // disable feature recommendation
 user_pref("browser.newtabpage.activity-stream.feeds.asrouterfeed", false);
+// prettier-ignore
 user_pref(
   "browser.newtabpage.activity-stream.feeds.discoverystreamfeed",
-  false,
+  false
 );
 
 // disable experiments or studies
@@ -257,9 +260,10 @@ user_pref("dom.text_fragments.create_text_fragment.enabled", true);
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1732114
 user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.fingerprintingProtection", true);
+// prettier-ignore
 user_pref(
   "privacy.fingerprintingProtection.overrides",
-  "+AllTargets,-CSSPrefersColorScheme",
+  "+AllTargets,-CSSPrefersColorScheme"
 );
 
 // Prevent Firefox from adding back search engines after you removed them.
