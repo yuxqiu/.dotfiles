@@ -11,6 +11,7 @@
           clang-tools
           codex
           codex-acp
+          gemini-cli
           gopls
           markdown-oxide
           nixd

@@ -19,6 +19,7 @@
           "input"
           "docker"
           "i2c"
+          "geminicommit"
         ];
         initialPassword = "changeme";
 
