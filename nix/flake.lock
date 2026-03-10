@@ -76,11 +76,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1773023312,
-        "narHash": "sha256-w1j0fq1k7EZHJrYBoqzzR+P0GYMB5lOprMJGmypaiAI=",
+        "lastModified": 1773094255,
+        "narHash": "sha256-//T5UEEKazrYSOKEGfFuB3jgQ12QiiE6gKD0Avu3FOw=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "acf63c57e8bfe6caf8375904bfb778c0006af336",
+        "rev": "0fef4d515eb9876cc6d7b09f244e6dfb480c9b78",
         "type": "github"
       },
       "original": {
@@ -96,11 +96,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773018954,
-        "narHash": "sha256-wfcWZQlmwApAy7E/dkA669M/JwpJyuNDBAr20OYAn60=",
+        "lastModified": 1773105056,
+        "narHash": "sha256-T9BX2tCOO0gQ71WkMnb5hisLIPk6vRwG6SAbZRKSja0=",
         "owner": "AvengeMedia",
         "repo": "dms-plugin-registry",
-        "rev": "9bf7ae9d3b0fabd9aa9236c402c90dccf80b9e72",
+        "rev": "d3260fca96c373309025dbdc5e1c6426d22824ed",
         "type": "github"
       },
       "original": {
@@ -384,11 +384,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772985285,
-        "narHash": "sha256-wEEmvfqJcl9J0wyMgMrj1TixOgInBW/6tLPhWGoZE3s=",
+        "lastModified": 1773093840,
+        "narHash": "sha256-u/96NoAyN8BSRuM3ZimGf7vyYgXa3pLx4MYWjokuoH4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5be5d8245cbc7bc0c09fbb5f38f23f223c543f85",
+        "rev": "bb014746edb2a98d975abde4dd40fa240de4cf86",
         "type": "github"
       },
       "original": {
@@ -444,11 +444,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1772929239,
-        "narHash": "sha256-reqhkXft51f56zYw8gc+a261NCelUm7P9b1hRcpkrjU=",
+        "lastModified": 1773067062,
+        "narHash": "sha256-tejurku4yJGfHjleCRMK9AzyA0L9EXTTmpno12701iU=",
         "ref": "refs/heads/main",
-        "rev": "b797e51a0f8ca1693066eae326b4842225a55517",
-        "revCount": 70,
+        "rev": "e5b01841c13789e724626342dfe7fee9c54522d2",
+        "revCount": 72,
         "type": "git",
         "url": "https://codeberg.org/BANanaD3V/niri-nix"
       },
@@ -536,11 +536,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773024435,
-        "narHash": "sha256-7/TN5LXdxiZPRG9jwEcGkF4gBitFze2bVXaqoGHOt8Y=",
+        "lastModified": 1773110250,
+        "narHash": "sha256-6hKCHERasNDbM+r/c1GdiLV5WBudFY+83fvN2yGffT8=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "1b704b075169f68bd81f6ddcb1dd1a2286069386",
+        "rev": "63cd90b93bae923575db4f54a6ae7292b620befc",
         "type": "github"
       },
       "original": {
@@ -567,11 +567,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1772927210,
-        "narHash": "sha256-FdRDRoV0jRTiPK5ID22BaUX5P0wdsclpxtIOjaEy9Lo=",
+        "lastModified": 1772956932,
+        "narHash": "sha256-M0yS4AafhKxPPmOHGqIV0iKxgNO8bHDWdl1kOwGBwRY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0e6cdd5be64608ef630c2e41f8d51d484468492f",
+        "rev": "608d0cadfed240589a7eea422407a547ad626a14",
         "type": "github"
       },
       "original": {
@@ -706,11 +706,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772944399,
-        "narHash": "sha256-xTzsSd3r5HBeufSZ3fszAn0ldfKctvsYG7tT2YJg5gY=",
+        "lastModified": 1773096132,
+        "narHash": "sha256-M3zEnq9OElB7zqc+mjgPlByPm1O5t2fbUrH3t/Hm5Ag=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "c8e69670b316d6788e435a3aa0bda74eb1b82cc0",
+        "rev": "d1ff3b1034d5bab5d7d8086a7803c5a5968cd784",
         "type": "github"
       },
       "original": {
@@ -782,11 +782,11 @@
         "userborn": "userborn"
       },
       "locked": {
-        "lastModified": 1772948155,
-        "narHash": "sha256-Dttl9rNmkUI0/o4mg0Ze5kp+bYvdKq/2jwjsD0srawE=",
+        "lastModified": 1773070745,
+        "narHash": "sha256-V/0r4yl/SfjE0ZzPw42wfyssY/m2lEMxZR4W37h7/Qw=",
         "ref": "refs/heads/improve-boot",
-        "rev": "cb0236e1b6bb3f77cc6a6a6731be7551982713bc",
-        "revCount": 902,
+        "rev": "b755be3db8d7e427fba049fbf5e9d90a5324d27b",
+        "revCount": 903,
         "type": "git",
         "url": "file:///home/yuxqiu/Documents/oss/system-manager"
       },

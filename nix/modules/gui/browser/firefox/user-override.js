@@ -300,6 +300,9 @@ user_pref("browser.toolbars.bookmarks.visibility", "never");
 user_pref("sidebar.revamp", true);
 user_pref("sidebar.verticalTabs", true);
 
+// PREF: rounded content area
+user_pref("sidebar.revamp.round-content-area", true);
+
 // PREF: AI
 user_pref("browser.ai.control.default", "blocked");
 user_pref("browser.ai.control.linkPreviewKeyPoints", "blocked");
