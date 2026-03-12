@@ -5,6 +5,9 @@
     {
       # Essential setup for Polkit integration in Nix apps on non-NixOS distributions.
       # Creates the expected setuid wrapper location for polkit-agent-helper-1 if missing or broken.
+      #
+      # TODO: once polkit-agent-helper-1 is removed in host system and switch to socket-activated
+      # `polkit-agent-helper`, this can be removed.
       systemd.services.create-polkit-helper-symlink = {
         description = "Create /run/wrappers/bin/polkit-agent-helper-1 symlink (one-time setup for Polkit on non-NixOS)";
         wantedBy = [ "system-manager.target" ]; # Runs during system-manager activation
