@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/mnjmbdv1p2s6pkv30adi8nw1nixpqmnp-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/jabadzcax3g6q6mh7p59klx2s5828jnb-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -145,6 +145,7 @@
   "showOccupiedWorkspacesOnly": false,
   "reverseScrolling": false,
   "dwlShowAllTags": false,
+  "workspaceActiveAppHighlightEnabled": false,
   "workspaceColorMode": "default",
   "workspaceOccupiedColorMode": "default",
   "workspaceUnfocusedColorMode": "default",
@@ -327,10 +328,12 @@
   "matugenTemplateKcolorscheme": true,
   "matugenTemplateVscode": true,
   "matugenTemplateEmacs": true,
+  "matugenTemplateZed": true,
   "showDock": true,
   "dockAutoHide": true,
   "dockSmartAutoHide": false,
   "dockGroupByApp": false,
+  "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": false,
   "dockPosition": 1,
   "dockSpacing": 4,
@@ -400,6 +403,7 @@
       "urgency": "default"
     }
   ],
+  "notificationFocusedMonitor": false,
   "osdAlwaysShowValue": true,
   "osdPosition": 5,
   "osdVolumeEnabled": true,
@@ -436,7 +440,11 @@
   "displayNameMode": "system",
   "screenPreferences": {},
   "showOnLastDisplay": {},
-  "niriOutputSettings": {},
+  "niriOutputSettings": {
+    "eDP-1": {
+      "disabled": true
+    }
+  },
   "hyprlandOutputSettings": {},
   "displayProfiles": {
     "niri": {
