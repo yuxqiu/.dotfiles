@@ -9,7 +9,7 @@
           pass-cli login || return 1
         fi
 
-        pass-cli ssh-agent load
+        pass-cli ssh-agent load --vault-name ssh
         pass-cli logout
       '';
     };
