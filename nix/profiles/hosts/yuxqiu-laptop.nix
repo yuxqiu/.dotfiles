@@ -51,6 +51,7 @@
       # to specify that user.
       programs.dank-material-shell.greeter = {
         enable = true;
+        compositor.name = "niri";
         configHome = config.users.users.yuxqiu.home;
       };
     };
