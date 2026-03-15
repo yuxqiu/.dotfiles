@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/jabadzcax3g6q6mh7p59klx2s5828jnb-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/hbbkiz31bv7qbgliynqj0kl6xf63fnld-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -454,13 +454,20 @@
         "name": "home",
         "outputSet": ["DP-1", "eDP-1"],
         "updatedAt": 1769655383958
+      },
+      "profile_1773397738532_bnnhk5": {
+        "createdAt": 1773397738532,
+        "id": "profile_1773397738532_bnnhk5",
+        "name": "laptop",
+        "outputSet": ["eDP-1"],
+        "updatedAt": 1773397738532
       }
     }
   },
   "activeDisplayProfile": {
-    "niri": "profile_1769655383958_zb5r26"
+    "niri": "profile_1773397738532_bnnhk5"
   },
-  "displayProfileAutoSelect": false,
+  "displayProfileAutoSelect": true,
   "displayShowDisconnected": true,
   "displaySnapToEdge": true,
   "barConfigs": [
