@@ -143,8 +143,9 @@
           # AI
           show_edit_predictions = false;
           agent = {
-            enable_feedback = false;
             button = true;
+            enable_feedback = false;
+            show_turn_stats = true;
           };
         };
         userKeymaps = [
