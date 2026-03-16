@@ -18,6 +18,7 @@
           nixfmt
           package-version-server
           vscode-json-languageserver
+          opencode
           ruff
           tectonic
           texlab
@@ -146,6 +147,15 @@
             button = true;
             enable_feedback = false;
             show_turn_stats = true;
+          };
+          agent_servers = {
+            OpenCode = {
+              type = "custom";
+              args = [
+                "acp"
+              ];
+              command = "opencode";
+            };
           };
         };
         userKeymaps = [
