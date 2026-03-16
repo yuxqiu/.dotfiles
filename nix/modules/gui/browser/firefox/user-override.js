@@ -318,3 +318,6 @@ user_pref("browser.ml.linkPreview.onboardingTimes", "");
 
 // PREF: disable about:config warning
 user_pref("browser.aboutConfig.showWarning", false);
+
+// PREF: open new tab next to the current one
+user_pref("browser.tabs.insertAfterCurrent", true);
