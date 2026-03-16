@@ -35,5 +35,15 @@
       qt.kde.settings = {
         dolphinrc.UiSettings.ColorScheme = colorschemeSlug;
       };
+
+      xdg.mimeApps = {
+        associations.added = {
+          "inode/directory" = [ "org.kde.dolphin.desktop" ];
+        };
+
+        defaultApplications = {
+          "inode/directory" = [ "org.kde.dolphin.desktop" ];
+        };
+      };
     };
 }

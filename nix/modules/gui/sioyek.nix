@@ -18,4 +18,16 @@
       };
     };
   };
+
+  flake.modules.homeManager.linux-desktop = {
+    xdg.mimeApps = {
+      associations.added = {
+        "application/pdf" = [ "sioyek.desktop" ];
+      };
+
+      defaultApplications = {
+        "application/pdf" = [ "sioyek.desktop" ];
+      };
+    };
+  };
 }

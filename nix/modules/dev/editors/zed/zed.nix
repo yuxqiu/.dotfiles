@@ -247,4 +247,18 @@
       # stylix: use zed theme
       stylix.targets.zed.colors.enable = false;
     };
+
+  flake.modules.homeManager.linux-desktop = {
+    xdg.mimeApps = {
+      associations.added = {
+        "text/markdown" = [ "dev.zed.Zed.desktop" ];
+        "text/x-tex" = [ "dev.zed.Zed.desktop" ];
+      };
+
+      defaultApplications = {
+        "text/markdown" = [ "dev.zed.Zed.desktop" ];
+        "text/x-tex" = [ "dev.zed.Zed.desktop" ];
+      };
+    };
+  };
 }
