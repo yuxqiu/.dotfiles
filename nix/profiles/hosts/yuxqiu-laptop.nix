@@ -16,6 +16,7 @@
         config.flake.modules.homeManager.linux-desktop
 
         config.flake.modules.homeManager.yuxqiu
+        config.flake.modules.homeManager.yuxqiu-laptop
       ];
     };
   };
@@ -37,6 +38,12 @@
   flake.modules.generic.base = {
     my.sops.enable = true;
   };
+
+  flake.modules.homeManager.yuxqiu-laptop =
+    { ... }:
+    {
+      my.xremap.internalKeyboardName = "Apple SPI Keyboard";
+    };
 
   flake.modules.systemManager.yuxqiu-laptop =
     { config, lib, ... }:
