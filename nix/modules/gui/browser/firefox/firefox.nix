@@ -195,6 +195,9 @@
                   # ! block all 3p frames
                   "$3p,frame"
 
+                  # ! allow Cloudflare security challenge iframes
+                  "@@||challenges.cloudflare.com^$3p,frame"
+
                   # ! show "click to play" placeholders for all blocked frames
                   "$3p,frame,redirect-rule=click2load.html"
                 ];
