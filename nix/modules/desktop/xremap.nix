@@ -24,6 +24,8 @@
               "KEY_LEFTMETA" = "KEY_LEFTCTRL";
               "KEY_CAPSLOCK" = "KEY_ESC";
               "KEY_ESC" = "KEY_CAPSLOCK";
+              "KEY_RIGHTMETA" = "KEY_LEFTCTRL";
+              "KEY_RIGHTALT" = "KEY_LEFTALT";
             };
           }
         ];
