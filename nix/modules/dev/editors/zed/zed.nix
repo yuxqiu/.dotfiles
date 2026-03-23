@@ -147,6 +147,11 @@
             button = true;
             enable_feedback = false;
             show_turn_stats = true;
+            default_model = {
+              enable_thinking = true;
+              provider = "openrouter";
+              model = "openrouter/free";
+            };
           };
           agent_servers = {
             OpenCode = {
