@@ -1,6 +1,6 @@
 keys:
   - &yuxqiu age1mr92vpz2j6rplggpjm772lx2tsal7tja7pteyvkt5efvewc36atqlvm86r
-  - &yuxqiu_laptop age1y7e72ffuvy6lv3njz8tnlrwu8lslq89mff0k6pyjqc603w30vudqs8ehev
+  - &yuxqiu_laptop age1q9n0jkyt04747w62ydkwsm0cu0u9lxpm744j87azgsv9u70sgc0srm2h6r
 creation_rules:
   - path_regex: profiles/secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
