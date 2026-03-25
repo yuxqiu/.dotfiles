@@ -17,9 +17,56 @@
     };
 
   config.flake.modules.homeManager.linux-desktop =
-    { pkgs, lib, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
+    let
+      clearSshKeys = pkgs.writeShellScript "clear-ssh-keys" ''
+        #!${pkgs.bash}/bin/bash
+        set +e
+
+        sock="$XDG_RUNTIME_DIR/${config.services.ssh-agent-ac.socket}"
+        if [ -S "$sock" ]; then
+          SSH_AUTH_SOCK="$sock" ${pkgs.openssh}/bin/ssh-add -D 2>/dev/null || true
+        fi
+      '';
+
+      watchSuspend = pkgs.writeShellScript "watch-suspend-and-clear-ssh-keys" ''
+        #!${pkgs.bash}/bin/bash
+        set -euo pipefail
+
+        ${pkgs.glib}/bin/gdbus monitor \
+          --system \
+          --dest org.freedesktop.login1 \
+          --object-path /org/freedesktop/login1 \
+        | while read -r line; do
+            case "$line" in
+              *PrepareForSleep*true*)
+                ${clearSshKeys}
+                ;;
+            esac
+          done
+      '';
+    in
     {
       services.ssh-agent-ac.sshAskpass = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
+
+      systemd.user.services.ssh-agent-ac-suspend-clear = {
+        Unit = {
+          Description = "Clear SSH agent keys before suspend";
+          After = [ "ssh-agent-ac.service" ];
+          PartOf = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${watchSuspend}";
+          Restart = "always";
+          RestartSec = 1;
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
 
       wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
         {
