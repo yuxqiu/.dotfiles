@@ -25,7 +25,6 @@ fedora_packages=(
     gdb
     gnupg2
     greetd
-    ifuse
     kvantum
     mesa-dri-drivers
     mesa-vulkan-drivers
