@@ -18,7 +18,11 @@
         key_path="$1"
         file="$2"
 
-        age_key="$(sudo ${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i "$key_path")"
+        if [ -r "$key_path" ]; then
+          age_key="$(${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i "$key_path")"
+        else
+          age_key="$(sudo ${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i "$key_path")"
+        fi
         SOPS_AGE_KEY="$age_key" \
           EDITOR="${pkgs.neovim}/bin/nvim" \
           ${pkgs.sops}/bin/sops "$file"
@@ -86,7 +90,11 @@
 
         old_key="$(${pkgs.coreutils}/bin/cat "$old_key_pub_path" | ${pkgs.ssh-to-age}/bin/ssh-to-age)"
         new_key="$(${pkgs.coreutils}/bin/cat "$new_key_pub_path" | ${pkgs.ssh-to-age}/bin/ssh-to-age)"
-        old_identity="$(sudo ${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i "$old_key_path")"
+        if [ -r "$old_key_path" ]; then
+          old_identity="$(${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i "$old_key_path")"
+        else
+          old_identity="$(sudo ${pkgs.ssh-to-age}/bin/ssh-to-age -private-key -i "$old_key_path")"
+        fi
 
         if ! ${pkgs.gnugrep}/bin/grep -Fq "$old_key" "$sops_yaml"; then
           echo "Old key not found in .sops.yaml" >&2
