@@ -46,6 +46,7 @@
     .urlbar-input-container {
     height: 50px !important;
     padding-inline: 15px !important;
+    align-items: center !important;
 }
 
 #urlbar[breakout][breakout-extend] .urlbar-background,
@@ -163,7 +164,21 @@
     overflow: hidden !important;
 }
 
+/* ─────────────────────────────
+   Special UI fixes below
+   ───────────────────────────── */
+
 /* Hide the misaligned right arrow */
 #urlbar[breakout][breakout-extend] .urlbar-go-button {
     display: none !important;
+}
+
+/* Vertically center trust icons inside the taller breakout bar */
+#urlbar[breakout][breakout-extend] #trust-icon-container {
+    align-items: center !important;
+    height: 100% !important;
+}
+
+#urlbar[breakout][breakout-extend] #identity-icon-box {
+    padding-block: 0 !important;
 }

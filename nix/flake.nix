@@ -3,7 +3,7 @@
 
   inputs = {
     # Common
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -33,8 +33,8 @@
       url = "github:yuxqiu/tun2proxy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    handy = {
-      url = "github:cjpais/Handy/2361b8511ccd91794bbbdba98f81742fdc6f7887";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -68,8 +68,8 @@
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    handy = {
+      url = "github:cjpais/Handy/2361b8511ccd91794bbbdba98f81742fdc6f7887";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

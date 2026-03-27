@@ -321,3 +321,6 @@ user_pref("browser.aboutConfig.showWarning", false);
 
 // PREF: open new tab next to the current one
 user_pref("browser.tabs.insertAfterCurrent", true);
+
+// PREF: ip protection
+user_pref("browser.ipProtection.enabled", true);
