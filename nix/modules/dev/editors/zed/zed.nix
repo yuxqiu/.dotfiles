@@ -154,6 +154,12 @@
             };
           };
           agent_servers = {
+            gemini = {
+              type = "registry";
+            };
+            codex-acp = {
+              type = "registry";
+            };
             OpenCode = {
               type = "custom";
               args = [
