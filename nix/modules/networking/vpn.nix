@@ -4,7 +4,12 @@
 }:
 {
   flake.modules.homeManager.linux-base =
-    { lib, config, ... }:
+    {
+      lib,
+      config,
+      pkgs,
+      ...
+    }:
     {
       # Add dms toggle for t2p
       config = lib.mkIf config.my.sops.enable {
@@ -27,6 +32,8 @@
             }
           ];
         };
+
+        home.packages = with pkgs; [ proton-vpn ];
       };
     };
 
