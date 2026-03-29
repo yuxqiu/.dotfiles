@@ -34,7 +34,7 @@
             done
           '';
           gc-kondo = "${pkgs.kondo}/bin/kondo";
-          gc-nix = "nix-collect-garbage";
+          gc-nix = "nix-collect-garbage -d";
           gc-hm = ''
             home-manager expire-generations now
             gc-nix
