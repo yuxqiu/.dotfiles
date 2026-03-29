@@ -11,7 +11,6 @@ fi
 
 # List of packages available in Fedora repositories
 fedora_packages=(
-    accountsservice
     NetworkManager
     NetworkManager-wifi
     bluez
