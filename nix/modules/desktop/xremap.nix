@@ -32,20 +32,14 @@
       };
     };
 
-  flake.modules.systemManager.desktop = {
-    # give members of the input group permission to make output devices
-    environment = {
-      etc = {
-        "udev/rules.d/99-input.rules" = {
-          text = ''
-            KERNEL=="uinput", GROUP="input", TAG+="uaccess", MODE:="0660", OPTIONS+="static_node=uinput"
-          '';
-          mode = "0644";
-          replaceExisting = true;
-        };
-      };
-    };
+  flake.modules.systemManager.desktop =
+    { lib, ... }:
+    {
+      # give members of the input group permission to make output devices
+      services.udev.extraRules = lib.mkAfter ''
+        KERNEL=="uinput", GROUP="input", TAG+="uaccess", MODE:="0660", OPTIONS+="static_node=uinput"
+      '';
 
-    boot.kernelModules = [ "uinput" ];
-  };
+      boot.kernelModules = [ "uinput" ];
+    };
 }

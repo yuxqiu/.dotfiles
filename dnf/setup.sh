@@ -15,10 +15,7 @@ fedora_packages=(
     NetworkManager-wifi
     bluez
     chkrootkit
-    cmake
     cups-pk-helper
-    fuse
-    fuse3
     gcc
     gcc-c++
     gdb
@@ -36,7 +33,6 @@ fedora_packages=(
     qt5ct
     qt6ct
     rkhunter
-    stow
     tuned
     tuned-ppd
     tuned-utils

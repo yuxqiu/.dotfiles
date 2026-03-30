@@ -1,6 +1,10 @@
 {
   flake.modules.systemManager.base =
-    { pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      ...
+    }:
 
     let
       watchFprintd = pkgs.writeShellApplication {
@@ -37,19 +41,11 @@
       };
     in
     {
-      environment = {
-        etc = {
-          # Rule is from:
-          # - https://discussion.fedoraproject.org/t/fingerprint-instability-on-fedora-42-kde-thinkpad-x1-yoga-gen6/154101/2
-          "udev/rules.d/01-disable-fingerprint-autosuspend.rules" = {
-            text = ''
-              ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="2541", ATTRS{idProduct}=="0236", TEST=="power/control", ATTR{power/control}="on"
-            '';
-            mode = "0644";
-            replaceExisting = true;
-          };
-        };
-      };
+      # Rule is from:
+      # - https://discussion.fedoraproject.org/t/fingerprint-instability-on-fedora-42-kde-thinkpad-x1-yoga-gen6/154101/2
+      services.udev.extraRules = lib.mkAfter ''
+        ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="2541", ATTRS{idProduct}=="0236", TEST=="power/control", ATTR{power/control}="on"
+      '';
 
       # segfault
       # https://github.com/ddlsmurf/libfprint-CS9711/issues/4
