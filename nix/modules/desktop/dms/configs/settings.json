@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/hbbkiz31bv7qbgliynqj0kl6xf63fnld-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/vbnwwvcxv2syfgv67l2mkr532wnyvmqi-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -11,6 +11,7 @@
     }
   },
   "matugenScheme": "scheme-tonal-spot",
+  "matugenContrast": 0,
   "runUserMatugenTemplates": false,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
@@ -30,6 +31,7 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "firstDayOfWeek": -1,
+  "showWeekNumber": false,
   "use24HourClock": true,
   "showSeconds": true,
   "padHours12Hour": false,
@@ -306,6 +308,10 @@
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
   "terminalsAlwaysDark": false,
+  "muxType": "tmux",
+  "muxUseCustomCommand": false,
+  "muxCustomCommand": "",
+  "muxSessionFilter": "",
   "runDmsMatugenTemplates": false,
   "matugenTemplateGtk": true,
   "matugenTemplateNiri": true,
@@ -329,6 +335,17 @@
   "matugenTemplateVscode": true,
   "matugenTemplateEmacs": true,
   "matugenTemplateZed": true,
+  "matugenTemplateNeovimSettings": {
+    "dark": {
+      "baseTheme": "github_dark",
+      "harmony": 0.5
+    },
+    "light": {
+      "baseTheme": "github_light",
+      "harmony": 0.5
+    }
+  },
+  "matugenTemplateNeovimSetBackground": true,
   "showDock": true,
   "dockAutoHide": true,
   "dockSmartAutoHide": false,
@@ -465,7 +482,7 @@
     }
   },
   "activeDisplayProfile": {
-    "niri": "profile_1773397738532_bnnhk5"
+    "niri": "profile_1769655383958_zb5r26"
   },
   "displayProfileAutoSelect": true,
   "displayShowDisconnected": true,
@@ -764,5 +781,5 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 6
+  "configVersion": 5
 }
