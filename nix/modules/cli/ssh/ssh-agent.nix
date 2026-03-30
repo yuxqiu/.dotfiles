@@ -57,7 +57,6 @@
       systemd.user.services.ssh-agent-ac-suspend-clear = {
         Unit = {
           Description = "Clear SSH agent keys before suspend";
-          After = [ "ssh-agent-ac.service" ];
           PartOf = [ "graphical-session.target" ];
         };
         Service = {
