@@ -6,9 +6,9 @@
     }:
     {
       imports = [
-        (nixosModulesPath + "/services/desktops/accountsservice.nix")
+        (nixosModulesPath + "/services/hardware/upower.nix")
       ];
 
-      services.accounts-daemon.enable = true;
+      services.upower.enable = true;
     };
 }

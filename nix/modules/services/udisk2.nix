@@ -6,9 +6,9 @@
     }:
     {
       imports = [
-        (nixosModulesPath + "/services/desktops/accountsservice.nix")
+        (nixosModulesPath + "/services/hardware/udisks2.nix")
       ];
 
-      services.accounts-daemon.enable = true;
+      services.udisks2.enable = true;
     };
 }

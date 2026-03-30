@@ -6,9 +6,9 @@
     }:
     {
       imports = [
-        (nixosModulesPath + "/services/desktops/accountsservice.nix")
+        (nixosModulesPath + "/services/hardware/usbmuxd.nix")
       ];
 
-      services.accounts-daemon.enable = true;
+      services.usbmuxd.enable = true;
     };
 }

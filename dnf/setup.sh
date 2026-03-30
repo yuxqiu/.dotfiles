@@ -19,7 +19,6 @@ fedora_packages=(
     gcc
     gcc-c++
     gdb
-    gnupg2
     greetd
     kvantum
     mesa-dri-drivers
@@ -33,13 +32,7 @@ fedora_packages=(
     qt5ct
     qt6ct
     rkhunter
-    tuned
-    tuned-ppd
-    tuned-utils
-    udisks2
     unzip
-    upower
-    usbmuxd
     util-linux
     wireplumber
     zip
