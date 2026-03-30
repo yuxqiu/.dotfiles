@@ -253,6 +253,7 @@
           mode = "0400";
           owner = config.users.users.xray.name;
           group = config.users.users.xray.group;
+          restartUnits = [ "xray.service" ];
         };
 
         systemd.services.xray = {
