@@ -273,7 +273,25 @@
     },
     "flake-utils_2": {
       "inputs": {
-        "systems": "systems_4"
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
+      "inputs": {
+        "systems": "systems_5"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -704,6 +722,44 @@
         "url": "https://git.outfoxxed.me/quickshell/quickshell"
       }
     },
+    "quicksnip": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "quicksnip-src": "quicksnip-src"
+      },
+      "locked": {
+        "lastModified": 1774963746,
+        "narHash": "sha256-llhdOpa7ljyVfh7fgt6xngeeEGX2nuk7QJ/m/RPFqPA=",
+        "owner": "yuxqiu",
+        "repo": "quicksnip-nix",
+        "rev": "08e1762e14acdd730166ba5a962ec7f7ef8893b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yuxqiu",
+        "repo": "quicksnip-nix",
+        "type": "github"
+      }
+    },
+    "quicksnip-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774940201,
+        "narHash": "sha256-bosa8kDHI1f4n2OjfBRxmV3lySi+rZVfVXpUw4ZC+iY=",
+        "owner": "Ronin-CK",
+        "repo": "QuickSnip",
+        "rev": "0f6a82fc0cad3e432272e4c420eeeba01f1f785c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Ronin-CK",
+        "repo": "QuickSnip",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "dms": "dms",
@@ -719,6 +775,7 @@
         "nix-system-graphics": "nix-system-graphics",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs_2",
+        "quicksnip": "quicksnip",
         "sops-nix": "sops-nix",
         "ssh-agent-ac": "ssh-agent-ac",
         "stylix": "stylix",
@@ -770,7 +827,7 @@
     },
     "ssh-agent-ac": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -802,7 +859,7 @@
           "nixpkgs"
         ],
         "nur": "nur",
-        "systems": "systems_2",
+        "systems": "systems_3",
         "tinted-foot": "tinted-foot",
         "tinted-kitty": "tinted-kitty",
         "tinted-schemes": "tinted-schemes",
@@ -906,6 +963,21 @@
         "type": "github"
       }
     },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "tinted-foot": {
       "flake": false,
       "locked": {
@@ -989,7 +1061,7 @@
     },
     "tun2proxy": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -1020,7 +1092,7 @@
           "nixpkgs"
         ],
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
-        "systems": "systems_3"
+        "systems": "systems_4"
       },
       "locked": {
         "lastModified": 1770377964,
