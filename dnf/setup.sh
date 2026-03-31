@@ -31,7 +31,6 @@ fedora_packages=(
     polkit
     qt5ct
     qt6ct
-    rkhunter
     unzip
     util-linux
     wireplumber
