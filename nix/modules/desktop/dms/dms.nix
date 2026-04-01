@@ -4,7 +4,7 @@
 }:
 {
   flake.modules.homeManager.linux-desktop =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       imports = [
         inputs.dms.homeModules.dank-material-shell
@@ -49,6 +49,8 @@
         settings = builtins.fromJSON (builtins.readFile ./configs/settings.json) // {
           customThemeFile = "${inputs.dms-plugin-registry}/themes/catppuccin/theme.json";
         };
+
+        quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.system}.default;
       };
 
       # Restart dms service when settings are changed

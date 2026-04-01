@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/vbnwwvcxv2syfgv67l2mkr532wnyvmqi-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/y6q69xcak65dknknp3x5axlc23qjqf75-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -14,7 +14,7 @@
   "matugenContrast": 0,
   "runUserMatugenTemplates": false,
   "matugenTargetMonitor": "",
-  "popupTransparency": 1,
+  "popupTransparency": 0.6,
   "dockTransparency": 1,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "default",
@@ -55,6 +55,10 @@
   "modalElevationEnabled": true,
   "popoutElevationEnabled": true,
   "barElevationEnabled": false,
+  "blurEnabled": true,
+  "blurBorderColor": "outline",
+  "blurBorderCustomColor": "#ffffff",
+  "blurBorderOpacity": 0.5,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
   "blurWallpaperOnOverview": false,
@@ -228,6 +232,7 @@
   "sortAppsAlphabetically": false,
   "appLauncherGridColumns": 4,
   "spotlightCloseNiriOverview": true,
+  "rememberLastQuery": false,
   "spotlightSectionViewModes": {},
   "appDrawerSectionViewModes": {},
   "niriOverviewOverlayEnabled": true,
@@ -459,7 +464,7 @@
   "showOnLastDisplay": {},
   "niriOutputSettings": {
     "eDP-1": {
-      "disabled": true
+      "disabled": false
     }
   },
   "hyprlandOutputSettings": {},
@@ -471,13 +476,6 @@
         "name": "home",
         "outputSet": ["DP-1", "eDP-1"],
         "updatedAt": 1769655383958
-      },
-      "profile_1773397738532_bnnhk5": {
-        "createdAt": 1773397738532,
-        "id": "profile_1773397738532_bnnhk5",
-        "name": "laptop",
-        "outputSet": ["eDP-1"],
-        "updatedAt": 1773397738532
       }
     }
   },
