@@ -42,6 +42,7 @@
   flake.modules.homeManager.yuxqiu-laptop =
     { ... }:
     {
+      my.kanshi.externalMonitorName = "Dell Inc. DELL S2725QS 95HL364";
       my.xremap.internalKeyboardName = "Apple SPI Keyboard";
     };
 
