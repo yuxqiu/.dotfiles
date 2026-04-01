@@ -34,7 +34,7 @@
       # system but not in nix. Thus, we need to inject (may be system-dependent)
       # `/usr/lib/qt{5,6}/plugins/platformthemes` into the QT_PLUGIN_PATH.
       #
-      # 2. A caveat is that: nix's Qt might not be incompatible with system's
+      # 2. A caveat is that: nix's Qt might not be compatible with system's
       # Qt. So, it's better to also install qt{5,6}ct and kvantum using your
       # system's package manager. But this might break apps installed via nix
       # (if not properly wrapped) or systems (incompatible libraries).
