@@ -119,7 +119,15 @@
             Type = "oneshot";
             ExecStart = "${waylandSessionsCleanup}";
           };
+        };
+
+        systemd.paths.wayland-sessions-tmpfiles-cleanup = {
           wantedBy = [ "system-manager.target" ];
+          pathConfig = {
+            Unit = "wayland-sessions-tmpfiles-cleanup.service";
+            PathChanged = [ "/usr/share/wayland-sessions" ];
+            PathModified = [ "/usr/share/wayland-sessions/*.desktop" ];
+          };
         };
       };
     };
