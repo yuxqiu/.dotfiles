@@ -23,6 +23,10 @@
         set -euo pipefail
 
         packages=(${packagesArg})
+        mkdir -p "$out"
+        rules="$out/rules"
+        manifest="$out/manifest"
+        : > "$manifest"
 
         {
           echo "d /etc/dbus-1 0755 root root - -"
@@ -52,11 +56,47 @@
                       ;;
                   esac
                   echo "L $dest - - - - $f"
+                  echo "$f" >> "$manifest"
                 done < <(find -L "$pkg/$rel" -type f -print0)
               fi
             done
           done
-        } > "$out"
+        } > "$rules"
+      '';
+      dbusCleanup = pkgs.writeShellScript "dbus-tmpfiles-cleanup" ''
+        set -euo pipefail
+
+        manifest="${dbusTmpfiles}/manifest"
+        if [ ! -f "$manifest" ]; then
+          exit 0
+        fi
+
+        cleanup_dir() {
+          local dir="$1"
+          [ -d "$dir" ] || return 0
+          while IFS= read -r -d "" link; do
+            target="$(readlink "$link" || true)"
+            [ -n "$target" ] || continue
+            case "$target" in
+              /nix/store/*)
+                if [ ! -e "$target" ] || ! grep -qxF "$target" "$manifest"; then
+                  rm -f "$link"
+                fi
+                ;;
+              *)
+                ;;
+            esac
+          done < <(find "$dir" -type l -print0)
+        }
+
+        cleanup_dir /etc/dbus-1/system.d
+        cleanup_dir /etc/dbus-1/session.d
+        cleanup_dir /usr/share/dbus-1/system.d
+        cleanup_dir /usr/share/dbus-1/system-services
+        cleanup_dir /usr/share/dbus-1/session.d
+        cleanup_dir /usr/share/dbus-1/services
+        cleanup_dir /usr/share/dbus-1/interfaces
+        cleanup_dir /usr/share/dbus-1/accessibility-services
       '';
     in
     {
@@ -79,15 +119,18 @@
         '';
       };
 
-      config = lib.mkIf (cfg.packages != [ ]) {
+      config = {
         systemd.tmpfiles.rules = lib.filter (line: line != "") (
-          lib.splitString "\n" (builtins.readFile dbusTmpfiles)
+          lib.splitString "\n" (builtins.readFile "${dbusTmpfiles}/rules")
         );
 
+        # This will be ran after tmpfiles are setup. See system-manager's activation
+        # order at crates/system-manager-engine/src/activate.rs#L88-L116
         systemd.services.dbus-reload = {
           description = "Reload D-Bus when rules change";
           serviceConfig = {
             Type = "oneshot";
+            ExecStartPre = "${dbusCleanup}";
             ExecStart = "${pkgs.systemd}/bin/systemctl reload dbus";
           };
         };

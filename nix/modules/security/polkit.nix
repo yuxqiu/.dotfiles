@@ -17,6 +17,11 @@
           polkitTmpfiles = pkgs.runCommand "polkit-1-tmpfiles" { } ''
             set -euo pipefail
 
+            mkdir -p "$out"
+            rules="$out/rules"
+            manifest="$out/manifest"
+            : > "$manifest"
+
             {
               echo "d /usr/share/polkit-1 0755 root root - -"
 
@@ -24,9 +29,34 @@
                 while IFS= read -r -d "" f; do
                   dest="/usr/share/''${f#"${config.system.path}/share/"}"
                   echo "L $dest - - - - $f"
+                  echo "$f" >> "$manifest"
                 done < <(find -L "${config.system.path}/share/polkit-1" -type f -print0)
               fi
-            } > "$out"
+            } > "$rules"
+          '';
+          polkitCleanup = pkgs.writeShellScript "polkit-tmpfiles-cleanup" ''
+            set -euo pipefail
+
+            manifest="${polkitTmpfiles}/manifest"
+            if [ ! -f "$manifest" ]; then
+              exit 0
+            fi
+
+            if [ -d /usr/share/polkit-1 ]; then
+              while IFS= read -r -d "" link; do
+                target="$(readlink "$link" || true)"
+                [ -n "$target" ] || continue
+                case "$target" in
+                  /nix/store/*)
+                    if [ ! -e "$target" ] || ! grep -qxF "$target" "$manifest"; then
+                      rm -f "$link"
+                    fi
+                    ;;
+                  *)
+                    ;;
+                esac
+              done < <(find /usr/share/polkit-1 -type l -print0)
+            fi
           '';
         in
         {
@@ -34,13 +64,14 @@
           environment.pathsToLink = [ "/share/polkit-1" ];
 
           systemd.tmpfiles.rules = lib.filter (line: line != "") (
-            lib.splitString "\n" (builtins.readFile polkitTmpfiles)
+            lib.splitString "\n" (builtins.readFile "${polkitTmpfiles}/rules")
           );
 
           systemd.services.polkit-reload = {
             description = "Reload polkit when rules change";
             serviceConfig = {
               Type = "oneshot";
+              ExecStartPre = "${polkitCleanup}";
               ExecStart = "${pkgs.systemd}/bin/systemctl try-reload-or-restart polkit.service";
             };
           };

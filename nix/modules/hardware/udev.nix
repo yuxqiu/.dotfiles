@@ -19,6 +19,10 @@
 
             seen="$TMPDIR/udev-rules-seen"
             : > "$seen"
+            mkdir -p "$out"
+            rules="$out/rules"
+            manifest="$out/manifest"
+            : > "$manifest"
 
             {
               echo "d /etc/udev/rules.d 0755 root root - -"
@@ -34,11 +38,36 @@
                     fi
                     echo "$base" >> "$seen"
                     echo "L /etc/udev/rules.d/$base - - - - $f"
+                    echo "$f" >> "$manifest"
                   done < <(find -L "$dir" -type f -print0)
                 done
               done
-            } > "$out"
+            } > "$rules"
           '';
+      udevCleanup = pkgs.writeShellScript "udev-tmpfiles-cleanup" ''
+        set -euo pipefail
+
+        manifest="${rulesTmpfiles}/manifest"
+        if [ ! -f "$manifest" ]; then
+          exit 0
+        fi
+
+        if [ -d /etc/udev/rules.d ]; then
+          while IFS= read -r -d "" link; do
+            target="$(readlink "$link" || true)"
+            [ -n "$target" ] || continue
+            case "$target" in
+              /nix/store/*)
+                if [ ! -e "$target" ] || ! grep -qxF "$target" "$manifest"; then
+                  rm -f "$link"
+                fi
+                ;;
+              *)
+                ;;
+            esac
+          done < <(find /etc/udev/rules.d -type l -print0)
+        fi
+      '';
     in
     {
       options.services.udev = {
@@ -64,11 +93,11 @@
       };
 
       config = lib.mkMerge [
-        (lib.mkIf (cfg.packages != [ ]) {
+        {
           systemd.tmpfiles.rules = lib.filter (line: line != "") (
-            lib.splitString "\n" (builtins.readFile rulesTmpfiles)
+            lib.splitString "\n" (builtins.readFile "${rulesTmpfiles}/rules")
           );
-        })
+        }
         (lib.mkIf (cfg.extraRules != "") {
           environment.etc."udev/rules.d/99-local.rules" = {
             text = cfg.extraRules;
@@ -81,6 +110,7 @@
             description = "Reload udev rules when rules change";
             serviceConfig = {
               Type = "oneshot";
+              ExecStartPre = "${udevCleanup}";
               ExecStart = "${pkgs.systemd}/bin/udevadm control --reload-rules";
               ExecStartPost = "${pkgs.systemd}/bin/udevadm trigger --type=devices --action=change";
             };
