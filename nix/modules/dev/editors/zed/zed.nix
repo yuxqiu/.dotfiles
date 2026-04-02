@@ -4,6 +4,7 @@
     {
       programs.zed-editor = {
         enable = true;
+        enableMcpIntegration = true;
         # needed by extensions to support offline lsp
         # - Some from https://github.com/zed-industries/zed/tree/main/crates/languages/src
         extraPackages = with pkgs; [
