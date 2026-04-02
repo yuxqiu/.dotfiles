@@ -3,11 +3,10 @@
   config.flake.modules.homeManager.desktop =
     { pkgs, ... }:
     {
-      imports = [ (inputs.self + /packages/ssh-agent-ac.nix) ];
+      home.packages = [ inputs.ssh-agent-ac.packages.${pkgs.stdenv.system}.ssh-agent-ac ];
 
-      services.ssh-agent-ac = {
+      services.ssh-agent = {
         enable = true;
-        package = inputs.ssh-agent-ac.packages.${pkgs.stdenv.system}.ssh-agent-ac;
 
         defaultMaximumIdentityLifetime = null;
 
@@ -28,7 +27,7 @@
         #!${pkgs.bash}/bin/bash
         set +e
 
-        sock="$XDG_RUNTIME_DIR/${config.services.ssh-agent-ac.socket}"
+        sock="$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket}"
         if [ -S "$sock" ]; then
           SSH_AUTH_SOCK="$sock" ${pkgs.openssh}/bin/ssh-add -D 2>/dev/null || true
         fi
@@ -52,9 +51,18 @@
       '';
     in
     {
-      services.ssh-agent-ac.sshAskpass = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
+      # Ensure it starts after the graphical session is up.
+      # This makes it able to pick up env var like DISPLAY.
+      systemd.user.services.ssh-agent.Unit = {
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
 
-      systemd.user.services.ssh-agent-ac-suspend-clear = {
+      systemd.user.services.ssh-agent.Service.Environment = lib.mkAfter [
+        "SSH_ASKPASS=${pkgs.seahorse}/libexec/seahorse/ssh-askpass"
+      ];
+
+      systemd.user.services.ssh-agent-suspend-clear = {
         Unit = {
           Description = "Clear SSH agent keys before suspend";
           PartOf = [ "graphical-session.target" ];
@@ -79,9 +87,11 @@
       ];
     };
 
-  config.flake.modules.homeManager.darwin-gui =
+  config.flake.modules.homeManager.darwin-desktop =
     { pkgs, ... }:
     {
-      services.ssh-agent-ac.sshAskpass = "${pkgs.ssh-askpass-fullscreen}/bin/ssh-askpass-fullscreen";
+      launchd.agents.ssh-agent.config.EnvironmentVariables = {
+        SSH_ASKPASS = "${pkgs.ssh-askpass-fullscreen}/bin/ssh-askpass-fullscreen";
+      };
     };
 }
