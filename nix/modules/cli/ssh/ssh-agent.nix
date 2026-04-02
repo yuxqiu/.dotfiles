@@ -53,9 +53,12 @@
     {
       # Ensure it starts after the graphical session is up.
       # This makes it able to pick up env var like DISPLAY.
-      systemd.user.services.ssh-agent.Unit = {
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+      systemd.user.services.ssh-agent = {
+        Install.WantedBy = lib.mkForce [ "graphical-session.target" ];
+        Unit = {
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
       };
 
       systemd.user.services.ssh-agent.Service.Environment = lib.mkAfter [
