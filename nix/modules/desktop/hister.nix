@@ -23,11 +23,12 @@
             excludes = [ "*secret*" ];
           };
         };
-        hotkeys = {
+        hotkeys.web = {
           "/" = "focus_search_input";
           "enter" = "open_result";
-          "ctrl+alt+o" = "open_query_in_search_engine";
-          "ctrl+alt+v" = "view_result_popup";
+          "ctrl+1" = "select_next_result";
+          "ctrl+2" = "open_query_in_search_engine";
+          "ctrl+3" = "select_previous_result";
           "tab" = "autocomplete";
           "?" = "show_hotkeys";
         };
