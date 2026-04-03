@@ -25,7 +25,6 @@
           "org.gnome.Calculator"
           "org.gnome.FileRoller"
           "org.libreoffice.LibreOffice"
-          "org.localsend.localsend_app"
           "org.inkscape.Inkscape"
           "net.sapples.LiveCaptions"
           "io.frama.tractor.carburetor"
@@ -80,10 +79,6 @@
           };
 
           "io.github.ungoogled_software.ungoogled_chromium" = {
-            Context.shared = [ "network" ];
-          };
-
-          "org.localsend.localsend_app" = {
             Context.shared = [ "network" ];
           };
 
