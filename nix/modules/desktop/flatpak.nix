@@ -28,6 +28,7 @@
           "org.inkscape.Inkscape"
           "net.sapples.LiveCaptions"
           "io.frama.tractor.carburetor"
+          "org.gnome.gitlab.YaLTeR.VideoTrimmer"
         ];
 
         overrides = {
