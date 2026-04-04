@@ -36,7 +36,6 @@
                 options edns0
               '';
               mode = "0644";
-              replaceExisting = true;
             };
             "NetworkManager/conf.d/dns-servers.conf" = {
               text = ''

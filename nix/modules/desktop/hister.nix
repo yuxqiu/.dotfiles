@@ -1,60 +1,81 @@
 { inputs, ... }:
+let
+  hister_address = "127.0.0.1";
+  hister_port = "4433";
+in
 {
-  flake.modules.homeManager.desktop = {
-    imports = [ inputs.hister.homeModules.hister ];
+  flake.modules.homeManager.desktop =
+    { config, ... }:
+    {
+      imports = [ inputs.hister.homeModules.hister ];
 
-    services.hister = {
-      enable = true;
-      config = {
-        app = {
-          search_url = "https://duckduckgo.com/?q={query}";
-          log_level = "info";
-          open_results_on_new_tab = true;
-        };
-        server = {
-          address = "127.0.0.1:4433";
-          database = "db.sqlite3";
-        };
-        indexer = {
-          detect_languages = true;
-          directories = {
-            path = "~/Documents/notes";
-            filetypes = [ "md" ];
-            excludes = [ "*secret*" ];
+      services.hister = {
+        enable = true;
+        config = {
+          app = {
+            search_url = "https://duckduckgo.com/?q={query}";
+            log_level = "info";
+            open_results_on_new_tab = true;
+          };
+          server = {
+            address = "${hister_address}:${hister_port}";
+            base_url = "https://${config.my.networking.publicHost}:${hister_port}";
+            database = "db.sqlite3";
+          };
+          indexer = {
+            detect_languages = true;
+            directories = {
+              path = "~/Documents/notes";
+              filetypes = [ "md" ];
+              excludes = [ "*secret*" ];
+            };
+          };
+          hotkeys.web = {
+            "/" = "focus_search_input";
+            "enter" = "open_result";
+            "ctrl+1" = "select_next_result";
+            "ctrl+2" = "open_query_in_search_engine";
+            "ctrl+3" = "select_previous_result";
+            "tab" = "autocomplete";
+            "?" = "show_hotkeys";
+          };
+          sensitive_content_patterns = {
+            aws_access_key = "AKIA[0-9A-Z]{16}";
+            github_token = "(ghp|gho|ghu|ghs|ghr)_[a-zA-Z0-9]{36}";
           };
         };
-        hotkeys.web = {
-          "/" = "focus_search_input";
-          "enter" = "open_result";
-          "ctrl+1" = "select_next_result";
-          "ctrl+2" = "open_query_in_search_engine";
-          "ctrl+3" = "select_previous_result";
-          "tab" = "autocomplete";
-          "?" = "show_hotkeys";
+      };
+
+      programs.firefox.policies = {
+        # Install hister firefox extension
+        # Manual config is still needed for the server url in the extension
+        ExtensionSettings = {
+          "{f0bda7ce-0cda-42dc-9ea8-126b20fed280}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/{f0bda7ce-0cda-42dc-9ea8-126b20fed280}/latest.xpi";
+            installation_mode = "normal_installed";
+          };
         };
-        sensitive_content_patterns = {
-          aws_access_key = "AKIA[0-9A-Z]{16}";
-          github_token = "(ghp|gho|ghu|ghs|ghr)_[a-zA-Z0-9]{36}";
+        SearchEngines = {
+          # search engine provided by the extension defaults to 127.0.0.1
+          # so we need to remove it
+          Remove = [
+            "Hister"
+          ];
+          Add = [
+            {
+              Name = "hister";
+              URLTemplate = "${config.services.hister.config.server.base_url}/?q={searchTerms}";
+              IconURL = "${config.services.hister.config.server.base_url}/static/logo.png";
+              Alias = "hister";
+            }
+          ];
         };
       };
     };
 
-    programs.firefox.policies = {
-      # Install hister firefox extension
-      ExtensionSettings = {
-        "{f0bda7ce-0cda-42dc-9ea8-126b20fed280}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/{f0bda7ce-0cda-42dc-9ea8-126b20fed280}/latest.xpi";
-          installation_mode = "normal_installed";
-        };
-      };
-      Add = [
-        {
-          Name = "hister";
-          URLTemplate = "http://127.0.0.1:4433/?q={searchTerms}";
-          IconURL = "http://127.0.0.1:4433/static/logo.png";
-          Alias = "hister";
-        }
-      ];
+  flake.modules.systemManager.desktop = {
+    services.tailscale.serveHttpsTargets = {
+      "${hister_port}" = "http://${hister_address}:${hister_port}";
     };
   };
 }

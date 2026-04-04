@@ -10,6 +10,8 @@
       stateVersion = "26.05";
       modules = [
         config.flake.modules.generic.base
+        config.flake.modules.generic.yuxqiu-laptop
+
         config.flake.modules.homeManager.base
         config.flake.modules.homeManager.desktop
         config.flake.modules.homeManager.linux-base
@@ -26,6 +28,8 @@
       system = "aarch64-linux";
       modules = [
         config.flake.modules.generic.base
+        config.flake.modules.generic.yuxqiu-laptop
+
         config.flake.modules.systemManager.base
         config.flake.modules.systemManager.desktop
 
@@ -35,15 +39,24 @@
     };
   };
 
-  flake.modules.generic.base = {
+  flake.modules.generic.yuxqiu-laptop = {
     my.sops.enable = true;
+    my = {
+      networking = {
+        tailscale = true;
+        bindAddress = "100.108.78.86";
+        publicHost = "pc.taile30f2a.ts.net";
+      };
+    };
   };
 
   flake.modules.homeManager.yuxqiu-laptop =
     { ... }:
     {
-      my.kanshi.externalMonitorName = "Dell Inc. DELL S2725QS 95HL364";
-      my.xremap.internalKeyboardName = "Apple SPI Keyboard";
+      my = {
+        kanshi.externalMonitorName = "Dell Inc. DELL S2725QS 95HL364";
+        xremap.internalKeyboardName = "Apple SPI Keyboard";
+      };
     };
 
   flake.modules.systemManager.yuxqiu-laptop =
