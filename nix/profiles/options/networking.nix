@@ -2,16 +2,10 @@
 {
   flake.modules.generic.base = {
     options.my.networking = {
-      tailscale = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Enable Tailscale for secure networking";
-      };
-
       bindAddress = lib.mkOption {
         type = lib.types.str;
         default = "127.0.0.1";
-        description = "The address to bind/listen on for networking. Defaults to loopback, but should be set to your Tailscale IP when tailscale is enabled.";
+        description = "The address to bind/listen on for networking. Defaults to loopback, but should be set to your public IP if desired.";
       };
 
       publicHost = lib.mkOption {
@@ -25,17 +19,11 @@
   flake.modules.systemManager.base =
     { config, ... }:
     let
-      tailscaleHost =
-        lib.mkIf
-          (
-            config.my.networking.tailscale
-            && config.my.networking.bindAddress != config.my.networking.publicHost
-          )
-          {
-            ${config.my.networking.bindAddress} = [ config.my.networking.publicHost ];
-          };
+      hosts = lib.mkIf (config.my.networking.bindAddress != config.my.networking.publicHost) {
+        ${config.my.networking.bindAddress} = [ config.my.networking.publicHost ];
+      };
     in
     {
-      networking.hosts = tailscaleHost;
+      networking.hosts = hosts;
     };
 }

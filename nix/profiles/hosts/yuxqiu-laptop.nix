@@ -43,7 +43,6 @@
     my.sops.enable = true;
     my = {
       networking = {
-        tailscale = true;
         bindAddress = "100.108.78.86";
         publicHost = "pc.taile30f2a.ts.net";
       };
@@ -75,5 +74,7 @@
         compositor.name = "niri";
         configHome = config.users.users.yuxqiu.home;
       };
+
+      services.tailscale.enable = true;
     };
 }

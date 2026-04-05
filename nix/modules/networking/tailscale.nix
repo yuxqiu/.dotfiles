@@ -55,7 +55,6 @@
         };
 
         services.tailscale = {
-          enable = config.my.networking.tailscale;
           authKeyFile = config.sops.secrets."tailscale_key".path;
           disableUpstreamLogging = true;
           extraUpFlags = [ "--ssh" ];
@@ -63,7 +62,7 @@
         };
 
         systemd.services.tailscale-serve =
-          lib.mkIf (config.my.networking.tailscale && config.services.tailscale.serveHttpsTargets != { })
+          lib.mkIf (config.services.tailscale.enable && config.services.tailscale.serveHttpsTargets != { })
             {
               description = "Tailscale serve proxy service";
               wantedBy = [ "multi-user.target" ];

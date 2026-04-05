@@ -9,9 +9,6 @@
         enable = true;
 
         defaultMaximumIdentityLifetime = null;
-
-        enableBashIntegration = true;
-        enableZshIntegration = true;
       };
     };
 
