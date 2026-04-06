@@ -45,12 +45,26 @@
           };
         };
 
-        # force all domains through this (prevents per-link DNS from overriding)
-        # interact with @vpn.nix
-        systemd.tmpfiles.rules = [
-          "d /etc/systemd/resolved.conf.d 0755 root root - -"
-          "f /etc/systemd/resolved.conf.d/domain.conf 0644 root root - [Resolve]\\nDomains=~.\\n"
-        ];
+        # create resolved domain config before resolved starts
+        systemd.services.systemd-resolved-domain-conf = {
+          description = "Create global DNS domain override for systemd-resolved";
+          before = [ "systemd-resolved.service" ];
+          wantedBy = [
+            "multi-user.target"
+            "systemd-resolved.service"
+          ];
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            ExecStart = pkgs.writeShellScript "systemd-resolved-domain-setup" ''
+              set -euo pipefail
+
+              ${pkgs.coreutils}/bin/mkdir -p /etc/systemd/resolved.conf.d
+              ${pkgs.coreutils}/bin/printf "[Resolve]\\nDomains=~.\\n" > /etc/systemd/resolved.conf.d/domain.conf
+            '';
+            StandardOutput = "journal";
+          };
+        };
 
         # https://www.reddit.com/r/NixOS/comments/1pvq42f/nixos_dnscryptproxy_with_odoh_relays_servers_oisd/
         services.dnscrypt-proxy = {
