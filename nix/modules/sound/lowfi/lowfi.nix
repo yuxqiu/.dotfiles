@@ -11,13 +11,7 @@
         postFixup = (old.postFixup or "") + ''
           ${lib.optionalString pkgs.stdenv.hostPlatform.isLinux ''
             wrapProgram $out/bin/lowfi \
-              --set ALSA_PLUGIN_DIR "${pkgs.alsa-plugins}/lib/alsa-lib" \
-              --prefix LD_LIBRARY_PATH : "${
-                lib.makeLibraryPath [
-                  pkgs.pipewire
-                  pkgs.alsa-lib
-                ]
-              }"
+              --set ALSA_PLUGIN_DIR "${pkgs.alsa-plugins}/lib/alsa-lib"
           ''}
         '';
       });
