@@ -1,4 +1,3 @@
-# https://www.reddit.com/r/NixOS/comments/1pvq42f/nixos_dnscryptproxy_with_odoh_relays_servers_oisd/
 {
   flake.modules.systemManager.base =
     {
@@ -29,30 +28,31 @@
       config = {
         environment = {
           etc = {
-            "resolv.conf" = {
+            "systemd/resolved.conf.d/dnscrypt.conf" = {
               text = ''
-                nameserver ::1
-                nameserver 127.0.0.1
-                options edns0
+                [Resolve]
+                # Forward all queries to dnscrypt-proxy on port 53
+                DNS=127.0.0.1:53
+
+                # Strongly recommended: disable fallbacks so nothing bypasses dnscrypt-proxy
+                FallbackDNS=
+
+                # Disable resolved's own DoT/DoH (dnscrypt-proxy handles encryption)
+                DNSOverTLS=no
+                DNSSEC=no
               '';
-              mode = "0644";
-            };
-            "NetworkManager/conf.d/dns-servers.conf" = {
-              text = ''
-                # https://wiki.archlinux.org/title/NetworkManager#Unmanaged_/etc/resolv.conf
-                [main]
-                dns=none
-              '';
-              mode = "0644";
-              replaceExisting = true;
             };
           };
         };
 
-        systemd.maskedUnits = [
-          "systemd-resolved.service"
+        # force all domains through this (prevents per-link DNS from overriding)
+        # interact with @vpn.nix
+        systemd.tmpfiles.rules = [
+          "d /etc/systemd/resolved.conf.d 0755 root root - -"
+          "f /etc/systemd/resolved.conf.d/domain.conf 0644 root root - [Resolve]\\nDomains=~.\\n"
         ];
 
+        # https://www.reddit.com/r/NixOS/comments/1pvq42f/nixos_dnscryptproxy_with_odoh_relays_servers_oisd/
         services.dnscrypt-proxy = {
           enable = true;
           settings = {

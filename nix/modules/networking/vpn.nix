@@ -54,8 +54,11 @@
           iproute2
           util-linux # mountpoint
           coreutils
+          gawk
+          gnused
           procps # pgrep, pkill
           jq
+          systemd
         ];
 
         text = ''
@@ -64,42 +67,45 @@
           PROG="tun2proxy-bin"
           TUN2PROXY_BIN="${tun2proxy}/bin/tun2proxy-bin"
 
+          TUN_IF="tun0"
+
           REAL_RESOLV="/etc/resolv.conf"
-          BACKUP_RESOLV="/etc/resolv.conf.t2p.backup"
+          DOMAIN_CONF="/etc/systemd/resolved.conf.d/domain.conf"
 
-          is_mounted() {
-              mountpoint -q "$REAL_RESOLV" 2>/dev/null
-          }
-
-          cleanup_mount() {
-              if is_mounted; then
-                  if umount "$REAL_RESOLV" 2>/dev/null; then
-                      echo "Unmounted /etc/resolv.conf bind mount"
-                  else
-                      echo "Warning: Could not unmount $REAL_RESOLV" >&2
-                  fi
-              fi
-          }
-
-          # Backup /etc/resolv.conf (simple file copy)
-          backup_resolv() {
-              if [ -f "$REAL_RESOLV" ]; then
-                  cp -f "$REAL_RESOLV" "$BACKUP_RESOLV" && echo "Backed up /etc/resolv.conf"
-              else
-                  echo "Warning: /etc/resolv.conf not found — nothing to backup" >&2
+          apply_resolved_dns() {
+              local dns_list="$1"
+              if [[ -z "$dns_list" ]]; then
+                  echo "ERROR: Empty DNS list for systemd-resolved" >&2
                   return 1
               fi
+              resolvectl dns "$TUN_IF" "$dns_list"
+              resolvectl domain "$TUN_IF" "~."
+              resolvectl flush-caches >/dev/null 2>&1 || true
+              echo "Applied DNS via systemd-resolved for $TUN_IF: $dns_list"
           }
 
-          # Restore /etc/resolv.conf from backup
-          restore_resolv() {
-              if [ -f "$BACKUP_RESOLV" ]; then
-                  cp -f "$BACKUP_RESOLV" "$REAL_RESOLV" && chmod 644 "$REAL_RESOLV" && echo "Restored /etc/resolv.conf"
-                  rm -f "$BACKUP_RESOLV"
-              else
-                  echo "No backup found — leaving /etc/resolv.conf unchanged" >&2
-                  return 1
+          reset_resolved_dns() {
+              resolvectl revert "$TUN_IF" >/dev/null 2>&1 || true
+              resolvectl flush-caches >/dev/null 2>&1 || true
+              echo "Reverted DNS via systemd-resolved for $TUN_IF"
+          }
+
+          disable_global_domain_override() {
+              if [[ -f "$DOMAIN_CONF" ]]; then
+                  rm -f "$DOMAIN_CONF"
+                  echo "Removed $DOMAIN_CONF to allow per-link DNS to take precedence"
               fi
+              systemctl restart systemd-resolved
+          }
+
+          restore_global_domain_override() {
+              systemd-tmpfiles --create >/dev/null 2>&1 || true
+              if [[ -f "$DOMAIN_CONF" ]]; then
+                  echo "Restored $DOMAIN_CONF to force global DNS precedence"
+              else
+                  echo "Warning: $DOMAIN_CONF not restored" >&2
+              fi
+              systemctl restart systemd-resolved
           }
 
           extract_bypass_ip() {
@@ -140,12 +146,11 @@
           }
 
           cleanup() {
-              if ip link show tun0 >/dev/null 2>&1; then
-                  ip link del tun0 2>/dev/null && echo "tun0 removed" || echo "failed to remove tun0"
+              if ip link show "$TUN_IF" >/dev/null 2>&1; then
+                  ip link del "$TUN_IF" 2>/dev/null && echo "$TUN_IF removed" || echo "failed to remove $TUN_IF"
               else
-                  echo "tun0 already gone"
+                  echo "$TUN_IF already gone"
               fi
-              cleanup_mount
           }
 
           start() {
@@ -170,22 +175,23 @@
               # Wait until bind mount appears (or timeout)
               local timeout=12 elapsed=0
               while (( elapsed < timeout )); do
-                  if is_mounted; then
+                  if mountpoint -q "$REAL_RESOLV" 2>/dev/null; then
                       echo "Success: /etc/resolv.conf is now bind-mounted by tun2proxy"
 
                       local captured_dns
                       captured_dns=$(cat "$REAL_RESOLV") || {
                           echo "ERROR: Could not read mounted /etc/resolv.conf" >&2
-                          cleanup_mount
+                          umount "$REAL_RESOLV" 2>/dev/null || true
                           exit 1
                       }
 
-                      cleanup_mount
+                      umount "$REAL_RESOLV" 2>/dev/null || true
 
-                      backup_resolv
+                      local dns_list
+                      dns_list=$(printf '%s\n' "$captured_dns" | awk '/^nameserver[ \t]+/ {print $2; exit}')
 
-                      printf '%s' "$captured_dns" > "$REAL_RESOLV"
-                      echo "Applied tunnel DNS settings to /etc/resolv.conf"
+                      disable_global_domain_override
+                      apply_resolved_dns "$dns_list"
 
                       return 0
                   fi
@@ -219,7 +225,8 @@
               # Final cleanup – should be gone by now, but force if needed
               sleep 0.5
               cleanup
-              restore_resolv
+              reset_resolved_dns
+              restore_global_domain_override
           }
 
           toggle() {

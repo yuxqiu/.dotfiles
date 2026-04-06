@@ -15,15 +15,4 @@
       };
     };
   };
-
-  flake.modules.systemManager.base =
-    { config, ... }:
-    let
-      hosts = lib.mkIf (config.my.networking.bindAddress != config.my.networking.publicHost) {
-        ${config.my.networking.bindAddress} = [ config.my.networking.publicHost ];
-      };
-    in
-    {
-      networking.hosts = hosts;
-    };
 }
