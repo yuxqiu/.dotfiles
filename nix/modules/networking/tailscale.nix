@@ -67,30 +67,57 @@
               description = "Tailscale serve proxy service";
               wantedBy = [ "multi-user.target" ];
               after = [ "tailscaled.service" ];
+              wants = [ "tailscaled.service" ];
+              partOf = [ "tailscaled.service" ];
+              path = [
+                pkgs.tailscale
+                pkgs.jq
+              ];
+              enableStrictShellChecks = true;
               serviceConfig = {
-                Type = "oneshot";
                 RemainAfterExit = true;
                 Restart = "on-failure";
                 RestartSec = "2s";
-                ExecStart =
-                  let
-                    serveScript = pkgs.writeShellApplication {
-                      name = "tailscale-serve-init";
-                      text = ''
-                        ${lib.concatMapStringsSep "\n"
-                          (entry: "${lib.getExe pkgs.tailscale} serve --bg --https ${entry.port} ${entry.target}")
-                          (
-                            lib.mapAttrsToList (port: target: {
-                              inherit port target;
-                            }) config.services.tailscale.serveHttpsTargets
-                          )
-                        }
-                      '';
-                    };
-                  in
-                  "${lib.getExe serveScript}";
                 ExecStop = "${lib.getExe pkgs.tailscale} serve reset";
               };
+              script =
+                let
+                  serveLines =
+                    lib.concatMapStringsSep "\n" (entry: "tailscale serve --bg --https ${entry.port} ${entry.target}")
+                      (
+                        lib.mapAttrsToList (port: target: {
+                          inherit port target;
+                        }) config.services.tailscale.serveHttpsTargets
+                      );
+                in
+                # bash
+                ''
+                  getState() {
+                    tailscale status --json --peers=false | jq -r '.BackendState'
+                  }
+
+                  lastState=""
+                  while state="$(getState)"; do
+                    if [[ "$state" != "$lastState" ]]; then
+                      case "$state" in
+                        Running)
+                          echo "Tailscale is running, configuring serve"
+                          ${serveLines}
+                          exit 0
+                          ;;
+                        NeedsLogin|NeedsMachineAuth|Stopped)
+                          echo "Tailscale not ready, waiting for state = Running"
+                          ;;
+                        *)
+                          echo "Waiting for Tailscale State = Running or systemd timeout"
+                          ;;
+                      esac
+                      echo "State = $state"
+                    fi
+                    lastState="$state"
+                    sleep .5
+                  done
+                '';
             };
       };
     };
