@@ -99,7 +99,7 @@
           }
 
           restore_global_domain_override() {
-              systemctl start systemd-resolved-domain-conf
+              systemctl restart systemd-resolved-domain-conf
               if [[ -f "$DOMAIN_CONF" ]]; then
                   echo "Restored $DOMAIN_CONF to force global DNS precedence"
               else
