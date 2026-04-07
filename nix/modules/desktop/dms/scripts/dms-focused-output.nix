@@ -3,19 +3,17 @@
     { pkgs, ... }:
 
     let
-      dms-focused-output = pkgs.writeShellScriptBin "dms-focused-output" ''
-        #!${pkgs.bash}/bin/bash
-        set -euo pipefail
+      dms-focused-output = pkgs.writeShellApplication {
+        name = "dms-focused-output";
+        runtimeInputs = with pkgs; [
+          ddcutil
+          jq
+          coreutils
+        ];
+        text = ''
+          set -euo pipefail
 
-        PATH=${
-          pkgs.lib.makeBinPath [
-            pkgs.ddcutil
-            pkgs.jq
-            pkgs.coreutils
-          ]
-        }:$PATH
-
-        focused_connector=$(niri msg --json focused-output | jq -r '.name')
+          focused_connector=$(niri msg --json focused-output | jq -r '.name')
 
         # Built-in laptop panel, let dms use the normal backlight interface
         if [[ "$focused_connector" == eDP-* || "$focused_connector" == LVDS-* ]]; then
@@ -41,8 +39,9 @@
         done
 
         # If nothing responded, let dms fall back to its own heuristics
-        exit 0
-      '';
+          exit 0
+        '';
+      };
     in
     {
       home.file.".config/niri/scripts/dms-focused-output" = {

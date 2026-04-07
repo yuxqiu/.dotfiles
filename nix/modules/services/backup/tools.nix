@@ -25,6 +25,47 @@
             --add-flags "--config ${config.sops.secrets."rclone.conf".path}"
         '';
       };
+      autoresticInit = pkgs.writeShellApplication {
+        name = "autorestic-init";
+        runtimeInputs = [
+          autoresticWithConfig
+        ];
+        text = ''
+          set -euo pipefail
+
+          usage() {
+            echo "Usage: autorestic-init <backend_name>" >&2
+            exit 1
+          }
+
+          backend="''${1:-}"
+          if [ -z "$backend" ]; then
+            usage
+          fi
+
+          autorestic_config="${config.sops.secrets."autorestic.yaml".path}"
+          rclone_config="${config.sops.secrets."rclone.conf".path}"
+
+          if [ ! -f "$autorestic_config" ]; then
+            echo "Missing autorestic config: $autorestic_config" >&2
+            exit 1
+          fi
+          if [ ! -f "$rclone_config" ]; then
+            echo "Missing rclone config: $rclone_config" >&2
+            exit 1
+          fi
+
+          export RCLONE_CONFIG="$rclone_config"
+          autorestic_bin="$(command -v autorestic)"
+          if [ -z "$autorestic_bin" ]; then
+            echo "autorestic not found in PATH" >&2
+            exit 1
+          fi
+          sudo --preserve-env=RCLONE_CONFIG \
+            env PATH="$PATH" \
+            "$autorestic_bin" exec -b "$backend" -- init
+        '';
+      };
     in
     {
       options = {
@@ -42,6 +83,7 @@
 
         backup.tools = [
           autoresticWithConfig
+          autoresticInit
           pkgs.glibc.bin
           pkgs.restic
           rcloneWithConfig

@@ -3,34 +3,39 @@
     { pkgs, ... }:
     let
       # momeemt/config/nix/profiles/hm/programs/alacritty/settings/hints.nix
-      open-zed = pkgs.writeShellScriptBin "open-zed" ''
-        export PATH="${pkgs.coreutils}/bin:$PATH"
-        set -euo pipefail
+      open-zed = pkgs.writeShellApplication {
+        name = "open-zed";
+        runtimeInputs = with pkgs; [
+          coreutils
+          zed-editor
+        ];
+        text = ''
+          set -euo pipefail
 
-        if [ "$#" -lt 1 ]; then
-          echo "Usage: open-zed [PATHS_WITH_POSITION]" >&2
-          exit 1
-        fi
+          if [ "$#" -lt 1 ]; then
+            echo "Usage: open-zed [PATHS_WITH_POSITION]" >&2
+            exit 1
+          fi
 
-        raw_path="$1"
-        raw_path="$(echo "$raw_path" | xargs)"
+          raw_path="$1"
+          raw_path="$(echo "$raw_path" | xargs)"
 
-        case "$raw_path" in
-          "~" | "~/"* )
+          # shellcheck disable=SC2088
+          if [ "$raw_path" = "~" ] || [[ "$raw_path" == "~/"* ]]; then
             raw_path="$HOME''${raw_path:1}"
-            ;;
-          /*)
-            ;;
-          *)
-            ;;
-        esac
+          fi
 
-        ${pkgs.zed-editor}/bin/zeditor "$raw_path"
-      '';
-      exec-arg = pkgs.writeShellScriptBin "exec-arg" ''
-        cmd="$1"
-        ${pkgs.tmux}/bin/tmux send-keys "$cmd" Enter
-      '';
+          zeditor "$raw_path"
+        '';
+      };
+      exec-arg = pkgs.writeShellApplication {
+        name = "exec-arg";
+        runtimeInputs = with pkgs; [ tmux ];
+        text = ''
+          cmd="$1"
+          tmux send-keys "$cmd" Enter
+        '';
+      };
     in
     {
       programs.alacritty = {

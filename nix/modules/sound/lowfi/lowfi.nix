@@ -19,9 +19,13 @@
 
       # note: must symlink the txt as the created dbus name is directly related
       # to the path of the provided track list
-      lofiWrapped = pkgs.writeShellScriptBin "lofigirl" ''
-        exec ${lib.getExe lowfi} --track-list "${config.xdg.configHome}/lofi/lofigirl.txt" "$@"
-      '';
+      lofiWrapped = pkgs.writeShellApplication {
+        name = "lofigirl";
+        runtimeInputs = [ lowfi ];
+        text = ''
+          exec lowfi --track-list "${config.xdg.configHome}/lofi/lofigirl.txt" "$@"
+        '';
+      };
     in
     {
       xdg.configFile."lofi/lofigirl.txt" = {

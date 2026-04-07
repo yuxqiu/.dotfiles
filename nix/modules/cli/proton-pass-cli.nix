@@ -2,19 +2,20 @@
   flake.modules.homeManager.desktop =
     { pkgs, ... }:
     let
-      pass-ssh = pkgs.writeShellScriptBin "pass-ssh" ''
-        #!${pkgs.bash}/bin/bash
-        set -euo pipefail
+      pass-ssh = pkgs.writeShellApplication {
+        name = "pass-ssh";
+        runtimeInputs = with pkgs; [ proton-pass-cli ];
+        text = ''
+          set -euo pipefail
 
-        PATH="${pkgs.proton-pass-cli}/bin"
+          if ! pass-cli test &>/dev/null; then
+            pass-cli login || exit 1
+          fi
 
-        if ! pass-cli test &>/dev/null; then
-          pass-cli login || exit 1
-        fi
-
-        pass-cli ssh-agent load --vault-name ssh
-        pass-cli logout
-      '';
+          pass-cli ssh-agent load --vault-name ssh
+          pass-cli logout
+        '';
+      };
     in
     {
       home.packages = with pkgs; [
