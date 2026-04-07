@@ -1,7 +1,9 @@
 {
-  flake.modules.homeManager.linux-base = {
-    services.systembus-notify.enable = true;
-  };
+  flake.modules.homeManager.linux-base =
+    { config, lib, ... }:
+    {
+      services.systembus-notify.enable = lib.mkIf config.my.system.isSystemManager true;
+    };
 
   flake.modules.systemManager.base =
     {

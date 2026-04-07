@@ -42,6 +42,7 @@
   flake.modules.generic.yuxqiu-laptop = {
     my.sops.enable = true;
     my = {
+      system.isSystemManager = true;
       networking = {
         bindAddress = "100.108.78.86";
         publicHost = "pc.taile30f2a.ts.net";

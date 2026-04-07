@@ -3,7 +3,12 @@
 }
 # {
 #   flake.modules.homeManager.linux-desktop =
-#     { pkgs, ... }:
+#     {
+#       config,
+#       lib,
+#       pkgs,
+#       ...
+#     }:
 #     let
 #       sunshineSettings = {
 #         controller = "disabled";
@@ -16,7 +21,7 @@
 #     {
 #       # Modified from nixos/modules/services/networking/sunshine.nix
 #       # Needed because system-manager does not support systemd.user yet
-#       systemd.user.services.sunshine = {
+#       systemd.user.services.sunshine = lib.mkIf config.my.system.isSystemManager {
 #         Unit = {
 #           Description = "Self-hosted game stream host for Moonlight";
 #           PartOf = [ "graphical-session.target" ];
