@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.homeManager.base = {
+  flake.modules.generic.base = {
     options.my.kanshi = {
       externalMonitorName = lib.mkOption {
         type = lib.types.nullOr lib.types.str;

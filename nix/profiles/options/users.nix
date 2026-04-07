@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.homeManager.base = {
+  flake.modules.generic.base = {
     options.my.user = {
       keys = lib.mkOption {
         type = lib.types.attrsOf lib.types.str;

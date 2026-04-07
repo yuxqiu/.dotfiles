@@ -47,7 +47,7 @@
         };
       };
 
-      config = {
+      config = lib.mkIf config.my.sops.enable {
         sops.secrets."tailscale_key" = {
           mode = "0400";
           owner = config.users.users.root.name;

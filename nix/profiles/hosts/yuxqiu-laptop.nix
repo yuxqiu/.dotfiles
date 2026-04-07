@@ -18,7 +18,6 @@
         config.flake.modules.homeManager.linux-desktop
 
         config.flake.modules.homeManager.yuxqiu
-        config.flake.modules.homeManager.yuxqiu-laptop
       ];
     };
   };
@@ -47,17 +46,10 @@
         bindAddress = "100.108.78.86";
         publicHost = "pc.taile30f2a.ts.net";
       };
+      kanshi.externalMonitorName = "Dell Inc. DELL S2725QS 95HL364";
+      xremap.internalKeyboardName = "Apple SPI Keyboard";
     };
   };
-
-  flake.modules.homeManager.yuxqiu-laptop =
-    { ... }:
-    {
-      my = {
-        kanshi.externalMonitorName = "Dell Inc. DELL S2725QS 95HL364";
-        xremap.internalKeyboardName = "Apple SPI Keyboard";
-      };
-    };
 
   flake.modules.systemManager.yuxqiu-laptop =
     { config, lib, ... }:

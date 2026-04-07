@@ -2,16 +2,9 @@
   flake.modules.systemManager.base =
     {
       config,
-      pkgs,
       lib,
       ...
     }:
-    let
-      autoresticBin = "${pkgs.autorestic}/bin/autorestic -c ${
-        config.sops.secrets."autorestic.yaml".path
-      }";
-      resticBin = "${pkgs.restic}/bin/restic";
-    in
     {
       config = lib.mkIf config.my.sops.enable {
         sops.secrets."autorestic.yaml" = {
@@ -28,26 +21,34 @@
             autorestic-backup = {
               description = "Autorestic backup service";
 
+              path = config.backup.tools;
+
               unitConfig = {
                 ConditionPathExists = config.sops.secrets."autorestic.yaml".path;
               };
 
               serviceConfig = {
                 Type = "oneshot";
-                ExecStartPre = "${autoresticBin} --restic-bin ${resticBin} exec -av -- unlock";
-                ExecStart = "${autoresticBin} --restic-bin ${resticBin} backup --verbose -l home";
-                ExecStartPost = "${autoresticBin} --restic-bin ${resticBin} forget --verbose --all";
+                ExecSearchPath = lib.makeBinPath config.backup.tools;
+                Environment = "RCLONE_CONFIG=${config.sops.secrets."rclone.conf".path}";
+                ExecStartPre = "autorestic exec -av -- unlock";
+                ExecStart = "autorestic backup --verbose -l home";
+                ExecStartPost = "autorestic forget --verbose --all";
                 WorkingDirectory = "%h";
               };
             };
             autorestic-prune = {
+              path = config.backup.tools;
+
               unitConfig = {
                 Description = "Autorestic backup service (data pruning)";
               };
               serviceConfig = {
                 Type = "oneshot";
-                ExecStartPre = "${autoresticBin} --restic-bin ${resticBin} exec -av -- unlock";
-                ExecStart = "${autoresticBin} --restic-bin ${resticBin} forget --verbose --prune --all";
+                ExecSearchPath = lib.makeBinPath config.backup.tools;
+                Environment = "RCLONE_CONFIG=${config.sops.secrets."rclone.conf".path}";
+                ExecStartPre = "autorestic exec -av -- unlock";
+                ExecStart = "autorestic forget --verbose --prune --all";
                 WorkingDirectory = "%h";
               };
             };
@@ -78,11 +79,6 @@
             };
           };
         };
-
-        environment.systemPackages = with pkgs; [
-          autorestic
-          restic
-        ];
       };
     };
 }

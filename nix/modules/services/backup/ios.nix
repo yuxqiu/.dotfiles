@@ -7,15 +7,14 @@
       ...
     }:
     let
-      autoresticBin = "${pkgs.autorestic}/bin/autorestic -c ${
-        config.sops.secrets."autorestic.yaml".path
-      }";
-      resticBin = "${pkgs.restic}/bin/restic";
-      iosToolsPath = lib.makeBinPath [
-        pkgs.fuse
-        pkgs.ifuse
-        pkgs.libimobiledevice
-      ];
+      iosToolsPath = lib.makeBinPath (
+        [
+          pkgs.fuse
+          pkgs.ifuse
+          pkgs.libimobiledevice
+        ]
+        ++ config.backup.tools
+      );
 
       # Must apply the weak config to pair with ios
       # - https://github.com/libimobiledevice/libimobiledevice/issues/1695
@@ -28,6 +27,7 @@
                 fi
 
                 export PATH="${iosToolsPath}:$PATH"
+                export RCLONE_CONFIG="${config.sops.secrets."rclone.conf".path}"
 
                 ios_root="$HOME/iPhone"
                 ios_mount="$ios_root/iPhone"
@@ -48,7 +48,8 @@
                 ifuse "$ios_mount" -o allow_root
                 ifuse --documents com.readdle.ReaddleDocsIPad "$chat_mount" -o allow_root
 
-                sudo ${autoresticBin} --restic-bin ${resticBin} backup --verbose -l ios
+                sudo --preserve-env=PATH,RCLONE_CONFIG autorestic \
+                  backup --verbose -l ios
 
                 fusermount -u "$ios_mount"
                 fusermount -u "$chat_mount"
