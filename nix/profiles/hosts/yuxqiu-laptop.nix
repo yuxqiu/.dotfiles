@@ -7,6 +7,8 @@
   configurations.homeManager = {
     "yuxqiu-laptop" = {
       system = "aarch64-linux";
+      username = "yuxqiu";
+      homeDirectory = "/home/yuxqiu";
       stateVersion = "26.05";
       modules = [
         config.flake.modules.generic.base

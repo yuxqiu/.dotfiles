@@ -20,11 +20,12 @@
 
           key_path="$1"
           file="$2"
+          ssh_to_age_bin="$(command -v ssh-to-age)"
 
           if [ -r "$key_path" ]; then
-            age_key="$(ssh-to-age -private-key -i "$key_path")"
+            age_key="$("$ssh_to_age_bin" -private-key -i "$key_path")"
           else
-            age_key="$(sudo --preserve-env=PATH ssh-to-age -private-key -i "$key_path")"
+            age_key="$(sudo "$ssh_to_age_bin" -private-key -i "$key_path")"
           fi
           SOPS_AGE_KEY="$age_key" \
             EDITOR="nvim" \
@@ -58,6 +59,7 @@
 
           mode="$1"
           old_key_path="$2"
+          ssh_to_age_bin="$(command -v ssh-to-age)"
           if [ "$#" -eq 3 ]; then
             new_key_path=""
             file="$3"
@@ -125,14 +127,14 @@
             fi
           fi
 
-          old_key="$(cat "$old_key_pub_path" | ssh-to-age)"
+          old_key="$(cat "$old_key_pub_path" | "$ssh_to_age_bin")"
           if [ "$mode" != "remove" ]; then
-            new_key="$(cat "$new_key_pub_path" | ssh-to-age)"
+            new_key="$(cat "$new_key_pub_path" | "$ssh_to_age_bin")"
           fi
           if [ -r "$old_key_path" ]; then
-            old_identity="$(ssh-to-age -private-key -i "$old_key_path")"
+            old_identity="$("$ssh_to_age_bin" -private-key -i "$old_key_path")"
           else
-            old_identity="$(sudo --preserve-env=PATH ssh-to-age -private-key -i "$old_key_path")"
+            old_identity="$(sudo "$ssh_to_age_bin" -private-key -i "$old_key_path")"
           fi
 
           if ! grep -Fq "$old_key" "$sops_yaml"; then

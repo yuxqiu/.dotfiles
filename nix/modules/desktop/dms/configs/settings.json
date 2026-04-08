@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/y6q69xcak65dknknp3x5axlc23qjqf75-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/k2j5bwbnw8rdkz9xw57hrps7nm1arxmm-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -162,6 +162,7 @@
   "workspaceNameIcons": {},
   "waveProgressEnabled": true,
   "scrollTitleEnabled": true,
+  "mediaAdaptiveWidthEnabled": true,
   "audioVisualizerEnabled": true,
   "audioScrollMode": "volume",
   "audioWheelScrollAmount": 5,
@@ -281,6 +282,7 @@
   "notepadLastCustomTransparency": 1,
   "soundsEnabled": false,
   "useSystemSoundTheme": false,
+  "soundLogin": false,
   "soundNewNotification": true,
   "soundVolumeChanged": true,
   "soundPluggedIn": true,
@@ -529,8 +531,9 @@
       "removeWidgetPadding": false,
       "rightWidgets": [
         {
+          "id": "systemTray",
           "enabled": true,
-          "id": "systemTray"
+          "trayUseInlineExpansion": true
         },
         {
           "enabled": true,

@@ -5,7 +5,10 @@
       home.packages = [
         (pkgs.writeShellApplication {
           name = "ssh-copy-id-general";
-          runtimeInputs = with pkgs; [ coreutils openssh ];
+          runtimeInputs = with pkgs; [
+            coreutils
+            openssh
+          ];
           text = ''
             set -euo pipefail
 
