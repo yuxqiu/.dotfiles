@@ -34,14 +34,9 @@
           set -euo pipefail
 
           usage() {
-            echo "Usage: autorestic-init <backend_name>" >&2
+            echo "Usage: autorestic-init" >&2
             exit 1
           }
-
-          backend="''${1:-}"
-          if [ -z "$backend" ]; then
-            usage
-          fi
 
           autorestic_config="${config.sops.secrets."autorestic.yaml".path}"
           rclone_config="${config.sops.secrets."rclone.conf".path}"
@@ -63,7 +58,7 @@
           fi
           sudo --preserve-env=RCLONE_CONFIG \
             env PATH="$PATH" \
-            "$autorestic_bin" exec -b "$backend" -- init
+            "$autorestic_bin" check
         '';
       };
     in

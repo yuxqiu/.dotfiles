@@ -21,8 +21,7 @@
 
       # improve generic linux compatibility (on non NixOS)
       targets.genericLinux.enable = !config.my.system.isNixos;
-      targets.genericLinux.gpu.enable =
-        lib.mkIf config.my.system.isSystemManager false; # already managed by system-manager
+      targets.genericLinux.gpu.enable = lib.mkIf config.my.system.isSystemManager false; # already managed by system-manager
     };
 
   flake.modules.homeManager.linux-desktop =

@@ -92,7 +92,8 @@
             sudo dnf autoremove
             sudo dnf clean all
           '';
-        } // lib.optionalAttrs config.my.system.isSystemManager {
+        }
+        // lib.optionalAttrs config.my.system.isSystemManager {
           gc-sm = ''
             sudo $(which nix-env) --delete-generations old --profile /nix/var/nix/profiles/system-manager-profiles/system-manager
             gc-nix

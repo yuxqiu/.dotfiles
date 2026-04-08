@@ -11,53 +11,52 @@
       # - https://github.com/libimobiledevice/libimobiledevice/issues/1695
       autoresticIosBin = pkgs.writeShellApplication {
         name = "autorestic-ios";
-        runtimeInputs =
-          [
-            pkgs.fuse
-            pkgs.ifuse
-            pkgs.libimobiledevice
-          ]
-          ++ config.backup.tools;
+        runtimeInputs = [
+          pkgs.fuse
+          pkgs.ifuse
+          pkgs.libimobiledevice
+        ]
+        ++ config.backup.tools;
         text = ''
-          set -euo pipefail
+                    set -euo pipefail
 
-          if [ -z "''${HOME:-}" ]; then
-            echo "HOME is not set" >&2
-            exit 1
-          fi
+                    if [ -z "''${HOME:-}" ]; then
+                      echo "HOME is not set" >&2
+                      exit 1
+                    fi
 
-          export RCLONE_CONFIG="${config.sops.secrets."rclone.conf".path}"
+                    export RCLONE_CONFIG="${config.sops.secrets."rclone.conf".path}"
 
-          ios_root="$HOME/iPhone"
-          ios_mount="$ios_root/iPhone"
-          chat_mount="$ios_root/Chat"
-          conf_file="$ios_root/openssl-weak.conf"
+                    ios_root="$HOME/iPhone"
+                    ios_mount="$ios_root/iPhone"
+                    chat_mount="$ios_root/Chat"
+                    conf_file="$ios_root/openssl-weak.conf"
 
-          mkdir -p "$ios_root" "$ios_mount" "$chat_mount"
+                    mkdir -p "$ios_root" "$ios_mount" "$chat_mount"
 
-          cat > "$conf_file" <<'EOF'
-.include /etc/ssl/openssl.cnf
-[openssl_init]
-alg_section = evp_properties
-[evp_properties]
-rh-allow-sha1-signatures = yes
-EOF
+                    cat > "$conf_file" <<'EOF'
+          .include /etc/ssl/openssl.cnf
+          [openssl_init]
+          alg_section = evp_properties
+          [evp_properties]
+          rh-allow-sha1-signatures = yes
+          EOF
 
-          OPENSSL_CONF="$conf_file" idevicepair pair
-          ifuse "$ios_mount" -o allow_root
-          ifuse --documents com.readdle.ReaddleDocsIPad "$chat_mount" -o allow_root
+                    OPENSSL_CONF="$conf_file" idevicepair pair
+                    ifuse "$ios_mount" -o allow_root
+                    ifuse --documents com.readdle.ReaddleDocsIPad "$chat_mount" -o allow_root
 
-          autorestic_bin="$(command -v autorestic)"
-          if [ -z "$autorestic_bin" ]; then
-            echo "autorestic not found in PATH" >&2
-            exit 1
-          fi
-          sudo --preserve-env=RCLONE_CONFIG \
-            env PATH="$PATH" \
-            "$autorestic_bin" backup --verbose -l ios
+                    autorestic_bin="$(command -v autorestic)"
+                    if [ -z "$autorestic_bin" ]; then
+                      echo "autorestic not found in PATH" >&2
+                      exit 1
+                    fi
+                    sudo --preserve-env=RCLONE_CONFIG \
+                      env PATH="$PATH" \
+                      "$autorestic_bin" backup --verbose -l ios
 
-          fusermount -u "$ios_mount"
-          fusermount -u "$chat_mount"
+                    fusermount -u "$ios_mount"
+                    fusermount -u "$chat_mount"
         '';
       };
     in

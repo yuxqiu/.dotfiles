@@ -17,7 +17,7 @@
         inactive-color = "#505050";
       };
 
-      border.off = [];
+      border.off = [ ];
     };
   };
 }
