@@ -19,6 +19,7 @@
         isNormalUser = true;
         description = "yuxqiu";
         extraGroups = [
+          "yuxqiu"
           "wheel"
           "input"
           "docker"
@@ -32,5 +33,7 @@
         shell = pkgs.zsh;
         ignoreShellProgramCheck = true;
       };
+
+      users.groups.yuxqiu = { };
     };
 }
