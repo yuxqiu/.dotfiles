@@ -14,7 +14,15 @@
             rank = "shortlog -s -n --no-merges";
             fame = "!gitfame";
             info = "!onefetch";
-            uncommit = "!git reset --soft HEAD^ && git restore --staged .";
+            uncommit = ''
+              !f() {
+                if git rev-parse --verify HEAD^ >/dev/null 2>&1; then
+                  git reset --soft HEAD^;
+                else
+                  git update-ref -d HEAD;
+                fi;
+              }; f
+            '';
           };
 
           filter."lfs".clean = "git-lfs clean -- %f";
@@ -57,6 +65,10 @@
           "**/.pytest_cache"
           "**/.dev"
         ];
+      };
+
+      programs.zsh.shellAliases = {
+        guc = "git uncommit";
       };
 
       programs.delta = {
