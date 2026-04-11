@@ -25,7 +25,6 @@
         tokei
         tree
         typos
-        update-nix-fetchgit
         wget
         which
         zmk-studio

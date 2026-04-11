@@ -37,9 +37,13 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-update-git = {
+      url = "github:yuxqiu/nix-update-git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";
     system-manager = {
       url = "github:numtide//system-manager?ref=pull/384/head";
       inputs.nixpkgs.follows = "nixpkgs";

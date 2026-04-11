@@ -48,8 +48,9 @@
               echo "Example: hm yuxqiu-laptop"
               return 1
             fi
-            nix flake update
+            nix-update-git -u */**/*.nix
             update-nix-fetchgit */**/*.nix
+            nix flake update
             home-manager switch --flake ".#$1"
           '';
         };
@@ -106,8 +107,9 @@
               echo "Example: sm yuxqiu-laptop"
               return 1
             fi
-            nix flake update
+            nix-update-git -u */**/*.nix
             update-nix-fetchgit */**/*.nix
+            nix flake update
             system-manager switch --flake ".#$1" --sudo && rm result
           '';
         };
