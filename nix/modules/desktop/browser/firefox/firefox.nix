@@ -9,7 +9,7 @@
         pkgs.fetchFromGitHub {
           owner = "arkenfox";
           repo = "user.js";
-          rev = "0f14e030b3a9391e761c03ce3c260730a78a4db6";
+          rev = "140.1";
           hash = "sha256-LPDiiEPOZu5Ah5vCLyCMT3w1uoBhUjyqoPWCOiLVLnw=";
         }
       }/user.js";
@@ -18,8 +18,8 @@
       firefox-mod-blur = pkgs.fetchFromGitHub {
         owner = "datguypiko";
         repo = "Firefox-Mod-Blur";
-        rev = "25425c6db933da9dcc37c36991fb3942874da6b7";
-        hash = "sha256-O0gVK6xwvHseuX5B+lp5oEhg/81O4p+tR32Pc9bszDw=";
+        rev = "v2.41";
+        hash = "sha256-8O0OvrY0WsIYvI75rH39VGyHoyZK6HeunV3ISIKARfM=";
       };
 
       # Prepare userChrome.css
@@ -34,7 +34,6 @@
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Privacy mods/Blur Username in main menu/privacy_blur_email_in_main_menu.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Compact extensions menu/Style 1/With no settings wheel icon/cleaner_extensions_menu.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Icon and Button Mods/uBlock icon change/ublock-icon-change.css")
-        (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Search Bar Mods/Search box - No search engine buttons/no_search_engines_in_url_bar.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Search Bar Mods/Search box - no border/url_bar_no_border.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Search Bar Mods/Search box - transparent background/search_bar_transparent_background.css")
         (builtins.readFile "${firefox-mod-blur}/EXTRA MODS/Icon and Button Mods/Icons in main menu/icons_in_main_menu.css")

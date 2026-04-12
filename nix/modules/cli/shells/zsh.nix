@@ -48,8 +48,7 @@
               echo "Example: hm yuxqiu-laptop"
               return 1
             fi
-            nix-update-git -u */**/*.nix
-            update-nix-fetchgit */**/*.nix
+            nix-update-git -u **/*.nix
             nix flake update
             home-manager switch --flake ".#$1"
           '';
@@ -107,8 +106,7 @@
               echo "Example: sm yuxqiu-laptop"
               return 1
             fi
-            nix-update-git -u */**/*.nix
-            update-nix-fetchgit */**/*.nix
+            nix-update-git -u **/*.nix
             nix flake update
             system-manager switch --flake ".#$1" --sudo && rm result
           '';
