@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ssh-agent-ac = {
-      url = "github:yuxqiu/ssh-agent-ac";
+      url = "github:yuxqiu/ssh-agent-ac?ref=v0.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tun2proxy = {
@@ -38,7 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-update-git = {
-      url = "github:yuxqiu/nix-update-git?ref=v0.2.1";
+      url = "github:yuxqiu/nix-update-git?ref=v0.2.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -73,7 +73,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     handy = {
-      url = "github:cjpais/Handy/?ref=v0.8.2";
+      url = "github:cjpais/Handy?ref=v0.8.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quicksnip = {
@@ -85,7 +85,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hister = {
-      url = "github:asciimoo/hister";
+      url = "github:asciimoo/hister?ref=v0.12.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };

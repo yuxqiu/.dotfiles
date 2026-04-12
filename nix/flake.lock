@@ -481,15 +481,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1775916281,
-        "narHash": "sha256-ciVeYS/w8WcZuSaqvTtkaNMOAyMwew1rN4AapofiPWU=",
+        "lastModified": 1775721825,
+        "narHash": "sha256-HyyhzqObrCVjt21RKXGvFcbhZ7Hyq4D42mWBjDroPKE=",
         "owner": "asciimoo",
         "repo": "hister",
-        "rev": "89385ab5715297f288670cb238fb303203024108",
+        "rev": "d442be8937698a2fc89596a153f7b679f3b03db6",
         "type": "github"
       },
       "original": {
         "owner": "asciimoo",
+        "ref": "v0.12.0",
         "repo": "hister",
         "type": "github"
       }
@@ -668,16 +669,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1776000421,
-        "narHash": "sha256-FPTy8e/KGqMpLnlzMIJoDZhtqAbxfkGZ4MtLbcgWAgY=",
+        "lastModified": 1776016114,
+        "narHash": "sha256-JLiECB+i4bzETomGly2mfHr7q91WBLYBiNo96p5pbjs=",
         "owner": "yuxqiu",
         "repo": "nix-update-git",
-        "rev": "08cb6d2e6b3b848d4316b4c4adebc3d77e4b0e22",
+        "rev": "a9f52dcf63aac144523e4a06441359f13623b224",
         "type": "github"
       },
       "original": {
         "owner": "yuxqiu",
-        "ref": "v0.2.1",
+        "ref": "v0.2.2",
         "repo": "nix-update-git",
         "type": "github"
       }
