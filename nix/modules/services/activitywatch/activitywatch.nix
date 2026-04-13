@@ -53,11 +53,4 @@ in
         };
       };
     };
-
-  flake.modules.systemManager.desktop = {
-    services.tailscale.serveHttpsTargets = {
-      "${toString aw-listening-address.port}" =
-        "http://${aw-listening-address.address}:${toString aw-listening-address.port}";
-    };
-  };
 }

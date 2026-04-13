@@ -62,25 +62,14 @@
         };
 
         systemd.services.tailscale-serve =
-          lib.mkIf (config.services.tailscale.enable && config.services.tailscale.serveHttpsTargets != { })
-            {
-              description = "Tailscale serve proxy service";
-              wantedBy = [ "multi-user.target" ];
-              after = [ "tailscaled.service" ];
-              wants = [ "tailscaled.service" ];
-              partOf = [ "tailscaled.service" ];
-              path = [
+          let
+            tailscaleServeScript = pkgs.writeShellApplication {
+              name = "tailscale-serve";
+              runtimeInputs = [
                 pkgs.tailscale
                 pkgs.jq
               ];
-              enableStrictShellChecks = true;
-              serviceConfig = {
-                RemainAfterExit = true;
-                Restart = "on-failure";
-                RestartSec = "2s";
-                ExecStop = "${lib.getExe pkgs.tailscale} serve reset";
-              };
-              script =
+              text =
                 let
                   serveLines =
                     lib.concatMapStringsSep "\n" (entry: "tailscale serve --bg --https ${entry.port} ${entry.target}")
@@ -90,7 +79,6 @@
                         }) config.services.tailscale.serveHttpsTargets
                       );
                 in
-                # bash
                 ''
                   getState() {
                     tailscale status --json --peers=false | jq -r '.BackendState'
@@ -119,6 +107,22 @@
                   done
                 '';
             };
+          in
+          lib.mkIf (config.services.tailscale.enable && config.services.tailscale.serveHttpsTargets != { }) {
+            description = "Tailscale serve proxy service";
+            wantedBy = [ "multi-user.target" ];
+            after = [ "tailscaled.service" ];
+            wants = [ "tailscaled.service" ];
+            partOf = [ "tailscaled.service" ];
+            enableStrictShellChecks = true;
+            serviceConfig = {
+              RemainAfterExit = true;
+              Restart = "on-failure";
+              RestartSec = "2s";
+              ExecStop = "${lib.getExe pkgs.tailscale} serve reset";
+            };
+            script = "${tailscaleServeScript}/bin/tailscale-serve";
+          };
       };
     };
 }
