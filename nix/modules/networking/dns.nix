@@ -49,10 +49,7 @@
         systemd.services.systemd-resolved-domain-conf = {
           description = "Create global DNS domain override for systemd-resolved";
           before = [ "systemd-resolved.service" ];
-          wantedBy = [
-            "multi-user.target"
-            "systemd-resolved.service"
-          ];
+          wantedBy = [ "multi-user.target" ];
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;
