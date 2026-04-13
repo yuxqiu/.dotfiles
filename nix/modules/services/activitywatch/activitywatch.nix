@@ -56,8 +56,8 @@ in
 
   flake.modules.systemManager.desktop = {
     services.tailscale.serveHttpsTargets = {
-      "${aw-listening-address.port}" =
-        "http://${aw-listening-address.address}:${aw-listening-address.port}";
+      "${toString aw-listening-address.port}" =
+        "http://${aw-listening-address.address}:${toString aw-listening-address.port}";
     };
   };
 }

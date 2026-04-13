@@ -38,7 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-update-git = {
-      url = "github:yuxqiu/nix-update-git?ref=v0.2.2";
+      url = "github:yuxqiu/nix-update-git?ref=v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
