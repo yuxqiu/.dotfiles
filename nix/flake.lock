@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "agent-skills-nix": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774607140,
+        "narHash": "sha256-0P89BLGEzRUumWKSOEayi+Dal6mIlVumlBgcyk5Qo6s=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "e29bef0e9e56c4cc683cead15a6eda1d6fb1074e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -498,6 +519,27 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
+          "agent-skills-nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773608492,
+        "narHash": "sha256-QZteyExJYSQzgxqdsesDPbQgjctGG7iKV/6ooyQPITk=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "9a40ec3b78fc688d0908485887d355caa5666d18",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
           "nixpkgs"
         ]
       },
@@ -900,12 +942,13 @@
     },
     "root": {
       "inputs": {
+        "agent-skills-nix": "agent-skills-nix",
         "dms": "dms",
         "dms-plugin-registry": "dms-plugin-registry",
         "flake-parts": "flake-parts",
         "handy": "handy",
         "hister": "hister",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "import-tree": "import-tree_2",
         "niri": "niri",
         "niri-nix": "niri-nix",

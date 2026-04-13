@@ -41,6 +41,10 @@
       url = "github:yuxqiu/nix-update-git?ref=v0.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agent-skills-nix = {
+      url = "github:Kyure-A/agent-skills-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";

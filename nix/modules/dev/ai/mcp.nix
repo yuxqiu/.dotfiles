@@ -10,6 +10,7 @@
       excalidrawMcp = pkgs.callPackage (inputs.self + /packages/excalidraw.nix) { };
     in
     {
+      # auto syncted to all agents
       programs.mcp = {
         enable = true;
         servers = {
