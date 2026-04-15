@@ -6,7 +6,7 @@ let
 in
 {
   flake.modules.homeManager.linux-desktop =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       services.activitywatch = {
         enable = true;
@@ -27,6 +27,16 @@ in
               exclude_title = true;
             };
           };
+        };
+      };
+
+      # watchers require env (like DISPLAY) that is related
+      # to graphical session.
+      systemd.user.targets.activitywatch = {
+        Install.WantedBy = lib.mkForce [ "graphical-session.target" ];
+        Unit = {
+          PartOf = lib.mkForce [ "graphical-session.target" ];
+          After = lib.mkForce [ "graphical-session.target" ];
         };
       };
 

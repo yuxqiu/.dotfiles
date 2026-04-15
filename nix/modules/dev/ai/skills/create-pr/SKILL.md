@@ -67,9 +67,11 @@ Use this structure for PR descriptions (ignoring any repository PR templates):
 
 **Do NOT include:**
 
-- "Test plan" sections
-- Checkbox lists of testing steps
-- Redundant summaries of the diff
+- DO NOT include "Test plan" sections
+- DO NOT include checkbox lists of testing steps
+- DO NOT include redundant summaries of the diff
+- DO NOT include fancy tables
+- DO NOT include any emojis
 
 **Do include:**
 
@@ -78,7 +80,11 @@ Use this structure for PR descriptions (ignoring any repository PR templates):
 - Context that isn't obvious from the code
 - Notes on specific areas that need careful review
 
-### Step 4: Create the PR
+### Step 4: Human Review
+
+Before creating any PR, ask for confirmation from users.
+
+### Step 5: Create the PR
 
 ```bash
 gh pr create --draft --title "<type>(<scope>): <description>" --body "
