@@ -112,12 +112,24 @@
       };
     };
 
-  flake.modules.homeManager.linux-desktop = {
-    wayland.windowManager.niri.settings.binds."Mod+Return" = {
-      _props.hotkey-overlay-title = "Open a Terminal: alacritty";
-      spawn = "alacritty";
+  flake.modules.homeManager.linux-desktop =
+    { lib, ... }:
+    {
+      wayland.windowManager.niri.settings.binds."Mod+Return" = {
+        _props.hotkey-overlay-title = "Open a Terminal: alacritty";
+        spawn = "alacritty";
+      };
+
+      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+        {
+          match = {
+            _props."app-id" = "Alacritty";
+          };
+
+          background-effect.blur = true;
+        }
+      ];
     };
-  };
 
   flake.modules.homeManager.linux-base = {
     xdg.terminal-exec = {

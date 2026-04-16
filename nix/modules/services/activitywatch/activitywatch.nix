@@ -37,6 +37,27 @@ in
         Unit = {
           PartOf = lib.mkForce [ "graphical-session.target" ];
           After = lib.mkForce [ "graphical-session.target" ];
+          Requires = lib.mkForce [ "graphical-session.target" ];
+        };
+      };
+
+      # Individual watcher services also need direct dependency on
+      # graphical-session.target, otherwise they can start before
+      # the display environment is available.
+      systemd.user.services = {
+        activitywatch-watcher-aw-watcher-afk = {
+          Unit = {
+            After = lib.mkAfter [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+          };
+          Service.Restart = "on-failure";
+        };
+        activitywatch-watcher-aw-watcher-window-wayland = {
+          Unit = {
+            After = lib.mkAfter [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+          };
+          Service.Restart = "on-failure";
         };
       };
 
