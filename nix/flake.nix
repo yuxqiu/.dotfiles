@@ -38,7 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-update-git = {
-      url = "github:yuxqiu/nix-update-git?ref=v0.4.1";
+      url = "github:yuxqiu/nix-update-git?ref=v0.5.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agent-skills-nix = {

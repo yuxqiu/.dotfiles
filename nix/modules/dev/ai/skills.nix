@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.base =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       imports = [ inputs.agent-skills-nix.homeManagerModules.default ];
 
@@ -11,6 +11,16 @@
         enable = true;
 
         sources.local.path = ./skills;
+
+        sources.karpathy-guidelines = {
+          path = pkgs.fetchFromGitHub {
+            owner = "forrestchang";
+            repo = "andrej-karpathy-skills";
+            rev = "c9a44ae835fa2f5765a697216692705761a53f40"; # follow: main
+            hash = "sha256-l6qmVV3QI6E3/lrTks1PWt8Tfp43qMN5DG7GdubVTpM=";
+          };
+          subdir = "skills/karpathy-guidelines";
+        };
 
         skills = {
           enableAll = true;
