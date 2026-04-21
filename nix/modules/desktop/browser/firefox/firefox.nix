@@ -9,8 +9,8 @@
         pkgs.fetchFromGitHub {
           owner = "arkenfox";
           repo = "user.js";
-          rev = "140.1";
-          hash = "sha256-LPDiiEPOZu5Ah5vCLyCMT3w1uoBhUjyqoPWCOiLVLnw=";
+          rev = "144.0";
+          hash = "sha256-oo3/j53+vDh0Y+uCMPFUGEc4bDr7uD4CzagEuQX5PM8=";
         }
       }/user.js";
       userOverrides = builtins.readFile ./user-override.js;
