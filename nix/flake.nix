@@ -93,6 +93,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    paseo = {
+      url = "github:getpaseo/paseo?ref=v0.1.59";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
