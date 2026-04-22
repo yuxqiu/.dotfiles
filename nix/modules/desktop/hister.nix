@@ -74,8 +74,8 @@ in
     };
 
   flake.modules.systemManager.desktop = {
-    services.tailscale.serveHttpsTargets = {
-      "${hister_port}" = "http://${hister_address}:${hister_port}";
+    services.tailscale.serve.endpoints = {
+      "https:${hister_port}" = "http://${hister_address}:${hister_port}";
     };
   };
 }

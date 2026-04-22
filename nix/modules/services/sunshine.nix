@@ -83,8 +83,8 @@
 #           package = sunshineLatest;
 #         };
 
-#         services.tailscale.serveHttpsTargets = {
-#           "47990" = "tcp://127.0.0.1:47990";
+#         services.tailscale.serve.endpoints = {
+#           "https:47990" = "tcp://127.0.0.1:47990";
 #         };
 #       };
 #     };

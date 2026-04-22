@@ -37,12 +37,19 @@
           default = true;
         };
 
-        services.tailscale.serveHttpsTargets = lib.mkOption {
+        services.tailscale.serve.endpoints = lib.mkOption {
           type = lib.types.attrsOf lib.types.str;
           default = { };
+          example = lib.literalExpression ''
+            {
+              "https:4433" = "http://127.0.0.1:4433";
+              "tcp:6767" = "tcp://127.0.0.1:6767";
+            }
+          '';
           description = ''
-            Mapping of ports to backend targets for tailscale serve.
-            Example: { "3000" = "http://localhost:3000"; "8080" = "http://localhost:8080"; }
+            Mapping of tailscale serve listeners to backend targets.
+            The key is the listen specifier (proto:port), the value is the target URL.
+            Examples: "https:4433", "tcp:6767", "http:8080"
           '';
         };
       };
@@ -63,6 +70,8 @@
 
         systemd.services.tailscale-serve =
           let
+            endpoints = config.services.tailscale.serve.endpoints;
+
             tailscaleServeScript = pkgs.writeShellApplication {
               name = "tailscale-serve";
               runtimeInputs = [
@@ -72,11 +81,20 @@
               text =
                 let
                   serveLines =
-                    lib.concatMapStringsSep "\n" (entry: "tailscale serve --bg --https ${entry.port} ${entry.target}")
+                    lib.concatMapStringsSep "\n"
+                      (entry: "tailscale serve --bg --${entry.proto} ${entry.port} ${entry.target}")
                       (
-                        lib.mapAttrsToList (port: target: {
-                          inherit port target;
-                        }) config.services.tailscale.serveHttpsTargets
+                        lib.mapAttrsToList (
+                          listener: target:
+                          let
+                            parts = lib.splitString ":" listener;
+                          in
+                          {
+                            proto = lib.head parts;
+                            port = lib.last parts;
+                            inherit target;
+                          }
+                        ) endpoints
                       );
                 in
                 ''
@@ -108,7 +126,7 @@
                 '';
             };
           in
-          lib.mkIf (config.services.tailscale.enable && config.services.tailscale.serveHttpsTargets != { }) {
+          lib.mkIf (config.services.tailscale.enable && endpoints != { }) {
             description = "Tailscale serve proxy service";
             wantedBy = [ "multi-user.target" ];
             after = [ "tailscaled.service" ];

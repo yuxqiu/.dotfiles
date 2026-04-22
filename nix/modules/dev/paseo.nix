@@ -31,8 +31,15 @@
         hostnames = [ "${config.my.networking.publicHost}" ];
       };
 
-      services.tailscale.serveHttpsTargets = lib.mkIf config.services.paseo.enable {
-        "6767" = "http://127.0.0.1:6767";
+      # Add user's path to the daemon's PATH
+      systemd.services.paseo.environment.PATH = lib.mkOverride 10 (
+        lib.concatStringsSep ":" [
+          "${config.users.users.${config.my.username}.home}/.nix-profile/bin"
+        ]
+      );
+
+      services.tailscale.serve.endpoints = lib.mkIf config.services.paseo.enable {
+        "tcp:6767" = "tcp://127.0.0.1:6767";
       };
     };
 }
