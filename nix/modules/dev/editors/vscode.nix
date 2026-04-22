@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.desktop =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       programs.vscode = {
         enable = true;
@@ -566,20 +566,7 @@
       };
 
       # Dependencies for extensions
-      home.packages = with pkgs; [
-        black
-        clang-tools
-        nixfmt
-        nixd
-        tectonic
-        (texliveSmall.withPackages (
-          ps: with ps; [
-            latexindent
-            synctex
-          ]
-        ))
-        typst
-      ];
+      home.packages = config.my.dev.lsp;
 
       # Ensure Neovim is installed for vscode-neovim
       programs.neovim.enable = true;

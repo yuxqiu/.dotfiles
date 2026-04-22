@@ -1,6 +1,6 @@
 ---
 name: nix-run
-description: Run any package from nixpkgs without installation using nix
+description: Run any binary without installation using nix. Use when missing required binary on user's system.
 ---
 
 # Nix Run Skill

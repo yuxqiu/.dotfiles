@@ -16,6 +16,9 @@
         gnumake
         gnutar
         gzip
+        nodejs
+        tmux
+        xxd
         xz
 
         # PDF tools

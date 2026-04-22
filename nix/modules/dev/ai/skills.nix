@@ -16,8 +16,8 @@
           path = pkgs.fetchFromGitHub {
             owner = "forrestchang";
             repo = "andrej-karpathy-skills";
-            rev = "c9a44ae835fa2f5765a697216692705761a53f40"; # follow: main
-            hash = "sha256-l6qmVV3QI6E3/lrTks1PWt8Tfp43qMN5DG7GdubVTpM=";
+            rev = "2c606141936f1eeef17fa3043a72095b4765b9c2"; # follow: main
+            hash = "sha256-4z/wRdYH7UXRzF8RJU0sw8xbpx0BW/7CBv5sVEC2knY=";
           };
           subdir = "skills/karpathy-guidelines";
         };

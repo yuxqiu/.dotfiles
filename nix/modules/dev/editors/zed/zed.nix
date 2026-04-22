@@ -1,37 +1,12 @@
 {
   flake.modules.homeManager.desktop =
-    { pkgs, ... }:
+    { config, ... }:
     {
       programs.zed-editor = {
         enable = true;
         enableMcpIntegration = true;
         # needed by extensions to support offline lsp
-        # - Some from https://github.com/zed-industries/zed/tree/main/crates/languages/src
-        extraPackages = with pkgs; [
-          basedpyright
-          clang-tools
-          codex
-          codex-acp
-          gemini-cli
-          gopls
-          markdown-oxide
-          nixd
-          nixfmt
-          package-version-server
-          vscode-json-languageserver
-          opencode
-          ruff
-          tectonic
-          texlab
-          (texliveSmall.withPackages (
-            ps: with ps; [
-              latexindent
-              synctex
-            ]
-          ))
-          typos-lsp
-          tinymist
-        ];
+        extraPackages = config.my.dev.lsp;
         userSettings = {
           auto_update = false;
           base_keymap = "VSCode";
