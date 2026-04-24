@@ -11,7 +11,7 @@ in
 
       services.hister = {
         enable = true;
-        config = {
+        settings = {
           app = {
             search_url = "https://duckduckgo.com/?q={query}";
             log_level = "info";
@@ -64,8 +64,8 @@ in
           Add = [
             {
               Name = "hister";
-              URLTemplate = "${config.services.hister.config.server.base_url}/?q={searchTerms}";
-              IconURL = "${config.services.hister.config.server.base_url}/static/logo.png";
+              URLTemplate = "${config.services.hister.settings.server.base_url}/?q={searchTerms}";
+              IconURL = "${config.services.hister.settings.server.base_url}/static/logo.png";
               Alias = "hister";
             }
           ];

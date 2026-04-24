@@ -1,6 +1,20 @@
 {
   flake.modules.homeManager.base =
-    { config, ... }:
+    { pkgs, config, ... }:
+    let
+      # enable opencode websearch and lsp support
+      # https://opencode.ai/docs/tools
+      wrappedOpencode = pkgs.symlinkJoin {
+        name = "opencode";
+        paths = [ pkgs.opencode ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/opencode \
+            --set OPENCODE_ENABLE_EXA 1 \
+            --set OPENCODE_EXPERIMENTAL_LSP_TOOL "true"
+        '';
+      };
+    in
     {
       # Other Interesting Plugins
       # - opencode-background-agents (seems a bit overkill)
@@ -9,6 +23,7 @@
       programs.opencode = {
         enable = true;
         enableMcpIntegration = true;
+        package = wrappedOpencode;
         settings = {
           autoupdate = false;
           plugin = [

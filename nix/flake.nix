@@ -38,7 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-update-git = {
-      url = "github:yuxqiu/nix-update-git?ref=v0.5.1";
+      url = "github:yuxqiu/nix-update-git?ref=v0.6.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agent-skills-nix = {
@@ -89,7 +89,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hister = {
-      url = "github:asciimoo/hister?ref=v0.12.0";
+      url = "github:asciimoo/hister?ref=v0.13.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
