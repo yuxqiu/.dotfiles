@@ -77,6 +77,7 @@
       };
 
       home.packages = with pkgs; [
+        git-cliff
         git-crypt
         git-lfs
         (pkgs.symlinkJoin {

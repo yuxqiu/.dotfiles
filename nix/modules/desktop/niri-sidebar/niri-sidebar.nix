@@ -44,7 +44,7 @@
         };
 
         spawn-at-startup = [
-          "${niri-sidebar-auto-reorder}/bin/niri-sidebar-auto-reorder"
+          [ "${niri-sidebar-auto-reorder}/bin/niri-sidebar-auto-reorder" ]
         ];
       };
     };
