@@ -1,30 +1,13 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.linux-desktop =
-    { pkgs, lib, ... }:
+    { pkgs, ... }:
     let
-      combinedAlsaPlugins = pkgs.symlinkJoin {
-        name = "combined-alsa-plugins";
-        paths = [
-          "${pkgs.pipewire}/lib/alsa-lib"
-          "${pkgs.alsa-plugins}/lib/alsa-lib"
-        ];
-      };
-
-      handy = (inputs.handy.packages.${pkgs.stdenv.hostPlatform.system}.default).overrideAttrs (old: {
-        preFixup = lib.concatStrings (
-          lib.filter (s: s != "") [
-            (lib.optionalString pkgs.stdenv.hostPlatform.isLinux ''
-              gappsWrapperArgs+=(
-                --set ALSA_PLUGIN_DIR "${combinedAlsaPlugins}"
-              )
-            '')
-          ]
-        );
-      });
+      handy = inputs.handy.packages.${pkgs.stdenv.system}.default;
 
       handy-stt = pkgs.writeShellApplication {
         name = "handy-stt";
+        runtimeInputs = [ handy ];
         text = ''
           #!/usr/bin/env bash
           set -euo pipefail

@@ -77,7 +77,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     handy = {
-      url = "github:cjpais/Handy?ref=v0.8.2";
+      url = "github:cjpais/Handy?ref=v0.8.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quicksnip = {
