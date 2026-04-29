@@ -77,7 +77,7 @@
           overview.workspace-shadow.off = [ ];
 
           binds = {
-            "Ctrl+Space" = {
+            "Mod+Space" = {
               _props.hotkey-overlay-title = "Application Launcher";
               spawn = [
                 "dms"
@@ -99,7 +99,7 @@
               ];
             };
 
-            "Ctrl+Mod+L" = {
+            "Mod+Shift+O" = {
               _props.hotkey-overlay-title = "Lock Screen";
               spawn = [
                 "dms"

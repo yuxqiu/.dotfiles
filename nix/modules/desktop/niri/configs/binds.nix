@@ -5,7 +5,7 @@
         show-hotkey-overlay = [ ];
       };
 
-      "Ctrl+Q" = {
+      "Mod+Q" = {
         _props.hotkey-overlay-title = null;
         close-window = [ ];
       };
@@ -52,11 +52,6 @@
         move-column-to-workspace-up = [ ];
       };
 
-      "Mod+WheelScrollRight".focus-column-right = [ ];
-      "Mod+WheelScrollLeft".focus-column-left = [ ];
-      "Mod+Ctrl+WheelScrollRight".move-column-right = [ ];
-      "Mod+Ctrl+WheelScrollLeft".move-column-left = [ ];
-
       "Mod+Shift+WheelScrollDown".focus-column-right = [ ];
       "Mod+Shift+WheelScrollUp".focus-column-left = [ ];
       "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = [ ];
@@ -88,8 +83,8 @@
       "Mod+BracketRight".consume-or-expel-window-right = [ ];
 
       "Mod+R".switch-preset-column-width = [ ];
-      "Mod+Shift+R".switch-preset-window-height = [ ];
-      "Mod+Ctrl+R".reset-window-height = [ ];
+      "Mod+T".switch-preset-window-height = [ ];
+      "Mod+Shift+T".reset-window-height = [ ];
       "Mod+F".fullscreen-window = [ ];
       "Mod+Shift+F".maximize-column = [ ];
 
