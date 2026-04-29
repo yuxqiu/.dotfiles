@@ -41,10 +41,19 @@
                 "1" = "kimpanel";
                 "2" = "quickphrase";
                 "3" = "cloudpinyin";
+                # Disable spell completion (English)
+                "4" = "spell";
               };
             };
             addons = {
               pinyin.globalSection.EmojiEnabled = "True";
+
+              keyboard = {
+                globalSection = {
+                  # Disable the hint mode toggle (Ctrl+Alt+H)
+                  "Hint Trigger" = "";
+                };
+              };
             };
             inputMethod = {
               GroupOrder = {
