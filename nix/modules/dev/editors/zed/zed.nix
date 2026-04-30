@@ -238,18 +238,6 @@
   flake.modules.homeManager.linux-desktop =
     { lib, ... }:
     {
-      xdg.mimeApps = {
-        associations.added = {
-          "text/markdown" = [ "dev.zed.Zed.desktop" ];
-          "text/x-tex" = [ "dev.zed.Zed.desktop" ];
-        };
-
-        defaultApplications = {
-          "text/markdown" = [ "dev.zed.Zed.desktop" ];
-          "text/x-tex" = [ "dev.zed.Zed.desktop" ];
-        };
-      };
-
       wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
         {
           match = {
