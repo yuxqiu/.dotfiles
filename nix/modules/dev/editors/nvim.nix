@@ -62,12 +62,7 @@
                   vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
                 end
                 if client.server_capabilities.codeLensProvider then
-                  vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "CursorHold" }, {
-                    buffer = bufnr,
-                    callback = function()
-                      vim.lsp.codelens.refresh({ bufnr = bufnr })
-                    end,
-                  })
+                  vim.lsp.codelens.enable(true, { bufnr = bufnr })
                 end
               end
 
@@ -300,23 +295,27 @@
             plugin = bufferline-nvim;
             type = "lua";
             config = ''
-              local function smart_close(bufnr)
-                local listed = vim.tbl_filter(function(b) return vim.bo[b].buflisted end, vim.api.nvim_list_bufs())
-                if #listed <= 1 then
-                  vim.cmd("enew")
-                end
-                vim.cmd("bdelete " .. bufnr)
-              end
-
-              local function smart_tab_close(tabnr)
-                if #vim.api.nvim_list_tabpages() <= 1 then
-                  local listed = vim.tbl_filter(function(b) return vim.bo[b].buflisted end, vim.api.nvim_list_bufs())
-                  if #listed <= 1 then
-                    vim.cmd("enew")
+              _G.smart_close = function(bufnr)
+                bufnr = tonumber(bufnr) or vim.api.nvim_get_current_buf()
+                if vim.bo[bufnr].modified then
+                  local choice = vim.fn.confirm("Save changes?", "&Save\n&Discard\n&Cancel", 1)
+                  if choice == 1 then
+                    vim.cmd("write")
+                  elseif choice == 2 then
+                    vim.bo[bufnr].modified = false
+                  else
+                    return
                   end
-                  vim.cmd("bdelete")
+                end
+                local listed = vim.tbl_filter(function(b)
+                  return vim.bo[b].buflisted and b ~= bufnr
+                end, vim.api.nvim_list_bufs())
+                if #listed == 0 then
+                  vim.cmd("new")
+                  vim.cmd("bdelete! " .. bufnr)
                 else
-                  vim.cmd("tabclose " .. tabnr)
+                  vim.cmd("buffer " .. listed[#listed])
+                  vim.cmd("bdelete! " .. bufnr)
                 end
               end
 
@@ -326,8 +325,8 @@
                   show_buffer_close_icons = true,
                   show_close_icon = false,
                   separator_style = "thin",
-                  close_command = smart_tab_close,
-                  right_mouse_command = smart_close,
+                  close_command = _G.smart_close,
+                  right_mouse_command = _G.smart_close,
                   offsets = {
                     { filetype = "neo-tree", text = "File Explorer", padding = 1 },
                     { filetype = "toggleterm", text = "Terminal", padding = 1 },
@@ -335,11 +334,11 @@
                 },
               })
 
-              -- Re-apply close commands after bufferline overrides them in tabline mode
+              -- Re-apply close commands after bufferline overrides them
               vim.schedule(function()
                 local opts = require("bufferline.config").options
-                opts.close_command = smart_tab_close
-                opts.right_mouse_command = smart_close
+                opts.close_command = _G.smart_close
+                opts.right_mouse_command = _G.smart_close
               end)
               vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
               vim.keymap.set("n", "<C-S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev buffer" })
@@ -783,7 +782,38 @@
           vim.keymap.set("n", "<C-S-F>", function()
             require("telescope.builtin").live_grep({ search_dirs = { vim.fn.getcwd() } })
           end, { desc = "Search in project" })
-          vim.keymap.set("n", "<C-o>", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
+          vim.keymap.set("n", "<C-o>", function()
+            local pickers = require("telescope.pickers")
+            local finders = require("telescope.finders")
+            local conf = require("telescope.config").values
+            local actions = require("telescope.actions")
+            local action_state = require("telescope.actions.state")
+            local dirs = {}
+            for _, b in ipairs(vim.v.oldfiles) do
+              local dir = vim.fn.fnamemodify(b, ":h")
+              if vim.fn.isdirectory(dir) == 1 then
+                local root = vim.fn.systemlist("git -C " .. vim.fn.shellescape(dir) .. " rev-parse --show-toplevel 2>/dev/null")[1]
+                if root and root ~= "" and vim.fn.isdirectory(root) == 1 and not vim.tbl_contains(dirs, root) then
+                  dirs[#dirs + 1] = root
+                end
+              end
+            end
+            pickers.new({}, {
+              prompt_title = "Recent Projects",
+              finder = finders.new_table({ results = dirs }),
+              sorter = conf.generic_sorter({}),
+              attach_mappings = function(bufnr, map)
+                actions.select_default:replace(function()
+                  local dir = action_state.get_selected_entry()[1]
+                  actions.close(bufnr)
+                  vim.fn.chdir(dir)
+                  require("neo-tree.command").execute({ source_name = "filesystem", action = "focus", dir = dir })
+                  require("telescope.builtin").find_files({ cwd = dir })
+                end)
+                return true
+              end,
+            }):find()
+          end, { desc = "Recent projects" })
           vim.keymap.set("n", "<C-=>", function() change_font_size(1) end, { desc = "Increase font size" })
           vim.keymap.set("n", "<C-+>", function() change_font_size(1) end, { desc = "Increase font size" })
           vim.keymap.set("n", "<C-->", function() change_font_size(-1) end, { desc = "Decrease font size" })
@@ -791,31 +821,7 @@
           -- New file (like VSCode Ctrl+N: opens unnamed buffer)
           vim.keymap.set("n", "<C-n>", "<cmd>enew<CR>", { desc = "New file" })
 
-          -- Close buffer (like VSCode Ctrl+W) — switch to next buffer before deleting to avoid closing vim
-          vim.keymap.set("n", "<C-w>", function()
-            local bufnr = vim.api.nvim_get_current_buf()
-            local bufname = vim.api.nvim_buf_get_name(bufnr)
-            local modified = vim.bo[bufnr].modified
-            if modified then
-              local choice = vim.fn.confirm("Save changes?", "&Save\n&Discard\n&Cancel", 1)
-              if choice == 1 then
-                vim.cmd("write")
-              elseif choice == 2 then
-                vim.bo[bufnr].modified = false
-              else
-                return
-              end
-            end
-            local total = #vim.api.nvim_list_wins()
-            local buffers = vim.api.nvim_list_bufs()
-            local listed = vim.tbl_filter(function(b) return vim.bo[b].buflisted end, buffers)
-            if #listed <= 1 then
-              vim.cmd("enew")
-              vim.cmd("bdelete " .. bufnr)
-            else
-              vim.cmd("bp | bdelete " .. bufnr)
-            end
-          end, { desc = "Close buffer" })
+          vim.keymap.set("n", "<C-w>", function() _G.smart_close() end, { desc = "Close buffer" })
 
           -- LSP keymaps
           vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
