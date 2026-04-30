@@ -25,7 +25,7 @@
           settings = {
             globalOptions = {
               Behavior = {
-                ActiveByDefault = true;
+                ActiveByDefault = false;
               };
               Hotkey = {
                 EnumerateWithTriggerKeys = true;

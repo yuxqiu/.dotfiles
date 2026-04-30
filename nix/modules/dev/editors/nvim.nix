@@ -217,8 +217,35 @@
           cmp-buffer
           cmp-path
           cmp-cmdline
+          cmp_luasnip
           luasnip
           friendly-snippets
+
+          {
+            plugin = luasnip;
+            type = "lua";
+            config = ''
+              local ls = require("luasnip")
+              local s = ls.snippet
+              local t = ls.text_node
+              local i = ls.insert_node
+
+              ls.add_snippets("latex", {
+                s("im", { t("\\("), i(1), t("\\)"), i(0) }),
+                s("dm", { t("\\["), t({ "", "\t" }), i(1), t({ "", "\\]" }), i(0) }),
+              })
+
+              ls.add_snippets("markdown", {
+                s("im", { t("$"), i(1), t("$"), i(0) }),
+                s("dm", { t({ "$$", "" }), i(1), t({ "", "$$" }), i(0) }),
+              })
+
+              ls.add_snippets("typst", {
+                s("im", { t("$"), i(1), t("$"), i(0) }),
+                s("dm", { t({ "$$", "" }), i(1), t({ "", "$$" }), i(0) }),
+              })
+            '';
+          }
 
           {
             plugin = telescope-nvim;
@@ -439,6 +466,20 @@
                 current_line_blame_formatter = " <author>, <author_time:%Y-%m-%d> - <summary>",
                 word_diff = false,
               })
+
+              local gitsigns_inline_diff = false
+              vim.keymap.set("n", "<leader>gd", function()
+                gitsigns_inline_diff = not gitsigns_inline_diff
+                if gitsigns_inline_diff then
+                  require("gitsigns").toggle_linehl(true)
+                  require("gitsigns").toggle_deleted(true)
+                  require("gitsigns").toggle_word_diff(true)
+                else
+                  require("gitsigns").toggle_linehl(false)
+                  require("gitsigns").toggle_deleted(false)
+                  require("gitsigns").toggle_word_diff(false)
+                end
+              end, { desc = "Toggle inline git diff" })
             '';
           }
 
@@ -455,7 +496,14 @@
             plugin = comment-nvim;
             type = "lua";
             config = ''
-              require("Comment").setup()
+              require("Comment").setup({
+                padding = true,
+                sticky = true,
+              })
+
+              vim.keymap.set("n", "<C-/>", "<Plug>(comment_toggle_linewise_current)", { desc = "Toggle comment" })
+              vim.keymap.set("v", "<C-/>", "<Plug>(comment_toggle_linewise_visual)", { desc = "Toggle comment" })
+              vim.keymap.set("i", "<C-/>", "<Esc><Plug>(comment_toggle_linewise_current)A", { desc = "Toggle comment" })
             '';
           }
 
@@ -484,24 +532,12 @@
             '';
           }
 
-          markdown-preview-nvim
-
           {
             plugin = typst-vim;
             type = "lua";
             config = ''
               vim.g.typst_auto_compile = 0
               vim.g.typst_pdf_viewer = "sioyek"
-            '';
-          }
-
-          {
-            plugin = typst-preview-nvim;
-            type = "lua";
-            config = ''
-              require("typst-preview").setup({
-                dependent_binaries = { "tinymist" },
-              })
             '';
           }
 
@@ -607,7 +643,16 @@
                 zen = { enabled = true },
               })
 
+              Snacks.dim.enable()
+
               vim.keymap.set("n", "<leader>z", function() Snacks.zen.zen() end, { desc = "Toggle Zen mode" })
+              vim.keymap.set("n", "<leader>uD", function()
+                if Snacks.dim.enabled then
+                  Snacks.dim.disable()
+                else
+                  Snacks.dim.enable()
+                end
+              end, { desc = "Toggle Dim" })
               vim.keymap.set("n", "<leader>gb", function() Snacks.gitbrowse.open() end, { desc = "Git browse" })
               vim.keymap.set("n", "<leader>gl", function() Snacks.git.blame_line() end, { desc = "Git blame line" })
             '';
@@ -662,16 +707,14 @@
           }
 
           {
-            plugin = nvim-scrollbar;
+            plugin = nvim-scrollview;
             type = "lua";
             config = ''
-              require("scrollbar").setup({
-                handlers = {
-                  diagnostic = true,
-                  gitsigns = true,
-                  search = true,
-                },
+              require("scrollview").setup({
+                signs_on_startup = { "diagnostics", "search", "marks" },
+                scrollview_mousemove = true,
               })
+              require("scrollview.contrib.gitsigns").setup()
             '';
           }
 
@@ -735,6 +778,7 @@
           vim.opt.tabstop = 4
           vim.opt.expandtab = true
           vim.opt.smarttab = true
+          vim.opt.formatoptions = "croqln"
           vim.opt.backup = false
           vim.opt.writebackup = false
           vim.opt.wrap = false
@@ -819,7 +863,7 @@
           vim.keymap.set("n", "<C-->", function() change_font_size(-1) end, { desc = "Decrease font size" })
 
           -- New file (like VSCode Ctrl+N: opens unnamed buffer)
-          vim.keymap.set("n", "<C-n>", "<cmd>enew<CR>", { desc = "New file" })
+          vim.keymap.set("n", "<C-n>", "<cmd>new<CR>", { desc = "New file" })
 
           vim.keymap.set("n", "<C-w>", function() _G.smart_close() end, { desc = "Close buffer" })
 
@@ -827,6 +871,15 @@
           vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
           vim.keymap.set("x", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
           vim.keymap.set("n", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
+
+          vim.keymap.set("n", "<2-LeftMouse>", function()
+            local lenses = vim.lsp.codelens.get({ bufnr = 0 })
+            if #lenses > 0 then
+              vim.lsp.codelens.run()
+            else
+              vim.fn.execute("normal! \\<2-LeftMouse>")
+            end
+          end, { desc = "Click code lens or default double-click" })
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
           vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
           vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
@@ -851,7 +904,7 @@
           vim.api.nvim_create_user_command("SplitFocusLeft", "wincmd h", { desc = "Move focus to left split" })
           vim.api.nvim_create_user_command("SplitFocusUp", "wincmd k", { desc = "Move focus to upper split" })
           vim.api.nvim_create_user_command("SplitFocusDown", "wincmd j", { desc = "Move focus to lower split" })
-          vim.api.nvim_create_user_command("NewFile", "enew", { desc = "New unnamed file" })
+          vim.api.nvim_create_user_command("NewFile", "new", { desc = "New unnamed file" })
           vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split vertically" })
           vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split horizontally" })
           vim.keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "Close split" })
@@ -880,6 +933,9 @@
 
           -- Insert mode: Ctrl+Backspace to delete word backward
           vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true })
+
+          -- Shift+Tab to de-indent in insert mode (undo tab)
+          vim.keymap.set("i", "<S-Tab>", "<C-D>", { noremap = true })
 
           -- Quick move to line start/end
           vim.keymap.set("n", "H", "^", { noremap = true })
