@@ -11,13 +11,16 @@
       config.my.dev.lsp = with pkgs; [
         basedpyright
         clang-tools
+        deadnix
+        golangci-lint
         gopls
         markdown-oxide
         nixd
         nixfmt
         package-version-server
-        vscode-json-languageserver
         ruff
+        shellcheck
+        statix
         tectonic
         texlab
         (texliveSmall.withPackages (
@@ -26,9 +29,12 @@
             synctex
           ]
         ))
-        typos-lsp
         tinymist
+        tree-sitter
+        typos-lsp
         uv
+        vscode-json-languageserver
+        yamllint
       ];
     };
 }

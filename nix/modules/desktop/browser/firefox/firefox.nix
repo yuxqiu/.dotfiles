@@ -57,9 +57,11 @@
           # stylix: prevent auto disabling extensions installed inside firefox
           # https://github.com/nix-community/home-manager/issues/6398#issuecomment-2958982664
           settings = {
-            extensions.autoDisableScopes = 0;
-            extensions.update.autoUpdateDefault = false;
-            extensions.update.enabled = false;
+            extensions = {
+              autoDisableScopes = 0;
+              update.autoUpdateDefault = false;
+              update.enabled = false;
+            };
           };
           extensions = {
             force = true;
@@ -70,8 +72,8 @@
           extraConfig = userOverrides;
 
           # userChrome and userContent
-          userChrome = userChrome;
-          userContent = userContent;
+          inherit userChrome;
+          inherit userContent;
         };
         policies = {
           AutofillAddressEnabled = false;
