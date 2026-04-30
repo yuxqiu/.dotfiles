@@ -13,7 +13,7 @@
         name = "niri-tile-to-n";
         runtimeInputs = [ pkgs.python3 ];
         text = ''
-          exec python3 ${niri-tweaks-src}/niri_tile_to_n.py -n 3
+          exec python3 ${niri-tweaks-src}/niri_tile_to_n.py -n 3 -delay 5000
         '';
       };
     in
