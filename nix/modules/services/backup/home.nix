@@ -10,7 +10,7 @@
         sops.secrets."autorestic.yaml" = {
           mode = "0400";
           owner = config.users.users.root.name;
-          group = config.users.users.root.group;
+          inherit (config.users.users.root) group;
         };
 
         # See:

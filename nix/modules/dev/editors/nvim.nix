@@ -61,6 +61,14 @@
                   local win = vim.api.nvim_get_current_win()
                   vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
                 end
+                if client.server_capabilities.codeLensProvider then
+                  vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "CursorHold" }, {
+                    buffer = bufnr,
+                    callback = function()
+                      vim.lsp.codelens.refresh({ bufnr = bufnr })
+                    end,
+                  })
+                end
               end
 
               vim.lsp.config("basedpyright", { capabilities = capabilities, on_attach = on_attach })
@@ -97,18 +105,30 @@
               })
               vim.lsp.config("jsonls", { capabilities = capabilities, on_attach = on_attach })
               vim.lsp.config("typos_lsp", { capabilities = capabilities, on_attach = on_attach })
+              vim.lsp.config("bashls", { capabilities = capabilities, on_attach = on_attach })
+              vim.lsp.config("cssls", { capabilities = capabilities, on_attach = on_attach })
+              vim.lsp.config("lua_ls", { capabilities = capabilities, on_attach = on_attach })
+              vim.lsp.config("rust_analyzer", { capabilities = capabilities, on_attach = on_attach })
+              vim.lsp.config("taplo", { capabilities = capabilities, on_attach = on_attach })
+              vim.lsp.config("yamlls", { capabilities = capabilities, on_attach = on_attach })
 
               vim.lsp.enable({
                 "basedpyright",
+                "bashls",
                 "clangd",
+                "cssls",
                 "gopls",
+                "jsonls",
+                "lua_ls",
                 "markdown_oxide",
                 "nixd",
                 "ruff",
+                "rust_analyzer",
+                "taplo",
                 "tinymist",
                 "texlab",
-                "jsonls",
                 "typos_lsp",
+                "yamlls",
               })
 
               vim.diagnostic.config({
@@ -280,18 +300,47 @@
             plugin = bufferline-nvim;
             type = "lua";
             config = ''
+              local function smart_close(bufnr)
+                local listed = vim.tbl_filter(function(b) return vim.bo[b].buflisted end, vim.api.nvim_list_bufs())
+                if #listed <= 1 then
+                  vim.cmd("enew")
+                end
+                vim.cmd("bdelete " .. bufnr)
+              end
+
+              local function smart_tab_close(tabnr)
+                if #vim.api.nvim_list_tabpages() <= 1 then
+                  local listed = vim.tbl_filter(function(b) return vim.bo[b].buflisted end, vim.api.nvim_list_bufs())
+                  if #listed <= 1 then
+                    vim.cmd("enew")
+                  end
+                  vim.cmd("bdelete")
+                else
+                  vim.cmd("tabclose " .. tabnr)
+                end
+              end
+
               require("bufferline").setup({
                 options = {
                   diagnostics = "nvim_lsp",
                   show_buffer_close_icons = true,
-                  show_close_icon = true,
+                  show_close_icon = false,
                   separator_style = "thin",
+                  close_command = smart_tab_close,
+                  right_mouse_command = smart_close,
                   offsets = {
                     { filetype = "neo-tree", text = "File Explorer", padding = 1 },
                     { filetype = "toggleterm", text = "Terminal", padding = 1 },
                   },
                 },
               })
+
+              -- Re-apply close commands after bufferline overrides them in tabline mode
+              vim.schedule(function()
+                local opts = require("bufferline.config").options
+                opts.close_command = smart_tab_close
+                opts.right_mouse_command = smart_close
+              end)
               vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
               vim.keymap.set("n", "<C-S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev buffer" })
             '';
@@ -391,24 +440,6 @@
                 current_line_blame_formatter = " <author>, <author_time:%Y-%m-%d> - <summary>",
                 word_diff = false,
               })
-            '';
-          }
-
-          {
-            plugin = mini-nvim;
-            type = "lua";
-            config = ''
-              local map = require("mini.map")
-              map.setup({
-                integrations = {
-                  map.gen_integration.builtin_search(),
-                  map.gen_integration.diagnostic(),
-                  map.gen_integration.gitsigns(),
-                },
-                symbols = { scroll_line = "┃" },
-                window = { width = 15, winblend = 15 },
-              })
-              vim.keymap.set("n", "<leader>mm", map.toggle, { desc = "Toggle minimap" })
             '';
           }
 
@@ -542,20 +573,19 @@
                 bigfile = { enabled = true },
                 dashboard = {
                   enabled = true,
-                  preset = {
-                    keys = {
-                      { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                      { icon = " ", key = "n", desc = "New File", action = ":enew" },
-                      { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-                      { icon = " ", key = "g", desc = "Grep", action = ":lua Snacks.dashboard.pick('grep')" },
-                    },
-                  },
                   sections = {
                     { section = "header" },
                     { section = "keys", gap = 1, padding = 1 },
                     { section = "recent_files", icon = " ", title = "Recent Files", cwd = true, limit = 5, padding = 1 },
                     { section = "projects", icon = " ", title = "Projects", limit = 3, padding = 1 },
-                    { section = "startup" },
+                  },
+                  preset = {
+                    keys = {
+                      { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                      { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                      { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                      { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                    },
                   },
                 },
                 dim = { enabled = true },
@@ -581,6 +611,68 @@
               vim.keymap.set("n", "<leader>z", function() Snacks.zen.zen() end, { desc = "Toggle Zen mode" })
               vim.keymap.set("n", "<leader>gb", function() Snacks.gitbrowse.open() end, { desc = "Git browse" })
               vim.keymap.set("n", "<leader>gl", function() Snacks.git.blame_line() end, { desc = "Git blame line" })
+            '';
+          }
+
+          {
+            plugin = fastaction-nvim;
+            type = "lua";
+            config = ''
+              require("fastaction").setup({
+                popup = {
+                  border = "rounded",
+                },
+              })
+            '';
+          }
+
+          {
+            plugin = dressing-nvim;
+            type = "lua";
+            config = ''
+              require("dressing").setup({
+                select = {
+                  enabled = true,
+                  backend = { "fzf_lua", "telescope", "fzf", "builtin" },
+                },
+              })
+            '';
+          }
+
+          {
+            plugin = trouble-nvim;
+            type = "lua";
+            config = ''
+              require("trouble").setup({
+                modes = {
+                  diagnostics = { auto_open = false },
+                  lsp = { win = { type = "split" } },
+                },
+              })
+              vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics" })
+              vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<CR>", { desc = "Quickfix list" })
+            '';
+          }
+
+          {
+            plugin = nvim-hlslens;
+            type = "lua";
+            config = ''
+              require("hlslens").setup({})
+            '';
+          }
+
+          {
+            plugin = nvim-scrollbar;
+            type = "lua";
+            config = ''
+              require("scrollbar").setup({
+                handlers = {
+                  diagnostic = true,
+                  gitsigns = true,
+                  search = true,
+                },
+              })
             '';
           }
 
@@ -657,7 +749,7 @@
           vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
           vim.opt.foldnestmax = 10
           vim.opt.foldenable = false
-          vim.opt.foldlevel = 2
+          vim.opt.foldlevel = 99
           vim.opt.autoindent = true
           vim.opt.cursorline = true
           vim.opt.signcolumn = "yes"
@@ -696,9 +788,6 @@
           vim.keymap.set("n", "<C-+>", function() change_font_size(1) end, { desc = "Increase font size" })
           vim.keymap.set("n", "<C-->", function() change_font_size(-1) end, { desc = "Decrease font size" })
 
-          -- Quick fix / code actions (like Zed/Vscode Ctrl+.)
-          vim.keymap.set("n", "<C-.>", vim.lsp.buf.code_action, { desc = "Quick fix / code actions" })
-
           -- New file (like VSCode Ctrl+N: opens unnamed buffer)
           vim.keymap.set("n", "<C-n>", "<cmd>enew<CR>", { desc = "New file" })
 
@@ -728,7 +817,26 @@
             end
           end, { desc = "Close buffer" })
 
-          -- Window management (accessible via command palette)
+          -- LSP keymaps
+          vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
+          vim.keymap.set("x", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
+          vim.keymap.set("n", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
+          vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+          vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Goto T[y]pe Definition" })
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+          vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover" })
+          vim.keymap.set("n", "gK", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
+          vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
+          vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+          vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" })
+          vim.keymap.set("n", "<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh Codelens" })
+          vim.keymap.set("n", "<leader>cl", "<cmd>lua vim.lsp.log.set_level('debug')<CR>", { desc = "LSP Log" })
+
+          -- Snacks.words: navigate LSP references
+          vim.keymap.set("n", "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
+          vim.keymap.set("n", "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
           vim.api.nvim_create_user_command("SplitVertical", "vsplit", { desc = "Split window vertically" })
           vim.api.nvim_create_user_command("SplitHorizontal", "split", { desc = "Split window horizontally" })
           vim.api.nvim_create_user_command("SplitClose", "close", { desc = "Close current split" })
@@ -763,6 +871,9 @@
           -- Window navigation
           vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Next diagnostic" })
           vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Prev diagnostic" })
+
+          -- Insert mode: Ctrl+Backspace to delete word backward
+          vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true })
 
           -- Quick move to line start/end
           vim.keymap.set("n", "H", "^", { noremap = true })
