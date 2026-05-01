@@ -1,0 +1,172 @@
+{
+  flake.modules.homeManager.base =
+    { pkgs, config, ... }:
+    {
+      programs.neovim = {
+        enable = true;
+        viAlias = true;
+        vimAlias = true;
+
+        plugins = with pkgs.vimPlugins; [
+          nvim-treesitter
+          nvim-treesitter-parsers.bash
+          nvim-treesitter-parsers.c
+          nvim-treesitter-parsers.cpp
+          nvim-treesitter-parsers.go
+          nvim-treesitter-parsers.json
+          nvim-treesitter-parsers.lua
+          nvim-treesitter-parsers.markdown
+          nvim-treesitter-parsers.markdown_inline
+          nvim-treesitter-parsers.nix
+          nvim-treesitter-parsers.python
+          nvim-treesitter-parsers.rust
+          nvim-treesitter-parsers.scss
+          nvim-treesitter-parsers.toml
+          nvim-treesitter-parsers.typst
+          nvim-treesitter-parsers.vim
+          nvim-treesitter-parsers.vimdoc
+          nvim-treesitter-parsers.yaml
+
+          {
+            plugin = catppuccin-nvim;
+            type = "lua";
+            config = ''
+              vim.cmd.colorscheme("catppuccin-mocha")
+            '';
+          }
+
+          {
+            plugin = conform-nvim;
+            type = "lua";
+            config = ''
+              require("conform").setup({
+                format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+                formatters_by_ft = {
+                  nix = { "nixfmt" },
+                  python = { "ruff" },
+                  bib = { "latexindent" },
+                },
+              })
+            '';
+          }
+
+          editorconfig-vim
+
+          {
+            plugin = todo-comments-nvim;
+            type = "lua";
+            config = ''
+              require("todo-comments").setup()
+            '';
+          }
+
+          nvim-web-devicons
+
+          {
+            plugin = fastaction-nvim;
+            type = "lua";
+            config = ''
+              require("fastaction").setup({
+                popup = {
+                  border = "rounded",
+                },
+              })
+            '';
+          }
+
+          {
+            plugin = dressing-nvim;
+            type = "lua";
+            config = ''
+              require("dressing").setup({
+                select = {
+                  enabled = true,
+                  backend = { "fzf_lua", "telescope", "fzf", "builtin" },
+                },
+              })
+            '';
+          }
+
+          {
+            plugin = nvim-hlslens;
+            type = "lua";
+            config = ''
+              require("hlslens").setup({})
+            '';
+          }
+
+          {
+            plugin = nvim-scrollview;
+            type = "lua";
+            config = ''
+              require("scrollview").setup({
+                signs_on_startup = { "diagnostics", "search", "marks" },
+                scrollview_mousemove = true,
+              })
+              require("scrollview.contrib.gitsigns").setup()
+            '';
+          }
+
+          {
+            plugin = nvim-lint;
+            type = "lua";
+            config = ''
+              local lint = require("lint")
+              lint.linters_by_ft = {
+                bash = { "shellcheck" },
+                c = { "clangtidy" },
+                cpp = { "clangtidy" },
+                go = { "golangcilint" },
+                nix = { "deadnix", "statix" },
+                python = { "ruff" },
+                rust = { "clippy" },
+                sh = { "shellcheck" },
+                yaml = { "yamllint" },
+              }
+
+              vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+                callback = function()
+                  lint.try_lint()
+                end,
+              })
+            '';
+          }
+        ];
+
+        extraPackages =
+          config.my.dev.lsp
+          ++ (with pkgs; [
+            ripgrep
+            fd
+            ast-grep
+            rsync
+          ]);
+      };
+
+      home.sessionVariables = {
+        EDITOR = "${pkgs.neovim}/bin/nvim";
+        VISUAL = "${pkgs.neovim}/bin/nvim";
+      };
+
+      stylix.targets.neovim.transparentBackground = {
+        main = true;
+        numberLine = true;
+        signColumn = true;
+      };
+    };
+
+  flake.modules.homeManager.desktop = {
+    xdg.mimeApps = {
+      associations.added = {
+        "text/markdown" = [ "nvim.desktop" ];
+        "text/x-tex" = [ "nvim.desktop" ];
+        "text/x-typst" = [ "nvim.desktop" ];
+      };
+      defaultApplications = {
+        "text/markdown" = [ "nvim.desktop" ];
+        "text/x-tex" = [ "nvim.desktop" ];
+        "text/x-typst" = [ "nvim.desktop" ];
+      };
+    };
+  };
+}
