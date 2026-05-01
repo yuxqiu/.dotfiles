@@ -567,8 +567,5 @@
 
       # Dependencies for extensions
       home.packages = config.my.dev.lsp;
-
-      # Ensure Neovim is installed for vscode-neovim
-      programs.neovim.enable = true;
     };
 }
