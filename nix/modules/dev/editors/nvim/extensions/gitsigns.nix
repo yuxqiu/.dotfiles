@@ -60,6 +60,18 @@
                 require("gitsigns").toggle_word_diff(false)
               end
             end, { desc = "Toggle inline git diff" })
+
+            vim.keymap.set("n", "<leader>gs", function()
+              require("gitsigns").stage_hunk()
+            end, { desc = "Stage hunk" })
+
+            vim.keymap.set("n", "<leader>gr", function()
+              require("gitsigns").reset_hunk()
+            end, { desc = "Restore hunk" })
+
+            vim.keymap.set("n", "<leader>gu", function()
+              require("gitsigns").undo_stage_hunk()
+            end, { desc = "Unstage hunk" })
           '';
         }
       ];
