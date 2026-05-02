@@ -52,16 +52,6 @@
   flake.modules.systemManager.desktop =
     { pkgs, ... }:
     {
-      services.displayManager.waylandSessions = {
-        enable = true;
-
-        entries = [
-          {
-            compositorName = "Niri";
-            sessionName = "niri-session";
-            package = pkgs.niri;
-          }
-        ];
-      };
+      services.displayManager.sessionPackages = [ pkgs.niri ];
     };
 }
