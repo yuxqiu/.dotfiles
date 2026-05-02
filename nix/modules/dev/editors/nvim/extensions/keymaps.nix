@@ -110,6 +110,26 @@
       vim.keymap.set("n", "<leader>sK", "<C-w>k", { desc = "Focus split above" })
       vim.keymap.set("n", "<leader>sL", "<C-w>l", { desc = "Focus split right" })
       vim.keymap.set("n", "<leader>sH", "<C-w>h", { desc = "Focus split left" })
+      vim.keymap.set("n", "<leader>ss", function()
+        vim.notify("[RESIZE] ←→/h/l: width  ↑↓/j/k: height  Esc: exit", vim.log.levels.INFO)
+        local actions = {
+          ["h"]      = "vertical resize -2",
+          ["l"]      = "vertical resize +2",
+          ["j"]      = "resize -2",
+          ["k"]      = "resize +2",
+          ["\x1b[D"] = "vertical resize -2",
+          ["\x1b[C"] = "vertical resize +2",
+          ["\x1b[B"] = "resize -2",
+          ["\x1b[A"] = "resize +2",
+        }
+        while true do
+          local ok, c = pcall(vim.fn.getcharstr)
+          if not ok then break end
+          if c == "\27" or c == "q" then break end
+          if actions[c] then vim.cmd(actions[c]) end
+          vim.cmd("redraw!")
+        end
+      end, { desc = "Resize split (sticky)" })
       vim.keymap.set("n", "<leader>s<Up>", "<C-w>+", { desc = "Increase split height" })
       vim.keymap.set("n", "<leader>s<Down>", "<C-w>-", { desc = "Decrease split height" })
       vim.keymap.set("n", "<leader>s<Right>", "<C-w>>", { desc = "Increase split width" })
