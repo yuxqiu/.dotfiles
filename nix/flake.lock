@@ -623,7 +623,7 @@
     "nix-system-graphics": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-mesa-26_0_4"
         ]
       },
       "locked": {
@@ -724,6 +724,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "nixpkgs-mesa-26_0_4": {
+      "locked": {
+        "lastModified": 1776327404,
+        "narHash": "sha256-m5NBWWN6+SlLanRHs08KhpSLZSIyfkk+vpki89NYKws=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "23317971cb988bd5aabb9d30c0dca16b28ddf1e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "23317971cb988bd5aabb9d30c0dca16b28ddf1e9",
         "type": "github"
       }
     },
@@ -878,6 +894,7 @@
         "nix-update-git": "nix-update-git",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-mesa-26_0_4": "nixpkgs-mesa-26_0_4",
         "paseo": "paseo",
         "quicksnip": "quicksnip",
         "sops-nix": "sops-nix",
@@ -967,7 +984,7 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-mesa-26_0_4"
         ],
         "userborn": "userborn"
       },

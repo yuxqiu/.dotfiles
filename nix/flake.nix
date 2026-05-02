@@ -50,11 +50,14 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";
     system-manager = {
       url = "github:numtide//system-manager?ref=pull/384/head";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-mesa-26_0_4";
+    };
+    nixpkgs-mesa-26_0_4 = {
+      url = "github:NixOS/nixpkgs/23317971cb988bd5aabb9d30c0dca16b28ddf1e9";
     };
     nix-system-graphics = {
       url = "github:soupglasses/nix-system-graphics";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-mesa-26_0_4";
     };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell";
