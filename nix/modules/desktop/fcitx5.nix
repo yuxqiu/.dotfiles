@@ -50,8 +50,9 @@
 
               keyboard = {
                 globalSection = {
-                  # Disable the hint mode toggle (Ctrl+Alt+H)
+                  # Disable the hint mode toggle (Ctrl+Alt+H/J)
                   "Hint Trigger" = "";
+                  "One Time Hint Trigger" = "";
                 };
               };
             };

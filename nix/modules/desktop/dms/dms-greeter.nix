@@ -11,7 +11,7 @@
     }:
     let
       cfg = config.programs.dank-material-shell.greeter;
-      user = config.services.greetd.settings.default_session.user;
+      inherit (config.services.greetd.settings.default_session) user;
     in
     {
       imports = [
@@ -19,7 +19,7 @@
       ];
 
       options = {
-        fonts = lib.mkOption {
+        fonts.packages = lib.mkOption {
           type = lib.types.raw;
         };
 
