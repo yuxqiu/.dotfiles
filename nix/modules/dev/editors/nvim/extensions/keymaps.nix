@@ -60,7 +60,7 @@
       vim.keymap.set("n", "<C-=>", function() change_font_size(1) end, { desc = "Increase font size" })
       vim.keymap.set("n", "<C-+>", function() change_font_size(1) end, { desc = "Increase font size" })
       vim.keymap.set("n", "<C-->", function() change_font_size(-1) end, { desc = "Decrease font size" })
-      vim.keymap.set("n", "<C-n>", "<cmd>new<CR>", { desc = "New file" })
+      vim.keymap.set("n", "<C-n>", "<cmd>enew<CR>", { desc = "New file" })
 
       -- LSP keymaps
       vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
@@ -110,6 +110,10 @@
       vim.keymap.set("n", "<leader>sK", "<C-w>k", { desc = "Focus split above" })
       vim.keymap.set("n", "<leader>sL", "<C-w>l", { desc = "Focus split right" })
       vim.keymap.set("n", "<leader>sH", "<C-w>h", { desc = "Focus split left" })
+      vim.keymap.set("n", "<leader>s<Up>", "<C-w>+", { desc = "Increase split height" })
+      vim.keymap.set("n", "<leader>s<Down>", "<C-w>-", { desc = "Decrease split height" })
+      vim.keymap.set("n", "<leader>s<Right>", "<C-w>>", { desc = "Increase split width" })
+      vim.keymap.set("n", "<leader>s<Left>", "<C-w><", { desc = "Decrease split width" })
 
       -- Terminal navigation
       vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Move to left window" })

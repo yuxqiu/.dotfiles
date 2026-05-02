@@ -34,7 +34,7 @@
 
       wayland.windowManager.niri = {
         enable = true;
-        package = inputs.niri.packages.${pkgs.stdenv.system}.default;
+        package = pkgs.niri;
       };
 
       wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
@@ -59,7 +59,7 @@
           {
             compositorName = "Niri";
             sessionName = "niri-session";
-            package = inputs.niri.packages.${pkgs.stdenv.system}.default;
+            package = pkgs.niri;
           }
         ];
       };

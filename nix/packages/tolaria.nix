@@ -32,7 +32,7 @@ rustPlatform.buildRustPackage rec {
     owner = "refactoringhq";
     repo = "tolaria";
     rev = "stable-v${version}";
-    hash = "sha256-u9iqZEx9xQ181t+7LIdUaq26+6y9Sy3N29PKjSo0BGk=";
+    hash = "sha256-70TZpwhIutDqNg753z+YNeN2AcHS50i1k7y/XVWbOOs=";
   };
 
   cargoRoot = "src-tauri";

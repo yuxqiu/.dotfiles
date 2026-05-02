@@ -1,21 +1,17 @@
 /* Modified from datguypiko/Firefox-Mod-Blur */
 @media (prefers-color-scheme: dark) {
     :root {
-        --firefoxcss-navigator-toolbox-bg-color: color-mix(
-            in srgb,
-            field 60%,
-            transparent
-        );
+        --toolbox-bgcolor: color-mix(in srgb,
+                field 60%,
+                transparent) !important;
     }
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --firefoxcss-navigator-toolbox-bg-color: color-mix(
-            in srgb,
-            field 50%,
-            transparent
-        );
+        --toolbox-bgcolor: color-mix(in srgb,
+                field 50%,
+                transparent) !important;
     }
 }
 
@@ -33,6 +29,7 @@
 #browser {
     background-color: var(--firefoxcss-navigator-toolbox-bg-color) !important;
 }
+
 #sidebar {
     background-color: transparent !important;
 
@@ -44,7 +41,11 @@
 }
 
 /* Hide some splitters */
-#sidebar-splitter, /* bottom splitter */
-#sidebar-tools-and-extensions-splitter /* right splitter */ {
+#sidebar-splitter,
+/* bottom splitter */
+#sidebar-tools-and-extensions-splitter
+
+/* right splitter */
+    {
     display: none !important;
 }

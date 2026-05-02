@@ -1,4 +1,3 @@
-{ inputs, ... }:
 {
   flake.modules.homeManager.linux-desktop =
     { pkgs, ... }:
@@ -10,7 +9,7 @@
           gnugrep
           gnused
           jq
-          inputs.niri.packages.${stdenv.system}.default
+          niri
         ];
         text = builtins.readFile ./niri-floating-sidebar.sh;
       };
@@ -18,7 +17,7 @@
       niri-sidebar-auto-reorder = pkgs.writeShellApplication {
         name = "niri-sidebar-auto-reorder";
         runtimeInputs = [
-          inputs.niri.packages.${pkgs.stdenv.system}.default
+          pkgs.niri
         ];
         text =
           builtins.replaceStrings

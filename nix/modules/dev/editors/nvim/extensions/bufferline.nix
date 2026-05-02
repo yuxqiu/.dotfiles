@@ -9,6 +9,10 @@
           config = ''
             _G.smart_close = function(bufnr)
               bufnr = tonumber(bufnr) or vim.api.nvim_get_current_buf()
+              local non_floating_wins = vim.tbl_filter(function(w)
+                return not vim.api.nvim_win_get_config(w).zindex
+              end, vim.api.nvim_tabpage_list_wins(vim.api.nvim_get_current_tabpage()))
+              local in_split = #non_floating_wins > 1
               if vim.bo[bufnr].modified then
                 local choice = vim.fn.confirm("Save changes?", "&Save\n&Discard\n&Cancel", 1)
                 if choice == 1 then
@@ -28,6 +32,9 @@
               else
                 vim.cmd("buffer " .. listed[#listed])
                 vim.cmd("bdelete! " .. bufnr)
+              end
+              if in_split then
+                vim.cmd("close")
               end
             end
 
@@ -58,7 +65,7 @@
       programs.neovim.initLua = ''
         vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
         vim.keymap.set("n", "<C-S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev buffer" })
-        vim.keymap.set("n", "<C-w>", function() _G.smart_close() end, { desc = "Close buffer" })
+        vim.keymap.set("n", "<C-w>", function() _G.smart_close() end, { desc = "Close split or buffer" })
       '';
     };
 }
