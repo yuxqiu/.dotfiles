@@ -8,11 +8,15 @@
           type = "lua";
           config = ''
             _G.smart_close = function(bufnr)
+              if vim.bo.filetype == "neo-tree" then return end
               bufnr = tonumber(bufnr) or vim.api.nvim_get_current_buf()
               local non_floating_wins = vim.tbl_filter(function(w)
                 return not vim.api.nvim_win_get_config(w).zindex
               end, vim.api.nvim_tabpage_list_wins(vim.api.nvim_get_current_tabpage()))
-              local in_split = #non_floating_wins > 1
+              local non_sidebar_wins = vim.tbl_filter(function(w)
+                return vim.bo[vim.api.nvim_win_get_buf(w)].filetype ~= "neo-tree"
+              end, non_floating_wins)
+              local in_split = #non_sidebar_wins > 1
               if vim.bo[bufnr].modified then
                 local choice = vim.fn.confirm("Save changes?", "&Save\n&Discard\n&Cancel", 1)
                 if choice == 1 then
