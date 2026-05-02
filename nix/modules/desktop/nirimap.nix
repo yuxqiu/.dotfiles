@@ -40,8 +40,10 @@
         show_for_floating_windows = false
       '';
 
-      wayland.windowManager.niri.settings = {
-        spawn-at-startup = [ [ "${nirimap}/bin/nirimap" ] ];
-      };
+      # Enable when shown on ovewview only is implemented
+      #
+      # wayland.windowManager.niri.settings = {
+      # spawn-at-startup = [ [ "${nirimap}/bin/nirimap" ] ];
+      # };
     };
 }
