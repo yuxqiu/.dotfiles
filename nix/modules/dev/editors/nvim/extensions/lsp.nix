@@ -90,16 +90,39 @@
               "yamlls",
             })
 
-            vim.diagnostic.config({
-              virtual_text = true,
-              severity_sort = true,
-              underline = true,
-              signs = true,
-              float = {
-                border = "rounded",
-                source = "always",
-              },
-            })
+             vim.diagnostic.config({
+               virtual_text = true,
+               severity_sort = true,
+               underline = true,
+               signs = true,
+               float = {
+                 border = "rounded",
+                 source = "always",
+               },
+             })
+
+             vim.keymap.set("n", "<2-LeftMouse>", function()
+               local lenses = vim.lsp.codelens.get({ bufnr = 0 })
+               if #lenses > 0 then
+                 vim.lsp.codelens.run()
+               else
+                 vim.fn.execute("normal! \\<2-LeftMouse>")
+               end
+             end, { desc = "Click code lens or default double-click" })
+             vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
+             vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
+             vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+             vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Goto [y]pe Definition" })
+             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+             vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover" })
+             vim.keymap.set("n", "gK", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
+             vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
+             vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+             vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" })
+             vim.keymap.set("n", "<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh Codelens" })
+             vim.keymap.set("n", "<leader>cl", "<cmd>lua vim.lsp.log.set_level('debug')<CR>", { desc = "LSP Log" })
+             vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Next diagnostic" })
+             vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Prev diagnostic" })
           '';
         }
       ];

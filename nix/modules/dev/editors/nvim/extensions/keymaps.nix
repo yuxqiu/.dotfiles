@@ -62,36 +62,6 @@
       vim.keymap.set("n", "<C-->", function() change_font_size(-1) end, { desc = "Decrease font size" })
       vim.keymap.set("n", "<C-n>", "<cmd>enew<CR>", { desc = "New file" })
 
-      -- LSP keymaps
-      vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
-      vim.keymap.set("x", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
-      vim.keymap.set("n", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
-
-      vim.keymap.set("n", "<2-LeftMouse>", function()
-        local lenses = vim.lsp.codelens.get({ bufnr = 0 })
-        if #lenses > 0 then
-          vim.lsp.codelens.run()
-        else
-          vim.fn.execute("normal! \\<2-LeftMouse>")
-        end
-      end, { desc = "Click code lens or default double-click" })
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "References" })
-      vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
-      vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Goto T[y]pe Definition" })
-      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover" })
-      vim.keymap.set("n", "gK", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
-      vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
-      vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
-      vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" })
-      vim.keymap.set("n", "<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh Codelens" })
-      vim.keymap.set("n", "<leader>cl", "<cmd>lua vim.lsp.log.set_level('debug')<CR>", { desc = "LSP Log" })
-
-      -- Snacks.words: navigate LSP references
-      vim.keymap.set("n", "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
-      vim.keymap.set("n", "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
-
       -- Split commands
       vim.api.nvim_create_user_command("SplitVertical", "vsplit", { desc = "Split window vertically" })
       vim.api.nvim_create_user_command("SplitHorizontal", "split", { desc = "Split window horizontally" })
@@ -152,10 +122,6 @@
       vim.keymap.set("v", "<C-S-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
       vim.keymap.set("v", "<C-S-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
-      -- Window navigation
-      vim.keymap.set("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Next diagnostic" })
-      vim.keymap.set("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Prev diagnostic" })
-
       -- Insert mode: Ctrl+Backspace to delete word backward
       vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true })
 
@@ -169,6 +135,10 @@
       -- Clipboard
       vim.keymap.set("n", "Y", '"+y', { noremap = true })
       vim.keymap.set("v", "Y", '"+y', { noremap = true })
+
+      -- Jump list navigation (back/forward like Zed)
+      vim.keymap.set("n", "<leader>jb", "<C-O>", { desc = "Jump back" })
+      vim.keymap.set("n", "<leader>jf", "<C-I>", { desc = "Jump forward" })
 
       -- Toggle relative line numbers (from Zed vim config)
       vim.keymap.set("n", "<leader>lr", "<cmd>set relativenumber!<CR>", { desc = "Toggle relative line numbers" })

@@ -71,6 +71,10 @@
                   border = "rounded",
                 },
               })
+
+              vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
+              vim.keymap.set("x", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
+              vim.keymap.set("n", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
             '';
           }
 
@@ -104,6 +108,9 @@
                 scrollview_mousemove = true,
               })
               require("scrollview.contrib.gitsigns").setup()
+
+              vim.keymap.set("n", "<leader>jn", "<cmd>ScrollViewNext<CR>", { desc = "Next scrollview sign" })
+              vim.keymap.set("n", "<leader>jp", "<cmd>ScrollViewPrev<CR>", { desc = "Prev scrollview sign" })
             '';
           }
 
