@@ -7,6 +7,8 @@
           plugin = neo-tree-nvim;
           type = "lua";
           config = ''
+            local neotree_width = 40
+
             require("neo-tree").setup({
               close_if_last_window = true,
               filesystem = {
@@ -14,6 +16,9 @@
                 use_libuv_file_watcher = true,
                 filtered_items = { visible = true, hide_dotfiles = false, hide_gitignored = false },
                 window = {
+                  width = function()
+                    return neotree_width
+                  end,
                   mappings = {
                     ["n"] = "add",
                     ["N"] = "add_directory",
@@ -25,11 +30,19 @@
                     ["<C-S-e>"] = function(state)
                       vim.cmd("wincmd p")
                     end,
-                  },
+                 },
                 },
               },
               git_status = { window = { position = "float" } },
               source_selector = { winbar = true, sources = { { source = "filesystem" }, { source = "git_status" } } },
+              event_handlers = {
+                {
+                  event = "neo_tree_window_before_close",
+                  handler = function(args)
+                    neotree_width = vim.api.nvim_win_get_width(args.winid)
+                  end,
+                },
+              },
             })
 
             vim.keymap.set("n", "<C-b>", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer" })
@@ -46,3 +59,4 @@
       ];
     };
 }
+
