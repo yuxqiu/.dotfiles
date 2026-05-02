@@ -4,11 +4,22 @@
     {
       programs.neovim.plugins = with pkgs.vimPlugins; [
         {
-          plugin = leap-nvim;
+          plugin = flash-nvim;
           type = "lua";
           config = ''
-            vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)")
-            vim.keymap.set("n", "S", "<Plug>(leap-from-window)")
+            require("flash").setup({
+              modes = {
+                char = {
+                  enabled = true,
+                  autohide = true,
+                  multi_line = false,
+                },
+              },
+            })
+
+            vim.keymap.set({ "n", "x", "o" }, "s", "<cmd>Flash<CR>", { desc = "Flash" })
+            vim.keymap.set({ "n", "x", "o" }, "S", "<cmd>FlashTreesitter<CR>", { desc = "Flash Treesitter" })
+            vim.keymap.set("o", "r", "<cmd>FlashRemote<CR>", { desc = "Flash Remote" })
           '';
         }
 
