@@ -17,9 +17,9 @@
               },
             })
 
-            vim.keymap.set({ "n", "x", "o" }, "s", "<cmd>Flash<CR>", { desc = "Flash" })
-            vim.keymap.set({ "n", "x", "o" }, "S", "<cmd>FlashTreesitter<CR>", { desc = "Flash Treesitter" })
-            vim.keymap.set("o", "r", "<cmd>FlashRemote<CR>", { desc = "Flash Remote" })
+            vim.keymap.set({ "n", "x", "o" }, "s", function() require("flash").jump() end, { desc = "Flash" })
+            vim.keymap.set({ "n", "x", "o" }, "S", function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+            vim.keymap.set("o", "r", function() require("flash").remote() end, { desc = "Flash Remote" })
           '';
         }
 
