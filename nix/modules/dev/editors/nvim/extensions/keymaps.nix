@@ -26,6 +26,7 @@
       vim.opt.wildmenu = true
       vim.opt.foldmethod = "expr"
       vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.opt.foldcolumn = "1"
       vim.opt.foldnestmax = 10
       vim.opt.foldenable = false
       vim.opt.foldlevel = 99
