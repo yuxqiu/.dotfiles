@@ -7,7 +7,7 @@
           plugin = neo-tree-nvim;
           type = "lua";
           config = ''
-            local neotree_width = 40
+            local neotree_width = 30
 
             require("neo-tree").setup({
               close_if_last_window = true,
@@ -60,4 +60,3 @@
       ];
     };
 }
-

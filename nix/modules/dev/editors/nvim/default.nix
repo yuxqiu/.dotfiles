@@ -155,11 +155,7 @@
         VISUAL = "${pkgs.neovim}/bin/nvim";
       };
 
-      stylix.targets.neovim.transparentBackground = {
-        main = true;
-        numberLine = true;
-        signColumn = true;
-      };
+      stylix.targets.neovim.enable = false;
     };
 
   flake.modules.homeManager.desktop = {

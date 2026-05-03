@@ -36,7 +36,7 @@
                 scope = { enabled = true, show_start = false, show_end = false },
               },
               input = { enabled = true },
-              notifier = { enabled = true },
+              notifier = { enabled = false },
               quickfile = { enabled = true },
               scope = { enabled = true },
               scroll = { enabled = true },

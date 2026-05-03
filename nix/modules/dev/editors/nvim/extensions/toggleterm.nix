@@ -20,6 +20,7 @@
               insert_mappings = true,
               terminal_mappings = true,
               float_opts = { border = "curved" },
+              shade_terminals = false,
             })
 
             vim.keymap.set("t", "<C-`>", "<cmd>ToggleTerm<CR>", { desc = "Toggle terminal" })
