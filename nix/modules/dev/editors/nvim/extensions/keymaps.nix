@@ -1,9 +1,6 @@
 {
   flake.modules.homeManager.base = {
     programs.neovim.initLua = ''
-      -- Leader
-      vim.g.mapleader = " "
-
       -- General settings
       vim.opt.encoding = "utf-8"
       vim.opt.hidden = true

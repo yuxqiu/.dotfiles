@@ -10,15 +10,6 @@
       ];
 
       programs.neovim.initLua = ''
-        local function lazy_load(pack_name, before_fn, after_fn)
-          if vim.fn.exists("g:loaded_" .. pack_name) == 0 then
-            if before_fn then before_fn() end
-            vim.cmd("packadd " .. pack_name)
-            vim.g["loaded_" .. pack_name] = 1
-            if after_fn then after_fn() end
-          end
-        end
-
         local function load_grug_far()
           lazy_load("grug-far.nvim", nil, function()
             require("grug-far").setup({ headerMaxWidth = 80 })

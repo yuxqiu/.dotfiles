@@ -34,7 +34,9 @@
             require("Comment").setup({
               padding = true,
               sticky = true,
+              ignore = "^%s*$",
               pre_hook = require("ts_context_commentstring.utils").get_cs,
+              opleader = { line = "gc" },
             })
 
             vim.keymap.set("n", "<C-/>", "<Plug>(comment_toggle_linewise_current)", { desc = "Toggle comment" })
@@ -48,7 +50,7 @@
           type = "lua";
           config = ''
             require("cutlass").setup({
-              cut_key = "x",
+              cut_key = "X",
               exclude = { "ns", "nS" },
             })
           '';

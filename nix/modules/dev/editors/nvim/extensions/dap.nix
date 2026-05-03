@@ -20,22 +20,13 @@
       ];
 
       programs.neovim.initLua = ''
-        local function lazy_load(pack_name, before_fn, after_fn)
-          if vim.fn.exists("g:loaded_" .. pack_name) == 0 then
-            if before_fn then before_fn() end
-            vim.cmd("packadd " .. pack_name)
-            vim.g["loaded_" .. pack_name] = 1
-            if after_fn then after_fn() end
-          end
-        end
-
         local dap_loaded = false
         local function load_dap()
           if dap_loaded then return end
           dap_loaded = true
-          vim.cmd("packadd nvim-dap")
-          vim.cmd("packadd nvim-dap-ui")
-          vim.cmd("packadd nvim-dap-virtual-text")
+          lazy_load("nvim-dap", nil, nil)
+          lazy_load("nvim-dap-ui", nil, nil)
+          lazy_load("nvim-dap-virtual-text", nil, nil)
           local dap = require("dap")
           local dapui = require("dapui")
           dapui.setup()

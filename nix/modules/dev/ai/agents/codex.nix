@@ -10,6 +10,8 @@
           web_search = "live";
         };
       };
-      my.dev.lsp = with pkgs; [ codex-acp ];
+
+      # TODO: restore after successful hydra build
+      # my.dev.lsp = with pkgs; [ codex-acp ];
     };
 }

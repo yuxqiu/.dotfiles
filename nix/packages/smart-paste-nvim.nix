@@ -6,7 +6,7 @@
 
 vimUtils.buildVimPlugin {
   pname = "smart-paste-nvim";
-  version = "0-unstable-2026-02-08";
+  version = "0-unstable-2026-02-21";
 
   src = fetchFromGitHub {
     owner = "nemanjamalesija";
@@ -21,4 +21,3 @@ vimUtils.buildVimPlugin {
     license = lib.licenses.mit;
   };
 }
-

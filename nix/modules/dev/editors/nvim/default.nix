@@ -1,11 +1,25 @@
 {
   flake.modules.homeManager.base =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       programs.neovim = {
         enable = true;
         viAlias = true;
         vimAlias = true;
+
+        extraConfig = "let mapleader = ' '";
+
+        initLua = ''
+          _G._lazy_loaded = {}
+
+          _G.lazy_load = function(pack_name, before_fn, after_fn)
+            if _G._lazy_loaded[pack_name] then return end
+            _G._lazy_loaded[pack_name] = true
+            if before_fn then before_fn() end
+            vim.cmd("packadd " .. pack_name)
+            if after_fn then after_fn() end
+          end
+        '';
 
         plugins = with pkgs.vimPlugins; [
           nvim-treesitter
@@ -26,6 +40,7 @@
           nvim-treesitter-parsers.vim
           nvim-treesitter-parsers.vimdoc
           nvim-treesitter-parsers.yaml
+          nvim-treesitter-parsers.latex
 
           {
             plugin = catppuccin-nvim;
@@ -79,19 +94,6 @@
           }
 
           {
-            plugin = dressing-nvim;
-            type = "lua";
-            config = ''
-              require("dressing").setup({
-                select = {
-                  enabled = true,
-                  backend = { "fzf_lua", "telescope", "fzf", "builtin" },
-                },
-              })
-            '';
-          }
-
-          {
             plugin = nvim-hlslens;
             type = "lua";
             config = ''
@@ -140,14 +142,10 @@
           }
         ];
 
-        extraPackages =
-          config.my.dev.lsp
-          ++ (with pkgs; [
-            ripgrep
-            fd
-            ast-grep
-            rsync
-          ]);
+        extraPackages = with pkgs; [
+          ripgrep
+          fd
+        ];
       };
 
       home.sessionVariables = {
