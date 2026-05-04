@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.llama =
     { config, pkgs, ... }:
     {
       # Use vulkan on Linux

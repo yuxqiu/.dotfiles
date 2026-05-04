@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-base =
+  flake.modules.homeManager.distrobox =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

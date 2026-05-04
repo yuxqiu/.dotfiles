@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.kanshi =
     { config, lib, ... }:
     lib.mkIf (config.my.kanshi.externalMonitorName != null) {
       services.kanshi = {

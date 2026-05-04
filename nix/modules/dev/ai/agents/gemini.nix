@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base = {
+  flake.modules.homeManager.ai = {
     programs.gemini-cli = {
       enable = true;
       enableMcpIntegration = true;

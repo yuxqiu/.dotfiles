@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.tuned =
     {
       nixosModulesPath,
       lib,

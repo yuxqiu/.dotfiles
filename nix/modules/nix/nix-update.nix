@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.nix-update =
     { pkgs, ... }:
     {
       home.packages = [

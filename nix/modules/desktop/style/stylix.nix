@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  flake.modules.homeManager.desktop =
+  flake.modules.homeManager.stylix =
     { pkgs, ... }:
     {
       imports = [ inputs.stylix.homeModules.stylix ];
@@ -39,15 +39,7 @@
           terminal = 0.6;
           popups = 0.6;
         };
-      };
 
-      home.file.".wallpapers".source = ./wallpapers;
-    };
-
-  flake.modules.homeManager.linux-desktop =
-    { pkgs, ... }:
-    {
-      stylix = {
         icons = {
           enable = true;
           package = pkgs.adwaita-icon-theme;
@@ -61,5 +53,7 @@
           size = 24;
         };
       };
+
+      home.file.".wallpapers".source = ./wallpapers;
     };
 }

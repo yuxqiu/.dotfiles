@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.base = {
+  flake.modules.systemManager.sysctl = {
     boot.kernel.sysctl = {
       "kernel.kptr_restrict" = 2;
       "net.core.bpf_jit_harden" = 2;

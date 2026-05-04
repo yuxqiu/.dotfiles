@@ -5,7 +5,7 @@ let
   };
 in
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.activitywatch =
     { pkgs, lib, ... }:
     {
       services.activitywatch = {

@@ -1,7 +1,10 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
     {
+      imports = [ inputs.niri-nix.homeModules.default ];
+
       programs.home-manager.enable = true;
 
       home.packages = with pkgs; [

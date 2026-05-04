@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.systemManager.desktop = {
+  flake.modules.systemManager.graphics = {
     imports = [ inputs.nix-system-graphics.systemModules.default ];
     system-graphics.enable = true;
   };

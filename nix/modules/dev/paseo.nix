@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.paseo =
     {
       config,
       lib,

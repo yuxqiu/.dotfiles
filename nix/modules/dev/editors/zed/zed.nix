@@ -1,6 +1,6 @@
 {
-  flake.modules.homeManager.desktop =
-    { config, ... }:
+  flake.modules.homeManager.zed =
+    { config, lib, ... }:
     {
       programs.zed-editor = {
         enable = true;
@@ -233,11 +233,7 @@
 
       # stylix: use zed theme
       stylix.targets.zed.colors.enable = false;
-    };
 
-  flake.modules.homeManager.linux-desktop =
-    { lib, ... }:
-    {
       wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
         {
           match = {

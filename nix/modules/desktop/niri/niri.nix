@@ -1,10 +1,8 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.niri =
     { pkgs, lib, ... }:
     {
-      imports = [ inputs.niri-nix.homeModules.default ];
-
       xdg.portal = {
         extraPortals = [
           pkgs.xdg-desktop-portal-gtk
@@ -49,7 +47,7 @@
       ];
     };
 
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.niri =
     { pkgs, ... }:
     {
       services.displayManager.sessionPackages = [ pkgs.niri ];

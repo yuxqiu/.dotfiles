@@ -4,7 +4,7 @@ let
   hister_port = "4433";
 in
 {
-  flake.modules.homeManager.desktop =
+  flake.modules.homeManager.hister =
     { config, ... }:
     {
       imports = [ inputs.hister.homeModules.hister ];
@@ -73,7 +73,7 @@ in
       };
     };
 
-  flake.modules.systemManager.desktop = {
+  flake.modules.systemManager.hister = {
     services.tailscale.serve.endpoints = {
       "https:${hister_port}" = "http://${hister_address}:${hister_port}";
     };

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.nvim =
     { pkgs, ... }:
     {
       programs.neovim.plugins = with pkgs.vimPlugins; [

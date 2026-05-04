@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.docker =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [ lazydocker ];
@@ -27,7 +27,7 @@
       };
     };
 
-  flake.modules.systemManager.base =
+  flake.modules.systemManager.docker =
     {
       nixosModulesPath,
       lib,

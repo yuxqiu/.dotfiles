@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.idescriptor =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [ idescriptor ];

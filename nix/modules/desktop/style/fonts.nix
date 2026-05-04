@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.fonts =
     { pkgs, ... }:
     {
       fonts.fontconfig.enable = true;

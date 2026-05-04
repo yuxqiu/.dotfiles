@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.flatpak =
     { config, pkgs, ... }:
     {
       imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];

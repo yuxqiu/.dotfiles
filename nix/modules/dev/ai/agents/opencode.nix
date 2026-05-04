@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.ai =
     { pkgs, config, ... }:
     let
       # enable opencode websearch and lsp support

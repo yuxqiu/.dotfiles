@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.base =
+  flake.modules.systemManager.i2c =
     { nixosModulesPath, ... }:
     {
       imports = [

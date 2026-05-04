@@ -1,6 +1,6 @@
 {
-  flake.modules.homeManager.desktop =
-    { pkgs, ... }:
+  flake.modules.homeManager.firefox =
+    { pkgs, lib, ... }:
     let
       profileName = "default";
 
@@ -210,11 +210,21 @@
 
       # stylix
       stylix.targets.firefox.profileNames = [ profileName ];
-    };
 
-  flake.modules.homeManager.linux-desktop =
-    { lib, ... }:
-    {
+      xdg.mimeApps = {
+        associations.added = {
+          "text/html" = [ "firefox.desktop" ];
+          "x-scheme-handler/http" = [ "firefox.desktop" ];
+          "x-scheme-handler/https" = [ "firefox.desktop" ];
+        };
+
+        defaultApplications = {
+          "text/html" = [ "firefox.desktop" ];
+          "x-scheme-handler/http" = [ "firefox.desktop" ];
+          "x-scheme-handler/https" = [ "firefox.desktop" ];
+        };
+      };
+
       wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
         {
           match = {
@@ -236,19 +246,5 @@
           open-floating = true;
         }
       ];
-
-      xdg.mimeApps = {
-        associations.added = {
-          "text/html" = [ "firefox.desktop" ];
-          "x-scheme-handler/http" = [ "firefox.desktop" ];
-          "x-scheme-handler/https" = [ "firefox.desktop" ];
-        };
-
-        defaultApplications = {
-          "text/html" = [ "firefox.desktop" ];
-          "x-scheme-handler/http" = [ "firefox.desktop" ];
-          "x-scheme-handler/https" = [ "firefox.desktop" ];
-        };
-      };
     };
 }

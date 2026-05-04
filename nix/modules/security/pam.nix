@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.base =
+  flake.modules.systemManager.pam =
     { pkgs, ... }:
     {
       # Setup PAM unix_chkpwd helper on non-NixOS distributions.

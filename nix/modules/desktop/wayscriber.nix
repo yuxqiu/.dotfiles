@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.wayscriber =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [ wayscriber ];

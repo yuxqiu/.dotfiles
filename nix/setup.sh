@@ -5,7 +5,7 @@ set -e
 
 if [ $# -eq 0 ]; then
     echo "Usage: ./setup.sh <flake-output-name>"
-    echo "Example: ./setup.sh yuxqiu-laptop"
+    echo "Example: ./setup.sh yuxqiu-birch"
     exit 1
 fi
 

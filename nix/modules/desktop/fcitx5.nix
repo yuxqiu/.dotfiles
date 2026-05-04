@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.fcitx5 =
     { pkgs, ... }:
     {
       # Inspired by:

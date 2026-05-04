@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.dms =
     { config, ... }:
     {
       imports = [

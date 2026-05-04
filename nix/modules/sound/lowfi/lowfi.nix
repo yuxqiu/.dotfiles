@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.lowfi =
     { pkgs, config, ... }:
     let
       lowfi = pkgs.lowfi.overrideAttrs (old: {

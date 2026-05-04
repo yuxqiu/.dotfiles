@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.base = {
+  flake.modules.systemManager.NetworkManager = {
     environment = {
       etc = {
         "NetworkManager/conf.d/connectivity.conf" = {

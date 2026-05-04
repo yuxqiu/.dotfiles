@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.nvim =
     { pkgs, ... }:
     let
       remote-nvim-nvim-patched = pkgs.vimPlugins.remote-nvim-nvim.overrideAttrs (old: {

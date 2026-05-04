@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.quicksnip =
     {
       pkgs,
       ...

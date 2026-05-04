@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.niri =
     { pkgs, ... }:
     let
       nirimap = pkgs.callPackage (inputs.self + /packages/nirimap.nix) { };

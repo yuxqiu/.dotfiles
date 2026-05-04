@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base = {
+  flake.modules.homeManager.nvim = {
     programs.neovim.initLua = ''
       -- General settings
       vim.opt.encoding = "utf-8"

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.nvim =
     { pkgs, ... }:
     {
       programs.neovim = {
@@ -154,20 +154,18 @@
       };
 
       stylix.targets.neovim.enable = false;
-    };
 
-  flake.modules.homeManager.desktop = {
-    xdg.mimeApps = {
-      associations.added = {
-        "text/markdown" = [ "nvim.desktop" ];
-        "text/x-tex" = [ "nvim.desktop" ];
-        "text/x-typst" = [ "nvim.desktop" ];
-      };
-      defaultApplications = {
-        "text/markdown" = [ "nvim.desktop" ];
-        "text/x-tex" = [ "nvim.desktop" ];
-        "text/x-typst" = [ "nvim.desktop" ];
+      xdg.mimeApps = {
+        associations.added = {
+          "text/markdown" = [ "nvim.desktop" ];
+          "text/x-tex" = [ "nvim.desktop" ];
+          "text/x-typst" = [ "nvim.desktop" ];
+        };
+        defaultApplications = {
+          "text/markdown" = [ "nvim.desktop" ];
+          "text/x-tex" = [ "nvim.desktop" ];
+          "text/x-typst" = [ "nvim.desktop" ];
+        };
       };
     };
-  };
 }

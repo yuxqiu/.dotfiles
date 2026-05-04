@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-desktop = {
+  flake.modules.homeManager.wlr-which-key = {
     imports = [ (inputs.self + /packages/wlr_which_key.nix) ];
 
     programs.wlr-which-key = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop = {
+  flake.modules.homeManager.niri = {
     wayland.windowManager.niri.settings.input = {
       workspace-auto-back-and-forth = [ ];
 

@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.base = {
+  flake.modules.systemManager.journald = {
     environment = {
       etc = {
         # With mode, system-manager will copy the file to the destination.

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop = {
+  flake.modules.homeManager.xdg = {
     # enable xdg
     xdg.enable = true;
 
@@ -12,7 +12,7 @@
     xdg.terminal-exec.enable = true;
   };
 
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.xdg =
     { pkgs, ... }:
     {
       # fusermount3 is required by xdg-document-portal

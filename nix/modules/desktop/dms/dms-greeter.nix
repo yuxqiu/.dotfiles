@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.dms =
     {
       config,
       lib,

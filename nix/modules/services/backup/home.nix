@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.base =
+  flake.modules.systemManager.backup-home =
     {
       config,
       lib,

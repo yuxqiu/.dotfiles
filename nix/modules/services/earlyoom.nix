@@ -1,11 +1,11 @@
 {
-  flake.modules.homeManager.linux-base =
+  flake.modules.homeManager.earlyoom =
     { config, lib, ... }:
     {
       services.systembus-notify.enable = lib.mkIf config.my.system.isSystemManager true;
     };
 
-  flake.modules.systemManager.base =
+  flake.modules.systemManager.earlyoom =
     {
       lib,
       nixosModulesPath,

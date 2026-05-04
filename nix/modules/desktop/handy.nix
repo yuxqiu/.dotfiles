@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.handy =
     { pkgs, ... }:
     let
       handy = inputs.handy.packages.${pkgs.stdenv.system}.default;

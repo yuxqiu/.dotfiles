@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.xremap =
     {
       config,
       lib,
@@ -32,7 +32,7 @@
       };
     };
 
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.xremap =
     { lib, ... }:
     {
       # give members of the input group permission to make output devices

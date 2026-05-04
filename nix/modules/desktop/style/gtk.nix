@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop = {
+  flake.modules.homeManager.gtk = {
     gtk = {
       enable = true;
       colorScheme = "dark";

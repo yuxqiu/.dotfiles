@@ -1,11 +1,11 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.tailscale =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [ tailscale ];
     };
 
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.tailscale =
     {
       nixosModulesPath,
       lib,

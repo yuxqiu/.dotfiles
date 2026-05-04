@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.ssh-copy-id =
     { pkgs, config, ... }:
     {
       home.packages = [

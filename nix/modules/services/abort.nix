@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.base = {
+  flake.modules.systemManager.abort = {
     systemd.maskedUnits = [
       "abrt-journal-core.service"
       "abrt-oops.service"

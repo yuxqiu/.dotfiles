@@ -1,6 +1,11 @@
 {
-  flake.modules.homeManager.base =
-    { pkgs, ... }:
+  flake.modules.homeManager.zsh =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     {
       programs.zsh = {
         enable = true;
@@ -21,10 +26,10 @@
         };
 
         # Aliases
-        shellAliases = {
-          # Sudo with trailing space
-          sudo = "sudo ";
-        };
+        shellAliases = lib.mkMerge [
+          { sudo = "sudo "; }
+          (lib.mkIf pkgs.stdenv.isLinux { open = "${pkgs.xdg-utils}/bin/xdg-open"; })
+        ];
 
         siteFunctions = {
           gc-pip = ''
@@ -45,55 +50,30 @@
           hm = ''
             if [ $# -eq 0 ]; then
               echo "Usage: hm <flake-output-name>"
-              echo "Example: hm yuxqiu-laptop"
+              echo "Example: hm yuxqiu-birch"
               return 1
             fi
             nix-update-git -u . --rules all
             nix flake update
             home-manager switch --flake ".#$1"
           '';
-        };
-      };
-    };
+        }
+        // lib.optionalAttrs pkgs.stdenv.isDarwin {
+          jdks = "/usr/libexec/java_home -V";
 
-  flake.modules.homeManager.darwin-base = {
-    programs.zsh = {
-      shellAliases = {
-        # JDK
-        jdks = "/usr/libexec/java_home -V";
-      };
-
-      siteFunctions = {
-        jdk = ''
-          version=$1
-          export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-          java -version
-        '';
-      };
-    };
-  };
-
-  flake.modules.homeManager.linux-base =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
-    {
-      programs.zsh = {
-        shellAliases = {
-          # Open
-          open = "${pkgs.xdg-utils}/bin/xdg-open";
-        };
-
-        siteFunctions = {
+          jdk = ''
+            version=$1
+            export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+            java -version
+          '';
+        }
+        // lib.optionalAttrs pkgs.stdenv.isLinux {
           gc-dnf = ''
             sudo dnf autoremove
             sudo dnf clean all
           '';
         }
-        // lib.optionalAttrs config.my.system.isSystemManager {
+        // lib.optionalAttrs (pkgs.stdenv.isLinux && config.my.system.isSystemManager) {
           gc-sm = ''
             sudo $(which nix-env) --delete-generations old --profile /nix/var/nix/profiles/system-manager-profiles/system-manager
             gc-nix
@@ -103,7 +83,7 @@
           sm = ''
             if [ $# -eq 0 ]; then
               echo "Usage: sm <flake-output-name>"
-              echo "Example: sm yuxqiu-laptop"
+              echo "Example: sm yuxqiu-birch"
               return 1
             fi
             nix-update-git -u . --rules all
@@ -113,7 +93,7 @@
         };
       };
 
-      # oh-my-zsh clipboard plugin dependencies
-      home.packages = [ pkgs.wl-clipboard ];
+      # oh-my-zsh clipboard plugin dependencies (Linux only)
+      home.packages = lib.optionals pkgs.stdenv.isLinux [ pkgs.wl-clipboard ];
     };
 }

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-base =
+  flake.modules.homeManager.systemd =
     {
       config,
       lib,

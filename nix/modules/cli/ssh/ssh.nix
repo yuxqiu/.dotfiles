@@ -1,5 +1,5 @@
 {
-  config.flake.modules.homeManager.base =
+  config.flake.modules.homeManager.ssh =
     { pkgs, ... }:
     {
       programs.ssh = {

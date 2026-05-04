@@ -1,5 +1,5 @@
 {
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.usbmuxd =
     {
       nixosModulesPath,
       ...

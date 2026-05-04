@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.obs =
     { pkgs, ... }:
     {
       # virtual camera requires: v4l2loopback-dkms

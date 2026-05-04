@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.niri =
     { pkgs, ... }:
     let
       niri-floating-sidebar = pkgs.writeShellApplication {

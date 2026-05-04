@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.desktop = {
+  flake.modules.homeManager.sioyek = {
     programs.sioyek = {
       enable = true;
       bindings = {
@@ -17,9 +17,7 @@
         font_size = "15";
       };
     };
-  };
 
-  flake.modules.homeManager.linux-desktop = {
     xdg.mimeApps = {
       associations.added = {
         "application/pdf" = [ "sioyek.desktop" ];

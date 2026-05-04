@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.lsp =
     { lib, pkgs, ... }:
     {
       options.my.dev.lsp = lib.mkOption {

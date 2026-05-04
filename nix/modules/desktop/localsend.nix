@@ -1,16 +1,12 @@
 {
-  flake.modules.homeManager.desktop =
-    { pkgs, ... }:
+  flake.modules.homeManager.localsend =
+    { pkgs, lib, ... }:
     {
       home.packages = with pkgs; [
         localsend
       ];
-    };
 
-  flake.modules.homeManager.linux-desktop =
-    { pkgs, lib, ... }:
-    {
-      home.file.".local/share/kio/servicemenus/localsend.desktop" = {
+      home.file.".local/share/kio/servicemenus/localsend.desktop" = lib.mkIf pkgs.stdenv.isLinux {
         text = ''
           [Desktop Entry]
           Type=Service

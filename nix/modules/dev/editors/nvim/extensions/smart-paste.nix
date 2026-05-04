@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.nvim =
     { pkgs, ... }:
     let
       smart-paste-nvim = pkgs.callPackage (inputs.self + /packages/smart-paste-nvim.nix) { };

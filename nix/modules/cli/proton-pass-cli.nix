@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.desktop =
+  flake.modules.homeManager.proton-pass-cli =
     { pkgs, ... }:
     let
       pass-ssh = pkgs.writeShellApplication {

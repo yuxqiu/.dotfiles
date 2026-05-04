@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.ai =
     { config, pkgs, ... }:
     {
       imports = [ inputs.agent-skills-nix.homeManagerModules.default ];

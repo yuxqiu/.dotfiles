@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.linux-base =
+  flake.modules.homeManager.base-linux =
     {
       config,
       lib,
@@ -21,10 +21,10 @@
 
       # improve generic linux compatibility (on non NixOS)
       targets.genericLinux.enable = !config.my.system.isNixos;
-      targets.genericLinux.gpu.enable = lib.mkIf config.my.system.isSystemManager false; # already managed by system-manager
+      targets.genericLinux.gpu.enable = lib.mkIf config.my.system.isSystemManager false;
     };
 
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.base-linux-desktop =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

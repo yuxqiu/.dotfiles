@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.pointer =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

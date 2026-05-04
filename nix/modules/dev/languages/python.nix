@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.base =
+  flake.modules.homeManager.python =
     { config, pkgs, ... }:
     {
       home.file.".pythonrc".text = ''

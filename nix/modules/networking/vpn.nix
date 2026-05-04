@@ -3,7 +3,7 @@
   ...
 }:
 {
-  flake.modules.homeManager.linux-base =
+  flake.modules.homeManager.vpn =
     {
       lib,
       config,
@@ -37,7 +37,7 @@
       };
     };
 
-  flake.modules.systemManager.base =
+  flake.modules.systemManager.vpn =
     {
       lib,
       pkgs,

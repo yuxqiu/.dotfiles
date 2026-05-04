@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.linux-desktop =
+  flake.modules.homeManager.opensnitch =
     { pkgs, lib, ... }:
     {
       home.packages = [ pkgs.opensnitch-ui ];
@@ -33,7 +33,7 @@
       ];
     };
 
-  flake.modules.systemManager.desktop =
+  flake.modules.systemManager.opensnitch =
     { nixosModulesPath, lib, ... }:
     {
       # Hack for importing opensnitch from nixos

@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.homeManager.linux-desktop = {
+  flake.modules.homeManager.niri = {
     wayland.windowManager.niri.settings = {
       blur = {
         passes = 3;

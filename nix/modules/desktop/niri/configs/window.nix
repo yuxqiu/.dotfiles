@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.homeManager.linux-desktop = {
+  flake.modules.homeManager.niri = {
     wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
       {
         geometry-corner-radius = 12;

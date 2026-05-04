@@ -1,18 +1,6 @@
 { inputs, ... }:
 {
-  config.flake.modules.homeManager.desktop =
-    { pkgs, ... }:
-    {
-      home.packages = [ inputs.ssh-agent-ac.packages.${pkgs.stdenv.system}.ssh-agent-ac ];
-
-      services.ssh-agent = {
-        enable = true;
-
-        defaultMaximumIdentityLifetime = null;
-      };
-    };
-
-  config.flake.modules.homeManager.linux-desktop =
+  config.flake.modules.homeManager.ssh-agent =
     {
       config,
       pkgs,
@@ -48,19 +36,26 @@
       '';
     in
     {
-      # Ensure it starts after the graphical session is up.
-      # This makes it able to pick up env var like DISPLAY.
+      home.packages = [ inputs.ssh-agent-ac.packages.${pkgs.stdenv.system}.ssh-agent-ac ];
+
+      services.ssh-agent = {
+        enable = true;
+
+        defaultMaximumIdentityLifetime = null;
+      };
+
+      # Linux: systemd integration
       systemd.user.services.ssh-agent = {
         Install.WantedBy = lib.mkForce [ "graphical-session.target" ];
         Unit = {
           PartOf = [ "graphical-session.target" ];
           After = [ "graphical-session.target" ];
         };
-      };
 
-      systemd.user.services.ssh-agent.Service.Environment = lib.mkAfter [
-        "SSH_ASKPASS=${pkgs.seahorse}/libexec/seahorse/ssh-askpass"
-      ];
+        Service.Environment = [
+          "SSH_ASKPASS=${pkgs.seahorse}/libexec/seahorse/ssh-askpass"
+        ];
+      };
 
       systemd.user.services.ssh-agent-suspend-clear = {
         Unit = {
@@ -85,11 +80,8 @@
           opacity = 0.6;
         }
       ];
-    };
 
-  config.flake.modules.homeManager.darwin-desktop =
-    { pkgs, ... }:
-    {
+      # Darwin: launchd integration
       launchd.agents.ssh-agent.config.EnvironmentVariables = {
         SSH_ASKPASS = "${pkgs.ssh-askpass-fullscreen}/bin/ssh-askpass-fullscreen";
       };
