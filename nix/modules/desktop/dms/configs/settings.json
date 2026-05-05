@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/k2j5bwbnw8rdkz9xw57hrps7nm1arxmm-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/550i9bwsir44y37idz10yv0r67gcvca2-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -46,6 +46,8 @@
   "modalAnimationSpeed": 1,
   "modalCustomAnimationDuration": 150,
   "enableRippleEffects": true,
+  "animationVariant": 0,
+  "motionEffect": 0,
   "m3ElevationEnabled": true,
   "m3ElevationIntensity": 12,
   "m3ElevationOpacity": 30,
@@ -56,6 +58,8 @@
   "popoutElevationEnabled": true,
   "barElevationEnabled": false,
   "blurEnabled": true,
+  "blurForegroundLayers": true,
+  "blurLayerOutlineOpacity": 0.12,
   "blurBorderColor": "outline",
   "blurBorderCustomColor": "#ffffff",
   "blurBorderOpacity": 0.5,
@@ -75,6 +79,9 @@
   "selectedGpuIndex": 0,
   "enabledGpuPciIds": [],
   "showSystemTray": true,
+  "systemTrayIconTintMode": "none",
+  "systemTrayIconTintSaturation": 50,
+  "systemTrayIconTintStrength": 135,
   "showClock": true,
   "showNotificationButton": true,
   "showBattery": true,
@@ -243,6 +250,8 @@
   "dankLauncherV2BorderColor": "primary",
   "dankLauncherV2ShowFooter": false,
   "dankLauncherV2UnloadOnClose": true,
+  "dankLauncherV2IncludeFilesInAll": false,
+  "dankLauncherV2IncludeFoldersInAll": false,
   "useAutoLocation": false,
   "weatherEnabled": false,
   "networkPreference": "wifi",
@@ -291,11 +300,13 @@
   "acSuspendTimeout": 0,
   "acSuspendBehavior": 0,
   "acProfileName": "2",
+  "acPostLockMonitorTimeout": 0,
   "batteryMonitorTimeout": 0,
   "batteryLockTimeout": 0,
   "batterySuspendTimeout": 0,
   "batterySuspendBehavior": 0,
   "batteryProfileName": "0",
+  "batteryPostLockMonitorTimeout": 0,
   "batteryChargeLimit": 100,
   "lockBeforeSuspend": true,
   "loginctlLockIntegration": true,
@@ -330,6 +341,7 @@
   "matugenTemplatePywalfox": true,
   "matugenTemplateZenBrowser": true,
   "matugenTemplateVesktop": true,
+  "matugenTemplateVencord": true,
   "matugenTemplateEquibop": true,
   "matugenTemplateGhostty": true,
   "matugenTemplateKitty": true,
@@ -356,6 +368,7 @@
   "showDock": true,
   "dockAutoHide": true,
   "dockSmartAutoHide": false,
+  "dockHideOnFullscreen": true,
   "dockGroupByApp": false,
   "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": false,
@@ -380,6 +393,9 @@
   "dockMaxVisibleApps": 0,
   "dockMaxVisibleRunningApps": 0,
   "dockShowOverflowBadge": true,
+  "dockShowTrash": false,
+  "dockTrashFileManager": "default",
+  "dockTrashCustomCommand": "",
   "notificationOverlayEnabled": false,
   "notificationPopupShadowEnabled": true,
   "notificationPopupPrivacyMode": false,
@@ -461,32 +477,27 @@
   "updaterUseCustomCommand": false,
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
+  "updaterIntervalSeconds": 1800,
+  "updaterIncludeFlatpak": true,
+  "updaterAllowAUR": true,
   "displayNameMode": "system",
   "screenPreferences": {},
   "showOnLastDisplay": {},
   "niriOutputSettings": {
     "eDP-1": {
-      "disabled": false
+      "disabled": true
     }
   },
   "hyprlandOutputSettings": {},
-  "displayProfiles": {
-    "niri": {
-      "profile_1769655383958_zb5r26": {
-        "createdAt": 1769655383958,
-        "id": "profile_1769655383958_zb5r26",
-        "name": "home",
-        "outputSet": ["DP-1", "eDP-1"],
-        "updatedAt": 1769655383958
-      }
-    }
-  },
+  "displayProfiles": {},
   "activeDisplayProfile": {
     "niri": "profile_1769655383958_zb5r26"
   },
-  "displayProfileAutoSelect": true,
+  "displayProfileAutoSelect": false,
   "displayShowDisconnected": true,
   "displaySnapToEdge": true,
+  "connectedFrameBarStyleBackups": {},
+  "connectedFrameModalDarkenBackup": null,
   "barConfigs": [
     {
       "autoHide": false,
@@ -519,7 +530,11 @@
       "gothCornersEnabled": false,
       "id": "default",
       "innerPadding": 4,
-      "leftWidgets": ["launcherButton", "workspaceSwitcher", "focusedWindow"],
+      "leftWidgets": [
+        "launcherButton",
+        "workspaceSwitcher",
+        "focusedWindow"
+      ],
       "maximizeWidgetIcons": false,
       "maximizeWidgetText": false,
       "name": "Main Bar",
@@ -531,8 +546,8 @@
       "removeWidgetPadding": false,
       "rightWidgets": [
         {
-          "id": "systemTray",
           "enabled": true,
+          "id": "systemTray",
           "trayUseInlineExpansion": true
         },
         {
@@ -568,7 +583,9 @@
           "id": "dankPomodoroTimer"
         }
       ],
-      "screenPreferences": ["all"],
+      "screenPreferences": [
+        "all"
+      ],
       "showOnLastDisplay": true,
       "showOnWindowsOpen": true,
       "spacing": 0,
@@ -603,7 +620,9 @@
   "desktopClockY": -1,
   "desktopClockWidth": 280,
   "desktopClockHeight": 180,
-  "desktopClockDisplayPreferences": ["all"],
+  "desktopClockDisplayPreferences": [
+    "all"
+  ],
   "systemMonitorEnabled": true,
   "systemMonitorShowHeader": true,
   "systemMonitorTransparency": 0.8,
@@ -640,7 +659,9 @@
   "systemMonitorY": -1,
   "systemMonitorWidth": 320,
   "systemMonitorHeight": 480,
-  "systemMonitorDisplayPreferences": ["all"],
+  "systemMonitorDisplayPreferences": [
+    "all"
+  ],
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {
     "desktopClock": {
@@ -682,7 +703,9 @@
           "r": 1,
           "valid": true
         },
-        "displayPreferences": ["all"],
+        "displayPreferences": [
+          "all"
+        ],
         "showAnalogNumbers": true,
         "showAnalogSeconds": true,
         "showDate": true,
@@ -729,7 +752,9 @@
           "r": 1,
           "valid": true
         },
-        "displayPreferences": ["all"],
+        "displayPreferences": [
+          "all"
+        ],
         "gpuPciId": "",
         "graphInterval": 60,
         "layoutMode": "auto",
@@ -782,5 +807,20 @@
   "clipboardEnterToPaste": false,
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
-  "configVersion": 5
+  "frameEnabled": false,
+  "frameThickness": 16,
+  "frameRounding": 23,
+  "frameColor": "",
+  "frameOpacity": 1,
+  "frameScreenPreferences": [
+    "all"
+  ],
+  "frameBarSize": 40,
+  "frameShowOnOverview": false,
+  "frameBlurEnabled": true,
+  "frameCloseGaps": true,
+  "frameLauncherEmergeSide": "bottom",
+  "frameLauncherArcExtender": false,
+  "frameMode": "separate",
+  "configVersion": 11
 }
