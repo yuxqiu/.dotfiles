@@ -28,7 +28,6 @@
           autoupdate = false;
           plugin = [
             "@mohak34/opencode-notifier"
-            "opencode-worktree"
           ];
         };
         extraPackages = config.my.dev.lsp;
