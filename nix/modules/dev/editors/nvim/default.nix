@@ -78,22 +78,6 @@
           nvim-web-devicons
 
           {
-            plugin = fastaction-nvim;
-            type = "lua";
-            config = ''
-              require("fastaction").setup({
-                popup = {
-                  border = "rounded",
-                },
-              })
-
-              vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
-              vim.keymap.set("x", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
-              vim.keymap.set("n", "<leader>ca", require("fastaction").code_action, { desc = "Code Action" })
-            '';
-          }
-
-          {
             plugin = nvim-hlslens;
             type = "lua";
             config = ''
