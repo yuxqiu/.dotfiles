@@ -19,6 +19,11 @@
 
             require("luasnip.loaders.from_vscode").lazy_load()
 
+            luasnip.setup({
+              region_check_events = { "CursorHold", "InsertLeave", "CursorMovedI" },
+              delete_check_events = { "TextChanged", "InsertEnter" },
+            })
+
             cmp.setup({
               snippet = {
                 expand = function(args)
@@ -34,21 +39,32 @@
                 ["<Tab>"] = cmp.mapping(function(fallback)
                   if cmp.visible() then
                     cmp.select_next_item()
-                  elseif luasnip.expand_or_jumpable() then
+                  elseif luasnip.expand_or_locally_jumpable() then
                     luasnip.expand_or_jump()
                   else
                     fallback()
                   end
                 end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                  if cmp.visible() then
-                    cmp.select_prev_item()
-                  elseif luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
-                  else
-                    fallback()
-                  end
-                end, { "i", "s" }),
+                ["<S-Tab>"] = cmp.mapping({
+                  i = function(fallback)
+                    if cmp.visible() then
+                      cmp.select_prev_item()
+                    elseif luasnip.locally_jumpable(-1) then
+                      luasnip.jump(-1)
+                    else
+                      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-D>", true, true, true), "n", true)
+                    end
+                  end,
+                  s = function(fallback)
+                    if cmp.visible() then
+                      cmp.select_prev_item()
+                    elseif luasnip.locally_jumpable(-1) then
+                      luasnip.jump(-1)
+                    else
+                      fallback()
+                    end
+                  end,
+                }),
               }),
               sources = cmp.config.sources({
                 { name = "nvim_lsp" },

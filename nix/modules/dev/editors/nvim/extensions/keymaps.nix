@@ -70,9 +70,6 @@
       -- Insert mode: Ctrl+Backspace to delete word backward
       vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true })
 
-      -- Shift+Tab to de-indent in insert mode (undo tab)
-      vim.keymap.set("i", "<S-Tab>", "<C-D>", { noremap = true })
-
       -- Quick move to line start/end
       vim.keymap.set("n", "H", "^", { noremap = true })
       vim.keymap.set("n", "L", "$", { noremap = true })
