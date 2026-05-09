@@ -1,59 +1,6 @@
 {
   flake.modules.homeManager.nvim = {
     programs.neovim.initLua = ''
-      -- General settings
-      vim.opt.encoding = "utf-8"
-      vim.opt.hidden = true
-      vim.opt.number = true
-      vim.opt.relativenumber = true
-      vim.opt.showmatch = true
-      vim.opt.shiftwidth = 4
-      vim.opt.tabstop = 4
-      vim.opt.expandtab = true
-      vim.opt.smarttab = true
-      vim.opt.formatoptions = "croqln"
-      vim.opt.backup = false
-      vim.opt.writebackup = false
-      vim.opt.wrap = false
-      vim.opt.ignorecase = true
-      vim.opt.smartcase = true
-      vim.opt.hlsearch = true
-      vim.opt.mouse = "a"
-      vim.opt.wildmode = { "longest", "list" }
-      vim.opt.wildmenu = true
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-      vim.opt.foldcolumn = "1"
-      vim.opt.foldnestmax = 10
-      vim.opt.foldenable = false
-      vim.opt.foldlevel = 99
-      vim.opt.autoindent = true
-      vim.opt.cursorline = true
-      vim.opt.signcolumn = "yes"
-      vim.opt.splitbelow = true
-      vim.opt.splitright = true
-      vim.opt.updatetime = 250
-      vim.opt.timeoutlen = 300
-      vim.opt.scrolloff = 8
-      vim.opt.sidescrolloff = 8
-      vim.opt.termguicolors = true
-      vim.opt.clipboard = "unnamedplus"
-      vim.opt.showtabline = 2
-      vim.opt.laststatus = 3
-      vim.opt.pumheight = 10
-      vim.opt.inccommand = "split"
-      vim.opt.diffopt:append("algorithm:histogram")
-
-      -- Font size adjustment
-      local function change_font_size(delta)
-        local guifont = vim.o.guifont
-        if guifont == "" then return end
-        local size = tonumber(guifont:match(":h(%d+)$")) or 12
-        local new_size = math.max(6, size + delta)
-        local base = guifont:gsub(":h%d+$", "")
-        vim.o.guifont = base .. ":h" .. new_size
-      end
-
       -- Keymaps
       vim.keymap.set("n", "<C-=>", function() change_font_size(1) end, { desc = "Increase font size" })
       vim.keymap.set("n", "<C-+>", function() change_font_size(1) end, { desc = "Increase font size" })
