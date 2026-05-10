@@ -12,8 +12,8 @@
         path = pkgs.fetchFromGitHub {
           owner = "modem-dev";
           repo = "hunk";
-          rev = "v0.10.0";
-          hash = "sha256-S2EuZW5vzyk3FGhUQbyanE3hdlnb9F6GQMtu2k8pjrM=";
+          rev = "v0.11.1";
+          hash = "sha256-gyNK9WTXmHjWaJulQ4V2k3L6PpctruDLSTcJin5Lxqo=";
         };
         subdir = "skills/hunk-review";
       };

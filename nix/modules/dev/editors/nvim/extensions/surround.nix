@@ -10,6 +10,11 @@
             require("nvim-surround").setup({
               move_cursor = false,
             })
+
+            vim.api.nvim_create_autocmd("VimEnter", {
+              once = true,
+              callback = function() vim.keymap.del("n", "yss") end,
+            })
           '';
         }
       ];
