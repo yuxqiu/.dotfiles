@@ -9,13 +9,13 @@
 let
   deps = stdenv.mkDerivation rec {
     pname = "hunk-deps";
-    version = "0.11.1";
+    version = "0.12.0-beta.1";
 
     src = fetchFromGitHub {
       owner = "modem-dev";
       repo = "hunk";
       rev = "v${version}";
-      hash = "sha256-gyNK9WTXmHjWaJulQ4V2k3L6PpctruDLSTcJin5Lxqo=";
+      hash = "sha256-ckbhYPJtFtiL0GpjAJIDi46Oug0fDRZwNj28D4dYZPU=";
     };
 
     nativeBuildInputs = [
@@ -40,7 +40,7 @@ let
 
     outputHashMode = "recursive";
     outputHashAlgo = "sha256";
-    outputHash = "sha256-La4RYd/aVtdVmc53oK3axld2yB+mi/xlNNjFD9pS7H0=";
+    outputHash = "sha256-9DTwAcnAzSOBRKY9v9Q6Cf4uPSm/ZHOES7SgLctM/jI=";
   };
 in
 

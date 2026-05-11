@@ -133,7 +133,6 @@
                 vim.keymap.set("n", "glD", vim.lsp.buf.declaration, { desc = "Declaration" })
                 vim.keymap.set("n", "glh", vim.lsp.buf.hover, { desc = "Hover" })
                 vim.keymap.set("n", "gls", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-                vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
                 vim.keymap.set("n", "glR", vim.lsp.buf.rename, { desc = "Rename" })
                 vim.keymap.set("n", "glx", vim.lsp.codelens.run, { desc = "Run Codelens" })
                 vim.keymap.set("n", "glX", vim.lsp.codelens.refresh, { desc = "Refresh Codelens" })

@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/550i9bwsir44y37idz10yv0r67gcvca2-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/wsn1pj2qpd38g0h5bsnr8rpp5c174paj-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -485,7 +485,7 @@
   "showOnLastDisplay": {},
   "niriOutputSettings": {
     "eDP-1": {
-      "disabled": true
+      "disabled": false
     }
   },
   "hyprlandOutputSettings": {},
@@ -497,7 +497,6 @@
   "displayShowDisconnected": true,
   "displaySnapToEdge": true,
   "connectedFrameBarStyleBackups": {},
-  "connectedFrameModalDarkenBackup": null,
   "barConfigs": [
     {
       "autoHide": false,
