@@ -1,21 +1,15 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.ai =
-    { pkgs, ... }:
-    let
-      hunk = pkgs.callPackage (inputs.self + /packages/hunk.nix) { };
-    in
-    {
-      home.packages = [ hunk ];
+  flake.modules.homeManager.ai = {
+    imports = [ inputs.hunk.homeManagerModules.default ];
 
-      programs.agent-skills.sources.hunk-review = {
-        path = pkgs.fetchFromGitHub {
-          owner = "modem-dev";
-          repo = "hunk";
-          rev = "v0.12.0-beta.1";
-          hash = "sha256-ckbhYPJtFtiL0GpjAJIDi46Oug0fDRZwNj28D4dYZPU=";
-        };
-        subdir = "skills/hunk-review";
-      };
+    programs.hunk = {
+      enable = true;
     };
+
+    programs.agent-skills.sources.hunk-review = {
+      path = inputs.hunk;
+      subdir = "skills/hunk-review";
+    };
+  };
 }

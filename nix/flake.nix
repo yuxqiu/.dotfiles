@@ -45,6 +45,10 @@
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hunk = {
+      url = "github:modem-dev/hunk?ref=v0.12.0-beta.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";
@@ -81,7 +85,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hister = {
-      url = "github:asciimoo/hister?ref=v0.13.0";
+      url = "github:asciimoo/hister?ref=v0.14.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };

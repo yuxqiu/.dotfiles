@@ -82,11 +82,11 @@ browser = """\
     "(\\"network.http.speculative-parallel-limit\\", 0)" \
     "(\\"network.predictor.enabled\\", false)" \
     "(\\"dom.push.enabled\\", false)" \
-  >> "$(printf "%s\\n" "$HOME"/.mozilla/firefox/captive-browser/)"prefs.js \
+  >> "$(printf "%s\\n" "$HOME"/.config/mozilla/firefox/captive-browser/)"prefs.js \
   && export MOZ_REMOTE_SETTINGS_DEVTOOLS=1 \
-  && mkdir -p "$(printf "%s\\n" "$HOME"/.mozilla/firefox/*.captive-browser/)"chrome \
+  && mkdir -p "$(printf "%s\\n" "$HOME"/.config/mozilla/firefox/*.captive-browser/)"chrome \
   && printf "%s\\n" "#TabsToolbar { display: none; }" \
-  > "$(printf "%s\\n" "$HOME"/.mozilla/firefox/*.captive-browser/)"chrome/userChrome.css \
+  > "$(printf "%s\\n" "$HOME"/.config/mozilla/firefox/*.captive-browser/)"chrome/userChrome.css \
   && exec firefox -P "captive-browser" --no-remote --private-window "http://neverssl.com/" \
 """
 
