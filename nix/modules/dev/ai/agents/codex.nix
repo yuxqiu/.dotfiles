@@ -11,7 +11,6 @@
         };
       };
 
-      # TODO: restore after successful hydra build
-      # my.dev.lsp = with pkgs; [ codex-acp ];
+      my.dev.lsp = with pkgs; [ codex-acp ];
     };
 }

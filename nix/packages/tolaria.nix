@@ -26,24 +26,24 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "tolaria";
-  version = "2026-05-07";
+  version = "2026-05-12";
 
   src = fetchFromGitHub {
     owner = "refactoringhq";
     repo = "tolaria";
     rev = "v${version}";
-    hash = "sha256-oPw9Xzgxgf73DxEQK0ri1lLZhVleg9tRavutqmyzI/E=";
+    hash = "sha256-JI3I4zTAHIXFJxmEUVL9+XTDHtGoA39PH81XevHeonE=";
   };
 
   cargoRoot = "src-tauri";
   buildAndTestSubdir = cargoRoot;
 
-  cargoHash = "sha256-n2Nzkmtc/bTebMOnoi+27T91m5b2051E4gQiSpEjSdM=";
+  cargoHash = "sha256-vmgZCAmprH8LP5cc5sHpg9sjgxrmT+Sml9z8oZ8bHsQ=";
 
   pnpmDeps = fetchPnpmDeps {
     inherit pname version src;
     fetcherVersion = 3;
-    hash = "sha256-bNXWwL/I6lKbWfE/p0FW6Iey5n1Kq6PmuYQqcdMMaiA=";
+    hash = "sha256-X/Vev0qgrx/3sbNzjinTI+2WWttSyxJpvmtBo95Hn+w=";
   };
 
   nativeBuildInputs = [

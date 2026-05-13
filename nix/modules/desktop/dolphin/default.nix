@@ -7,19 +7,22 @@
       ...
     }:
     let
-      # https://github.com/rumboon/dolphin-overlay
-      dolphin = pkgs.kdePackages.dolphin.overrideAttrs (oldAttrs: {
-        nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+      applicationsMenu = pkgs.writeTextDir "etc/xdg/menus/applications.menu" (
+        builtins.readFile ./applications.menu
+      );
 
-        postInstall = (oldAttrs.postInstall or "") + ''
-          wrapProgram $out/bin/dolphin \
-            --set XDG_CONFIG_DIRS "${pkgs.libsForQt5.kservice}/etc/xdg:$XDG_CONFIG_DIRS" \
-            --run "${pkgs.kdePackages.kservice}/bin/kbuildsycoca6 --noincremental ${pkgs.libsForQt5.kservice}/etc/xdg/menus/applications.menu"
+      dolphin = pkgs.symlinkJoin {
+        name = "dolphin-wrapped";
+        paths = [ pkgs.kdePackages.dolphin ];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          rm $out/bin/dolphin
+          makeWrapper ${pkgs.kdePackages.dolphin}/bin/dolphin $out/bin/dolphin \
+            --prefix XDG_CONFIG_DIRS : "${applicationsMenu}/etc/xdg" \
+            --run "${lib.getExe' pkgs.kdePackages.kservice "kbuildsycoca6"} --noincremental"
         '';
-      });
+      };
 
-      # Copied from how stylix apply kde themes
-      # - stylix/modules/kde/hm.nix
       inherit (config.lib.stylix) colors;
       colorschemeSlug = lib.concatStrings (
         lib.filter lib.isString (builtins.split "[^a-zA-Z]" colors.scheme)
@@ -30,7 +33,6 @@
         dolphin
       ];
 
-      # apply stylix theme to dolphin
       qt.kde.settings = {
         dolphinrc.UiSettings.ColorScheme = colorschemeSlug;
       };
