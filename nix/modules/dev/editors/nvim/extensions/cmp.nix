@@ -103,6 +103,11 @@
             local t = ls.text_node
             local i = ls.insert_node
 
+            ls.add_snippets("tex", {
+              s("im", { t("\\("), i(1), t("\\)"), i(0) }),
+              s("dm", { t("\\["), t({ "", "\t" }), i(1), t({ "", "\\]" }), i(0) }),
+            })
+
             ls.add_snippets("latex", {
               s("im", { t("\\("), i(1), t("\\)"), i(0) }),
               s("dm", { t("\\["), t({ "", "\t" }), i(1), t({ "", "\\]" }), i(0) }),
