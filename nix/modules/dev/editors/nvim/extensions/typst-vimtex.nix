@@ -45,9 +45,16 @@
         vim.api.nvim_create_autocmd("User", {
           pattern = "VimtexEventInitPost",
           callback = function()
+            local group = vim.api.nvim_create_augroup("vimtex_auto_compile", { clear = false })
             vim.api.nvim_create_autocmd("BufWritePost", {
+              group = group,
               buffer = 0,
-              command = "VimtexCompileSS",
+              callback = function()
+                if vim.fn["vimtex#state#is_running"]() then
+                  vim.cmd("VimtexStop")
+                end
+                vim.cmd("VimtexCompileSS")
+              end,
             })
             vim.cmd("VimtexCompileSS")
           end,

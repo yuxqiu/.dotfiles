@@ -160,15 +160,14 @@
         "flake-compat": "flake-compat",
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "quickshell": "quickshell"
+        ]
       },
       "locked": {
-        "lastModified": 1778703769,
-        "narHash": "sha256-GnOkNq1sEDy/fH5HEPWVaU1ED5amfDUwhNKgu6hRXwI=",
+        "lastModified": 1778805162,
+        "narHash": "sha256-t40Z8YhIy8lUBn8yZ2jeuIeKUwvKB2QKCuquZvaceV8=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "9a630fad92f647718ddfac52f728a7ed9cfc7089",
+        "rev": "0a892a4a9ecc844edc62cba5ed947e5b9e6226fe",
         "type": "github"
       },
       "original": {
@@ -184,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778677829,
-        "narHash": "sha256-LAB8ztMchEd3PuQCTE2JkF0Nj1uuBUmeDdFk/cruleA=",
+        "lastModified": 1778751506,
+        "narHash": "sha256-1uKZUme0C7vo3KSwlttK4l/0OWB/ktabKAD7kRHR5dE=",
         "owner": "AvengeMedia",
         "repo": "dms-plugin-registry",
-        "rev": "f3fd4acae9cea40fc24053369f93594ce4353219",
+        "rev": "fde8456bb08af0715041451592c461af66709b70",
         "type": "github"
       },
       "original": {
@@ -546,11 +545,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778706808,
-        "narHash": "sha256-ihH1UnI6nYSOkjAg4QsOadg6sp2LxXnWO9urPbo3/hw=",
+        "lastModified": 1778805320,
+        "narHash": "sha256-nGFJ01m2CTBKD4ABtcY4vLhHrRN91LKr/pn41PcU78A=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9760b31dab3016fc6e422ca241cfeac605fb89c9",
+        "rev": "9846abe15e7d0d36b8acbd4d05f2b87461744c92",
         "type": "github"
       },
       "original": {
@@ -567,16 +566,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1778619811,
-        "narHash": "sha256-ACuhnmB6qyMXeh9RFulN1/I49an8LaQ6r4hU7yU9w5A=",
+        "lastModified": 1778796081,
+        "narHash": "sha256-s3eEJyBv6uyOqUTi5VZSyRDmQ7FrUugELnWs3ArUkLo=",
         "owner": "modem-dev",
         "repo": "hunk",
-        "rev": "9ada1100893365e92fad7f9788c6dfa81f378a23",
+        "rev": "cef118e21d5b6e325732b45464b1d0743e320011",
         "type": "github"
       },
       "original": {
         "owner": "modem-dev",
-        "ref": "v0.12.0",
+        "ref": "v0.12.1",
         "repo": "hunk",
         "type": "github"
       }
@@ -613,11 +612,11 @@
     },
     "import-tree_3": {
       "locked": {
-        "lastModified": 1773693634,
-        "narHash": "sha256-BtZ2dtkBdSUnFPPFc+n0kcMbgaTxzFNPv2iaO326Ffg=",
+        "lastModified": 1778781969,
+        "narHash": "sha256-Jjuz5CmSkur8KvLDoGa+vylEp+RkQtv4mt/qcMznpH0=",
         "owner": "vic",
         "repo": "import-tree",
-        "rev": "c41e7d58045f9057880b0d85e1152d6a4430dbf1",
+        "rev": "d321337efd0f23a9eb14a42adb7b2c29313ab274",
         "type": "github"
       },
       "original": {
@@ -748,11 +747,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778644513,
-        "narHash": "sha256-dwwDmPaMJ5yOsmzKEVr3UCpzHkmPnhyFzUeO68nKNXc=",
+        "lastModified": 1778730840,
+        "narHash": "sha256-j2xllvlwDMRjRNFxKrnFYD5h6r8dlxrqtGDMYf/OTJY=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "7e435fbede66e7079ee8f9e77fbc8f49b3de60ad",
+        "rev": "bd79f28576c5d9e9af7328843eadc0d7d54f596d",
         "type": "github"
       },
       "original": {
@@ -896,28 +895,6 @@
         "type": "github"
       }
     },
-    "quickshell": {
-      "inputs": {
-        "nixpkgs": [
-          "dms",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776854048,
-        "narHash": "sha256-lLbV66V3RMNp1l8/UelmR4YzoJ5ONtgvEtiUMJATH/o=",
-        "ref": "refs/heads/master",
-        "rev": "783c953987dc56ff0601abe6845ed96f1d00495a",
-        "revCount": 806,
-        "type": "git",
-        "url": "https://git.outfoxxed.me/quickshell/quickshell"
-      },
-      "original": {
-        "rev": "783c953987dc56ff0601abe6845ed96f1d00495a",
-        "type": "git",
-        "url": "https://git.outfoxxed.me/quickshell/quickshell"
-      }
-    },
     "quicksnip": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -1046,11 +1023,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1778680030,
-        "narHash": "sha256-1TY2s0CWtT0gl7bQmZUPEA6pmRBPCfPj7DNzHIXydG0=",
+        "lastModified": 1778776709,
+        "narHash": "sha256-YhnEcpiY6+l3RFA+cPmdTaeODGvNRuqE8B7VBjPVIxo=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "3401cf7a7d2ce7a3e3180ed4e7225056e7a05c7d",
+        "rev": "e8ea85b4f7dddda9603e0f1ac86cd92cee3b2819",
         "type": "github"
       },
       "original": {
