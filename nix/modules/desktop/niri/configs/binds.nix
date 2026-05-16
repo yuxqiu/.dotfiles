@@ -22,8 +22,8 @@
 
       "Mod+Shift+H".move-column-left = [ ];
       "Mod+Shift+L".move-column-right = [ ];
-      "Mod+Shift+J".consume-window-into-column = [ ];
-      "Mod+Shift+K".expel-window-from-column = [ ];
+      "Mod+Shift+J".consume-or-expel-window-left = [ ];
+      "Mod+Shift+K".consume-or-expel-window-right = [ ];
 
       "Mod+Left".focus-monitor-left = [ ];
       "Mod+Down".focus-monitor-down = [ ];
@@ -79,8 +79,6 @@
       "Mod+Shift+9".move-column-to-workspace = 9;
       "Mod+Shift+0".move-column-to-workspace = 10;
 
-      "Mod+BracketLeft".consume-or-expel-window-left = [ ];
-      "Mod+BracketRight".consume-or-expel-window-right = [ ];
 
       "Mod+R".switch-preset-column-width = [ ];
       "Mod+T".switch-preset-window-height = [ ];

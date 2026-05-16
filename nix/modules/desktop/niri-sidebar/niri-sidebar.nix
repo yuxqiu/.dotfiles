@@ -1,41 +1,55 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.niri =
     { pkgs, ... }:
     let
-      niri-floating-sidebar = pkgs.writeShellApplication {
-        name = "niri-floating-sidebar";
-        runtimeInputs = with pkgs; [
-          coreutils
-          gnugrep
-          gnused
-          jq
-          niri
-        ];
-        text = builtins.readFile ./niri-floating-sidebar.sh;
-      };
+      niri-sidebar = pkgs.callPackage (inputs.self + /packages/niri-sidebar.nix) { };
 
-      niri-sidebar-auto-reorder = pkgs.writeShellApplication {
-        name = "niri-sidebar-auto-reorder";
-        runtimeInputs = [
-          pkgs.niri
-        ];
-        text =
-          builtins.replaceStrings
-            [ "$HOME/.config/niri/scripts/niri-floating-sidebar.sh" ]
-            [ "${niri-floating-sidebar}/bin/niri-floating-sidebar" ]
-            (builtins.readFile ./niri-sidebar-auto-reorder.sh);
+      niri-sidebar-config = pkgs.writeText "config.toml" ''
+        [geometry]
+        width = 550
+        height = 335
+        gap = 15
+
+        [margins]
+        top = 30
+        right = 20
+        bottom = 50
+
+        [interaction]
+        position = "right"
+        peek = 70
+        focus_peek = 70
+        sticky = false
+      '';
+
+      configDir = pkgs.runCommand "niri-sidebar-xdg-config" { } ''
+        mkdir -p "$out/niri-sidebar"
+        cp ${niri-sidebar-config} "$out/niri-sidebar/config.toml"
+      '';
+
+      niri-sidebar-wrapped = pkgs.symlinkJoin {
+        name = "niri-sidebar-wrapped";
+        paths = [ niri-sidebar ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram "$out/bin/niri-sidebar" \
+            --set XDG_CONFIG_HOME "${configDir}"
+        '';
       };
     in
     {
+      home.packages = [ niri-sidebar-wrapped ];
+
       wayland.windowManager.niri.settings = {
         binds = {
           "Mod+A" = {
             _props.hotkey-overlay-title = "Toggle Sidebar Floating";
-            spawn-sh = "${niri-floating-sidebar}/bin/niri-floating-sidebar toggle";
+            spawn-sh = "niri-sidebar toggle-window";
           };
           "Mod+S" = {
             _props.hotkey-overlay-title = "Toggle Sidebar Visibility";
-            spawn-sh = "${niri-floating-sidebar}/bin/niri-floating-sidebar hide";
+            spawn-sh = "niri-sidebar toggle-visibility";
           };
           "Mod+Shift+A" = {
             switch-focus-between-floating-and-tiling = [ ];
@@ -43,7 +57,7 @@
         };
 
         spawn-at-startup = [
-          [ "${niri-sidebar-auto-reorder}/bin/niri-sidebar-auto-reorder" ]
+          [ "niri-sidebar" "listen" ]
         ];
       };
     };
