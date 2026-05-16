@@ -67,8 +67,8 @@
                 settings = {
                   texlab = {
                     build = {
-                      onSave = true,
-                      forwardSearchAfter = true,
+                      onSave = false,
+                      forwardSearchAfter = false,
                       executable = "tectonic",
                       args = {
                         "-X", "compile", "%f",

@@ -32,7 +32,7 @@
               vim.g.vimtex_view_method = "sioyek"
               vim.g.vimtex_compiler_method = "tectonic"
               vim.g.vimtex_compiler_tectonic = {
-                options = { "--synctex", "--keep-logs", "--keep-intermediates", "-Z", "continue-on-errors" },
+                options = { "--untrusted", "--synctex", "--keep-logs", "--keep-intermediates", "-Z", "continue-on-errors" },
               }
               vim.g.tex_flavor = "latex"
               vim.g.vimtex_quickfix_mode = 2
@@ -45,16 +45,13 @@
         vim.api.nvim_create_autocmd("User", {
           pattern = "VimtexEventInitPost",
           callback = function()
-            local group = vim.api.nvim_create_augroup("vimtex_auto_compile", { clear = false })
             vim.api.nvim_create_autocmd("BufWritePost", {
-              group = group,
               buffer = 0,
               callback = function()
                 vim.cmd("VimtexStop")
                 vim.cmd("VimtexCompileSS")
               end,
             })
-            vim.cmd("VimtexCompileSS")
           end,
         })
       '';
