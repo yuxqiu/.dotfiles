@@ -50,9 +50,7 @@
               group = group,
               buffer = 0,
               callback = function()
-                if vim.fn["vimtex#state#is_running"]() then
-                  vim.cmd("VimtexStop")
-                end
+                vim.cmd("VimtexStop")
                 vim.cmd("VimtexCompileSS")
               end,
             })
