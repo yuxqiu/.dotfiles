@@ -16,6 +16,27 @@
               end, non_floating_wins)
             end
 
+            local function goto_buf_on_close(bufnr, fallback)
+              local ok, elements = pcall(function()
+                return require("bufferline").get_elements().elements
+              end)
+              if ok and elements then
+                for i, elem in ipairs(elements) do
+                  if elem.id == bufnr then
+                    if i < #elements then
+                      vim.cmd("buffer " .. elements[i + 1].id)
+                      return
+                    elseif i > 1 then
+                      vim.cmd("buffer " .. elements[i - 1].id)
+                      return
+                    end
+                    break
+                  end
+                end
+              end
+              vim.cmd("buffer " .. fallback)
+            end
+
             _G.smart_close = function(bufnr)
               if vim.bo.filetype == "neo-tree" then return end
               bufnr = tonumber(bufnr) or vim.api.nvim_get_current_buf()
@@ -58,7 +79,7 @@
                 vim.cmd("new")
                 pcall(vim.cmd, "bdelete! " .. bufnr)
               else
-                vim.cmd("buffer " .. listed[#listed])
+                goto_buf_on_close(bufnr, listed[#listed])
                 pcall(vim.cmd, "bdelete! " .. bufnr)
               end
               if in_split then
