@@ -7,20 +7,44 @@
           plugin = bufferline-nvim;
           type = "lua";
           config = ''
-            _G.smart_close = function(bufnr)
-              if vim.bo.filetype == "neo-tree" then return end
-              bufnr = tonumber(bufnr) or vim.api.nvim_get_current_buf()
+            local function get_non_sidebar_wins()
               local non_floating_wins = vim.tbl_filter(function(w)
                 return not vim.api.nvim_win_get_config(w).zindex
               end, vim.api.nvim_tabpage_list_wins(vim.api.nvim_get_current_tabpage()))
-              local non_sidebar_wins = vim.tbl_filter(function(w)
+              return vim.tbl_filter(function(w)
                 return vim.bo[vim.api.nvim_win_get_buf(w)].filetype ~= "neo-tree"
               end, non_floating_wins)
+            end
+
+            _G.smart_close = function(bufnr)
+              if vim.bo.filetype == "neo-tree" then return end
+              bufnr = tonumber(bufnr) or vim.api.nvim_get_current_buf()
+              local buftype = vim.bo[bufnr].buftype
+              local is_special = buftype ~= "" or not vim.bo[bufnr].buflisted
+              local non_sidebar_wins = get_non_sidebar_wins()
               local in_split = #non_sidebar_wins > 1
+
+              if is_special then
+                if in_split then
+                  pcall(vim.cmd, "close")
+                else
+                  local listed = vim.tbl_filter(function(b)
+                    return vim.bo[b].buflisted and b ~= bufnr
+                  end, vim.api.nvim_list_bufs())
+                  if #listed == 0 then
+                    vim.cmd("new")
+                  else
+                    vim.cmd("buffer " .. listed[#listed])
+                  end
+                  pcall(vim.cmd, "bdelete! " .. bufnr)
+                end
+                return
+              end
+
               if vim.bo[bufnr].modified then
                 local choice = vim.fn.confirm("Save changes?", "&Save\n&Discard\n&Cancel", 1)
                 if choice == 1 then
-                  vim.cmd("write")
+                  pcall(vim.cmd, "write")
                 elseif choice == 2 then
                   vim.bo[bufnr].modified = false
                 else
@@ -32,13 +56,13 @@
               end, vim.api.nvim_list_bufs())
               if #listed == 0 then
                 vim.cmd("new")
-                vim.cmd("bdelete! " .. bufnr)
+                pcall(vim.cmd, "bdelete! " .. bufnr)
               else
                 vim.cmd("buffer " .. listed[#listed])
-                vim.cmd("bdelete! " .. bufnr)
+                pcall(vim.cmd, "bdelete! " .. bufnr)
               end
               if in_split then
-                vim.cmd("close")
+                pcall(vim.cmd, "close")
               end
             end
 
