@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/wsn1pj2qpd38g0h5bsnr8rpp5c174paj-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/flsmw5w2imarczcpwxajaz215b739s00-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -250,8 +250,9 @@
   "dankLauncherV2BorderColor": "primary",
   "dankLauncherV2ShowFooter": false,
   "dankLauncherV2UnloadOnClose": true,
-  "dankLauncherV2IncludeFilesInAll": false,
-  "dankLauncherV2IncludeFoldersInAll": false,
+  "dankLauncherV2IncludeFilesInAll": true,
+  "dankLauncherV2IncludeFoldersInAll": true,
+  "launcherStyle": "spotlight",
   "useAutoLocation": false,
   "weatherEnabled": false,
   "networkPreference": "wifi",
@@ -283,6 +284,8 @@
   "monoFontFamily": "Fira Code",
   "fontWeight": 400,
   "fontScale": 1,
+  "textRenderType": 0,
+  "textRenderQuality": 0,
   "notepadUseMonospace": true,
   "notepadFontFamily": "",
   "notepadFontSize": 14,
@@ -474,6 +477,7 @@
   "customPowerActionReboot": "",
   "customPowerActionPowerOff": "",
   "updaterHideWidget": false,
+  "updaterCheckOnStart": false,
   "updaterUseCustomCommand": false,
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
@@ -801,6 +805,9 @@
   "builtInPluginSettings": {
     "dms_settings_search": {
       "trigger": "?"
+    },
+    "dms_clipboard_search": {
+      "trigger": "cb"
     }
   },
   "clipboardEnterToPaste": false,
@@ -820,6 +827,7 @@
   "frameCloseGaps": true,
   "frameLauncherEmergeSide": "bottom",
   "frameLauncherArcExtender": false,
+  "frameUseSpotlightLauncher": false,
   "frameMode": "separate",
   "configVersion": 11
 }
