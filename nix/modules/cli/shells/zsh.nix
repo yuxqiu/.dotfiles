@@ -12,6 +12,10 @@
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
 
+        initContent = ''
+          ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+        '';
+
         # Enable Oh My Zsh
         oh-my-zsh = {
           enable = true;
