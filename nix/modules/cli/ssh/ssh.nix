@@ -7,7 +7,7 @@
         package = pkgs.openssh;
 
         # base config
-        matchBlocks."*" = {
+        settings."*" = {
           forwardAgent = false;
           addKeysToAgent = "no";
           compression = false;

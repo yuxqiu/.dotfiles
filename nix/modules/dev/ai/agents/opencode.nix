@@ -11,7 +11,8 @@
         postBuild = ''
           wrapProgram $out/bin/opencode \
             --set OPENCODE_ENABLE_EXA 1 \
-            --set OPENCODE_EXPERIMENTAL_LSP_TOOL "true"
+            --set OPENCODE_EXPERIMENTAL_LSP_TOOL "true" \
+            --set OPENCODE_EXPERIMENTAL_WORKSPACES "true"
         '';
       };
     in

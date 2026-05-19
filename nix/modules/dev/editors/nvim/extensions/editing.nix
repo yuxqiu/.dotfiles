@@ -34,7 +34,7 @@
             require("Comment").setup({
               padding = true,
               sticky = true,
-              ignore = "^%s*$",
+
               pre_hook = require("ts_context_commentstring.utils").get_cs,
               opleader = { line = "gc" },
             })
