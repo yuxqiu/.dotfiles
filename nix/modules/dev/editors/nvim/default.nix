@@ -7,7 +7,14 @@
         viAlias = true;
         vimAlias = true;
 
-        extraConfig = "let mapleader = ' '\nnoremap j gj\nnoremap k gk\nnoremap <Down> gj\nnoremap <Up> gk";
+        extraConfig = ''
+          let mapleader = ' '
+          nnoremap <leader> <Nop>
+          noremap j gj
+          noremap k gk
+          noremap <Down> gj
+          noremap <Up> gk
+        '';
 
         initLua = ''
           _G._lazy_loaded = {}
