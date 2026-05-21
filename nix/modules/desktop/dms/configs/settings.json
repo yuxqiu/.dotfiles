@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/flsmw5w2imarczcpwxajaz215b739s00-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/s4zgiymavv9z75ix3frzrpnfpaa4rdv5-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -175,6 +175,7 @@
   "audioWheelScrollAmount": 5,
   "clockCompactMode": false,
   "focusedWindowCompactMode": false,
+  "focusedWindowSize": 1,
   "runningAppsCompactMode": true,
   "barMaxVisibleApps": 0,
   "barMaxVisibleRunningApps": 0,
@@ -252,6 +253,7 @@
   "dankLauncherV2UnloadOnClose": true,
   "dankLauncherV2IncludeFilesInAll": true,
   "dankLauncherV2IncludeFoldersInAll": true,
+  "launcherUseOverlayLayer": false,
   "launcherStyle": "spotlight",
   "useAutoLocation": false,
   "weatherEnabled": false,
@@ -371,7 +373,7 @@
   "showDock": true,
   "dockAutoHide": true,
   "dockSmartAutoHide": false,
-  "dockHideOnFullscreen": true,
+  "dockUseOverlayLayer": false,
   "dockGroupByApp": false,
   "dockRestoreSpecialWorkspaceOnClick": false,
   "dockOpenOnOverview": false,
@@ -521,8 +523,7 @@
         },
         {
           "enabled": true,
-          "id": "spacer",
-          "size": 20
+          "id": "codeIsland"
         }
       ],
       "clickThrough": false,
@@ -803,11 +804,11 @@
   ],
   "desktopWidgetGroups": [],
   "builtInPluginSettings": {
-    "dms_settings_search": {
-      "trigger": "?"
-    },
     "dms_clipboard_search": {
       "trigger": "cb"
+    },
+    "dms_settings_search": {
+      "trigger": "?"
     }
   },
   "clipboardEnterToPaste": false,
@@ -827,7 +828,6 @@
   "frameCloseGaps": true,
   "frameLauncherEmergeSide": "bottom",
   "frameLauncherArcExtender": false,
-  "frameUseSpotlightLauncher": false,
   "frameMode": "separate",
   "configVersion": 11
 }

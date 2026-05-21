@@ -36,6 +36,7 @@
         config.flake.modules.homeManager.firefox
         config.flake.modules.homeManager.captive-browser
         config.flake.modules.homeManager.ghostty
+        config.flake.modules.homeManager.codeisland
         config.flake.modules.homeManager.dms
         config.flake.modules.homeManager.dolphin
         config.flake.modules.homeManager.fcitx5
