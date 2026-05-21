@@ -522,8 +522,9 @@
           "id": "clock"
         },
         {
+          "id": "spacer",
           "enabled": true,
-          "id": "codeIsland"
+          "size": 20
         }
       ],
       "clickThrough": false,
