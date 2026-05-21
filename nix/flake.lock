@@ -866,6 +866,26 @@
         "type": "github"
       }
     },
+    "omp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779366941,
+        "narHash": "sha256-jWdnRv+Bf+kYwoWstLdtNlMJrCR1cJq+U4M7PVdSMY8=",
+        "owner": "yuxqiu",
+        "repo": "omp-nix",
+        "rev": "470bce8059c893c3164b9355e224878fe641de0b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yuxqiu",
+        "repo": "omp-nix",
+        "type": "github"
+      }
+    },
     "paseo": {
       "inputs": {
         "nixpkgs": [
@@ -873,16 +893,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1776352249,
-        "narHash": "sha256-1aYK6zX/qHftTgdC9JRUKLaaEdjTIUqlKwSeoCWp7Zw=",
+        "lastModified": 1779357805,
+        "narHash": "sha256-S8jzNf5zbeEDiE0AtAieElokf/aK/lLXWBDhuY+tK+8=",
         "owner": "getpaseo",
         "repo": "paseo",
-        "rev": "40f8a8414af30ef4e979d489542c02ae77998e46",
+        "rev": "a9f5b8ea4d467b23710e9effb38abb7d45ed10af",
         "type": "github"
       },
       "original": {
         "owner": "getpaseo",
-        "ref": "v0.1.59",
+        "ref": "v0.1.79",
         "repo": "paseo",
         "type": "github"
       }
@@ -972,6 +992,7 @@
         "nix-update-git": "nix-update-git",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": "nixpkgs",
+        "omp": "omp",
         "paseo": "paseo",
         "quicksnip": "quicksnip",
         "sops-nix": "sops-nix",

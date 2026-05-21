@@ -49,6 +49,10 @@
       url = "github:modem-dev/hunk?ref=v0.13.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    omp = {
+      url = "github:yuxqiu/omp-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";
@@ -94,7 +98,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     paseo = {
-      url = "github:getpaseo/paseo?ref=v0.1.59"; # pin
+      url = "github:getpaseo/paseo?ref=v0.1.79"; # pin
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
