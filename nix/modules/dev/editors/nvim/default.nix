@@ -26,6 +26,21 @@
             vim.cmd("packadd " .. pack_name)
             if after_fn then after_fn() end
           end
+
+          _G._debounce_timers = {}
+
+          _G.debounce = function(key, ms, fn)
+            if _G._debounce_timers[key] then
+              _G._debounce_timers[key]:stop()
+              _G._debounce_timers[key]:close()
+            end
+            _G._debounce_timers[key] = vim.uv.new_timer()
+            _G._debounce_timers[key]:start(ms, 0, function()
+              _G._debounce_timers[key]:close()
+              _G._debounce_timers[key] = nil
+              vim.schedule(fn)
+            end)
+          end
         '';
 
         plugins = with pkgs.vimPlugins; [

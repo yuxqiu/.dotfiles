@@ -20,6 +20,7 @@
             '';
           }
 
+          # texlab: https://github.com/latex-lsp/texlab/issues/1551
           {
             plugin = nvim-lspconfig;
             type = "lua";
@@ -63,7 +64,10 @@
               })
               vim.lsp.config("texlab", {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                on_attach = function(client, bufnr)
+                  on_attach(client, bufnr)
+                  vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+                end,
                 settings = {
                   texlab = {
                     build = {
@@ -75,6 +79,10 @@
                         "--untrusted", "--synctex",
                         "--keep-logs", "--keep-intermediates",
                       },
+                    },
+                    diagnostics = {
+                      ignoredPatterns = { "Unused" },
+                      delay = 0.4,
                     },
                   },
                 },

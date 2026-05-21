@@ -48,8 +48,10 @@
             vim.api.nvim_create_autocmd("BufWritePost", {
               buffer = 0,
               callback = function()
-                vim.cmd("VimtexStop")
-                vim.cmd("VimtexCompileSS")
+                debounce("vimtex_compile", 500, function()
+                  vim.cmd("VimtexStop")
+                  vim.cmd("VimtexCompileSS")
+                end)
               end,
             })
           end,
