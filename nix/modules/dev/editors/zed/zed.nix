@@ -3,7 +3,7 @@
     { config, lib, ... }:
     {
       programs.zed-editor = {
-        enable = true;
+        enable = false;
         enableMcpIntegration = true;
         # needed by extensions to support offline lsp
         extraPackages = config.my.dev.lsp;

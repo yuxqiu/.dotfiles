@@ -75,8 +75,14 @@
     { nixosModulesPath, lib, ... }:
     {
       # Hack for importing opensnitch from nixos
-      options.security.auditd = lib.mkOption {
-        type = lib.types.raw;
+      options = {
+        security.auditd = lib.mkOption {
+          type = lib.types.raw;
+        };
+        networking.nftables.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
       };
 
       imports = [ (nixosModulesPath + "/services/security/opensnitch.nix") ];
