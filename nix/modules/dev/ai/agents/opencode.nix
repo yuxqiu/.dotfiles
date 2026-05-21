@@ -27,9 +27,6 @@
         package = wrappedOpencode;
         settings = {
           autoupdate = false;
-          plugin = [
-            "@mohak34/opencode-notifier"
-          ];
         };
         extraPackages = config.my.dev.lsp;
       };
