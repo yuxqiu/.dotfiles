@@ -40,6 +40,33 @@
         vim.keymap.set("n", "<C-S-F>", function()
           require("telescope.builtin").live_grep({ search_dirs = { vim.fn.getcwd() } })
         end, { desc = "Search in project" })
+
+        -- Project tracking: record directories opened with nvim (no file args)
+        local _project_file = vim.fn.stdpath("data") .. "/nvim-projects"
+        local function _project_lines()
+          local f = io.open(_project_file, "r")
+          if not f then return function() end end
+          return f:lines()
+        end
+        local function _project_add(dir)
+          if not dir or dir == "" or not vim.fn.isdirectory(dir) then return end
+          dir = vim.fn.fnamemodify(dir, ":p:h")
+          if dir == "/tmp" then return end
+          local seen = {}
+          for line in _project_lines() do
+            seen[line] = true
+          end
+          if seen[dir] then return end
+          local f = io.open(_project_file, "a")
+          if f then
+            f:write(dir .. "\n")
+            f:close()
+          end
+        end
+        if vim.fn.argc(-1) == 0 then
+          _project_add(vim.fn.getcwd())
+        end
+
         vim.keymap.set("n", "<C-o>", function()
           local pickers = require("telescope.pickers")
           local finders = require("telescope.finders")
@@ -47,13 +74,11 @@
           local actions = require("telescope.actions")
           local action_state = require("telescope.actions.state")
           local dirs = {}
-          for _, b in ipairs(vim.v.oldfiles) do
-            local dir = vim.fn.fnamemodify(b, ":h")
-            if vim.fn.isdirectory(dir) == 1 then
-              local root = vim.fn.systemlist("git -C " .. vim.fn.shellescape(dir) .. " rev-parse --show-toplevel 2>/dev/null")[1]
-              if root and root ~= "" and vim.fn.isdirectory(root) == 1 and not vim.tbl_contains(dirs, root) then
-                dirs[#dirs + 1] = root
-              end
+          local seen = {}
+          for line in _project_lines() do
+            if line ~= "" and not seen[line] then
+              seen[line] = true
+              dirs[#dirs + 1] = line
             end
           end
           pickers.new({}, {
