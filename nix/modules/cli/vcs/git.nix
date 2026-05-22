@@ -9,6 +9,14 @@
           user.name = "yuxqiu";
           user.email = "yuxqiu@proton.me";
 
+          init.defaultBranch = "main";
+
+          branch.sort = "-committerdate";
+          tag.sort = "version:refname";
+
+          commit.verbose = true;
+          help.autocorrect = "prompt";
+
           alias = {
             graph = "log --all --graph --decorate --oneline";
             rank = "shortlog -s -n --no-merges";
@@ -25,30 +33,38 @@
             '';
           };
 
-          filter."lfs".clean = "git-lfs clean -- %f";
-          filter."lfs".smudge = "git-lfs smudge -- %f";
-          filter."lfs".process = "git-lfs filter-process";
-          filter."lfs".required = true;
+          diff = {
+            algorithm = "histogram";
+            colorMoved = "plain";
+            mnemonicPrefix = true;
+            renames = true;
+          };
 
-          init.defaultBranch = "main";
+          fetch = {
+            prune = true;
+            pruneTags = true;
+            all = true;
+          };
 
-          branch.sort = "-committerdate";
-          tag.sort = "version:refname";
+          filter = {
+            "lfs".clean = "git-lfs clean -- %f";
+            "lfs".smudge = "git-lfs smudge -- %f";
+            "lfs".process = "git-lfs filter-process";
+            "lfs".required = true;
+          };
 
-          diff.algorithm = "histogram";
-          diff.colorMoved = "plain";
-          diff.mnemonicPrefix = true;
-          diff.renames = true;
+          pull = {
+            rebase = true;
+          };
 
-          push.autoSetupRemote = true;
-          push.followTags = true;
+          push = {
+            autoSetupRemote = true;
+            followTags = true;
+          };
 
-          fetch.prune = true;
-          fetch.pruneTags = true;
-          fetch.all = true;
-
-          help.autocorrect = "prompt";
-          commit.verbose = true;
+          rebase = {
+            autoStash = true;
+          };
         };
 
         signing = {
