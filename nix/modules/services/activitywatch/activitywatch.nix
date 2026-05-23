@@ -9,7 +9,7 @@ in
     { pkgs, lib, ... }:
     {
       services.activitywatch = {
-        enable = true;
+        enable = false;
         settings = { } // aw-listening-address;
         watchers = {
           aw-watcher-afk = {
