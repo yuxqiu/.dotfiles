@@ -17,6 +17,6 @@
       # Themes:       ~/.omp/agent/themes/        (custom theme JSON files)
       # Rules:        .omp/rules/                 (per-project, regex-triggered TTSR rules)
 
-      home.file.".omp/agent/extensions/undo.ts".source = ./undo.ts;
+      home.file.".omp/agent/extensions/undo.ts".source = ./extensions/undo.ts;
     };
 }
