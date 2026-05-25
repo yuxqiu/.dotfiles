@@ -159,6 +159,12 @@
           local base = guifont:gsub(":h%d+$", "")
           vim.o.guifont = base .. ":h" .. new_size
         end
+
+        vim.api.nvim_create_autocmd("CursorHold", {
+          callback = function()
+            collectgarbage("step", 256)
+          end,
+        })
       '';
     };
 }

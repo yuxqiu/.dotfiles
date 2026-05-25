@@ -150,5 +150,20 @@
           }
         ];
       };
-    };
+
+       programs.neovim.initLua = ''
+         vim.lsp.handlers["workspace/executeCommand"] = function(err, result, ctx, config)
+           if err then
+             local lines = vim.split(err.message or tostring(err), "\n")
+             _G.open_result_split("Code Lens Error", lines)
+             return
+           end
+           if not result or vim.tbl_isempty(result) then
+             return
+           end
+           local lines = vim.split(vim.inspect(result), "\n")
+           _G.open_result_split(nil, lines)
+         end
+       '';
+     };
 }

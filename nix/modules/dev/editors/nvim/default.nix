@@ -41,6 +41,17 @@
               vim.schedule(fn)
             end)
           end
+
+          _G.open_result_split = function(title, lines)
+            local buf = vim.api.nvim_create_buf(false, true)
+            vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+            vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
+            vim.api.nvim_set_option_value("modifiable", false, { buf = buf })
+            vim.api.nvim_set_option_value("filetype", "log", { buf = buf })
+            vim.cmd("belowright split")
+            vim.api.nvim_win_set_buf(0, buf)
+            vim.api.nvim_buf_set_name(buf, title or "Code Lens Result")
+          end
         '';
 
         plugins = with pkgs.vimPlugins; [
@@ -139,7 +150,15 @@
                 yaml = { "yamllint" },
               }
 
-              vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+              vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                callback = function()
+                  debounce("lint:" .. vim.api.nvim_buf_get_name(0), 500, function()
+                    lint.try_lint()
+                  end)
+                end,
+              })
+
+              vim.api.nvim_create_autocmd({ "CursorHold" }, {
                 callback = function()
                   lint.try_lint()
                 end,
