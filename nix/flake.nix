@@ -46,7 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hunk = {
-      url = "github:modem-dev/hunk?ref=v0.14.0-beta.1";
+      url = "github:modem-dev/hunk?ref=v0.14.0-beta.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     omp = {

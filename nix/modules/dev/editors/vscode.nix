@@ -25,11 +25,11 @@
               llvm-vs-code-extensions.vscode-clangd
               ms-azuretools.vscode-containers
               ms-azuretools.vscode-docker
-              # ms-python.black-formatter
-              # ms-python.debugpy
-              # ms-python.python
-              # ms-python.vscode-pylance
-              # ms-python.vscode-python-envs
+              ms-python.black-formatter
+              ms-python.debugpy
+              ms-python.python
+              ms-python.vscode-pylance
+              ms-python.vscode-python-envs
               ms-toolsai.jupyter
               ms-toolsai.jupyter-keymap
               ms-toolsai.jupyter-renderers

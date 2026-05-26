@@ -6,6 +6,6 @@
       tolaria = pkgs.callPackage (inputs.self + /packages/tolaria.nix) { };
     in
     {
-      # home.packages = [ tolaria ];
+      home.packages = [ tolaria ];
     };
 }

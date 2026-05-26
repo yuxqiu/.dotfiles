@@ -56,7 +56,6 @@
         config.flake.modules.homeManager.stylix
         config.flake.modules.homeManager.gtk
         config.flake.modules.homeManager.qt
-        config.flake.modules.homeManager.tolaria
         config.flake.modules.homeManager.wayscriber
         config.flake.modules.homeManager.wlr-which-key
         config.flake.modules.homeManager.xdg
@@ -67,7 +66,6 @@
         config.flake.modules.homeManager.editorconfig
         config.flake.modules.homeManager.lsp
         config.flake.modules.homeManager.nvim
-        config.flake.modules.homeManager.vscode
         config.flake.modules.homeManager.zed
         config.flake.modules.homeManager.python
         config.flake.modules.homeManager.rust
