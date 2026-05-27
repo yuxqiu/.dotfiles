@@ -70,9 +70,15 @@
       -- Insert mode: Ctrl+Backspace to delete word backward
       vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true })
 
+      -- Disable default q (macro recording) to prevent accidental hijack of leader key
+      vim.keymap.set("n", "q", "<Nop>", { noremap = true })
+      vim.keymap.set("n", "<leader>Qr", "q", { desc = "Record macro", noremap = true })
+      vim.keymap.set("n", "<leader>Qp", "@", { desc = "Play macro", noremap = true })
+      vim.keymap.set("n", "<leader>Ql", "@@", { desc = "Play last macro", noremap = true })
+
       -- Quick move to line start/end
-      vim.keymap.set("n", "H", "^", { noremap = true })
-      vim.keymap.set("n", "L", "$", { noremap = true })
+      vim.keymap.set({ "n", "x", "o" }, "H", "^", { noremap = true })
+      vim.keymap.set({ "n", "x", "o" }, "L", "$", { noremap = true })
 
       -- Clipboard
       vim.keymap.set("n", "Y", '"+y', { noremap = true })

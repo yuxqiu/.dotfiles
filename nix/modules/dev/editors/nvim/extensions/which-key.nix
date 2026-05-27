@@ -21,6 +21,7 @@
                 { "<leader>g", group = "git", icon = "󰊢" },
                 { "<leader>j", group = "jump", icon = "󰆔" },
                 { "<leader>l", group = "line", icon = "󰅂" },
+                { "<leader>Q", group = "macro", icon = "󰑁" },
                 { "<leader>q", group = "session", icon = "󰅴" },
                 { "<leader>s", group = "search", icon = "󰍉" },
                 { "<leader>t", group = "trouble", icon = "󰀨" },
