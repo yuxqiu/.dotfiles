@@ -23,9 +23,7 @@
           };
         };
 
-        skills = {
-          enableAll = true;
-        };
+        skills.enableAll = [ "local" "addyosmani-agent-skills" ];
 
         targets = {
           codex = {
