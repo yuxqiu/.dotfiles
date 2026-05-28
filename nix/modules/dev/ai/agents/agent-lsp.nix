@@ -31,25 +31,5 @@
           ];
         };
       };
-
-      programs.agent-skills = {
-        sources.agent-lsp-skills = {
-          path = pkgs.fetchFromGitHub {
-            owner = "blackwell-systems";
-            repo = "agent-lsp";
-            rev = "v0.11.2";
-            hash = "sha256-rCri95j3DAcZF7LHOTrkCwlRhQWfEIaaUhCVNiWuVZg=";
-          };
-          subdir = "skills";
-        };
-
-        skills.enable = [
-          "lsp-safe-edit"
-          "lsp-simulate"
-          "lsp-edit-symbol"
-          "lsp-edit-export"
-          "lsp-rename"
-        ];
-      };
     };
 }

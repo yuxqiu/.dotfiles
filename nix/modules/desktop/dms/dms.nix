@@ -4,7 +4,7 @@
 }:
 {
   flake.modules.homeManager.dms =
-    { config, ... }:
+    { config, pkgs, ... }:
     {
       imports = [
         inputs.dms.homeModules.dank-material-shell
@@ -46,12 +46,28 @@
               trigger = "";
             };
           };
+          screenCaptureToolbar = {
+            enable = true;
+            settings = {
+              saveToDisk = false;
+              showNotify = false;
+              showPointer = false;
+            };
+          };
         };
 
         settings = builtins.fromJSON (builtins.readFile ./configs/settings.json) // {
           customThemeFile = "${inputs.dms-plugin-registry}/themes/catppuccin/theme.json";
         };
       };
+
+      home.packages = with pkgs; [
+        gpu-screen-recorder
+        slurp
+        grim
+        satty
+        jq
+      ];
 
       # Restart dms service when settings are changed
       systemd.user.services.dms.Unit.X-Restart-Triggers = [
@@ -95,6 +111,17 @@
                 "ipc"
                 "call"
                 "clipboard"
+                "toggle"
+              ];
+            };
+
+            "Mod+Shift+S" = {
+              _props.hotkey-overlay-title = "Screen Capture";
+              spawn = [
+                "dms"
+                "ipc"
+                "call"
+                "screenCaptureToolbar"
                 "toggle"
               ];
             };
