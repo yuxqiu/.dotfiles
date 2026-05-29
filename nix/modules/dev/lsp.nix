@@ -20,6 +20,7 @@
         nixd
         nixfmt
         package-version-server
+        pyright
         ruff
         rustup
         shellcheck

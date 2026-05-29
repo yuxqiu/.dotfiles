@@ -1,12 +1,15 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.ai =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     let
       agent-lsp = pkgs.callPackage (inputs.self + /packages/agent-lsp.nix) { };
     in
     {
-      home.packages = [ agent-lsp ];
+      home.packages = [
+        agent-lsp
+      ]
+      ++ config.my.dev.lsp;
 
       programs.mcp = {
         enable = true;
