@@ -9,7 +9,7 @@
       system = "aarch64-linux";
       username = "yuxqiu";
       homeDirectory = "/home/yuxqiu";
-      stateVersion = "26.05";
+      stateVersion = "26.11";
       modules = [
         config.flake.modules.generic.base
         config.flake.modules.generic.yuxqiu-birch
