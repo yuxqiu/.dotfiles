@@ -57,7 +57,10 @@
         };
 
         spawn-at-startup = [
-          [ "niri-sidebar" "listen" ]
+          [
+            "niri-sidebar"
+            "listen"
+          ]
         ];
       };
     };

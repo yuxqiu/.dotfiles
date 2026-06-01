@@ -6,7 +6,10 @@
       browse = pkgs.callPackage (inputs.self + /packages/browse.nix) { };
     in
     {
-      home.packages = [ browse pkgs.chromium ];
+      home.packages = [
+        browse
+        pkgs.chromium
+      ];
 
       programs.agent-skills.sources.browserbase-skills = {
         path = pkgs.fetchFromGitHub {

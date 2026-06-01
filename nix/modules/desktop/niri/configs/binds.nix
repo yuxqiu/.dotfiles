@@ -79,7 +79,6 @@
       "Mod+Shift+9".move-column-to-workspace = 9;
       "Mod+Shift+0".move-column-to-workspace = 10;
 
-
       "Mod+R".switch-preset-column-width = [ ];
       "Mod+T".switch-preset-window-height = [ ];
       "Mod+Shift+T".reset-window-height = [ ];

@@ -59,15 +59,13 @@
         ++ [
           { system.stateVersion = cfg.nixosStateVersion; }
         ]
-        ++ (
-          lib.optional (cfg.homeManagerModules != [ ]) {
-            home-manager.users.${cfg.username} = {
-              imports = cfg.homeManagerModules;
-              home.stateVersion = cfg.homeStateVersion;
-            };
-            home-manager.sharedModules = [ inputs.self.modules.generic.base ];
-          }
-        );
+        ++ (lib.optional (cfg.homeManagerModules != [ ]) {
+          home-manager.users.${cfg.username} = {
+            imports = cfg.homeManagerModules;
+            home.stateVersion = cfg.homeStateVersion;
+          };
+          home-manager.sharedModules = [ inputs.self.modules.generic.base ];
+        });
     }
   ) config.configurations.nixos;
 }
