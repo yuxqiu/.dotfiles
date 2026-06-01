@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, ... }:
 
 {
   flake.modules.nixos.base =
@@ -16,11 +16,6 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "hm-bak";
-        users.yuxqiu =
-          { ... }:
-          {
-            programs.home-manager.enable = true;
-          };
       };
 
       nix = {
@@ -29,7 +24,10 @@
             "nix-command"
             "flakes"
           ];
-          trusted-users = [ "root" "@" ];
+          trusted-users = [
+            "root"
+            "@"
+          ];
 
           auto-optimise-store = true;
         };
@@ -88,7 +86,5 @@
           imports = [ ./hardware-configuration.nix ];
         }
       '';
-
-      system.stateVersion = lib.mkDefault "26.11";
     };
 }

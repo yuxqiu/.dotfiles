@@ -16,8 +16,6 @@ let
 
   mkHmConfigsForSystem =
     system: lib.filterAttrs (_: cfg: cfg.system == system) config.configurations.homeManager;
-  mkSmConfigsForSystem =
-    system: lib.filterAttrs (_: cfg: cfg.system == system) config.configurations.systemManager;
   mkNixosConfigsForSystem =
     system: lib.filterAttrs (_: cfg: cfg.system == system) config.configurations.nixos;
 in
@@ -27,7 +25,6 @@ in
       system:
       let
         hmConfigs = mkHmConfigsForSystem system;
-        smConfigs = mkSmConfigsForSystem system;
         nixosConfigs = mkNixosConfigsForSystem system;
         pkgs = mkPkgs system;
 
@@ -49,24 +46,6 @@ in
           }
         ) hmConfigs;
 
-        smApps = lib.mapAttrs' (
-          name: _:
-          let
-            appName = "sm-${name}";
-            script = pkgs.writeShellApplication {
-              name = appName;
-              runtimeInputs = [ pkgs.nix ];
-              text = ''
-                exec nix run ${inputs.system-manager} -- switch --flake "${flakeRef}#${name}" --sudo
-              '';
-            };
-          in
-          lib.nameValuePair appName {
-            type = "app";
-            program = "${script}/bin/${appName}";
-          }
-        ) smConfigs;
-
         nixosApps = lib.mapAttrs' (
           name: _:
           let
@@ -85,14 +64,13 @@ in
           }
         ) nixosConfigs;
       in
-      hmApps // smApps // nixosApps
+      hmApps // nixosApps
     );
 
     checks = lib.genAttrs config.systems (
       system:
       let
         hmConfigs = mkHmConfigsForSystem system;
-        smConfigs = mkSmConfigsForSystem system;
         nixosConfigs = mkNixosConfigsForSystem system;
         pkgs = mkPkgs system;
 
@@ -106,28 +84,17 @@ in
           )
         ) hmConfigs;
 
-        smChecks = lib.mapAttrs' (
-          name: _:
-          lib.nameValuePair "system-${name}" (
-            pkgs.runCommandNoCC "check-system-${name}" { } ''
-              test -e ${config.flake.systemConfigs.${name}}
-              touch "$out"
-            ''
-          )
-        ) smConfigs;
-
         nixosChecks = lib.mapAttrs' (
           name: _:
           lib.nameValuePair "nixos-${name}" (
-            pkgs.runCommandNoCC "check-nixos-${name}" { }
-              ''
-                test -e ${config.flake.nixosConfigurations.${name}.config.system.build.toplevel}
-                touch "$out"
-              ''
+            pkgs.runCommandNoCC "check-nixos-${name}" { } ''
+              test -e ${config.flake.nixosConfigurations.${name}.config.system.build.toplevel}
+              touch "$out"
+            ''
           )
         ) nixosConfigs;
       in
-      hmChecks // smChecks // nixosChecks
+      hmChecks // nixosChecks
     );
 
     formatter = lib.genAttrs config.systems (system: (mkPkgs system).nixfmt-tree);

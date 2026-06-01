@@ -56,14 +56,6 @@
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";
-    system-manager = {
-      url = "github:numtide//system-manager?ref=pull/384/head";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-system-graphics = {
-      url = "github:soupglasses/nix-system-graphics";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
