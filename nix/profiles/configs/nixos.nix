@@ -64,7 +64,13 @@
             imports = cfg.homeManagerModules;
             home.stateVersion = cfg.homeStateVersion;
           };
-          home-manager.sharedModules = [ inputs.self.modules.generic.base ];
+          home-manager.sharedModules = [
+            inputs.self.modules.generic.base
+            {
+              nixpkgs.config = config.nixpkgs.config;
+              nixpkgs.overlays = config.nixpkgs.overlays;
+            }
+          ];
         });
     }
   ) config.configurations.nixos;

@@ -1,7 +1,6 @@
 {
   flake.modules.homeManager.zsh =
     {
-      config,
       lib,
       pkgs,
       ...
@@ -49,18 +48,6 @@
             gc-nix
           '';
           gc-cache = "${pkgs.bleachbit}/bin/bleachbit";
-
-          # Home Manager Update
-          hm = ''
-            if [ $# -eq 0 ]; then
-              echo "Usage: hm <flake-output-name>"
-              echo "Example: hm yuxqiu-birch"
-              return 1
-            fi
-            nix-update-git -u . --rules all
-            nix flake update
-            home-manager switch --flake ".#$1"
-          '';
 
           # NixOS Rebuild Switch
           nr = ''
