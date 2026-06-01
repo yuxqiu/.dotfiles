@@ -35,8 +35,10 @@
         # security
         config.flake.modules.nixos.polkit
         config.flake.modules.nixos.sysctl
+        config.flake.modules.nixos.geoclue
 
         # services
+        config.flake.modules.nixos.time
         config.flake.modules.nixos.earlyoom
         config.flake.modules.nixos.journald
         config.flake.modules.nixos.accountservice
@@ -184,9 +186,6 @@
         config.flake.modules.homeManager.zed
         config.flake.modules.homeManager.python
         config.flake.modules.homeManager.rust
-
-        # hardware (home-manager)
-        config.flake.modules.homeManager.vpn
 
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch
