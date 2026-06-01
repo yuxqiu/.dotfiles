@@ -37,11 +37,12 @@
       };
     };
 
-  flake.modules.systemManager.vpn =
+  flake.modules.nixos.vpn =
     {
       lib,
       pkgs,
       config,
+      inputs,
       ...
     }:
     let
@@ -161,10 +162,8 @@
               BYPASS_IP=$(extract_bypass_ip)
               echo "Using bypass IP: $BYPASS_IP" >&2
 
-              # Clean previous state
               cleanup
 
-              # Launch
               echo "Launching tun2proxy..."
               $TUN2PROXY_BIN --setup --proxy socks5://127.0.0.1:1080 \
                   --dns virtual --virtual-dns-pool 198.18.0.0/16 \
@@ -172,7 +171,6 @@
 
               echo "Finish launching"
 
-              # Wait until bind mount appears (or timeout)
               local timeout=12 elapsed=0
               while (( elapsed < timeout )); do
                   if mountpoint -q "$REAL_RESOLV" 2>/dev/null; then
@@ -212,7 +210,7 @@
 
               if pgrep -x "$PROG" >/dev/null; then
                   pkill -TERM "$PROG" 2>/dev/null
-                  sleep 1.5   # give it time to exit and clean up mount
+                  sleep 1.5
                   if pgrep -x "$PROG" >/dev/null; then
                       pkill -9 "$PROG" && echo "forced kill"
                   else
@@ -222,7 +220,6 @@
                   echo "not running"
               fi
 
-              # Final cleanup – should be gone by now, but force if needed
               sleep 0.5
               cleanup
               reset_resolved_dns
@@ -244,9 +241,11 @@
           esac
         '';
       };
+
+      cfg = config.my.sops;
     in
     {
-      config = lib.mkIf config.my.sops.enable {
+      config = lib.mkIf cfg.enable {
         users.groups.xray = { };
         users.users.xray = {
           isSystemUser = true;
@@ -265,10 +264,9 @@
 
         systemd.services.xray = {
           description = "Xray Proxy Server";
+          enable = true;
 
-          after = [
-            "network-online.target"
-          ];
+          after = [ "network-online.target" ];
           wants = [ "network-online.target" ];
 
           unitConfig = {
@@ -283,6 +281,9 @@
             DynamicUser = false;
           };
         };
+
+        networking.firewall.trustedInterfaces = [ "tun+" ];
+        networking.firewall.checkReversePath = "loose";
 
         environment.systemPackages = [ t2p ];
       };

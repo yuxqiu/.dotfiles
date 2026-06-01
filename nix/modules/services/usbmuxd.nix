@@ -11,4 +11,8 @@
 
       services.usbmuxd.enable = true;
     };
+
+  flake.modules.nixos.usbmuxd = {
+    services.usbmuxd.enable = true;
+  };
 }

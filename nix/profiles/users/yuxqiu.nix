@@ -37,4 +37,23 @@
 
       users.groups.yuxqiu = { };
     };
+
+  flake.modules.nixos.yuxqiu =
+    { pkgs, ... }:
+    {
+      my.username = "yuxqiu";
+      users.users.yuxqiu = {
+        isNormalUser = true;
+        description = "yuxqiu";
+        extraGroups = [
+          "wheel"
+          "input"
+          "docker"
+          "i2c"
+          "geminicommit"
+        ];
+        initialPassword = "changeme";
+        shell = pkgs.zsh;
+      };
+    };
 }

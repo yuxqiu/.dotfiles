@@ -11,4 +11,8 @@
 
       services.accounts-daemon.enable = true;
     };
+
+  flake.modules.nixos.accountservice = {
+    services.accounts-daemon.enable = true;
+  };
 }

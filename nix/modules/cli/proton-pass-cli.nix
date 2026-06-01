@@ -2,9 +2,19 @@
   flake.modules.homeManager.proton-pass-cli =
     { pkgs, ... }:
     let
+      wrapped-pass-cli = pkgs.symlinkJoin {
+        name = "pass-cli";
+        paths = [ pkgs.proton-pass-cli ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/pass-cli \
+            --set-default PROTON_PASS_LINUX_KEYRING dbus
+        '';
+      };
+
       pass-ssh = pkgs.writeShellApplication {
         name = "pass-ssh";
-        runtimeInputs = with pkgs; [ proton-pass-cli ];
+        runtimeInputs = [ wrapped-pass-cli ];
         text = ''
           set -euo pipefail
 
@@ -18,9 +28,9 @@
       };
     in
     {
-      home.packages = with pkgs; [
+      home.packages = [
         pass-ssh
-        proton-pass-cli
+        wrapped-pass-cli
       ];
     };
 }

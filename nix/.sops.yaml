@@ -1,9 +1,11 @@
 keys:
   - &yuxqiu age1mr92vpz2j6rplggpjm772lx2tsal7tja7pteyvkt5efvewc36atqlvm86r
   - &yuxqiu_laptop age1q9n0jkyt04747w62ydkwsm0cu0u9lxpm744j87azgsv9u70sgc0srm2h6r
+  - &id_ed25519 age1r4ah6vp87a8rlwp86upmlphtzunzxt0wzms69w0hrzffghvuueaqts0mmc
 creation_rules:
   - path_regex: profiles/secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *yuxqiu
           - *yuxqiu_laptop
+          - *id_ed25519

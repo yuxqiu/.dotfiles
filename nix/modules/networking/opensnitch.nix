@@ -96,4 +96,13 @@
         };
       };
     };
+
+  flake.modules.nixos.opensnitch = {
+    services.opensnitch = {
+      enable = true;
+      settings = {
+        Ebpf.ModulesPath = null;
+      };
+    };
+  };
 }

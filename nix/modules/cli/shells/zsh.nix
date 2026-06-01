@@ -82,18 +82,6 @@
             sudo $(which nix-env) --delete-generations old --profile /nix/var/nix/profiles/system-manager-profiles/system-manager
             gc-nix
           '';
-
-          # System Manager Update
-          sm = ''
-            if [ $# -eq 0 ]; then
-              echo "Usage: sm <flake-output-name>"
-              echo "Example: sm yuxqiu-birch"
-              return 1
-            fi
-            nix-update-git -u . --rules all
-            nix flake update
-            system-manager switch --flake ".#$1" --sudo && rm result
-          '';
         };
       };
 

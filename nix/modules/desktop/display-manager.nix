@@ -8,12 +8,27 @@
     {
       imports = [ (nixosModulesPath + "/services/display-managers/default.nix") ];
 
-      options.services.displayManager = {
-        environment = lib.mkOption { type = lib.types.raw; };
-        execCmd = lib.mkOption { type = lib.types.raw; };
-        preStart = lib.mkOption { type = lib.types.raw; };
+      options = {
+        services.displayManager.environment = lib.mkOption {
+          type = lib.types.raw;
+        };
+        services.displayManager.execCmd = lib.mkOption {
+          type = lib.types.str;
+        };
+        services.displayManager.preStart = lib.mkOption {
+          type = lib.types.str;
+          default = "";
+        };
       };
 
-      config.services.displayManager.enable = true;
+      config.services.displayManager = {
+        enable = true;
+      };
     };
+
+  flake.modules.nixos.display-manager = {
+    services.greetd = {
+      enable = true;
+    };
+  };
 }

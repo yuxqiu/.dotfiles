@@ -1,0 +1,94 @@
+{ inputs, config, ... }:
+
+{
+  flake.modules.nixos.base =
+    {
+      pkgs,
+      lib,
+      ...
+    }:
+    {
+      imports = [
+        inputs.home-manager.nixosModules.home-manager
+      ];
+
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "hm-bak";
+        users.yuxqiu =
+          { ... }:
+          {
+            programs.home-manager.enable = true;
+          };
+      };
+
+      nix = {
+        settings = {
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          trusted-users = [ "root" "@" ];
+
+          auto-optimise-store = true;
+        };
+
+        gc = {
+          automatic = true;
+          dates = "weekly";
+          options = "--delete-older-than 7d";
+        };
+
+        extraOptions = ''
+          accept-flake-config = true
+          http-connections = 50
+          keep-derivations = true
+          keep-outputs = true
+          min-free = ${toString (1024 * 1024 * 1024)}
+          max-free = ${toString (5 * 1024 * 1024 * 1024)}
+        '';
+      };
+
+      nixpkgs.config.allowUnfree = true;
+
+      boot.tmp.cleanOnBoot = true;
+
+      time.timeZone = "UTC";
+
+      i18n.defaultLocale = "en_US.UTF-8";
+
+      environment.systemPackages = with pkgs; [
+        bottom
+        dig
+        duf
+        fastfetch
+        jq
+        less
+        mtr
+        openssl
+        rsync
+        screen
+        sqlite
+        strace
+        tree
+        wget
+        which
+      ];
+
+      programs.git.enable = true;
+      programs.zsh.enable = true;
+
+      environment.etc."nixos/configuration.nix".text = ''
+        # This file intentionally left minimal.
+        # The real system config is managed by the flake at ~/.dotfiles/nix.
+        # To rebuild: nixos yuxqiu-cedrus
+        { ... }:
+        {
+          imports = [ ./hardware-configuration.nix ];
+        }
+      '';
+
+      system.stateVersion = lib.mkDefault "26.11";
+    };
+}
