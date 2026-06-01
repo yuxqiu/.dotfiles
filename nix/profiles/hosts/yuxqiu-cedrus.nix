@@ -34,6 +34,7 @@
 
         # security
         config.flake.modules.nixos.polkit
+        config.flake.modules.nixos.sysctl
 
         # services
         config.flake.modules.nixos.earlyoom
