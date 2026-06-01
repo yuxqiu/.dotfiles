@@ -61,6 +61,18 @@
             nix flake update
             home-manager switch --flake ".#$1"
           '';
+
+          # NixOS Rebuild Switch
+          nr = ''
+            if [ $# -eq 0 ]; then
+              echo "Usage: nr <flake-output-name>"
+              echo "Example: nr yuxqiu-cedrus"
+              return 1
+            fi
+            nix-update-git -u . --rules all
+            nix flake update
+            sudo nixos-rebuild switch --flake ".#$1"
+          '';
         }
         // lib.optionalAttrs pkgs.stdenv.isDarwin {
           jdks = "/usr/libexec/java_home -V";
@@ -75,12 +87,6 @@
           gc-dnf = ''
             sudo dnf autoremove
             sudo dnf clean all
-          '';
-        }
-        // lib.optionalAttrs (pkgs.stdenv.isLinux && config.my.system.isSystemManager) {
-          gc-sm = ''
-            sudo $(which nix-env) --delete-generations old --profile /nix/var/nix/profiles/system-manager-profiles/system-manager
-            gc-nix
           '';
         };
       };

@@ -12,32 +12,6 @@
     };
   };
 
-  flake.modules.systemManager.yuxqiu =
-    { pkgs, ... }:
-    {
-      my.username = "yuxqiu";
-      users.users.yuxqiu = {
-        isNormalUser = true;
-        description = "yuxqiu";
-        extraGroups = [
-          "yuxqiu"
-          "wheel"
-          "input"
-          "docker"
-          "i2c"
-          "geminicommit"
-        ];
-        initialPassword = "changeme";
-
-        # it's fine to ignore shell program check as /etc/shells
-        # management is done by self-hosted shells.nix
-        shell = pkgs.zsh;
-        ignoreShellProgramCheck = true;
-      };
-
-      users.groups.yuxqiu = { };
-    };
-
   flake.modules.nixos.yuxqiu =
     { pkgs, ... }:
     {

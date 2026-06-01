@@ -73,12 +73,6 @@ in
       };
     };
 
-  flake.modules.systemManager.hister = {
-    services.tailscale.serve.endpoints = {
-      "https:${hister_port}" = "http://${hister_address}:${hister_port}";
-    };
-  };
-
   flake.modules.nixos.hister = {
     services.tailscale.serve.endpoints = {
       "https:${hister_port}" = "http://${hister_address}:${hister_port}";

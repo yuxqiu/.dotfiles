@@ -27,28 +27,6 @@
       };
     };
 
-  flake.modules.systemManager.docker =
-    {
-      nixosModulesPath,
-      lib,
-      ...
-    }:
-    {
-      imports = [ (nixosModulesPath + "/virtualisation/docker.nix") ];
-      options.networking.proxy.envVars = lib.mkOption {
-        type = lib.types.attrs;
-        internal = true;
-        default = { };
-        description = ''
-          Environment variables used for the network proxy.
-        '';
-      };
-
-      config = {
-        virtualisation.docker.enable = true;
-      };
-    };
-
   flake.modules.nixos.docker = {
     virtualisation.docker.enable = true;
   };

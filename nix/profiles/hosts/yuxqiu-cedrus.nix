@@ -185,7 +185,6 @@
         config.flake.modules.homeManager.rust
 
         # hardware (home-manager)
-        config.flake.modules.homeManager.systemd
         config.flake.modules.homeManager.vpn
 
         # networking (home-manager)

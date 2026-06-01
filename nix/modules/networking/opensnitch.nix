@@ -71,32 +71,6 @@
       ];
     };
 
-  flake.modules.systemManager.opensnitch =
-    { nixosModulesPath, lib, ... }:
-    {
-      # Hack for importing opensnitch from nixos
-      options = {
-        security.auditd = lib.mkOption {
-          type = lib.types.raw;
-        };
-        networking.nftables.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-      };
-
-      imports = [ (nixosModulesPath + "/services/security/opensnitch.nix") ];
-
-      config = {
-        services.opensnitch = {
-          enable = true;
-          settings = {
-            Ebpf.ModulesPath = null;
-          };
-        };
-      };
-    };
-
   flake.modules.nixos.opensnitch = {
     services.opensnitch = {
       enable = true;

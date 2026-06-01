@@ -46,12 +46,6 @@
       ];
     };
 
-  flake.modules.systemManager.niri =
-    { pkgs, ... }:
-    {
-      services.displayManager.sessionPackages = [ pkgs.niri ];
-    };
-
   flake.modules.nixos.niri =
     { pkgs, ... }:
     {
