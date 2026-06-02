@@ -25,6 +25,7 @@
         config.flake.modules.nixos.tuned
         config.flake.modules.nixos.bluetooth
         config.flake.modules.nixos.fstrim
+        config.flake.modules.nixos.sensor
 
         # networking
         config.flake.modules.nixos.dns
@@ -135,6 +136,7 @@
         config.flake.modules.homeManager.zed
         config.flake.modules.homeManager.python
         config.flake.modules.homeManager.rust
+        config.flake.modules.homeManager.c
 
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch
