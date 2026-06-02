@@ -1,6 +1,7 @@
 {
   flake.modules.homeManager.zsh =
     {
+      config,
       lib,
       pkgs,
       ...
@@ -11,12 +12,8 @@
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
 
-        # possible upstream bug: missing autocompletes
-        profileExtra = lib.mkIf pkgs.stdenv.isLinux ''
-          fpath+=(/run/current-system/sw/share/zsh/site-functions /run/current-system/sw/share/zsh/vendor-completions)
-        '';
-
         initContent = ''
+          fpath+=("${config.home.profileDirectory}/share/zsh/site-functions" /run/current-system/sw/share/zsh/site-functions /run/current-system/sw/share/zsh/vendor-completions)
           ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
         '';
 
@@ -54,7 +51,6 @@
           '';
           gc-cache = "${pkgs.bleachbit}/bin/bleachbit";
 
-          # NixOS Rebuild Switch
           nr = ''
             if [ $# -eq 0 ]; then
               echo "Usage: nr <flake-output-name>"
@@ -73,12 +69,6 @@
             version=$1
             export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
             java -version
-          '';
-        }
-        // lib.optionalAttrs pkgs.stdenv.isLinux {
-          gc-dnf = ''
-            sudo dnf autoremove
-            sudo dnf clean all
           '';
         };
       };
