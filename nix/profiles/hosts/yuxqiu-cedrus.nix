@@ -26,6 +26,7 @@
         config.flake.modules.nixos.bluetooth
         config.flake.modules.nixos.fstrim
         config.flake.modules.nixos.sensor
+        config.flake.modules.nixos.bolt
 
         # networking
         config.flake.modules.nixos.dns
@@ -39,6 +40,7 @@
         # security
         config.flake.modules.nixos.polkit
         config.flake.modules.nixos.sysctl
+        config.flake.modules.nixos.coredump
         config.flake.modules.nixos.geoclue
 
         # services
@@ -52,6 +54,7 @@
         config.flake.modules.nixos.usbmuxd
         config.flake.modules.nixos.libinput
         config.flake.modules.nixos.fprintd
+        config.flake.modules.nixos.udev
 
         # virtualization
         config.flake.modules.nixos.docker
@@ -68,6 +71,7 @@
         # dev
         config.flake.modules.nixos.geminicli
         config.flake.modules.nixos.paseo
+        config.flake.modules.nixos.nix-ld
 
         # user
         config.flake.modules.nixos.yuxqiu

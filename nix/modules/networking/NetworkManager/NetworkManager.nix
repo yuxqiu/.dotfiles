@@ -16,5 +16,7 @@
         "ipv6.dhcp-send-hostname" = false;
       };
     };
+
+    systemd.services.NetworkManager-wait-online.enable = false;
   };
 }
