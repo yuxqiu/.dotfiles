@@ -256,7 +256,16 @@
         age.generateKey = true;
       };
 
-      services.tailscale.enable = true;
+      services.tailscale = {
+        enable = true;
+        authKeyFile = config.sops.secrets."tailscale_key_cedrus".path;
+      };
+
+      sops.secrets."tailscale_key_cedrus" = {
+        mode = "0400";
+        owner = config.users.users.root.name;
+        restartUnits = [ "tailscaled.service" ];
+      };
 
       programs.dank-material-shell.greeter.configHome = config.users.users.yuxqiu.home;
     };

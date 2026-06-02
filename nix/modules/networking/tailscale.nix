@@ -80,14 +80,7 @@
       };
 
       config = {
-        sops.secrets."tailscale_key" = {
-          mode = "0400";
-          owner = config.users.users.root.name;
-          restartUnits = [ "tailscaled.service" ];
-        };
-
         services.tailscale = {
-          authKeyFile = config.sops.secrets."tailscale_key".path;
           disableUpstreamLogging = true;
           extraUpFlags = [ "--ssh" ];
           extraDaemonFlags = [ "--no-logs-no-support" ];
