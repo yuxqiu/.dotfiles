@@ -1,7 +1,7 @@
 {
     "currentThemeName": "custom",
     "currentThemeCategory": "registry",
-    "customThemeFile": "/nix/store/0zw9akax4c2a1b79bl77n70yrjsbshl1-source/themes/catppuccin/theme.json",
+    "customThemeFile": "/nix/store/fs2ri87660vdi358m9y473izyhxnizi1-source/themes/catppuccin/theme.json",
     "registryThemeVariants": {
         "catppuccin": {
             "dark": {
@@ -222,7 +222,7 @@
     "lockDateFormat": "",
     "greeterRememberLastSession": true,
     "greeterRememberLastUser": true,
-    "greeterEnableFprint": false,
+    "greeterEnableFprint": true,
     "greeterEnableU2f": false,
     "greeterWallpaperPath": "",
     "greeterUse24HourClock": true,
@@ -554,41 +554,41 @@
             "removeWidgetPadding": false,
             "rightWidgets": [
                 {
-                    "id": "systemTray",
                     "enabled": true,
+                    "id": "systemTray",
                     "trayUseInlineExpansion": true
                 },
                 {
-                    "id": "notificationButton",
-                    "enabled": true
-                },
-                {
-                    "id": "battery",
-                    "enabled": true
-                },
-                {
-                    "id": "controlCenterButton",
                     "enabled": true,
-                    "showNetworkIcon": true,
-                    "showBluetoothIcon": true,
+                    "id": "notificationButton"
+                },
+                {
+                    "enabled": true,
+                    "id": "battery"
+                },
+                {
+                    "enabled": true,
+                    "id": "controlCenterButton",
                     "showAudioIcon": true,
                     "showAudioPercent": false,
-                    "showVpnIcon": false,
+                    "showBatteryIcon": false,
+                    "showBluetoothIcon": true,
                     "showBrightnessIcon": false,
                     "showBrightnessPercent": false,
                     "showMicIcon": true,
                     "showMicPercent": false,
-                    "showBatteryIcon": false,
+                    "showNetworkIcon": true,
                     "showPrinterIcon": false,
-                    "showScreenSharingIcon": true
+                    "showScreenSharingIcon": true,
+                    "showVpnIcon": false
                 },
                 {
-                    "id": "dankActions:variant_1762019076882",
-                    "enabled": true
+                    "enabled": true,
+                    "id": "dankActions:variant_1762019076882"
                 },
                 {
-                    "id": "dankPomodoroTimer",
-                    "enabled": true
+                    "enabled": true,
+                    "id": "dankPomodoroTimer"
                 }
             ],
             "screenPreferences": [
