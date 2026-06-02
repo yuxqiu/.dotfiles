@@ -27,7 +27,6 @@
 
   flake.modules.nixos.vpn =
     {
-      lib,
       pkgs,
       config,
       inputs,
