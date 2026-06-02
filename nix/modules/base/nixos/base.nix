@@ -51,8 +51,6 @@
 
       boot.tmp.cleanOnBoot = true;
 
-      time.timeZone = "UTC";
-
       i18n.defaultLocale = "en_US.UTF-8";
 
       environment.defaultPackages = lib.mkForce [ ];
