@@ -1,4 +1,3 @@
-{ ... }:
 {
   flake.modules.homeManager.kanshi = {
     services.kanshi = {
@@ -9,7 +8,7 @@
           profile.name = "home";
           profile.outputs = [
             {
-              criteria = "Dell Inc. DELL U2723QE";
+              criteria = "Dell Inc. DELL S2725QS 95HL364";
               position = "0,0";
               scale = 2.0;
             }
@@ -25,7 +24,7 @@
             {
               criteria = "eDP-1";
               position = "0,0";
-              scale = 1.5;
+              scale = 1.75;
             }
           ];
         }
