@@ -189,6 +189,7 @@
 
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch
+        config.flake.modules.homeManager.vpn
 
         # nix
         config.flake.modules.homeManager.nix
@@ -196,9 +197,6 @@
         config.flake.modules.homeManager.nix-update
         config.flake.modules.homeManager.hydra-check
         config.flake.modules.homeManager.nixpkgs-track
-
-        # services (home-manager)
-        config.flake.modules.homeManager.activitywatch
 
         # sound
         config.flake.modules.homeManager.lowfi
@@ -217,7 +215,6 @@
   };
 
   flake.modules.generic.yuxqiu-cedrus = {
-    my.sops.enable = true;
     my = {
       username = "yuxqiu";
       networking = {
@@ -243,9 +240,9 @@
   };
 
   flake.modules.nixos.yuxqiu-cedrus =
-    { config, lib, ... }:
+    { config, ... }:
     {
-      sops = lib.mkIf config.my.sops.enable {
+      sops = {
         defaultSopsFile = ../secrets/yuxqiu.yaml;
         age.sshKeyPaths = [ "/etc/ssh/id_ed25519" ];
         age.generateKey = true;

@@ -69,7 +69,7 @@
         };
       };
 
-      config = lib.mkIf config.my.sops.enable {
+      config = {
         sops.secrets."rclone.conf" = {
           mode = "0400";
           owner = config.users.users.root.name;

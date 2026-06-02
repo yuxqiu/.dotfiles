@@ -52,6 +52,7 @@
               saveToDisk = false;
               showNotify = false;
               showPointer = false;
+              videoCustomPath = "~/Downloads";
             };
           };
         };

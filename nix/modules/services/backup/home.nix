@@ -6,7 +6,7 @@
       ...
     }:
     {
-      config = lib.mkIf config.my.sops.enable {
+      config = {
         sops.secrets."autorestic.yaml" = {
           mode = "0400";
           owner = config.users.users.root.name;

@@ -1,0 +1,216 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+  keymap {
+    compatible = "zmk,keymap";
+
+    0 {
+      bindings = <
+        &Key Press 458809 
+        &Key Press 458782 
+        &Key Press 458783 
+        &Key Press 458784 
+        &Key Press 458785 
+        &Key Press 458786 
+        &None             
+        &Key Press 458787 
+        &Key Press 458788 
+        &Key Press 458789 
+        &Key Press 458790 
+        &Key Press 458791 
+        &Key Press 458794 
+        &Key Press 458795 
+        &Key Press 458772 
+        &Key Press 458778 
+        &Key Press 458760 
+        &Key Press 458773 
+        &Key Press 458775 
+        &None             
+        &Key Press 458780 
+        &Key Press 458776 
+        &Key Press 458764 
+        &Key Press 458770 
+        &Key Press 458771 
+        &Key Press 458801 
+        &Key Press 458793 
+        &Key Press 458756 
+        &Key Press 458774 
+        &Key Press 458759 
+        &Key Press 458761 
+        &Key Press 458762 
+        &None             
+        &Key Press 458763 
+        &Key Press 458765 
+        &Key Press 458766 
+        &Key Press 458767 
+        &Key Press 458803 
+        &Key Press 458804 
+        &Key Press 458977 
+        &Key Press 458781 
+        &Key Press 458779 
+        &Key Press 458758 
+        &Key Press 458777 
+        &Key Press 458757 
+        &None             
+        &Key Press 458769 
+        &Key Press 458768 
+        &Key Press 458806 
+        &Key Press 458807 
+        &Key Press 458808 
+        &Key Press 458981 
+        &None             
+        &Key Press 458982 
+        &Key Press 458978 
+        &Key Press 458976 
+        &Momentary Layer 1
+        &Momentary Layer 2
+        &None             
+        &Key Press 458796 
+        &Key Press 458792 
+        &Key Press 458978 
+        &None             
+        &Key Press 458828 
+      >;
+    };
+
+    1 {
+      bindings = <
+        &Key Press 458805  
+        &Key Press 458810  
+        &Key Press 458811  
+        &Key Press 458812  
+        &Key Press 458813  
+        &Key Press 458814  
+        &None              
+        &Key Press 458815  
+        &Key Press 458816  
+        &Key Press 458817  
+        &Key Press 458818  
+        &Key Press 458819  
+        &Key Press 34013229
+        &Key Press 458805  
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &None              
+        &Key Press 458820  
+        &Key Press 458821  
+        &Transparent       
+        &Key Press 458797  
+        &Key Press 458797  
+        &Key Press 458798  
+        &Transparent       
+        &Transparent       
+        &Key Press 17235990
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &None              
+        &Key Press 458832  
+        &Key Press 458833  
+        &Key Press 458834  
+        &Key Press 458831  
+        &Key Press 34013231
+        &Key Press 34013232
+        &Transparent       
+        &Underglow 2       
+        &Underglow 1       
+        &Underglow 11      
+        &Underglow 12      
+        &Underglow 9       
+        &None              
+        &Underglow 7       
+        &Key Press 17235984
+        &Transparent       
+        &Key Press 17236023
+        &Key Press 458799  
+        &Key Press 458800  
+        &None              
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &None              
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+      >;
+    };
+
+    layer_2 {
+      bindings = <
+        &Key Press 34013237
+        &Key Press 786544  
+        &Key Press 786543  
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &None              
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Key Press 458879  
+        &Transparent       
+        &Transparent       
+        &Bluetooth         
+        &Bluetooth 4       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &None              
+        &Key Press 458880  
+        &Key Press 458881  
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Output Selection 1
+        &Output Selection 2
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &None              
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Reset             
+        &Bluetooth 1       
+        &Bootloader        
+        &Transparent       
+        &Transparent       
+        &None              
+        &Transparent       
+        &Transparent       
+        &Reset             
+        &Transparent       
+        &Bootloader        
+        &Transparent       
+        &None              
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &None              
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+        &Transparent       
+      >;
+    };
+
+  };
+};

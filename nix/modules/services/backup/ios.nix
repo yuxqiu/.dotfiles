@@ -59,7 +59,7 @@
       };
     in
     {
-      config = lib.mkIf config.my.sops.enable {
+      config = {
         environment.systemPackages = with pkgs; [
           autoresticIosBin
           fuse
