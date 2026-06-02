@@ -232,40 +232,19 @@
 
     in
     {
-      users.groups.xray = { };
-      users.users.xray = {
-        isSystemUser = true;
-        group = "xray";
-        home = "/var/lib/xray";
-        createHome = true;
-        description = "Xray daemon user";
-      };
-
       sops.secrets."xray.json" = {
-        mode = "0400";
-        owner = config.users.users.xray.name;
-        group = config.users.users.xray.group;
         restartUnits = [ "xray.service" ];
       };
 
-      systemd.services.xray = {
-        description = "Xray Proxy Server";
+      services.xray = {
         enable = true;
+        settingsFile = config.sops.secrets."xray.json".path;
+      };
 
+      systemd.services.xray = {
         after = [ "network-online.target" ];
         wants = [ "network-online.target" ];
-
-        unitConfig = {
-          ConditionPathExists = config.sops.secrets."xray.json".path;
-        };
-
-        serviceConfig = {
-          Type = "exec";
-          ExecStart = "${pkgs.xray}/bin/xray run -c ${config.sops.secrets."xray.json".path}";
-          User = "xray";
-          Group = "xray";
-          DynamicUser = false;
-        };
+        unitConfig.ConditionPathExists = config.sops.secrets."xray.json".path;
       };
 
       networking.firewall.trustedInterfaces = [ "tun+" ];

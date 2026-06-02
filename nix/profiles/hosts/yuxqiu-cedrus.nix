@@ -167,8 +167,8 @@
     my = {
       username = "yuxqiu";
       networking = {
-        bindAddress = "100.108.78.86";
-        publicHost = "pc.taile30f2a.ts.net";
+        bindAddress = "100.99.246.87";
+        publicHost = "cedrus.taile30f2a.ts.net";
       };
     };
   };

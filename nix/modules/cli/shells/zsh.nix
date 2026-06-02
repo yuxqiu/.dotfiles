@@ -49,6 +49,10 @@
             home-manager expire-generations now
             gc-nix
           '';
+          gc-nixos = ''
+            sudo nix-env --delete-generations now -p /nix/var/nix/profiles/system
+            gc-nix
+          '';
           gc-cache = "${pkgs.bleachbit}/bin/bleachbit";
 
           nr = ''
