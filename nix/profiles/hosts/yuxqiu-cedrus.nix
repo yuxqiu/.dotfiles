@@ -67,6 +67,7 @@
 
         # dev
         config.flake.modules.nixos.geminicli
+        config.flake.modules.nixos.paseo
 
         # user
         config.flake.modules.nixos.yuxqiu

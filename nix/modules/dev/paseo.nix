@@ -3,7 +3,6 @@
   flake.modules.nixos.paseo =
     {
       config,
-      lib,
       pkgs,
       ...
     }:
@@ -31,8 +30,12 @@
         hostnames = [ "${config.my.networking.publicHost}" ];
       };
 
-      services.tailscale.serve.endpoints = lib.mkIf config.services.paseo.enable {
-        "tcp:6767" = "tcp://127.0.0.1:6767";
+      services.tailscale.serve = {
+        services.paseo = {
+          endpoints = {
+            "tcp:6767" = "tcp://127.0.0.1:6767";
+          };
+        };
       };
     };
 }
