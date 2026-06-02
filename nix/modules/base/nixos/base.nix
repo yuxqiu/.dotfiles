@@ -55,6 +55,8 @@
 
       i18n.defaultLocale = "en_US.UTF-8";
 
+      environment.defaultPackages = lib.mkForce [ ];
+
       environment.systemPackages = with pkgs; [
         bottom
         dig

@@ -16,6 +16,7 @@
 
         # base
         config.flake.modules.nixos.base
+        config.flake.modules.nixos.console
 
         # hardware
         config.flake.modules.nixos.i2c
@@ -23,11 +24,13 @@
         config.flake.modules.nixos.graphics
         config.flake.modules.nixos.tuned
         config.flake.modules.nixos.bluetooth
+        config.flake.modules.nixos.fstrim
 
         # networking
         config.flake.modules.nixos.dns
         config.flake.modules.nixos.networking
         config.flake.modules.nixos.NetworkManager
+        config.flake.modules.nixos.firewall
         config.flake.modules.nixos.opensnitch
         config.flake.modules.nixos.tailscale
         config.flake.modules.nixos.vpn
@@ -41,6 +44,7 @@
         config.flake.modules.nixos.time
         config.flake.modules.nixos.earlyoom
         config.flake.modules.nixos.journald
+        config.flake.modules.nixos.logind
         config.flake.modules.nixos.accountservice
         config.flake.modules.nixos.udisk2
         config.flake.modules.nixos.upower
@@ -53,6 +57,7 @@
 
         # desktop
         config.flake.modules.nixos.display-manager
+        config.flake.modules.nixos.pipewire
         config.flake.modules.nixos.dms
         config.flake.modules.nixos.hister
         config.flake.modules.nixos.niri
