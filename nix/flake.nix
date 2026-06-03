@@ -85,7 +85,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hister = {
-      url = "github:asciimoo/hister?ref=v0.14.0";
+      url = "github:asciimoo/hister?ref=v0.15.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };

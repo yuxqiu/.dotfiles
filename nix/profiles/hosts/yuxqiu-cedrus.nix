@@ -42,6 +42,7 @@
         config.flake.modules.nixos.sysctl
         config.flake.modules.nixos.coredump
         config.flake.modules.nixos.geoclue
+        config.flake.modules.nixos.usbguard
 
         # services
         config.flake.modules.nixos.time
@@ -85,6 +86,9 @@
         { networking.hostName = "pc"; }
       ];
       homeManagerModules = [
+        config.flake.modules.generic.base
+        config.flake.modules.generic.yuxqiu-cedrus
+
         # base
         config.flake.modules.homeManager.base
         config.flake.modules.homeManager.base-linux
@@ -146,6 +150,7 @@
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch
         config.flake.modules.homeManager.vpn
+        config.flake.modules.homeManager.usbguard
 
         # nix
         config.flake.modules.homeManager.nix
@@ -172,7 +177,6 @@
 
   flake.modules.generic.yuxqiu-cedrus = {
     my = {
-      username = "yuxqiu";
       networking = {
         bindAddress = "100.99.246.87";
         publicHost = "cedrus.taile30f2a.ts.net";
@@ -261,6 +265,19 @@
         defaultSopsFile = ../secrets/yuxqiu.yaml;
         age.sshKeyPaths = [ "/etc/ssh/id_ed25519" ];
         age.generateKey = true;
+      };
+
+      # Host-specific USB device whitelist
+      # Blocks all USB devices by default; only listed devices are allowed.
+      # Run `lsusb` to find device IDs, then add them here.
+      services.usbguard = {
+        enable = true;
+        IPCAllowedUsers = [ "yuxqiu" ];
+        rules = ''
+          allow with-interface equals { 09:00:00 }
+          allow id 27c6:659a    # Goodix fingerprint sensor
+          allow id 04f2:b875    # Chicony integrated camera
+        '';
       };
 
       services.tailscale = {

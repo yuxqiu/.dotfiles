@@ -25,7 +25,7 @@
           printf '\033[36m└─────────────────────────────────────────────\033[0m\n'
           printf '\n'
 
-          opencode run "$question"
+          opencode run --model opencode/mimo-v2.5-free "$question"
 
           printf '\n'
         '';
@@ -52,7 +52,7 @@
           printf '\033[36m│ Generating command for:\033[0m \033[33m%s\033[0m\n' "$desc"
           printf '\n'
 
-          result=$(opencode run "Output exactly one shell command for: $desc. No explanation, no markdown, no backticks. Just the raw command on a single line." 2>/dev/null)
+          result=$(opencode run --model opencode/mimo-v2.5-free "Output exactly one shell command for: $desc. No explanation, no markdown, no backticks. Just the raw command on a single line." 2>/dev/null)
 
           if [[ $? -ne 0 || -z "$result" ]]; then
             echo "✗ Failed." >&2
