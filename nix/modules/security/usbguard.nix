@@ -2,8 +2,11 @@
   flake.modules.nixos.usbguard = {
     services.usbguard = {
       implicitPolicyTarget = "block";
+      IPCAllowedGroups = [ "usbguard" ];
       dbus.enable = true;
     };
+
+    users.groups.usbguard = { };
   };
 
   flake.modules.homeManager.usbguard =
@@ -17,7 +20,7 @@
           After = [ "graphical-session.target" ];
         };
         Service = {
-          ExecStart = "${pkgs.usbguard-notifier}/bin/usbguard-notifier";
+          ExecStart = "${pkgs.usbguard-notifier}/bin/usbguard-notifier -w";
           Restart = "on-failure";
           RestartSec = 5;
         };
