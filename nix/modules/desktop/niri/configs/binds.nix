@@ -104,6 +104,14 @@
       };
 
       "Mod+Shift+E".quit = [ ];
+
+      "Mod+Shift+M".spawn = [
+        "niri"
+        "msg"
+        "output"
+        "eDP-1"
+        "on"
+      ];
     };
   };
 }
