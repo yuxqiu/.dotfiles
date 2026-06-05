@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780582562,
-        "narHash": "sha256-zvIxEaGgFTbhAht8iVRH4eZdcbBz71IF2prPtG471Ao=",
+        "lastModified": 1780670014,
+        "narHash": "sha256-8fxcEcRx/PX4RvuXNeQZSc7IeLrtfPjNCeg2jzhhHRo=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "4181343ef3199f06d635cb26c440c44c34af206c",
+        "rev": "bcb5617194d9eddc68d663dd13ede9b1fc54c889",
         "type": "github"
       },
       "original": {
@@ -203,16 +203,31 @@
         ]
       },
       "locked": {
-        "lastModified": 1780541185,
-        "narHash": "sha256-H77gEorGdvt62Exh5L4Nvu4sxV9KhkzJAvFLdA5kYVw=",
+        "lastModified": 1780626802,
+        "narHash": "sha256-kzdnpNc1dX+7myLb0nUo2e6Ojff/uQnjHQvGVxGG/4U=",
         "owner": "AvengeMedia",
         "repo": "dms-plugin-registry",
-        "rev": "46fb030c72c6891682d02dd3553e50bed237674c",
+        "rev": "fdded328772e526b2a5d31c52a2a2e15b805d7af",
         "type": "github"
       },
       "original": {
         "owner": "AvengeMedia",
         "repo": "dms-plugin-registry",
+        "type": "github"
+      }
+    },
+    "fingerprint-lid-guard": {
+      "locked": {
+        "lastModified": 1780550716,
+        "narHash": "sha256-qmcelndLiUCyBnoJyGnoRiG44/moWcrOqt6q7IOynOE=",
+        "owner": "TimP4w",
+        "repo": "nix-fingerprint-lid-guard",
+        "rev": "c1dd32ae32a932d7aa8cecc6869ae83aefdbd133",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TimP4w",
+        "repo": "nix-fingerprint-lid-guard",
         "type": "github"
       }
     },
@@ -593,11 +608,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1780100188,
-        "narHash": "sha256-hymi6vwcrO6cohO8fcK+A3+kx4PkqmApYty/5BTa6Ec=",
+        "lastModified": 1780647854,
+        "narHash": "sha256-UihHR5aXPButsiQUvvnmvKxZWkRe+52nrVLd9BztXrE=",
         "ref": "refs/heads/main",
-        "rev": "5e683782020f3f23e51995235d71ab0b8152272a",
-        "revCount": 126,
+        "rev": "4aaba8693d0fe8cb785f6b0b4497eb63cb2cf590",
+        "revCount": 130,
         "type": "git",
         "url": "https://codeberg.org/BANanaD3V/niri-nix"
       },
@@ -686,11 +701,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780548112,
-        "narHash": "sha256-FbvLaFxLd+Sxh/HdNsGQAV02ux45uTUlK+AXhlbn8FY=",
+        "lastModified": 1780632924,
+        "narHash": "sha256-daDXLSRlgmWt+tiX85SQ5L2l04WgCgNhoezgWQpb8SM=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "71c0866249f0ae2f97ff6f0894057e232acc5dbb",
+        "rev": "639982843f1b69ea3f5e3394177d2b09d868e7d3",
         "type": "github"
       },
       "original": {
@@ -792,11 +807,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780544124,
-        "narHash": "sha256-z4z3KuWgJi8qJGs1ppWumOyE9mYdPCPEp+NZe5PozJg=",
+        "lastModified": 1780628256,
+        "narHash": "sha256-1uI8BcC77XI/ddYzlwfRvHaKnKMGWRLVyG+i8rHLzYQ=",
         "owner": "yuxqiu",
         "repo": "omp-nix",
-        "rev": "174ff17f9647fd00224656d850f4bcfe6f29f187",
+        "rev": "399a08fc072466f3cd26ac0d799646ff66bb3390",
         "type": "github"
       },
       "original": {
@@ -870,6 +885,7 @@
         "danksearch": "danksearch",
         "dms": "dms",
         "dms-plugin-registry": "dms-plugin-registry",
+        "fingerprint-lid-guard": "fingerprint-lid-guard",
         "flake-parts": "flake-parts",
         "handy": "handy",
         "hister": "hister",

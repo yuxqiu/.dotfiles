@@ -157,7 +157,7 @@
         config.flake.modules.homeManager.nix-index
         config.flake.modules.homeManager.nix-update
         config.flake.modules.homeManager.hydra-check
-        config.flake.modules.homeManager.nixpkgs-track
+        config.flake.modules.homeManager.nh
 
         # sound
         config.flake.modules.homeManager.lowfi
@@ -286,7 +286,6 @@
         enable = true;
         authKeyFile = config.sops.secrets."tailscale_key_cedrus".path;
       };
-
       sops.secrets."tailscale_key_cedrus" = {
         mode = "0400";
         owner = config.users.users.root.name;
@@ -294,5 +293,10 @@
       };
 
       programs.dank-material-shell.greeter.configHome = config.users.users.yuxqiu.home;
+
+      services.fprintd.lid-guard = {
+        enable = true;
+        lidPath = "LID0";
+      };
     };
 }

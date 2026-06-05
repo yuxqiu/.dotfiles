@@ -62,8 +62,7 @@
               return 1
             fi
             nix-update-git -u . --rules all
-            nix flake update
-            sudo nixos-rebuild switch --flake ".#$1"
+            nh os switch . -H "$1" -u
           '';
         }
         // lib.optionalAttrs pkgs.stdenv.isDarwin {

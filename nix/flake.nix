@@ -80,6 +80,10 @@
       url = "github:cjpais/Handy?ref=v0.8.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fingerprint-lid-guard = {
+      url = "github:TimP4w/nix-fingerprint-lid-guard";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quicksnip = {
       url = "github:yuxqiu/quicksnip-nix";
       inputs.nixpkgs.follows = "nixpkgs";
