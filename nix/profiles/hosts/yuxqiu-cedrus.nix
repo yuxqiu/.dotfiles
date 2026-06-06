@@ -68,6 +68,7 @@
         config.flake.modules.nixos.niri
         config.flake.modules.nixos.xdg
         config.flake.modules.nixos.xremap
+        config.flake.modules.nixos.localsend
 
         # dev
         config.flake.modules.nixos.geminicommit
@@ -120,7 +121,6 @@
         config.flake.modules.homeManager.idescriptor
         config.flake.modules.homeManager.kanshi
         config.flake.modules.homeManager.llama
-        config.flake.modules.homeManager.localsend
         config.flake.modules.homeManager.loupe
         config.flake.modules.homeManager.mime-apps
         config.flake.modules.homeManager.niri
