@@ -37,6 +37,7 @@
         tinymist
         tree-sitter
         typos-lsp
+        typst
         uv
         vscode-langservers-extracted
         yaml-language-server

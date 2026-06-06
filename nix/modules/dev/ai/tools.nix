@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.geminicli =
+  flake.modules.nixos.geminicommit =
     {
       config,
       pkgs,

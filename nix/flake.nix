@@ -82,7 +82,6 @@
     };
     fingerprint-lid-guard = {
       url = "github:TimP4w/nix-fingerprint-lid-guard";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     quicksnip = {
       url = "github:yuxqiu/quicksnip-nix";

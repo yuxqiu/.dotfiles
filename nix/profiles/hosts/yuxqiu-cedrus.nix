@@ -70,7 +70,7 @@
         config.flake.modules.nixos.xremap
 
         # dev
-        config.flake.modules.nixos.geminicli
+        config.flake.modules.nixos.geminicommit
         config.flake.modules.nixos.paseo
         config.flake.modules.nixos.nix-ld
 

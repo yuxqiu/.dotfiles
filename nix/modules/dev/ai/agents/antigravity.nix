@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.ai = {
-    programs.gemini-cli = {
+    programs.antigravity-cli = {
       enable = true;
       enableMcpIntegration = true;
       settings = {
