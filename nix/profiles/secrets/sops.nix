@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
