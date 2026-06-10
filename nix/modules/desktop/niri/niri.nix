@@ -29,10 +29,7 @@
       ];
       services.gnome-keyring.enable = true;
 
-      wayland.windowManager.niri = {
-        enable = true;
-        package = pkgs.niri;
-      };
+      wayland.windowManager.niri.enable = true;
 
       wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
         {

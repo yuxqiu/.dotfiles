@@ -45,15 +45,13 @@
               "!ssh-auth"
               "!gpg-agent"
             ];
-            # # Deny network access by default
+            # Deny network access by default
             Context.shared = [
               "!network"
               "!ipc"
             ];
 
             Context.filesystems = [
-              "~/.themes:ro" # Read-only access to ~/.themes
-              "~/.icons:ro" # Read-only access to ~/.icons
               # Read-only access to nix store, which stores resources like cursors
               # https://wiki.nixos.org/wiki/Cursor_Themes
               "/nix/store:ro"

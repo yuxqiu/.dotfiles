@@ -122,7 +122,6 @@
         config.flake.modules.homeManager.kanshi
         config.flake.modules.homeManager.llama
         config.flake.modules.homeManager.loupe
-        config.flake.modules.homeManager.mime-apps
         config.flake.modules.homeManager.niri
         config.flake.modules.homeManager.obs
         config.flake.modules.homeManager.pointer

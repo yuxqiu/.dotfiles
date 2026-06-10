@@ -8,7 +8,7 @@
     }:
     let
       upstreamPkg = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      correctHash = "sha256-ipuV4cM3LUqMQ39LyB4X3ezz5UgxyHGEhpBOq7en2Jw=";
+      correctHash = "sha256-bwnHD23gtJnc8UgGDl7t3efmBTnGhTRNGWo5R3gV49g=";
       fixedNpmDeps = upstreamPkg.npmDeps.overrideAttrs {
         outputHash = correctHash;
       };

@@ -23,7 +23,7 @@
 
         # PDF tools
         poppler-utils
-        # ocrmypdf
+        ocrmypdf
         tesseract
       ];
     };

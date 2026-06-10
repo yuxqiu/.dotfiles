@@ -4,7 +4,6 @@
     {
       programs.ssh = {
         enable = true;
-        package = pkgs.openssh;
 
         # base config
         settings."*" = {
