@@ -18,6 +18,7 @@
       };
 
       subtask2 = pkgs.callPackage (inputs.self + /packages/subtask2.nix) { };
+      handoff = pkgs.callPackage (inputs.self + /packages/opencode-handoff.nix) { };
     in
     {
       # Other Interesting Plugins
@@ -46,5 +47,10 @@
       # https://opencode.ai/docs/plugins/#from-local-files
       home.file.".config/opencode/plugins/subtask2.js".source =
         "${subtask2}/lib/subtask2/index.js";
+
+      # handoff plugin - installed as a local opencode plugin
+      # https://github.com/joshuadavidthomas/opencode-handoff
+      home.file.".config/opencode/plugins/handoff.js".source =
+        "${handoff}/lib/opencode-handoff/plugin.js";
     };
 }
