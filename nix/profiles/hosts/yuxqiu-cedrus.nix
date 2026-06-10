@@ -72,7 +72,6 @@
 
         # dev
         config.flake.modules.nixos.geminicommit
-        config.flake.modules.nixos.paseo
         config.flake.modules.nixos.nix-ld
 
         # user

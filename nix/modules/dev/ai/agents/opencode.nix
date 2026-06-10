@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.ai =
     { pkgs, config, ... }:
@@ -15,6 +16,8 @@
             --set OPENCODE_EXPERIMENTAL_WORKSPACES "true"
         '';
       };
+
+      subtask2 = pkgs.callPackage (inputs.self + /packages/subtask2.nix) { };
     in
     {
       # Other Interesting Plugins
@@ -37,5 +40,11 @@
         };
         extraPackages = config.my.dev.lsp;
       };
+
+      # subtask2 plugin - installed as a local opencode plugin
+      # https://github.com/spoons-and-mirrors/subtask2
+      # https://opencode.ai/docs/plugins/#from-local-files
+      home.file.".config/opencode/plugins/subtask2.js".source =
+        "${subtask2}/lib/subtask2/index.js";
     };
 }
