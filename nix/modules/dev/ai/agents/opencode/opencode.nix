@@ -45,12 +45,15 @@
       # subtask2 plugin - installed as a local opencode plugin
       # https://github.com/spoons-and-mirrors/subtask2
       # https://opencode.ai/docs/plugins/#from-local-files
-      home.file.".config/opencode/plugins/subtask2.js".source =
-        "${subtask2}/lib/subtask2/index.js";
+      home.file.".config/opencode/plugins/subtask2.js".source = "${subtask2}/lib/subtask2/index.js";
 
       # handoff plugin - installed as a local opencode plugin
       # https://github.com/joshuadavidthomas/opencode-handoff
       home.file.".config/opencode/plugins/handoff.js".source =
         "${handoff}/lib/opencode-handoff/plugin.js";
+
+      # /s2 command plugin - local .ts file, loaded directly by opencode/bun
+      home.file.".config/opencode/plugins/subtask2-commands.ts".source =
+        ./extensions/subtask2-commands.ts;
     };
 }
