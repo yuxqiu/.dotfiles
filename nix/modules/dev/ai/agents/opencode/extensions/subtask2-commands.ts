@@ -283,13 +283,7 @@ export const Subtask2CommandsPlugin: Plugin = async (ctx) => {
       const config = parseS2(args)
 
       if ("error" in config) {
-        try {
-          await ctx.client.session.command({
-            path: { id: input.sessionID },
-            body: { command: "subtask", arguments: `error: ${config.error}` },
-          })
-        } catch {}
-        return { ...output, abort: true }
+        throw new Error(`/s2 error: ${config.error}`)
       }
 
       const command = buildInlineSyntax(config as S2Config)
@@ -302,7 +296,7 @@ export const Subtask2CommandsPlugin: Plugin = async (ctx) => {
         })
       } catch {}
 
-      return { ...output, abort: true }
+      throw new Error(`/s2 → ${command}`)
     },
   }
 }
