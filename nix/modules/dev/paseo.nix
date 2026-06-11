@@ -3,25 +3,13 @@
   flake.modules.nixos.paseo =
     {
       config,
-      pkgs,
       ...
     }:
-    let
-      upstreamPkg = inputs.paseo.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      correctHash = "sha256-bwnHD23gtJnc8UgGDl7t3efmBTnGhTRNGWo5R3gV49g=";
-      fixedNpmDeps = upstreamPkg.npmDeps.overrideAttrs {
-        outputHash = correctHash;
-      };
-      paseoPkg = upstreamPkg.overrideAttrs {
-        npmDeps = fixedNpmDeps;
-      };
-    in
     {
       imports = [ inputs.paseo.nixosModules.default ];
 
       services.paseo = {
         enable = true;
-        package = paseoPkg;
         user = config.my.username;
         group = "users";
         port = 6767;

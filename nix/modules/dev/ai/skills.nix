@@ -16,8 +16,8 @@
             path = pkgs.fetchFromGitHub {
               owner = "addyosmani";
               repo = "agent-skills";
-              rev = "5e262b20e0cd88dba39e558f42f5c0b6d766d4b4"; # follow:branch main
-              hash = "sha256-feoI3fHea9WUzaf1hb382MymVNHy3+aFEUnjZxOL0rQ=";
+              rev = "d187883b7d761265309cdcc0f202cc76b4b3fb06"; # follow:branch main
+              hash = "sha256-UzR8TZiHLTUlCn7zrEWY6yGIMhMghQiqaGrZ10pnXsI=";
             };
             subdir = "skills";
           };

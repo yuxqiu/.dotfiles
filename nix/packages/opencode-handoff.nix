@@ -19,7 +19,10 @@ let
     version = "0.5.0";
     inherit src;
 
-    nativeBuildInputs = [ bun cacert ];
+    nativeBuildInputs = [
+      bun
+      cacert
+    ];
 
     dontBuild = true;
 
