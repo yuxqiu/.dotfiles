@@ -30,7 +30,6 @@
                     },
                   },
                 },
-                dim = { enabled = true },
                 git = { enabled = true },
                 gitbrowse = { enabled = true },
                 image = { enabled = true },
@@ -50,16 +49,7 @@
                 zen = { enabled = true },
               })
 
-              Snacks.dim.enable()
-
               vim.keymap.set("n", "<leader>uz", function() Snacks.zen.zen() end, { desc = "Toggle Zen mode" })
-              vim.keymap.set("n", "<leader>uD", function()
-                if Snacks.dim.enabled then
-                  Snacks.dim.disable()
-                else
-                  Snacks.dim.enable()
-                end
-              end, { desc = "Toggle Dim" })
               vim.keymap.set("n", "<leader>gb", function() Snacks.gitbrowse.open() end, { desc = "Git browse" })
               vim.keymap.set("n", "<leader>gl", function() Snacks.git.blame_line() end, { desc = "Git blame line" })
 

@@ -55,6 +55,15 @@
               videoCustomPath = "~/Downloads";
             };
           };
+          takeABreak = {
+            enable = true;
+            settings = {
+              shortBreakInterval = 60;
+              soundEnabled = false;
+              preWarningOpacity = 80;
+              overlayOpacity = 80;
+            };
+          };
         };
 
         settings = builtins.fromJSON (builtins.readFile ./configs/settings.json) // {
@@ -63,7 +72,6 @@
       };
 
       home.packages = with pkgs; [
-        gpu-screen-recorder
         slurp
         grim
         satty

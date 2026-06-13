@@ -69,6 +69,7 @@
         config.flake.modules.nixos.xdg
         config.flake.modules.nixos.xremap
         config.flake.modules.nixos.localsend
+        config.flake.modules.nixos.gpu-screen-recorder
 
         # dev
         config.flake.modules.nixos.geminicommit
