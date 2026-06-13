@@ -18,6 +18,7 @@
       };
 
       subtask2 = pkgs.callPackage (inputs.self + /packages/subtask2.nix) { };
+      btwOpencode = pkgs.callPackage (inputs.self + /packages/btw-opencode.nix) { };
       handoff = pkgs.callPackage (inputs.self + /packages/opencode-handoff.nix) { };
     in
     {
@@ -51,6 +52,11 @@
       # https://github.com/joshuadavidthomas/opencode-handoff
       home.file.".config/opencode/plugins/handoff.js".source =
         "${handoff}/lib/opencode-handoff/plugin.js";
+
+      # btw-opencode plugin - fork sessions and run prompts in background
+      # https://github.com/aptdnfapt/btw-opencode
+      home.file.".config/opencode/plugins/btw-opencode.js".source =
+        "${btwOpencode}/lib/btw-opencode/btw-opencode.js";
 
       # /s2 command plugin - local .ts file, loaded directly by opencode/bun
       home.file.".config/opencode/plugins/subtask2-commands.ts".source =

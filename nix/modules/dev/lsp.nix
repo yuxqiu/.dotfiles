@@ -38,6 +38,7 @@
         tree-sitter
         typos-lsp
         typst
+        typescript-language-server
         uv
         vscode-langservers-extracted
         yaml-language-server

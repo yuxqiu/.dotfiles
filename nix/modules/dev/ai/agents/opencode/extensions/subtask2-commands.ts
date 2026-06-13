@@ -19,7 +19,6 @@
  *
  *   /s2
  *   loop
- *   - max: 10
  *   - until: tests pass
  *   - Fix the failing tests
  *   return
@@ -34,7 +33,6 @@
  *   return
  *   - /s2
  *     loop
- *     - max: 10
  *     - until: tests pass
  *     - Fix failing tests
  *   - /s2
@@ -47,7 +45,7 @@
 import type { Plugin } from "@opencode-ai/plugin"
 
 interface LoopConfig {
-  max: number
+  max?: number
   until: string
 }
 
@@ -218,7 +216,7 @@ interface ParsedLoop extends LoopConfig {
 function parseLoopSection(nodes: BlockNode[]): ParsedLoop | null {
   if (nodes.length === 0) return null
 
-  let max = 5
+  let max: number | undefined
   let until = ""
   const promptParts: string[] = []
 
@@ -244,7 +242,7 @@ function buildInlineSyntax(config: S2Config): string {
   if (config.model) overrides.push(`model:${config.model}`)
   if (config.agent) overrides.push(`agent:${config.agent}`)
   if (config.loop) {
-    overrides.push(`loop:${config.loop.max}`)
+    if (config.loop.max != null) overrides.push(`loop:${config.loop.max}`)
     if (config.loop.until) overrides.push(`until:${config.loop.until}`)
   }
   if (config.return && config.return.length > 0) {

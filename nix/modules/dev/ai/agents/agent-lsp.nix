@@ -16,7 +16,7 @@
         servers.lsp = {
           command = "agent-lsp";
           args = [
-            "bash:bash-language-server,--stdio"
+            "bash:bash-language-server,start"
             "c:clangd"
             "cpp:clangd"
             "go:gopls"
@@ -24,12 +24,12 @@
             "latex:texlab"
             "lua:lua-language-server"
             "markdown:markdown-oxide"
-            "nix:nixd,--stdio"
-            "python:basedpyright,--stdio"
+            "nix:nixd"
+            "python:basedpyright-langserver,--stdio"
             "rust:rust-analyzer"
-            "toml:taplo,--stdio"
+            "toml:taplo,lsp,stdio"
             "typescript:typescript-language-server,--stdio"
-            "typst:tinymist"
+            "typst:tinymist,lsp"
             "yaml:yaml-language-server,--stdio"
           ];
         };
