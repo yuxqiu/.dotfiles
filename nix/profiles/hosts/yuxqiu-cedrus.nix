@@ -27,6 +27,7 @@
         config.flake.modules.nixos.fstrim
         config.flake.modules.nixos.sensor
         config.flake.modules.nixos.bolt
+        config.flake.modules.nixos.thermald
 
         # networking
         config.flake.modules.nixos.dns
