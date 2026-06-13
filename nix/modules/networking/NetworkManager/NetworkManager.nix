@@ -17,6 +17,14 @@
       };
     };
 
+    security.polkit.extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (action.id.indexOf("org.freedesktop.NetworkManager.") === 0 && subject.isInGroup("networkmanager")) {
+          return polkit.Result.YES;
+        }
+      });
+    '';
+
     systemd.services.NetworkManager-wait-online.enable = false;
   };
 }

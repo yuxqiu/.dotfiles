@@ -20,7 +20,7 @@
 
         # hardware
         config.flake.modules.nixos.i2c
-        config.flake.modules.nixos.powertop
+
         config.flake.modules.nixos.graphics
         config.flake.modules.nixos.tuned
         config.flake.modules.nixos.bluetooth
@@ -157,6 +157,7 @@
         config.flake.modules.homeManager.nix-update
         config.flake.modules.homeManager.hydra-check
         config.flake.modules.homeManager.nh
+        config.flake.modules.homeManager.direnv
 
         # sound
         config.flake.modules.homeManager.lowfi

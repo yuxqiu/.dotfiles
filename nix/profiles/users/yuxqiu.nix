@@ -24,6 +24,7 @@
           "input"
           "docker"
           "i2c"
+          "networkmanager"
           "geminicommit"
         ];
         initialPassword = "changeme";
