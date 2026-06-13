@@ -64,6 +64,14 @@
             nix-update-git -u . --rules all
             nh os switch . -H "$1" -u
           '';
+          hm-news = ''
+            if [ $# -eq 0 ]; then
+              echo "Usage: hm-news <hostname>"
+              echo "Example: hm-news yuxqiu-cedrus"
+              return 1
+            fi
+            nix build .#nixosConfigurations."$1".config.home-manager.users."$USER".news.json.output --no-link --print-out-paths 2>/dev/null | xargs cat | ${pkgs.jq}/bin/jq -r '.entries | reverse | .[] | "---\nTime: \(.time)\n\(.message)"' | ''${PAGER:-${pkgs.less}/bin/less -R}
+          '';
         }
         // lib.optionalAttrs pkgs.stdenv.isDarwin {
           jdks = "/usr/libexec/java_home -V";
