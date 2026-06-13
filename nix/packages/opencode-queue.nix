@@ -8,15 +8,15 @@
 
 let
   src = fetchFromGitHub {
-    owner = "spoons-and-mirrors";
-    repo = "subtask2";
-    rev = "92ad854c0d3190f407bfdcb9a012a5446dbb10a0"; # follow:branch main
-    hash = "sha256-30mzbGf+DTh4K2GvV4y3Il2fEHVTtnRx2JuCoHWYrLk=";
+    owner = "mirsella";
+    repo = "opencode-queue";
+    rev = "eed2696c52f62088fb3a7ea33d30ea1d75a0a6b3"; # follow:branch main
+    hash = "sha256-fHj6eNygikYSMkKiXDhHzpBfV1Cccx1QyE6fgBoW/K8=";
   };
 
   nodeModules = stdenv.mkDerivation {
-    pname = "subtask2-node-modules";
-    version = "0.3.5";
+    pname = "opencode-queue-node-modules";
+    version = "0.10.0";
     inherit src;
 
     nativeBuildInputs = [
@@ -35,12 +35,12 @@ let
 
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
-    outputHash = "sha256-LrVzcXIXtwczFk/BqxPo3g1H+empsFZG28jD05fgu8w=";
+    outputHash = "sha256-C4Uu4HCtG9JBsLgLHxdUgJJ1Ga2ubmpcXQy2l679X3g=";
   };
 in
 stdenv.mkDerivation {
-  pname = "subtask2";
-  version = "0.3.5";
+  pname = "opencode-queue";
+  version = "0.10.0";
 
   inherit src;
 
@@ -55,15 +55,15 @@ stdenv.mkDerivation {
 
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/lib/subtask2
-    cp dist/index.js $out/lib/subtask2/
+    mkdir -p $out/lib/opencode-queue
+    cp dist/index.js $out/lib/opencode-queue/
     runHook postInstall
   '';
 
   meta = {
-    description = "A stronger opencode /command handler";
-    homepage = "https://github.com/spoons-and-mirrors/subtask2";
-    license = lib.licenses.unfree;
+    description = "Queue OpenCode input until the current session is idle";
+    homepage = "https://github.com/mirsella/opencode-queue";
+    license = lib.licenses.mit;
     platforms = lib.platforms.all;
   };
 }

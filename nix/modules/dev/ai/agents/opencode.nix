@@ -17,8 +17,9 @@
         '';
       };
 
-      subtask2 = pkgs.callPackage (inputs.self + /packages/subtask2.nix) { };
-      btwOpencode = pkgs.callPackage (inputs.self + /packages/btw-opencode.nix) { };
+      opencodeQueue = pkgs.callPackage (inputs.self + /packages/opencode-queue.nix) { };
+      goalPlugin = pkgs.callPackage (inputs.self + /packages/opencode-goal.nix) { };
+      btwOpencode = pkgs.callPackage (inputs.self + /packages/opencode-btw.nix) { };
       handoff = pkgs.callPackage (inputs.self + /packages/opencode-handoff.nix) { };
     in
     {
@@ -32,6 +33,13 @@
         package = wrappedOpencode;
         settings = {
           autoupdate = false;
+          command = {
+            goal = {
+              description = "Set a session-scoped goal and auto-continue until complete.";
+              template = "$ARGUMENTS";
+              agent = "build";
+            };
+          };
         };
         tui = {
           attention = {
@@ -43,10 +51,15 @@
         extraPackages = config.my.dev.lsp;
       };
 
-      # subtask2 plugin - installed as a local opencode plugin
-      # https://github.com/spoons-and-mirrors/subtask2
-      # https://opencode.ai/docs/plugins/#from-local-files
-      home.file.".config/opencode/plugins/subtask2.js".source = "${subtask2}/lib/subtask2/index.js";
+      # opencode-queue plugin - queue input until session is idle
+      # https://github.com/mirsella/opencode-queue
+      home.file.".config/opencode/plugins/opencode-queue.js".source =
+        "${opencodeQueue}/lib/opencode-queue/index.js";
+
+      # opencode-goal-plugin - session-scoped /goal workflow
+      # https://github.com/willytop8/OpenCode-goal-plugin
+      home.file.".config/opencode/plugins/opencode-goal.js".source =
+        "${goalPlugin}/lib/opencode-goal-plugin/goal-plugin.js";
 
       # handoff plugin - installed as a local opencode plugin
       # https://github.com/joshuadavidthomas/opencode-handoff
@@ -57,9 +70,5 @@
       # https://github.com/aptdnfapt/btw-opencode
       home.file.".config/opencode/plugins/btw-opencode.js".source =
         "${btwOpencode}/lib/btw-opencode/btw-opencode.js";
-
-      # /s2 command plugin - local .ts file, loaded directly by opencode/bun
-      home.file.".config/opencode/plugins/subtask2-commands.ts".source =
-        ./extensions/subtask2-commands.ts;
     };
 }
