@@ -40,6 +40,16 @@
               agent = "build";
             };
           };
+          plugin = [
+            [
+              "opencode-goal-plugin"
+              {
+                maxTurns = 30;
+                maxDurationMs = 86400000;
+                maxTokens = 10000000;
+              }
+            ]
+          ];
         };
         tui = {
           attention = {
@@ -58,6 +68,7 @@
 
       # opencode-goal-plugin - session-scoped /goal workflow
       # https://github.com/willytop8/OpenCode-goal-plugin
+      # Plugin options (maxTurns/duration/tokens) configured in settings.plugin above
       home.file.".config/opencode/plugins/opencode-goal.js".source =
         "${goalPlugin}/lib/opencode-goal-plugin/goal-plugin.js";
 
