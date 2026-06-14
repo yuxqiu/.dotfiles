@@ -35,7 +35,7 @@
 
           diff = {
             algorithm = "histogram";
-            colorMoved = "plain";
+            colorMoved = false;
             mnemonicPrefix = true;
             renames = true;
           };
