@@ -20,12 +20,6 @@
               },
             })
 
-            vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
-            vim.keymap.set("n", "<C-S-p>", "<cmd>Telescope commands<CR>", { desc = "Command palette" })
-            vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-            vim.keymap.set("n", "<leader>fg", function()
-              builtin.live_grep({ search_dirs = { vim.fn.getcwd() } })
-            end, { desc = "Grep in project" })
             vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
             vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags" })
             vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Recent files" })
@@ -37,9 +31,6 @@
 
       programs.neovim.initLua = ''
         vim.keymap.set("n", "<C-f>", "/", { desc = "Search in file" })
-        vim.keymap.set("n", "<C-S-F>", function()
-          require("telescope.builtin").live_grep({ search_dirs = { vim.fn.getcwd() } })
-        end, { desc = "Search in project" })
 
         -- Project tracking: record directories opened with nvim (no file args)
         local _project_file = vim.fn.stdpath("data") .. "/nvim-projects"
@@ -97,7 +88,6 @@
             end,
           }):find()
         end, { desc = "Recent projects" })
-        vim.keymap.set("n", "<C-S-p>", "<cmd>Telescope commands<CR>", { desc = "Command palette" })
       '';
     };
 }

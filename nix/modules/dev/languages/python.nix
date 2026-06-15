@@ -18,6 +18,9 @@
         PYTHONSTARTUP = "${config.home.homeDirectory}/.pythonrc";
       };
 
-      home.packages = with pkgs; [ uv ];
+      home.packages = with pkgs; [
+        uv
+        python3
+      ];
     };
 }

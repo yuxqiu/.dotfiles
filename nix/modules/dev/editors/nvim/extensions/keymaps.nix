@@ -67,8 +67,12 @@
       vim.keymap.set("v", "<C-S-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
       vim.keymap.set("v", "<C-S-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
-      -- Insert mode: Ctrl+Backspace to delete word backward
-      vim.keymap.set("i", "<C-BS>", "<C-W>", { noremap = true })
+      -- Insert mode: word editing
+      -- <C-W> is left as default so prompt buffers handle it natively
+      vim.keymap.set("i", "<C-BS>", "<C-W>")
+      vim.keymap.set("i", "<C-Del>", "<C-O>dw")
+      vim.keymap.set("i", "<C-Left>", "<C-O>b", { noremap = true })
+      vim.keymap.set("i", "<C-Right>", "<C-O>w", { noremap = true })
 
       -- Disable default q (macro recording) to prevent accidental hijack of leader key
       vim.keymap.set("n", "q", "<Nop>", { noremap = true })

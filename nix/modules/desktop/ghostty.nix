@@ -42,6 +42,9 @@
             "ctrl+alt+right=resize_split:right,10"
             "ctrl+alt+up=resize_split:up,10"
             "ctrl+alt+down=resize_split:down,10"
+
+            "ctrl+backspace=text:\\x17"
+            "ctrl+delete=text:\\x1b[3;5~"
           ];
         };
 
