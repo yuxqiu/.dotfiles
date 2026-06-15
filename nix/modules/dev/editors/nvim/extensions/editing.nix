@@ -82,23 +82,21 @@
         }
 
         {
-          plugin = tabout-nvim;
+          plugin = neotab-nvim;
           type = "lua";
           config = ''
-            require("tabout").setup({
+            require("neotab").setup({
               tabkey = "<Tab>",
-              backwards_tabkey = "<S-Tab>",
+              reverse_key = "<S-Tab>",
               act_as_tab = true,
-              act_as_shift_tab = false,
-              enable_backwards = true,
-              completion = true,
-              tabouts = {
-                { open = "'", close = "'" },
-                { open = '"', close = '"' },
-                { open = "`", close = "`" },
+              behavior = "nested",
+              pairs = {
                 { open = "(", close = ")" },
                 { open = "[", close = "]" },
                 { open = "{", close = "}" },
+                { open = "'", close = "'" },
+                { open = '"', close = '"' },
+                { open = "`", close = "`" },
               },
             })
           '';

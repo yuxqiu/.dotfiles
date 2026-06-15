@@ -23,6 +23,9 @@
                         prompt_for_file_name = false,
                         template = "![$CURSOR]($FILE_PATH)",
                         insert_mode_after_paste = true,
+                        drag_and_drop = {
+                          enabled = false,
+                        },
                       },
                       filetypes = {
                         markdown = {
