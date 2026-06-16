@@ -28,7 +28,7 @@
                 end,
                 offsets = {
                   { filetype = "neo-tree", text = "File Explorer", padding = 1 },
-                  { filetype = "toggleterm", text = "Terminal", padding = 1 },
+                  { filetype = "snacks_terminal", text = "Terminal", padding = 1 },
                 },
               },
             })

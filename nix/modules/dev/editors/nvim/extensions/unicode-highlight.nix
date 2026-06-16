@@ -19,7 +19,7 @@
               auto_enable = true,
               filetypes = {},
               excluded_filetypes = {
-                "help", "qf", "terminal", "toggleterm", "markdown", "text"
+                "help", "qf", "terminal", "snacks_terminal", "markdown", "text"
               },
               debounce_ms = 35,
             })
