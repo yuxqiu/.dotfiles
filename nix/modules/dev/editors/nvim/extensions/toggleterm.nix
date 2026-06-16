@@ -1,8 +1,19 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.nvim =
     { pkgs, ... }:
+    let
+      stickybuf-nvim = pkgs.callPackage (inputs.self + /packages/stickybuf-nvim.nix) { };
+    in
     {
       programs.neovim.plugins = with pkgs.vimPlugins; [
+        {
+          plugin = stickybuf-nvim;
+          type = "lua";
+          config = ''
+            require("stickybuf").setup({})
+          '';
+        }
         {
           plugin = toggleterm-nvim;
           type = "lua";
@@ -40,7 +51,6 @@
               float_opts = { border = "curved" },
               shade_terminals = false,
             })
-
 
             vim.keymap.set("t", "<C-`>", "<cmd>ToggleTerm<CR>", { desc = "Toggle last terminal" })
             vim.keymap.set("n", "<C-`>", "<cmd>ToggleTerm<CR>", { desc = "Toggle last terminal" })
