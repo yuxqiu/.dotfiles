@@ -20,7 +20,6 @@
       opencodeQueue = pkgs.callPackage (inputs.self + /packages/opencode-queue.nix) { };
       goalPlugin = pkgs.callPackage (inputs.self + /packages/opencode-goal.nix) { };
       btwOpencode = pkgs.callPackage (inputs.self + /packages/opencode-btw.nix) { };
-      handoff = pkgs.callPackage (inputs.self + /packages/opencode-handoff.nix) { };
     in
     {
       # Other Interesting Plugins
@@ -71,11 +70,6 @@
       # Plugin options (maxTurns/duration/tokens) configured in settings.plugin above
       home.file.".config/opencode/plugins/opencode-goal.js".source =
         "${goalPlugin}/lib/opencode-goal-plugin/goal-plugin.js";
-
-      # handoff plugin - installed as a local opencode plugin
-      # https://github.com/joshuadavidthomas/opencode-handoff
-      home.file.".config/opencode/plugins/handoff.js".source =
-        "${handoff}/lib/opencode-handoff/plugin.js";
 
       # btw-opencode plugin - fork sessions and run prompts in background
       # https://github.com/aptdnfapt/btw-opencode

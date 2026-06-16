@@ -15,8 +15,8 @@
         path = pkgs.fetchFromGitHub {
           owner = "browserbase";
           repo = "skills";
-          rev = "98f2732d55781ac48780f88afafc7bd689beb9f5"; # follow:branch main
-          hash = "sha256-3EjRoYyQ7vsGEt7sjjuvc8gfgmJbLFZMGkmJ53e+KIk=";
+          rev = "d61ba596636bdb28ba019102993cd8ce9607a3db"; # follow:branch main
+          hash = "sha256-Abo3z6PKxGY/cY2w7VroVuHkcGtq7vSa0evihhuvFIE=";
         };
         subdir = "skills";
       };

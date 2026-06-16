@@ -20,6 +20,7 @@
               },
             })
 
+            vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
             vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
             vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help tags" })
             vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Recent files" })

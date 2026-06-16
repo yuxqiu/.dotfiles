@@ -5,28 +5,24 @@
     {
       imports = [ inputs.agent-skills-nix.homeManagerModules.default ];
 
-      # skills credits
-      # - create-pr: marcelorodrigo/agent-skills
-      programs.agent-skills = {
-        enable = true;
+        programs.agent-skills = {
+          enable = true;
 
-        sources = {
-          local.path = ./skills;
-          addyosmani-agent-skills = {
-            path = pkgs.fetchFromGitHub {
-              owner = "addyosmani";
-              repo = "agent-skills";
-              rev = "3a6fc6392823e31e2362091bd4e3cddf5b77af14"; # follow:branch main
-              hash = "sha256-QfZEAw70Kqnm99mvEGwgKsRjzJUqsk6cC8nvku+IRVU=";
+          sources = {
+            mattpocock-skills = {
+              path = pkgs.fetchFromGitHub {
+                owner = "mattpocock";
+                repo = "skills";
+                rev = "694fa30311e02c2639942308513555e61ee84a6f"; # follow:branch main
+                hash = "sha256-NGRKdnHSBKoR48zGotmJ3zGXnQ58ogudv8T4Va/2DSY=";
+              };
+              subdir = "skills";
             };
-            subdir = "skills";
           };
-        };
 
-        skills.enableAll = [
-          "local"
-          "addyosmani-agent-skills"
-        ];
+          skills.enableAll = [
+            "mattpocock-skills"
+          ];
 
         targets = {
           codex = {

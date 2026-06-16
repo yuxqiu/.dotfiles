@@ -26,8 +26,8 @@
               return vim.fn.exists("#PulseUIInput" .. buf) == 1
             end
 
-            vim.keymap.set("n", "<C-p>", function()
-              pulse_mod.open({ reset_context = true })
+            vim.keymap.set("n", "<C-S-p>", function()
+              pulse_mod.open({ initial_panel = "files_open", reset_context = true })
               vim.schedule(function()
                 if pulse_mod.get_prompt() and pulse_mod.get_prompt() ~= "" then
                   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -37,7 +37,7 @@
                   end
                 end
               end)
-            end, { desc = "Command palette" })
+            end, { desc = "File picker" })
             vim.keymap.set("n", "<C-S-F>", function()
               pulse_mod.open({ initial_prompt = switch_prompt("", "live_grep"), reset_context = true })
             end, { desc = "Search in project" })

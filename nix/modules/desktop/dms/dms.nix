@@ -10,6 +10,7 @@
         inputs.dms.homeModules.dank-material-shell
         inputs.dms-plugin-registry.homeModules.default
         inputs.danksearch.homeModules.dsearch
+        inputs.dankcalendar.homeModules.dank-calendar
       ];
 
       programs.dsearch.enable = true;
@@ -69,6 +70,13 @@
         settings = builtins.fromJSON (builtins.readFile ./configs/settings.json) // {
           customThemeFile = "${inputs.dms-plugin-registry}/themes/catppuccin/theme.json";
         };
+      };
+      programs.dank-calendar = {
+        enable = true;
+        package = (inputs.dankcalendar.lib.mkDcal pkgs).overrideAttrs (_: {
+          vendorHash = "sha256-a9H88PwvuCRaTVV8FIg5SGK2nehg5MN/fJ92Wi+RAIU=";
+        });
+        systemd.enable = true;
       };
 
       home.packages = with pkgs; [
