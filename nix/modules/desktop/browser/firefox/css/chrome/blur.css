@@ -20,14 +20,9 @@
     background-color: transparent !important;
 }
 
-/* Blur titlebar */
-#main-window #navigator-toolbox {
-    background-color: var(--firefoxcss-navigator-toolbox-bg-color) !important;
-}
-
-/* Blur sidebar, expanded settings and bookmarks */
-#browser {
-    background-color: var(--firefoxcss-navigator-toolbox-bg-color) !important;
+/* Blur */
+body {
+    background-color: var(--toolbox-bgcolor) !important;
 }
 
 #sidebar {
