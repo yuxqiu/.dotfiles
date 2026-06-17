@@ -58,6 +58,9 @@
         config.flake.modules.nixos.fprintd
         config.flake.modules.nixos.udev
 
+        # gaming
+        config.flake.modules.nixos.steam
+
         # virtualization
         config.flake.modules.nixos.docker
 
@@ -146,6 +149,7 @@
         config.flake.modules.homeManager.python
         config.flake.modules.homeManager.rust
         config.flake.modules.homeManager.c
+        config.flake.modules.homeManager.sage
 
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch

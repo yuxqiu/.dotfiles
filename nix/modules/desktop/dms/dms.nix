@@ -73,9 +73,6 @@
       };
       programs.dank-calendar = {
         enable = true;
-        package = (inputs.dankcalendar.lib.mkDcal pkgs).overrideAttrs (_: {
-          vendorHash = "sha256-a9H88PwvuCRaTVV8FIg5SGK2nehg5MN/fJ92Wi+RAIU=";
-        });
         systemd.enable = true;
       };
 
