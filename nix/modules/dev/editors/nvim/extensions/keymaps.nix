@@ -77,6 +77,14 @@
       vim.keymap.set({ "n", "x", "o" }, "H", "^", { noremap = true })
       vim.keymap.set({ "n", "x", "o" }, "L", "$", { noremap = true })
 
+      -- Movement: hjkl + arrows move by display line (wrap-aware)
+      vim.keymap.set({ "n", "x", "o" }, "j", "gj", { desc = "Down (wrap-aware)" })
+      vim.keymap.set({ "n", "x", "o" }, "k", "gk", { desc = "Up (wrap-aware)" })
+      vim.keymap.set({ "n", "x", "o" }, "<Down>", "gj", { desc = "Down (wrap-aware)" })
+      vim.keymap.set({ "n", "x", "o" }, "<Up>", "gk", { desc = "Up (wrap-aware)" })
+      vim.keymap.set("i", "<Down>", "<C-o>gj", { desc = "Down (wrap-aware)" })
+      vim.keymap.set("i", "<Up>", "<C-o>gk", { desc = "Up (wrap-aware)" })
+
       -- Clipboard
       vim.keymap.set("n", "Y", '"+y', { noremap = true })
       vim.keymap.set("v", "Y", '"+y', { noremap = true })

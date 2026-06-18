@@ -4,6 +4,7 @@
     {
       programs.neovim.plugins = with pkgs.vimPlugins; [
         nvim-ts-context-commentstring
+        vim-unimpaired
 
         {
           plugin = flash-nvim;

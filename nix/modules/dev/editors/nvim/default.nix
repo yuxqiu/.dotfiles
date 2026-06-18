@@ -10,10 +10,6 @@
         extraConfig = ''
           let mapleader = ' '
           nnoremap <leader> <Nop>
-          noremap j gj
-          noremap k gk
-          noremap <Down> gj
-          noremap <Up> gk
         '';
 
         initLua = ''
