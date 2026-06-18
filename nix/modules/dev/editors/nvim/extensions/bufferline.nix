@@ -31,6 +31,7 @@
                   { filetype = "snacks_terminal", text = "Terminal", padding = 1 },
                 },
               },
+              highlights = require("catppuccin.special.bufferline").get_theme(),
             })
           '';
         }

@@ -18,8 +18,8 @@
       firefox-mod-blur = pkgs.fetchFromGitHub {
         owner = "datguypiko";
         repo = "Firefox-Mod-Blur";
-        rev = "v2.63";
-        hash = "sha256-/BeEWZ2J/lA97UP054oBaVZ889SzUpz4AjouaxN93NI=";
+        rev = "v2.64";
+        hash = "sha256-ENVVA77CleGVX2UzhwZoNhpTnGh7WyMCPYtFdamomas=";
       };
 
       # Prepare userChrome.css

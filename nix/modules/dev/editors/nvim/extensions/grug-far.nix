@@ -13,6 +13,17 @@
         local function load_grug_far()
           lazy_load("grug-far.nvim", nil, function()
             require("grug-far").setup({ headerMaxWidth = 80 })
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = "grug-far",
+              callback = function(args)
+                vim.keymap.set("n", "<C-w>", function()
+                  vim.api.nvim_buf_delete(0, {})
+                end, {
+                  buffer = args.buf,
+                  desc = "Close grug-far buffer",
+                })
+              end,
+            })
           end)
         end
 
