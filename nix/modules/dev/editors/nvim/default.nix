@@ -79,21 +79,6 @@
             '';
           }
 
-          {
-            plugin = conform-nvim;
-            type = "lua";
-            config = ''
-              require("conform").setup({
-                format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
-                formatters_by_ft = {
-                  nix = { "nixfmt" },
-                  python = { "ruff" },
-                  bib = { "latexindent" },
-                },
-              })
-            '';
-          }
-
           editorconfig-vim
 
           {
@@ -140,7 +125,6 @@
                 cpp = { "clangtidy" },
                 go = { "golangcilint" },
                 nix = { "deadnix", "statix" },
-                python = { "ruff" },
                 rust = { "clippy" },
                 sh = { "shellcheck" },
                 yaml = { "yamllint" },

@@ -13,8 +13,8 @@
             path = pkgs.fetchFromGitHub {
               owner = "mattpocock";
               repo = "skills";
-              rev = "2454c95dc305c158b21a0cdafeb728879dd0359a"; # follow:branch main
-              hash = "sha256-nuHQ+SG5UerKs334Yk5nsxHOncGXQKF1yVdnwwVpLZ8=";
+              rev = "6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461"; # follow:branch main
+              hash = "sha256-6T0KwZcUIIbd6kpkQXPCnnJPVY2mEjxYjed4FjKnRAw=";
             };
             subdir = "skills";
           };
