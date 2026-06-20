@@ -53,7 +53,7 @@
         config.flake.modules.nixos.accountservice
         config.flake.modules.nixos.udisk2
         config.flake.modules.nixos.upower
-        config.flake.modules.nixos.usbmuxd
+        config.flake.modules.nixos.ios
         config.flake.modules.nixos.libinput
         config.flake.modules.nixos.fprintd
         config.flake.modules.nixos.udev
@@ -83,9 +83,8 @@
         config.flake.modules.nixos.yuxqiu
         config.flake.modules.nixos.yuxqiu-cedrus
 
-        # sops
-        config.flake.modules.nixos.backup
-        config.flake.modules.nixos.backup-home
+        # backup
+        config.flake.modules.nixos.restic
 
         # hostname
         { networking.hostName = "pc"; }
