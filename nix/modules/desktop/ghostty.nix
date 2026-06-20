@@ -61,6 +61,11 @@
         };
       };
 
+      qt.kde.settings.kdeglobals.General = {
+        TerminalApplication = "ghostty";
+        TerminalService = "com.mitchellh.ghostty.desktop";
+      };
+
       wayland.windowManager.niri.settings.binds."Mod+Return" = {
         _props.hotkey-overlay-title = "Open a Terminal: ghostty";
         spawn-sh = "ghostty +new-window";
