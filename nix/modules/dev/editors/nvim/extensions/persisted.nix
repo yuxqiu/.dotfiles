@@ -26,7 +26,7 @@
 
             vim.api.nvim_create_autocmd("User", {
               pattern = "PersistedSavePre",
-              group = group,
+              group = vim.api.nvim_create_augroup("PersistedSavePre", { clear = true }),
               callback = function()
                 -- Ensure the neo-tree plugin is not written into the session
                 pcall(vim.cmd, "bw neo-tree")
