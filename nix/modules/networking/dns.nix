@@ -1,6 +1,14 @@
 {
   flake.modules.nixos.dns =
     { pkgs, ... }:
+    let
+      dnscrypt-resolvers = pkgs.fetchFromGitHub {
+        owner = "DNSCrypt";
+        repo = "dnscrypt-resolvers";
+        rev = "870572d4c8062fd79893087f561ba43a87d37dee"; # follow:branch master
+        hash = "sha256-5WLKebcHegEermT+SMwi2a32lLA1jsEkkEuOVW4tBOw=";
+      };
+    in
     {
       services.resolved.enable = true;
 
@@ -26,28 +34,56 @@
       services.dnscrypt-proxy = {
         enable = true;
         settings = {
-          server_names = [
-            "odoh-squared"
-            "odoh-cloudflare"
-          ];
           listen_addresses = [ "127.0.0.1:53" ];
-          sources."odoh-squared" = {
-            urls = [
-              "https://raw.githubusercontent.com/DNSCrypt/oh-no-odoh-servers/main/odoh-servers.md"
-              "https://raw.githubusercontent.com/DNSCrypt/oh-no-odoh-servers/main/odoh-servers.md"
-            ];
-            minisign_key = "RWQf6LRCGA9i53mlYcJ+9XB0dUjo7Z2kZ2O4PN7z4bJY3Y+G+3XJHDUa";
-            cache_file = "odoh-servers.md";
+
+          sources.public-resolvers = {
+            cache_file = "${dnscrypt-resolvers}/v3/public-resolvers.md";
+            minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
           };
-          anonymized_dns.routes = [
-            {
-              server_name = "*";
-              via = [
-                "odoh-squared"
-                "odoh-cloudflare"
-              ];
-            }
+
+          sources.relays = {
+            cache_file = "${dnscrypt-resolvers}/v3/relays.md";
+            minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+          };
+
+          sources.odoh-servers = {
+            cache_file = "${dnscrypt-resolvers}/v3/odoh-servers.md";
+            minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+          };
+
+          sources.odoh-relays = {
+            cache_file = "${dnscrypt-resolvers}/v3/odoh-relays.md";
+            minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+          };
+
+          server_names = [
+            "odoh-cloudflare"
+            "odoh-snowstorm"
+            # Workaround when odoh is not available
+            "controld-unfiltered"
+            "mullvad-doh"
           ];
+
+          # This creates the [anonymized_dns] section in dnscrypt-proxy.toml
+          anonymized_dns = {
+            skip_incompatible = true;
+            routes = [
+              {
+                server_name = "odoh-snowstorm";
+                via = [ "odohrelay-crypto-sx" ];
+              }
+              {
+                server_name = "odoh-cloudflare";
+                via = [ "odohrelay-crypto-sx" ];
+              }
+            ];
+          };
+
+          require_dnssec = true;
+          require_nolog = true;
+          require_nofilter = true;
+          odoh_servers = true;
+          dnscrypt_servers = true;
         };
       };
 
