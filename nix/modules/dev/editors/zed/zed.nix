@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.zed =
-    { config, lib, ... }:
+    { lib, ... }:
     {
       programs.zed-editor = {
         enable = true;
@@ -21,67 +21,6 @@
           format_on_save = "on";
           inlay_hints = {
             enabled = true;
-          };
-          languages = {
-            BibTeX = {
-              formatter = {
-                external = {
-                  command = "latexindent";
-                  arguments = [
-                    "-l"
-                    "-g"
-                    "/dev/null"
-                  ];
-                };
-              };
-            };
-            Markdown = {
-              format_on_save = "on";
-            };
-            LaTeX = {
-              soft_wrap = "editor_width";
-            };
-            Typst = {
-              soft_wrap = "editor_width";
-            };
-            Nix = {
-              language_servers = [
-                "nixd"
-                "!nil"
-              ];
-              formatter = {
-                external = {
-                  command = "nixfmt";
-                };
-              };
-            };
-          };
-          lsp = {
-            tinymist = {
-              settings = {
-                exportPdf = "onSave";
-              };
-            };
-            texlab = {
-              settings = {
-                texlab = {
-                  build = {
-                    onSave = true;
-                    forwardSearchAfter = true;
-                    executable = "tectonic";
-                    args = [
-                      "-X"
-                      "compile"
-                      "%f"
-                      "--untrusted"
-                      "--synctex"
-                      "--keep-logs"
-                      "--keep-intermediates"
-                    ];
-                  };
-                };
-              };
-            };
           };
           # Disabled for better performance on large monitors
           minimap = {
@@ -216,11 +155,7 @@
         ];
         extensions = [
           "catppuccin-blur"
-          "markdown-oxide"
-          "typst"
-          "latex"
-          "nix"
-          "typos"
+          "codex-acp"
           "editorconfig"
         ];
         installRemoteServer = false;

@@ -1,6 +1,17 @@
 {
   flake.modules.homeManager.nvim =
-    { pkgs, config, ... }:
+    { pkgs, config, lib, ... }:
+    let
+      allServers = lib.flatten (lib.mapAttrsToList (_: lang:
+        map (s: s.server) lang.lsp
+      ) config.my.dev.languages);
+
+      trivialConfigCalls = lib.concatMapStringsSep "\n  " (server:
+        ''vim.lsp.config("${server}", { capabilities = capabilities, on_attach = on_attach })''
+      ) allServers;
+
+      enableList = lib.concatMapStringsSep ", " (s: ''"${s}"'') allServers;
+    in
     {
       programs.neovim = {
         plugins = with pkgs.vimPlugins; [
@@ -19,7 +30,6 @@
             '';
           }
 
-          # texlab: https://github.com/latex-lsp/texlab/issues/1551
           {
             plugin = nvim-lspconfig;
             type = "lua";
@@ -47,72 +57,48 @@
                 end
               end
 
-              vim.lsp.config("basedpyright", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("clangd", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("gopls", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("markdown_oxide", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("nixd", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("ruff", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("tinymist", {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = {
-                  exportPdf = "onSave",
-                  formatterMode = "typstyle",
-                },
-              })
-              vim.lsp.config("texlab", {
-                capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                  on_attach(client, bufnr)
-                  vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
-                end,
-                settings = {
-                  texlab = {
-                    build = {
-                      onSave = false,
-                      forwardSearchAfter = false,
-                      executable = "tectonic",
-                      args = {
-                        "-X", "compile", "%f",
-                        "--untrusted", "--synctex",
-                        "--keep-logs", "--keep-intermediates",
+              ${trivialConfigCalls}
+
+              ${lib.optionalString (config.my.dev.languages ? typst) ''
+                vim.lsp.config("tinymist", {
+                  capabilities = capabilities,
+                  on_attach = on_attach,
+                  settings = {
+                    exportPdf = "onSave",
+                    formatterMode = "typstyle",
+                  },
+                })
+              ''}
+
+              ${lib.optionalString (config.my.dev.languages ? latex) ''
+                vim.lsp.config("texlab", {
+                  capabilities = capabilities,
+                  on_attach = function(client, bufnr)
+                    on_attach(client, bufnr)
+                    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+                  end,
+                  settings = {
+                    texlab = {
+                      build = {
+                        onSave = false,
+                        forwardSearchAfter = false,
+                        executable = "tectonic",
+                        args = {
+                          "-X", "compile", "%f",
+                          "--untrusted", "--synctex",
+                          "--keep-logs", "--keep-intermediates",
+                        },
+                      },
+                      diagnostics = {
+                        ignoredPatterns = { "Unused" },
+                        delay = 0.4,
                       },
                     },
-                    diagnostics = {
-                      ignoredPatterns = { "Unused" },
-                      delay = 0.4,
-                    },
                   },
-                },
-              })
-              vim.lsp.config("jsonls", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("typos_lsp", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("bashls", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("cssls", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("lua_ls", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("rust_analyzer", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("taplo", { capabilities = capabilities, on_attach = on_attach })
-              vim.lsp.config("yamlls", { capabilities = capabilities, on_attach = on_attach })
+                })
+              ''}
 
-              vim.lsp.enable({
-                "basedpyright",
-                "bashls",
-                "clangd",
-                "cssls",
-                "gopls",
-                "jsonls",
-                "lua_ls",
-                "markdown_oxide",
-                "nixd",
-                "ruff",
-                "rust_analyzer",
-                "taplo",
-                "tinymist",
-                "texlab",
-                "typos_lsp",
-                "yamlls",
-              })
+              vim.lsp.enable({ ${enableList} })
 
                vim.diagnostic.config({
                  virtual_text = true,

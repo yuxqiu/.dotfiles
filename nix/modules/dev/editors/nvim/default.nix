@@ -1,6 +1,34 @@
 {
   flake.modules.homeManager.nvim =
-    { pkgs, ... }:
+    { pkgs, config, lib, ... }:
+    let
+      treesitterParsers = lib.flatten (lib.mapAttrsToList (_: lang:
+        lang.treesitter
+      ) config.my.dev.languages) ++ [
+        "vim"
+        "vimdoc"
+      ];
+
+      treesitterPlugins = map (parser:
+        pkgs.vimPlugins.nvim-treesitter-parsers.${parser}
+      ) treesitterParsers;
+
+      lintEntries = lib.flatten (lib.mapAttrsToList (_: lang:
+        lib.flatten (map (l:
+          map (ft: { inherit ft; name = l.name; }) l.filetypes
+        ) lang.linter)
+      ) config.my.dev.languages);
+
+      lintersByFt = lib.foldl' (acc: entry:
+        acc // {
+          ${entry.ft} = acc.${entry.ft} or [ ] ++ [ entry.name ];
+        }
+      ) { } lintEntries;
+
+      lintersLua = lib.concatStringsSep "\n    " (lib.mapAttrsToList (ft: names:
+        ''${ft} = { ${lib.concatMapStringsSep ", " (n: ''"${n}"'') names} },''
+      ) lintersByFt);
+    in
     {
       programs.neovim = {
         enable = true;
@@ -52,25 +80,7 @@
 
         plugins = with pkgs.vimPlugins; [
           nvim-treesitter
-          nvim-treesitter-parsers.bash
-          nvim-treesitter-parsers.c
-          nvim-treesitter-parsers.cpp
-          nvim-treesitter-parsers.go
-          nvim-treesitter-parsers.json
-          nvim-treesitter-parsers.lua
-          nvim-treesitter-parsers.markdown
-          nvim-treesitter-parsers.markdown_inline
-          nvim-treesitter-parsers.nix
-          nvim-treesitter-parsers.python
-          nvim-treesitter-parsers.rust
-          nvim-treesitter-parsers.scss
-          nvim-treesitter-parsers.toml
-          nvim-treesitter-parsers.typst
-          nvim-treesitter-parsers.vim
-          nvim-treesitter-parsers.vimdoc
-          nvim-treesitter-parsers.yaml
-          nvim-treesitter-parsers.latex
-
+        ] ++ treesitterPlugins ++ [
           {
             plugin = catppuccin-nvim;
             type = "lua";
@@ -120,14 +130,7 @@
             config = ''
               local lint = require("lint")
               lint.linters_by_ft = {
-                bash = { "shellcheck" },
-                c = { "clangtidy" },
-                cpp = { "clangtidy" },
-                go = { "golangcilint" },
-                nix = { "deadnix", "statix" },
-                rust = { "clippy" },
-                sh = { "shellcheck" },
-                yaml = { "yamllint" },
+                ${lintersLua}
               }
 
               vim.api.nvim_create_autocmd({ "BufWritePost" }, {

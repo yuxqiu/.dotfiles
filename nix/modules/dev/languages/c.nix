@@ -13,6 +13,13 @@
           }
         ];
         treesitter = [ "c" "cpp" ];
+        linter = [
+          {
+            name = "clangtidy";
+            package = pkgs.clang-tools;
+            filetypes = [ "c" "cpp" ];
+          }
+        ];
       };
     };
 }

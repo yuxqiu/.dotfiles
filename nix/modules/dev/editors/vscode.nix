@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.vscode =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       programs.vscode = {
         enable = true;
@@ -11,67 +11,30 @@
               albert.tabout
               antfu.icons-carbon
               asvetliakov.vscode-neovim
-              bierner.markdown-mermaid
               copilot-arena.copilot-arena
-              cschlosser.doxdocgen
               editorconfig.editorconfig
-              foam.foam-vscode
               gruntfuggly.todo-tree
-              hars.cppsnippets
-              james-yu.latex-workshop
               jasonlhy.hungry-delete
-              jnoortheen.nix-ide
               juanblanco.solidity
-              llvm-vs-code-extensions.vscode-clangd
               ms-azuretools.vscode-containers
               ms-azuretools.vscode-docker
-              ms-python.black-formatter
-              ms-python.debugpy
-              ms-python.python
-              ms-python.vscode-pylance
-              ms-python.vscode-python-envs
-              ms-toolsai.jupyter
-              ms-toolsai.jupyter-keymap
-              ms-toolsai.jupyter-renderers
-              ms-toolsai.vscode-jupyter-cell-tags
-              ms-toolsai.vscode-jupyter-slideshow
-              ms-vscode.cmake-tools
               ms-vscode.hexeditor
               ms-vscode.remote-explorer
               ms-vscode-remote.remote-containers
               ms-vscode-remote.remote-ssh
               ms-vscode-remote.remote-ssh-edit
               ms-vsliveshare.vsliveshare
-              myriad-dreamin.tinymist
               nmsmith89.incrementor
               redhat.java
-              redhat.vscode-yaml
-              remisa.shellman
-              robole.markdown-shortcuts
-              rust-lang.rust-analyzer
-              streetsidesoftware.code-spell-checker
-              tamasfe.even-better-toml
               thomanq.math-snippets
               usernamehw.errorlens
               vscjava.vscode-java-debug
               vscjava.vscode-java-test
               vscjava.vscode-maven
-              xaver.clang-format
               yfzhao.hscopes-booster
               yfzhao.ultra-math-preview
-              yzhang.markdown-all-in-one
-            ]
-            ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-              # https://github.com/nix-community/nix-vscode-extensions/issues/143
-              {
-                name = "vscode-lldb";
-                publisher = "vadimcn";
-                version = "1.11.6";
-                sha256 = "sha256-E4gMoAbI+D0xAFNG6j3pHzOMbhB9CWVCeqFEb4qlSu8=";
-              }
             ];
 
-          # User settings (settings.json)
           userSettings = {
             # Editor Settings
             "explorer.confirmDelete" = false;
@@ -138,138 +101,13 @@
             "git.suggestSmartCommit" = false;
             "typescript.disableAutomaticTypeAcquisition" = true;
 
-            # Notebook
-            "notebook.lineNumbers" = "on";
-
-            # Markdown
-            "markdown.extension.list.indentationSize" = "inherit";
-            "markdown.extension.print.theme" = "dark";
-            "markdown.updateLinksOnFileMove.enabled" = "prompt";
-
-            "javascript.inlayHints.parameterNames.enabled" = "all";
-            "javascript.updateImportsOnFileMove.enabled" = "always";
-
-            "clangd.arguments" = [
-              "--background-index"
-              "--compile-commands-dir=\${workspaceFolder}"
-              "--clang-tidy"
-              "--completion-style=detailed"
-              "--enable-config"
-              "--pretty"
-            ];
-            "clangd.fallbackFlags" = [
-              "-Wall"
-              "-Werror"
-              "-Wextra"
-              "-Wpedantic"
-              "-Wvla"
-              "-Wextra-semi"
-              "-Wnull-dereference"
-              "-Wsuggest-override"
-              "-Wconversion"
-            ];
-            "clangd.checkUpdates" = false;
-
-            "clang-format.style" = "Webkit";
-            "[cpp]" = {
-              "editor.defaultFormatter" = "xaver.clang-format";
-            };
-            "[c]" = {
-              "editor.defaultFormatter" = "xaver.clang-format";
-            };
-
-            "latex-workshop.latex.outDir" = "%DIR%/latex-build";
-            "latex-workshop.latex.recipes" = [
-              {
-                name = "tectonic";
-                tools = [ "tectonic" ];
-              }
-              {
-                name = "latexmk";
-                tools = [ "latexmk" ];
-              }
-            ];
-            "latex-workshop.latex.tools" = [
-              {
-                name = "tectonic";
-                command = "tectonic";
-                args = [
-                  "--synctex"
-                  "--outdir=%OUTDIR%"
-                  "-Z"
-                  "continue-on-errors"
-                  "%DOC_EXT%"
-                ];
-                env = { };
-              }
-              {
-                name = "latexmk";
-                command = "latexmk";
-                args = [
-                  "-synctex=1"
-                  "-interaction=nonstopmode"
-                  "-file-line-error"
-                  "-pdf"
-                  "-outdir=%OUTDIR%"
-                  "%DOC%"
-                ];
-                env = { };
-              }
-            ];
-            "latex-workshop.view.pdf.internal.synctex.keybinding" = "double-click";
-            "latex-workshop.latex.autoBuild.run" = "never";
-            "latex-workshop.formatting.latex" = "latexindent";
-            "[latex]" = {
-              "editor.wordWrap" = "on";
-              "editor.desktopdes.bracketPairs" = false;
-              "editor.defaultFormatter" = "James-Yu.latex-workshop";
-            };
-
-            "python.experiments.enabled" = false;
-            "python.testing.pytestEnabled" = true;
-            "python.analysis.typeCheckingMode" = "basic";
-            "jupyter.experiments.enabled" = false;
-            "python.analysis.diagnosticMode" = "workspace";
-            "python.analysis.inlayHints.variableTypes" = true;
-            "python.analysis.inlayHints.functionReturnTypes" = true;
-            "python.terminal.activateEnvironment" = false;
-            "[python]" = {
-              "editor.defaultFormatter" = "ms-python.black-formatter";
-            };
-            "python.analysis.completeFunctionParens" = true;
-
-            "cmake.configureOnOpen" = true;
-            "cmake.showOptionsMovedNotification" = false;
-
-            "lldb.launch.terminal" = "integrated";
-
             # Neovim
             "extensions.experimental.affinity" = {
               "asvetliakov.vscode-neovim" = 1;
             };
 
-            # Typst
-            "tinymist.formatterMode" = "typstyle";
-            "tinymist.formatterIndentSize" = 4;
-
-            "[typst]" = {
-              "editor.wordWrap" = "on";
-              "editor.wordSeparators" = ''`~!@#$%^&*()=+[{]}\|;:'",.<>/?'';
-            };
-            "[typst-code]" = {
-              "editor.wordSeparators" = ''`~!@#$%^&*()=+[{]}\|;:'",.<>/?'';
-            };
-
             "[java]" = {
               "editor.defaultFormatter" = "redhat.java";
-            };
-
-            "[javascript]" = {
-              "editor.defaultFormatter" = "vscode.typescript-language-features";
-            };
-
-            "[typescript]" = {
-              "editor.defaultFormatter" = "vscode.typescript-language-features";
             };
 
             # Copilot Arena
@@ -336,14 +174,6 @@
               }
             ];
 
-            # Ultra Math
-            "umath.preview.EnableCursor" = false;
-            "umath.preview.renderer" = "katex";
-
-            # nix
-            "nix.enableLanguageServer" = true;
-            "nix.serverPath" = "nixd";
-
             # chat
             "chat.agent.enabled" = false;
             "chat.disableAIFeatures" = true;
@@ -363,7 +193,6 @@
             "window.titleBarStyle" = "native";
             "window.menuStyle" = "custom";
             "window.customTitleBarVisibility" = "never";
-            "umath.preview.AutoAdjustPreviewPosition" = false;
             "workbench.secondarySideBar.defaultVisibility" = "hidden";
           };
 
@@ -444,55 +273,6 @@
               when = "editorTextFocus";
             }
 
-            # Snippets
-            {
-              key = "ctrl+m ctrl+m";
-              command = "editor.action.insertSnippet";
-              args = {
-                name = "Insert Inline Math";
-              };
-              when = "editorTextFocus && !editorReadonly && editorLangId == 'latex'";
-            }
-            {
-              key = "ctrl+shift+m";
-              command = "editor.action.insertSnippet";
-              args = {
-                name = "Insert Display Math";
-              };
-              when = "editorTextFocus && !editorReadonly && editorLangId == 'latex'";
-            }
-            {
-              key = "ctrl+m ctrl+m";
-              command = "editor.action.insertSnippet";
-              args = {
-                name = "Insert Inline Math";
-              };
-              when = "editorTextFocus && !editorReadonly && editorLangId == 'typst'";
-            }
-            {
-              key = "ctrl+shift+m";
-              command = "editor.action.insertSnippet";
-              args = {
-                name = "Insert Display Math";
-              };
-              when = "editorTextFocus && !editorReadonly && editorLangId == 'typst'";
-            }
-            {
-              key = "ctrl+m ctrl+m";
-              command = "editor.action.insertSnippet";
-              args = {
-                name = "Insert Inline Math";
-              };
-              when = "editorTextFocus && !editorReadonly && editorLangId == 'markdown'";
-            }
-            {
-              key = "ctrl+shift+m";
-              command = "editor.action.insertSnippet";
-              args = {
-                name = "Insert Display Math";
-              };
-              when = "editorTextFocus && !editorReadonly && editorLangId == 'markdown'";
-            }
             {
               key = "ctrl+j";
               command = "editor.action.triggerSuggest";
@@ -511,59 +291,7 @@
               when = "editorTextFocus && neovim.mode == 'normal' && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible";
             }
           ];
-
-          languageSnippets = {
-            latex = {
-              "Insert Inline Math" = {
-                "prefix" = "inlineMath";
-                "body" = [ "\${1:$\${2:}$$0}" ];
-                "description" = "Insert inline math block $$ $$ with easy backspace delete";
-              };
-              "Insert Display Math" = {
-                "prefix" = "displayMath";
-                "body" = [
-                  "\${1:\\["
-                  "    \${2:}"
-                  "\\]}$0"
-                ];
-                "description" = "Insert 3-line display math block with cursor inside";
-              };
-            };
-            markdown = {
-              "Insert Inline Math" = {
-                "prefix" = "inlineMath";
-                "body" = [ "\${1:$\${2:}$$0}" ];
-                "description" = "Insert inline math block $$ $$ with easy backspace delete";
-              };
-              "Insert Display Math" = {
-                "prefix" = "displayMath";
-                "body" = [
-                  "\${1:$$"
-                  "    \${2:}"
-                  "$$}$0"
-                ];
-                "description" = "Insert 3-line display math block with cursor inside";
-              };
-            };
-            typst = {
-              "Insert Inline Math" = {
-                "prefix" = "inlineMath";
-                "body" = [ "\${1:$\${2:}$$0}" ];
-                "description" = "Insert inline math block $$ $$ with easy backspace delete";
-              };
-              "Insert Display Math" = {
-                "prefix" = "displayMath";
-                "body" = [
-                  "\${1:$$"
-                  "    \${2:}"
-                  "$$}$0"
-                ];
-                "description" = "Insert 3-line display math block with cursor inside";
-              };
-            };
-          };
         };
       };
-
     };
 }

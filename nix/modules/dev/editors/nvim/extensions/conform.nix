@@ -1,6 +1,20 @@
 {
   flake.modules.homeManager.nvim =
-    { pkgs, ... }:
+    { pkgs, config, lib, ... }:
+    let
+      formattersByFt = lib.flatten (lib.mapAttrsToList (_: lang:
+        lib.optional (lang.formatter != null) {
+          ft = lang.formatter.filetypes;
+          formatter = lang.formatter.cmd;
+        }
+      ) config.my.dev.languages);
+
+      formattersLua = lib.concatMapStringsSep "\n    " (entry:
+        lib.concatMapStringsSep "\n    " (ft:
+          ''${ft} = { "${entry.formatter}" },''
+        ) entry.ft
+      ) formattersByFt;
+    in
     {
       programs.neovim.plugins = with pkgs.vimPlugins; [
         {
@@ -16,9 +30,7 @@
                 return { timeout_ms = 500, lsp_format = "fallback" }
               end,
               formatters_by_ft = {
-                nix = { "nixfmt" },
-                python = { "ruff" },
-                bib = { "latexindent" },
+                ${formattersLua}
               },
             })
 
