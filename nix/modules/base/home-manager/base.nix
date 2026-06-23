@@ -7,6 +7,11 @@
 
       programs.home-manager.enable = true;
 
+      home.shell = {
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+      };
+
       home.packages = with pkgs; [
         bottom
         cargo-flamegraph

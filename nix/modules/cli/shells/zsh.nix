@@ -14,7 +14,6 @@
 
         initContent = ''
           fpath+=("${config.home.profileDirectory}/share/zsh/site-functions" /run/current-system/sw/share/zsh/site-functions /run/current-system/sw/share/zsh/vendor-completions)
-          ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
         '';
 
         # Enable Oh My Zsh

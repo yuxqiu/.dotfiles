@@ -49,8 +49,6 @@
         };
 
         systemd.enable = true;
-        enableBashIntegration = true;
-        enableZshIntegration = true;
       };
 
       xdg.terminal-exec = {

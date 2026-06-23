@@ -75,8 +75,35 @@
                 end
               end
 
-              vim.keymap.set("t", "<C-`>", function() Snacks.terminal.toggle() end, { desc = "Toggle last terminal" })
-              vim.keymap.set("n", "<C-`>", function() Snacks.terminal.toggle() end, { desc = "Toggle last terminal" })
+              local last_term_id
+              vim.api.nvim_create_autocmd("BufEnter", {
+                callback = function(args)
+                  if vim.bo[args.buf].buftype == "terminal" then
+                    local st = vim.b[args.buf].snacks_terminal
+                    if st and st.id then
+                      last_term_id = st.id
+                    end
+                  end
+                end,
+              })
+
+              local function toggle_terminal()
+                local buf = vim.api.nvim_get_current_buf()
+                if vim.bo[buf].buftype == "terminal" then
+                  local st = vim.b[buf].snacks_terminal
+                  if st and st.id then
+                    Snacks.terminal.toggle(nil, { count = st.id })
+                    return
+                  end
+                end
+                if last_term_id then
+                  Snacks.terminal.toggle(nil, { count = last_term_id })
+                  return
+                end
+                Snacks.terminal.toggle()
+              end
+              vim.keymap.set("t", "<C-`>", toggle_terminal, { desc = "Toggle current terminal" })
+              vim.keymap.set("n", "<C-`>", toggle_terminal, { desc = "Toggle current terminal" })
 
               for i = 1, 9 do
                 vim.keymap.set("n", "<leader>t" .. i, function() Snacks.terminal.toggle(nil, { count = i }) end, { desc = "Toggle terminal " .. i })

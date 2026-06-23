@@ -2,8 +2,6 @@
   flake.modules.homeManager.fzf = {
     programs.fzf = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
     };
 
     # use terminal's colors/transparency/blur instead

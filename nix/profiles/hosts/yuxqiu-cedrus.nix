@@ -162,6 +162,7 @@
         config.flake.modules.homeManager.hydra-check
         config.flake.modules.homeManager.nh
         config.flake.modules.homeManager.direnv
+        config.flake.modules.homeManager.any-nix-shell
 
         # sound
         config.flake.modules.homeManager.lowfi
