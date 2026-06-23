@@ -5,6 +5,7 @@
       programs.neovim = {
         extraPackages = with pkgs; [
           imagemagick
+          ghostscript
         ];
         plugins = with pkgs.vimPlugins; [
           {
