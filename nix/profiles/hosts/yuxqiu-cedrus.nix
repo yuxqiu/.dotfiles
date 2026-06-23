@@ -142,13 +142,25 @@
         # dev
         config.flake.modules.homeManager.ai
         config.flake.modules.homeManager.editorconfig
-        config.flake.modules.homeManager.lsp
+        config.flake.modules.homeManager.languages
         config.flake.modules.homeManager.nvim
         config.flake.modules.homeManager.zed
         config.flake.modules.homeManager.python
         config.flake.modules.homeManager.rust
+        config.flake.modules.homeManager.go
         config.flake.modules.homeManager.c
         config.flake.modules.homeManager.sage
+        config.flake.modules.homeManager.bash-lang
+        config.flake.modules.homeManager.latex
+        config.flake.modules.homeManager.lua
+        config.flake.modules.homeManager.markdown
+        config.flake.modules.homeManager.nix-lang
+        config.flake.modules.homeManager.toml
+        config.flake.modules.homeManager.typst
+        config.flake.modules.homeManager.typos
+        config.flake.modules.homeManager.yaml
+        config.flake.modules.homeManager.typescript
+        config.flake.modules.homeManager.jsoncss
 
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch

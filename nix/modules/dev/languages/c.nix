@@ -2,9 +2,17 @@
   flake.modules.homeManager.c =
     { pkgs, ... }:
     {
-      home.packages = with pkgs; [
-        clang
-        cmake
-      ];
+      my.dev.languages.c = {
+        toolchain = with pkgs; [ clang cmake ];
+        lsp = [
+          {
+            server = "clangd";
+            package = pkgs.clang-tools;
+            binary = "clangd";
+            filetypes = [ "c" "cpp" ];
+          }
+        ];
+        treesitter = [ "c" "cpp" ];
+      };
     };
 }

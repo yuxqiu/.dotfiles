@@ -57,7 +57,6 @@
             sound = false;
           };
         };
-        extraPackages = config.my.dev.lsp;
       };
 
       # opencode-queue plugin - queue input until session is idle

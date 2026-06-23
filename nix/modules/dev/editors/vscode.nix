@@ -565,7 +565,5 @@
         };
       };
 
-      # Dependencies for extensions
-      home.packages = config.my.dev.lsp;
     };
 }

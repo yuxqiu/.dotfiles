@@ -2,6 +2,24 @@
   flake.modules.homeManager.rust =
     { pkgs, ... }:
     {
-      home.packages = with pkgs; [ rustup ];
+      my.dev.languages.rust = {
+        toolchain = [ pkgs.rustup ];
+        lsp = [
+          {
+            server = "rust_analyzer";
+            package = pkgs.rustup;
+            binary = "rust-analyzer";
+            filetypes = [ "rust" ];
+          }
+        ];
+        linter = [
+          {
+            name = "clippy";
+            package = pkgs.rustup;
+            filetypes = [ "rust" ];
+          }
+        ];
+        treesitter = [ "rust" ];
+      };
     };
 }

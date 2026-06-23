@@ -11,6 +11,6 @@
         };
       };
 
-      my.dev.lsp = with pkgs; [ codex-acp ];
+      my.dev.languages.codex.toolchain = [ pkgs.codex-acp ];
     };
 }

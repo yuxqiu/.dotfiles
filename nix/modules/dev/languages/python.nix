@@ -1,26 +1,46 @@
 {
   flake.modules.homeManager.python =
-    { config, pkgs, ... }:
+    { pkgs, config, ... }:
     {
       home.file.".pythonrc".text = ''
         # enable syntax completion
         try:
-            import readline
+          import readline
         except ImportError:
-            ...
+          ...
         else:
-            import rlcompleter
-            readline.parse_and_bind("tab: complete")
+          import rlcompleter
+          readline.parse_and_bind("tab: complete")
       '';
 
       home.sessionVariables = {
-        # Python auto-complete
         PYTHONSTARTUP = "${config.home.homeDirectory}/.pythonrc";
       };
 
-      home.packages = with pkgs; [
-        uv
-        python3
-      ];
+      my.dev.languages.python = {
+        toolchain = with pkgs; [ uv python3 ];
+        lsp = [
+          {
+            server = "basedpyright";
+            package = pkgs.basedpyright;
+            binary = "basedpyright-langserver";
+            extraArgs = [ "--stdio" ];
+            filetypes = [ "python" ];
+          }
+        ];
+        formatter = {
+          cmd = "ruff";
+          package = pkgs.ruff;
+          filetypes = [ "python" ];
+        };
+        linter = [
+          {
+            name = "ruff";
+            package = pkgs.ruff;
+            filetypes = [ "python" ];
+          }
+        ];
+        treesitter = [ "python" ];
+      };
     };
 }

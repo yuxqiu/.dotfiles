@@ -3,7 +3,6 @@
     { pkgs, config, ... }:
     {
       programs.neovim = {
-        extraPackages = config.my.dev.lsp;
         plugins = with pkgs.vimPlugins; [
           {
             plugin = fastaction-nvim;

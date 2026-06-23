@@ -5,8 +5,6 @@
       programs.zed-editor = {
         enable = true;
         enableMcpIntegration = true;
-        # needed by extensions to support offline lsp
-        extraPackages = config.my.dev.lsp;
         userSettings = {
           auto_update = false;
           base_keymap = "VSCode";
