@@ -1,0 +1,20 @@
+{
+  flake.modules.homeManager.nvim =
+    {
+      pkgs,
+      config,
+      lib,
+      ...
+    }:
+    lib.mkIf (config.my.dev.languages ? nix) {
+      programs.nixvim = {
+        plugins.lsp.servers.nixd.enable = true;
+        plugins.conform-nvim.settings.formatters_by_ft.nix = [ "nixfmt" ];
+        plugins.lint.lintersByFt.nix = [
+          "deadnix"
+          "statix"
+        ];
+        plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter-parsers; [ nix ];
+      };
+    };
+}

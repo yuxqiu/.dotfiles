@@ -5,35 +5,33 @@
       programs.vscode = {
         enable = true;
         profiles.default = {
-          extensions =
-            with pkgs.vscode-marketplace;
-            [
-              albert.tabout
-              antfu.icons-carbon
-              asvetliakov.vscode-neovim
-              copilot-arena.copilot-arena
-              editorconfig.editorconfig
-              gruntfuggly.todo-tree
-              jasonlhy.hungry-delete
-              juanblanco.solidity
-              ms-azuretools.vscode-containers
-              ms-azuretools.vscode-docker
-              ms-vscode.hexeditor
-              ms-vscode.remote-explorer
-              ms-vscode-remote.remote-containers
-              ms-vscode-remote.remote-ssh
-              ms-vscode-remote.remote-ssh-edit
-              ms-vsliveshare.vsliveshare
-              nmsmith89.incrementor
-              redhat.java
-              thomanq.math-snippets
-              usernamehw.errorlens
-              vscjava.vscode-java-debug
-              vscjava.vscode-java-test
-              vscjava.vscode-maven
-              yfzhao.hscopes-booster
-              yfzhao.ultra-math-preview
-            ];
+          extensions = with pkgs.vscode-marketplace; [
+            albert.tabout
+            antfu.icons-carbon
+            asvetliakov.vscode-neovim
+            copilot-arena.copilot-arena
+            editorconfig.editorconfig
+            gruntfuggly.todo-tree
+            jasonlhy.hungry-delete
+            juanblanco.solidity
+            ms-azuretools.vscode-containers
+            ms-azuretools.vscode-docker
+            ms-vscode.hexeditor
+            ms-vscode.remote-explorer
+            ms-vscode-remote.remote-containers
+            ms-vscode-remote.remote-ssh
+            ms-vscode-remote.remote-ssh-edit
+            ms-vsliveshare.vsliveshare
+            nmsmith89.incrementor
+            redhat.java
+            thomanq.math-snippets
+            usernamehw.errorlens
+            vscjava.vscode-java-debug
+            vscjava.vscode-java-test
+            vscjava.vscode-maven
+            yfzhao.hscopes-booster
+            yfzhao.ultra-math-preview
+          ];
 
           userSettings = {
             # Editor Settings

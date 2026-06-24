@@ -2,49 +2,78 @@
   flake.modules.homeManager.nvim =
     { pkgs, ... }:
     {
-      programs.neovim.plugins = with pkgs.vimPlugins; [
-        {
-          plugin = nvim-dap;
-          optional = true;
-        }
+      programs.nixvim = {
+        plugins.dap = {
+          enable = true;
+          lazyLoad.settings.keys = [
+            "<F5>"
+            "<F10>"
+            "<F11>"
+            "<F12>"
+            "<leader>db"
+          ];
+        };
 
-        {
-          plugin = nvim-dap-ui;
-          optional = true;
-        }
+        plugins.dap-ui = {
+          enable = true;
+          lazyLoad.settings = {
+            before.__raw = ''
+              function()
+                require('lz.n').trigger_load('nvim-dap')
+              end
+            '';
+            keys = [ "<leader>du" ];
+          };
+          luaConfig.post = ''
+            local dap = require("dap")
+            local dapui = require("dapui")
+            dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+            dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+            dap.listeners.before.event_exited["dapui_config"] = dapui.close
+          '';
+        };
 
-        {
-          plugin = nvim-dap-virtual-text;
-          optional = true;
-        }
-      ];
+        plugins.dap-virtual-text = {
+          enable = true;
+          lazyLoad.settings.keys = [
+            "<F5>"
+            "<leader>db"
+            "<leader>du"
+          ];
+        };
 
-      programs.neovim.initLua = ''
-        local dap_loaded = false
-        local function load_dap()
-          if dap_loaded then return end
-          dap_loaded = true
-          lazy_load("nvim-dap", nil, nil)
-          lazy_load("nvim-dap-ui", nil, nil)
-          lazy_load("nvim-dap-virtual-text", nil, nil)
-          local dap = require("dap")
-          local dapui = require("dapui")
-          dapui.setup()
-          require("nvim-dap-virtual-text").setup()
-          dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-          dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-          dap.listeners.before.event_exited["dapui_config"] = dapui.close
-          vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Continue" })
-          vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debug: Step over" })
-          vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Debug: Step into" })
-          vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Debug: Step out" })
-          vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
-          vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })
-        end
-
-        vim.keymap.set("n", "<F5>", function() load_dap(); require("dap").continue() end, { desc = "Debug: Continue" })
-        vim.keymap.set("n", "<leader>db", function() load_dap(); require("dap").toggle_breakpoint() end, { desc = "Toggle breakpoint" })
-        vim.keymap.set("n", "<leader>du", function() load_dap(); require("dapui").toggle() end, { desc = "Toggle DAP UI" })
-      '';
+        keymaps = [
+          {
+            key = "<F5>";
+            action.__raw = "require('dap').continue";
+            options.desc = "Debug: Continue";
+          }
+          {
+            key = "<F10>";
+            action.__raw = "require('dap').step_over";
+            options.desc = "Debug: Step over";
+          }
+          {
+            key = "<F11>";
+            action.__raw = "require('dap').step_into";
+            options.desc = "Debug: Step into";
+          }
+          {
+            key = "<F12>";
+            action.__raw = "require('dap').step_out";
+            options.desc = "Debug: Step out";
+          }
+          {
+            key = "<leader>db";
+            action.__raw = "require('dap').toggle_breakpoint";
+            options.desc = "Toggle breakpoint";
+          }
+          {
+            key = "<leader>du";
+            action.__raw = "require('dapui').toggle";
+            options.desc = "Toggle DAP UI";
+          }
+        ];
+      };
     };
 }

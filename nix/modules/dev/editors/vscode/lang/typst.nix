@@ -1,10 +1,14 @@
 {
   flake.modules.homeManager.vscode =
-    { pkgs, config, lib, ... }:
+    {
+      pkgs,
+      config,
+      lib,
+      ...
+    }:
     {
       programs.vscode.profiles.default.extensions = lib.mkIf (config.my.dev.languages ? typst) (
-        with pkgs.vscode-marketplace;
-        [ myriad-dreamin.tinymist ]
+        with pkgs.vscode-marketplace; [ myriad-dreamin.tinymist ]
       );
 
       programs.vscode.profiles.default.userSettings = lib.mkIf (config.my.dev.languages ? typst) {

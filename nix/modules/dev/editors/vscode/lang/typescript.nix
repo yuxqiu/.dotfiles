@@ -1,6 +1,11 @@
 {
   flake.modules.homeManager.vscode =
-    { pkgs, config, lib, ... }:
+    {
+      pkgs,
+      config,
+      lib,
+      ...
+    }:
     {
       programs.vscode.profiles.default.userSettings = lib.mkIf (config.my.dev.languages ? typescript) {
         "javascript.inlayHints.parameterNames.enabled" = "all";

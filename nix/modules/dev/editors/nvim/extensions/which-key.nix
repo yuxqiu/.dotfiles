@@ -2,34 +2,77 @@
   flake.modules.homeManager.nvim =
     { pkgs, ... }:
     {
-      programs.neovim.plugins = with pkgs.vimPlugins; [
-        {
-          plugin = which-key-nvim;
-          type = "lua";
-          config = ''
-            require("which-key").setup({
-              replace = {
-                ["<leader>"] = "SPC",
-                ["<cr>"] = "RET",
-                ["<tab>"] = "TAB",
-              },
-              spec = {
-                { "<leader>R", group = "remote", icon = "󰢟" },
-                { "<leader>c", group = "code", icon = "󰚌" },
-                { "<leader>d", group = "debug", icon = "󰃤" },
-                { "<leader>f", group = "find", icon = "󰈞" },
-                { "<leader>g", group = "git", icon = "󰊢" },
-                { "<leader>j", group = "jump", icon = "󰆔" },
-                { "<leader>l", group = "line", icon = "󰅂" },
-                { "<leader>Q", group = "macro", icon = "󰑁" },
-                { "<leader>q", group = "session", icon = "󰅴" },
-                { "<leader>s", group = "search", icon = "󰍉" },
-                { "<leader>t", group = "trouble", icon = "󰀨" },
-                { "<leader>u", group = "toggle", icon = "󰔲" },
-              },
-            })
-          '';
-        }
-      ];
+      programs.nixvim.plugins.which-key = {
+        enable = true;
+        settings = {
+          replace = {
+            "<leader>" = "SPC";
+            "<cr>" = "RET";
+            "<tab>" = "TAB";
+          };
+          spec = [
+            {
+              __unkeyed-1 = "<leader>R";
+              group = "remote";
+              icon = "󰢟";
+            }
+            {
+              __unkeyed-1 = "<leader>c";
+              group = "code";
+              icon = "󰚌";
+            }
+            {
+              __unkeyed-1 = "<leader>d";
+              group = "debug";
+              icon = "󰃤";
+            }
+            {
+              __unkeyed-1 = "<leader>f";
+              group = "find";
+              icon = "󰈞";
+            }
+            {
+              __unkeyed-1 = "<leader>g";
+              group = "git";
+              icon = "󰊢";
+            }
+            {
+              __unkeyed-1 = "<leader>j";
+              group = "jump";
+              icon = "󰆔";
+            }
+            {
+              __unkeyed-1 = "<leader>l";
+              group = "line";
+              icon = "󰅂";
+            }
+            {
+              __unkeyed-1 = "<leader>Q";
+              group = "macro";
+              icon = "󰑁";
+            }
+            {
+              __unkeyed-1 = "<leader>q";
+              group = "session";
+              icon = "󰅴";
+            }
+            {
+              __unkeyed-1 = "<leader>s";
+              group = "search";
+              icon = "󰍉";
+            }
+            {
+              __unkeyed-1 = "<leader>t";
+              group = "trouble";
+              icon = "󰀨";
+            }
+            {
+              __unkeyed-1 = "<leader>u";
+              group = "toggle";
+              icon = "󰔲";
+            }
+          ];
+        };
+      };
     };
 }

@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.nvim = {
-    programs.neovim.initLua = ''
+    programs.nixvim.extraConfigLua = ''
       -- Keymaps
       vim.keymap.set("n", "<C-=>", function() change_font_size(1) end, { desc = "Increase font size" })
       vim.keymap.set("n", "<C-+>", function() change_font_size(1) end, { desc = "Increase font size" })

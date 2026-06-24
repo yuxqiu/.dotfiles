@@ -1,8 +1,8 @@
 {
   flake.modules.homeManager.nvim =
-    { ... }:
+    { pkgs, ... }:
     {
-      programs.neovim.initLua = ''
+      programs.nixvim.extraConfigLua = ''
         local ra_run_in_split = function(command)
           local r = command.arguments[1]
           local cmd = { "cargo", unpack(r.args.cargoArgs) }
@@ -57,5 +57,12 @@
           end,
         })
       '';
+
+      programs.nixvim.plugins.lsp.servers.rust_analyzer.enable = true;
+      programs.nixvim.plugins.conform-nvim.settings.formatters_by_ft.rust = [ "rustfmt" ];
+      programs.nixvim.plugins.lint.lintersByFt.rust = [ "clippy" ];
+      programs.nixvim.plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+        rust
+      ];
     };
 }

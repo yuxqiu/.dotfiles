@@ -3,28 +3,9 @@
     { pkgs, ... }:
     {
       my.dev.languages.bash = {
-        lsp = [
-          {
-            server = "bashls";
-            package = pkgs.bash-language-server;
-            binary = "bash-language-server";
-            extraArgs = [ "start" ];
-            filetypes = [ "bash" "sh" ];
-          }
-        ];
-        formatter = {
-          cmd = "shfmt";
-          package = pkgs.shfmt;
-          filetypes = [ "bash" "sh" ];
-        };
-        linter = [
-          {
-            name = "shellcheck";
-            package = pkgs.shellcheck;
-            filetypes = [ "bash" "sh" ];
-          }
-        ];
-        treesitter = [ "bash" ];
+        lsp = [ pkgs.bash-language-server ];
+        formatter = pkgs.shfmt;
+        linter = [ pkgs.shellcheck ];
       };
     };
 }

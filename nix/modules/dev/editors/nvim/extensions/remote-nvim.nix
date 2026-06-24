@@ -29,53 +29,72 @@
       });
     in
     {
-
-      programs.neovim = {
+      programs.nixvim = {
         extraPackages = with pkgs; [ rsync ];
-        plugins = [
-          {
-            plugin = remote-nvim-nvim-patched;
-            optional = true;
-          }
-        ];
-        initLua = ''
-          local function load_remote_nvim()
-            lazy_load("remote-nvim.nvim", nil, function()
-              require("remote-nvim").setup({
-                offline_mode = { enabled = true, no_github = false },
-                remote = {
-                  app_name = "nvim",
-                  copy_dirs = {
-                    config = {
-                      base = vim.fn.stdpath("config"),
-                      dirs = "*",
-                      compression = { enabled = true, additional_opts = { "--dereference" } },
-                    },
-                    data = {
-                      base = vim.fn.stdpath("data"),
-                      dirs = { "site" },
-                      compression = { enabled = true, additional_opts = { "--dereference" } },
-                    },
-                  },
-                },
-                ssh_config = { scp_binary = "rsync" },
-                client_callback = function(port, _)
-                  if vim.fn.has("mac") == 1 then
-                    os.execute(("open -a Terminal nvim --server localhost:%s --remote-ui &"):format(port))
-                  else
-                    os.execute(("xdg-terminal-exec nvim --server localhost:%s --remote-ui &"):format(port))
-                  end
-                end,
-              })
-            end)
-          end
 
-          vim.keymap.set("n", "<leader>Rs", function() load_remote_nvim(); vim.cmd("RemoteStart") end, { desc = "Remote start" })
-          vim.keymap.set("n", "<leader>Ri", function() load_remote_nvim(); vim.cmd("RemoteInfo") end, { desc = "Remote info" })
-          vim.keymap.set("n", "<leader>Rc", function() load_remote_nvim(); vim.cmd("RemoteCleanup") end, { desc = "Remote cleanup" })
-          vim.keymap.set("n", "<leader>Rd", function() load_remote_nvim(); vim.cmd("RemoteConfigDel") end, { desc = "Remote config delete" })
-        '';
+        plugins.remote-nvim = {
+          enable = true;
+          package = remote-nvim-nvim-patched;
+          lazyLoad.settings.keys = [
+            {
+              __unkeyed-1 = "<leader>Rs";
+              __unkeyed-2 = "<cmd>RemoteStart<CR>";
+              desc = "Remote start";
+            }
+            {
+              __unkeyed-1 = "<leader>Ri";
+              __unkeyed-2 = "<cmd>RemoteInfo<CR>";
+              desc = "Remote info";
+            }
+            {
+              __unkeyed-1 = "<leader>Rc";
+              __unkeyed-2 = "<cmd>RemoteCleanup<CR>";
+              desc = "Remote cleanup";
+            }
+            {
+              __unkeyed-1 = "<leader>Rd";
+              __unkeyed-2 = "<cmd>RemoteConfigDel<CR>";
+              desc = "Remote config delete";
+            }
+          ];
+          settings = {
+            offline_mode = {
+              enabled = true;
+              no_github = false;
+            };
+            remote = {
+              app_name = "nvim";
+              copy_dirs = {
+                config = {
+                  base.__raw = ''vim.fn.stdpath("config")'';
+                  dirs = "*";
+                  compression = {
+                    enabled = true;
+                    additional_opts = [ "--dereference" ];
+                  };
+                };
+                data = {
+                  base.__raw = ''vim.fn.stdpath("data")'';
+                  dirs = [ "site" ];
+                  compression = {
+                    enabled = true;
+                    additional_opts = [ "--dereference" ];
+                  };
+                };
+              };
+            };
+            ssh_config.scp_binary = "rsync";
+            client_callback.__raw = ''
+              function(port, _)
+                if vim.fn.has("mac") == 1 then
+                  os.execute(("open -a Terminal nvim --server localhost:%s --remote-ui &"):format(port))
+                else
+                  os.execute(("xdg-terminal-exec nvim --server localhost:%s --remote-ui &"):format(port))
+                end
+              end
+            '';
+          };
+        };
       };
-
     };
 }

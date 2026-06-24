@@ -1,10 +1,14 @@
 {
   flake.modules.homeManager.vscode =
-    { pkgs, config, lib, ... }:
+    {
+      pkgs,
+      config,
+      lib,
+      ...
+    }:
     {
       programs.vscode.profiles.default.extensions = lib.mkIf (config.my.dev.languages ? latex) (
-        with pkgs.vscode-marketplace;
-        [ james-yu.latex-workshop ]
+        with pkgs.vscode-marketplace; [ james-yu.latex-workshop ]
       );
 
       programs.vscode.profiles.default.userSettings = lib.mkIf (config.my.dev.languages ? latex) {

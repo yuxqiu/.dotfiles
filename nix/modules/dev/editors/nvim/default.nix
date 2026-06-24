@@ -1,56 +1,27 @@
+{ inputs, ... }:
 {
   flake.modules.homeManager.nvim =
-    { pkgs, config, lib, ... }:
-    let
-      treesitterParsers = lib.flatten (lib.mapAttrsToList (_: lang:
-        lang.treesitter
-      ) config.my.dev.languages) ++ [
-        "vim"
-        "vimdoc"
-      ];
-
-      treesitterPlugins = map (parser:
-        pkgs.vimPlugins.nvim-treesitter-parsers.${parser}
-      ) treesitterParsers;
-
-      lintEntries = lib.flatten (lib.mapAttrsToList (_: lang:
-        lib.flatten (map (l:
-          map (ft: { inherit ft; name = l.name; }) l.filetypes
-        ) lang.linter)
-      ) config.my.dev.languages);
-
-      lintersByFt = lib.foldl' (acc: entry:
-        acc // {
-          ${entry.ft} = acc.${entry.ft} or [ ] ++ [ entry.name ];
-        }
-      ) { } lintEntries;
-
-      lintersLua = lib.concatStringsSep "\n    " (lib.mapAttrsToList (ft: names:
-        ''${ft} = { ${lib.concatMapStringsSep ", " (n: ''"${n}"'') names} },''
-      ) lintersByFt);
-    in
     {
-      programs.neovim = {
+      pkgs,
+      ...
+    }:
+    {
+      imports = [ inputs.nixvim.homeModules.nixvim ];
+
+      programs.nixvim = {
         enable = true;
         viAlias = true;
         vimAlias = true;
+        defaultEditor = true;
 
-        extraConfig = ''
+        extraConfigVim = ''
           let mapleader = ' '
           nnoremap <leader> <Nop>
         '';
 
-        initLua = ''
-          _G._lazy_loaded = {}
+        plugins.lz-n.enable = true;
 
-          _G.lazy_load = function(pack_name, before_fn, after_fn)
-            if _G._lazy_loaded[pack_name] then return end
-            _G._lazy_loaded[pack_name] = true
-            if before_fn then before_fn() end
-            vim.cmd("packadd " .. pack_name)
-            if after_fn then after_fn() end
-          end
-
+        extraConfigLua = ''
           _G._debounce_timers = {}
 
           _G.debounce = function(key, ms, fn)
@@ -76,78 +47,71 @@
             vim.api.nvim_win_set_buf(0, buf)
             vim.api.nvim_buf_set_name(buf, title or "Code Lens Result")
           end
+
+          require("hlslens").setup({})
+
+          require("scrollview.contrib.gitsigns").setup()
+
+          vim.keymap.set("n", "<leader>jn", "<cmd>ScrollViewNext<CR>", { desc = "Next scrollview sign" })
+          vim.keymap.set("n", "<leader>jp", "<cmd>ScrollViewPrev<CR>", { desc = "Prev scrollview sign" })
+
+          vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+            callback = function()
+              debounce("lint:" .. vim.api.nvim_buf_get_name(0), 500, function()
+                require("lint").try_lint()
+              end)
+            end,
+          })
+
+          vim.api.nvim_create_autocmd({ "CursorHold" }, {
+            callback = function()
+              require("lint").try_lint()
+            end,
+          })
         '';
 
-        plugins = with pkgs.vimPlugins; [
-          nvim-treesitter
-        ] ++ treesitterPlugins ++ [
-          {
-            plugin = catppuccin-nvim;
-            type = "lua";
-            config = ''
-              vim.cmd.colorscheme("catppuccin-mocha")
-            '';
-          }
+        colorschemes.catppuccin = {
+          enable = true;
+          settings.flavour = "mocha";
+        };
 
-          editorconfig-vim
+        editorconfig.enable = true;
 
-          {
-            plugin = todo-comments-nvim;
-            type = "lua";
-            config = ''
-              require("todo-comments").setup()
-            '';
-          }
+        plugins.treesitter = {
+          enable = true;
+          grammarPackages = [
+            pkgs.vimPlugins.nvim-treesitter-parsers.vim
+            pkgs.vimPlugins.nvim-treesitter-parsers.vimdoc
+          ];
+          settings = {
+            highlight.enable = true;
+            indent.enable = true;
+            folding.enable = true;
+          };
+        };
 
-          nvim-web-devicons
+        plugins.lint = {
+          enable = true;
+        };
 
-          {
-            plugin = nvim-hlslens;
-            type = "lua";
-            config = ''
-              require("hlslens").setup({})
-            '';
-          }
+        plugins.todo-comments.enable = true;
 
-          {
-            plugin = nvim-scrollview;
-            type = "lua";
-            config = ''
-              require("scrollview").setup({
-                signs_on_startup = { "diagnostics", "search", "marks" },
-                scrollview_mousemove = true,
-              })
-              require("scrollview.contrib.gitsigns").setup()
+        plugins.web-devicons.enable = true;
 
-              vim.keymap.set("n", "<leader>jn", "<cmd>ScrollViewNext<CR>", { desc = "Next scrollview sign" })
-              vim.keymap.set("n", "<leader>jp", "<cmd>ScrollViewPrev<CR>", { desc = "Prev scrollview sign" })
-            '';
-          }
+        plugins.scrollview = {
+          enable = true;
+          settings = {
+            signs_on_startup = [
+              "diagnostics"
+              "search"
+              "marks"
+            ];
+            mousemove = true;
+          };
+        };
 
-          {
-            plugin = nvim-lint;
-            type = "lua";
-            config = ''
-              local lint = require("lint")
-              lint.linters_by_ft = {
-                ${lintersLua}
-              }
-
-              vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                callback = function()
-                  debounce("lint:" .. vim.api.nvim_buf_get_name(0), 500, function()
-                    lint.try_lint()
-                  end)
-                end,
-              })
-
-              vim.api.nvim_create_autocmd({ "CursorHold" }, {
-                callback = function()
-                  lint.try_lint()
-                end,
-              })
-            '';
-          }
+        extraPlugins = with pkgs.vimPlugins; [
+          nvim-hlslens
         ];
 
         extraPackages = with pkgs; [
@@ -156,12 +120,7 @@
         ];
       };
 
-      home.sessionVariables = {
-        EDITOR = "${pkgs.neovim}/bin/nvim";
-        VISUAL = "${pkgs.neovim}/bin/nvim";
-      };
-
-      stylix.targets.neovim.enable = false;
+      stylix.targets.nixvim.enable = false;
 
       xdg.mimeApps = {
         associations.added = {
