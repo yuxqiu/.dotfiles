@@ -161,7 +161,8 @@
         config.flake.modules.homeManager.typos
         config.flake.modules.homeManager.yaml
         config.flake.modules.homeManager.typescript
-        config.flake.modules.homeManager.jsoncss
+        config.flake.modules.homeManager.json
+        config.flake.modules.homeManager.css
 
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch

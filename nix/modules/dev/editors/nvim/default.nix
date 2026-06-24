@@ -14,6 +14,9 @@
         vimAlias = true;
         defaultEditor = true;
         wrapRc = true;
+        impureRtp = false;
+
+        nixpkgs.pkgs = pkgs;
 
         luaLoader.enable = true;
         performance.byteCompileLua.enable = true;
