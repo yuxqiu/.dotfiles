@@ -12,6 +12,11 @@
             filetypes = [ "typescript" "javascript" ];
           }
         ];
+        formatter = {
+          cmd = "prettier";
+          package = pkgs.prettier;
+          filetypes = [ "typescript" "javascript" ];
+        };
       };
     };
 }

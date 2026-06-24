@@ -3,7 +3,7 @@
     { lib, config, ... }:
     {
       options.my.dev.languages = lib.mkOption {
-        type = lib.types.attrsOf (lib.types.submodule {
+        type = lib.types.attrsOf (lib.types.submodule ({ name, ... }: {
           options = {
             toolchain = lib.mkOption {
               type = lib.types.listOf lib.types.package;
@@ -28,7 +28,7 @@
                   };
                   filetypes = lib.mkOption {
                     type = lib.types.listOf lib.types.str;
-                    default = [ ];
+                    default = [ name ];
                   };
                 };
               });
@@ -46,6 +46,7 @@
                   };
                   filetypes = lib.mkOption {
                     type = lib.types.listOf lib.types.str;
+                    default = [ name ];
                   };
                 };
               });
@@ -63,6 +64,7 @@
                   };
                   filetypes = lib.mkOption {
                     type = lib.types.listOf lib.types.str;
+                    default = [ name ];
                   };
                 };
               });
@@ -74,7 +76,7 @@
               default = [ ];
             };
           };
-        });
+        }));
         default = { };
       };
 

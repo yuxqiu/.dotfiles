@@ -8,9 +8,12 @@
             server = "markdown_oxide";
             package = pkgs.markdown-oxide;
             binary = "markdown-oxide";
-            filetypes = [ "markdown" ];
           }
         ];
+        formatter = {
+          cmd = "prettier";
+          package = pkgs.prettier;
+        };
         treesitter = [ "markdown" "markdown_inline" ];
       };
     };

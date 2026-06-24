@@ -9,7 +9,6 @@
             server = "texlab";
             package = pkgs.texlab;
             binary = "texlab";
-            filetypes = [ "latex" ];
           }
         ];
         formatter = {

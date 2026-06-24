@@ -12,6 +12,11 @@
             filetypes = [ "c" "cpp" ];
           }
         ];
+        formatter = {
+          cmd = "clang_format";
+          package = pkgs.clang-tools;
+          filetypes = [ "c" "cpp" ];
+        };
         treesitter = [ "c" "cpp" ];
         linter = [
           {

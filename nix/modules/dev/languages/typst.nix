@@ -10,7 +10,6 @@
             package = pkgs.tinymist;
             binary = "tinymist";
             extraArgs = [ "lsp" ];
-            filetypes = [ "typst" ];
           }
         ];
         treesitter = [ "typst" ];

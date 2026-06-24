@@ -25,19 +25,16 @@
             package = pkgs.basedpyright;
             binary = "basedpyright-langserver";
             extraArgs = [ "--stdio" ];
-            filetypes = [ "python" ];
           }
         ];
         formatter = {
           cmd = "ruff";
           package = pkgs.ruff;
-          filetypes = [ "python" ];
         };
         linter = [
           {
             name = "ruff";
             package = pkgs.ruff;
-            filetypes = [ "python" ];
           }
         ];
         treesitter = [ "python" ];

@@ -12,6 +12,11 @@
             filetypes = [ "bash" "sh" ];
           }
         ];
+        formatter = {
+          cmd = "shfmt";
+          package = pkgs.shfmt;
+          filetypes = [ "bash" "sh" ];
+        };
         linter = [
           {
             name = "shellcheck";

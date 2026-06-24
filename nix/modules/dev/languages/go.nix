@@ -9,14 +9,16 @@
             server = "gopls";
             package = pkgs.gopls;
             binary = "gopls";
-            filetypes = [ "go" ];
           }
         ];
+        formatter = {
+          cmd = "gofmt";
+          package = pkgs.go;
+        };
         linter = [
           {
             name = "golangcilint";
             package = pkgs.golangci-lint;
-            filetypes = [ "go" ];
           }
         ];
         treesitter = [ "go" ];

@@ -19,6 +19,11 @@
             filetypes = [ "css" "scss" ];
           }
         ];
+        formatter = {
+          cmd = "prettier";
+          package = pkgs.prettier;
+          filetypes = [ "json" "css" "scss" ];
+        };
         treesitter = [ "json" "scss" ];
       };
     };

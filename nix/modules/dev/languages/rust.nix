@@ -9,14 +9,16 @@
             server = "rust_analyzer";
             package = pkgs.rustup;
             binary = "rust-analyzer";
-            filetypes = [ "rust" ];
           }
         ];
+        formatter = {
+          cmd = "rustfmt";
+          package = pkgs.rustup;
+        };
         linter = [
           {
             name = "clippy";
             package = pkgs.rustup;
-            filetypes = [ "rust" ];
           }
         ];
         treesitter = [ "rust" ];

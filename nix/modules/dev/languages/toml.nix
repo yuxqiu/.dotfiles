@@ -9,9 +9,12 @@
             package = pkgs.taplo;
             binary = "taplo";
             extraArgs = [ "lsp" "stdio" ];
-            filetypes = [ "toml" ];
           }
         ];
+        formatter = {
+          cmd = "taplo";
+          package = pkgs.taplo;
+        };
         treesitter = [ "toml" ];
       };
     };

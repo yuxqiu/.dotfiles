@@ -8,9 +8,12 @@
             server = "lua_ls";
             package = pkgs.lua-language-server;
             binary = "lua-language-server";
-            filetypes = [ "lua" ];
           }
         ];
+        formatter = {
+          cmd = "stylua";
+          package = pkgs.stylua;
+        };
         treesitter = [ "lua" ];
       };
     };
