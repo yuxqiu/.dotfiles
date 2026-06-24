@@ -148,6 +148,21 @@
 
         services.tailscale.serve.enable = true;
 
+        # tailscaled-autoconnect (from nixpkgs tailscale module) has Type=notify
+        # and waits for tailscale to reach "Running" state, which requires internet.
+        # Without internet at boot, it times out after 90s. Since greetd uses
+        # Type=idle (waits for all boot jobs to be dispatched), this blocks the
+        # login screen. Remove it from multi-user.target and trigger via timer.
+        systemd.services.tailscaled-autoconnect.wantedBy = lib.mkForce [ ];
+        systemd.timers.tailscaled-autoconnect = {
+          description = "Run tailscaled-autoconnect after boot";
+          wantedBy = [ "timers.target" ];
+          timerConfig = {
+            OnBootSec = "10s";
+            Unit = "tailscaled-autoconnect.service";
+          };
+        };
+
         systemd.services.tailscale-serve =
           lib.mkIf (config.services.tailscale.enable && cfg.enable && hasServices)
             {
