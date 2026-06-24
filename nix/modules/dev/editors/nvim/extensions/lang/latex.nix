@@ -37,30 +37,38 @@
           }
         ];
 
-        extraConfigLua = ''
-          vim.api.nvim_create_autocmd("User", {
-            pattern = "VimtexEventInitPost",
-            callback = function()
-              vim.api.nvim_create_autocmd("BufWritePost", {
-                buffer = 0,
-                callback = function()
-                  debounce("vimtex_compile", 500, function()
-                    vim.cmd("VimtexStop")
-                    vim.cmd("VimtexCompileSS")
-                  end)
-                end,
-              })
-            end,
-          })
-
-          vim.api.nvim_create_autocmd("FileType", {
-            pattern = { "tex", "latex" },
-            callback = function()
-              vim.opt_local.wrap = true
-              vim.opt_local.linebreak = true
-            end,
-          })
-        '';
+        autoCmd = [
+          {
+            event = [ "FileType" ];
+            pattern = [
+              "tex"
+              "latex"
+            ];
+            callback.__raw = ''
+              function()
+                vim.opt_local.wrap = true
+                vim.opt_local.linebreak = true
+              end
+            '';
+          }
+          {
+            event = [ "User" ];
+            pattern = [ "VimtexEventInitPost" ];
+            callback.__raw = ''
+              function()
+                vim.api.nvim_create_autocmd("BufWritePost", {
+                  buffer = 0,
+                  callback = function()
+                    debounce("vimtex_compile", 500, function()
+                      vim.cmd("VimtexStop")
+                      vim.cmd("VimtexCompileSS")
+                    end)
+                  end,
+                })
+              end
+            '';
+          }
+        ];
 
         plugins.lsp.servers.texlab = {
           enable = true;

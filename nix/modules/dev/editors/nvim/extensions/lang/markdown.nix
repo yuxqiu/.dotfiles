@@ -7,15 +7,18 @@
       ...
     }:
     lib.mkIf (config.my.dev.languages ? markdown) {
-      programs.nixvim.extraConfigLua = ''
-        vim.api.nvim_create_autocmd("FileType", {
-          pattern = "markdown",
-          callback = function()
-            vim.opt_local.wrap = true
-            vim.opt_local.linebreak = true
-          end,
-        })
-      '';
+      programs.nixvim.autoCmd = [
+        {
+          event = [ "FileType" ];
+          pattern = [ "markdown" ];
+          callback.__raw = ''
+            function()
+              vim.opt_local.wrap = true
+              vim.opt_local.linebreak = true
+            end
+          '';
+        }
+      ];
 
       programs.nixvim.plugins.lsp.servers.markdown_oxide.enable = true;
       programs.nixvim.plugins.conform-nvim.settings.formatters_by_ft.markdown = [ "prettier" ];

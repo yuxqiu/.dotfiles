@@ -7,11 +7,16 @@
       };
     };
 
-    programs.nixvim.extraConfigLua = ''
-      vim.api.nvim_create_autocmd("VimEnter", {
-        once = true,
-        callback = function() vim.keymap.del("n", "yss") end,
-      })
-    '';
+    programs.nixvim.autoCmd = [
+      {
+        event = [ "VimEnter" ];
+        once = true;
+        callback.__raw = ''
+          function()
+            vim.keymap.del("n", "yss")
+          end
+        '';
+      }
+    ];
   };
 }

@@ -22,21 +22,30 @@
       };
     };
 
-    programs.nixvim.extraConfigLua = ''
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "PersistedSavePre",
-        group = vim.api.nvim_create_augroup("PersistedSavePre", { clear = true }),
-        callback = function()
-          -- Ensure the neo-tree plugin is not written into the session
-          pcall(vim.cmd, "bw neo-tree")
-          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if vim.bo[buf].filetype == "neo-tree" then
-              vim.api.nvim_buf_delete(buf, { force = true })
+    programs.nixvim.autoGroups.PersistedSavePre = {
+      clear = true;
+    };
+
+    programs.nixvim.autoCmd = [
+      {
+        event = [ "User" ];
+        pattern = [ "PersistedSavePre" ];
+        group = "PersistedSavePre";
+        callback.__raw = ''
+          function()
+            -- Ensure the neo-tree plugin is not written into the session
+            pcall(vim.cmd, "bw neo-tree")
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+              if vim.bo[buf].filetype == "neo-tree" then
+                vim.api.nvim_buf_delete(buf, { force = true })
+              end
             end
           end
-        end,
-      })
+        '';
+      }
+    ];
 
+    programs.nixvim.extraConfigLua = ''
       vim.keymap.set("n", "<leader>qs", function() require("persisted").load() end, { desc = "Restore session" })
       vim.keymap.set("n", "<leader>qS", function() require("persisted").select() end, { desc = "Select session" })
       vim.keymap.set("n", "<leader>ql", function() require("persisted").load_last() end, { desc = "Restore last session" })

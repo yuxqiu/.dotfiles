@@ -35,7 +35,44 @@
         plugins.remote-nvim = {
           enable = true;
           package = remote-nvim-nvim-patched;
-          lazyLoad.settings.lazy = true;
+          lazyLoad.settings.keys = [
+            {
+              __unkeyed-1 = "<leader>Rs";
+              __unkeyed-2.__raw = ''
+                function()
+                  vim.cmd("RemoteStart")
+                end
+              '';
+              desc = "Remote start";
+            }
+            {
+              __unkeyed-1 = "<leader>Ri";
+              __unkeyed-2.__raw = ''
+                function()
+                  vim.cmd("RemoteInfo")
+                end
+              '';
+              desc = "Remote info";
+            }
+            {
+              __unkeyed-1 = "<leader>Rc";
+              __unkeyed-2.__raw = ''
+                function()
+                  vim.cmd("RemoteCleanup")
+                end
+              '';
+              desc = "Remote cleanup";
+            }
+            {
+              __unkeyed-1 = "<leader>Rd";
+              __unkeyed-2.__raw = ''
+                function()
+                  vim.cmd("RemoteConfigDel")
+                end
+              '';
+              desc = "Remote config delete";
+            }
+          ];
           settings = {
             offline_mode = {
               enabled = true;
@@ -75,48 +112,6 @@
           };
         };
 
-        keymaps = [
-          {
-            key = "<leader>Rs";
-            action.__raw = ''
-              function()
-                require('lz.n').trigger_load('remote-nvim.nvim')
-                vim.cmd("RemoteStart")
-              end
-            '';
-            options.desc = "Remote start";
-          }
-          {
-            key = "<leader>Ri";
-            action.__raw = ''
-              function()
-                require('lz.n').trigger_load('remote-nvim.nvim')
-                vim.cmd("RemoteInfo")
-              end
-            '';
-            options.desc = "Remote info";
-          }
-          {
-            key = "<leader>Rc";
-            action.__raw = ''
-              function()
-                require('lz.n').trigger_load('remote-nvim.nvim')
-                vim.cmd("RemoteCleanup")
-              end
-            '';
-            options.desc = "Remote cleanup";
-          }
-          {
-            key = "<leader>Rd";
-            action.__raw = ''
-              function()
-                require('lz.n').trigger_load('remote-nvim.nvim')
-                vim.cmd("RemoteConfigDel")
-              end
-            '';
-            options.desc = "Remote config delete";
-          }
-        ];
       };
     };
 }

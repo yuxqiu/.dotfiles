@@ -3,6 +3,7 @@
   flake.modules.homeManager.nvim =
     {
       pkgs,
+      lib,
       ...
     }:
     {
@@ -26,9 +27,11 @@
           loaded_perl_provider = 0;
         };
 
-        extraConfigVim = ''
-          let mapleader = ' '
-          nnoremap <leader> <Nop>
+        # Set leader key before lz.n.load runs (in extraConfigLuaPre),
+        # so that <leader> in lazy-loaded keymaps expands to <space>.
+        extraConfigLuaPre = lib.mkBefore ''
+          vim.g.mapleader = " "
+          vim.keymap.set("n", "<leader>", "<Nop>")
         '';
 
         plugins.lz-n.enable = true;

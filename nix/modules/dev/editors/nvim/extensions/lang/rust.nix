@@ -46,17 +46,22 @@
             end)
           end)
         end
-
-        vim.api.nvim_create_autocmd("LspAttach", {
-          callback = function(args)
-            local client = vim.lsp.get_client_by_id(args.data.client_id)
-            if client and client.name == "rust_analyzer" then
-              vim.lsp.commands["rust-analyzer.runSingle"] = ra_run_in_split
-              vim.lsp.commands["rust-analyzer.debugSingle"] = ra_debug_in_split
-            end
-          end,
-        })
       '';
+
+      programs.nixvim.autoCmd = [
+        {
+          event = [ "LspAttach" ];
+          callback.__raw = ''
+            function(args)
+              local client = vim.lsp.get_client_by_id(args.data.client_id)
+              if client and client.name == "rust_analyzer" then
+                vim.lsp.commands["rust-analyzer.runSingle"] = ra_run_in_split
+                vim.lsp.commands["rust-analyzer.debugSingle"] = ra_debug_in_split
+              end
+            end
+          '';
+        }
+      ];
 
       programs.nixvim.plugins.lsp.servers.rust_analyzer = {
         enable = true;

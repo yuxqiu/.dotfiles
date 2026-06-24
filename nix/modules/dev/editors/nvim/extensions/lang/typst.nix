@@ -23,15 +23,18 @@
           }
         ];
 
-        extraConfigLua = ''
-          vim.api.nvim_create_autocmd("FileType", {
-            pattern = "typst",
-            callback = function()
-              vim.opt_local.wrap = true
-              vim.opt_local.linebreak = true
-            end,
-          })
-        '';
+        autoCmd = [
+          {
+            event = [ "FileType" ];
+            pattern = [ "typst" ];
+            callback.__raw = ''
+              function()
+                vim.opt_local.wrap = true
+                vim.opt_local.linebreak = true
+              end
+            '';
+          }
+        ];
 
         plugins.lsp.servers.tinymist = {
           enable = true;

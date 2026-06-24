@@ -5,32 +5,64 @@
       programs.nixvim = {
         plugins.telescope = {
           enable = true;
-          lazyLoad.settings.cmd = [ "Telescope" ];
-          keymaps = {
-            "<C-p>" = {
-              action = "find_files";
-              options.desc = "Find files";
-            };
-            "<leader>fb" = {
-              action = "buffers";
-              options.desc = "Find buffers";
-            };
-            "<leader>fh" = {
-              action = "help_tags";
-              options.desc = "Help tags";
-            };
-            "<leader>fo" = {
-              action = "oldfiles";
-              options.desc = "Recent files";
-            };
-            "<leader>fc" = {
-              action = "commands";
-              options.desc = "Commands";
-            };
-            "<leader>fr" = {
-              action = "resume";
-              options.desc = "Resume last picker";
-            };
+          lazyLoad.settings = {
+            cmd = [ "Telescope" ];
+            keys = [
+              {
+                __unkeyed-1 = "<C-p>";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").find_files()
+                  end
+                '';
+                desc = "Find files";
+              }
+              {
+                __unkeyed-1 = "<leader>fb";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").buffers()
+                  end
+                '';
+                desc = "Find buffers";
+              }
+              {
+                __unkeyed-1 = "<leader>fh";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").help_tags()
+                  end
+                '';
+                desc = "Help tags";
+              }
+              {
+                __unkeyed-1 = "<leader>fo";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").oldfiles()
+                  end
+                '';
+                desc = "Recent files";
+              }
+              {
+                __unkeyed-1 = "<leader>fc";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").commands()
+                  end
+                '';
+                desc = "Commands";
+              }
+              {
+                __unkeyed-1 = "<leader>fr";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").resume()
+                  end
+                '';
+                desc = "Resume last picker";
+              }
+            ];
           };
           settings = {
             defaults = {

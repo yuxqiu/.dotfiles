@@ -3,7 +3,66 @@
     programs.nixvim = {
       plugins.dap = {
         enable = true;
-        lazyLoad.settings.lazy = true;
+        lazyLoad.settings.keys = [
+          {
+            __unkeyed-1 = "<F5>";
+            __unkeyed-2.__raw = ''
+              function()
+                require('lz.n').trigger_load('nvim-dap-ui')
+                require('lz.n').trigger_load('nvim-dap-virtual-text')
+                require('dap').continue()
+              end
+            '';
+            desc = "Debug: Continue";
+          }
+          {
+            __unkeyed-1 = "<F10>";
+            __unkeyed-2.__raw = ''
+              function()
+                require('dap').step_over()
+              end
+            '';
+            desc = "Debug: Step over";
+          }
+          {
+            __unkeyed-1 = "<F11>";
+            __unkeyed-2.__raw = ''
+              function()
+                require('dap').step_into()
+              end
+            '';
+            desc = "Debug: Step into";
+          }
+          {
+            __unkeyed-1 = "<F12>";
+            __unkeyed-2.__raw = ''
+              function()
+                require('dap').step_out()
+              end
+            '';
+            desc = "Debug: Step out";
+          }
+          {
+            __unkeyed-1 = "<leader>db";
+            __unkeyed-2.__raw = ''
+              function()
+                require('dap').toggle_breakpoint()
+              end
+            '';
+            desc = "Toggle breakpoint";
+          }
+          {
+            __unkeyed-1 = "<leader>du";
+            __unkeyed-2.__raw = ''
+              function()
+                require('lz.n').trigger_load('nvim-dap-ui')
+                require('lz.n').trigger_load('nvim-dap-virtual-text')
+                require('dapui').toggle()
+              end
+            '';
+            desc = "Toggle DAP UI";
+          }
+        ];
       };
 
       plugins.dap-ui = {
@@ -22,73 +81,6 @@
         enable = true;
         lazyLoad.settings.lazy = true;
       };
-
-      keymaps = [
-        {
-          key = "<F5>";
-          action.__raw = ''
-            function()
-              require('lz.n').trigger_load('nvim-dap')
-              require('lz.n').trigger_load('nvim-dap-ui')
-              require('lz.n').trigger_load('nvim-dap-virtual-text')
-              require('dap').continue()
-            end
-          '';
-          options.desc = "Debug: Continue";
-        }
-        {
-          key = "<F10>";
-          action.__raw = ''
-            function()
-              require('lz.n').trigger_load('nvim-dap')
-              require('dap').step_over()
-            end
-          '';
-          options.desc = "Debug: Step over";
-        }
-        {
-          key = "<F11>";
-          action.__raw = ''
-            function()
-              require('lz.n').trigger_load('nvim-dap')
-              require('dap').step_into()
-            end
-          '';
-          options.desc = "Debug: Step into";
-        }
-        {
-          key = "<F12>";
-          action.__raw = ''
-            function()
-              require('lz.n').trigger_load('nvim-dap')
-              require('dap').step_out()
-            end
-          '';
-          options.desc = "Debug: Step out";
-        }
-        {
-          key = "<leader>db";
-          action.__raw = ''
-            function()
-              require('lz.n').trigger_load('nvim-dap')
-              require('dap').toggle_breakpoint()
-            end
-          '';
-          options.desc = "Toggle breakpoint";
-        }
-        {
-          key = "<leader>du";
-          action.__raw = ''
-            function()
-              require('lz.n').trigger_load('nvim-dap')
-              require('lz.n').trigger_load('nvim-dap-ui')
-              require('lz.n').trigger_load('nvim-dap-virtual-text')
-              require('dapui').toggle()
-            end
-          '';
-          options.desc = "Toggle DAP UI";
-        }
-      ];
     };
   };
 }

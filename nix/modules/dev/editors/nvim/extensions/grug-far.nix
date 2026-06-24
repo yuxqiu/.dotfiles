@@ -2,45 +2,40 @@
   flake.modules.homeManager.nvim = {
     programs.nixvim.plugins.grug-far = {
       enable = true;
-      lazyLoad.settings.lazy = true;
+      lazyLoad.settings.keys = [
+        {
+          __unkeyed-1 = "<leader>sr";
+          __unkeyed-2.__raw = ''
+            function()
+              require("grug-far").open({ prefills = { filesFilter = "*." .. vim.fn.expand("%:e") } })
+            end
+          '';
+          desc = "Search and replace (project)";
+        }
+        {
+          __unkeyed-1 = "<leader>sr";
+          mode = "v";
+          __unkeyed-2.__raw = ''
+            function()
+              require("grug-far").with_visual_selection({ prefills = { filesFilter = "*." .. vim.fn.expand("%:e") } })
+            end
+          '';
+          desc = "Search and replace (project, selection)";
+        }
+        {
+          __unkeyed-1 = "<leader>sR";
+          __unkeyed-2.__raw = ''
+            function()
+              require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
+            end
+          '';
+          desc = "Search and replace (current file)";
+        }
+      ];
       settings = {
         headerMaxWidth = 80;
       };
     };
-
-    programs.nixvim.keymaps = [
-      {
-        key = "<leader>sr";
-        action.__raw = ''
-          function()
-            require('lz.n').trigger_load('grug-far.nvim')
-            require("grug-far").open({ prefills = { filesFilter = "*." .. vim.fn.expand("%:e") } })
-          end
-        '';
-        options.desc = "Search and replace (project)";
-      }
-      {
-        key = "<leader>sr";
-        mode = "v";
-        action.__raw = ''
-          function()
-            require('lz.n').trigger_load('grug-far.nvim')
-            require("grug-far").with_visual_selection({ prefills = { filesFilter = "*." .. vim.fn.expand("%:e") } })
-          end
-        '';
-        options.desc = "Search and replace (project, selection)";
-      }
-      {
-        key = "<leader>sR";
-        action.__raw = ''
-          function()
-            require('lz.n').trigger_load('grug-far.nvim')
-            require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
-          end
-        '';
-        options.desc = "Search and replace (current file)";
-      }
-    ];
 
     programs.nixvim.autoCmd = [
       {
