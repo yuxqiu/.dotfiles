@@ -35,28 +35,7 @@
         plugins.remote-nvim = {
           enable = true;
           package = remote-nvim-nvim-patched;
-          lazyLoad.settings.keys = [
-            {
-              __unkeyed-1 = "<leader>Rs";
-              __unkeyed-2 = "<cmd>RemoteStart<CR>";
-              desc = "Remote start";
-            }
-            {
-              __unkeyed-1 = "<leader>Ri";
-              __unkeyed-2 = "<cmd>RemoteInfo<CR>";
-              desc = "Remote info";
-            }
-            {
-              __unkeyed-1 = "<leader>Rc";
-              __unkeyed-2 = "<cmd>RemoteCleanup<CR>";
-              desc = "Remote cleanup";
-            }
-            {
-              __unkeyed-1 = "<leader>Rd";
-              __unkeyed-2 = "<cmd>RemoteConfigDel<CR>";
-              desc = "Remote config delete";
-            }
-          ];
+          lazyLoad.settings.lazy = true;
           settings = {
             offline_mode = {
               enabled = true;
@@ -95,6 +74,49 @@
             '';
           };
         };
+
+        keymaps = [
+          {
+            key = "<leader>Rs";
+            action.__raw = ''
+              function()
+                require('lz.n').trigger_load('remote-nvim.nvim')
+                vim.cmd("RemoteStart")
+              end
+            '';
+            options.desc = "Remote start";
+          }
+          {
+            key = "<leader>Ri";
+            action.__raw = ''
+              function()
+                require('lz.n').trigger_load('remote-nvim.nvim')
+                vim.cmd("RemoteInfo")
+              end
+            '';
+            options.desc = "Remote info";
+          }
+          {
+            key = "<leader>Rc";
+            action.__raw = ''
+              function()
+                require('lz.n').trigger_load('remote-nvim.nvim')
+                vim.cmd("RemoteCleanup")
+              end
+            '';
+            options.desc = "Remote cleanup";
+          }
+          {
+            key = "<leader>Rd";
+            action.__raw = ''
+              function()
+                require('lz.n').trigger_load('remote-nvim.nvim')
+                vim.cmd("RemoteConfigDel")
+              end
+            '';
+            options.desc = "Remote config delete";
+          }
+        ];
       };
     };
 }

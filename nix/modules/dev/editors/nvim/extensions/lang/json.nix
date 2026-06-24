@@ -1,6 +1,11 @@
 {
   flake.modules.homeManager.nvim =
-    { pkgs, config, lib, ... }:
+    {
+      pkgs,
+      config,
+      lib,
+      ...
+    }:
     lib.mkIf (config.my.dev.languages ? json) {
       programs.nixvim = {
         plugins.lsp.servers.jsonls.enable = true;
