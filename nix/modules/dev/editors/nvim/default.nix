@@ -13,6 +13,15 @@
         viAlias = true;
         vimAlias = true;
         defaultEditor = true;
+        wrapRc = true;
+
+        luaLoader.enable = true;
+        performance.byteCompileLua.enable = true;
+
+        globals = {
+          loaded_ruby_provider = 0;
+          loaded_perl_provider = 0;
+        };
 
         extraConfigVim = ''
           let mapleader = ' '
@@ -51,23 +60,6 @@
           require("hlslens").setup({})
 
           require("scrollview.contrib.gitsigns").setup()
-
-          vim.keymap.set("n", "<leader>jn", "<cmd>ScrollViewNext<CR>", { desc = "Next scrollview sign" })
-          vim.keymap.set("n", "<leader>jp", "<cmd>ScrollViewPrev<CR>", { desc = "Prev scrollview sign" })
-
-          vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-            callback = function()
-              debounce("lint:" .. vim.api.nvim_buf_get_name(0), 500, function()
-                require("lint").try_lint()
-              end)
-            end,
-          })
-
-          vim.api.nvim_create_autocmd({ "CursorHold" }, {
-            callback = function()
-              require("lint").try_lint()
-            end,
-          })
         '';
 
         colorschemes.catppuccin = {
@@ -92,6 +84,21 @@
 
         plugins.lint = {
           enable = true;
+          luaConfig.post = ''
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+              callback = function()
+                _G.debounce("lint:" .. vim.api.nvim_buf_get_name(0), 500, function()
+                  require("lint").try_lint()
+                end)
+              end,
+            })
+
+            vim.api.nvim_create_autocmd({ "CursorHold" }, {
+              callback = function()
+                require("lint").try_lint()
+              end,
+            })
+          '';
         };
 
         plugins.todo-comments.enable = true;
@@ -112,6 +119,19 @@
 
         extraPlugins = with pkgs.vimPlugins; [
           nvim-hlslens
+        ];
+
+        keymaps = [
+          {
+            key = "<leader>jn";
+            action = "<cmd>ScrollViewNext<CR>";
+            options.desc = "Next scrollview sign";
+          }
+          {
+            key = "<leader>jp";
+            action = "<cmd>ScrollViewPrev<CR>";
+            options.desc = "Prev scrollview sign";
+          }
         ];
 
         extraPackages = with pkgs; [

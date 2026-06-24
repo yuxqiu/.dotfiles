@@ -2,8 +2,6 @@
   flake.modules.homeManager.nvim =
     {
       pkgs,
-      config,
-      lib,
       ...
     }:
     {
@@ -111,7 +109,8 @@
         };
 
         diagnostic.settings = {
-          virtual_text = true;
+          virtual_text = false;
+          virtual_lines.current_line = true;
           severity_sort = true;
           underline = true;
           signs = true;
