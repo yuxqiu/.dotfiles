@@ -10,8 +10,8 @@ let
   src = fetchFromGitHub {
     owner = "mirsella";
     repo = "opencode-queue";
-    rev = "eed2696c52f62088fb3a7ea33d30ea1d75a0a6b3"; # follow:branch main
-    hash = "sha256-fHj6eNygikYSMkKiXDhHzpBfV1Cccx1QyE6fgBoW/K8=";
+    rev = "30d5cd62300e556a9e1fa83cac1583bedb3372ad"; # follow:branch main
+    hash = "sha256-zuVzklzLlNyGmCarPhTsqH0VGLaHtKQ5Nnogi8/0HHM=";
   };
 
   nodeModules = stdenv.mkDerivation {
@@ -29,13 +29,13 @@ let
     installPhase = ''
       mkdir $out
       bun install --production
-      rm -rf node_modules/.cache
+      rm -rf node_modules/.cache node_modules/.bin
       cp -r node_modules $out/
     '';
 
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
-    outputHash = "sha256-C4Uu4HCtG9JBsLgLHxdUgJJ1Ga2ubmpcXQy2l679X3g=";
+    outputHash = "sha256-yRHauQF/+UbKCKlKbTg1mE9EClFWEVgYXBPjblMiUDQ=";
   };
 in
 stdenv.mkDerivation {
