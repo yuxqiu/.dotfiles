@@ -74,6 +74,10 @@
             };
             image = {
               enabled = true;
+              # math is handled by markview
+              math = {
+                enabled = false;
+              };
             };
             indent = {
               enabled = true;
