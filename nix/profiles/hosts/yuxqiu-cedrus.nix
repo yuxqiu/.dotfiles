@@ -128,6 +128,7 @@
         config.flake.modules.homeManager.loupe
         config.flake.modules.homeManager.niri
         config.flake.modules.homeManager.obs
+        config.flake.modules.homeManager.openwork
         config.flake.modules.homeManager.pointer
         config.flake.modules.homeManager.quicksnip
         config.flake.modules.homeManager.sioyek
@@ -163,6 +164,8 @@
         config.flake.modules.homeManager.typescript
         config.flake.modules.homeManager.json
         config.flake.modules.homeManager.css
+        config.flake.modules.homeManager.entire
+        config.flake.modules.homeManager.fence
 
         # networking (home-manager)
         config.flake.modules.homeManager.opensnitch
