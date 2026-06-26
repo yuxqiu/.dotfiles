@@ -124,11 +124,9 @@
         config.flake.modules.homeManager.hister
         config.flake.modules.homeManager.idescriptor
         config.flake.modules.homeManager.kanshi
-        config.flake.modules.homeManager.llama
         config.flake.modules.homeManager.loupe
         config.flake.modules.homeManager.niri
         config.flake.modules.homeManager.obs
-        config.flake.modules.homeManager.openwork
         config.flake.modules.homeManager.pointer
         config.flake.modules.homeManager.quicksnip
         config.flake.modules.homeManager.sioyek
@@ -139,6 +137,7 @@
         config.flake.modules.homeManager.wlr-which-key
         config.flake.modules.homeManager.xdg
         config.flake.modules.homeManager.xremap
+        config.flake.modules.homeManager.jan
         config.flake.modules.homeManager.yuxqiu-cedrus-xremap
 
         # dev
