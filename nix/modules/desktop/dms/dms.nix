@@ -29,7 +29,6 @@
         enableClipboardPaste = true;
 
         plugins = {
-          dankBatteryAlerts.enable = true;
           dankActions.enable = true;
           dankLauncherKeys.enable = true;
           emojiLauncher.enable = true;
@@ -208,10 +207,6 @@
             };
           };
         };
-
-        extraConfig = ''
-          include optional=true "dms/outputs.kdl"
-        '';
       };
 
       stylix.targets.dank-material-shell.enable = false;
