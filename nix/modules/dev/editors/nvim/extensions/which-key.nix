@@ -65,6 +65,11 @@
             icon = "󰀨";
           }
           {
+            __unkeyed-1 = "<leader>w";
+            group = "window";
+            icon = "";
+          }
+          {
             __unkeyed-1 = "<leader>u";
             group = "toggle";
             icon = "󰔲";
