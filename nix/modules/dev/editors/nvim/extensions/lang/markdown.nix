@@ -21,7 +21,6 @@
       ];
 
       programs.nixvim.plugins.lsp.servers.markdown_oxide.enable = true;
-      programs.nixvim.plugins.conform-nvim.settings.formatters_by_ft.markdown = [ "prettier" ];
       programs.nixvim.plugins.treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter-parsers; [
         markdown
         markdown_inline
