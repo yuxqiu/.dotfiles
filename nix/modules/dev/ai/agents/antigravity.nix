@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.ai = {
+  flake.modules.homeManager.antigravity = {
     programs.antigravity-cli = {
       enable = true;
       enableMcpIntegration = true;

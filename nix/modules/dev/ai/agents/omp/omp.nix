@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.ai =
+  flake.modules.homeManager.omp =
     { pkgs, ... }:
     {
       home.packages = [ inputs.omp.packages.${pkgs.stdenv.system}.default ];

@@ -87,7 +87,7 @@ let
   '';
 in
 {
-  flake.modules.homeManager.ai = {
+  flake.modules.homeManager.agents-md = {
     home.file.".config/opencode/AGENTS.md".text = agentsMd;
     home.file.".omp/agent/AGENTS.md".text = agentsMd;
   };

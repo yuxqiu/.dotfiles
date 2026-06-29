@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.ai =
+  flake.modules.homeManager.scripts =
     { pkgs, lib, ... }:
     let
       ask = pkgs.writeShellApplication {

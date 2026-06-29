@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.ai =
+  flake.modules.homeManager.harness =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

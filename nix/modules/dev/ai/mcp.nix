@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.ai = { pkgs, ... }: {
+  flake.modules.homeManager.mcp = { pkgs, ... }: {
     programs.mcp = {
       enable = true;
     };

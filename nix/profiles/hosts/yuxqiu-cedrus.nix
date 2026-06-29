@@ -140,8 +140,21 @@
         config.flake.modules.homeManager.jan
         config.flake.modules.homeManager.yuxqiu-cedrus-xremap
 
+        # dev (ai)
+        config.flake.modules.homeManager.agent-lsp
+        config.flake.modules.homeManager.browser
+        config.flake.modules.homeManager.harness
+        config.flake.modules.homeManager.hunk
+        config.flake.modules.homeManager.mcp
+        config.flake.modules.homeManager.scripts
+        config.flake.modules.homeManager.skills
+        config.flake.modules.homeManager.agents-md
+        config.flake.modules.homeManager.antigravity
+        # config.flake.modules.homeManager.codex
+        config.flake.modules.homeManager.opencode
+        config.flake.modules.homeManager.omp
+
         # dev
-        config.flake.modules.homeManager.ai
         config.flake.modules.homeManager.editorconfig
         config.flake.modules.homeManager.languages
         config.flake.modules.homeManager.nvim

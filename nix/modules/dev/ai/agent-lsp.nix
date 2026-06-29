@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.ai =
+  flake.modules.homeManager.agent-lsp =
     {
       pkgs,
       config,

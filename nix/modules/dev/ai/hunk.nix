@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.ai = {
+  flake.modules.homeManager.hunk = {
     imports = [ inputs.hunk.homeManagerModules.default ];
 
     programs.hunk = {

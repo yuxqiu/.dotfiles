@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.ai =
+  flake.modules.homeManager.browser =
     { pkgs, ... }:
     let
       browse = pkgs.callPackage (inputs.self + /packages/browse.nix) { };
