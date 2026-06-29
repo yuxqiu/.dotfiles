@@ -74,6 +74,7 @@
         config.flake.modules.nixos.xremap
         config.flake.modules.nixos.localsend
         config.flake.modules.nixos.gpu-screen-recorder
+        config.flake.modules.nixos.flatpak
 
         # dev
         config.flake.modules.nixos.geminicommit
@@ -125,6 +126,7 @@
         config.flake.modules.homeManager.idescriptor
         config.flake.modules.homeManager.kanshi
         config.flake.modules.homeManager.loupe
+        config.flake.modules.homeManager.pinta
         config.flake.modules.homeManager.niri
         config.flake.modules.homeManager.obs
         config.flake.modules.homeManager.pointer

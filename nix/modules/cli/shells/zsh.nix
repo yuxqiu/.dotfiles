@@ -23,7 +23,6 @@
             "git"
             "colored-man-pages"
             "z"
-            "dirhistory"
             "jj"
           ];
           theme = "robbyrussell";

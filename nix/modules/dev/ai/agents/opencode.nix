@@ -75,6 +75,8 @@
       home.file.".config/opencode/plugins/btw-opencode.js".source =
         "${btwOpencode}/lib/btw-opencode/btw-opencode.js";
 
+      programs.agent-skills.targets.opencode.enable = true;
+
       my.agents-md.destinations.opencode = ".config/opencode/AGENTS.md";
     };
 }

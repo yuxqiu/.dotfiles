@@ -4,7 +4,7 @@
 }:
 {
   flake.modules.homeManager.flatpak =
-    { config, pkgs, ... }:
+    { pkgs, ... }:
     {
       imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
 
@@ -16,11 +16,8 @@
         uninstallUnused = true; # delete stale/unused packages
 
         packages = [
-          "com.github.PintaProject.Pinta"
           "com.github.johnfactotum.Foliate"
           "com.github.tchx84.Flatseal"
-          "io.github.seadve.Kooha"
-          "io.github.ungoogled_software.ungoogled_chromium"
           "io.mpv.Mpv"
           "org.gnome.Calculator"
           "org.gnome.FileRoller"
@@ -71,16 +68,6 @@
             };
           };
 
-          "com.github.johnfactotum.Foliate" = {
-            Context.filesystems = [
-              "home:ro" # Enable read access to home directory (e.g., for loading e-books)
-            ];
-          };
-
-          "io.github.ungoogled_software.ungoogled_chromium" = {
-            Context.shared = [ "network" ];
-          };
-
           "io.frama.tractor.carburetor" = {
             Context.shared = [
               "network"
@@ -89,11 +76,9 @@
           };
         };
       };
-
-      # https://github.com/gmodena/nix-flatpak/issues/31
-      xdg.systemDirs.data = [
-        "/var/lib/flatpak/exports/share"
-        "${config.home.homeDirectory}/.local/share/flatpak/exports/share"
-      ];
     };
+
+  flake.modules.nixos.flatpak = {
+    services.flatpak.enable = true;
+  };
 }

@@ -116,6 +116,21 @@
                 wo = {
                   winbar = "";
                 };
+                keys = {
+                  term_normal = {
+                    __raw = ''
+                      {
+                        "<esc>",
+                        function()
+                          return "<C-\\><C-n>"
+                        end,
+                        mode = "t",
+                        expr = true,
+                        desc = "Exit terminal mode",
+                      }
+                    '';
+                  };
+                };
               };
             };
             toggle = {
