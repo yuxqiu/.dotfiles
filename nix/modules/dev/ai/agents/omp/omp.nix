@@ -18,5 +18,7 @@
       # Rules:        .omp/rules/                 (per-project, regex-triggered TTSR rules)
 
       home.file.".omp/agent/extensions/undo.ts".source = ./extensions/undo.ts;
+
+      my.agents-md.destinations.omp = ".omp/agent/AGENTS.md";
     };
 }

@@ -87,8 +87,18 @@ let
   '';
 in
 {
-  flake.modules.homeManager.agents-md = {
-    home.file.".config/opencode/AGENTS.md".text = agentsMd;
-    home.file.".omp/agent/AGENTS.md".text = agentsMd;
-  };
+  flake.modules.homeManager.agents-md =
+    { lib, config, ... }:
+    {
+      options.my.agents-md.destinations = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        default = { };
+        description = "Map of agent names to their AGENTS.md destination paths relative to $HOME.";
+      };
+
+      config.home.file = lib.mapAttrs' (name: path: {
+        name = path;
+        value.text = agentsMd;
+      }) config.my.agents-md.destinations;
+    };
 }

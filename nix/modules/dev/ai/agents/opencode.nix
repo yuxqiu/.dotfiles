@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.opencode =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     let
       # enable opencode websearch and lsp support
       # https://opencode.ai/docs/tools
@@ -74,5 +74,7 @@
       # https://github.com/aptdnfapt/btw-opencode
       home.file.".config/opencode/plugins/btw-opencode.js".source =
         "${btwOpencode}/lib/btw-opencode/btw-opencode.js";
+
+      my.agents-md.destinations.opencode = ".config/opencode/AGENTS.md";
     };
 }

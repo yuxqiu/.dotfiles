@@ -151,6 +151,7 @@
         config.flake.modules.homeManager.agents-md
         config.flake.modules.homeManager.antigravity
         # config.flake.modules.homeManager.codex
+        config.flake.modules.homeManager.devin
         config.flake.modules.homeManager.opencode
         config.flake.modules.homeManager.omp
 
