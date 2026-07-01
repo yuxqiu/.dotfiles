@@ -11,14 +11,15 @@
         pkgs.chromium
       ];
 
-      programs.agent-skills.sources.browserbase-skills = {
-        path = pkgs.fetchFromGitHub {
-          owner = "browserbase";
-          repo = "skills";
-          rev = "d919e311d6ce8d8b3daa5f33853e67e43a545b9a"; # follow:branch main
-          hash = "sha256-/b9JC/ZkeTdqigqAIKwPNJU6hYH1xUY6ZS2SUC4flKQ=";
+      programs.agent-skills = {
+        sources.browse = {
+          path = browse.passthru.src;
+          subdir = "packages/cli/skills";
         };
-        subdir = "skills";
+
+        skills.enableAll = [
+          "browse"
+        ];
       };
     };
 }
