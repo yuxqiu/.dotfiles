@@ -19,7 +19,6 @@
         duf
         fastfetch
         ffmpeg
-        hyperfine
         jq
         less
         mtr
