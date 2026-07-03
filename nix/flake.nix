@@ -85,7 +85,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     handy = {
-      url = "github:cjpais/Handy?ref=v0.8.3";
+      url = "github:cjpais/Handy?ref=v0.9.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fingerprint-lid-guard = {
@@ -96,7 +96,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hister = {
-      url = "github:asciimoo/hister?ref=v0.15.0";
+      url = "github:asciimoo/hister?ref=v0.16.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
