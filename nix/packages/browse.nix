@@ -11,13 +11,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "browse";
-  version = "0.9.2";
+  version = "0.9.3";
 
   src = fetchFromGitHub {
     owner = "browserbase";
     repo = "stagehand";
     rev = "browse@${finalAttrs.version}";
-    hash = "sha256-VLKYvBaAWHyY+GWeJjWRvrsQOXgCBTP6F/xedDg96W4=";
+    hash = "sha256-q/k0w1YrAI+NGw8LAuLoYiUxuT/3SqLzBQS5RocGXx4=";
   };
 
   pnpmDeps = fetchPnpmDeps {
@@ -26,7 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
     pnpm = pnpm_10;
     pnpmWorkspaces = [ "browse..." ];
     fetcherVersion = 3;
-    hash = "sha256-S0IrkbVeSH4x9ai/Y9m3vzPp5AaMnale6O34CINnPWc=";
+    hash = "sha256-NPT6ylorjDW4aVy+Oqqtz0msgpm1kumq+iUl9V0uNPI=";
   };
 
   nativeBuildInputs = [

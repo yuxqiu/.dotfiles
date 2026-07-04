@@ -10,8 +10,14 @@ If the user does not specify a host, ask which one they want to change.
 
 **Build check** (fast, no side effects):
 
+Hosts are declared under `configurations.nixos` or `configurations.homeManager` in `profiles/hosts/<host>.nix`. Pick the matching build command:
+
 ```
-nix build /home/yuxqiu/.dotfiles/nix#.homeConfigurations.<host>.activationPackage --no-link --print-out-paths 2>/dev/null
+# NixOS host
+nix build /home/yuxqiu/.dotfiles/nix#nixosConfigurations.<host>.config.system.build.toplevel --no-link --print-out-paths 2>/dev/null
+
+# home-manager only host
+nix build /home/yuxqiu/.dotfiles/nix#homeConfigurations.<host>.activationPackage --no-link --print-out-paths 2>/dev/null
 ```
 
 **Key conventions**:
