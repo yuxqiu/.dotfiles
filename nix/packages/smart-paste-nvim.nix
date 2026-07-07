@@ -11,8 +11,8 @@ vimUtils.buildVimPlugin {
   src = fetchFromGitHub {
     owner = "nemanjamalesija";
     repo = "smart-paste.nvim";
-    rev = "ba7ef8cac985fbfa99cbe16f702b0b016c267a17"; # follow:branch main
-    hash = "sha256-LxkGjcnTYi89zGRSdtkH6So4wArKcXE7xbhozMeqfQ0=";
+    rev = "7eef31499d910959fe94bb1a99dcdae6eb30f90b"; # follow:branch main
+    hash = "sha256-N5R3E2aOm8Fz7OIqah05pZYn+MT3tnPxRN6KA/7Y+bM=";
   };
 
   meta = {
