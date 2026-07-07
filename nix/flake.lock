@@ -721,16 +721,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1779426753,
-        "narHash": "sha256-QcBX+BECK7j6P96S+w25BklHBMOLUbT5lX49IVu7ZXY=",
+        "lastModified": 1783401613,
+        "narHash": "sha256-SDcPavfniAjCKfydYPiOr9f0NXUdNzPZa4Vj7LnRzEU=",
         "owner": "yuxqiu",
         "repo": "nix-update-git",
-        "rev": "a7ff896160a7c95f35b31b08ec0e2ae8987a8ab6",
+        "rev": "b17374c4c1285584abefd1cfde9d0403155b97b0",
         "type": "github"
       },
       "original": {
         "owner": "yuxqiu",
-        "ref": "v0.6.3",
+        "ref": "v0.6.4",
         "repo": "nix-update-git",
         "type": "github"
       }

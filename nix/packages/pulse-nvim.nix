@@ -6,13 +6,13 @@
 
 vimUtils.buildVimPlugin rec {
   pname = "pulse-nvim";
-  version = "0.7.7";
+  version = "0.10.1";
 
   src = fetchFromGitHub {
     owner = "willyelm";
     repo = "pulse.nvim";
     rev = "v${version}";
-    hash = "sha256-ZtFy3MT1yRjECnXK+1hZtknFTu7Qk51wFdGaEiEJqf8=";
+    hash = "sha256-5zcrSuReP14xehMZ5+eySQNXmOYXtlHbPsZBVUmfFwQ=";
   };
 
   meta = {
