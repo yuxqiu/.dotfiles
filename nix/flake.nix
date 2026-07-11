@@ -4,6 +4,7 @@
   inputs = {
     # Common
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/triplet";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -24,6 +25,10 @@
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+      # stylix uses nix-systems/default which includes x86_64-darwin.
+      # Its modules use self' which forces perSystem evaluation for all
+      # systems, failing on nixpkgs 26.11+ (dropped x86_64-darwin).
+      inputs.systems.url = "github:nix-systems/triplet";
     };
     ssh-agent-ac = {
       url = "github:yuxqiu/ssh-agent-ac?ref=v0.2.0";
@@ -48,6 +53,7 @@
     hunk = {
       url = "github:modem-dev/hunk?ref=v0.17.0";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.bun2nix.inputs.systems.url = "github:nix-systems/triplet";
     };
     omp = {
       url = "github:yuxqiu/omp-nix";
@@ -85,8 +91,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     handy = {
-      url = "github:cjpais/Handy?ref=v0.9.0";
+      url = "github:cjpais/Handy?ref=v0.9.1";
       inputs.nixpkgs.follows = "nixpkgs";
+      # bun2nix (transitive dep) uses nix-systems/default which includes
+      # x86_64-darwin. Its build-package.nix forces flake-parts perSystem
+      # evaluation for all systems, which fails on nixpkgs 26.11+ (dropped
+      # x86_64-darwin). Restrict to the same triplet we support.
+      inputs.bun2nix.inputs.systems.url = "github:nix-systems/triplet";
     };
     fingerprint-lid-guard = {
       url = "github:TimP4w/nix-fingerprint-lid-guard";

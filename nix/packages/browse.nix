@@ -11,13 +11,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "browse";
-  version = "0.9.4";
+  version = "0.9.5";
 
   src = fetchFromGitHub {
     owner = "browserbase";
     repo = "stagehand";
     rev = "browse@${finalAttrs.version}";
-    hash = "sha256-C9ogVP4hjFa8tGUdNoZ8Qke/Ki8D4CJlpSsvqAnvNOM=";
+    hash = "sha256-VJkaCbphF1VA2cvG3wX07Bju6lcmytR8xfrohuUSLEw=";
   };
 
   pnpmDeps = fetchPnpmDeps {

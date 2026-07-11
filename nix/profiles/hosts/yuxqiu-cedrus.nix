@@ -166,7 +166,7 @@
         config.flake.modules.homeManager.rust
         config.flake.modules.homeManager.go
         config.flake.modules.homeManager.c
-        config.flake.modules.homeManager.sage
+        # config.flake.modules.homeManager.sage
         config.flake.modules.homeManager.bash-lang
         config.flake.modules.homeManager.latex
         config.flake.modules.homeManager.lua
