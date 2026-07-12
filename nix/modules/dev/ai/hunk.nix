@@ -9,7 +9,8 @@
 
     programs.agent-skills.sources.hunk-review = {
       path = inputs.hunk;
-      subdir = "skills/hunk-review";
+      subdir = "skills";
     };
+    programs.agent-skills.skills.enableAll = [ "hunk-review" ];
   };
 }
