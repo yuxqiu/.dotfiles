@@ -6,13 +6,13 @@
 
 stdenv.mkDerivation rec {
   pname = "opencode-goal";
-  version = "0.6.4";
+  version = "0.6.5";
 
   src = fetchFromGitHub {
     owner = "willytop8";
     repo = "OpenCode-goal-plugin";
     rev = "v${version}";
-    hash = "sha256-zAWIiPUPElIAzzgqgTVBzfF7nN3vahqSn1T2KIYIF/k=";
+    hash = "sha256-AJ7eL6JwD3GjWOi0Ox+B9+B3ADsAQH2FoWmNI78335w=";
   };
 
   installPhase = ''

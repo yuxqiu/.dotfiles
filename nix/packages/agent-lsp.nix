@@ -6,16 +6,16 @@
 
 buildGoModule rec {
   pname = "agent-lsp";
-  version = "0.15.2";
+  version = "0.16.0";
 
   src = fetchFromGitHub {
     owner = "blackwell-systems";
     repo = "agent-lsp";
     rev = "v${version}";
-    hash = "sha256-XOmqGcMq2/izAg4zN2r7lFHpk6LRCFME4py1ijsBoB8=";
+    hash = "sha256-0SNpLduoHKydIuZpd8C7S9tR1HK9YuZSh+Af6V6HBBo=";
   };
 
-  vendorHash = "sha256-bO3bqHxMAroc50Tvd803w6UnxqswwcB5ux3LUAtfmmA=";
+  vendorHash = "sha256-P0BasPcInXymqwzPeLD/O4oicExlBwT0y4z44HIORno";
 
   subPackages = [ "cmd/agent-lsp" ];
 

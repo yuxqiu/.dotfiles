@@ -91,7 +91,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     handy = {
-      url = "github:cjpais/Handy?ref=v0.9.1";
+      url = "github:cjpais/Handy?ref=v0.9.2";
       inputs.nixpkgs.follows = "nixpkgs";
       # bun2nix (transitive dep) uses nix-systems/default which includes
       # x86_64-darwin. Its build-package.nix forces flake-parts perSystem

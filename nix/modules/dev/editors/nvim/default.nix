@@ -17,11 +17,6 @@
         wrapRc = true;
         impureRtp = false;
 
-        # nixvim's manpage build patches nixos-render-docs via nixpkgs PR #538502,
-        # which has now been merged into nixpkgs-unstable. The redundant patch
-        # fails to apply. Disable until nixvim upstream drops the patch.
-        enableMan = false;
-
         nixpkgs.pkgs = pkgs;
 
         luaLoader.enable = true;
