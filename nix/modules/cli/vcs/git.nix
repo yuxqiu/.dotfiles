@@ -94,12 +94,13 @@
       };
 
       home.packages = with pkgs; [
+        git-absorb
         git-cliff
         git-crypt
         git-lfs
         (pkgs.symlinkJoin {
-          name = "git-fame"; # Customize this name
-          paths = [ pkgs.git-fame ]; # The original package
+          name = "git-fame";
+          paths = [ pkgs.git-fame ];
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
             wrapProgram $out/bin/git-fame \
