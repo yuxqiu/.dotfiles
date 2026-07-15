@@ -14,7 +14,6 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        blueman
         desktop-file-utils
         libnotify
         networkmanager

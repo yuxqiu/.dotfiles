@@ -57,6 +57,7 @@
         config.flake.modules.nixos.libinput
         config.flake.modules.nixos.fprintd
         config.flake.modules.nixos.udev
+        config.flake.modules.nixos.printing
 
         # gaming
         config.flake.modules.nixos.steam
@@ -72,6 +73,7 @@
         config.flake.modules.nixos.niri
         config.flake.modules.nixos.xdg
         config.flake.modules.nixos.xremap
+        config.flake.modules.nixos.yuxqiu-cedrus-xremap
         config.flake.modules.nixos.localsend
         config.flake.modules.nixos.gpu-screen-recorder
         config.flake.modules.nixos.flatpak
@@ -138,9 +140,7 @@
         config.flake.modules.homeManager.wayscriber
         config.flake.modules.homeManager.wlr-which-key
         config.flake.modules.homeManager.xdg
-        config.flake.modules.homeManager.xremap
         config.flake.modules.homeManager.jan
-        config.flake.modules.homeManager.yuxqiu-cedrus-xremap
 
         # dev (ai)
         config.flake.modules.homeManager.agent-lsp
@@ -188,6 +188,7 @@
         config.flake.modules.homeManager.opensnitch
         config.flake.modules.homeManager.vpn
         config.flake.modules.homeManager.usbguard
+        config.flake.modules.homeManager.bluetooth
 
         # nix
         config.flake.modules.homeManager.nix
@@ -209,6 +210,9 @@
         # fonts
         config.flake.modules.homeManager.fonts
 
+        # services
+        config.flake.modules.homeManager.printing
+
         # user
         config.flake.modules.homeManager.yuxqiu
       ];
@@ -224,19 +228,22 @@
     };
   };
 
-  flake.modules.homeManager.yuxqiu-cedrus-xremap = {
-    services.xremap.config.modmap = [
-      {
-        name = "internal-keyboard-remaps";
-        device.only = [ "AT Translated Set 2 keyboard" ];
-        remap = {
-          "KEY_LEFTMETA" = "KEY_LEFTALT";
-          "KEY_LEFTALT" = "KEY_LEFTCTRL";
-          "KEY_CAPSLOCK" = "KEY_ESC";
-          "KEY_ESC" = "KEY_CAPSLOCK";
-        };
-      }
-    ];
+  flake.modules.nixos.yuxqiu-cedrus-xremap = {
+    services.xremap = {
+      userName = "yuxqiu";
+      config.modmap = [
+        {
+          name = "internal-keyboard-remaps";
+          device.only = [ "AT Translated Set 2 keyboard" ];
+          remap = {
+            "KEY_LEFTMETA" = "KEY_LEFTALT";
+            "KEY_LEFTALT" = "KEY_LEFTCTRL";
+            "KEY_CAPSLOCK" = "KEY_ESC";
+            "KEY_ESC" = "KEY_CAPSLOCK";
+          };
+        }
+      ];
+    };
   };
 
   flake.modules.nixos.yuxqiu-cedrus =

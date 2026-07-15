@@ -5,6 +5,9 @@
 {
   flake.modules.homeManager.dms =
     { config, pkgs, ... }:
+    let
+      dms-focused-output = pkgs.callPackage (inputs.self + /packages/dms-focused-output.nix) { };
+    in
     {
       imports = [
         inputs.dms.homeModules.dank-material-shell
@@ -13,7 +16,6 @@
         inputs.dankcalendar.homeModules.dank-calendar
       ];
 
-      programs.dsearch.enable = true;
       programs.dank-material-shell = {
         enable = true;
         systemd = {
@@ -28,59 +30,17 @@
         enableCalendarEvents = false;
         enableClipboardPaste = true;
 
-        plugins = {
-          dankActions.enable = true;
-          dankLauncherKeys.enable = true;
-          emojiLauncher.enable = true;
-          calculator.enable = true;
-          dankPomodoroTimer = {
-            enable = true;
-            settings = {
-              workDuration = 45;
-            };
-          };
-          powerOptions = {
-            enable = true;
-            settings = {
-              noTrigger = true;
-              trigger = "";
-            };
-          };
-          screenCaptureToolbar = {
-            enable = true;
-            settings = {
-              saveToDisk = false;
-              showNotify = false;
-              showPointer = false;
-              videoCustomPath = "~/Downloads";
-            };
-          };
-          takeABreak = {
-            enable = true;
-            settings = {
-              shortBreakInterval = 60;
-              soundEnabled = false;
-              preWarningOpacity = 80;
-              overlayOpacity = 80;
-            };
-          };
-        };
-
         settings = builtins.fromJSON (builtins.readFile ./configs/settings.json) // {
           customThemeFile = "${inputs.dms-plugin-registry}/themes/catppuccin/theme.json";
         };
       };
+
       programs.dank-calendar = {
         enable = true;
         systemd.enable = true;
       };
 
-      home.packages = with pkgs; [
-        slurp
-        grim
-        satty
-        jq
-      ];
+      programs.dsearch.enable = true;
 
       # Restart dms service when settings are changed
       systemd.user.services.dms.Unit.X-Restart-Triggers = [
@@ -124,17 +84,6 @@
                 "ipc"
                 "call"
                 "clipboard"
-                "toggle"
-              ];
-            };
-
-            "Mod+Shift+S" = {
-              _props.hotkey-overlay-title = "Screen Capture";
-              spawn = [
-                "dms"
-                "ipc"
-                "call"
-                "screenCaptureToolbar"
                 "toggle"
               ];
             };
@@ -198,12 +147,12 @@
 
             "XF86MonBrightnessUp" = {
               _props."allow-when-locked" = true;
-              spawn-sh = "dms ipc call brightness increment 5 \"$(~/.config/niri/scripts/dms-focused-output)\"";
+              spawn-sh = "dms ipc call brightness increment 5 \"\$(${dms-focused-output}/bin/dms-focused-output)\"";
             };
 
             "XF86MonBrightnessDown" = {
               _props."allow-when-locked" = true;
-              spawn-sh = "dms ipc call brightness decrement 5 \"$(~/.config/niri/scripts/dms-focused-output)\"";
+              spawn-sh = "dms ipc call brightness decrement 5 \"\$(${dms-focused-output}/bin/dms-focused-output)\"";
             };
           };
         };
