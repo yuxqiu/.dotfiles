@@ -51,7 +51,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hunk = {
-      url = "github:modem-dev/hunk?ref=v0.17.0";
+      url = "github:modem-dev/hunk?ref=v0.17.1";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.bun2nix.inputs.systems.url = "github:nix-systems/triplet";
     };
@@ -91,7 +91,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     handy = {
-      url = "github:cjpais/Handy?ref=v0.9.2";
+      url = "github:cjpais/Handy?ref=v0.9.3";
       inputs.nixpkgs.follows = "nixpkgs";
       # bun2nix (transitive dep) uses nix-systems/default which includes
       # x86_64-darwin. Its build-package.nix forces flake-parts perSystem

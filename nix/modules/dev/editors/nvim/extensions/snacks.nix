@@ -6,6 +6,7 @@
         extraPackages = with pkgs; [
           imagemagick
           ghostscript
+          mermaid-cli
         ];
 
         plugins.snacks = {
