@@ -115,7 +115,6 @@
           underline = true;
           signs = true;
           float = {
-            border = "rounded";
             source = "always";
           };
         };

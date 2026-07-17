@@ -13,14 +13,6 @@
           end
         '';
       }
-      {
-        event = [ "CursorHold" ];
-        callback.__raw = ''
-          function()
-            require("lint").try_lint()
-          end
-        '';
-      }
     ];
   };
 }

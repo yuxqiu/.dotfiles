@@ -18,11 +18,6 @@
       smartcase = true;
       hlsearch = true;
       mouse = "a";
-      wildmode = [
-        "longest"
-        "list"
-      ];
-      wildmenu = true;
       foldmethod = "expr";
       foldexpr = "v:lua.vim.treesitter.foldexpr()";
       foldcolumn = "1";
@@ -44,6 +39,7 @@
       laststatus = 3;
       pumheight = 10;
       inccommand = "split";
+      winborder = "rounded";
     };
 
     programs.nixvim.extraConfigLua = ''
@@ -59,16 +55,5 @@
         vim.o.guifont = base .. ":h" .. new_size
       end
     '';
-
-    programs.nixvim.autoCmd = [
-      {
-        event = [ "CursorHold" ];
-        callback.__raw = ''
-          function()
-            collectgarbage("step", 256)
-          end
-        '';
-      }
-    ];
   };
 }
