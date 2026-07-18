@@ -50,8 +50,13 @@
       };
     };
 
-    programs.nixvim.extraConfigLua = ''
-      vim.keymap.set("n", "<leader>pi", function() require("img-clip").paste_image() end, { desc = "Paste image" })
-    '';
+    programs.nixvim.keymaps = [
+      {
+        mode = "n";
+        key = "<leader>pi";
+        action.__raw = ''function() require("img-clip").paste_image() end'';
+        options.desc = "Paste image";
+      }
+    ];
   };
 }

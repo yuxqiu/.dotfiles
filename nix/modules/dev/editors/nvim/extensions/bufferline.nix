@@ -37,11 +37,26 @@
         };
       };
 
-      extraConfigLua = ''
-        vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
-        vim.keymap.set("n", "<C-S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev buffer" })
-        vim.keymap.set("n", "<C-w>", function() require("mini.bufremove").delete() end, { desc = "Close buffer" })
-      '';
+      keymaps = [
+        {
+          mode = "n";
+          key = "<C-Tab>";
+          action = "<cmd>BufferLineCycleNext<CR>";
+          options.desc = "Next buffer";
+        }
+        {
+          mode = "n";
+          key = "<C-S-Tab>";
+          action = "<cmd>BufferLineCyclePrev<CR>";
+          options.desc = "Prev buffer";
+        }
+        {
+          mode = "n";
+          key = "<C-w>";
+          action.__raw = ''function() require("mini.bufremove").delete() end'';
+          options.desc = "Close buffer";
+        }
+      ];
     };
   };
 }

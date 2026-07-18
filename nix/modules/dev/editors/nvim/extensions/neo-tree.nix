@@ -115,17 +115,28 @@
           nvim-window-picker
         ];
 
-        extraConfigLua = ''
-          vim.keymap.set("n", "<C-b>", "<cmd>Neotree toggle last<CR>", { desc = "Toggle file explorer" })
-
-          vim.keymap.set("n", "<C-S-e>", function()
-            if vim.bo.filetype == "neo-tree" then
-              vim.cmd("wincmd p")
-            else
-              vim.cmd("Neotree focus last")
-            end
-          end, { desc = "Toggle focus between explorer and editor" })
-        '';
+        keymaps = [
+          {
+            mode = "n";
+            key = "<C-b>";
+            action = "<cmd>Neotree toggle last<CR>";
+            options.desc = "Toggle file explorer";
+          }
+          {
+            mode = "n";
+            key = "<C-S-e>";
+            action.__raw = ''
+              function()
+                if vim.bo.filetype == "neo-tree" then
+                  vim.cmd("wincmd p")
+                else
+                  vim.cmd("Neotree focus last")
+                end
+              end
+            '';
+            options.desc = "Toggle focus between explorer and editor";
+          }
+        ];
       };
     };
 }

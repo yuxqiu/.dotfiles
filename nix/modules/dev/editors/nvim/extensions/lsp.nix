@@ -15,8 +15,8 @@
             },
           })
 
-          vim.keymap.set("n", "<C-.>", require("fastaction").code_action, { desc = "Code Action" })
-          vim.keymap.set("n", "gla", require("fastaction").code_action, { desc = "Code Action" })
+          -- LSP logging off by default; toggle with glL when investigating.
+          vim.lsp.set_log_level("off")
 
           vim.lsp.handlers["workspace/executeCommand"] = function(err, result, ctx, config)
             if err then
@@ -31,6 +31,44 @@
             _G.open_result_split(nil, lines)
           end
         '';
+
+        keymaps = [
+          {
+            mode = "n";
+            key = "<C-.>";
+            action.__raw = ''require("fastaction").code_action'';
+            options.desc = "Code Action";
+          }
+          {
+            mode = "n";
+            key = "gla";
+            action.__raw = ''require("fastaction").code_action'';
+            options.desc = "Code Action";
+          }
+          {
+            mode = "n";
+            key = "glL";
+            action.__raw = ''
+              function()
+                local off = vim.log.levels.OFF
+                if vim.lsp.get_log_level() == off then
+                  vim.lsp.set_log_level(vim.log.levels.DEBUG)
+                  vim.notify("LSP log level: debug", vim.log.levels.INFO)
+                else
+                  vim.lsp.set_log_level(off)
+                  vim.notify("LSP log level: off", vim.log.levels.INFO)
+                end
+              end
+            '';
+            options.desc = "Toggle LSP log level (off/debug)";
+          }
+          {
+            mode = "n";
+            key = "glS";
+            action = "<cmd>lsp restart<CR>";
+            options.desc = "Restart LSP server";
+          }
+        ];
 
         plugins.lsp = {
           enable = true;

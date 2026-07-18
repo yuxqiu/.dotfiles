@@ -161,7 +161,7 @@
         config.flake.modules.homeManager.editorconfig
         config.flake.modules.homeManager.languages
         config.flake.modules.homeManager.nvim
-        config.flake.modules.homeManager.zed
+        # config.flake.modules.homeManager.zed
         config.flake.modules.homeManager.python
         config.flake.modules.homeManager.rust
         config.flake.modules.homeManager.go

@@ -8,8 +8,13 @@
       };
     };
 
-    programs.nixvim.extraConfigLua = ''
-      vim.keymap.set("n", "<leader>ut", "<cmd>UndotreeToggle<CR>", { desc = "Toggle undotree" })
-    '';
+    programs.nixvim.keymaps = [
+      {
+        mode = "n";
+        key = "<leader>ut";
+        action = "<cmd>UndotreeToggle<CR>";
+        options.desc = "Toggle undotree";
+      }
+    ];
   };
 }

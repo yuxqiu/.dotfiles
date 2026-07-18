@@ -45,11 +45,31 @@
       }
     ];
 
-    programs.nixvim.extraConfigLua = ''
-      vim.keymap.set("n", "<leader>qs", function() require("persisted").load() end, { desc = "Restore session" })
-      vim.keymap.set("n", "<leader>qS", function() require("persisted").select() end, { desc = "Select session" })
-      vim.keymap.set("n", "<leader>ql", function() require("persisted").load_last() end, { desc = "Restore last session" })
-      vim.keymap.set("n", "<leader>qd", function() require("persisted").stop() end, { desc = "Stop session saving" })
-    '';
+    programs.nixvim.keymaps = [
+      {
+        mode = "n";
+        key = "<leader>qs";
+        action.__raw = ''function() require("persisted").load() end'';
+        options.desc = "Restore session";
+      }
+      {
+        mode = "n";
+        key = "<leader>qS";
+        action.__raw = ''function() require("persisted").select() end'';
+        options.desc = "Select session";
+      }
+      {
+        mode = "n";
+        key = "<leader>ql";
+        action.__raw = ''function() require("persisted").load_last() end'';
+        options.desc = "Restore last session";
+      }
+      {
+        mode = "n";
+        key = "<leader>qd";
+        action.__raw = ''function() require("persisted").stop() end'';
+        options.desc = "Stop session saving";
+      }
+    ];
   };
 }

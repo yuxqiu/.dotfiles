@@ -74,6 +74,7 @@
               group_index = 2;
             }
           ];
+          window.completion.scrollbar = false;
         };
         cmdline = {
           ":" = {

@@ -15,13 +15,6 @@
         };
         options.reindent_linewise = true;
       };
-      modules.cmdline = {
-        autocomplete.predicate.__raw = ''
-          function()
-            return vim.fn.getcmdtype() == ":"
-          end
-        '';
-      };
       modules.notify = { };
     };
   };

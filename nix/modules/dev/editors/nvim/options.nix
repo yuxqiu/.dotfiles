@@ -18,12 +18,6 @@
       smartcase = true;
       hlsearch = true;
       mouse = "a";
-      foldmethod = "expr";
-      foldexpr = "v:lua.vim.treesitter.foldexpr()";
-      foldcolumn = "1";
-      foldnestmax = 10;
-      foldenable = false;
-      foldlevel = 99;
       autoindent = true;
       cursorline = true;
       signcolumn = "yes";
