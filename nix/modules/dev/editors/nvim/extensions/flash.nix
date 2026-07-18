@@ -16,7 +16,7 @@
           "x"
           "o"
         ];
-        key = "s";
+        key = "f";
         action.__raw = ''function() require("flash").jump() end'';
         options.desc = "Flash";
       }
@@ -26,15 +26,9 @@
           "x"
           "o"
         ];
-        key = "S";
+        key = "F";
         action.__raw = ''function() require("flash").treesitter() end'';
         options.desc = "Flash Treesitter";
-      }
-      {
-        mode = "o";
-        key = "r";
-        action.__raw = ''function() require("flash").remote() end'';
-        options.desc = "Flash Remote";
       }
     ];
   };

@@ -34,5 +34,25 @@
         ];
       };
     };
+
+    # f/F are remapped to flash.nvim (jump/treesitter), not find-char,
+    # so the built-in hardtime hints about f/F/t/T usage are misleading.
+    # nixvim's `hints` option is a typed submodule that doesn't accept
+    # `false` values, so disable the specific hint patterns after setup
+    # by directly mutating the config table.
+    programs.nixvim.extraConfigLua = ''
+      local hardtime_config = require("hardtime.config")
+      for _, pattern in ipairs({
+        "[^dcy=]f.h",
+        "[^dcy=]F.l",
+        "[^dcy=]T.h",
+        "[^dcy=]t.l",
+        "d[tTfF].i",
+        "[vV][tTfF].[dcy]",
+        '[vV][tTfF].".[dy]',
+      }) do
+        hardtime_config.config.hints[pattern] = false
+      end
+    '';
   };
 }

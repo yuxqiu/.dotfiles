@@ -15,6 +15,7 @@
         };
         options.reindent_linewise = true;
       };
+      modules.surround = { };
       modules.notify = { };
     };
   };

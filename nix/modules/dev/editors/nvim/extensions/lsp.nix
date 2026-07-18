@@ -16,7 +16,7 @@
           })
 
           -- LSP logging off by default; toggle with glL when investigating.
-          vim.lsp.set_log_level("off")
+          vim.lsp.log.set_level("off")
 
           vim.lsp.handlers["workspace/executeCommand"] = function(err, result, ctx, config)
             if err then
@@ -51,11 +51,11 @@
             action.__raw = ''
               function()
                 local off = vim.log.levels.OFF
-                if vim.lsp.get_log_level() == off then
-                  vim.lsp.set_log_level(vim.log.levels.DEBUG)
+                if vim.lsp.log.get_level() == off then
+                  vim.lsp.log.set_level(vim.log.levels.DEBUG)
                   vim.notify("LSP log level: debug", vim.log.levels.INFO)
                 else
-                  vim.lsp.set_log_level(off)
+                  vim.lsp.log.set_level(off)
                   vim.notify("LSP log level: off", vim.log.levels.INFO)
                 end
               end
