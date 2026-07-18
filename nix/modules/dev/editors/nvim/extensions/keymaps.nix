@@ -5,19 +5,19 @@
       {
         mode = "n";
         key = "<C-=>";
-        action.__raw = ''function() change_font_size(1) end'';
+        action.__raw = "function() change_font_size(1) end";
         options.desc = "Increase font size";
       }
       {
         mode = "n";
         key = "<C-+>";
-        action.__raw = ''function() change_font_size(1) end'';
+        action.__raw = "function() change_font_size(1) end";
         options.desc = "Increase font size";
       }
       {
         mode = "n";
         key = "<C-->";
-        action.__raw = ''function() change_font_size(-1) end'';
+        action.__raw = "function() change_font_size(-1) end";
         options.desc = "Decrease font size";
       }
 

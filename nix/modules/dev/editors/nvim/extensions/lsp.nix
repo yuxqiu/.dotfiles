@@ -82,9 +82,6 @@
           '';
 
           onAttach = ''
-            if client.server_capabilities.documentSymbolProvider then
-              require("nvim-navic").attach(client, bufnr)
-            end
             if client.name ~= "texlab" then
               vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
             end

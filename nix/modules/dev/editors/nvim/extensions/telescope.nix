@@ -62,6 +62,91 @@
                 '';
                 desc = "Resume last picker";
               }
+              {
+                __unkeyed-1 = "<C-S-F>";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").live_grep()
+                  end
+                '';
+                desc = "Search in project";
+              }
+              {
+                __unkeyed-1 = "<leader>fk";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").keymaps()
+                  end
+                '';
+                desc = "Search keymaps";
+              }
+              {
+                __unkeyed-1 = "<leader>ff";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").find_files()
+                  end
+                '';
+                desc = "Find files";
+              }
+              {
+                __unkeyed-1 = "<leader>fs";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").builtin()
+                  end
+                '';
+                desc = "Telescope pickers";
+              }
+              {
+                __unkeyed-1 = "<leader>fw";
+                mode = [
+                  "n"
+                  "v"
+                ];
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").grep_string()
+                  end
+                '';
+                desc = "Search word under cursor";
+              }
+              {
+                __unkeyed-1 = "<leader>fg";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").live_grep()
+                  end
+                '';
+                desc = "Live grep";
+              }
+              {
+                __unkeyed-1 = "<leader>fd";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").diagnostics()
+                  end
+                '';
+                desc = "Search diagnostics";
+              }
+              {
+                __unkeyed-1 = "<leader>fO";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").lsp_document_symbols()
+                  end
+                '';
+                desc = "Search document symbols";
+              }
+              {
+                __unkeyed-1 = "<leader>fW";
+                __unkeyed-2.__raw = ''
+                  function()
+                    require("telescope.builtin").lsp_workspace_symbols()
+                  end
+                '';
+                desc = "Search workspace symbols";
+              }
             ];
           };
           settings = {
