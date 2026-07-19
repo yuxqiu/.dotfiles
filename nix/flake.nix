@@ -51,7 +51,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hunk = {
-      url = "github:modem-dev/hunk?ref=v0.17.1";
+      url = "github:modem-dev/hunk?ref=v0.17.2";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.bun2nix.inputs.systems.url = "github:nix-systems/triplet";
     };
