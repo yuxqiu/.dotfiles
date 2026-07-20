@@ -51,7 +51,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hunk = {
-      url = "github:modem-dev/hunk?ref=v0.17.2";
+      url = "github:modem-dev/hunk?ref=v0.17.3";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.bun2nix.inputs.systems.url = "github:nix-systems/triplet";
     };
@@ -68,6 +68,10 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";
     dms = {
       url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dank-greeter = {
+      url = "github:AvengeMedia/dank-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms-plugin-registry = {

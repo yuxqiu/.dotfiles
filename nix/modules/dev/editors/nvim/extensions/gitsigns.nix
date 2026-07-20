@@ -54,12 +54,24 @@
       }
       {
         key = "<leader>gd";
-        action.__raw = ''function() require("gitsigns").diffthis() end'';
+        action.__raw = ''
+          function()
+            require("gitsigns").diffthis(nil, nil, function()
+              vim.cmd("windo if &diff | setlocal foldlevel=99 | endif")
+            end)
+          end
+        '';
         options.desc = "Git diff (side-by-side)";
       }
       {
         key = "<leader>gD";
-        action.__raw = ''function() require("gitsigns").diffthis("~") end'';
+        action.__raw = ''
+          function()
+            require("gitsigns").diffthis("~", nil, function()
+              vim.cmd("windo if &diff | setlocal foldlevel=99 | endif")
+            end)
+          end
+        '';
         options.desc = "Git diff against last commit (side-by-side)";
       }
       {

@@ -338,7 +338,7 @@
         restartUnits = [ "tailscaled.service" ];
       };
 
-      programs.dank-material-shell.greeter.configHome = config.users.users.yuxqiu.home;
+      programs.dms-greeter.configHome = config.users.users.yuxqiu.home;
 
       services.fprintd.lid-guard = {
         enable = true;
