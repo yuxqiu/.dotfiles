@@ -6,16 +6,11 @@
         settings = {
           signs_on_startup = [
             "diagnostics"
-            "search"
             "marks"
           ];
           mousemove = true;
         };
       };
-
-      extraConfigLua = ''
-        require("scrollview.contrib.gitsigns").setup()
-      '';
 
       keymaps = [
         {
