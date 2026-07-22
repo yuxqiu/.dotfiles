@@ -110,13 +110,27 @@
             terminal = {
               enabled = true;
               interactive = false;
-              start_insert = true;
+              # start_insert is handled by on_win below to preserve the mode
+              # across toggle off/on cycles instead of always forcing insert.
+              start_insert = false;
               auto_close = true;
               win = {
                 enter = true;
                 wo = {
                   winbar = "";
                 };
+                on_win.__raw = ''
+                  function(self)
+                    if vim.api.nvim_get_current_buf() ~= self.buf then return end
+                    -- First open: no saved mode → insert. Toggle-on: restore
+                    -- the mode saved by the WinLeave autocmd below.
+                    if vim.b[self.buf]._snacks_term_mode == "n" then
+                      vim.cmd.stopinsert()
+                    else
+                      vim.cmd.startinsert()
+                    end
+                  end
+                '';
                 keys = {
                   term_normal = {
                     __raw = ''
@@ -150,26 +164,15 @@
           vim.api.nvim_set_hl(0, "SnacksNormal", { link = "Normal" })
           vim.api.nvim_set_hl(0, "SnacksNormalNC", { link = "Normal" })
 
-          local _orig_fixbuf = Snacks.win.fixbuf
-          Snacks.win.fixbuf = function(self)
-            local saved_win = self.win
-            _orig_fixbuf(self)
-            if saved_win and vim.api.nvim_win_is_valid(saved_win) then
-              local cur = vim.api.nvim_get_current_win()
-              if cur == saved_win then
-                for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-                  local win_buf = vim.api.nvim_win_get_buf(win)
-                  if win ~= saved_win and vim.api.nvim_win_get_config(win).zindex == nil then
-                    if vim.bo[win_buf].buftype == "" then
-                      local target = win
-                      vim.schedule(function() vim.api.nvim_set_current_win(target) vim.cmd("stopinsert") end)
-                      return
-                    end
-                  end
-                end
+          -- Save terminal mode before the window is hidden so on_win can
+          -- restore it on toggle-on instead of always forcing insert mode.
+          vim.api.nvim_create_autocmd("WinLeave", {
+            callback = function(args)
+              if vim.bo[args.buf].buftype == "terminal" then
+                vim.b[args.buf]._snacks_term_mode = vim.fn.mode()
               end
-            end
-          end
+            end,
+          })
 
           local last_term_id
           vim.api.nvim_create_autocmd("BufEnter", {
@@ -200,10 +203,6 @@
           end
           vim.keymap.set("t", "<C-`>", toggle_terminal, { desc = "Toggle current terminal" })
           vim.keymap.set("n", "<C-`>", toggle_terminal, { desc = "Toggle current terminal" })
-
-          for i = 1, 9 do
-            vim.keymap.set("n", "<leader>t" .. i, function() Snacks.terminal.toggle(nil, { count = i }) end, { desc = "Toggle terminal " .. i })
-          end
 
           local function term_picker()
             local terms = Snacks.terminal.list()
@@ -242,14 +241,46 @@
             }):find()
           end
           vim.keymap.set("n", "<leader>tt", term_picker, { desc = "Terminal picker" })
-
-          vim.keymap.set("n", "<leader>uz", function() Snacks.zen.zen() end, { desc = "Toggle Zen mode" })
-          vim.keymap.set("n", "<leader>gb", function() Snacks.gitbrowse.open() end, { desc = "Git browse" })
-          vim.keymap.set("n", "<leader>gl", function() Snacks.git.blame_line() end, { desc = "Git blame line" })
-
-          vim.keymap.set("n", "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference" })
-          vim.keymap.set("n", "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference" })
         '';
+
+        keymaps = [
+          {
+            mode = "n";
+            key = "<leader>uz";
+            action.__raw = "function() Snacks.zen.zen() end";
+            options.desc = "Toggle Zen mode";
+          }
+          {
+            mode = "n";
+            key = "<leader>gb";
+            action.__raw = "function() Snacks.gitbrowse.open() end";
+            options.desc = "Git browse";
+          }
+          {
+            mode = "n";
+            key = "<leader>gl";
+            action.__raw = "function() Snacks.git.blame_line() end";
+            options.desc = "Git blame line";
+          }
+          {
+            mode = "n";
+            key = "]]";
+            action.__raw = "function() Snacks.words.jump(vim.v.count1) end";
+            options.desc = "Next Reference";
+          }
+          {
+            mode = "n";
+            key = "[[";
+            action.__raw = "function() Snacks.words.jump(-vim.v.count1) end";
+            options.desc = "Prev Reference";
+          }
+        ]
+        ++ (lib.genList (i: {
+          mode = "n";
+          key = "<leader>t${toString (i + 1)}";
+          action.__raw = "function() Snacks.terminal.toggle(nil, { count = ${toString (i + 1)} }) end";
+          options.desc = "Toggle terminal ${toString (i + 1)}";
+        }) 9);
       };
     };
 }
