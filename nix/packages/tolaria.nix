@@ -26,13 +26,13 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "tolaria";
-  version = "2026-07-14";
+  version = "2026-07-22";
 
   src = fetchFromGitHub {
     owner = "refactoringhq";
     repo = "tolaria";
     rev = "v${version}";
-    hash = "sha256-jUKyopZPNClMr0IC+7b8RUyx2eilYew35uFbvJZHsmI=";
+    hash = "sha256-4spgQjOGNbbo9ijeecrP46hReqym168LC6O/+DURwoQ=";
   };
 
   cargoRoot = "src-tauri";

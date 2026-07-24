@@ -1,15 +1,11 @@
-{ inputs, ... }:
+{ ... }:
 {
-  flake.modules.homeManager.hunk = {
-    imports = [ inputs.hunk.homeManagerModules.default ];
-
-    programs.hunk = {
-      enable = true;
-    };
+  flake.modules.homeManager.hunk = { pkgs, ... }: {
+    home.packages = with pkgs; [ hunk ];
 
     programs.agent-skills.sources.hunk-review = {
-      path = inputs.hunk;
-      subdir = "skills";
+      path = pkgs.hunk;
+      subdir = "share/hunk/skills";
     };
     programs.agent-skills.skills.enableAll = [ "hunk-review" ];
   };

@@ -50,11 +50,6 @@
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hunk = {
-      url = "github:modem-dev/hunk?ref=v0.17.3";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.bun2nix.inputs.systems.url = "github:nix-systems/triplet";
-    };
     omp = {
       url = "github:yuxqiu/omp-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -93,15 +88,6 @@
     xremap = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    handy = {
-      url = "github:cjpais/Handy?ref=v0.9.4";
-      inputs.nixpkgs.follows = "nixpkgs";
-      # bun2nix (transitive dep) uses nix-systems/default which includes
-      # x86_64-darwin. Its build-package.nix forces flake-parts perSystem
-      # evaluation for all systems, which fails on nixpkgs 26.11+ (dropped
-      # x86_64-darwin). Restrict to the same triplet we support.
-      inputs.bun2nix.inputs.systems.url = "github:nix-systems/triplet";
     };
     fingerprint-lid-guard = {
       url = "github:TimP4w/nix-fingerprint-lid-guard";

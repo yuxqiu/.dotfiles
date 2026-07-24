@@ -1,9 +1,8 @@
-{ inputs, ... }:
 {
   flake.modules.homeManager.handy =
     { pkgs, ... }:
     let
-      handy = inputs.handy.packages.${pkgs.stdenv.system}.default;
+      inherit (pkgs) handy;
 
       handy-stt = pkgs.writeShellApplication {
         name = "handy-stt";
@@ -71,17 +70,10 @@
       };
     in
     {
-      imports = [ inputs.handy.homeManagerModules.default ];
-
       home.packages = [
         handy
         pkgs.dotool
       ];
-
-      services.handy = {
-        enable = true;
-        package = handy;
-      };
 
       wayland.windowManager.niri.settings.binds."Mod+D" = {
         spawn-sh = "${handy-stt}/bin/handy-stt";
