@@ -149,27 +149,35 @@
         services.tailscale.serve.enable = true;
 
         # tailscaled-autoconnect (from nixpkgs tailscale module) has Type=notify
-        # and waits for tailscale to reach "Running" state, which requires internet.
-        # Without internet at boot, it times out after 90s. Since greetd uses
-        # Type=idle (waits for all boot jobs to be dispatched), this blocks the
-        # login screen. Remove it from multi-user.target and trigger via timer.
-        systemd.services.tailscaled-autoconnect.wantedBy = lib.mkForce [ ];
-        systemd.timers.tailscaled-autoconnect = {
-          description = "Run tailscaled-autoconnect after boot";
-          wantedBy = [ "timers.target" ];
-          timerConfig = {
-            OnBootSec = "10s";
-            Unit = "tailscaled-autoconnect.service";
-          };
+        # and waits for tailscale to reach "Running" state, which blocks the
+        # login screen.
+        #
+        # https://github.com/NixOS/nixpkgs/issues/430756
+        systemd.services.tailscaled-autoconnect = {
+          after = lib.mkForce [
+            "network-online.target"
+            "tailscaled.service"
+          ];
+          wantedBy = lib.mkForce [ "network-online.target" ];
+          wants = lib.mkForce [
+            "network-online.target"
+            "tailscaled.service"
+          ];
         };
 
         systemd.services.tailscale-serve =
           lib.mkIf (config.services.tailscale.enable && cfg.enable && hasServices)
             {
               description = "Tailscale serve proxy service";
-              wantedBy = [ "multi-user.target" ];
-              after = [ "tailscaled.service" ];
-              wants = [ "tailscaled.service" ];
+              wantedBy = [ "network-online.target" ];
+              after = [
+                "network-online.target"
+                "tailscaled.service"
+              ];
+              wants = [
+                "network-online.target"
+                "tailscaled.service"
+              ];
               partOf = [ "tailscaled.service" ];
               enableStrictShellChecks = true;
               serviceConfig = {
