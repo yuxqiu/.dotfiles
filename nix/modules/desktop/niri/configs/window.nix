@@ -1,25 +1,25 @@
 { lib, ... }:
 {
   flake.modules.homeManager.niri = {
-    wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+    wayland.windowManager.niri.settings._children = lib.mkAfter [
       {
-        geometry-corner-radius = 12;
-        clip-to-geometry = true;
+        window-rule = {
+          geometry-corner-radius = 12;
+          clip-to-geometry = true;
+        };
       }
 
       {
-        match = {
-          _props."is-window-cast-target" = true;
-        };
-
-        focus-ring = {
-          active-color = "#f38ba8";
-          inactive-color = "#7d0d2d";
-        };
-
-        tab-indicator = {
-          active-color = "#f38ba8";
-          inactive-color = "#7d0d2d";
+        window-rule = {
+          match._props."is-window-cast-target" = true;
+          focus-ring = {
+            active-color = "#f38ba8";
+            inactive-color = "#7d0d2d";
+          };
+          tab-indicator = {
+            active-color = "#f38ba8";
+            inactive-color = "#7d0d2d";
+          };
         };
       }
     ];

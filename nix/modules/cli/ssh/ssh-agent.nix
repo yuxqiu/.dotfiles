@@ -70,14 +70,13 @@
         Install.WantedBy = [ "graphical-session.target" ];
       };
 
-      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+      wayland.windowManager.niri.settings._children = lib.mkAfter [
         {
-          match = {
-            _props."app-id" = "ssh-askpass";
+          window-rule = {
+            match._props."app-id" = "ssh-askpass";
+            background-effect.blur = true;
+            opacity = 0.6;
           };
-
-          background-effect.blur = true;
-          opacity = 0.6;
         }
       ];
 

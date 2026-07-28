@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.homeManager.niri =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     let
       niri-sidebar = pkgs.callPackage (inputs.self + /packages/niri-sidebar.nix) { };
 
@@ -56,11 +56,11 @@
           };
         };
 
-        spawn-at-startup = [
-          [
+        _children = lib.mkAfter [
+          { spawn-at-startup._args = [
             "niri-sidebar"
             "listen"
-          ]
+          ]; }
         ];
       };
     };

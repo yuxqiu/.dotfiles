@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.niri =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     let
       niri-tweaks-src = pkgs.fetchFromGitHub {
         owner = "heyoeyo";
@@ -18,8 +18,8 @@
       };
     in
     {
-      wayland.windowManager.niri.settings.spawn-at-startup = [
-        [ "${niri-tile-to-n}/bin/niri-tile-to-n" ]
+      wayland.windowManager.niri.settings._children = lib.mkAfter [
+        { spawn-at-startup._args = [ "${niri-tile-to-n}/bin/niri-tile-to-n" ]; }
       ];
     };
 }

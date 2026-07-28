@@ -9,32 +9,24 @@
         saturation = 1.5;
       };
 
-      window-rule = lib.mkAfter [
+      _children = lib.mkAfter [
         {
-          draw-border-with-background = false;
+          window-rule.draw-border-with-background = false;
         }
 
         {
-          match = {
-            _props."is-floating" = true;
+          window-rule = {
+            match._props."is-floating" = true;
+            background-effect.xray = false;
           };
-
-          background-effect.xray = false;
         }
-      ];
 
-      layer-rule = [
         {
-          match = [
-            {
-              _props.layer = "top";
-            }
-            {
-              _props.layer = "overlay";
-            }
+          layer-rule._children = [
+            { match._props.layer = "top"; }
+            { match._props.layer = "overlay"; }
+            { background-effect.xray = false; }
           ];
-
-          background-effect.xray = false;
         }
       ];
     };

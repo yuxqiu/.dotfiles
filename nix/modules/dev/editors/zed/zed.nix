@@ -167,13 +167,12 @@
       # stylix: use zed theme
       stylix.targets.zed.colors.enable = false;
 
-      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+      wayland.windowManager.niri.settings._children = lib.mkAfter [
         {
-          match = {
-            _props."app-id" = "dev.zed.Zed";
+          window-rule = {
+            match._props."app-id" = "dev.zed.Zed";
+            background-effect.blur = true;
           };
-
-          background-effect.blur = true;
         }
       ];
     };

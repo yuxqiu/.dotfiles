@@ -4,7 +4,7 @@
 }:
 {
   flake.modules.homeManager.dms =
-    { config, pkgs, ... }:
+    { config, pkgs, lib, ... }:
     let
       dms-focused-output = pkgs.callPackage (inputs.self + /packages/dms-focused-output.nix) { };
     in
@@ -54,12 +54,12 @@
           # Show wallpaper on desktop and overview.
           layout.background-color = "transparent";
 
-          layer-rule = [
+          _children = lib.mkAfter [
             {
-              match = {
-                _props.namespace = "^quickshell$";
+              layer-rule = {
+                match._props.namespace = "^quickshell$";
+                place-within-backdrop = true;
               };
-              place-within-backdrop = true;
             }
           ];
 

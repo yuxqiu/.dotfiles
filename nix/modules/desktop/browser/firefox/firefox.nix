@@ -225,25 +225,23 @@
         };
       };
 
-      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+      wayland.windowManager.niri.settings._children = lib.mkAfter [
         {
-          match = {
-            _props."app-id" = "firefox";
+          window-rule = {
+            match._props."app-id" = "firefox";
+            background-effect.blur = true;
+            opacity = 0.99999;
           };
-
-          background-effect.blur = true;
-          opacity = 0.99999;
         }
 
         {
-          match = {
-            _props = {
-              "app-id"._raw = ''r#"firefox$"#'';
+          window-rule = {
+            match._props = {
+              "app-id" = "firefox$";
               title = "^Picture-in-Picture$";
             };
+            open-floating = true;
           };
-
-          open-floating = true;
         }
       ];
     };

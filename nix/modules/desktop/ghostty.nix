@@ -69,13 +69,12 @@
         spawn-sh = "ghostty +new-window";
       };
 
-      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+      wayland.windowManager.niri.settings._children = lib.mkAfter [
         {
-          match = {
-            _props."app-id" = "com.mitchellh.ghostty";
+          window-rule = {
+            match._props."app-id" = "com.mitchellh.ghostty";
+            background-effect.blur = true;
           };
-
-          background-effect.blur = true;
         }
       ];
     };

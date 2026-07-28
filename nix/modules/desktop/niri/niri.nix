@@ -5,7 +5,6 @@
       xdg.portal = {
         extraPortals = [
           pkgs.xdg-desktop-portal-gtk
-          pkgs.xdg-desktop-portal-gnome
           pkgs.gnome-keyring
         ];
 
@@ -22,7 +21,6 @@
       };
 
       home.packages = [
-        pkgs.xwayland-satellite
         # for gnome-keyring prompt to show
         # - https://github.com/nix-community/home-manager/issues/1454
         pkgs.gcr
@@ -31,14 +29,13 @@
 
       wayland.windowManager.niri.enable = true;
 
-      wayland.windowManager.niri.settings.window-rule = lib.mkAfter [
+      wayland.windowManager.niri.settings._children = lib.mkAfter [
         {
-          match = {
-            _props."app-id" = "gcr-prompter";
+          window-rule = {
+            match._props."app-id" = "gcr-prompter";
+            background-effect.blur = true;
+            opacity = 0.6;
           };
-
-          background-effect.blur = true;
-          opacity = 0.6;
         }
       ];
     };
