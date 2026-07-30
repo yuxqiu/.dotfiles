@@ -4,7 +4,12 @@
 }:
 {
   flake.modules.homeManager.dms =
-    { config, pkgs, lib, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
     let
       dms-focused-output = pkgs.callPackage (inputs.self + /packages/dms-focused-output.nix) { };
     in

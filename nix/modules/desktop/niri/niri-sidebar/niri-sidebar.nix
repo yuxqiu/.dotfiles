@@ -57,10 +57,12 @@
         };
 
         _children = lib.mkAfter [
-          { spawn-at-startup._args = [
-            "niri-sidebar"
-            "listen"
-          ]; }
+          {
+            spawn-at-startup._args = [
+              "niri-sidebar"
+              "listen"
+            ];
+          }
         ];
       };
     };

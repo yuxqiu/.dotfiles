@@ -243,11 +243,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785168088,
-        "narHash": "sha256-MuLl43IAwKZDIW+Wxx7dpQNtuBUbkCmAl36PHDMxEAc=",
+        "lastModified": 1785375021,
+        "narHash": "sha256-SV24PP3ctDSAuQjg0LdYAvzN7GEustIrtZfciiSrgRI=",
         "owner": "AvengeMedia",
         "repo": "dms-plugin-registry",
-        "rev": "be7ed3fdc5772ff9b6e6d43f80b8d66f377c3ab9",
+        "rev": "672e213a1e20b980708d81bd82df9bf85c15a590",
         "type": "github"
       },
       "original": {
@@ -482,16 +482,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1782888483,
-        "narHash": "sha256-iKZnAcPnZsceIBzt3Xq0UfeUSV0DjVAKwDt46wc0+9g=",
+        "lastModified": 1785230861,
+        "narHash": "sha256-UIKQVs2hbzalDeRL1ILUgfMQnues5IFrzWn9Eg5sm30=",
         "owner": "asciimoo",
         "repo": "hister",
-        "rev": "1a6579462305f8d2286754f2d50a046cbe15cbb8",
+        "rev": "8ba16c21c524111365ffe33c46ca2e846cf8207a",
         "type": "github"
       },
       "original": {
         "owner": "asciimoo",
-        "ref": "v0.16.0",
+        "ref": "v0.17.0",
         "repo": "hister",
         "type": "github"
       }
@@ -524,11 +524,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785234956,
-        "narHash": "sha256-ynFwDtgp3vXA+0Bb4OL/3vn3m8e9OaAw6sbdzOQsGEQ=",
+        "lastModified": 1785306346,
+        "narHash": "sha256-DScBkW0fOgpGPK2trNoX3ryLTlaC14+gglFo/BhGJ4g=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b8324779d178e484b54cf7c202f87ec8c500a3d3",
+        "rev": "e705714e918c3b11affcdd15db2cbe3a070420a0",
         "type": "github"
       },
       "original": {
@@ -616,11 +616,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785207649,
-        "narHash": "sha256-WXZaufPbN5TpPSRC03EW/SqxZeGyPn7xsJRw83Az/lM=",
+        "lastModified": 1785379933,
+        "narHash": "sha256-pGF24+SRXpA15zZHcW2r8Tpoljb2AEMi/dMkg8AMn5g=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "2850e614a0627a0edbc7989c54f8d0079a96a343",
+        "rev": "81b6d2803d8f04a4084c3e0eca988e2b573e52ee",
         "type": "github"
       },
       "original": {
@@ -631,11 +631,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1785141334,
-        "narHash": "sha256-kh35kIx7el4Jk8Ki3BH9/Pn1eZYSYLJ6LMALos0zOy0=",
+        "lastModified": 1785301185,
+        "narHash": "sha256-eoS3KQTO0aPWXZvIaRbRAzSSHW3l5wdMFXtT1ISfoKA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "38a4887411571457d700c51c64a6e49ead2ed5ab",
+        "rev": "9bc02893134c733dd85de46ee4fb2fac696b5529",
         "type": "github"
       },
       "original": {
@@ -669,11 +669,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1785001306,
-        "narHash": "sha256-xWqmquUtqKXLeDZ1oQUO+rV4sjA9TShIJhLL8M5Bozo=",
+        "lastModified": 1785364321,
+        "narHash": "sha256-BLuHl+nZKb+FDq3GAM6L+UBEiyVepXANA31fT1F56pw=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "48409beb41e8e28b64e8160ca82d8a93fb628963",
+        "rev": "acd69cc15d57004e8cb4495034320263a3d362ea",
         "type": "github"
       },
       "original": {
@@ -714,11 +714,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785204299,
-        "narHash": "sha256-4gW5sMpWsv3oh9IsX0x9FxA3wRODpX3DYDBKpOOMW1U=",
+        "lastModified": 1785290896,
+        "narHash": "sha256-xy0vDW7uvI2k+6EzDRWOd8SOTkBY5I6lXlnPbj1KIhg=",
         "owner": "yuxqiu",
         "repo": "omp-nix",
-        "rev": "8c2b2d2ffc72276d607f891e730c62c36973347d",
+        "rev": "0e3c5ba7db42847772ee709938a5fe2497216133",
         "type": "github"
       },
       "original": {
@@ -734,16 +734,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1785174398,
-        "narHash": "sha256-nN7ceDxVU4pU7Y1kqUv4qsl+wm54Vi5IVp0wmz52ndc=",
+        "lastModified": 1785368937,
+        "narHash": "sha256-jAoxlrOB9lm7WjQq1rtmikHjlpnq2OP+QfE2G7ogG7M=",
         "owner": "getpaseo",
         "repo": "paseo",
-        "rev": "43cf858c3760679ec9be805ba8b903cdf20f7103",
+        "rev": "2f913736fa37f3bd8f755a0ea238031ccadcb0f1",
         "type": "github"
       },
       "original": {
         "owner": "getpaseo",
-        "ref": "v0.2.3",
+        "ref": "v0.2.4",
         "repo": "paseo",
         "type": "github"
       }

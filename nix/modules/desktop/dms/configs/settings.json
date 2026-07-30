@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/gz2cdgy41vgf10d9npnqh4zf2mi45d55-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/dbkydnn8kb8jx00jh3yjigla7gygl96m-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -36,6 +36,24 @@
   "mangoLayoutRadiusOverride": -1,
   "mangoLayoutBorderSize": -1,
   "mangoTrackpadNaturalScrolling": true,
+  "mouseAccelProfile": "default",
+  "mouseAccelSpeed": 0,
+  "mouseLeftHanded": false,
+  "mouseMiddleEmulation": false,
+  "mouseNaturalScroll": false,
+  "mouseScrollFactor": 1,
+  "mouseScrollMethod": "default",
+  "touchpadAccelProfile": "default",
+  "touchpadAccelSpeed": 0,
+  "touchpadDisableOnExternalMouse": false,
+  "touchpadDisableWhileTyping": true,
+  "touchpadDragLock": false,
+  "touchpadMiddleEmulation": false,
+  "touchpadNaturalScroll": true,
+  "touchpadScrollFactor": 1,
+  "touchpadScrollMethod": "default",
+  "touchpadTapAndDrag": true,
+  "touchpadTapToClick": true,
   "firstDayOfWeek": -1,
   "showWeekNumber": false,
   "calendarBackend": "auto",
@@ -67,6 +85,7 @@
   "blurEnabled": true,
   "blurForegroundLayers": true,
   "blurLayerOutlineOpacity": 0.12,
+  "blurBorderEnabled": true,
   "blurBorderColor": "outline",
   "blurBorderCustomColor": "#ffffff",
   "blurBorderOpacity": 0.5,
@@ -153,13 +172,18 @@
     },
     {
       "enabled": true,
-      "id": "nightMode",
+      "id": "plugin_quickCapture",
       "width": 50
     },
     {
       "enabled": true,
       "id": "darkMode",
-      "width": 50
+      "width": 25
+    },
+    {
+      "id": "nightMode",
+      "enabled": true,
+      "width": 25
     }
   ],
   "showWorkspaceIndex": false,
@@ -273,6 +297,7 @@
   "greeterLockDateFormat": "",
   "greeterFontFamily": "",
   "greeterWallpaperFillMode": "",
+  "greeterPamExternallyManaged": false,
   "greeterSyncPending": false,
   "greeterSyncBaseline": {},
   "mediaSize": 1,
@@ -404,6 +429,7 @@
   "batteryLowNotificationType": 0,
   "batteryCriticalNotificationType": 0,
   "batteryAutoPowerSaver": false,
+  "lowerDisplayRefreshRateOnBattery": false,
   "lockBeforeSuspend": true,
   "loginctlLockIntegration": true,
   "fadeToLockEnabled": true,
@@ -411,13 +437,6 @@
   "fadeToDpmsEnabled": true,
   "fadeToDpmsGracePeriod": 5,
   "launchPrefix": "",
-  "brightnessDevicePins": {},
-  "wifiNetworkPins": {
-    "preferredWifi": "509"
-  },
-  "bluetoothDevicePins": {},
-  "audioInputDevicePins": {},
-  "audioOutputDevicePins": {},
   "gtkThemingEnabled": false,
   "qtThemingEnabled": false,
   "syncModeWithPortal": true,
@@ -495,6 +514,7 @@
   "notificationOverlayEnabled": false,
   "notificationPopupShadowEnabled": true,
   "notificationPopupPrivacyMode": false,
+  "notificationForegroundLayers": true,
   "modalDarkenBackground": true,
   "lockScreenShowPowerActions": true,
   "lockScreenShowSystemIcons": true,
@@ -509,6 +529,11 @@
   "maxFprintTries": 3,
   "enableU2f": false,
   "u2fMode": "or",
+  "lockPamPath": "",
+  "lockPamInlineFprint": false,
+  "lockPamInlineU2f": false,
+  "lockPamExternallyManaged": false,
+  "lockU2fPamPath": "",
   "lockScreenInactiveColor": "#000000",
   "lockScreenNotificationMode": 0,
   "lockScreenVideoEnabled": false,
@@ -521,6 +546,7 @@
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 5000,
   "notificationTimeoutCritical": 0,
+  "notificationIgnoreAppTimeout": false,
   "notificationCompactMode": true,
   "notificationShowTimeoutBar": false,
   "notificationDedupeEnabled": true,
@@ -595,6 +621,8 @@
   "activeDisplayProfile": {
     "niri": "profile_1769655383958_zb5r26"
   },
+  "activeDisplayProfileModes": {},
+  "displayPreviousRefreshModes": {},
   "displayProfileAutoSelect": false,
   "displayShowDisconnected": true,
   "displaySnapToEdge": true,
@@ -922,5 +950,5 @@
   "barInsetPaddingShared": -1,
   "barInsetPaddingSyncAll": false,
   "frameBarInsetPadding": -1,
-  "configVersion": 12
+  "configVersion": 13
 }

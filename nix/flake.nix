@@ -93,12 +93,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hister = {
-      url = "github:asciimoo/hister?ref=v0.16.0";
+      url = "github:asciimoo/hister?ref=v0.17.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
     paseo = {
-      url = "github:getpaseo/paseo?ref=v0.2.3";
+      url = "github:getpaseo/paseo?ref=v0.2.4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
