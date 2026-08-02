@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/dbkydnn8kb8jx00jh3yjigla7gygl96m-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/1qdx5lbbjr0b10pwb3n5licfpwp5wgjw-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -181,8 +181,8 @@
       "width": 25
     },
     {
-      "id": "nightMode",
       "enabled": true,
+      "id": "nightMode",
       "width": 25
     }
   ],
@@ -638,8 +638,9 @@
       "bottomGap": -5,
       "centerWidgets": [
         {
+          "id": "music",
           "enabled": true,
-          "id": "music"
+          "mediaSize": 0
         },
         {
           "enabled": true,
@@ -659,7 +660,17 @@
       "gothCornersEnabled": false,
       "id": "default",
       "innerPadding": 4,
-      "leftWidgets": ["launcherButton", "workspaceSwitcher", "focusedWindow"],
+      "leftWidgets": [
+        "launcherButton",
+        "workspaceSwitcher",
+        {
+          "id": "focusedWindow",
+          "enabled": true,
+          "focusedWindowSize": 1,
+          "focusedWindowCompactMode": false,
+          "focusedWindowShowIcon": true
+        }
+      ],
       "maximizeWidgetIcons": false,
       "maximizeWidgetText": false,
       "name": "Main Bar",
@@ -680,24 +691,31 @@
           "id": "notificationButton"
         },
         {
+          "id": "battery",
           "enabled": true,
-          "id": "battery"
+          "showBatteryPercentOnlyOnBattery": false,
+          "showBatteryTime": false,
+          "showBatteryTimeOnlyOnBattery": false,
+          "batteryPillStyle": true,
+          "batteryPillPercentSign": true
         },
         {
-          "enabled": true,
           "id": "controlCenterButton",
+          "enabled": true,
+          "showNetworkIcon": true,
+          "showBluetoothIcon": true,
           "showAudioIcon": true,
           "showAudioPercent": false,
-          "showBatteryIcon": false,
-          "showBluetoothIcon": true,
+          "showVpnIcon": false,
           "showBrightnessIcon": false,
           "showBrightnessPercent": false,
           "showMicIcon": true,
           "showMicPercent": false,
-          "showNetworkIcon": true,
+          "showBatteryIcon": false,
           "showPrinterIcon": false,
           "showScreenSharingIcon": true,
-          "showVpnIcon": false
+          "showIdleInhibitorIcon": false,
+          "showDoNotDisturbIcon": false
         },
         {
           "enabled": true,

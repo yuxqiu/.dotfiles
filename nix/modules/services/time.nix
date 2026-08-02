@@ -1,6 +1,11 @@
 {
   flake.modules.nixos.time =
-    { pkgs, ... }:
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     {
       services.timesyncd.enable = false;
 
@@ -9,7 +14,7 @@
           name = "sync-time";
           runtimeInputs = with pkgs; [ ntp ];
           text = ''
-            ntpd -gq "$@"
+            exec sntp -S ${lib.escapeShellArgs config.networking.timeServers} "$@"
           '';
         })
       ];
