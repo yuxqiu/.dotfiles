@@ -54,6 +54,9 @@
         inherit (cfg) system;
         inherit (config.nixpkgs) config overlays;
       };
+      extraSpecialArgs = {
+        mv = inputs.multiverse.multiverse.${cfg.system};
+      };
 
       modules = cfg.modules ++ [
         {

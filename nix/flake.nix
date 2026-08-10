@@ -58,6 +58,9 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # All versions of every nixpkgs package that ever existed, fetched lazily.
+    # See: https://fzakaria.com/2026/08/09/nixpkgs-multiverse-every-version-that-ever-existed
+    multiverse.url = "github:fzakaria/nixpkgs-multiverse";
 
     # Linux
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.7.0";
@@ -98,7 +101,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     paseo = {
-      url = "github:getpaseo/paseo?ref=v0.3.0-beta.2";
+      url = "github:getpaseo/paseo?ref=v0.3.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

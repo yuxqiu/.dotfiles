@@ -53,7 +53,10 @@
     name: cfg:
     inputs.nixpkgs.lib.nixosSystem {
       inherit (cfg) system;
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+        mv = inputs.multiverse.multiverse.${cfg.system};
+      };
       modules =
         cfg.modules
         ++ [
