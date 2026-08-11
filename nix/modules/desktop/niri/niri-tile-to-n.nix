@@ -18,6 +18,11 @@
       };
     in
     {
+      # Workaround: niri's config generator (writeText) doesn't track
+      # string-interpolated store paths as runtime dependencies, so this
+      # would get GC'd. Remove once upstream niri HM module fixes this.
+      home.packages = [ niri-tile-to-n ];
+
       wayland.windowManager.niri.settings._children = lib.mkAfter [
         { spawn-at-startup._args = [ "${niri-tile-to-n}/bin/niri-tile-to-n" ]; }
       ];

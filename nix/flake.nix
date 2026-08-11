@@ -28,15 +28,18 @@
       # stylix uses nix-systems/default which includes x86_64-darwin.
       # Its modules use self' which forces perSystem evaluation for all
       # systems, failing on nixpkgs 26.11+ (dropped x86_64-darwin).
-      inputs.systems.url = "github:nix-systems/triplet";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
     ssh-agent-ac = {
       url = "github:yuxqiu/ssh-agent-ac?ref=v0.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
     };
     tun2proxy = {
       url = "github:yuxqiu/tun2proxy";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
     };
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -49,6 +52,8 @@
     agent-skills-nix = {
       url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.blueprint.inputs.systems.follows = "systems";
     };
     omp = {
       url = "github:yuxqiu/omp-nix";
@@ -57,6 +62,8 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
     # All versions of every nixpkgs package that ever existed, fetched lazily.
     # See: https://fzakaria.com/2026/08/09/nixpkgs-multiverse-every-version-that-ever-existed
@@ -87,6 +94,7 @@
     xremap = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     fingerprint-lid-guard = {
       url = "github:TimP4w/nix-fingerprint-lid-guard";
@@ -94,6 +102,7 @@
     quicksnip = {
       url = "github:yuxqiu/quicksnip-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
     };
     hister = {
       url = "github:asciimoo/hister?ref=v0.17.0";
@@ -102,6 +111,10 @@
     };
     paseo = {
       url = "github:getpaseo/paseo?ref=v0.3.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    edgepad = {
+      url = "github:assembledev/edgepad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

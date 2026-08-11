@@ -59,6 +59,7 @@
               echo "Example: nr yuxqiu-cedrus"
               return 1
             fi
+            ${pkgs.flake-edit}/bin/flake-edit follow
             nix-update-git -u . --rules all
             nh os switch . -H "$1" -u
           '';

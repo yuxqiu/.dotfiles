@@ -77,6 +77,7 @@
         config.flake.modules.nixos.localsend
         config.flake.modules.nixos.gpu-screen-recorder
         config.flake.modules.nixos.flatpak
+        config.flake.modules.nixos.edgepad
 
         # dev
         config.flake.modules.nixos.geminicommit
@@ -141,6 +142,7 @@
         config.flake.modules.homeManager.wlr-which-key
         config.flake.modules.homeManager.xdg
         config.flake.modules.homeManager.jan
+        config.flake.modules.homeManager.edgepad
 
         # dev (ai)
         config.flake.modules.homeManager.agent-lsp

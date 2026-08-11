@@ -11,9 +11,17 @@
       ...
     }:
     let
-      dms-focused-output = pkgs.callPackage (inputs.self + /packages/dms-focused-output.nix) { };
+      niri-focused-output = pkgs.callPackage (inputs.self + /packages/niri-focused-output.nix) { };
+      dms-brightness = pkgs.callPackage (inputs.self + /packages/dms-brightness.nix) {
+        inherit niri-focused-output;
+      };
     in
     {
+      # Workaround: niri's config generator (writeText) doesn't track
+      # string-interpolated store paths as runtime dependencies, so this
+      # would get GC'd. Remove once upstream niri HM module fixes this.
+      home.packages = [ dms-brightness ];
+
       imports = [
         inputs.dms.homeModules.dank-material-shell
         inputs.dms-plugin-registry.homeModules.default
@@ -152,12 +160,12 @@
 
             "XF86MonBrightnessUp" = {
               _props."allow-when-locked" = true;
-              spawn-sh = "dms ipc call brightness increment 5 \"\$(${dms-focused-output}/bin/dms-focused-output)\"";
+              spawn-sh = "${dms-brightness}/bin/dms-brightness increment 5";
             };
 
             "XF86MonBrightnessDown" = {
               _props."allow-when-locked" = true;
-              spawn-sh = "dms ipc call brightness decrement 5 \"\$(${dms-focused-output}/bin/dms-focused-output)\"";
+              spawn-sh = "${dms-brightness}/bin/dms-brightness decrement 5";
             };
           };
         };
