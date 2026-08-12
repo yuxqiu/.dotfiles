@@ -132,6 +132,8 @@
         config.flake.modules.homeManager.pinta
         config.flake.modules.homeManager.niri
         config.flake.modules.homeManager.obs
+        config.flake.modules.homeManager.slack
+        config.flake.modules.homeManager.zoom
         config.flake.modules.homeManager.pointer
         config.flake.modules.homeManager.quicksnip
         config.flake.modules.homeManager.sioyek
