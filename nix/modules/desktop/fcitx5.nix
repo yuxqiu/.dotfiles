@@ -12,6 +12,9 @@
             # For Chinese input (includes libpinyin, cloudpinyin, etc.)
             qt6Packages.fcitx5-chinese-addons
 
+            # Chinese dictionary
+            fcitx5-pinyin-zhwiki
+
             # Optional: GTK support for better integration in GTK apps
             fcitx5-gtk
 
