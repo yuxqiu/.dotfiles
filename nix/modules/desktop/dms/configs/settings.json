@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/s8pf3688snsdbg7hlp7al7zbpmkzs5mr-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/nrfcv1b1i90w523g9b7r2vixz7qx3n9j-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -107,24 +107,24 @@
   "weatherEnabled": false,
   "dashTabs": [
     {
-      "id": "overview",
-      "enabled": true
+      "enabled": true,
+      "id": "overview"
     },
     {
-      "id": "media",
-      "enabled": true
+      "enabled": true,
+      "id": "media"
     },
     {
-      "id": "wallpaper",
-      "enabled": false
+      "enabled": false,
+      "id": "wallpaper"
     },
     {
-      "id": "weather",
-      "enabled": true
+      "enabled": true,
+      "id": "weather"
     },
     {
-      "id": "settings",
-      "enabled": true
+      "enabled": true,
+      "id": "settings"
     }
   ],
   "networkPreference": "wifi",
@@ -186,8 +186,8 @@
       "bottomGap": -5,
       "centerWidgets": [
         {
-          "id": "music",
           "enabled": true,
+          "id": "music",
           "mediaSize": 1
         },
         {
@@ -272,6 +272,10 @@
         {
           "enabled": true,
           "id": "dankPomodoroTimer"
+        },
+        {
+          "id": "codeburn",
+          "enabled": true
         }
       ],
       "screenPreferences": ["all"],
@@ -387,11 +391,11 @@
     "dms_clipboard_search": {
       "trigger": "cb"
     },
-    "dms_settings_search": {
-      "trigger": "?"
-    },
     "dms_qr_generator": {
       "trigger": "qrg"
+    },
+    "dms_settings_search": {
+      "trigger": "?"
     }
   },
   "launcherPluginVisibility": {

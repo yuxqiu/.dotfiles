@@ -55,7 +55,10 @@
         inherit (config.nixpkgs) config overlays;
       };
       extraSpecialArgs = {
-        mv = inputs.multiverse.multiverse.${cfg.system};
+        mv = inputs.multiverse.lib.mkMultiverse {
+          inherit (cfg) system;
+          config.allowUnfree = true;
+        };
       };
 
       modules = cfg.modules ++ [

@@ -31,7 +31,7 @@
         # Aliases
         shellAliases = lib.mkMerge [
           { sudo = "sudo "; }
-          (lib.mkIf pkgs.stdenv.isLinux { open = "${pkgs.xdg-utils}/bin/xdg-open"; })
+          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux { open = "${pkgs.xdg-utils}/bin/xdg-open"; })
         ];
 
         siteFunctions = {
@@ -72,7 +72,7 @@
             nix build .#nixosConfigurations."$1".config.home-manager.users."$USER".news.json.output --no-link --print-out-paths 2>/dev/null | xargs cat | ${pkgs.jq}/bin/jq -r '.entries | reverse | .[] | "---\nTime: \(.time)\n\(.message)"' | ''${PAGER:-${pkgs.less}/bin/less -R}
           '';
         }
-        // lib.optionalAttrs pkgs.stdenv.isDarwin {
+        // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           jdks = "/usr/libexec/java_home -V";
 
           jdk = ''
@@ -84,6 +84,6 @@
       };
 
       # oh-my-zsh clipboard plugin dependencies (Linux only)
-      home.packages = lib.optionals pkgs.stdenv.isLinux [ pkgs.wl-clipboard ];
+      home.packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [ pkgs.wl-clipboard ];
     };
 }

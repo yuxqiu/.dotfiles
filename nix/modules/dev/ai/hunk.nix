@@ -5,7 +5,7 @@
 
     programs.agent-skills.sources.hunk-review = {
       path = pkgs.hunk;
-      subdir = "share/hunk/skills";
+      subdir = "share/skills/hunk";
     };
     programs.agent-skills.skills.enableAll = [ "hunk-review" ];
   };
