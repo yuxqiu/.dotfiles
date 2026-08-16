@@ -1,31 +1,27 @@
 {
-  flake.modules.homeManager.vpn =
-    { pkgs, ... }:
-    {
-      programs.dank-material-shell.plugins.dankActions.settings = {
-        variants = [
-          {
-            icon = "vpn_lock";
-            displayText = "";
-            displayCommand = "t2p status";
-            clickCommand = "pkexec t2p toggle";
-            middleClickCommand = "";
-            rightClickCommand = "true";
-            updateInterval = 0;
-            showIcon = true;
-            showText = true;
-            id = "variant_1762019076882";
-            name = "t2p";
-            visibilityCommand = "";
-            visibilityInterval = 0;
-          }
-        ];
-      };
-
-      home.packages = with pkgs; [ proton-vpn ];
+  flake.modules.homeManager.xray = {
+    programs.dank-material-shell.plugins.dankActions.settings = {
+      variants = [
+        {
+          icon = "vpn_lock";
+          displayText = "";
+          displayCommand = "t2p status";
+          clickCommand = "pkexec t2p toggle";
+          middleClickCommand = "";
+          rightClickCommand = "true";
+          updateInterval = 0;
+          showIcon = true;
+          showText = true;
+          id = "variant_1762019076882";
+          name = "t2p";
+          visibilityCommand = "";
+          visibilityInterval = 0;
+        }
+      ];
     };
+  };
 
-  flake.modules.nixos.vpn =
+  flake.modules.nixos.xray =
     {
       pkgs,
       config,

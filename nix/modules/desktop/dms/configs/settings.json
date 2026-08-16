@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/nrfcv1b1i90w523g9b7r2vixz7qx3n9j-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/4ns1slflak89h2x6bzm9yqnq38crghsz-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -267,15 +267,11 @@
         },
         {
           "enabled": true,
-          "id": "dankActions:variant_1762019076882"
-        },
-        {
-          "enabled": true,
           "id": "dankPomodoroTimer"
         },
         {
-          "id": "codeburn",
-          "enabled": true
+          "enabled": true,
+          "id": "codeburn"
         }
       ],
       "screenPreferences": ["all"],
