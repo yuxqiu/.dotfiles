@@ -1,5 +1,9 @@
 {
-  flake.modules.nixos.NetworkManager = {
+  flake.modules.homeManager.nm = { pkgs, ... }: {
+    home.packages = with pkgs; [ networkmanagerapplet ];
+  };
+
+  flake.modules.nixos.nm = {
     networking.networkmanager = {
       enable = true;
       wifi.macAddress = "random";

@@ -32,7 +32,7 @@
         # networking
         config.flake.modules.nixos.dns
         config.flake.modules.nixos.networking
-        config.flake.modules.nixos.NetworkManager
+        config.flake.modules.nixos.nm
         config.flake.modules.nixos.firewall
         config.flake.modules.nixos.opensnitch
         config.flake.modules.nixos.tailscale
@@ -189,11 +189,12 @@
         config.flake.modules.homeManager.poop
 
         # networking (home-manager)
+        config.flake.modules.homeManager.nm
         config.flake.modules.homeManager.opensnitch
-        # config.flake.modules.homeManager.xray
         config.flake.modules.homeManager.proton-vpn
         config.flake.modules.homeManager.usbguard
         config.flake.modules.homeManager.bluetooth
+        # config.flake.modules.homeManager.xray
 
         # nix
         config.flake.modules.homeManager.nix
