@@ -96,6 +96,14 @@ in
         description = "Map of agent names to their AGENTS.md destination paths relative to $HOME.";
       };
 
+      options.my.agents-md.content = lib.mkOption {
+        type = lib.types.str;
+        readOnly = true;
+        description = "The shared AGENTS.md content, for agents that ingest it via a non-AGENTS.md path (e.g. Claude Code's CLAUDE.md).";
+      };
+
+      config.my.agents-md.content = agentsMd;
+
       config.home.file = lib.mapAttrs' (name: path: {
         name = path;
         value.text = agentsMd;

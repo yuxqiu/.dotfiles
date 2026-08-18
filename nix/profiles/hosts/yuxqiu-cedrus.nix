@@ -127,7 +127,6 @@
         config.flake.modules.homeManager.handy
         config.flake.modules.homeManager.hister
         config.flake.modules.homeManager.idescriptor
-        config.flake.modules.homeManager.kanshi
         config.flake.modules.homeManager.loupe
         config.flake.modules.homeManager.pinta
         config.flake.modules.homeManager.niri
@@ -155,6 +154,7 @@
         config.flake.modules.homeManager.skills
         config.flake.modules.homeManager.agents-md
         config.flake.modules.homeManager.antigravity
+        config.flake.modules.homeManager.claude
         config.flake.modules.homeManager.codex
         config.flake.modules.homeManager.devin
         config.flake.modules.homeManager.freebuff
@@ -331,6 +331,20 @@
           allow with-interface equals { 09:00:00 }
           allow id 27c6:659a    # Goodix fingerprint sensor
           allow id 04f2:b875    # Chicony integrated camera
+
+          allow id 8087:0b40    # Intel USB3.0 Hub (office dock)
+          allow id 0424:7206    # Microchip USB7206 Smart Hub (office dock)
+          allow id 0424:7252    # Microchip USB7206 Smart Hub (office dock)
+          allow id 0424:7216    # Microchip USB7216 Smart Hub (office dock)
+          allow id 0bda:8156    # Realtek USB 10/100/1G/2.5G LAN (office dock)
+          allow id 1d5c:5801    # Fresco Logic USB2.0 Hub (office dock)
+          allow id 0bda:0409    # Realtek USB3.2 Hub (office dock)
+          allow id 0bda:8153    # Realtek RTL8153 Gigabit Ethernet (office dock)
+          allow id 0bda:5409    # Realtek USB2.1 Hub (office dock)
+          allow id 0424:4206    # Microchip USB4206 Smart Hub, USB2.0 (office dock)
+          allow id 0424:4252    # Microchip USB4206 Smart Hub, USB2.0 (office dock)
+          allow id 0424:4216    # Microchip USB4216 Smart Hub, USB2.0 (office dock)
+          allow id 0424:7260    # Microchip USB2 Controller Hub (office dock)
         '';
       };
 
