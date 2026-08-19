@@ -11,9 +11,9 @@
 
       niri-tile-to-n = pkgs.writeShellApplication {
         name = "niri-tile-to-n";
-        runtimeInputs = [ pkgs.python3 ];
+        runtimeInputs = [ pkgs.python3 pkgs.libnotify ];
         text = ''
-          exec python3 ${niri-tweaks-src}/niri_tile_to_n.py -n 3 -delay 5000
+          exec python3 ${niri-tweaks-src}/niri_tilemod.py -d 5000
         '';
       };
     in
