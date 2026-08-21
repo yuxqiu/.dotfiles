@@ -78,6 +78,7 @@
         config.flake.modules.nixos.gpu-screen-recorder
         config.flake.modules.nixos.flatpak
         config.flake.modules.nixos.edgepad
+        config.flake.modules.nixos.nautilus
 
         # dev
         config.flake.modules.nixos.geminicommit
@@ -121,7 +122,7 @@
         config.flake.modules.homeManager.captive-browser
         config.flake.modules.homeManager.ghostty
         config.flake.modules.homeManager.dms
-        config.flake.modules.homeManager.dolphin
+        config.flake.modules.homeManager.nautilus
         config.flake.modules.homeManager.fcitx5
         config.flake.modules.homeManager.flatpak
         config.flake.modules.homeManager.handy

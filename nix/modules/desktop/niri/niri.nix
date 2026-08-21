@@ -5,6 +5,7 @@
       xdg.portal = {
         extraPortals = [
           pkgs.xdg-desktop-portal-gtk
+          pkgs.xdg-desktop-portal-gnome
           pkgs.gnome-keyring
         ];
 
@@ -14,7 +15,7 @@
             "gtk"
           ];
           "org.freedesktop.impl.portal.Access" = "gtk";
-          "org.freedesktop.impl.portal.FileChooser" = "gtk";
+          "org.freedesktop.impl.portal.FileChooser" = "gnome";
           "org.freedesktop.impl.portal.Notification" = "gtk";
           "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
         };
