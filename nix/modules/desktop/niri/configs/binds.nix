@@ -51,11 +51,19 @@
         _props.cooldown-ms = 150;
         move-column-to-workspace-up = [ ];
       };
+      "Mod+Ctrl+TouchpadScrollDown" = {
+        _props.cooldown-ms = 150;
+        move-column-to-workspace-down = [ ];
+      };
+      "Mod+Ctrl+TouchpadScrollUp" = {
+        _props.cooldown-ms = 150;
+        move-column-to-workspace-up = [ ];
+      };
 
-      "Mod+Shift+WheelScrollDown".focus-column-right = [ ];
-      "Mod+Shift+WheelScrollUp".focus-column-left = [ ];
       "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = [ ];
       "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = [ ];
+      "Mod+Ctrl+Shift+TouchpadScrollDown".move-column-right = [ ];
+      "Mod+Ctrl+Shift+TouchpadScrollUp".move-column-left = [ ];
 
       "Mod+1".focus-workspace = 1;
       "Mod+2".focus-workspace = 2;

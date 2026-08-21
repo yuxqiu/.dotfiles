@@ -110,7 +110,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     paseo = {
-      url = "github:getpaseo/paseo?ref=v0.5.0-beta.2";
+      url = "github:getpaseo/paseo?ref=v0.5.0-beta.4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     edgepad = {

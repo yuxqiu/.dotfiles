@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/4ns1slflak89h2x6bzm9yqnq38crghsz-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/xcgvjw2ycpcg4g58iv6r0sspqr06q5rh-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -147,7 +147,7 @@
   "notepadTransparencyOverride": 1,
   "notepadLastCustomTransparency": 1,
   "soundsEnabled": false,
-  "acProfileName": "2",
+  "acProfileName": "1",
   "batteryProfileName": "0",
   "batteryNotifyLow": true,
   "batteryCriticalNotificationType": 0,
@@ -400,5 +400,5 @@
     }
   },
   "frameMode": "separate",
-  "configVersion": 15
+  "configVersion": 16
 }
