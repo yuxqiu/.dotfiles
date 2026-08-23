@@ -23,8 +23,21 @@
       # would get GC'd. Remove once upstream niri HM module fixes this.
       home.packages = [ niri-tile-to-n ];
 
-      wayland.windowManager.niri.settings._children = lib.mkAfter [
-        { spawn-at-startup._args = [ "${niri-tile-to-n}/bin/niri-tile-to-n" ]; }
-      ];
+      # Run as a systemd service instead of spawn-at-startup so it auto-restarts
+      # when tilemod crashes (e.g. KeyError on monitor hotplug — upstream bug).
+      # On restart it re-requests Outputs and picks up the new monitor state.
+      systemd.user.services.niri-tile-to-n = {
+        Unit = {
+          Description = "Niri auto-tiler (tilemod)";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${niri-tile-to-n}/bin/niri-tile-to-n";
+          Restart = "on-failure";
+          RestartSec = 2;
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
+      };
     };
 }

@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/xcgvjw2ycpcg4g58iv6r0sspqr06q5rh-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/7qljqgibvpiw20a46d1145fsa60prw3m-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -171,6 +171,11 @@
       "urgency": "default"
     }
   ],
+  "dankIslandBarId": "default",
+  "dankIslandReserveHeight": 24,
+  "dankIslandOuterGap": 0,
+  "dankIslandPalette": "dim",
+  "dankIslandHomeCompactTight": true,
   "osdAlwaysShowValue": true,
   "osdPowerProfileEnabled": true,
   "powerActionHoldDuration": 1,
@@ -179,6 +184,7 @@
     {
       "autoHide": false,
       "autoHideDelay": 250,
+      "barInsetPadding": 4,
       "borderColor": "surfaceText",
       "borderEnabled": false,
       "borderOpacity": 1,
@@ -239,33 +245,6 @@
           "id": "notificationButton"
         },
         {
-          "batteryPillPercentSign": true,
-          "batteryPillStyle": true,
-          "enabled": true,
-          "id": "battery",
-          "showBatteryPercentOnlyOnBattery": false,
-          "showBatteryTime": false,
-          "showBatteryTimeOnlyOnBattery": false
-        },
-        {
-          "enabled": true,
-          "id": "controlCenterButton",
-          "showAudioIcon": true,
-          "showAudioPercent": false,
-          "showBatteryIcon": false,
-          "showBluetoothIcon": true,
-          "showBrightnessIcon": false,
-          "showBrightnessPercent": false,
-          "showDoNotDisturbIcon": false,
-          "showIdleInhibitorIcon": false,
-          "showMicIcon": true,
-          "showMicPercent": false,
-          "showNetworkIcon": true,
-          "showPrinterIcon": false,
-          "showScreenSharingIcon": true,
-          "showVpnIcon": false
-        },
-        {
           "enabled": true,
           "id": "dankPomodoroTimer"
         },
@@ -282,6 +261,7 @@
       "transparency": 0,
       "visible": true,
       "widgetOutlineEnabled": false,
+      "widgetPadding": 12,
       "widgetTransparency": 0.3
     }
   ],
