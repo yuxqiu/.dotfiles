@@ -105,12 +105,12 @@
       inputs.flake-utils.inputs.systems.follows = "systems";
     };
     hister = {
-      url = "github:asciimoo/hister?ref=v0.17.0";
+      url = "github:asciimoo/hister?ref=v0.18.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
     paseo = {
-      url = "github:getpaseo/paseo?ref=v0.5.0";
+      url = "github:getpaseo/paseo?ref=v0.5.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     edgepad = {

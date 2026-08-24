@@ -12,7 +12,10 @@
 
       services.flatpak = {
         enable = true;
-        update.onActivation = true;
+        update = {
+          onActivation = false;
+          auto.enable = true;
+        };
         uninstallUnused = true; # delete stale/unused packages
 
         packages = [
