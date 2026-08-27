@@ -15,6 +15,14 @@
       dms-brightness = pkgs.callPackage (inputs.self + /packages/dms-brightness.nix) {
         inherit niri-focused-output;
       };
+      # Upstream quickshell/ ships AGENTS.md and CLAUDE.md as symlinks to the
+      # repo root's AGENTS.md, which is never installed into the package
+      # output. Strip them so the noBrokenSymlinks check passes.
+      dms-shell = inputs.dms.packages.${pkgs.system}.dms-shell.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          rm -f $out/share/quickshell/dms/AGENTS.md $out/share/quickshell/dms/CLAUDE.md
+        '';
+      });
     in
     {
       # Workaround: niri's config generator (writeText) doesn't track
@@ -31,6 +39,7 @@
 
       programs.dank-material-shell = {
         enable = true;
+        package = dms-shell;
         systemd = {
           enable = true;
           restartIfChanged = true;
