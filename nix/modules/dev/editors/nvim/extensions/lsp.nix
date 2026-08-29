@@ -18,6 +18,18 @@
           -- LSP logging off by default; toggle with glL when investigating.
           vim.lsp.log.set_level("off")
 
+          -- Let <Esc> close the hover float (built-in only maps "q").
+          do
+            local orig_open_floating_preview = vim.lsp.util.open_floating_preview
+            vim.lsp.util.open_floating_preview = function(contents, syntax, opts)
+              local bufnr, winnr = orig_open_floating_preview(contents, syntax, opts)
+              if opts and opts.focus_id == "textDocument/hover" then
+                vim.keymap.set("n", "<Esc>", "<cmd>bdelete<CR>", { buffer = bufnr, silent = true, nowait = true })
+              end
+              return bufnr, winnr
+            end
+          end
+
           vim.lsp.handlers["workspace/executeCommand"] = function(err, result, ctx, config)
             if err then
               local lines = vim.split(err.message or tostring(err), "\n")

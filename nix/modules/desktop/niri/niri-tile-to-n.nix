@@ -1,17 +1,20 @@
 {
   flake.modules.homeManager.niri =
-    { pkgs, lib, ... }:
+    { pkgs, ... }:
     let
       niri-tweaks-src = pkgs.fetchFromGitHub {
         owner = "heyoeyo";
         repo = "niri_tweaks";
-        rev = "3fd68a1598bd1fac8a7578a09aa9a9b36e19996d"; # follow:branch main
-        hash = "sha256-KWxoziukK52nTvPAkxq3lURVZyPXxWioBedmbZlb1us=";
+        rev = "d2693bc27c3c2a07a7bd273b8277b66308ea547a"; # follow:branch main
+        hash = "sha256-Kowg2Nc+CGDPQt06/pmrFMC3K4MQ2t1++kRBfXP9HKs=";
       };
 
       niri-tile-to-n = pkgs.writeShellApplication {
         name = "niri-tile-to-n";
-        runtimeInputs = [ pkgs.python3 pkgs.libnotify ];
+        runtimeInputs = [
+          pkgs.python3
+          pkgs.libnotify
+        ];
         text = ''
           exec python3 ${niri-tweaks-src}/niri_tilemod.py -d 5000
         '';

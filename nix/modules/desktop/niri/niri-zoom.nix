@@ -14,23 +14,38 @@
         binds = {
           "Mod+Shift+WheelScrollUp" = {
             _props.cooldown-ms = 0;
-            spawn = [ ctl "in" ];
+            spawn = [
+              ctl
+              "in"
+            ];
           };
           "Mod+Shift+WheelScrollDown" = {
             _props.cooldown-ms = 0;
-            spawn = [ ctl "out" ];
+            spawn = [
+              ctl
+              "out"
+            ];
           };
           # Natural-scroll inverts the physical gesture on touchpads, so
           # swap up/down to keep "swipe up = zoom in" feeling intuitive.
           "Mod+Shift+TouchpadScrollUp" = {
             _props.cooldown-ms = 0;
-            spawn = [ ctl "out" ];
+            spawn = [
+              ctl
+              "out"
+            ];
           };
           "Mod+Shift+TouchpadScrollDown" = {
             _props.cooldown-ms = 0;
-            spawn = [ ctl "in" ];
+            spawn = [
+              ctl
+              "in"
+            ];
           };
-          "Mod+Shift+Z".spawn = [ ctl "reset" ];
+          "Mod+Shift+Z".spawn = [
+            ctl
+            "reset"
+          ];
         };
 
         _children = lib.mkAfter [
