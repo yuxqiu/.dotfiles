@@ -17,7 +17,22 @@
           "o"
         ];
         key = "f";
-        action.__raw = ''function() require("flash").jump() end'';
+        action.__raw = ''
+          function()
+            require("flash").jump({
+              search = {
+                ---@param str string
+                mode = function(str)
+                  local prefix = str:match("^(.-)  +$")
+                  if prefix then
+                    return require("flash.search.pattern")._exact(prefix) .. "\\(  \\|\\$\\)"
+                  end
+                  return require("flash.search.pattern")._exact(str)
+                end,
+              },
+            })
+          end
+        '';
         options.desc = "Flash";
       }
       {
