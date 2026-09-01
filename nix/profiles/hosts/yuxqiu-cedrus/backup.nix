@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.restic =
+  flake.modules.nixos.yuxqiu-cedrus =
     {
       config,
       lib,
@@ -34,7 +34,7 @@
           rcloneConfigFile = config.sops.secrets."rclone.conf".path;
           passwordFile = config.sops.secrets."restic-home-password".path;
           initialize = true;
-          paths = [ "/home/yuxqiu/Documents" ];
+          paths = [ "${config.users.users.yuxqiu.home}/Documents" ];
           exclude = [
             "*.pyc"
             "**/.idea"

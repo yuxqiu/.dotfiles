@@ -79,6 +79,7 @@
         config.flake.modules.nixos.flatpak
         config.flake.modules.nixos.edgepad
         config.flake.modules.nixos.nautilus
+        config.flake.modules.nixos.weylus
 
         # dev
         config.flake.modules.nixos.geminicommit
@@ -88,9 +89,6 @@
         # user
         config.flake.modules.nixos.yuxqiu
         config.flake.modules.nixos.yuxqiu-cedrus
-
-        # backup
-        config.flake.modules.nixos.restic
 
         # hostname
         { networking.hostName = "pc"; }
@@ -130,6 +128,7 @@
         config.flake.modules.homeManager.idescriptor
         config.flake.modules.homeManager.loupe
         config.flake.modules.homeManager.pinta
+        config.flake.modules.homeManager.rnote
         config.flake.modules.homeManager.niri
         config.flake.modules.homeManager.obs
         config.flake.modules.homeManager.slack
@@ -226,145 +225,4 @@
       ];
     };
   };
-
-  flake.modules.generic.yuxqiu-cedrus = {
-    my = {
-      networking = {
-        bindAddress = "100.99.246.87";
-        publicHost = "cedrus.taile30f2a.ts.net";
-      };
-    };
-  };
-
-  flake.modules.nixos.yuxqiu-cedrus-xremap = {
-    services.xremap = {
-      userName = "yuxqiu";
-      config.modmap = [
-        {
-          name = "internal-keyboard-remaps";
-          device.only = [ "AT Translated Set 2 keyboard" ];
-          remap = {
-            "KEY_LEFTMETA" = "KEY_LEFTALT";
-            "KEY_LEFTALT" = "KEY_LEFTCTRL";
-            "KEY_CAPSLOCK" = "KEY_ESC";
-            "KEY_ESC" = "KEY_CAPSLOCK";
-          };
-        }
-      ];
-    };
-  };
-
-  flake.modules.nixos.yuxqiu-cedrus =
-    {
-      config,
-      pkgs,
-      modulesPath,
-      ...
-    }:
-    {
-      imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-
-      boot.initrd.availableKernelModules = [
-        "xhci_pci"
-        "thunderbolt"
-        "nvme"
-        "usb_storage"
-        "sd_mod"
-        "rtsx_pci_sdmmc"
-      ];
-      boot.kernelModules = [ "kvm-intel" ];
-
-      fileSystems."/" = {
-        device = "/dev/disk/by-uuid/142862d6-6393-4cf8-92e1-1e61a9cea266";
-        fsType = "ext4";
-      };
-
-      fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/EC63-2A5C";
-        fsType = "vfat";
-        options = [
-          "fmask=0077"
-          "dmask=0077"
-        ];
-      };
-
-      boot.loader = {
-        efi.canTouchEfiVariables = true;
-        grub = {
-          efiSupport = true;
-          device = "nodev";
-          useOSProber = true;
-          configurationLimit = 5;
-        };
-      };
-
-      hardware.cpu.intel.npu.enable = true;
-      hardware.cpu.intel.updateMicrocode = true;
-
-      # enable hardware decoding
-      hardware.graphics.extraPackages = with pkgs; [
-        intel-media-driver
-        vpl-gpu-rt
-        intel-compute-runtime
-      ];
-
-      # touchpad quirks, without overrides can only click but cannot move
-      environment.etc."libinput/local-overrides.quirks".text = ''
-        [Lenovo ThinkBook 16 G8+ IPH touchpad]
-        MatchName=*GXTP5100*
-        MatchDMIModalias=dmi:*svnLENOVO:*pvrThinkBook16G8+IPH*:*
-        MatchUdevType=touchpad
-        AttrInputProp=+INPUT_PROP_PRESSUREPAD
-      '';
-
-      sops = {
-        defaultSopsFile = ../secrets/yuxqiu.yaml;
-        age.sshKeyPaths = [ "/etc/ssh/id_ed25519" ];
-        age.generateKey = true;
-      };
-
-      # Host-specific USB device whitelist
-      # Blocks all USB devices by default; only listed devices are allowed.
-      # Run `lsusb` to find device IDs, then add them here.
-      users.users.yuxqiu.extraGroups = [ "usbguard" ];
-      services.usbguard = {
-        enable = true;
-        rules = ''
-          allow with-interface equals { 09:00:00 }
-          allow id 27c6:659a    # Goodix fingerprint sensor
-          allow id 04f2:b875    # Chicony integrated camera
-
-          allow id 8087:0b40    # Intel USB3.0 Hub (office dock)
-          allow id 0424:7206    # Microchip USB7206 Smart Hub (office dock)
-          allow id 0424:7252    # Microchip USB7206 Smart Hub (office dock)
-          allow id 0424:7216    # Microchip USB7216 Smart Hub (office dock)
-          allow id 0bda:8156    # Realtek USB 10/100/1G/2.5G LAN (office dock)
-          allow id 1d5c:5801    # Fresco Logic USB2.0 Hub (office dock)
-          allow id 0bda:0409    # Realtek USB3.2 Hub (office dock)
-          allow id 0bda:8153    # Realtek RTL8153 Gigabit Ethernet (office dock)
-          allow id 0bda:5409    # Realtek USB2.1 Hub (office dock)
-          allow id 0424:4206    # Microchip USB4206 Smart Hub, USB2.0 (office dock)
-          allow id 0424:4252    # Microchip USB4206 Smart Hub, USB2.0 (office dock)
-          allow id 0424:4216    # Microchip USB4216 Smart Hub, USB2.0 (office dock)
-          allow id 0424:7260    # Microchip USB2 Controller Hub (office dock)
-        '';
-      };
-
-      services.tailscale = {
-        enable = true;
-        authKeyFile = config.sops.secrets."tailscale_key_cedrus".path;
-      };
-      sops.secrets."tailscale_key_cedrus" = {
-        mode = "0400";
-        owner = config.users.users.root.name;
-        restartUnits = [ "tailscaled.service" ];
-      };
-
-      programs.dms-greeter.configHome = config.users.users.yuxqiu.home;
-
-      services.fprintd.lid-guard = {
-        enable = true;
-        lidPath = "LID0";
-      };
-    };
 }

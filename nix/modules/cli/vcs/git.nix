@@ -6,9 +6,6 @@
         enable = true;
 
         settings = {
-          user.name = "yuxqiu";
-          user.email = "yuxqiu@proton.me";
-
           init.defaultBranch = "main";
 
           branch.sort = "-committerdate";

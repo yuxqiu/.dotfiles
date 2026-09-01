@@ -1,6 +1,8 @@
 {
   flake.modules.homeManager.yuxqiu = {
     my.user = {
+      name = "yuxqiu";
+      email = "yuxqiu@proton.me";
       keys = {
         "general-ssh" =
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGtp1+EuAzwj3dfP6onSJDk/3arY6W6bgMyPC3BFk1bK yuxqiu+general-ssh@proton.me";
