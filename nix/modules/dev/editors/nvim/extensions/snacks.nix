@@ -75,7 +75,7 @@
             };
             image = {
               enabled = true;
-              # math is handled by markview
+              # disable in-editor markdown math preview
               math = {
                 enabled = false;
               };
