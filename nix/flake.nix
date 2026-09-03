@@ -59,6 +59,15 @@
       url = "github:yuxqiu/omp-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mdbrowse = {
+      url = "github:yuxqiu/mdbrowse";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.inputs.systems.follows = "systems";
+    };
+    terminal-browser = {
+      url = "github:yuxqiu/terminal-browser.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";

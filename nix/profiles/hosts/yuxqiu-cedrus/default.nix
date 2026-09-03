@@ -134,6 +134,8 @@
         config.flake.modules.homeManager.slack
         config.flake.modules.homeManager.zoom
         config.flake.modules.homeManager.pointer
+        config.flake.modules.homeManager.mdbrowse
+        config.flake.modules.homeManager.terminal-browser
         config.flake.modules.homeManager.quicksnip
         config.flake.modules.homeManager.sioyek
         config.flake.modules.homeManager.stylix

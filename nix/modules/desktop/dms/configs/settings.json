@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/bxy7jd5w1b6cgv7s4ssky939b2301v32-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/yaqcs960mg3jj9v65742ylkivv5b50ml-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -180,8 +180,37 @@
   "dankIslandReserveHeight": 24,
   "dankIslandOuterGap": 0,
   "dankIslandPalette": "dim",
-  "dankIslandHomeStatusSlot": "right",
   "dankIslandHomeCompactTight": true,
+  "dankIslandHomeLayout": [
+    {
+      "id": "media",
+      "enabled": true
+    },
+    {
+      "id": "clock",
+      "enabled": true
+    },
+    {
+      "id": "weather",
+      "enabled": false
+    },
+    {
+      "id": "status",
+      "enabled": true
+    },
+    {
+      "id": "volume",
+      "enabled": false
+    },
+    {
+      "id": "brightness",
+      "enabled": false
+    },
+    {
+      "id": "notifications",
+      "enabled": true
+    }
+  ],
   "osdAlwaysShowValue": true,
   "osdPowerProfileEnabled": true,
   "powerActionHoldDuration": 1,
