@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/nix/store/yaqcs960mg3jj9v65742ylkivv5b50ml-source/themes/catppuccin/theme.json",
+  "customThemeFile": "/nix/store/sxlrh0j4fw8qk6cvis3wxxcz3wy8ng0b-source/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -162,6 +162,7 @@
   "showDock": true,
   "dockAutoHide": true,
   "lockScreenShowMediaPlayer": false,
+  "lockScreenShowWeather": false,
   "lockScreenPowerOffMonitorsOnLock": true,
   "enableFprint": true,
   "maxFprintTries": 3,
@@ -180,35 +181,36 @@
   "dankIslandReserveHeight": 24,
   "dankIslandOuterGap": 0,
   "dankIslandPalette": "dim",
+  "dankIslandTransparency": 0.6,
   "dankIslandHomeCompactTight": true,
   "dankIslandHomeLayout": [
     {
-      "id": "media",
-      "enabled": true
+      "enabled": true,
+      "id": "media"
     },
     {
-      "id": "clock",
-      "enabled": true
+      "enabled": true,
+      "id": "clock"
     },
     {
-      "id": "weather",
-      "enabled": false
+      "enabled": false,
+      "id": "weather"
     },
     {
-      "id": "status",
-      "enabled": true
+      "enabled": true,
+      "id": "status"
     },
     {
-      "id": "volume",
-      "enabled": false
+      "enabled": false,
+      "id": "volume"
     },
     {
-      "id": "brightness",
-      "enabled": false
+      "enabled": false,
+      "id": "brightness"
     },
     {
-      "id": "notifications",
-      "enabled": true
+      "enabled": true,
+      "id": "notifications"
     }
   ],
   "osdAlwaysShowValue": true,
@@ -411,5 +413,5 @@
     }
   },
   "frameMode": "separate",
-  "configVersion": 16
+  "configVersion": 17
 }
