@@ -11,6 +11,12 @@
         0 0 0 0.5px rgba(0, 0, 0, 0.2);
     --br1: 6px;
     --br2: 8px;
+    /* Single source of truth for the findbar's search-field sizing, so the
+       focus-ring pseudo-element (which can't otherwise know how wide the
+       textbox + checkboxes are) stays in sync with the actual elements. */
+    --find-search-width: 12em;
+    --find-checkbox-size: 24px;
+    --find-pill-padding-inline: 10px;
 
     @media (-moz-mac-tahoe-theme) {
         --bs1:
@@ -36,14 +42,67 @@
     }
 }
 
-.findbar-container {
+@media (prefers-color-scheme: dark) {
+    @media not (-moz-platform: linux) {
+        findbar {
+            outline: 1px solid rgba(235, 235, 235, 0.2) !important;
+            outline-offset: -1.5px !important;
+            box-shadow: var(--bs2) !important;
+            @media (-moz-platform: windows) {
+                outline: none !important;
+                box-shadow:
+                    0 15px 25px rgba(0, 0, 0, 0.25),
+                    0 0 0 1px rgba(255, 255, 255, 0.15) !important;
+            }
+        }
+    }
+
+    @media (-moz-platform: linux) {
+        findbar {
+            border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        }
+    }
+}
+
+findbar {
+    /* Firefox's own stylesheet assigns `grid-area: findbar` (a dedicated
+       grid row below the page content) - that's the "docked at the bottom"
+       default we're overriding here via position:absolute. Clearing the
+       area assignment back to auto makes the containing block for this
+       absolutely-positioned item the whole grid container (the full tab
+       content area) instead of that bottom row, which is what lets
+       top/right below anchor to the actual top-right corner.
+       Separately, this element has `contain: inline-size` applied by the
+       engine (not from any stylesheet - an internal containment optimization).
+       Per spec, containment makes `width: auto` resolve as if content were
+       empty, which collapsed this to a ~20px sliver; `contain: none` restores
+       normal content-based sizing. */
+    grid-area: auto !important;
+    contain: none !important;
+    position: absolute !important;
+    top: 8px;
+    right: 8px;
+    width: auto !important;
+    height: auto !important;
+    max-width: calc(100% - 16px);
+    border: none !important;
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding-block: 6px;
+    padding-inline: var(--find-pill-padding-inline);
+    border-radius: var(--br2) !important;
     background-color: var(--bg4) !important;
     backdrop-filter: blur(30px) !important;
     box-shadow: var(--bs1) !important;
+    white-space: nowrap;
+    @media (-moz-mac-tahoe-theme) or (-moz-gtk-theme-family: adwaita) or (-moz-gtk-theme-family: yaru) {
+        border-radius: 12px !important;
+    }
     @media (-moz-platform: windows) {
         box-shadow:
             0 15px 25px rgba(0, 0, 0, 0.25),
-            0 0 0 0.5px rgba(0, 0, 0, 0.15) !important;
+            0 0 0 1px rgba(0, 0, 0, 0.17) !important;
     }
     @media (-moz-platform: linux) {
         @media not -moz-pref("gwfox.bms") {
@@ -51,48 +110,40 @@
             backdrop-filter: blur(0px) !important;
         }
     }
-}
-
-@media (prefers-color-scheme: dark) {
-    @media not (-moz-platform: linux) {
-        .findbar-container {
-            outline: 1px solid rgba(235, 235, 235, 0.2) !important;
-            outline-offset: -1.5px !important;
-            box-shadow: var(--bs2) !important;
-            @media (-moz-platform: windows) {
-                box-shadow:
-                    0 15px 25px rgba(0, 0, 0, 0.25),
-                    0 0 0 0.5px rgba(0, 0, 0, 0.5) !important;
-            }
-        }
+    /* The prev/next buttons live inside their own anonymous wrapper hbox,
+       alongside the textbox. Flattening the wrapper promotes textbox/prev/
+       next to be direct flex items of .findbar-container. Taking prev/next
+       out of flow (absolutely positioned, anchored past .findbar-container's
+       own right edge) leaves .findbar-container's rendered box containing
+       only the textbox + checkboxes, so the shared focus ring below (on
+       .findbar-container) wraps just the search field, not the nav buttons. */
+    .findbar-container > hbox {
+        display: contents;
     }
-
-    @media (-moz-platform: linux) {
-        .findbar-container {
-            border: 1px solid rgba(255, 255, 255, 0.06) !important;
-        }
+    .findbar-find-previous,
+    .findbar-find-next {
+        position: absolute !important;
+        top: 50%;
+        transform: translateY(-50%);
+        /* Native margin-inline still shifts an auto-solved `left` even
+           under position:absolute, throwing off the right-anchored offsets
+           below - zero it out since positioning is fully manual here. */
+        margin: 0 !important;
     }
-}
-
-findbar {
-    position: absolute !important;
-    top: 3px;
-    right: -8px;
-    width: 100% !important;
-    height: 90px !important;
-    border: none !important;
-    background: none !important;
-    flex-direction: row-reverse;
-    white-space: nowrap;
-    pointer-events: none;
-    animation-name: slide-in;
-    animation-duration: 350ms;
-    &:is([hidden]) {
-        animation-name: slide-out;
+    .findbar-find-next {
+        right: 42px;
+    }
+    .findbar-find-previous {
+        right: 72px;
     }
     checkbox {
-        height: 24px;
-        width: 24px;
+        height: var(--find-checkbox-size);
+        width: var(--find-checkbox-size);
+        margin: 0 !important;
+        background: rgba(165, 165, 165, 0.1);
+        &:last-of-type {
+            border-radius: 0 6px 6px 0;
+        }
         .checkbox-icon {
             display: block !important;
             -moz-context-properties: fill, fill-opacity;
@@ -118,11 +169,6 @@ findbar {
             fill-opacity: 1;
         }
     }
-    &::after {
-        content: "";
-        display: flex;
-        flex-grow: 100;
-    }
     .checkbox-check,
     .checkbox-label,
     .findbar-find-status {
@@ -135,36 +181,9 @@ findbar {
     }
 }
 
-.findbar-highlight,
-.findbar-case-sensitive,
-.findbar-entire-word,
-.findbar-closebutton,
-.findbar-match-diacritics {
-    position: fixed;
-    right: 18px;
-}
-
-.findbar-highlight {
-    right: 93px;
-}
-
-.findbar-case-sensitive {
-    right: 110px;
-}
-
-.findbar-entire-word {
-    right: 128px;
-}
-
-.findbar-match-diacritics {
-    right: 146px;
-}
-
 .findbar-closebutton {
-    margin-top: 7px !important;
+    margin: 0 !important;
     background: none !important;
-    pointer-events: auto;
-    z-index: 1;
 }
 
 .findbar-closebutton > image {
@@ -183,63 +202,90 @@ findbar {
 }
 
 .findbar-container {
-    height: 42px !important;
-    padding-inline-start: 10px;
-    margin-right: 25px;
-    pointer-events: auto;
-    overflow-inline: visible !important;
-    flex-direction: row-reverse;
-    border-radius: var(--br2) !important;
-    @media (-moz-mac-tahoe-theme) or (-moz-gtk-theme-family: adwaita) or (-moz-gtk-theme-family: yaru) {
-        border-radius: 12px !important;
+    /* Plain flex row wrapping the textbox + checkboxes (prev/next are
+       pulled out to absolute positioning below) plus the match-count
+       label, which trails after them in normal flow so it still
+       contributes to how wide the whole findbar auto-sizes (needed so
+       long "1 of 500" strings don't overflow past the close button).
+       The focus ring below is drawn via a ::before sized to exactly the
+       textbox + 4 checkboxes, rather than wrapping this element itself,
+       so it stops there instead of also wrapping the match-count label
+       that follows. Its width is derived from the same --find-search-width/
+       --find-checkbox-size custom properties that size the actual textbox
+       and checkboxes (declared in :root), rather than a second, disconnected
+       set of numbers - change the textbox/checkbox sizing and the ring
+       tracks it automatically.
+       A single ring on one pseudo-element also avoids the alternative
+       (an outline on each of the 5 individual elements) which left
+       visible seams between them - adjacent elements' own outlines meet
+       at their shared edge but don't visually merge into one line.
+       Deliberately NOT position:relative: prev/next (below) are also
+       descendants of this element (via the flattened wrapper) and are
+       absolutely positioned relative to findbar itself, not this element -
+       making this a positioned ancestor would silently make it their
+       containing block instead, throwing off their `right` offsets. The
+       ::before below is anchored to findbar the same way (see its own
+       comment) to avoid needing position:relative here. */
+    height: auto !important;
+    margin-inline-start: 0 !important;
+    margin-inline-end: 68px !important;
+    padding-inline-start: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    /* Firefox's native rule gives this element flex-grow:1/flex-basis:0%
+       (via the flex="1" attribute) plus overflow-inline:hidden. Per spec,
+       a flex item's automatic min-width only falls back to its content
+       size when overflow is visible; with overflow hidden it's 0 instead.
+       Since the outer findbar is now shrink-to-fit (width:auto) there's no
+       free space to grow into, so that flex-basis:0%/min-width:0 combo
+       collapsed this element (and everything inside it) to 0 width. */
+    flex: 0 0 auto !important;
+    overflow: visible !important;
+    &::before {
+        content: "";
+        /* Containing block is findbar (the nearest positioned ancestor,
+           since this element deliberately isn't one) - anchored to
+           findbar's own inline-start padding, and vertically centered the
+           same way prev/next are below, rather than pinned with inset:0
+           to this element's own box (which would need this element to be
+           position:relative). */
+        position: absolute;
+        inset-inline-start: var(--find-pill-padding-inline);
+        top: 50%;
+        height: var(--find-checkbox-size);
+        transform: translateY(-50%);
+        width: calc(var(--find-search-width) + 4 * var(--find-checkbox-size));
+        border-radius: 6px;
+        outline-style: solid;
+        outline-color: transparent;
+        outline-width: 5px;
+        pointer-events: none;
+    }
+    &:has(.findbar-textbox:focus)::before {
+        outline-color: var(--focus-outline-color) !important;
+        outline-width: 3px !important;
     }
 }
 
-.findbar-container > hbox {
-    margin-right: 30px;
-}
-
 .findbar-textbox {
-    width: 17em !important;
+    /* Rounded on the start (left) side only - the checkboxes butt up
+       against the square end so the two read as one continuous field. */
+    width: var(--find-search-width) !important;
     background: rgba(165, 165, 165, 0.1) !important;
-    outline-style: solid !important;
-    outline-color: transparent !important;
-    outline-width: 5px !important;
-    border-radius: 6px !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 6px 0 0 6px !important;
     padding-inline-start: 22px !important;
-    padding-inline-end: 75px !important;
+    padding-inline-end: 6px !important;
     background-image: url(chrome://global/skin/icons/search-glass.svg) !important;
     background-repeat: no-repeat !important;
     background-size: 12px !important;
-    background-position: left 5px bottom 5px !important;
+    background-position: left 5px center !important;
     -moz-context-properties: fill, fill-opacity;
     fill: currentColor;
     fill-opacity: 0.65;
 }
 
-.findbar-textbox[focused],
 .findbar-textbox:focus {
-    outline-color: var(--focus-outline-color) !important;
-    outline-width: 3px !important;
-    transition: all 0.3s cubic-bezier(1, 0, 0, 1) !important;
     box-shadow: none !important;
-}
-
-@media (-moz-platform: windows) {
-    .findbar-container {
-        box-shadow:
-            0 15px 25px rgba(0, 0, 0, 0.25),
-            0 0 0 1px rgba(0, 0, 0, 0.17) !important;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        .findbar-container {
-            outline: none !important;
-        }
-        .findbar-container {
-            box-shadow:
-                0 15px 25px rgba(0, 0, 0, 0.25),
-                0 0 0 1px rgba(255, 255, 255, 0.15) !important;
-        }
-    }
 }
