@@ -73,7 +73,6 @@
         config.flake.modules.nixos.niri
         config.flake.modules.nixos.xdg
         config.flake.modules.nixos.xremap
-        config.flake.modules.nixos.yuxqiu-cedrus-xremap
         config.flake.modules.nixos.localsend
         config.flake.modules.nixos.gpu-screen-recorder
         config.flake.modules.nixos.flatpak
@@ -122,6 +121,7 @@
         config.flake.modules.homeManager.dms
         config.flake.modules.homeManager.nautilus
         config.flake.modules.homeManager.fcitx5
+        config.flake.modules.homeManager.xcompose
         config.flake.modules.homeManager.flatpak
         config.flake.modules.homeManager.handy
         config.flake.modules.homeManager.hister
@@ -223,6 +223,7 @@
 
         # user
         config.flake.modules.homeManager.yuxqiu
+        config.flake.modules.homeManager.yuxqiu-cedrus
       ];
     };
   };

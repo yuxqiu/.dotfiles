@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.git =
+  flake.modules.homeManager.yuxqiu-cedrus =
     { config, ... }:
     {
       programs.git.settings.user = {

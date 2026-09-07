@@ -1,0 +1,34 @@
+{
+  flake.modules.homeManager.xcompose = {
+    # Emoji sequences from omarchy's default XCompose:
+    # https://github.com/basecamp/omarchy/blob/master/default/xcompose
+    home.file.".XCompose".text = ''
+      include "%L"
+
+      # Emoji
+      <Multi_key> <m> <s> : "😄" # smile
+      <Multi_key> <m> <c> : "😂" # cry
+      <Multi_key> <m> <l> : "😍" # love
+      <Multi_key> <m> <v> : "✌️"  # victory
+      <Multi_key> <m> <h> : "❤️"  # heart
+      <Multi_key> <m> <y> : "👍" # yes
+      <Multi_key> <m> <n> : "👎" # no
+      <Multi_key> <m> <f> : "🖕" # fuck
+      <Multi_key> <m> <w> : "🤞" # wish
+      <Multi_key> <m> <r> : "🤘" # rock
+      <Multi_key> <m> <k> : "😘" # kiss
+      <Multi_key> <m> <e> : "🙄" # eyeroll
+      <Multi_key> <m> <d> : "🤤" # droll
+      <Multi_key> <m> <m> : "💰" # money
+      <Multi_key> <m> <x> : "🎉" # xellebrate
+      <Multi_key> <m> <1> : "💯" # 100%
+      <Multi_key> <m> <t> : "🥂" # toast
+      <Multi_key> <m> <p> : "🙏" # pray
+      <Multi_key> <m> <i> : "😉" # wink
+      <Multi_key> <m> <o> : "👌" # OK
+      <Multi_key> <m> <g> : "👋" # greeting
+      <Multi_key> <m> <a> : "💪" # arm
+      <Multi_key> <m> <b> : "🤯" # blowing
+    '';
+  };
+}

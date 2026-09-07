@@ -15,8 +15,7 @@
 
       keyboard = {
         xkb = {
-          # for internal and external keyboard respectively
-          options = "compose:menu,compose:ralt";
+          options = "compose:menu";
         };
       };
 

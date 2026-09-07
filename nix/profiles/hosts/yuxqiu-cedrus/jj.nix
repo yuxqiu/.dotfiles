@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.jj =
+  flake.modules.homeManager.yuxqiu-cedrus =
     { config, ... }:
     {
       programs.jujutsu.settings.user = {
