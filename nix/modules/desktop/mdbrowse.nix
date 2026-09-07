@@ -7,8 +7,12 @@
       mdbrowseUnwrapped = inputs.mdbrowse.packages.${pkgs.stdenv.system}.default;
       mdbrowse = pkgs.writeShellApplication {
         name = "mdbrowse";
+        runtimeInputs = [
+          mdbrowseUnwrapped
+          terminal-browser
+        ];
         text = ''
-          exec ${mdbrowseUnwrapped}/bin/mdbrowse \
+          exec mdbrowse \
             --zoom 1.2 \
             --bg '${config.lib.stylix.colors.withHashtag.base00}' \
             "$@"
@@ -16,9 +20,6 @@
       };
     in
     {
-      home.packages = [
-        mdbrowse
-        terminal-browser
-      ];
+      home.packages = [ mdbrowse ];
     };
 }
