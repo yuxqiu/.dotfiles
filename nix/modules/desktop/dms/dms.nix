@@ -101,6 +101,18 @@
               ];
             };
 
+            "Mod+Slash" = {
+              _props.hotkey-overlay-title = "Search Keybinds";
+              spawn = [
+                "dms"
+                "ipc"
+                "call"
+                "spotlight"
+                "toggleQuery"
+                "\\"
+              ];
+            };
+
             "Mod+Shift+O" = {
               _props.hotkey-overlay-title = "Lock Screen";
               spawn = [

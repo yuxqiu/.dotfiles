@@ -10,7 +10,6 @@
 
       services.paseo = {
         enable = true;
-        user = config.my.username;
         group = "users";
         port = 6767;
         listenAddress = "127.0.0.1";

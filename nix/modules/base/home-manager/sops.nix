@@ -1,4 +1,3 @@
-{ inputs, ... }:
 {
   flake.modules.homeManager.base =
     { pkgs, ... }:
@@ -52,37 +51,31 @@
             set -euo pipefail
 
             usage() {
-              echo "Usage: sops-update-key <mode> <old_key> [new_key] <file>" >&2
-              echo "Modes: replace, add, remove" >&2
+              echo "Usage: sops-update-key <mode> <decrypt_key> <key> <file>" >&2
+              echo "Modes: add, remove" >&2
+              echo "  <decrypt_key>: a key you currently hold, used to perform the update" >&2
+              echo "  add:    <key> is the new key to add" >&2
+              echo "  remove: <key> is the key to remove (may be <decrypt_key> itself)" >&2
               exit 1
             }
 
-            if [ "$#" -lt 3 ] || [ "$#" -gt 4 ]; then
+            if [ "$#" -ne 4 ]; then
               usage
             fi
 
             mode="$1"
-            old_key_path="$2"
+            decrypt_key_path="$2"
+            key_path="$3"
+            file="$4"
             ssh_to_age_bin="$(command -v ssh-to-age)"
-            if [ "$#" -eq 3 ]; then
-              new_key_path=""
-              file="$3"
-            else
-              new_key_path="$3"
-              file="$4"
-            fi
 
             case "$mode" in
-              replace|add|remove)
+              add|remove)
                 ;;
               *)
                 usage
                 ;;
             esac
-
-            if [ "$mode" != "remove" ] && [ -z "$new_key_path" ]; then
-              usage
-            fi
 
             find_sops_root() {
               if [ -f ".sops.yaml" ]; then
@@ -115,68 +108,52 @@
 
             sops_yaml="$sops_root/.sops.yaml"
 
-            old_key_pub_path="$old_key_path.pub"
-            if [ ! -f "$old_key_pub_path" ]; then
-              echo "Missing SSH public key: $old_key_pub_path" >&2
+            decrypt_key_pub_path="$decrypt_key_path.pub"
+            if [ ! -f "$decrypt_key_pub_path" ]; then
+              echo "Missing SSH public key: $decrypt_key_pub_path" >&2
               exit 1
             fi
 
-            if [ "$mode" != "remove" ]; then
-              new_key_pub_path="$new_key_path.pub"
-              new_key_name="$(basename "$new_key_path")"
-              new_key_name="$(printf "%s" "$new_key_name" | sed 's/\.pub$//')"
-              if [ ! -f "$new_key_pub_path" ]; then
-                echo "Missing SSH public key: $new_key_pub_path" >&2
-                exit 1
-              fi
+            target_key_pub_path="$key_path.pub"
+            target_key_name="$(basename "$key_path")"
+            target_key_name="$(printf "%s" "$target_key_name" | sed 's/\.pub$//')"
+            if [ ! -f "$target_key_pub_path" ]; then
+              echo "Missing SSH public key: $target_key_pub_path" >&2
+              exit 1
             fi
 
-            old_key="$(cat "$old_key_pub_path" | "$ssh_to_age_bin")"
-            if [ "$mode" != "remove" ]; then
-              new_key="$(cat "$new_key_pub_path" | "$ssh_to_age_bin")"
-            fi
-            if [ -r "$old_key_path" ]; then
-              old_identity="$("$ssh_to_age_bin" -private-key -i "$old_key_path")"
+            decrypt_key="$(cat "$decrypt_key_pub_path" | "$ssh_to_age_bin")"
+            target_key="$(cat "$target_key_pub_path" | "$ssh_to_age_bin")"
+
+            if [ -r "$decrypt_key_path" ]; then
+              identity="$("$ssh_to_age_bin" -private-key -i "$decrypt_key_path")"
             else
-              old_identity="$(sudo "$ssh_to_age_bin" -private-key -i "$old_key_path")"
+              identity="$(sudo "$ssh_to_age_bin" -private-key -i "$decrypt_key_path")"
             fi
 
-            if ! grep -Fq "$old_key" "$sops_yaml"; then
-              echo "Old key not found in .sops.yaml" >&2
-              exit 1
-            fi
-
-            if [ "$mode" != "remove" ]; then
-              if grep -Fq "$new_key" "$sops_yaml"; then
-                echo "New key already present in .sops.yaml" >&2
-                exit 1
-              fi
-            fi
-
-            tmp="$(mktemp)"
             case "$mode" in
-              replace)
-                if ! awk -v old="$old_key" -v new="$new_key" '
-                  {
-                    if (index($0, old)) {
-                      gsub(old, new)
-                      replaced = 1
-                    }
-                    print
-                  }
-                  END {
-                    if (!replaced) {
-                      exit 3
-                    }
-                  }
-                ' "$sops_yaml" > "$tmp"; then
-                  rm -f "$tmp"
-                  echo "Failed to update .sops.yaml with new key" >&2
+              add)
+                if ! grep -Fq "$decrypt_key" "$sops_yaml"; then
+                  echo "decrypt_key not found in .sops.yaml" >&2
+                  exit 1
+                fi
+                if grep -Fq "$target_key" "$sops_yaml"; then
+                  echo "Key already present in .sops.yaml" >&2
                   exit 1
                 fi
                 ;;
+              remove)
+                if ! grep -Fq "$target_key" "$sops_yaml"; then
+                  echo "Key not found in .sops.yaml" >&2
+                  exit 1
+                fi
+                ;;
+            esac
+
+            tmp="$(mktemp)"
+            case "$mode" in
               add)
-                if ! awk -v old="$old_key" -v new="$new_key" -v new_name="$new_key_name" '
+                if ! awk -v old="$decrypt_key" -v new="$target_key" -v new_name="$target_key_name" '
                   {
                     if (old_name == "" && index($0, old)) {
                       if (match($0, /&[^[:space:]]+/)) {
@@ -212,7 +189,7 @@
                 fi
                 ;;
               remove)
-                if ! awk -v old="$old_key" '
+                if ! awk -v old="$target_key" '
                   {
                     if (old_name == "" && index($0, old)) {
                       if (match($0, /&[^[:space:]]+/)) {
@@ -239,7 +216,7 @@
                 }
               ' "$sops_yaml" > "$tmp"; then
                   rm -f "$tmp"
-                  echo "Failed to remove old key from .sops.yaml" >&2
+                  echo "Failed to remove key from .sops.yaml" >&2
                   exit 1
                 fi
                 ;;
@@ -247,7 +224,7 @@
 
           mv "$tmp" "$sops_yaml"
 
-          SOPS_AGE_KEY="$old_identity" \
+          SOPS_AGE_KEY="$identity" \
             sops updatekeys "$file"
         '';
       };
@@ -257,15 +234,5 @@
         sops-update
         sops-update-key
       ];
-    };
-
-  flake.modules.nixos.base =
-    { ... }:
-    {
-      imports = [
-        inputs.sops-nix.nixosModules.sops
-      ];
-
-      users.groups.keys = { };
     };
 }

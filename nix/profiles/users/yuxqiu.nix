@@ -17,7 +17,6 @@
   flake.modules.nixos.yuxqiu =
     { pkgs, ... }:
     {
-      my.username = "yuxqiu";
       users.users.yuxqiu = {
         isNormalUser = true;
         description = "yuxqiu";

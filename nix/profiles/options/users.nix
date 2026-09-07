@@ -17,11 +17,4 @@
       };
     };
   };
-
-  flake.modules.nixos.base = {
-    options.my.username = lib.mkOption {
-      type = lib.types.str;
-      description = "Main user of the system";
-    };
-  };
 }

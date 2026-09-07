@@ -13,9 +13,9 @@
     {
       services.tailscale = {
         enable = true;
-        authKeyFile = config.sops.secrets."tailscale_key_cedrus".path;
+        authKeyFile = config.sops.secrets."tailscale_key".path;
       };
-      sops.secrets."tailscale_key_cedrus" = {
+      sops.secrets."tailscale_key" = {
         mode = "0400";
         owner = config.users.users.root.name;
         restartUnits = [ "tailscaled.service" ];
