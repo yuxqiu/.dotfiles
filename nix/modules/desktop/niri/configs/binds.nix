@@ -25,15 +25,8 @@
       "Mod+Shift+J".consume-or-expel-window-left = [ ];
       "Mod+Shift+K".consume-or-expel-window-right = [ ];
 
-      "Mod+Left".focus-monitor-left = [ ];
-      "Mod+Down".focus-monitor-down = [ ];
-      "Mod+Up".focus-monitor-up = [ ];
-      "Mod+Right".focus-monitor-right = [ ];
-
-      "Mod+Shift+Left".move-column-to-monitor-left = [ ];
-      "Mod+Shift+Down".move-column-to-monitor-down = [ ];
-      "Mod+Shift+Up".move-column-to-monitor-up = [ ];
-      "Mod+Shift+Right".move-column-to-monitor-right = [ ];
+      "Mod+Y".focus-monitor-next = [ ];
+      "Mod+Shift+Y".move-column-to-monitor-next = [ ];
 
       "Mod+WheelScrollDown" = {
         _props.cooldown-ms = 150;
