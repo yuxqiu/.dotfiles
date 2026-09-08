@@ -9,6 +9,7 @@
         enable = true;
         serviceMode = "user";
         withNiri = true;
+        watch = true;
       };
     };
 }
