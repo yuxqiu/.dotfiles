@@ -151,6 +151,7 @@
         config.flake.modules.homeManager.agent-lsp
         config.flake.modules.homeManager.browser
         config.flake.modules.homeManager.harness
+        config.flake.modules.homeManager.herdr
         config.flake.modules.homeManager.hunk
         config.flake.modules.homeManager.mcp
         config.flake.modules.homeManager.skills
