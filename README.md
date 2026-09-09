@@ -1,11 +1,36 @@
-## Linux (Fedora)
+# nix-config
 
-### Devices Setup
+Personal NixOS + Home Manager configuration, built with
+[flake-parts](https://flake.parts). Module files under `modules/` and
+`profiles/` are auto-discovered via [import-tree](https://github.com/vic/import-tree),
+so adding a file is enough to wire it in.
 
-1. Fingerprint Reader
-   - Compile and install [ddlsmurf/libfprint-CS9711](https://github.com/ddlsmurf/libfprint-CS9711), using [Ziomal12/libfprint-CS9711](https://github.com/Ziomal12/libfprint-CS9711) fork.
-2. Keyboard
-   - [How to connect Solfe via bluetooth (BT_CLR)](https://www.reddit.com/r/ErgoMechKeyboards/comments/1j4k8gy/my_nicenano_sofle_wont_connect_via_bluetooth/).
-   - [Connect LogiTech K380 keyboard via `bluetoothctl`](https://unix.stackexchange.com/questions/590221/pairing-logitech-k380-in-ubuntu-20-04).
-3. Mouse
-   - I have problems connecting to my mouse via BlueTooth sometimes. I follow this [guide](https://discussion.fedoraproject.org/t/bluetooth-device-not-connecting-fedora-40/125138/18) to solve the issue.
+## Structure
+
+- `modules/`: reusable building blocks (`flake.modules.nixos.*`,
+  `flake.modules.homeManager.*`, `flake.modules.generic.*`).
+- `profiles/hosts/`: one directory per machine, wiring together the
+  modules each one needs.
+- `profiles/configs/`, `profiles/options/`: the flake-parts plumbing that
+  turns `configurations.nixos` into real flake outputs.
+- `packages/`: small personal tools and scripts, packaged for use across
+  hosts.
+
+## Usage
+
+```sh
+nixos-rebuild switch --flake .#<host>
+```
+
+## Hosts
+
+- `yuxqiu-cedrus`: desktop, NixOS + [niri](https://github.com/YaLTeR/niri) +
+  [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell).
+
+## Device Quirks
+
+Hardware/OS-specific fixes that don't belong in the Nix config itself.
+
+**Keyboard**
+- [Connecting a Sofle over Bluetooth (BT_CLR)](https://www.reddit.com/r/ErgoMechKeyboards/comments/1j4k8gy/my_nicenano_sofle_wont_connect_via_bluetooth/)
+- [Pairing a Logitech K380 via `bluetoothctl`](https://unix.stackexchange.com/questions/590221/pairing-logitech-k380-in-ubuntu-20-04)

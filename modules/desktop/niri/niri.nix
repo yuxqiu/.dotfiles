@@ -24,7 +24,7 @@
       home.packages = [
         # for gnome-keyring prompt to show
         # - https://github.com/nix-community/home-manager/issues/1454
-        pkgs.gcr
+        pkgs.gcr_4
       ];
       services.gnome-keyring.enable = true;
 

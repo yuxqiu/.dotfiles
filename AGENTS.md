@@ -1,6 +1,6 @@
 ### Nix Workflow
 
-The flake lives at `~/.dotfiles/nix`. Always work from that directory.
+This repo's root is the flake root. Always work from here.
 
 Available hosts (under `profiles/hosts/`):
 ```
@@ -14,10 +14,10 @@ Hosts are declared under `configurations.nixos` or `configurations.homeManager` 
 
 ```
 # NixOS host
-nix build /home/yuxqiu/.dotfiles/nix#nixosConfigurations.<host>.config.system.build.toplevel --no-link --print-out-paths 2>/dev/null
+nix build .#nixosConfigurations.<host>.config.system.build.toplevel --no-link --print-out-paths 2>/dev/null
 
 # home-manager only host
-nix build /home/yuxqiu/.dotfiles/nix#homeConfigurations.<host>.activationPackage --no-link --print-out-paths 2>/dev/null
+nix build .#homeConfigurations.<host>.activationPackage --no-link --print-out-paths 2>/dev/null
 ```
 
 **Key conventions**:
