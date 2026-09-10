@@ -12,6 +12,7 @@
       nixosStateVersion = "26.11";
       modules = [
         config.flake.modules.generic.base
+        config.flake.modules.generic.yuxqiu
         config.flake.modules.generic.yuxqiu-cedrus
 
         # base
@@ -94,6 +95,7 @@
       ];
       homeManagerModules = [
         config.flake.modules.generic.base
+        config.flake.modules.generic.yuxqiu
         config.flake.modules.generic.yuxqiu-cedrus
 
         # base
@@ -223,7 +225,6 @@
         config.flake.modules.homeManager.printing
 
         # user
-        config.flake.modules.homeManager.yuxqiu
         config.flake.modules.homeManager.yuxqiu-cedrus
       ];
     };

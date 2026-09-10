@@ -1,9 +1,15 @@
 keys:
   - &yuxqiu age1mr92vpz2j6rplggpjm772lx2tsal7tja7pteyvkt5efvewc36atqlvm86r
   - &cedrus age1r4ah6vp87a8rlwp86upmlphtzunzxt0wzms69w0hrzffghvuueaqts0mmc
+  - &dracaena age1xffaas9sdgxqa3cata4z34xey05awz75erzxtxsu3u4vf2gg44sq064es0
 creation_rules:
-  - path_regex: profiles/hosts/[^/]+/secrets/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: profiles/hosts/yuxqiu-cedrus/secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
           - *yuxqiu
           - *cedrus
+  - path_regex: profiles/hosts/snowflake-dracaena/secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *yuxqiu
+          - *dracaena

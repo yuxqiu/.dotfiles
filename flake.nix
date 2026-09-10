@@ -45,6 +45,14 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-secrets = {
+      url = "git+ssh://git@github.com/yuxqiu/nix-secrets.git";
+      flake = false;
+    };
     nix-update-git = {
       url = "github:yuxqiu/nix-update-git?ref=v0.7.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -119,7 +127,7 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     paseo = {
-      url = "github:getpaseo/paseo?ref=v0.8.0-beta.1";
+      url = "github:getpaseo/paseo?ref=v0.8.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     edgepad = {

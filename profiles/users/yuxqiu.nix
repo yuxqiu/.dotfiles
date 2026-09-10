@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.yuxqiu = {
+  flake.modules.generic.yuxqiu = {
     my.user = {
       name = "yuxqiu";
       email = "yuxqiu@proton.me";

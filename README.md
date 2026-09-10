@@ -26,6 +26,9 @@ nixos-rebuild switch --flake .#<host>
 
 - `yuxqiu-cedrus`: desktop, NixOS + [niri](https://github.com/YaLTeR/niri) +
   [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell).
+- `snowflake-dracaena`: headless cloud server, aarch64, provisioned
+  declaratively via [disko](https://github.com/nix-community/disko) +
+  [nixos-anywhere](https://github.com/nix-community/nixos-anywhere).
 
 ## Device Quirks
 
