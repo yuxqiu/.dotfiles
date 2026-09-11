@@ -16,25 +16,35 @@
             description = "Target system/platform for this NixOS configuration";
           };
 
-          username = lib.mkOption {
-            type = lib.types.str;
-            description = "Username for the home-manager user";
-          };
-
-          homeStateVersion = lib.mkOption {
-            type = lib.types.str;
-            description = "Home Manager state version";
-          };
-
-          nixosStateVersion = lib.mkOption {
+          stateVersion = lib.mkOption {
             type = lib.types.str;
             description = "NixOS system state version";
           };
 
-          homeManagerModules = lib.mkOption {
-            type = lib.types.listOf lib.types.deferredModule;
-            default = [ ];
-            description = "List of home-manager modules to include for this NixOS configuration";
+          homeManager = lib.mkOption {
+            type = lib.types.nullOr (
+              lib.types.submodule {
+                options = {
+                  username = lib.mkOption {
+                    type = lib.types.str;
+                    description = "Username for the home-manager user";
+                  };
+
+                  stateVersion = lib.mkOption {
+                    type = lib.types.str;
+                    description = "Home Manager state version";
+                  };
+
+                  modules = lib.mkOption {
+                    type = lib.types.listOf lib.types.deferredModule;
+                    default = [ ];
+                    description = "List of home-manager modules to include for this NixOS configuration";
+                  };
+                };
+              }
+            );
+            default = null;
+            description = "Home Manager configuration for this host's primary user, or null for a headless/root-only host";
           };
 
           modules = lib.mkOption {
@@ -63,12 +73,12 @@
       modules =
         cfg.modules
         ++ [
-          { system.stateVersion = cfg.nixosStateVersion; }
+          { system.stateVersion = cfg.stateVersion; }
         ]
-        ++ (lib.optional (cfg.homeManagerModules != [ ]) {
-          home-manager.users.${cfg.username} = {
-            imports = cfg.homeManagerModules;
-            home.stateVersion = cfg.homeStateVersion;
+        ++ (lib.optional (cfg.homeManager != null) {
+          home-manager.users.${cfg.homeManager.username} = {
+            imports = cfg.homeManager.modules;
+            home.stateVersion = cfg.homeManager.stateVersion;
           };
           home-manager.sharedModules = [
             {

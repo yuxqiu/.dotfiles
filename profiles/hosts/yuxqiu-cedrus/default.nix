@@ -7,9 +7,7 @@
   configurations.nixos = {
     "yuxqiu-cedrus" = {
       system = "x86_64-linux";
-      username = "yuxqiu";
-      homeStateVersion = "26.11";
-      nixosStateVersion = "26.11";
+      stateVersion = "26.11";
       modules = [
         config.flake.modules.generic.base
         config.flake.modules.generic.yuxqiu
@@ -93,7 +91,9 @@
         # hostname
         { networking.hostName = "pc"; }
       ];
-      homeManagerModules = [
+      homeManager.username = "yuxqiu";
+      homeManager.stateVersion = "26.11";
+      homeManager.modules = [
         config.flake.modules.generic.base
         config.flake.modules.generic.yuxqiu
         config.flake.modules.generic.yuxqiu-cedrus
